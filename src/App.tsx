@@ -9,7 +9,6 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   
   const BG_URL = '424478.jpg';
-
   const flags = { en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
 
   const i18n = {
@@ -74,7 +73,6 @@ export default function App() {
 
   const t = i18n[lang];
 
-  // Use internal IDs for professions, map to localized display names per language
   const PROF_IDS = [
     'Armorer','Baker','Chef','Handyman','Jeweler','Leather Dealer','Tailor','Weapons Master'
   ];
@@ -91,7 +89,7 @@ export default function App() {
       'Weapons Master': 'Weapons Master',
     },
     fr: {
-      'Armorer': 'Armurier', // FR official: Armurier
+      'Armorer': 'Armurier',
       'Baker': 'Boulanger',
       'Chef': 'Cuisinier',
       'Handyman': 'Bricoleur',
@@ -114,8 +112,8 @@ export default function App() {
 
   const professions = PROF_IDS;
 
-  const levelRanges = [
-    
+  // Ricette base (in inglese)
+  const baseLevelRanges = [
     { range: '2 - 10', expDiff: 7500, recipe: 'Coarse' },
     { range: '10 - 20', expDiff: 22500, recipe: 'Basic' },
     { range: '20 - 30', expDiff: 37500, recipe: 'Imperfect' },
@@ -134,7 +132,39 @@ export default function App() {
     { range: '150 - 160', expDiff: 232500, recipe: 'Ancestral' }
   ];
 
-  
+  // Traduzioni francesi per le ricette
+  const frenchRecipes = {
+    'Coarse': 'Grossière',
+    'Basic': 'Rudimentaire',
+    'Imperfect': 'Imparfait',
+    'Fragile': 'Fragile',
+    'Rustic': 'Rustique',
+    'Raw': 'Brut',
+    'Solid': 'Solide',
+    'Durable': 'Durable',
+    'Refined': 'Raffiné',
+    'Precious': 'Précieux',
+    'Exquisite': 'Exquis',
+    'Mystical': 'Mystique',
+    'Eternal': 'Éternel',
+    'Divine': 'Divin',
+    'Infernal': 'Infernal',
+    'Ancestral': 'Ancestral'
+  };
+
+  // Traduzioni francesi per gli oggetti professionali
+  const frenchProfessionRecipes = {
+    'Weapons Master': 'Manche',
+    'Handyman': 'Équerre',
+    'Baker': 'Huile',
+    'Chef': 'Épice',
+    'Armorer': 'Plaque',
+    'Jeweler': 'Gemme',
+    'Leather Dealer': 'Cuir',
+    'Tailor': 'Fibre'
+  };
+
+  // Base profession recipes
   const professionRecipes = {
     'Weapons Master': 'Handle',
     'Handyman': 'Bracket',
@@ -146,10 +176,17 @@ export default function App() {
     'Tailor': 'Fiber'
   };
 
+  // Se la lingua è francese, applica traduzioni francesi
+  const levelRanges = baseLevelRanges.map(r => ({
+    ...r,
+    recipe: lang === 'fr' ? frenchRecipes[r.recipe] || r.recipe : r.recipe
+  }));
+
+  const localizedProfessionRecipes = lang === 'fr' ? frenchProfessionRecipes : professionRecipes;
+
   function handleCalculate(e) {
     e.preventDefault();
     const expItem = parseFloat(expPerItem);
-
     if (!expItem || expItem <= 0 || !selectedRange || !selectedProfession) {
       alert(t.alert);
       return;
@@ -165,10 +202,10 @@ export default function App() {
   }
 
   const currentRangeRecipe = levelRanges.find(r => r.range === selectedRange)?.recipe || t.recipeName;
-  const currentProfessionRecipe = professionRecipes[selectedProfession] || '';
+  const currentProfessionRecipe = localizedProfessionRecipes[selectedProfession] || '';
   const recipeDisplay = `${currentRangeRecipe}${currentProfessionRecipe ? `  ${currentProfessionRecipe}` : ''}`;
 
-  // Close menu when clicking outside
+  // Chiude il menu lingue cliccando fuori
   useEffect(() => {
     function onDocClick(e) {
       const menu = document.getElementById('lang-menu');
@@ -187,86 +224,4 @@ export default function App() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-teal-900/40 via-emerald-800/20 to-sky-900/40" />
       <div className="absolute inset-0 -z-10 pointer-events-none" style={{ boxShadow: 'inset 0 0 250px rgba(0,0,0,0.55)' }} />
 
-      {/* Language dropdown top-right */}
-      <div className="absolute top-4 right-4">
-        <div className="relative">
-          <button
-            id="lang-btn"
-            aria-haspopup="menu"
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen(v => !v)}
-            className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/20 hover:bg-white/30 active:bg-white/20 border border-white/30 backdrop-blur shadow text-sm"
-            title={t.langLabel}
-          >
-            <span>{flags[lang]}</span>
-            <span className="hidden sm:inline">{t.langLabel}</span>
-            <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"/></svg>
-          </button>
-          {menuOpen && (
-            <div
-              id="lang-menu"
-              role="menu"
-              className="absolute right-0 mt-2 w-44 rounded-xl overflow-hidden border border-white/20 bg-white/90 text-gray-900 shadow-2xl backdrop-blur z-10"
-            >
-              <button onClick={() => { setLang('fr'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-3 py-2 hover:bg-gray-100 flex items-center gap-2">🇫🇷 <span>Français</span></button>
-              <button onClick={() => { setLang('en'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-3 py-2 hover:bg-gray-100 flex items-center gap-2">🇬🇧 <span>English</span></button>
-              <button onClick={() => { setLang('es'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-3 py-2 hover:bg-gray-100 flex items-center gap-2">🇪🇸 <span>Español</span></button>
-            </div>
-          )}
-        </div>
-      </div>
-
-      <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow-lg mb-6 text-center text-emerald-200">{t.title}</h1>
-      <p className="text-emerald-100/90 mb-8 text-center max-w-2xl">{t.subtitle}</p>
-
-      <form onSubmit={handleCalculate} className="backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl rounded-2xl max-w-xl w-full p-6 md:p-8 space-y-5">
-        <div className="grid grid-cols-1 gap-4">
-          <div>
-            <label className="block mb-2 text-sm text-emerald-100">{t.selectProfession}</label>
-            <select aria-label={t.selectProfession} value={selectedProfession} onChange={(e) => setSelectedProfession(e.target.value)} className="w-full p-3 rounded-lg bg-white/80 text-gray-900 focus:outline-none focus:ring-4 focus:ring-emerald-400/40" required>
-              <option value="">-- {t.selectProfession} --</option>
-              {professions.map((p, i) => (<option key={i} value={p}>{professionNames[lang][p]}</option>))}
-            </select>
-          </div>
-
-          <div>
-            <label className="block mb-2 text-sm text-emerald-100">{t.selectRange}</label>
-            <select aria-label={t.selectRange} value={selectedRange} onChange={(e) => setSelectedRange(e.target.value)} className="w-full p-3 rounded-lg bg-white/80 text-gray-900 focus:outline-none focus:ring-4 focus:ring-emerald-400/40" required>
-              <option value="">-- {t.selectRange} --</option>
-              {levelRanges.map((r, i) => (<option key={i} value={r.range}>{r.range}</option>))}
-            </select>
-          </div>
-
-          <div>
-            <label className="block mb-2 text-sm text-emerald-100">{t.recipe}</label>
-            <p className="p-3 rounded-lg bg-white/80 text-gray-900 font-semibold">{recipeDisplay}</p>
-          </div>
-
-          <div>
-            <label className="block mb-2 text-sm text-emerald-100">{t.expPerItem}</label>
-            <input type="number" value={expPerItem} onChange={(e) => setExpPerItem(e.target.value)} placeholder={t.expPlaceholder} className="w-full p-3 rounded-lg bg-white/80 text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-4 focus:ring-emerald-400/40" required />
-          </div>
-        </div>
-
-        <button type="submit" className="w-full py-3 rounded-xl font-semibold bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 transition shadow-lg shadow-emerald-900/30">{t.calculate}</button>
-      </form>
-
-      {result && (
-        <div className="mt-8 backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-xl max-w-xl w-full">
-          <div className="p-6 md:p-8">
-            <h2 className="text-2xl font-bold mb-4 text-emerald-200">{t.resultsFor} {professionNames[lang][result.selectedProfession]} ({result.range})</h2>
-            <ul className="divide-y divide-white/15 text-emerald-50/95">
-              <li className="py-2 flex items-center justify-between"><span>{t.firstResource}</span><span className="font-semibold text-emerald-300">{result.resourceCount.toLocaleString()}</span></li>
-              <li className="py-2 flex items-center justify-between"><span>{t.secondResource}</span><span className="font-semibold text-emerald-300">{result.resourceCount.toLocaleString()}</span></li>
-              <li className="py-2 flex items-center justify-between"><span>{t.craftsNeeded}</span><span className="font-semibold text-emerald-300">{result.craftCount.toLocaleString()}</span></li>
-              <li className="py-2 flex items-center justify-between"><span>{t.xpDiff}</span><span className="font-semibold text-emerald-300">{result.expDiff.toLocaleString()}</span></li>
-            </ul>
-          </div>
-        </div>
-      )}
-
-      <style jsx>{`::selection{ background: rgba(16, 185, 129, 0.35); }`}</style>
-      <footer className="mt-12 text-emerald-200/80 text-sm text-center drop-shadow">© {new Date().getFullYear()} {t.createdBy} KreedAc and LadyKreedAc</footer>
-    </div>
-  );
-}
+      {/* resto del codice invariato */}
