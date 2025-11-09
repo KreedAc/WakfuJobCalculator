@@ -111,9 +111,12 @@ export default function App() {
           <div className="p-6 md:p-8">
             <h2 className="text-2xl font-bold mb-4 text-emerald-200">Results for {result.selectedProfession} ({result.range})</h2>
             <ul className="divide-y divide-white/15 text-emerald-50/95">
-              <li className="py-2 flex items-center justify-between"><span>XP Difference</span><span className="font-semibold text-emerald-300">{result.expDiff.toLocaleString()}</span></li>
-              <li className="py-2 flex items-center justify-between"><span>Crafts Needed</span><span className="font-semibold text-emerald-300">{result.craftCount}</span></li>
-              <li className="py-2 flex items-center justify-between"><span>Resource Count (per resource)</span><span className="font-semibold text-emerald-300">{result.resourceCount}</span></li>
+             
+              <li className="py-2 flex items-center justify-between"><span>Collect the first resource quantity:</span><span className="font-semibold text-emerald-300">{result.resourceCount}</span></li>
+              <li className="py-2 flex items-center justify-between"><span>Collect the second resource quantity:</span><span className="font-semibold text-emerald-300">{result.resourceCount}</span></li>
+                <li className="py-2 flex items-center justify-between"><span>Crafts Needed</span><span className="font-semibold text-emerald-300">{result.craftCount}</span></li>
+               <li className="py-2 flex items-center justify-between"><span>XP Difference</span><span className="font-semibold text-emerald-300">{result.expDiff.toLocaleString()}</span></li>
+            
             </ul>
           </div>
         </div>
