@@ -6,8 +6,6 @@ export default function App() {
   const [selectedProfession, setSelectedProfession] = useState('');
   const [result, setResult] = useState(null);
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1490482075699771"
-     crossorigin="anonymous"></script>
 <meta name="google-adsense-account" content="ca-pub-1490482075699771">
   
   const BG_URL = '424478.jpg';
