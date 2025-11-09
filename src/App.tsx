@@ -5,8 +5,6 @@ export default function App() {
   const [selectedRange, setSelectedRange] = useState('');
   const [selectedProfession, setSelectedProfession] = useState('');
   const [result, setResult] = useState(null);
-
-<meta name="google-adsense-account" content="ca-pub-1490482075699771">
   
   const BG_URL = '424478.jpg';
 
