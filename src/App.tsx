@@ -136,14 +136,36 @@ export default function App() {
 
   
   const professionRecipes = {
-    'Weapons Master': 'Handle',
-    'Handyman': 'Bracket',
-    'Baker': 'Oil',
-    'Chef': 'Spice',
-    'Armorer': 'Plate',
-    'Jeweler': 'Gem',
-    'Leather Dealer': 'Leather',
-    'Tailor': 'Fiber'
+    en: {
+      'Weapons Master': 'Handle',
+      'Handyman': 'Bracket',
+      'Baker': 'Oil',
+      'Chef': 'Spice',
+      'Armorer': 'Plate',
+      'Jeweler': 'Gem',
+      'Leather Dealer': 'Leather',
+      'Tailor': 'Fiber'
+    },
+    fr: {
+      'Weapons Master': 'Manche',
+      'Handyman': 'Equerre',
+      'Baker': 'Huile',
+      'Chef': 'Epice',
+      'Armorer': 'Plaque',
+      'Jeweler': 'Gemme',
+      'Leather Dealer': 'Cuir',
+      'Tailor': 'Fibre'
+    },
+    es: {
+      'Weapons Master': 'Handle',
+      'Handyman': 'Bracket',
+      'Baker': 'Oil',
+      'Chef': 'Spice',
+      'Armorer': 'Plate',
+      'Jeweler': 'Gem',
+      'Leather Dealer': 'Leather',
+      'Tailor': 'Fiber'
+    }
   };
 
   function handleCalculate(e) {
@@ -165,7 +187,7 @@ export default function App() {
   }
 
   const currentRangeRecipe = levelRanges.find(r => r.range === selectedRange)?.recipe || t.recipeName;
-  const currentProfessionRecipe = professionRecipes[selectedProfession] || '';
+  const currentProfessionRecipe = professionRecipes[lang][selectedProfession] || '';
   const recipeDisplay = `${currentRangeRecipe}${currentProfessionRecipe ? `  ${currentProfessionRecipe}` : ''}`;
 
   // Close menu when clicking outside
