@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createClient } from '@supabase/supabase-js';
 
 export default function App() {
   const [expPerItem, setExpPerItem] = useState('');
@@ -7,8 +8,13 @@ export default function App() {
   const [result, setResult] = useState(null);
   const [lang, setLang] = useState('en');
   const [menuOpen, setMenuOpen] = useState(false);
-  
+
   const BG_URL = '424478.jpg';
+
+  const supabase = createClient(
+    import.meta.env.VITE_SUPABASE_URL,
+    import.meta.env.VITE_SUPABASE_ANON_KEY
+  );
 
   const flags = { en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
 
@@ -190,7 +196,20 @@ export default function App() {
   const currentProfessionRecipe = professionRecipes[lang][selectedProfession] || '';
   const recipeDisplay = `${currentRangeRecipe}${currentProfessionRecipe ? `  ${currentProfessionRecipe}` : ''}`;
 
-  // Close menu when clicking outside
+  useEffect(() => {
+    const trackVisit = async () => {
+      try {
+        await supabase.from('visitors').insert({
+          page: '/',
+          user_agent: navigator.userAgent
+        });
+      } catch (error) {
+        console.log('Visit tracking skipped');
+      }
+    };
+    trackVisit();
+  }, []);
+
   useEffect(() => {
     function onDocClick(e) {
       const menu = document.getElementById('lang-menu');
