@@ -115,23 +115,22 @@ export default function App() {
   const professions = PROF_IDS;
 
   const levelRanges = [
-    
-    { range: '2 - 10', expDiff: 7500, recipe: 'Coarse' },
-    { range: '10 - 20', expDiff: 22500, recipe: 'Basic' },
-    { range: '20 - 30', expDiff: 37500, recipe: 'Imperfect' },
-    { range: '30 - 40', expDiff: 52500, recipe: 'Fragile' },
-    { range: '40 - 50', expDiff: 67500, recipe: 'Rustic' },
-    { range: '50 - 60', expDiff: 82500, recipe: 'Raw' },
-    { range: '60 - 70', expDiff: 97500, recipe: 'Solid' },
-    { range: '70 - 80', expDiff: 112500, recipe: 'Durable' },
-    { range: '80 - 90', expDiff: 127500, recipe: 'Refined' },
-    { range: '90 - 100', expDiff: 142500, recipe: 'Precious' },
-    { range: '100 - 110', expDiff: 157500, recipe: 'Exquisite' },
-    { range: '110 - 120', expDiff: 172500, recipe: 'Mystical' },
-    { range: '120 - 130', expDiff: 187500, recipe: 'Eternal' },
-    { range: '130 - 140', expDiff: 202500, recipe: 'Divine' },
-    { range: '140 - 150', expDiff: 217500, recipe: 'Infernal' },
-    { range: '150 - 160', expDiff: 232500, recipe: 'Ancestral' }
+    { range: '2 - 10', expDiff: 7500, recipe: { en: 'Coarse', fr: 'Grossière', es: 'Coarse' } },
+    { range: '10 - 20', expDiff: 22500, recipe: { en: 'Basic', fr: 'Rudimentaire', es: 'Basic' } },
+    { range: '20 - 30', expDiff: 37500, recipe: { en: 'Imperfect', fr: 'Imparfait', es: 'Imperfect' } },
+    { range: '30 - 40', expDiff: 52500, recipe: { en: 'Fragile', fr: 'Fragile', es: 'Fragile' } },
+    { range: '40 - 50', expDiff: 67500, recipe: { en: 'Rustic', fr: 'Rustique', es: 'Rustic' } },
+    { range: '50 - 60', expDiff: 82500, recipe: { en: 'Raw', fr: 'Brut', es: 'Raw' } },
+    { range: '60 - 70', expDiff: 97500, recipe: { en: 'Solid', fr: 'Solide', es: 'Solid' } },
+    { range: '70 - 80', expDiff: 112500, recipe: { en: 'Durable', fr: 'Durable', es: 'Durable' } },
+    { range: '80 - 90', expDiff: 127500, recipe: { en: 'Refined', fr: 'Raffiné', es: 'Refined' } },
+    { range: '90 - 100', expDiff: 142500, recipe: { en: 'Precious', fr: 'Précieux', es: 'Precious' } },
+    { range: '100 - 110', expDiff: 157500, recipe: { en: 'Exquisite', fr: 'Exquis', es: 'Exquisite' } },
+    { range: '110 - 120', expDiff: 172500, recipe: { en: 'Mystical', fr: 'Mystique', es: 'Mystical' } },
+    { range: '120 - 130', expDiff: 187500, recipe: { en: 'Eternal', fr: 'Eternel', es: 'Eternal' } },
+    { range: '130 - 140', expDiff: 202500, recipe: { en: 'Divine', fr: 'Divin', es: 'Divine' } },
+    { range: '140 - 150', expDiff: 217500, recipe: { en: 'Infernal', fr: 'Infernal', es: 'Infernal' } },
+    { range: '150 - 160', expDiff: 232500, recipe: { en: 'Ancestral', fr: 'Ancestral', es: 'Ancestral' } }
   ];
 
   
@@ -186,7 +185,8 @@ export default function App() {
     setResult({ ...selected, selectedProfession, craftCount, resourceCount });
   }
 
-  const currentRangeRecipe = levelRanges.find(r => r.range === selectedRange)?.recipe || t.recipeName;
+  const currentRangeRecipeObj = levelRanges.find(r => r.range === selectedRange)?.recipe;
+  const currentRangeRecipe = currentRangeRecipeObj ? currentRangeRecipeObj[lang] : t.recipeName;
   const currentProfessionRecipe = professionRecipes[lang][selectedProfession] || '';
   const recipeDisplay = `${currentRangeRecipe}${currentProfessionRecipe ? `  ${currentProfessionRecipe}` : ''}`;
 
