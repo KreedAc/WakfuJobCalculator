@@ -8,6 +8,7 @@ export default function App() {
   const [result, setResult] = useState(null);
   const [lang, setLang] = useState('en');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
   const BG_URL = '424478.jpg';
 
@@ -212,10 +213,17 @@ export default function App() {
 
   useEffect(() => {
     function onDocClick(e) {
-      const menu = document.getElementById('lang-menu');
-      const btn = document.getElementById('lang-btn');
-      if (!menu || !btn) return;
-      if (!menu.contains(e.target) && !btn.contains(e.target)) setMenuOpen(false);
+      const langMenu = document.getElementById('lang-menu');
+      const langBtn = document.getElementById('lang-btn');
+      const hamburgerMenu = document.getElementById('hamburger-menu');
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+
+      if (langMenu && langBtn && !langMenu.contains(e.target) && !langBtn.contains(e.target)) {
+        setMenuOpen(false);
+      }
+      if (hamburgerMenu && hamburgerBtn && !hamburgerMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        setHamburgerOpen(false);
+      }
     }
     document.addEventListener('click', onDocClick);
     return () => document.removeEventListener('click', onDocClick);
@@ -228,8 +236,38 @@ export default function App() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-teal-900/40 via-emerald-800/20 to-sky-900/40" />
       <div className="absolute inset-0 -z-10 pointer-events-none" style={{ boxShadow: 'inset 0 0 250px rgba(0,0,0,0.55)' }} />
 
-      {/* Language dropdown top-right */}
-      <div className="absolute top-4 right-4">
+      {/* Top Navigation */}
+      <div className="absolute top-4 left-4 right-4 flex justify-between items-center">
+        {/* Hamburger Menu */}
+        <div className="relative">
+          <button
+            id="hamburger-btn"
+            aria-haspopup="menu"
+            aria-expanded={hamburgerOpen}
+            onClick={() => setHamburgerOpen(v => !v)}
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/20 hover:bg-white/30 active:bg-white/20 border border-white/30 backdrop-blur shadow"
+            title="Menu"
+            aria-label="Toggle menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          {hamburgerOpen && (
+            <div
+              id="hamburger-menu"
+              role="menu"
+              className="absolute left-0 mt-2 w-48 rounded-xl overflow-hidden border border-white/20 bg-white/90 text-gray-900 shadow-2xl backdrop-blur z-10"
+            >
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-gray-100 text-sm font-medium">Home</button>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-gray-100 text-sm font-medium">Guides</button>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-gray-100 text-sm font-medium">Recipes</button>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-gray-100 text-sm font-medium">Professions</button>
+            </div>
+          )}
+        </div>
+
+        {/* Language dropdown */}
         <div className="relative">
           <button
             id="lang-btn"
