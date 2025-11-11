@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /private
 
-Sitemap: https://wakfu-calculator.example.com/sitemap.xml
+Sitemap: https://wakfujobcalculator.bolt.host/sitemap.xml
