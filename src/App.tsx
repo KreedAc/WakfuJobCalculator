@@ -345,6 +345,7 @@ export default function App() {
       )}
 
       <style jsx>{`::selection{ background: rgba(16, 185, 129, 0.35); }`}</style>
+        <footer className="mt-12 text-emerald-200/80 text-sm text-center drop-shadow"> {t.createdBy} WAKFU is an MMORPG published by Ankama. "https://wakfujobcalculator.bolt.host/" is an unofficial website with no connection to Ankama.</footer>
       <footer className="mt-12 text-emerald-200/80 text-sm text-center drop-shadow">© {new Date().getFullYear()} {t.createdBy} KreedAc and LadyKreedAc</footer>
     </div>
   );
