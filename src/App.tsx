@@ -21,7 +21,7 @@ export default function App() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
   // Using a fantasy landscape placeholder since the local file isn't available
-  const BG_URL = 'https://drive.google.com/file/d/1vjyUkLt71_9t_XKgnEdO1YSqk-YieN3o/view?usp=sharing';
+  const BG_URL = '424478.jpg';
 
   const flags = { en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
 
