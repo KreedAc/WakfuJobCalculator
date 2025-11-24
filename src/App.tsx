@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, Hammer, ChefHat, Scroll, Shield, Scissors, Gem, Wrench } from 'lucide-react';
+import { BookOpen, Hammer, ChefHat, Scroll, Shield, Scissors, Gem, Wrench, Sparkles, X, MessageCircle, Send } from 'lucide-react';
 
 // Mock Supabase client since env vars are not available in preview
 const supabase = {
@@ -20,8 +20,17 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
-  // Using a fantasy landscape placeholder since the local file isn't available
-  <img src="https://drive.google.com/file/d/1vjyUkLt71_9t_XKgnEdO1YSqk-YieN3o/view?usp=sharing" alt="Immagine fantasy" />
+  // AI State
+  const [showAiModal, setShowAiModal] = useState(false);
+  const [aiQuery, setAiQuery] = useState('');
+  const [aiResponse, setAiResponse] = useState('');
+  const [aiLoading, setAiLoading] = useState(false);
+
+  // Gemini API Key (handled by environment)
+  const apiKey = ""; 
+
+  // Background Image URL updated from Google Drive
+  const BG_URL = 'https://drive.google.com/uc?export=view&id=1vjyUkLt71_9t_XKgnEdO1YSqk-YieN3o';
 
   const flags = { en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
 
@@ -43,7 +52,13 @@ export default function App() {
       alert: 'Please fill all fields and select a profession and level range.',
       recipeName: 'Recipe Name',
       createdBy: 'Created by',
-      langLabel: 'Language'
+      langLabel: 'Language',
+      aiButton: 'Ask the Sage',
+      aiTitle: 'Crafting Wisdom',
+      aiPlaceholder: 'Ask about leveling tips, resource locations, or lore...',
+      aiLoading: 'The Sage is pondering...',
+      aiError: 'The spirits are silent right now. Try again later.',
+      close: 'Close'
     },
     fr: {
       title: 'Calculateur d\'XP d\'Artisanat Wakfu',
@@ -62,7 +77,13 @@ export default function App() {
       alert: 'Veuillez remplir tous les champs et sélectionner un métier et une tranche de niveaux.',
       recipeName: 'Nom de la recette',
       createdBy: 'Créé par',
-      langLabel: 'Langue'
+      langLabel: 'Langue',
+      aiButton: 'Demander au Sage',
+      aiTitle: 'Sagesse de l\'Artisan',
+      aiPlaceholder: 'Demandez des astuces, lieux de ressources ou histoire...',
+      aiLoading: 'Le Sage réfléchit...',
+      aiError: 'Les esprits sont silencieux. Réessayez plus tard.',
+      close: 'Fermer'
     },
     es: {
       title: 'Calculadora de XP de Artesanía de Wakfu',
@@ -81,7 +102,13 @@ export default function App() {
       alert: 'Por favor, completa todos los campos y selecciona una profesión y un rango de niveles.',
       recipeName: 'Nombre de la receta',
       createdBy: 'Creado por',
-      langLabel: 'Idioma'
+      langLabel: 'Idioma',
+      aiButton: 'Preguntar al Sabio',
+      aiTitle: 'Sabiduría Artesanal',
+      aiPlaceholder: 'Pregunta sobre consejos, ubicaciones o historia...',
+      aiLoading: 'El Sabio está meditando...',
+      aiError: 'Los espíritus guardan silencio. Inténtalo más tarde.',
+      close: 'Cerrar'
     }
   };
 
@@ -197,6 +224,47 @@ export default function App() {
 
     setResult({ ...selected, selectedProfession, craftCount, resourceCount });
   }
+
+  // AI Submission Handler
+  const handleAiSubmit = async (e) => {
+    e.preventDefault();
+    if (!aiQuery.trim()) return;
+
+    setAiLoading(true);
+    setAiResponse('');
+
+    try {
+      const systemPrompt = `You are a wise crafting mentor in the MMORPG Wakfu. 
+      You help players with advice about professions (${PROF_IDS.join(', ')}), gathering resources, leveling up strategies, and lore. 
+      Keep answers concise, helpful, and in the tone of a wise old sage from the World of Twelve.
+      The user is asking in ${lang === 'fr' ? 'French' : lang === 'es' ? 'Spanish' : 'English'}. Respond in the same language.`;
+      
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: aiQuery }] }],
+            systemInstruction: { parts: [{ text: systemPrompt }] }
+          })
+        }
+      );
+
+      const data = await response.json();
+      if (data.candidates && data.candidates[0].content) {
+        setAiResponse(data.candidates[0].content.parts[0].text);
+      } else {
+        setAiResponse(t.aiError);
+      }
+    } catch (error) {
+      console.error('AI Error:', error);
+      setAiResponse(t.aiError);
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
 
   const currentRangeRecipeObj = levelRanges.find(r => r.range === selectedRange)?.recipe;
   const currentRangeRecipe = currentRangeRecipeObj ? currentRangeRecipeObj[lang] : t.recipeName;
@@ -317,7 +385,7 @@ export default function App() {
         </div>
       </div>
 
-      <div className="max-w-4xl w-full flex flex-col items-center z-10">
+      <div className="max-w-4xl w-full flex flex-col items-center z-10 pb-24">
         <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
           {t.title}
         </h1>
@@ -330,11 +398,14 @@ export default function App() {
             <div className="space-y-2">
               <label className="block text-sm font-medium text-emerald-300 ml-1">{t.selectProfession}</label>
               <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-emerald-400">
+                  <Hammer className="w-5 h-5" />
+                </div>
                 <select 
                   aria-label={t.selectProfession} 
                   value={selectedProfession} 
                   onChange={(e) => setSelectedProfession(e.target.value)} 
-                  className="w-full p-4 rounded-xl bg-black/40 text-emerald-50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all appearance-none cursor-pointer hover:bg-black/50" 
+                  className="w-full p-4 pl-12 rounded-xl bg-black/40 text-emerald-50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all appearance-none cursor-pointer hover:bg-black/50" 
                   required
                 >
                   <option value="" className="bg-gray-900 text-gray-400">-- {t.selectProfession} --</option>
@@ -349,11 +420,14 @@ export default function App() {
             <div className="space-y-2">
               <label className="block text-sm font-medium text-emerald-300 ml-1">{t.selectRange}</label>
               <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-emerald-400">
+                  <BookOpen className="w-5 h-5" />
+                </div>
                 <select 
                   aria-label={t.selectRange} 
                   value={selectedRange} 
                   onChange={(e) => setSelectedRange(e.target.value)} 
-                  className="w-full p-4 rounded-xl bg-black/40 text-emerald-50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all appearance-none cursor-pointer hover:bg-black/50" 
+                  className="w-full p-4 pl-12 rounded-xl bg-black/40 text-emerald-50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all appearance-none cursor-pointer hover:bg-black/50" 
                   required
                 >
                   <option value="" className="bg-gray-900 text-gray-400">-- {t.selectRange} --</option>
@@ -439,6 +513,70 @@ export default function App() {
           <p className="mt-4 opacity-75">{new Date().getFullYear()} {t.createdBy} KreedAc and LadyKreedAc</p>
         </footer>
       </div>
+
+      {/* Floating Action Button for AI */}
+      <button 
+        onClick={() => setShowAiModal(true)}
+        className="fixed bottom-6 right-6 p-4 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-lg hover:shadow-2xl hover:scale-110 transition-all z-40 border-2 border-white/20"
+        title={t.aiButton}
+      >
+        <Sparkles className="w-6 h-6 animate-pulse" />
+      </button>
+
+      {/* AI Modal */}
+      {showAiModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-gray-900 border border-purple-500/30 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
+            <div className="bg-gradient-to-r from-indigo-900 to-purple-900 p-4 border-b border-white/10 flex justify-between items-center">
+              <h3 className="text-xl font-bold flex items-center gap-2 text-white">
+                <Sparkles className="w-5 h-5 text-yellow-300" />
+                {t.aiTitle}
+              </h3>
+              <button onClick={() => setShowAiModal(false)} className="p-1 hover:bg-white/10 rounded-lg transition-colors">
+                <X className="w-5 h-5 text-gray-300" />
+              </button>
+            </div>
+            
+            <div className="flex-1 p-6 overflow-y-auto min-h-[300px] flex flex-col gap-4 bg-gray-900/50">
+              {aiResponse ? (
+                 <div className="bg-indigo-950/40 border border-indigo-500/20 p-4 rounded-xl text-indigo-100 leading-relaxed whitespace-pre-wrap">
+                   {aiResponse}
+                 </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full text-gray-400 gap-3 opacity-60">
+                  <MessageCircle className="w-12 h-12" />
+                  <p className="text-sm">{t.aiButton}</p>
+                </div>
+              )}
+              {aiLoading && (
+                <div className="flex items-center gap-2 text-purple-300 text-sm animate-pulse">
+                  <Sparkles className="w-4 h-4" />
+                  {t.aiLoading}
+                </div>
+              )}
+            </div>
+
+            <div className="p-4 bg-gray-800 border-t border-white/10">
+              <form onSubmit={handleAiSubmit} className="flex gap-2">
+                <input
+                  type="text"
+                  value={aiQuery}
+                  onChange={(e) => setAiQuery(e.target.value)}
+                  placeholder={t.aiPlaceholder}
+                  className="flex-1 bg-gray-900 border border-gray-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+                />
+                <button 
+                  type="submit" 
+                  disabled={aiLoading || !aiQuery.trim()}
+                  className="bg-purple-600 hover:bg-purple-500 disabled:opacity-50 disabled:cursor-not-allowed text-white px-4 rounded-xl transition-colors"
+                >
+                  <Send className="w-5 h-5" />
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
