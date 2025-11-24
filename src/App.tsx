@@ -1,14 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { initializeApp } from 'firebase/app';
-import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from 'firebase/auth';
-import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
-
-// --- Firebase Configuration & Initialization ---
-const firebaseConfig = JSON.parse(__firebase_config);
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+import { useState, useEffect } from 'react';
+import { createClient } from '@supabase/supabase-js';
 
 export default function App() {
   const [expPerItem, setExpPerItem] = useState('');
@@ -18,10 +9,13 @@ export default function App() {
   const [lang, setLang] = useState('en');
   const [menuOpen, setMenuOpen] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
-  const [user, setUser] = useState(null);
 
-  // Sfondo a tema Wakfu (Cielo stile anime/Incarnam vibrante) - URL aggiornato e più stabile
-  const BG_URL = 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=2670&auto=format&fit=crop'; 
+  const BG_URL = '424478.jpg';
+
+  const supabase = createClient(
+    import.meta.env.VITE_SUPABASE_URL,
+    import.meta.env.VITE_SUPABASE_ANON_KEY
+  );
 
   const flags = { en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
 
@@ -87,22 +81,41 @@ export default function App() {
 
   const t = i18n[lang];
 
+  // Use internal IDs for professions, map to localized display names per language
   const PROF_IDS = [
     'Armorer','Baker','Chef','Handyman','Jeweler','Leather Dealer','Tailor','Weapons Master'
   ];
 
   const professionNames = {
     en: {
-      'Armorer': 'Armorer', 'Baker': 'Baker', 'Chef': 'Chef', 'Handyman': 'Handyman',
-      'Jeweler': 'Jeweler', 'Leather Dealer': 'Leather Dealer', 'Tailor': 'Tailor', 'Weapons Master': 'Weapons Master',
+      'Armorer': 'Armorer',
+      'Baker': 'Baker',
+      'Chef': 'Chef',
+      'Handyman': 'Handyman',
+      'Jeweler': 'Jeweler',
+      'Leather Dealer': 'Leather Dealer',
+      'Tailor': 'Tailor',
+      'Weapons Master': 'Weapons Master',
     },
     fr: {
-      'Armorer': 'Armurier', 'Baker': 'Boulanger', 'Chef': 'Cuisinier', 'Handyman': 'Bricoleur',
-      'Jeweler': 'Bijoutier', 'Leather Dealer': 'Maroquinier', 'Tailor': 'Tailleur', 'Weapons Master': "Maître d'armes",
+      'Armorer': 'Armurier', // FR official: Armurier
+      'Baker': 'Boulanger',
+      'Chef': 'Cuisinier',
+      'Handyman': 'Bricoleur',
+      'Jeweler': 'Bijoutier',
+      'Leather Dealer': 'Maroquinier',
+      'Tailor': 'Tailleur',
+      'Weapons Master': "Maître d'armes",
     },
     es: {
-      'Armorer': 'Armero', 'Baker': 'Panadero', 'Chef': 'Cocinero', 'Handyman': 'Ebanista',
-      'Jeweler': 'Joyero', 'Leather Dealer': 'Peletero', 'Tailor': 'Sastre', 'Weapons Master': 'Maestro de armas',
+      'Armorer': 'Armero',
+      'Baker': 'Panadero',
+      'Chef': 'Cocinero',
+      'Handyman': 'Ebanista',
+      'Jeweler': 'Joyero',
+      'Leather Dealer': 'Peletero',
+      'Tailor': 'Sastre',
+      'Weapons Master': 'Maestro de armas',
     }
   };
 
@@ -127,46 +140,77 @@ export default function App() {
     { range: '150 - 160', expDiff: 232500, recipe: { en: 'Ancestral', fr: 'Ancestral', es: 'Ancestral' } }
   ];
 
+  
   const professionRecipes = {
-    en: { 'Weapons Master': 'Handle', 'Handyman': 'Bracket', 'Baker': 'Oil', 'Chef': 'Spice', 'Armorer': 'Plate', 'Jeweler': 'Gem', 'Leather Dealer': 'Leather', 'Tailor': 'Fiber' },
-    fr: { 'Weapons Master': 'Manche', 'Handyman': 'Equerre', 'Baker': 'Huile', 'Chef': 'Epice', 'Armorer': 'Plaque', 'Jeweler': 'Gemme', 'Leather Dealer': 'Cuir', 'Tailor': 'Fibre' },
-    es: { 'Weapons Master': 'Mango', 'Handyman': 'Escuadrita', 'Baker': 'Aceite', 'Chef': 'Especia', 'Armorer': 'Placa', 'Jeweler': 'Gema', 'Leather Dealer': 'Cuero', 'Tailor': 'Fibra' }
+    en: {
+      'Weapons Master': 'Handle',
+      'Handyman': 'Bracket',
+      'Baker': 'Oil',
+      'Chef': 'Spice',
+      'Armorer': 'Plate',
+      'Jeweler': 'Gem',
+      'Leather Dealer': 'Leather',
+      'Tailor': 'Fiber'
+    },
+    fr: {
+      'Weapons Master': 'Manche',
+      'Handyman': 'Equerre',
+      'Baker': 'Huile',
+      'Chef': 'Epice',
+      'Armorer': 'Plaque',
+      'Jeweler': 'Gemme',
+      'Leather Dealer': 'Cuir',
+      'Tailor': 'Fibre'
+    },
+    es: {
+      'Weapons Master': 'Mango',
+      'Handyman': 'Escuadrita',
+      'Baker': 'Aceite',
+      'Chef': 'Especia',
+      'Armorer': 'Placa',
+      'Jeweler': 'Gema',
+      'Leather Dealer': 'Cuero',
+      'Tailor': 'Fibra'
+    }
   };
 
-  // --- Auth Effect ---
-  useEffect(() => {
-    const initAuth = async () => {
-      if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-        await signInWithCustomToken(auth, __initial_auth_token);
-      } else {
-        await signInAnonymously(auth);
-      }
-    };
-    initAuth();
-    const unsubscribe = onAuthStateChanged(auth, setUser);
-    return () => unsubscribe();
-  }, []);
+  function handleCalculate(e) {
+    e.preventDefault();
+    const expItem = parseFloat(expPerItem);
 
-  // --- Visitor Tracking (Migrated to Firebase) ---
+    if (!expItem || expItem <= 0 || !selectedRange || !selectedProfession) {
+      alert(t.alert);
+      return;
+    }
+
+    const selected = levelRanges.find(r => r.range === selectedRange);
+    if (!selected) return;
+
+    const craftCount = Math.ceil(selected.expDiff / expItem);
+    const resourceCount = craftCount * 5;
+
+    setResult({ ...selected, selectedProfession, craftCount, resourceCount });
+  }
+
+  const currentRangeRecipeObj = levelRanges.find(r => r.range === selectedRange)?.recipe;
+  const currentRangeRecipe = currentRangeRecipeObj ? currentRangeRecipeObj[lang] : t.recipeName;
+  const currentProfessionRecipe = professionRecipes[lang][selectedProfession] || '';
+  const recipeDisplay = `${currentRangeRecipe}${currentProfessionRecipe ? `  ${currentProfessionRecipe}` : ''}`;
+
   useEffect(() => {
-    if (!user) return; // Wait for auth
     const trackVisit = async () => {
       try {
-        await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'visitors'), {
+        await supabase.from('visitors').insert({
           page: '/',
-          user_agent: navigator.userAgent,
-          timestamp: serverTimestamp(),
-          lang_preference: lang // Added lang tracking just for utility
+          user_agent: navigator.userAgent
         });
       } catch (error) {
-        console.log('Visit tracking skipped or failed', error);
+        console.log('Visit tracking skipped');
       }
     };
     trackVisit();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]); // Run once when user is authenticated
+  }, []);
 
-  // --- Click Outside Handlers ---
   useEffect(() => {
     function onDocClick(e) {
       const langMenu = document.getElementById('lang-menu');
@@ -185,63 +229,27 @@ export default function App() {
     return () => document.removeEventListener('click', onDocClick);
   }, []);
 
-  function handleCalculate(e) {
-    e.preventDefault();
-    const expItem = parseFloat(expPerItem);
-
-    if (!expItem || expItem <= 0 || !selectedRange || !selectedProfession) {
-      // Use a custom UI alert or simple alert for now
-      // Ideally replace native alert with UI modal, but keeping logic close to original
-      // Using console.warn instead of alert to avoid interrupting flow too aggressively
-      // But keeping original behavior request:
-      alert(t.alert);
-      return;
-    }
-
-    const selected = levelRanges.find(r => r.range === selectedRange);
-    if (!selected) return;
-
-    const craftCount = Math.ceil(selected.expDiff / expItem);
-    const resourceCount = craftCount * 5;
-
-    setResult({ ...selected, selectedProfession, craftCount, resourceCount });
-  }
-
-  const currentRangeRecipeObj = levelRanges.find(r => r.range === selectedRange)?.recipe;
-  const currentRangeRecipe = currentRangeRecipeObj ? currentRangeRecipeObj[lang] : t.recipeName;
-  const currentProfessionRecipe = professionRecipes[lang][selectedProfession] || '';
-  const recipeDisplay = `${currentRangeRecipe}${currentProfessionRecipe ? ` ${currentProfessionRecipe}` : ''}`;
-
   return (
-    <div className="relative min-h-screen text-white flex flex-col items-center justify-center p-6 overflow-hidden font-sans">
+    <div className="relative min-h-screen text-white flex flex-col items-center justify-center p-6 overflow-hidden">
       {/* Background */}
-      <div 
-        className="absolute inset-0 -z-10" 
-        style={{ 
-          backgroundImage: `url(${BG_URL})`, 
-          backgroundSize: 'cover', 
-          backgroundPosition: 'center', 
-          // Bright and vibrant for Wakfu style
-          filter: 'brightness(0.9) saturate(1.2) contrast(1.1)' 
-        }} 
-      />
-      {/* Gradient matched to Wakfu cyan/blue palette */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-cyan-400/20 via-sky-500/10 to-blue-900/50" />
+      <div className="absolute inset-0 -z-10" style={{ backgroundImage: `url(${BG_URL})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.85) saturate(1.1)' }} />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-teal-900/40 via-emerald-800/20 to-sky-900/40" />
+      <div className="absolute inset-0 -z-10 pointer-events-none" style={{ boxShadow: 'inset 0 0 250px rgba(0,0,0,0.55)' }} />
 
       {/* Top Navigation */}
-      <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
+      <div className="absolute top-4 left-4 right-4 flex justify-between items-center">
         {/* Hamburger Menu */}
         <div className="relative">
           <button
             id="hamburger-btn"
             aria-haspopup="menu"
             aria-expanded={hamburgerOpen}
-            onClick={(e) => { e.stopPropagation(); setHamburgerOpen(v => !v); }}
-            className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 backdrop-blur-sm shadow-lg transition-colors"
+            onClick={() => setHamburgerOpen(v => !v)}
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/20 hover:bg-white/30 active:bg-white/20 border border-white/30 backdrop-blur shadow"
             title="Menu"
             aria-label="Toggle menu"
           >
-            <svg className="w-6 h-6 text-emerald-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
@@ -249,14 +257,12 @@ export default function App() {
             <div
               id="hamburger-menu"
               role="menu"
-              className="absolute left-0 mt-2 w-56 rounded-xl overflow-hidden border border-emerald-500/30 bg-gray-900/95 text-emerald-100 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-200"
+              className="absolute left-0 mt-2 w-48 rounded-xl overflow-hidden border border-white/20 bg-white/90 text-gray-900 shadow-2xl backdrop-blur z-10"
             >
-              <div className="px-4 py-3 border-b border-white/10 bg-white/5">
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Menu</span>
-              </div>
-              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-emerald-500/20 text-sm font-medium transition-colors">Character Builder (WIP)</button>
-              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-emerald-500/20 text-sm font-medium transition-colors">Dungeon Guide (WIP)</button>
-              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-emerald-500/20 text-sm font-medium transition-colors">Market Tracker (WIP)</button>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-gray-100 text-sm font-medium">Work in Progress</button>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-gray-100 text-sm font-medium">Work in Progress</button>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-gray-100 text-sm font-medium">Work in Progress</button>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-gray-100 text-sm font-medium">Work in Progress</button>
             </div>
           )}
         </div>
@@ -267,139 +273,80 @@ export default function App() {
             id="lang-btn"
             aria-haspopup="menu"
             aria-expanded={menuOpen}
-            onClick={(e) => { e.stopPropagation(); setMenuOpen(v => !v); }}
-            className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 backdrop-blur-sm shadow-lg text-sm transition-colors text-emerald-50"
+            onClick={() => setMenuOpen(v => !v)}
+            className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/20 hover:bg-white/30 active:bg-white/20 border border-white/30 backdrop-blur shadow text-sm"
             title={t.langLabel}
           >
-            <span className="text-lg">{flags[lang]}</span>
-            <span className="hidden sm:inline font-medium">{t.langLabel}</span>
-            <svg className="w-4 h-4 opacity-70" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"/></svg>
+            <span>{flags[lang]}</span>
+            <span className="hidden sm:inline">{t.langLabel}</span>
+            <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"/></svg>
           </button>
           {menuOpen && (
             <div
               id="lang-menu"
               role="menu"
-              className="absolute right-0 mt-2 w-44 rounded-xl overflow-hidden border border-emerald-500/30 bg-gray-900/95 text-emerald-100 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-200"
+              className="absolute right-0 mt-2 w-44 rounded-xl overflow-hidden border border-white/20 bg-white/90 text-gray-900 shadow-2xl backdrop-blur z-10"
             >
-              <button onClick={() => { setLang('fr'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-4 py-3 hover:bg-emerald-500/20 flex items-center gap-3 transition-colors">
-                <span className="text-xl">🇫🇷</span> <span className="font-medium">Français</span>
-              </button>
-              <button onClick={() => { setLang('en'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-4 py-3 hover:bg-emerald-500/20 flex items-center gap-3 transition-colors">
-                <span className="text-xl">🇬🇧</span> <span className="font-medium">English</span>
-              </button>
-              <button onClick={() => { setLang('es'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-4 py-3 hover:bg-emerald-500/20 flex items-center gap-3 transition-colors">
-                <span className="text-xl">🇪🇸</span> <span className="font-medium">Español</span>
-              </button>
+              <button onClick={() => { setLang('fr'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-3 py-2 hover:bg-gray-100 flex items-center gap-2">🇫🇷 <span>Français</span></button>
+              <button onClick={() => { setLang('en'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-3 py-2 hover:bg-gray-100 flex items-center gap-2">🇬🇧 <span>English</span></button>
+              <button onClick={() => { setLang('es'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-3 py-2 hover:bg-gray-100 flex items-center gap-2">🇪🇸 <span>Español</span></button>
             </div>
           )}
         </div>
       </div>
 
-      <div className="z-10 w-full max-w-xl flex flex-col items-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] mb-4 text-center text-emerald-300 tracking-tight">
-          {t.title}
-        </h1>
-        <p className="text-emerald-100 mb-8 text-center max-w-lg leading-relaxed drop-shadow-md font-medium">
-          {t.subtitle}
-        </p>
+      <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow-lg mb-6 text-center text-emerald-200">{t.title}</h1>
+      <p className="text-emerald-100/90 mb-8 text-center max-w-2xl">{t.subtitle}</p>
 
-        <form onSubmit={handleCalculate} className="backdrop-blur-xl bg-black/40 border border-emerald-500/30 shadow-2xl rounded-2xl w-full p-6 md:p-8 space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="flex flex-col">
-              <label className="block mb-2 text-sm font-semibold text-emerald-200 uppercase tracking-wide opacity-90">{t.selectProfession}</label>
-              <select 
-                aria-label={t.selectProfession} 
-                value={selectedProfession} 
-                onChange={(e) => setSelectedProfession(e.target.value)} 
-                className="w-full mt-auto p-3.5 rounded-xl bg-black/40 border border-emerald-500/20 text-emerald-50 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all appearance-none cursor-pointer hover:bg-black/50" 
-                required
-              >
-                <option value="" className="bg-gray-900 text-gray-400">-- {t.selectProfession} --</option>
-                {professions.map((p, i) => (<option key={i} value={p} className="bg-gray-900">{professionNames[lang][p]}</option>))}
-              </select>
-            </div>
-
-            <div className="flex flex-col">
-              <label className="block mb-2 text-sm font-semibold text-emerald-200 uppercase tracking-wide opacity-90">{t.selectRange}</label>
-              <select 
-                aria-label={t.selectRange} 
-                value={selectedRange} 
-                onChange={(e) => setSelectedRange(e.target.value)} 
-                className="w-full mt-auto p-3.5 rounded-xl bg-black/40 border border-emerald-500/20 text-emerald-50 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all appearance-none cursor-pointer hover:bg-black/50" 
-                required
-              >
-                <option value="" className="bg-gray-900 text-gray-400">-- {t.selectRange} --</option>
-                {levelRanges.map((r, i) => (<option key={i} value={r.range} className="bg-gray-900">{r.range}</option>))}
-              </select>
-            </div>
-
-            <div className="md:col-span-2">
-              <label className="block mb-2 text-sm font-semibold text-emerald-200 uppercase tracking-wide opacity-90">{t.recipe}</label>
-              <div className="w-full p-3.5 rounded-xl bg-emerald-900/20 border border-emerald-500/10 text-emerald-100 font-medium min-h-[50px] flex items-center">
-                {recipeDisplay || <span className="opacity-40 italic">{t.recipeName}...</span>}
-              </div>
-            </div>
-
-            <div className="md:col-span-2">
-              <label className="block mb-2 text-sm font-semibold text-emerald-200 uppercase tracking-wide opacity-90">{t.expPerItem}</label>
-              <input 
-                type="number" 
-                value={expPerItem} 
-                onChange={(e) => setExpPerItem(e.target.value)} 
-                placeholder={t.expPlaceholder} 
-                className="w-full p-3.5 rounded-xl bg-black/40 border border-emerald-500/20 text-emerald-50 placeholder-emerald-500/30 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all hover:bg-black/50" 
-                required 
-              />
-            </div>
+      <form onSubmit={handleCalculate} className="backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl rounded-2xl max-w-xl w-full p-6 md:p-8 space-y-5">
+        <div className="grid grid-cols-1 gap-4">
+          <div>
+            <label className="block mb-2 text-sm text-emerald-100">{t.selectProfession}</label>
+            <select aria-label={t.selectProfession} value={selectedProfession} onChange={(e) => setSelectedProfession(e.target.value)} className="w-full p-3 rounded-lg bg-white/80 text-gray-900 focus:outline-none focus:ring-4 focus:ring-emerald-400/40" required>
+              <option value="">-- {t.selectProfession} --</option>
+              {professions.map((p, i) => (<option key={i} value={p}>{professionNames[lang][p]}</option>))}
+            </select>
           </div>
 
-          <button 
-            type="submit" 
-            className="w-full py-4 rounded-xl font-bold text-lg bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 active:from-emerald-700 active:to-teal-700 transition-all shadow-[0_4px_20px_rgba(16,185,129,0.25)] hover:shadow-[0_6px_25px_rgba(16,185,129,0.35)] transform hover:-translate-y-0.5 active:translate-y-0 text-white"
-          >
-            {t.calculate}
-          </button>
-        </form>
-
-        {result && (
-          <div className="mt-8 backdrop-blur-xl bg-black/60 border border-emerald-400/30 rounded-2xl shadow-2xl w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="p-6 md:p-8">
-              <h2 className="text-2xl font-bold mb-6 text-emerald-300 border-b border-white/10 pb-4">
-                {t.resultsFor} <span className="text-white">{professionNames[lang][result.selectedProfession]}</span> <span className="text-emerald-400 text-lg align-middle bg-emerald-900/40 px-2 py-0.5 rounded ml-2">{result.range}</span>
-              </h2>
-              <ul className="space-y-4 text-emerald-50/90 text-sm md:text-base">
-                <li className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-lg bg-emerald-900/10 hover:bg-emerald-900/20 transition-colors">
-                  <span className="opacity-80">{t.firstResource}</span>
-                  <span className="font-mono font-bold text-emerald-300 text-lg">{result.resourceCount.toLocaleString()}</span>
-                </li>
-                <li className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-lg bg-emerald-900/10 hover:bg-emerald-900/20 transition-colors">
-                  <span className="opacity-80">{t.secondResource}</span>
-                  <span className="font-mono font-bold text-emerald-300 text-lg">{result.resourceCount.toLocaleString()}</span>
-                </li>
-                <li className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-lg bg-white/5 border border-emerald-500/20">
-                  <span className="font-semibold text-white">{t.craftsNeeded}</span>
-                  <span className="font-mono font-bold text-emerald-300 text-xl">{result.craftCount.toLocaleString()}</span>
-                </li>
-                <li className="flex flex-col sm:flex-row sm:items-center justify-between px-3 pt-2 opacity-60 text-xs">
-                  <span>{t.xpDiff}</span>
-                  <span>{result.expDiff.toLocaleString()} XP</span>
-                </li>
-              </ul>
-            </div>
+          <div>
+            <label className="block mb-2 text-sm text-emerald-100">{t.selectRange}</label>
+            <select aria-label={t.selectRange} value={selectedRange} onChange={(e) => setSelectedRange(e.target.value)} className="w-full p-3 rounded-lg bg-white/80 text-gray-900 focus:outline-none focus:ring-4 focus:ring-emerald-400/40" required>
+              <option value="">-- {t.selectRange} --</option>
+              {levelRanges.map((r, i) => (<option key={i} value={r.range}>{r.range}</option>))}
+            </select>
           </div>
-        )}
-        <footer className="mt-12 text-emerald-300/40 text-xs font-medium text-center uppercase tracking-widest flex flex-col gap-1">
-          <span>© {new Date().getFullYear()} {t.createdBy} KreedAc and LadyKreedAc</span>
-          <span className="text-[10px] opacity-80">Fan tool for Wakfu. Not affiliated with Ankama.</span>
-        </footer>
-      </div>
 
-      {/* Global Styles */}
-      <style>{`
-        ::selection { background: rgba(52, 211, 153, 0.3); color: white; }
-        /* Custom scrollbar for dropdowns if they get too long */
-        select option { background-color: #111827; color: white; }
-      `}</style>
+          <div>
+            <label className="block mb-2 text-sm text-emerald-100">{t.recipe}</label>
+            <p className="p-3 rounded-lg bg-white/80 text-gray-900 font-semibold">{recipeDisplay}</p>
+          </div>
+
+          <div>
+            <label className="block mb-2 text-sm text-emerald-100">{t.expPerItem}</label>
+            <input type="number" value={expPerItem} onChange={(e) => setExpPerItem(e.target.value)} placeholder={t.expPlaceholder} className="w-full p-3 rounded-lg bg-white/80 text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-4 focus:ring-emerald-400/40" required />
+          </div>
+        </div>
+
+        <button type="submit" className="w-full py-3 rounded-xl font-semibold bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 transition shadow-lg shadow-emerald-900/30">{t.calculate}</button>
+      </form>
+
+      {result && (
+        <div className="mt-8 backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-xl max-w-xl w-full">
+          <div className="p-6 md:p-8">
+            <h2 className="text-2xl font-bold mb-4 text-emerald-200">{t.resultsFor} {professionNames[lang][result.selectedProfession]} ({result.range})</h2>
+            <ul className="divide-y divide-white/15 text-emerald-50/95">
+              <li className="py-2 flex items-center justify-between"><span>{t.firstResource}</span><span className="font-semibold text-emerald-300">{result.resourceCount.toLocaleString()}</span></li>
+              <li className="py-2 flex items-center justify-between"><span>{t.secondResource}</span><span className="font-semibold text-emerald-300">{result.resourceCount.toLocaleString()}</span></li>
+              <li className="py-2 flex items-center justify-between"><span>{t.craftsNeeded}</span><span className="font-semibold text-emerald-300">{result.craftCount.toLocaleString()}</span></li>
+              <li className="py-2 flex items-center justify-between"><span>{t.xpDiff}</span><span className="font-semibold text-emerald-300">{result.expDiff.toLocaleString()}</span></li>
+            </ul>
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`::selection{ background: rgba(16, 185, 129, 0.35); }`}</style>
+        <footer className="mt-12 text-emerald-200/80 text-sm text-center drop-shadow">WAKFU is an MMORPG published by Ankama. "https://wakfujobcalculator.bolt.host/" is an unofficial website with no connection to Ankama.<br />
+       {new Date().getFullYear()} {t.createdBy} KreedAc and LadyKreedAc</footer>
     </div>
   );
 }
