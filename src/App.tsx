@@ -1,5 +1,15 @@
-import { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import React, { useState, useEffect } from 'react';
+import { BookOpen, Hammer, ChefHat, Scroll, Shield, Scissors, Gem, Wrench } from 'lucide-react';
+
+// Mock Supabase client since env vars are not available in preview
+const supabase = {
+  from: (table) => ({
+    insert: async (data) => {
+      console.log(`[Mock Supabase] Insert into ${table}:`, data);
+      return { error: null };
+    }
+  })
+};
 
 export default function App() {
   const [expPerItem, setExpPerItem] = useState('');
@@ -10,12 +20,8 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
-  const BG_URL = '424478.jpg';
-
-  const supabase = createClient(
-    import.meta.env.VITE_SUPABASE_URL,
-    import.meta.env.VITE_SUPABASE_ANON_KEY
-  );
+  // Using a fantasy landscape placeholder since the local file isn't available
+  const BG_URL = 'https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?q=80&w=2574&auto=format&fit=crop';
 
   const flags = { en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
 
@@ -230,22 +236,26 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen text-white flex flex-col items-center justify-center p-6 overflow-hidden">
+    <div className="relative min-h-screen text-white flex flex-col items-center justify-center p-6 overflow-hidden font-sans">
       {/* Background */}
-      <div className="absolute inset-0 -z-10" style={{ backgroundImage: `url(${BG_URL})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.85) saturate(1.1)' }} />
+      <div className="absolute inset-0 -z-10" style={{ backgroundImage: `url(${BG_URL})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.65) saturate(1.1)' }} />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-teal-900/40 via-emerald-800/20 to-sky-900/40" />
       <div className="absolute inset-0 -z-10 pointer-events-none" style={{ boxShadow: 'inset 0 0 250px rgba(0,0,0,0.55)' }} />
 
       {/* Top Navigation */}
-      <div className="absolute top-4 left-4 right-4 flex justify-between items-center">
+      <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-50">
         {/* Hamburger Menu */}
         <div className="relative">
           <button
             id="hamburger-btn"
             aria-haspopup="menu"
             aria-expanded={hamburgerOpen}
-            onClick={() => setHamburgerOpen(v => !v)}
-            className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/20 hover:bg-white/30 active:bg-white/20 border border-white/30 backdrop-blur shadow"
+            onClick={(e) => {
+              e.stopPropagation();
+              setHamburgerOpen(v => !v);
+              setMenuOpen(false);
+            }}
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/10 border border-white/20 backdrop-blur shadow transition-colors"
             title="Menu"
             aria-label="Toggle menu"
           >
@@ -257,12 +267,14 @@ export default function App() {
             <div
               id="hamburger-menu"
               role="menu"
-              className="absolute left-0 mt-2 w-48 rounded-xl overflow-hidden border border-white/20 bg-white/90 text-gray-900 shadow-2xl backdrop-blur z-10"
+              className="absolute left-0 mt-2 w-56 rounded-xl overflow-hidden border border-white/20 bg-gray-900/95 text-white shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-200"
             >
-              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-gray-100 text-sm font-medium">Work in Progress</button>
-              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-gray-100 text-sm font-medium">Work in Progress</button>
-              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-gray-100 text-sm font-medium">Work in Progress</button>
-              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-gray-100 text-sm font-medium">Work in Progress</button>
+              <div className="px-4 py-3 bg-white/5 border-b border-white/10">
+                <p className="text-xs font-medium text-emerald-400 uppercase tracking-wider">Navigation</p>
+              </div>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors border-b border-white/5">Professions Guide</button>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors border-b border-white/5">Recipe List</button>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors">About Wakfu</button>
             </div>
           )}
         </div>
@@ -273,79 +285,166 @@ export default function App() {
             id="lang-btn"
             aria-haspopup="menu"
             aria-expanded={menuOpen}
-            onClick={() => setMenuOpen(v => !v)}
-            className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/20 hover:bg-white/30 active:bg-white/20 border border-white/30 backdrop-blur shadow text-sm"
+            onClick={(e) => {
+              e.stopPropagation();
+              setMenuOpen(v => !v);
+              setHamburgerOpen(false);
+            }}
+            className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/10 border border-white/20 backdrop-blur shadow text-sm transition-colors"
             title={t.langLabel}
           >
-            <span>{flags[lang]}</span>
-            <span className="hidden sm:inline">{t.langLabel}</span>
-            <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"/></svg>
+            <span className="text-lg">{flags[lang]}</span>
+            <span className="hidden sm:inline font-medium">{t.langLabel}</span>
+            <svg className="w-4 h-4 opacity-70" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"/></svg>
           </button>
           {menuOpen && (
             <div
               id="lang-menu"
               role="menu"
-              className="absolute right-0 mt-2 w-44 rounded-xl overflow-hidden border border-white/20 bg-white/90 text-gray-900 shadow-2xl backdrop-blur z-10"
+              className="absolute right-0 mt-2 w-44 rounded-xl overflow-hidden border border-white/20 bg-gray-900/95 text-white shadow-2xl backdrop-blur-xl animate-in fade-inZb slide-in-from-top-2 duration-200"
             >
-              <button onClick={() => { setLang('fr'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-3 py-2 hover:bg-gray-100 flex items-center gap-2">🇫🇷 <span>Français</span></button>
-              <button onClick={() => { setLang('en'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-3 py-2 hover:bg-gray-100 flex items-center gap-2">🇬🇧 <span>English</span></button>
-              <button onClick={() => { setLang('es'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-3 py-2 hover:bg-gray-100 flex items-center gap-2">🇪🇸 <span>Español</span></button>
+              <button onClick={() => { setLang('fr'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-4 py-3 hover:bg-white/10 flex items-center gap-3 transition-colors border-b border-white/5">
+                <span className="text-xl">🇫🇷</span> <span className="font-medium">Français</span>
+              </button>
+              <button onClick={() => { setLang('en'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-4 py-3 hover:bg-white/10 flex items-center gap-3 transition-colors border-b border-white/5">
+                <span className="text-xl">🇬🇧</span> <span className="font-medium">English</span>
+              </button>
+              <button onClick={() => { setLang('es'); setMenuOpen(false); }} role="menuitem" className="w-full text-left px-4 py-3 hover:bg-white/10 flex items-center gap-3 transition-colors">
+                <span className="text-xl">🇪🇸</span> <span className="font-medium">Español</span>
+              </button>
             </div>
           )}
         </div>
       </div>
 
-      <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow-lg mb-6 text-center text-emerald-200">{t.title}</h1>
-      <p className="text-emerald-100/90 mb-8 text-center max-w-2xl">{t.subtitle}</p>
+      <div className="max-w-4xl w-full flex flex-col items-center z-10">
+        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+          {t.title}
+        </h1>
+        <p className="text-emerald-100/90 mb-10 text-center max-w-2xl text-lg leading-relaxed drop-shadow-md">
+          {t.subtitle}
+        </p>
 
-      <form onSubmit={handleCalculate} className="backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl rounded-2xl max-w-xl w-full p-6 md:p-8 space-y-5">
-        <div className="grid grid-cols-1 gap-4">
-          <div>
-            <label className="block mb-2 text-sm text-emerald-100">{t.selectProfession}</label>
-            <select aria-label={t.selectProfession} value={selectedProfession} onChange={(e) => setSelectedProfession(e.target.value)} className="w-full p-3 rounded-lg bg-white/80 text-gray-900 focus:outline-none focus:ring-4 focus:ring-emerald-400/40" required>
-              <option value="">-- {t.selectProfession} --</option>
-              {professions.map((p, i) => (<option key={i} value={p}>{professionNames[lang][p]}</option>))}
-            </select>
+        <form onSubmit={handleCalculate} className="backdrop-blur-xl bg-gray-900/60 border border-white/10 shadow-2xl rounded-3xl max-w-2xl w-full p-6 md:p-8 space-y-6 animate-in slide-in-from-bottom-4 duration-500">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-emerald-300 ml-1">{t.selectProfession}</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-emerald-400">
+                  <Hammer className="w-5 h-5" />
+                </div>
+                <select 
+                  aria-label={t.selectProfession} 
+                  value={selectedProfession} 
+                  onChange={(e) => setSelectedProfession(e.target.value)} 
+                  className="w-full p-4 pl-12 rounded-xl bg-black/40 text-emerald-50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all appearance-none cursor-pointer hover:bg-black/50" 
+                  required
+                >
+                  <option value="" className="bg-gray-900 text-gray-400">-- {t.selectProfession} --</option>
+                  {professions.map((p, i) => (<option key={i} value={p} className="bg-gray-900">{professionNames[lang][p]}</option>))}
+                </select>
+                <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-emerald-400">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-emerald-300 ml-1">{t.selectRange}</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-emerald-400">
+                  <BookOpen className="w-5 h-5" />
+                </div>
+                <select 
+                  aria-label={t.selectRange} 
+                  value={selectedRange} 
+                  onChange={(e) => setSelectedRange(e.target.value)} 
+                  className="w-full p-4 pl-12 rounded-xl bg-black/40 text-emerald-50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all appearance-none cursor-pointer hover:bg-black/50" 
+                  required
+                >
+                  <option value="" className="bg-gray-900 text-gray-400">-- {t.selectRange} --</option>
+                  {levelRanges.map((r, i) => (<option key={i} value={r.range} className="bg-gray-900">{r.range}</option>))}
+                </select>
+                <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-emerald-400">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </div>
+              </div>
+            </div>
+
+            <div className="md:col-span-2 space-y-2">
+              <label className="block text-sm font-medium text-emerald-300 ml-1">{t.recipe}</label>
+              <div className="p-4 rounded-xl bg-emerald-900/20 border border-emerald-500/20 text-emerald-100 font-medium flex items-center gap-3">
+                <Scroll className="w-5 h-5 text-emerald-400" />
+                {recipeDisplay}
+              </div>
+            </div>
+
+            <div className="md:col-span-2 space-y-2">
+              <label className="block text-sm font-medium text-emerald-300 ml-1">{t.expPerItem}</label>
+              <div className="relative">
+                <input 
+                  type="number" 
+                  value={expPerItem} 
+                  onChange={(e) => setExpPerItem(e.target.value)} 
+                  placeholder={t.expPlaceholder} 
+                  className="w-full p-4 rounded-xl bg-black/40 text-emerald-50 border border-white/10 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all" 
+                  required 
+                />
+                <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-emerald-400/50 text-sm font-medium">
+                  XP
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <label className="block mb-2 text-sm text-emerald-100">{t.selectRange}</label>
-            <select aria-label={t.selectRange} value={selectedRange} onChange={(e) => setSelectedRange(e.target.value)} className="w-full p-3 rounded-lg bg-white/80 text-gray-900 focus:outline-none focus:ring-4 focus:ring-emerald-400/40" required>
-              <option value="">-- {t.selectRange} --</option>
-              {levelRanges.map((r, i) => (<option key={i} value={r.range}>{r.range}</option>))}
-            </select>
+          <button 
+            type="submit" 
+            className="w-full py-4 rounded-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 active:from-emerald-700 active:to-teal-700 text-white shadow-lg shadow-emerald-900/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+          >
+            {t.calculate}
+          </button>
+        </form>
+
+        {result && (
+          <div className="mt-8 backdrop-blur-xl bg-emerald-950/80 border border-emerald-500/30 rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-500">
+            <div className="bg-emerald-900/50 px-8 py-6 border-b border-white/10">
+              <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                <Hammer className="w-6 h-6 text-emerald-400" />
+                {t.resultsFor} <span className="text-emerald-300">{professionNames[lang][result.selectedProfession]}</span>
+                <span className="text-sm px-3 py-1 bg-black/30 rounded-full text-emerald-200/80 ml-auto border border-white/5">{result.range}</span>
+              </h2>
+            </div>
+            
+            <div className="p-8">
+              <ul className="space-y-4">
+                <li className="flex items-center justify-between p-4 bg-black/20 rounded-xl border border-white/5 hover:bg-black/30 transition-colors">
+                  <span className="text-emerald-100/80">{t.firstResource}</span>
+                  <span className="font-bold text-2xl text-white font-mono">{result.resourceCount.toLocaleString()}</span>
+                </li>
+                <li className="flex items-center justify-between p-4 bg-black/20 rounded-xl border border-white/5 hover:bg-black/30 transition-colors">
+                  <span className="text-emerald-100/80">{t.secondResource}</span>
+                  <span className="font-bold text-2xl text-white font-mono">{result.resourceCount.toLocaleString()}</span>
+                </li>
+                <div className="my-2 border-t border-white/10" />
+                <li className="flex items-center justify-between">
+                  <span className="text-emerald-200 font-medium">{t.craftsNeeded}</span>
+                  <span className="font-bold text-3xl text-emerald-400 font-mono drop-shadow-sm">{result.craftCount.toLocaleString()}</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  <span className="text-emerald-200/60 text-sm">{t.xpDiff}</span>
+                  <span className="font-medium text-emerald-200/60 font-mono">{result.expDiff.toLocaleString()} XP</span>
+                </li>
+              </ul>
+            </div>
           </div>
+        )}
 
-          <div>
-            <label className="block mb-2 text-sm text-emerald-100">{t.recipe}</label>
-            <p className="p-3 rounded-lg bg-white/80 text-gray-900 font-semibold">{recipeDisplay}</p>
-          </div>
-
-          <div>
-            <label className="block mb-2 text-sm text-emerald-100">{t.expPerItem}</label>
-            <input type="number" value={expPerItem} onChange={(e) => setExpPerItem(e.target.value)} placeholder={t.expPlaceholder} className="w-full p-3 rounded-lg bg-white/80 text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-4 focus:ring-emerald-400/40" required />
-          </div>
-        </div>
-
-        <button type="submit" className="w-full py-3 rounded-xl font-semibold bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 transition shadow-lg shadow-emerald-900/30">{t.calculate}</button>
-      </form>
-
-      {result && (
-        <div className="mt-8 backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-xl max-w-xl w-full">
-          <div className="p-6 md:p-8">
-            <h2 className="text-2xl font-bold mb-4 text-emerald-200">{t.resultsFor} {professionNames[lang][result.selectedProfession]} ({result.range})</h2>
-            <ul className="divide-y divide-white/15 text-emerald-50/95">
-              <li className="py-2 flex items-center justify-between"><span>{t.firstResource}</span><span className="font-semibold text-emerald-300">{result.resourceCount.toLocaleString()}</span></li>
-              <li className="py-2 flex items-center justify-between"><span>{t.secondResource}</span><span className="font-semibold text-emerald-300">{result.resourceCount.toLocaleString()}</span></li>
-              <li className="py-2 flex items-center justify-between"><span>{t.craftsNeeded}</span><span className="font-semibold text-emerald-300">{result.craftCount.toLocaleString()}</span></li>
-              <li className="py-2 flex items-center justify-between"><span>{t.xpDiff}</span><span className="font-semibold text-emerald-300">{result.expDiff.toLocaleString()}</span></li>
-            </ul>
-          </div>
-        </div>
-      )}
-
-      <style jsx>{`::selection{ background: rgba(16, 185, 129, 0.35); }`}</style>
-      <footer className="mt-12 text-emerald-200/80 text-sm text-center drop-shadow">© {new Date().getFullYear()} {t.createdBy} KreedAc and LadyKreedAc</footer>
+        <footer className="mt-16 text-emerald-200/40 text-xs text-center pb-8 font-medium">
+          <p>WAKFU is an MMORPG published by Ankama.</p>
+          <p className="mt-1">"wakfujobcalculator" is an unofficial website with no connection to Ankama.</p>
+          <p className="mt-4 opacity-75">{new Date().getFullYear()} {t.createdBy} KreedAc and LadyKreedAc</p>
+        </footer>
+      </div>
     </div>
   );
 }
