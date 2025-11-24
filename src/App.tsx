@@ -10,7 +10,7 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
-  const BG_URL = '424478.jpg';
+  const BG_URL = 'unnamed.jpg';
 
   const supabase = createClient(
     import.meta.env.VITE_SUPABASE_URL,
