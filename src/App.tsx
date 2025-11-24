@@ -272,9 +272,9 @@ export default function App() {
               <div className="px-4 py-3 bg-white/5 border-b border-white/10">
                 <p className="text-xs font-medium text-emerald-400 uppercase tracking-wider">Navigation</p>
               </div>
-              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors border-b border-white/5">Professions Guide</button>
-              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors border-b border-white/5">Recipe List</button>
-              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors">About Wakfu</button>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors border-b border-white/5">Work in progress</button>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors border-b border-white/5">Work in progress</button>
+              <button role="menuitem" className="w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors">Work in progress</button>
             </div>
           )}
         </div>
