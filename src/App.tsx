@@ -21,7 +21,7 @@ export default function App() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
   // Using a fantasy landscape placeholder since the local file isn't available
-  const BG_URL = 'https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?q=80&w=2574&auto=format&fit=crop';
+  <img src="https://drive.google.com/file/d/1vjyUkLt71_9t_XKgnEdO1YSqk-YieN3o/view?usp=sharing" alt="Immagine fantasy" />
 
   const flags = { en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
 
