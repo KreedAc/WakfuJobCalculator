@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from 'firebase/auth';
 import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -10,115 +10,6 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 
-// --- Static Data & Constants (Moved outside component for performance) ---
-const BG_URL = 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=2670&auto=format&fit=crop';
-
-const FLAGS = { en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
-
-const PROF_IDS = [
-  'Armorer', 'Baker', 'Chef', 'Handyman', 'Jeweler', 'Leather Dealer', 'Tailor', 'Weapons Master'
-];
-
-const PROFESSION_NAMES = {
-  en: {
-    'Armorer': 'Armorer', 'Baker': 'Baker', 'Chef': 'Chef', 'Handyman': 'Handyman',
-    'Jeweler': 'Jeweler', 'Leather Dealer': 'Leather Dealer', 'Tailor': 'Tailor', 'Weapons Master': 'Weapons Master',
-  },
-  fr: {
-    'Armorer': 'Armurier', 'Baker': 'Boulanger', 'Chef': 'Cuisinier', 'Handyman': 'Bricoleur',
-    'Jeweler': 'Bijoutier', 'Leather Dealer': 'Maroquinier', 'Tailor': 'Tailleur', 'Weapons Master': "Maître d'armes",
-  },
-  es: {
-    'Armorer': 'Armero', 'Baker': 'Panadero', 'Chef': 'Cocinero', 'Handyman': 'Ebanista',
-    'Jeweler': 'Joyero', 'Leather Dealer': 'Peletero', 'Tailor': 'Sastre', 'Weapons Master': 'Maestro de armas',
-  }
-};
-
-const LEVEL_RANGES = [
-  { range: '2 - 10', expDiff: 7500, recipe: { en: 'Coarse', fr: 'Grossière', es: 'Tosca' } },
-  { range: '10 - 20', expDiff: 22500, recipe: { en: 'Basic', fr: 'Rudimentaire', es: 'Rudimentaria' } },
-  { range: '20 - 30', expDiff: 37500, recipe: { en: 'Imperfect', fr: 'Imparfait', es: 'Imperfecta' } },
-  { range: '30 - 40', expDiff: 52500, recipe: { en: 'Fragile', fr: 'Fragile', es: 'Frágil' } },
-  { range: '40 - 50', expDiff: 67500, recipe: { en: 'Rustic', fr: 'Rustique', es: 'Rústica' } },
-  { range: '50 - 60', expDiff: 82500, recipe: { en: 'Raw', fr: 'Brut', es: 'Bruta' } },
-  { range: '60 - 70', expDiff: 97500, recipe: { en: 'Solid', fr: 'Solide', es: 'Sólida' } },
-  { range: '70 - 80', expDiff: 112500, recipe: { en: 'Durable', fr: 'Durable', es: 'Duradera' } },
-  { range: '80 - 90', expDiff: 127500, recipe: { en: 'Refined', fr: 'Raffiné', es: 'Refinada' } },
-  { range: '90 - 100', expDiff: 142500, recipe: { en: 'Precious', fr: 'Précieux', es: 'Preciosa' } },
-  { range: '100 - 110', expDiff: 157500, recipe: { en: 'Exquisite', fr: 'Exquis', es: 'Exquisita' } },
-  { range: '110 - 120', expDiff: 172500, recipe: { en: 'Mystical', fr: 'Mystique', es: 'Mistica' } },
-  { range: '120 - 130', expDiff: 187500, recipe: { en: 'Eternal', fr: 'Eternel', es: 'Eterna' } },
-  { range: '130 - 140', expDiff: 202500, recipe: { en: 'Divine', fr: 'Divin', es: 'Divina' } },
-  { range: '140 - 150', expDiff: 217500, recipe: { en: 'Infernal', fr: 'Infernal', es: 'Infernal' } },
-  { range: '150 - 160', expDiff: 232500, recipe: { en: 'Ancestral', fr: 'Ancestral', es: 'Ancestral' } }
-];
-
-const PROFESSION_RECIPES = {
-  en: { 'Weapons Master': 'Handle', 'Handyman': 'Bracket', 'Baker': 'Oil', 'Chef': 'Spice', 'Armorer': 'Plate', 'Jeweler': 'Gem', 'Leather Dealer': 'Leather', 'Tailor': 'Fiber' },
-  fr: { 'Weapons Master': 'Manche', 'Handyman': 'Equerre', 'Baker': 'Huile', 'Chef': 'Epice', 'Armorer': 'Plaque', 'Jeweler': 'Gemme', 'Leather Dealer': 'Cuir', 'Tailor': 'Fibre' },
-  es: { 'Weapons Master': 'Mango', 'Handyman': 'Escuadrita', 'Baker': 'Aceite', 'Chef': 'Especia', 'Armorer': 'Placa', 'Jeweler': 'Gema', 'Leather Dealer': 'Cuero', 'Tailor': 'Fibra' }
-};
-
-const I18N = {
-  en: {
-    title: 'Wakfu Crafting XP Calculator',
-    subtitle: 'Select your profession, choose a level range, and enter the EXP per crafted item.',
-    selectProfession: 'Select Profession',
-    selectRange: 'Select Level Range',
-    recipe: 'Recipe',
-    expPerItem: 'EXP per Crafted Item',
-    expPlaceholder: 'e.g. 150',
-    calculate: 'Calculate Required Crafts',
-    resultsFor: 'Results for',
-    firstResource: 'Collect the first resource quantity:',
-    secondResource: 'Collect the second resource quantity:',
-    craftsNeeded: 'Crafts Needed',
-    xpDiff: 'XP Difference',
-    alert: 'Please fill all fields and select a profession and level range.',
-    recipeName: 'Recipe Name',
-    createdBy: 'Created by',
-    langLabel: 'Language'
-  },
-  fr: {
-    title: 'Calculateur d\'XP d\'Artisanat Wakfu',
-    subtitle: 'Choisissez votre métier, une tranche de niveaux, puis saisissez l\'XP par objet fabriqué.',
-    selectProfession: 'Sélectionner un métier',
-    selectRange: 'Sélectionner une tranche de niveaux',
-    recipe: 'Recette',
-    expPerItem: 'XP par objet fabriqué',
-    expPlaceholder: 'ex. 150',
-    calculate: 'Calculer le nombre de fabrications',
-    resultsFor: 'Résultats pour',
-    firstResource: 'Quantité du premier matériau à collecter :',
-    secondResource: 'Quantité du deuxième matériau à collecter :',
-    craftsNeeded: 'Fabrications nécessaires',
-    xpDiff: 'Différence d\'XP',
-    alert: 'Veuillez remplir tous les champs et sélectionner un métier et une tranche de niveaux.',
-    recipeName: 'Nom de la recette',
-    createdBy: 'Créé par',
-    langLabel: 'Langue'
-  },
-  es: {
-    title: 'Calculadora de XP de Artesanía de Wakfu',
-    subtitle: 'Elige tu profesión, un rango de niveles e introduce la XP por objeto creado.',
-    selectProfession: 'Seleccionar profesión',
-    selectRange: 'Seleccionar rango de niveles',
-    recipe: 'Receta',
-    expPerItem: 'XP por objeto creado',
-    expPlaceholder: 'p. ej., 150',
-    calculate: 'Calcular creaciones necesarias',
-    resultsFor: 'Resultados para',
-    firstResource: 'Cantidad del primer recurso a recolectar:',
-    secondResource: 'Cantidad del segundo recurso a recolectar:',
-    craftsNeeded: 'Creaciones necesarias',
-    xpDiff: 'Diferencia de XP',
-    alert: 'Por favor, completa todos los campos y selecciona una profesión y un rango de niveles.',
-    recipeName: 'Nombre de la receta',
-    createdBy: 'Creado por',
-    langLabel: 'Idioma'
-  }
-};
-
 export default function App() {
   const [expPerItem, setExpPerItem] = useState('');
   const [selectedRange, setSelectedRange] = useState('');
@@ -129,108 +20,197 @@ export default function App() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [user, setUser] = useState(null);
 
-  const t = I18N[lang];
+  // Sfondo a tema Wakfu (Cielo stile anime/Incarnam vibrante) - URL aggiornato e più stabile
+  const BG_URL = 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=2670&auto=format&fit=crop'; 
+
+  const flags = { en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
+
+  const i18n = {
+    en: {
+      title: 'Wakfu Crafting XP Calculator',
+      subtitle: 'Select your profession, choose a level range, and enter the EXP per crafted item.',
+      selectProfession: 'Select Profession',
+      selectRange: 'Select Level Range',
+      recipe: 'Recipe',
+      expPerItem: 'EXP per Crafted Item',
+      expPlaceholder: 'e.g. 150',
+      calculate: 'Calculate Required Crafts',
+      resultsFor: 'Results for',
+      firstResource: 'Collect the first resource quantity:',
+      secondResource: 'Collect the second resource quantity:',
+      craftsNeeded: 'Crafts Needed',
+      xpDiff: 'XP Difference',
+      alert: 'Please fill all fields and select a profession and level range.',
+      recipeName: 'Recipe Name',
+      createdBy: 'Created by',
+      langLabel: 'Language'
+    },
+    fr: {
+      title: 'Calculateur d\'XP d\'Artisanat Wakfu',
+      subtitle: 'Choisissez votre métier, une tranche de niveaux, puis saisissez l\'XP par objet fabriqué.',
+      selectProfession: 'Sélectionner un métier',
+      selectRange: 'Sélectionner une tranche de niveaux',
+      recipe: 'Recette',
+      expPerItem: 'XP par objet fabriqué',
+      expPlaceholder: 'ex. 150',
+      calculate: 'Calculer le nombre de fabrications',
+      resultsFor: 'Résultats pour',
+      firstResource: 'Quantité du premier matériau à collecter :',
+      secondResource: 'Quantité du deuxième matériau à collecter :',
+      craftsNeeded: 'Fabrications nécessaires',
+      xpDiff: 'Différence d\'XP',
+      alert: 'Veuillez remplir tous les champs et sélectionner un métier et une tranche de niveaux.',
+      recipeName: 'Nom de la recette',
+      createdBy: 'Créé par',
+      langLabel: 'Langue'
+    },
+    es: {
+      title: 'Calculadora de XP de Artesanía de Wakfu',
+      subtitle: 'Elige tu profesión, un rango de niveles e introduce la XP por objeto creado.',
+      selectProfession: 'Seleccionar profesión',
+      selectRange: 'Seleccionar rango de niveles',
+      recipe: 'Receta',
+      expPerItem: 'XP por objeto creado',
+      expPlaceholder: 'p. ej., 150',
+      calculate: 'Calcular creaciones necesarias',
+      resultsFor: 'Resultados para',
+      firstResource: 'Cantidad del primer recurso a recolectar:',
+      secondResource: 'Cantidad del segundo recurso a recolectar:',
+      craftsNeeded: 'Creaciones necesarias',
+      xpDiff: 'Diferencia de XP',
+      alert: 'Por favor, completa todos los campos y selecciona una profesión y un rango de niveles.',
+      recipeName: 'Nombre de la receta',
+      createdBy: 'Creado por',
+      langLabel: 'Idioma'
+    }
+  };
+
+  const t = i18n[lang];
+
+  const PROF_IDS = [
+    'Armorer','Baker','Chef','Handyman','Jeweler','Leather Dealer','Tailor','Weapons Master'
+  ];
+
+  const professionNames = {
+    en: {
+      'Armorer': 'Armorer', 'Baker': 'Baker', 'Chef': 'Chef', 'Handyman': 'Handyman',
+      'Jeweler': 'Jeweler', 'Leather Dealer': 'Leather Dealer', 'Tailor': 'Tailor', 'Weapons Master': 'Weapons Master',
+    },
+    fr: {
+      'Armorer': 'Armurier', 'Baker': 'Boulanger', 'Chef': 'Cuisinier', 'Handyman': 'Bricoleur',
+      'Jeweler': 'Bijoutier', 'Leather Dealer': 'Maroquinier', 'Tailor': 'Tailleur', 'Weapons Master': "Maître d'armes",
+    },
+    es: {
+      'Armorer': 'Armero', 'Baker': 'Panadero', 'Chef': 'Cocinero', 'Handyman': 'Ebanista',
+      'Jeweler': 'Joyero', 'Leather Dealer': 'Peletero', 'Tailor': 'Sastre', 'Weapons Master': 'Maestro de armas',
+    }
+  };
+
+  const professions = PROF_IDS;
+
+  const levelRanges = [
+    { range: '2 - 10', expDiff: 7500, recipe: { en: 'Coarse', fr: 'Grossière', es: 'Tosca' } },
+    { range: '10 - 20', expDiff: 22500, recipe: { en: 'Basic', fr: 'Rudimentaire', es: 'Rudimentaria' } },
+    { range: '20 - 30', expDiff: 37500, recipe: { en: 'Imperfect', fr: 'Imparfait', es: 'Imperfecta' } },
+    { range: '30 - 40', expDiff: 52500, recipe: { en: 'Fragile', fr: 'Fragile', es: 'Frágil' } },
+    { range: '40 - 50', expDiff: 67500, recipe: { en: 'Rustic', fr: 'Rustique', es: 'Rústica' } },
+    { range: '50 - 60', expDiff: 82500, recipe: { en: 'Raw', fr: 'Brut', es: 'Bruta' } },
+    { range: '60 - 70', expDiff: 97500, recipe: { en: 'Solid', fr: 'Solide', es: 'Sólida' } },
+    { range: '70 - 80', expDiff: 112500, recipe: { en: 'Durable', fr: 'Durable', es: 'Duradera' } },
+    { range: '80 - 90', expDiff: 127500, recipe: { en: 'Refined', fr: 'Raffiné', es: 'Refinada' } },
+    { range: '90 - 100', expDiff: 142500, recipe: { en: 'Precious', fr: 'Précieux', es: 'Preciosa' } },
+    { range: '100 - 110', expDiff: 157500, recipe: { en: 'Exquisite', fr: 'Exquis', es: 'Exquisita' } },
+    { range: '110 - 120', expDiff: 172500, recipe: { en: 'Mystical', fr: 'Mystique', es: 'Mistica' } },
+    { range: '120 - 130', expDiff: 187500, recipe: { en: 'Eternal', fr: 'Eternel', es: 'Eterna' } },
+    { range: '130 - 140', expDiff: 202500, recipe: { en: 'Divine', fr: 'Divin', es: 'Divina' } },
+    { range: '140 - 150', expDiff: 217500, recipe: { en: 'Infernal', fr: 'Infernal', es: 'Infernal' } },
+    { range: '150 - 160', expDiff: 232500, recipe: { en: 'Ancestral', fr: 'Ancestral', es: 'Ancestral' } }
+  ];
+
+  const professionRecipes = {
+    en: { 'Weapons Master': 'Handle', 'Handyman': 'Bracket', 'Baker': 'Oil', 'Chef': 'Spice', 'Armorer': 'Plate', 'Jeweler': 'Gem', 'Leather Dealer': 'Leather', 'Tailor': 'Fiber' },
+    fr: { 'Weapons Master': 'Manche', 'Handyman': 'Equerre', 'Baker': 'Huile', 'Chef': 'Epice', 'Armorer': 'Plaque', 'Jeweler': 'Gemme', 'Leather Dealer': 'Cuir', 'Tailor': 'Fibre' },
+    es: { 'Weapons Master': 'Mango', 'Handyman': 'Escuadrita', 'Baker': 'Aceite', 'Chef': 'Especia', 'Armorer': 'Placa', 'Jeweler': 'Gema', 'Leather Dealer': 'Cuero', 'Tailor': 'Fibra' }
+  };
 
   // --- Auth Effect ---
   useEffect(() => {
-    let unsubscribe;
     const initAuth = async () => {
-      try {
-        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-          await signInWithCustomToken(auth, __initial_auth_token);
-        } else {
-          await signInAnonymously(auth);
-        }
-        unsubscribe = onAuthStateChanged(auth, setUser);
-      } catch (error) {
-        console.error("Auth error:", error);
+      if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+        await signInWithCustomToken(auth, __initial_auth_token);
+      } else {
+        await signInAnonymously(auth);
       }
     };
     initAuth();
-    return () => { if (unsubscribe) unsubscribe(); };
+    const unsubscribe = onAuthStateChanged(auth, setUser);
+    return () => unsubscribe();
   }, []);
 
-  // --- Visitor Tracking ---
+  // --- Visitor Tracking (Migrated to Firebase) ---
   useEffect(() => {
-    if (!user) return;
-    
-    // Using a ref or simple variable to prevent double firing in Strict Mode isn't strictly necessary for Firestore due to its own deduping, 
-    // but good practice. Here we rely on the [user] dependency.
+    if (!user) return; // Wait for auth
     const trackVisit = async () => {
       try {
         await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'visitors'), {
           page: '/',
           user_agent: navigator.userAgent,
           timestamp: serverTimestamp(),
-          lang_preference: lang
+          lang_preference: lang // Added lang tracking just for utility
         });
       } catch (error) {
-        // Silently fail for analytics
-        console.warn('Analytics skipped');
+        console.log('Visit tracking skipped or failed', error);
       }
     };
     trackVisit();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]); // Only run when user authenticates
+  }, [user]); // Run once when user is authenticated
 
   // --- Click Outside Handlers ---
   useEffect(() => {
-    const handleOutsideClick = (e) => {
-      const target = e.target;
-      
-      // Handle Language Menu
-      if (menuOpen) {
-        const langMenu = document.getElementById('lang-menu');
-        const langBtn = document.getElementById('lang-btn');
-        if (langMenu && langBtn && !langMenu.contains(target) && !langBtn.contains(target)) {
-          setMenuOpen(false);
-        }
-      }
+    function onDocClick(e) {
+      const langMenu = document.getElementById('lang-menu');
+      const langBtn = document.getElementById('lang-btn');
+      const hamburgerMenu = document.getElementById('hamburger-menu');
+      const hamburgerBtn = document.getElementById('hamburger-btn');
 
-      // Handle Hamburger Menu
-      if (hamburgerOpen) {
-        const hamburgerMenu = document.getElementById('hamburger-menu');
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        if (hamburgerMenu && hamburgerBtn && !hamburgerMenu.contains(target) && !hamburgerBtn.contains(target)) {
-          setHamburgerOpen(false);
-        }
+      if (langMenu && langBtn && !langMenu.contains(e.target) && !langBtn.contains(e.target)) {
+        setMenuOpen(false);
       }
-    };
-
-    if (menuOpen || hamburgerOpen) {
-      document.addEventListener('click', handleOutsideClick);
+      if (hamburgerMenu && hamburgerBtn && !hamburgerMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        setHamburgerOpen(false);
+      }
     }
-    
-    return () => document.removeEventListener('click', handleOutsideClick);
-  }, [menuOpen, hamburgerOpen]);
+    document.addEventListener('click', onDocClick);
+    return () => document.removeEventListener('click', onDocClick);
+  }, []);
 
-  // --- Calculation Logic ---
-  const handleCalculate = (e) => {
+  function handleCalculate(e) {
     e.preventDefault();
     const expItem = parseFloat(expPerItem);
 
     if (!expItem || expItem <= 0 || !selectedRange || !selectedProfession) {
+      // Use a custom UI alert or simple alert for now
+      // Ideally replace native alert with UI modal, but keeping logic close to original
+      // Using console.warn instead of alert to avoid interrupting flow too aggressively
+      // But keeping original behavior request:
       alert(t.alert);
       return;
     }
 
-    const selected = LEVEL_RANGES.find(r => r.range === selectedRange);
+    const selected = levelRanges.find(r => r.range === selectedRange);
     if (!selected) return;
 
     const craftCount = Math.ceil(selected.expDiff / expItem);
     const resourceCount = craftCount * 5;
 
     setResult({ ...selected, selectedProfession, craftCount, resourceCount });
-  };
+  }
 
-  // --- Dynamic Display Values ---
-  // Memoizing this calculation is cheap but keeps render clean
-  const recipeDisplay = useMemo(() => {
-    const currentRangeRecipeObj = LEVEL_RANGES.find(r => r.range === selectedRange)?.recipe;
-    const currentRangeRecipe = currentRangeRecipeObj ? currentRangeRecipeObj[lang] : t.recipeName;
-    const currentProfessionRecipe = PROFESSION_RECIPES[lang][selectedProfession] || '';
-    return `${currentRangeRecipe}${currentProfessionRecipe ? ` ${currentProfessionRecipe}` : ''}`;
-  }, [selectedRange, lang, selectedProfession, t.recipeName]);
+  const currentRangeRecipeObj = levelRanges.find(r => r.range === selectedRange)?.recipe;
+  const currentRangeRecipe = currentRangeRecipeObj ? currentRangeRecipeObj[lang] : t.recipeName;
+  const currentProfessionRecipe = professionRecipes[lang][selectedProfession] || '';
+  const recipeDisplay = `${currentRangeRecipe}${currentProfessionRecipe ? ` ${currentProfessionRecipe}` : ''}`;
 
   return (
     <div className="relative min-h-screen text-white flex flex-col items-center justify-center p-6 overflow-hidden font-sans">
@@ -241,10 +221,11 @@ export default function App() {
           backgroundImage: `url(${BG_URL})`, 
           backgroundSize: 'cover', 
           backgroundPosition: 'center', 
+          // Bright and vibrant for Wakfu style
           filter: 'brightness(0.9) saturate(1.2) contrast(1.1)' 
         }} 
       />
-      {/* Gradient */}
+      {/* Gradient matched to Wakfu cyan/blue palette */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-cyan-400/20 via-sky-500/10 to-blue-900/50" />
 
       {/* Top Navigation */}
@@ -290,7 +271,7 @@ export default function App() {
             className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 backdrop-blur-sm shadow-lg text-sm transition-colors text-emerald-50"
             title={t.langLabel}
           >
-            <span className="text-lg">{FLAGS[lang]}</span>
+            <span className="text-lg">{flags[lang]}</span>
             <span className="hidden sm:inline font-medium">{t.langLabel}</span>
             <svg className="w-4 h-4 opacity-70" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"/></svg>
           </button>
@@ -334,7 +315,7 @@ export default function App() {
                 required
               >
                 <option value="" className="bg-gray-900 text-gray-400">-- {t.selectProfession} --</option>
-                {PROF_IDS.map((p, i) => (<option key={i} value={p} className="bg-gray-900">{PROFESSION_NAMES[lang][p]}</option>))}
+                {professions.map((p, i) => (<option key={i} value={p} className="bg-gray-900">{professionNames[lang][p]}</option>))}
               </select>
             </div>
 
@@ -348,7 +329,7 @@ export default function App() {
                 required
               >
                 <option value="" className="bg-gray-900 text-gray-400">-- {t.selectRange} --</option>
-                {LEVEL_RANGES.map((r, i) => (<option key={i} value={r.range} className="bg-gray-900">{r.range}</option>))}
+                {levelRanges.map((r, i) => (<option key={i} value={r.range} className="bg-gray-900">{r.range}</option>))}
               </select>
             </div>
 
@@ -384,7 +365,7 @@ export default function App() {
           <div className="mt-8 backdrop-blur-xl bg-black/60 border border-emerald-400/30 rounded-2xl shadow-2xl w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="p-6 md:p-8">
               <h2 className="text-2xl font-bold mb-6 text-emerald-300 border-b border-white/10 pb-4">
-                {t.resultsFor} <span className="text-white">{PROFESSION_NAMES[lang][result.selectedProfession]}</span> <span className="text-emerald-400 text-lg align-middle bg-emerald-900/40 px-2 py-0.5 rounded ml-2">{result.range}</span>
+                {t.resultsFor} <span className="text-white">{professionNames[lang][result.selectedProfession]}</span> <span className="text-emerald-400 text-lg align-middle bg-emerald-900/40 px-2 py-0.5 rounded ml-2">{result.range}</span>
               </h2>
               <ul className="space-y-4 text-emerald-50/90 text-sm md:text-base">
                 <li className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-lg bg-emerald-900/10 hover:bg-emerald-900/20 transition-colors">
