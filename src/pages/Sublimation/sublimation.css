@@ -1,0 +1,953 @@
+/* Sublimation-specific styles */
+.container {
+    max-width: 2800px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+    transform-origin: top center;
+}
+
+/* ===== CONTROLS SECTION ===== */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: rgba(52, 76, 100, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(87, 123, 141, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.search-box {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px 16px;
+    border: 2px solid #344C64;
+    border-radius: 6px 0 0 6px;
+    background: rgba(36, 7, 80, 0.4);
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    height: 38px;
+    box-sizing: border-box;
+}
+
+.search-box input:focus {
+    border-color: #57A6A1;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(87, 166, 161, 0.2);
+}
+
+.search-box input::placeholder {
+    color: #577B8D;
+}
+
+.search-btn {
+    padding: 0 16px;
+    background: #57A6A1;
+    color: white;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-btn i {
+    font-size: 1rem;
+}
+
+.search-btn:hover {
+    background: #4a8f8a;
+}
+
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 8px;
+    background: rgba(52, 76, 100, 0.6);
+    border-radius: 10px;
+}
+
+.category-tab {
+    padding: 6px 12px;
+    background: rgba(36, 7, 80, 0.4);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid rgba(87, 123, 141, 0.3);
+    font-size: 0.9rem;
+}
+
+.category-tab.active {
+    background: #57A6A1;
+    font-weight: bold;
+}
+
+.category-tab:hover {
+    background: rgba(36, 7, 80, 0.6);
+}
+
+/* ===== RUNES GRID ===== */
+.runes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.rune-card {
+    background: rgba(52, 76, 100, 0.6);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(87, 123, 141, 0.3);
+    backdrop-filter: blur(5px);
+    padding: 8px;
+}
+
+.rune-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.rune-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 16px;
+    position: relative;
+    min-height: 60px; /* Ensure minimum height for the header */
+}
+
+.rune-name-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 0; /* This is crucial for text overflow */
+    max-width: calc(100% - 120px); /* Reserve space for colors */
+}
+
+.rune-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6fd6d0;
+    margin-bottom: 0;
+    text-shadow: 
+        -1px -1px 0 rgba(0, 0, 0, 0.5),
+        1px -1px 0 rgba(0, 0, 0, 0.5),
+        -1px 1px 0 rgba(0, 0, 0, 0.5),
+        1px 1px 0 rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%; /* Prevent overflow */
+    line-height: 1.2;
+    display: block;
+}
+
+.rune-name.relic-name {
+    color: #9b59b6;
+    text-shadow: 
+        -1px -1px 0 rgba(0, 0, 0, 0.5),
+        1px -1px 0 rgba(0, 0, 0, 0.5),
+        -1px 1px 0 rgba(0, 0, 0, 0.5),
+        1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.rune-name.epic-name {
+    color: #ff00cc;
+    text-shadow: 
+        -1px -1px 0 rgba(0, 0, 0, 0.5),
+        1px -1px 0 rgba(0, 0, 0, 0.5),
+        -1px 1px 0 rgba(0, 0, 0, 0.5),
+       1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.rune-level {
+    font-size: 0.9rem;
+    color: #6aa0bb;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.rune-colors {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    align-items: center;
+    margin-left: auto; /* Push to the far right */
+}
+
+.rune-color {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 0px solid rgba(255, 255, 255, 0.2);
+    background: transparent !important;
+    flex-shrink: 0;
+}
+
+.color-icon {
+    width: 28px;
+    height: 28px;
+    display: block; /* Ensure proper block display */
+}
+
+.special-color {
+    width: 56px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.7rem;
+    text-align: center;
+    flex-shrink: 0; /* Prevent special colors from shrinking */
+}
+
+.special-color.epic {
+    background: linear-gradient(45deg, #ff00cc, #ff0066);
+    color: white;
+}
+
+.special-color.relic {
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+    color: white;
+}
+
+.divider {
+    height: 1px;
+    background: rgba(87, 123, 141, 0.3);
+}
+
+.rune-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    min-height: 45px;
+    gap: 4px;
+}
+
+.obtenation {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 45px;
+    flex: 1; /* Allow obtenation to take available space */
+    min-width: 0; /* Allow text to wrap */
+}
+
+.obtenation span {
+    white-space: normal; /* Changed from nowrap to normal */
+    word-wrap: break-word; /* Allow long words to break */
+    overflow-wrap: break-word; /* Modern alternative */
+}
+
+.obtenation-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    border: 0px solid rgba(255, 255, 255, 0.2);
+    object-fit: contain;
+}
+
+.rarity {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-shrink: 0; /* Prevent rarity from shrinking */
+}
+
+.rarity-icon {
+    width: 36px;
+    height: 36px;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.7));
+    object-fit: contain;
+}
+
+.special-rarity-icon {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.rune-description {
+    background: rgba(36, 7, 80, 0.4);
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    border: 1px solid rgba(87, 123, 141, 0.3);
+    min-height: 70px;
+}
+
+.level-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.level-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(36, 7, 80, 0.4);
+    outline: none;
+}
+
+.level-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #57A6A1;
+    cursor: pointer;
+    position: relative;
+}
+
+.level-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #57A6A1;
+    cursor: pointer;
+    position: relative;
+}
+
+.level-display {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(36, 7, 80, 0.4);
+    border-radius: 6px;
+    font-weight: bold;
+    color: #57A6A1;
+    border: 1px solid rgba(87, 123, 141, 0.3);
+    font-size: 0.9rem;
+}
+
+.no-results {
+    text-align: center;
+    padding: 32px;
+    font-size: 1.1rem;
+    color: #577B8D;
+    grid-column: 1 / -1;
+    background: rgba(52, 76, 100, 0.6);
+    border-radius: 10px;
+    border: 1px solid rgba(87, 123, 141, 0.3);
+}
+
+/* Fix for slider when min equals max */
+.level-slider.fixed-level {
+    background: linear-gradient(to right, rgba(36, 7, 80, 0.4) 0%, rgba(36, 7, 80, 0.4) 99%, #57A6A1 1%, #57A6A1 100%);
+}
+
+.level-slider.fixed-level::-webkit-slider-thumb {
+    margin-left: auto;
+    margin-right: 0;
+    top: -5px;
+}
+
+.level-slider.fixed-level::-moz-range-thumb {
+    margin-left: auto;
+    margin-right: 0;
+    top: -5px;
+}
+
+/* For Firefox */
+.level-slider.fixed-level::-moz-range-progress {
+    background-color: #57A6A1;
+    height: 6px;
+    border-radius: 3px;
+}
+
+/* For Chrome/Safari */
+.level-slider.fixed-level::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, rgba(36, 7, 80, 0.4) 0%, rgba(36, 7, 80, 0.4) 99%, #57A6A1 1%, #57A6A1 100%);
+    height: 6px;
+    border-radius: 3px;
+}
+
+/* ===== LOGO STYLES ===== */
+.logo-image {
+    max-width: 160px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Adjust for collapsed sidebar */
+.sidebar.collapsed .logo-image {
+    max-width: 40px;
+}
+
+/* Adjust logo container for image */
+.logo-container {
+    padding: 10px 5px 5px 5px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 992px) {
+    .logo-image {
+        max-width: 40px;
+    }
+    
+    .logo-subtitle {
+        display: none;
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1600px) {
+    .runes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .runes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .runes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .rune-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .level-controls {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .rune-name {
+        font-size: 1.3rem;
+    }
+    
+    .rune-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}/* Sublimation-specific styles */
+.container {
+    max-width: 2800px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+    transform-origin: top center;
+}
+
+/* ===== CONTROLS SECTION ===== */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: rgba(52, 76, 100, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(87, 123, 141, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.search-box {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px 16px;
+    border: 2px solid #344C64;
+    border-radius: 6px 0 0 6px;
+    background: rgba(36, 7, 80, 0.4);
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    height: 38px;
+    box-sizing: border-box;
+}
+
+.search-box input:focus {
+    border-color: #57A6A1;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(87, 166, 161, 0.2);
+}
+
+.search-box input::placeholder {
+    color: #577B8D;
+}
+
+.search-btn {
+    padding: 0 16px;
+    background: #57A6A1;
+    color: white;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-btn i {
+    font-size: 1rem;
+}
+
+.search-btn:hover {
+    background: #4a8f8a;
+}
+
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 8px;
+    background: rgba(52, 76, 100, 0.6);
+    border-radius: 10px;
+}
+
+.category-tab {
+    padding: 6px 12px;
+    background: rgba(36, 7, 80, 0.4);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid rgba(87, 123, 141, 0.3);
+    font-size: 0.9rem;
+}
+
+.category-tab.active {
+    background: #57A6A1;
+    font-weight: bold;
+}
+
+.category-tab:hover {
+    background: rgba(36, 7, 80, 0.6);
+}
+
+/* ===== RUNES GRID ===== */
+.runes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.rune-card {
+    background: rgba(52, 76, 100, 0.6);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(87, 123, 141, 0.3);
+    backdrop-filter: blur(5px);
+    padding: 8px;
+}
+
+.rune-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.rune-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 16px;
+    position: relative;
+    min-height: 60px; /* Ensure minimum height for the header */
+}
+
+.rune-name-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 0; /* This is crucial for text overflow */
+    max-width: calc(100% - 120px); /* Reserve space for colors */
+}
+
+.rune-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6fd6d0;
+    margin-bottom: 0;
+    text-shadow: 
+        -1px -1px 0 rgba(0, 0, 0, 0.5),
+        1px -1px 0 rgba(0, 0, 0, 0.5),
+        -1px 1px 0 rgba(0, 0, 0, 0.5),
+        1px 1px 0 rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%; /* Prevent overflow */
+    line-height: 1.2;
+    display: block;
+}
+
+.rune-name.relic-name {
+    color: #9b59b6;
+    text-shadow: 
+        -1px -1px 0 rgba(0, 0, 0, 0.5),
+        1px -1px 0 rgba(0, 0, 0, 0.5),
+        -1px 1px 0 rgba(0, 0, 0, 0.5),
+        1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.rune-name.epic-name {
+    color: #ff00cc;
+    text-shadow: 
+        -1px -1px 0 rgba(0, 0, 0, 0.5),
+        1px -1px 0 rgba(0, 0, 0, 0.5),
+        -1px 1px 0 rgba(0, 0, 0, 0.5),
+       1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.rune-level {
+    font-size: 0.9rem;
+    color: #6aa0bb;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.rune-colors {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    align-items: center;
+    margin-left: auto; /* Push to the far right */
+}
+
+.rune-color {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 0px solid rgba(255, 255, 255, 0.2);
+    background: transparent !important;
+    flex-shrink: 0;
+}
+
+.color-icon {
+    width: 28px;
+    height: 28px;
+    display: block; /* Ensure proper block display */
+}
+
+.special-color {
+    width: 56px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.7rem;
+    text-align: center;
+    flex-shrink: 0; /* Prevent special colors from shrinking */
+}
+
+.special-color.epic {
+    background: linear-gradient(45deg, #ff00cc, #ff0066);
+    color: white;
+}
+
+.special-color.relic {
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+    color: white;
+}
+
+.divider {
+    height: 1px;
+    background: rgba(87, 123, 141, 0.3);
+}
+
+.rune-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    min-height: 45px;
+    gap: 4px;
+}
+
+.obtenation {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 45px;
+    flex: 1; /* Allow obtenation to take available space */
+    min-width: 0; /* Allow text to wrap */
+}
+
+.obtenation span {
+    white-space: normal; /* Changed from nowrap to normal */
+    word-wrap: break-word; /* Allow long words to break */
+    overflow-wrap: break-word; /* Modern alternative */
+}
+
+.obtenation-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    border: 0px solid rgba(255, 255, 255, 0.2);
+    object-fit: contain;
+}
+
+.rarity {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-shrink: 0; /* Prevent rarity from shrinking */
+}
+
+.rarity-icon {
+    width: 36px;
+    height: 36px;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.7));
+    object-fit: contain;
+}
+
+.special-rarity-icon {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.rune-description {
+    background: rgba(36, 7, 80, 0.4);
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    border: 1px solid rgba(87, 123, 141, 0.3);
+    min-height: 70px;
+}
+
+.level-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.level-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(36, 7, 80, 0.4);
+    outline: none;
+}
+
+.level-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #57A6A1;
+    cursor: pointer;
+    position: relative;
+}
+
+.level-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #57A6A1;
+    cursor: pointer;
+    position: relative;
+}
+
+.level-display {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(36, 7, 80, 0.4);
+    border-radius: 6px;
+    font-weight: bold;
+    color: #57A6A1;
+    border: 1px solid rgba(87, 123, 141, 0.3);
+    font-size: 0.9rem;
+}
+
+.no-results {
+    text-align: center;
+    padding: 32px;
+    font-size: 1.1rem;
+    color: #577B8D;
+    grid-column: 1 / -1;
+    background: rgba(52, 76, 100, 0.6);
+    border-radius: 10px;
+    border: 1px solid rgba(87, 123, 141, 0.3);
+}
+
+/* Fix for slider when min equals max */
+.level-slider.fixed-level {
+    background: linear-gradient(to right, rgba(36, 7, 80, 0.4) 0%, rgba(36, 7, 80, 0.4) 99%, #57A6A1 1%, #57A6A1 100%);
+}
+
+.level-slider.fixed-level::-webkit-slider-thumb {
+    margin-left: auto;
+    margin-right: 0;
+    top: -5px;
+}
+
+.level-slider.fixed-level::-moz-range-thumb {
+    margin-left: auto;
+    margin-right: 0;
+    top: -5px;
+}
+
+/* For Firefox */
+.level-slider.fixed-level::-moz-range-progress {
+    background-color: #57A6A1;
+    height: 6px;
+    border-radius: 3px;
+}
+
+/* For Chrome/Safari */
+.level-slider.fixed-level::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, rgba(36, 7, 80, 0.4) 0%, rgba(36, 7, 80, 0.4) 99%, #57A6A1 1%, #57A6A1 100%);
+    height: 6px;
+    border-radius: 3px;
+}
+
+/* ===== LOGO STYLES ===== */
+.logo-image {
+    max-width: 160px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Adjust for collapsed sidebar */
+.sidebar.collapsed .logo-image {
+    max-width: 40px;
+}
+
+/* Adjust logo container for image */
+.logo-container {
+    padding: 10px 5px 5px 5px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 992px) {
+    .logo-image {
+        max-width: 40px;
+    }
+    
+    .logo-subtitle {
+        display: none;
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1600px) {
+    .runes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .runes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .runes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .rune-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .level-controls {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .rune-name {
+        font-size: 1.3rem;
+    }
+    
+    .rune-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
