@@ -1,167 +1,194 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { BookOpen, Hammer, Scroll, Search, Filter, AlertCircle, X, Menu, Sliders } from 'lucide-react';
+import { BookOpen, Hammer, Scroll, Search, AlertCircle, Menu, Sliders, X, Filter } from 'lucide-react';
 
 /* =========================================
-   CSS STYLES (Ported from sublimations.css)
+   DATI DI BACKUP (Fallback se il JSON manca)
+   ========================================= */
+const FALLBACK_DATA = [
+  {
+    "name": "Influence",
+    "colors": ["G", "B", "G"],
+    "description": "[X]% Critical Hit",
+    "rarity": ["Rare", "Mythic", "Legendary"],
+    "effect": "Per additional level: +3% Critical hit",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": { "name": "Runic Mimic", "localIcon": "./icons/runic.png" },
+    "category": "Offensive",
+    "values": [{ "base": 3, "increment": 3, "placeholder": "X" }]
+  },
+  {
+    "name": "Save",
+    "colors": ["B", "R", "R"],
+    "description": "At end of turn: Unused AP are carried over to the next turn Max [X] AP",
+    "rarity": ["Mythic"],
+    "effect": "Per additional 2 levels: +1 AP max",
+    "maxLevel": 6,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": { "name": "Or'Hodruin Dungeon", "localIcon": "./icons/sorhon.png" },
+    "category": "Stats Increase",
+    "values": [{ "base": 1, "increment": 1, "placeholder": "X" }]
+  }
+];
+
+/* =========================================
+   CSS STYLES
    ========================================= */
 const styles = `
-  /* Sublimation-specific styles */
   .sublimation-container {
     max-width: 1800px;
-    margin: 1.5rem auto;
-    padding: 0 1rem;
+    margin: 0 auto;
+    padding: 20px;
     width: 100%;
+    min-height: 50vh;
   }
 
-  /* ===== CONTROLS SECTION ===== */
+  /* CONTROLS */
   .controls {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
     margin-bottom: 24px;
-    padding: 16px;
-    background: rgba(52, 76, 100, 0.6);
-    border-radius: 10px;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(87, 123, 141, 0.3);
-    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
   }
 
   .search-box {
     flex: 1;
-    min-width: 250px;
+    min-width: 280px;
     display: flex;
     align-items: center;
+    position: relative;
   }
 
   .search-box input {
-    flex: 1;
-    padding: 10px 16px;
-    border: 2px solid #344C64;
-    border-radius: 6px 0 0 6px;
-    background: rgba(36, 7, 80, 0.4);
-    color: #e0e0e0;
-    font-size: 0.9rem;
+    width: 100%;
+    padding: 12px 48px 12px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-size: 1rem;
     transition: all 0.3s ease;
-    height: 42px;
-    box-sizing: border-box;
   }
 
   .search-box input:focus {
-    border-color: #57A6A1;
+    border-color: #10b981;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(87, 166, 161, 0.2);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    background: rgba(0, 0, 0, 0.5);
   }
 
-  .search-btn {
-    padding: 0 16px;
-    background: #57A6A1;
-    color: white;
+  .search-icon-btn {
+    position: absolute;
+    right: 12px;
+    color: #10b981;
+    background: none;
     border: none;
-    border-radius: 0 6px 6px 0;
-    cursor: pointer;
-    transition: background 0.3s;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    pointer-events: none;
   }
 
-  .search-btn:hover {
-    background: #4a8f8a;
-  }
-
+  /* CATEGORY TABS */
   .category-filter {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 16px;
-    padding: 8px;
-    background: rgba(52, 76, 100, 0.6);
-    border-radius: 10px;
+    margin-bottom: 24px;
+    padding: 4px;
     justify-content: center;
   }
 
   .category-tab {
     padding: 8px 16px;
-    background: rgba(36, 7, 80, 0.4);
-    border-radius: 5px;
+    background: rgba(30, 41, 59, 0.6);
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s;
-    border: 1px solid rgba(87, 123, 141, 0.3);
+    transition: all 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     font-size: 0.9rem;
-    color: #e0e0e0;
-  }
-
-  .category-tab.active {
-    background: #57A6A1;
-    font-weight: bold;
-    color: white;
-    box-shadow: 0 0 10px rgba(87, 166, 161, 0.4);
+    color: #94a3b8;
+    font-weight: 500;
   }
 
   .category-tab:hover {
-    background: rgba(87, 166, 161, 0.3);
+    background: rgba(30, 41, 59, 0.9);
+    color: #fff;
   }
 
-  /* ===== RUNES GRID ===== */
+  .category-tab.active {
+    background: #10b981;
+    color: #fff;
+    border-color: #10b981;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  }
+
+  /* GRID */
   .runes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    padding-bottom: 40px;
   }
 
   .rune-card {
-    background: rgba(52, 76, 100, 0.6);
-    border-radius: 8px;
+    background: rgba(30, 41, 59, 0.7);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(87, 123, 141, 0.3);
-    backdrop-filter: blur(5px);
-    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    height: 100%;
   }
 
   .rune-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    border-color: #57A6A1;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.3);
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(30, 41, 59, 0.9);
+  }
+
+  .card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
   .rune-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 12px;
-    gap: 16px;
-  }
-
-  .rune-name-container {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 0;
+    margin-bottom: 16px;
+    gap: 12px;
   }
 
   .rune-name {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #6fd6d0;
-    margin-bottom: 2px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.2;
+    margin-bottom: 4px;
   }
 
-  .rune-name.relic-name { color: #9b59b6; }
-  .rune-name.epic-name { color: #ff00cc; }
+  .rune-name.relic-name { color: #c084fc; text-shadow: 0 0 10px rgba(192, 132, 252, 0.2); }
+  .rune-name.epic-name { color: #f472b6; text-shadow: 0 0 10px rgba(244, 114, 182, 0.2); }
 
-  .rune-level {
-    font-size: 0.85rem;
-    color: #6aa0bb;
+  .rune-level-badge {
+    font-size: 0.75rem;
+    color: #64748b;
+    background: rgba(0,0,0,0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+    display: inline-block;
   }
 
   .rune-colors {
@@ -170,83 +197,85 @@ const styles = `
     flex-shrink: 0;
   }
 
-  .rune-color {
+  .color-slot {
     width: 24px;
     height: 24px;
+    border-radius: 6px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
   }
 
-  .color-icon {
-    width: 100%;
-    height: 100%;
+  .color-slot img {
+    width: 16px;
+    height: 16px;
     object-fit: contain;
   }
 
-  .special-color {
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: bold;
+  .special-badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 700;
     font-size: 0.7rem;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
-  .special-color.epic { background: linear-gradient(45deg, #ff00cc, #ff0066); color: white; }
-  .special-color.relic { background: linear-gradient(45deg, #9b59b6, #8e44ad); color: white; }
-
-  .divider {
-    height: 1px;
-    background: rgba(87, 123, 141, 0.3);
-    margin: 8px 0;
-  }
+  .special-badge.epic { background: linear-gradient(135deg, #be185d, #db2777); color: white; }
+  .special-badge.relic { background: linear-gradient(135deg, #7e22ce, #a855f7); color: white; }
 
   .rune-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
-    font-size: 0.85rem;
-    color: #a0c0d0;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
   .obtenation {
     display: flex;
     align-items: center;
     gap: 8px;
+    font-size: 0.85rem;
+    color: #94a3b8;
   }
 
-  .obtenation-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
+  .obtenation img {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
     background: rgba(0,0,0,0.2);
-    object-fit: contain;
   }
 
   .rune-description {
-    background: rgba(36, 7, 80, 0.4);
-    padding: 12px;
-    border-radius: 6px;
-    margin-bottom: 12px;
+    background: rgba(15, 23, 42, 0.4);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
     font-size: 0.95rem;
-    line-height: 1.4;
-    border: 1px solid rgba(87, 123, 141, 0.3);
-    min-height: 60px;
-    color: #e0e0e0;
+    line-height: 1.5;
+    color: #cbd5e1;
+    border: 1px solid rgba(255,255,255,0.03);
+    flex-grow: 1;
   }
 
   .level-controls {
+    margin-top: auto;
+    background: rgba(0,0,0,0.2);
+    padding: 12px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-top: auto;
   }
 
   .level-slider {
     flex: 1;
     height: 6px;
     border-radius: 3px;
-    background: rgba(36, 7, 80, 0.6);
+    background: #334155;
     outline: none;
     -webkit-appearance: none;
     cursor: pointer;
@@ -257,35 +286,32 @@ const styles = `
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: #57A6A1;
+    background: #10b981;
     cursor: pointer;
     border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   }
 
   .level-display {
-    min-width: 30px;
+    min-width: 40px;
     text-align: center;
-    font-weight: bold;
-    color: #57A6A1;
-    background: rgba(0,0,0,0.3);
-    padding: 2px 6px;
-    border-radius: 4px;
-  }
-
-  .loading-container {
-    text-align: center;
-    padding: 40px;
-    color: #57A6A1;
+    font-weight: 700;
+    color: #10b981;
+    font-family: monospace;
+    font-size: 1rem;
   }
 `;
 
-// Helper component for Local Images with fallback
+// Helper per le immagini locali con fallback
 const LocalImage = ({ src, alt, className, fallbackText }) => {
   const [error, setError] = useState(false);
 
   if (error) {
-    if (fallbackText) return <span className={`text-xs font-bold ${className}`}>{fallbackText}</span>;
-    return <div className={`bg-gray-700 flex items-center justify-center ${className}`} title={alt}><span className="text-[8px] opacity-50">IMG</span></div>;
+    return (
+      <div className={`flex items-center justify-center bg-slate-800 text-slate-500 text-[10px] font-bold ${className}`} title={alt}>
+        {fallbackText || '?'}
+      </div>
+    );
   }
 
   return (
@@ -299,77 +325,52 @@ const LocalImage = ({ src, alt, className, fallbackText }) => {
 };
 
 /* =========================================
-   SUBLIMATIONS COMPONENT
+   COMPONENT SUBLIMATIONS
    ========================================= */
 function Sublimations() {
   const [runes, setRunes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
-  const [runeLevels, setRuneLevels] = useState({}); // Map of runeName -> currentLevel
+  const [runeLevels, setRuneLevels] = useState({}); 
+  const [dataSource, setDataSource] = useState('loading'); // 'json' | 'fallback' | 'error'
 
-  // Fetch data from local JSON file
+  // Caricamento dati con priorità: JSON > Fallback
   useEffect(() => {
     async function fetchData() {
       try {
-        // NOTE: This points to the file in the public folder as requested
+        // Tentativo 1: Carica dal file JSON (la via preferita)
         const response = await fetch('sublimations.json');
-        if (!response.ok) {
-           throw new Error(`Failed to load sublimations.json (Status: ${response.status})`);
+        if (response.ok) {
+          const data = await response.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setRunes(data);
+            initializeLevels(data);
+            setDataSource('json');
+            setLoading(false);
+            return;
+          }
         }
-        const data = await response.json();
-        setRunes(data);
-        
-        // Initialize levels
-        const initialLevels = {};
-        data.forEach(rune => {
-            initialLevels[rune.name] = rune.minLevel || 1;
-        });
-        setRuneLevels(initialLevels);
-        
+        throw new Error("JSON file not found or empty");
       } catch (err) {
-        console.error("Error loading runes:", err);
-        setError(err.message);
-        
-        // Fallback data for preview purposes if json is missing
-        const fallbackData = [
-            {
-                "name": "Influence",
-                "colors": ["G", "B", "G"],
-                "description": "[X]% Critical Hit",
-                "rarity": ["Rare", "Mythic", "Legendary"],
-                "effect": "Per additional level: +3% Critical hit",
-                "maxLevel": 6,
-                "minLevel": 1,
-                "step": 1,
-                "obtenation": { "name": "Runic Mimic" },
-                "category": "Offensive",
-                "values": [{ "base": 3, "increment": 3, "placeholder": "X" }]
-            },
-            {
-                "name": "Save",
-                "colors": ["B", "R", "R"],
-                "description": "At end of turn: Unused AP are carried over to the next turn Max [X] AP",
-                "rarity": ["Mythic"],
-                "effect": "Per additional 2 levels: +1 AP max",
-                "maxLevel": 6,
-                "minLevel": 2,
-                "step": 2,
-                "obtenation": { "name": "Or'Hodruin Dungeon" },
-                "category": "Stats Increase",
-                "values": [{ "base": 1, "increment": 1, "placeholder": "X" }]
-            }
-        ];
-        // Only set fallback if we strictly want to show something in preview when file is missing
-        // setRunes(fallbackData); 
-        // setRuneLevels({ "Influence": 1, "Save": 2 });
-      } finally {
+        console.warn("Could not load sublimations.json, using fallback data:", err);
+        // Tentativo 2: Usa i dati incorporati (Fallback)
+        setRunes(FALLBACK_DATA);
+        initializeLevels(FALLBACK_DATA);
+        setDataSource('fallback');
         setLoading(false);
       }
     }
     fetchData();
   }, []);
+
+  const initializeLevels = (data) => {
+    const initialLevels = {};
+    data.forEach(rune => {
+        initialLevels[rune.name] = rune.minLevel || 1;
+    });
+    setRuneLevels(initialLevels);
+  };
 
   const categories = useMemo(() => {
     if (!runes.length) return [];
@@ -385,56 +386,86 @@ function Sublimations() {
   };
 
   const processDescription = (rune) => {
+    if (!rune || !rune.description) return "Description unavailable";
+    
     let description = rune.description;
-    const currentLevel = runeLevels[rune.name] || rune.minLevel;
+    const currentLevel = runeLevels[rune.name] || rune.minLevel || 1;
 
-    if (rune.values && rune.values.length > 0) {
+    if (rune.values && Array.isArray(rune.values)) {
         rune.values.forEach(value => {
-            // Calculate steps taken from min level
-            const steps = Math.floor((currentLevel - rune.minLevel) / rune.step);
-            const calculatedValue = value.base + (value.increment * steps);
-            
-            // Regex to replace [X], [Y] etc globally
-            // Escaping the placeholder for regex safety
-            const placeholder = value.placeholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            const regex = new RegExp(`\\[${placeholder}\\]`, 'g');
-            description = description.replace(regex, calculatedValue);
+            // FIX: Check if placeholder exists before replacing
+            if (value.placeholder && typeof value.placeholder === 'string') {
+                const minLevel = rune.minLevel || 1;
+                const step = rune.step || 1;
+                const steps = Math.floor((currentLevel - minLevel) / step);
+                
+                const base = value.base || 0;
+                const increment = value.increment || 0;
+                const calculatedValue = base + (increment * steps);
+                
+                // Escape special chars for regex
+                const placeholder = value.placeholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const regex = new RegExp(`\\[${placeholder}\\]`, 'g');
+                description = description.replace(regex, calculatedValue);
+            }
         });
     }
     return description;
   };
 
   const filteredRunes = runes.filter(rune => {
-    const matchesSearch = 
-        rune.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        rune.description.toLowerCase().includes(searchTerm.toLowerCase());
+    if (!rune.name) return false;
+    const nameMatch = rune.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const descMatch = rune.description && rune.description.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const matchesSearch = nameMatch || descMatch;
     const matchesCategory = selectedCategory === 'All Categories' || rune.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
   if (loading) return (
-    <div className="sublimation-container loading-container">
-        <div className="animate-spin mb-4"><Sliders className="w-8 h-8 mx-auto"/></div>
+    <div className="w-full flex flex-col items-center justify-center py-20 text-emerald-400">
+        <div className="animate-spin mb-4"><Sliders size={32} /></div>
         <p>Loading Sublimations...</p>
     </div>
   );
 
   return (
-    <div className="sublimation-container fade-in">
+    <div className="sublimation-container animate-in fade-in duration-500">
       <style>{styles}</style>
       
-      {/* Controls */}
+      {/* Header & Controls */}
       <div className="controls">
+        <div className="w-full flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                <Scroll className="text-emerald-400" /> 
+                Sublimations Library (Work in Progress)
+                <span className="text-sm font-normal text-slate-400 ml-2 bg-slate-800 px-2 py-1 rounded-md">
+                    {filteredRunes.length} items
+                </span>
+            </h2>
+            {dataSource === 'fallback' && (
+                <div className="text-amber-400 text-xs flex items-center gap-1 bg-amber-900/30 px-3 py-1 rounded-full border border-amber-500/30">
+                    <AlertCircle size={12} /> using backup data (JSON missing)
+                </div>
+            )}
+        </div>
+
         <div className="search-box">
             <input 
                 type="text" 
-                placeholder="Search runes by name or description..." 
+                placeholder="Search by name or description..." 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <button className="search-btn">
+            <button className="search-icon-btn">
                 <Search size={18} />
             </button>
+            {searchTerm && (
+                <button onClick={() => setSearchTerm('')} className="absolute right-12 text-slate-400 hover:text-white">
+                    <X size={16} />
+                </button>
+            )}
         </div>
       </div>
 
@@ -451,108 +482,98 @@ function Sublimations() {
         ))}
       </div>
 
-      {/* Error Message */}
-      {error && (
-          <div className="bg-red-900/50 border border-red-500 text-red-100 p-4 rounded-lg mb-6 flex items-center gap-3">
-              <AlertCircle className="w-6 h-6 shrink-0" />
-              <div>
-                  <h3 className="font-bold">Error loading data</h3>
-                  <p className="text-sm opacity-80">Make sure <code>sublimations.json</code> is placed in your site's folder.</p>
-                  <p className="text-xs mt-1 font-mono">{error}</p>
-              </div>
-          </div>
-      )}
-
       {/* Grid */}
       <div className="runes-grid">
         {filteredRunes.map(rune => {
             const isSpecial = rune.colors.includes('Epic') || rune.colors.includes('Relic');
-            const currentLevel = runeLevels[rune.name] || rune.minLevel;
+            const currentLevel = runeLevels[rune.name] || rune.minLevel || 1;
             const nameClass = rune.colors.includes('Relic') ? 'relic-name' : (rune.colors.includes('Epic') ? 'epic-name' : '');
-            
-            // Icon paths logic (preserving original logic)
             const getObtIcon = (name) => `./icons/${name.toLowerCase().replace(/\s+/g, '_')}.png`;
 
             return (
                 <div key={rune.name} className="rune-card">
-                    <div className="rune-header">
-                        <div className="rune-name-container">
-                            <div className={`rune-name ${nameClass}`}>{rune.name}</div>
-                            {!isSpecial && <div className="rune-level">Lvl. {currentLevel}</div>}
-                        </div>
-                        <div className="rune-colors">
-                            {rune.colors.map((color, idx) => {
-                                if (['R','G','B'].includes(color)) {
-                                    const iconMap = { R: 'red_slot.png', G: 'green_slot.png', B: 'blue_slot.png'};
+                    <div className="card-content">
+                        <div className="rune-header">
+                            <div className="flex-1">
+                                <div className={`rune-name ${nameClass}`}>{rune.name}</div>
+                                {!isSpecial && <span className="rune-level-badge">Lvl. {currentLevel}</span>}
+                            </div>
+                            <div className="rune-colors">
+                                {rune.colors.map((color, idx) => {
+                                    if (['R','G','B'].includes(color)) {
+                                        const iconMap = { R: 'red_slot.png', G: 'green_slot.png', B: 'blue_slot.png'};
+                                        return (
+                                            <div key={idx} className="color-slot" title={`${color} Slot`}>
+                                                <LocalImage src={`./icons/${iconMap[color]}`} alt={color} fallbackText={color} />
+                                            </div>
+                                        );
+                                    }
                                     return (
-                                        <div key={idx} className="rune-color" title={`${color} Slot`}>
-                                            <LocalImage src={`./icons/${iconMap[color]}`} alt={color} className="color-icon" fallbackText={color} />
+                                        <div key={idx} className={`special-badge ${color.toLowerCase()}`}>
+                                            {color}
                                         </div>
                                     );
-                                }
-                                return (
-                                    <div key={idx} className={`special-color ${color.toLowerCase()}`}>
-                                        {color}
-                                    </div>
-                                );
-                            })}
+                                })}
+                            </div>
                         </div>
+
+                        <div className="rune-meta">
+                            <div className="obtenation">
+                                {rune.obtenation && rune.obtenation.name && (
+                                    <>
+                                    <LocalImage 
+                                            src={rune.obtenation.localIcon || getObtIcon(rune.obtenation.name)} 
+                                            alt="" 
+                                            className="w-7 h-7 rounded bg-slate-700" 
+                                        />
+                                    <span className="truncate max-w-[140px]" title={rune.obtenation.name}>{rune.obtenation.name}</span>
+                                    </>
+                                )}
+                            </div>
+                            {/* Rarity Icons */}
+                            <div className="flex gap-1">
+                                {rune.rarity && rune.rarity.map((r, idx) => {
+                                    const iconMap = { Rare: 'rare_icon.png', Mythic: 'mythic_icon.png', Legendary: 'legendary_icon.png' };
+                                    if(['Rare','Mythic','Legendary'].includes(r)) {
+                                        return <LocalImage key={idx} src={`./icons/${iconMap[r]}`} alt={r} className="w-6 h-6 object-contain drop-shadow-md" />;
+                                    }
+                                    return null;
+                                })}
+                            </div>
+                        </div>
+
+                        <div className="rune-description">
+                            {processDescription(rune)}
+                        </div>
+
+                        {!isSpecial && (
+                            <div className="level-controls">
+                                <input 
+                                    type="range" 
+                                    className="level-slider"
+                                    min={rune.minLevel || 1}
+                                    max={rune.maxLevel || 6}
+                                    step={rune.step || 1}
+                                    value={currentLevel}
+                                    onChange={(e) => handleLevelChange(rune.name, e.target.value)}
+                                />
+                                <div className="level-display">{currentLevel}</div>
+                            </div>
+                        )}
                     </div>
-
-                    <div className="divider"></div>
-
-                    <div className="rune-meta">
-                        <div className="obtenation">
-                            {rune.obtenation && (
-                                <>
-                                   <LocalImage 
-                                        src={rune.obtenation.localIcon || getObtIcon(rune.obtenation.name)} 
-                                        alt={rune.obtenation.name} 
-                                        className="obtenation-icon" 
-                                    />
-                                   <span className="truncate max-w-[120px]" title={rune.obtenation.name}>{rune.obtenation.name}</span>
-                                </>
-                            )}
-                        </div>
-                        {/* Rarity Icons */}
-                        <div className="flex gap-1">
-                             {rune.rarity.map((r, idx) => {
-                                 const iconMap = { Rare: 'rare_icon.png', Mythic: 'mythic_icon.png', Legendary: 'legendary_icon.png' };
-                                 // Epic/Relic use Obtenation icon usually in original code, simplifying here for standard display
-                                 if(['Rare','Mythic','Legendary'].includes(r)) {
-                                     return <LocalImage key={idx} src={`./icons/${iconMap[r]}`} alt={r} className="w-6 h-6 object-contain" />;
-                                 }
-                                 return null;
-                             })}
-                        </div>
-                    </div>
-
-                    <div className="rune-description">
-                        {processDescription(rune)}
-                    </div>
-
-                    {!isSpecial && (
-                        <div className="level-controls">
-                            <input 
-                                type="range" 
-                                className="level-slider"
-                                min={rune.minLevel}
-                                max={rune.maxLevel}
-                                step={rune.step}
-                                value={currentLevel}
-                                onChange={(e) => handleLevelChange(rune.name, e.target.value)}
-                            />
-                            <div className="level-display">{currentLevel}</div>
-                        </div>
-                    )}
                 </div>
             );
         })}
       </div>
       
-      {!loading && filteredRunes.length === 0 && !error && (
-          <div className="text-center py-10 text-emerald-200/50">
-              No sublimations found matching your criteria.
+      {!loading && filteredRunes.length === 0 && (
+          <div className="flex flex-col items-center justify-center py-20 text-slate-400 bg-slate-900/50 rounded-xl border border-slate-800">
+              <Filter size={48} className="mb-4 opacity-50" />
+              <p className="text-lg font-medium">No sublimations found</p>
+              <p className="text-sm">Try adjusting your search or category filter.</p>
+              <button onClick={() => {setSearchTerm(''); setSelectedCategory('All Categories');}} className="mt-4 text-emerald-400 hover:underline text-sm">
+                  Clear all filters
+              </button>
           </div>
       )}
     </div>
@@ -574,7 +595,6 @@ const supabase = {
 };
 
 export default function App() {
-  // App State
   const [activeTab, setActiveTab] = useState('calculator'); // 'calculator' | 'sublimations'
   
   // Calculator State
@@ -588,10 +608,9 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
-  const BG_URL = 'https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?q=80&w=2544&auto=format&fit=crop';
+  const BG_URL = '424478.jpg';
   const flags = { en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
 
-  // ... (Keep existing translations and data) ...
   const i18n = {
     en: {
       title: 'Wakfu Crafting XP Calculator',
@@ -713,13 +732,11 @@ export default function App() {
   const recipeDisplay = `${currentRangeRecipe}${currentProfessionRecipe ? `  ${currentProfessionRecipe}` : ''}`;
 
   useEffect(() => {
-    // Basic visit tracking
     const trackVisit = async () => {
       try { await supabase.from('visitors').insert({ page: '/', user_agent: navigator.userAgent }); } catch (error) { console.log('Tracking skipped'); }
     };
     trackVisit();
 
-    // Click outside handler
     function onDocClick(e) {
       const langMenu = document.getElementById('lang-menu');
       const langBtn = document.getElementById('lang-btn');
