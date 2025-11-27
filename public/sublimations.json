@@ -219,7 +219,7 @@
     "step": 1,
     "obtenation": {
       "name": "Tainela Rift",
-      "localIcon": "rift.png"
+      "localIcon": "./icons/rift.png"
     },
     "category": "Utility",
     "values": [
