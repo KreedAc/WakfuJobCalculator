@@ -143,7 +143,7 @@ export function Sublimations() {
                         const iconMap = { R: 'red_slot.png', G: 'green_slot.png', B: 'blue_slot.png' };
                         return (
                           <div key={idx} className="color-slot" title={`${color} Slot`}>
-                            <LocalImage src={`./icons/${iconMap[color as 'R' | 'G' | 'B']}`} alt={color} fallbackText={color} />
+                            <LocalImage src={`/icons/${iconMap[color as 'R' | 'G' | 'B']}`} alt={color} fallbackText={color} />
                           </div>
                         );
                       }
@@ -178,7 +178,7 @@ export function Sublimations() {
                         return (
                           <LocalImage
                             key={idx}
-                            src={`./icons/${iconMap[r as keyof typeof iconMap]}`}
+                            src={`/icons/${iconMap[r as keyof typeof iconMap]}`}
                             alt={r}
                             className="w-6 h-6 object-contain drop-shadow-md"
                           />
