@@ -31,7 +31,7 @@ export const FALLBACK_SUBLIMATIONS: Sublimation[] = [
     maxLevel: 6,
     minLevel: 1,
     step: 1,
-    obtenation: { name: "Runic Mimic", localIcon: "/icons/runic.png" },
+    obtenation: { name: "Runic Mimic", localIcon: "./icons/runic.png" },
     category: "Offensive",
     values: [{ base: 3, increment: 3, placeholder: "X" }]
   },
@@ -44,7 +44,7 @@ export const FALLBACK_SUBLIMATIONS: Sublimation[] = [
     maxLevel: 6,
     minLevel: 2,
     step: 2,
-    obtenation: { name: "Or'Hodruin Dungeon", localIcon: "/icons/sorhon.png" },
+    obtenation: { name: "Or'Hodruin Dungeon", localIcon: "./icons/sorhon.png" },
     category: "Stats Increase",
     values: [{ base: 1, increment: 1, placeholder: "X" }]
   }

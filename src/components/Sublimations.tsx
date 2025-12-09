@@ -16,7 +16,7 @@ export function Sublimations() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('/sublimations.json');
+        const response = await fetch('sublimations.json');
         if (response.ok) {
           const data = await response.json();
           if (Array.isArray(data) && data.length > 0) {
