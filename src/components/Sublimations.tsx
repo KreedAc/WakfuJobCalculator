@@ -81,7 +81,7 @@ export function Sublimations() {
         <div className="w-full flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold text-white flex items-center gap-2">
             <Scroll className="text-emerald-400" />
-            Sublimations Library (Work in Progress)
+            Sublimations Library
             <span className="text-sm font-normal text-slate-400 ml-2 bg-slate-800 px-2 py-1 rounded-md">
               {filteredRunes.length} items
             </span>
