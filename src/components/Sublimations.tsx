@@ -184,7 +184,7 @@ const filteredRunes = useMemo(() => {
       <option value="Any">Empty</option>
       <option value="G">G Slot</option>
       <option value="B">B Slot</option>
-      <option value="R">R Slot</option>
+      <option value="R"> red_slot.png </option>
       <option value="J">J Slot (Jolly)</option>
     </select>
   </div>
