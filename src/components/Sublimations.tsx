@@ -12,7 +12,11 @@ export function Sublimations() {
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [runeLevels, setRuneLevels] = useState<Record<string, number>>({});
   const [dataSource, setDataSource] = useState<'loading' | 'json' | 'fallback' | 'error'>('loading');
-  const [slotFilters, setSlotFilters] = useState<[string, string, string]>(['Any', 'Any', 'Any']);
+  type Slot = 'Any' | 'R' | 'G' | 'B' | 'J';
+
+const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
+  'Any', 'Any', 'Any', 'Any'
+]);
 
   useEffect(() => {
     async function fetchData() {
@@ -47,13 +51,50 @@ export function Sublimations() {
   }, [runes]);
 
   const handleLevelChange = (runeName: string, newLevel: number) => {
-    setRuneLevels(prev => ({
-      ...prev,
-      [runeName]: newLevel
-    }));
-  };
+  setRuneLevels(prev => ({
+    ...prev,
+    [runeName]: newLevel
+  }));
+};
 
-  const filteredRunes = useMemo(() => {
+  type RuneSlot = 'R' | 'G' | 'B' | 'J';
+
+const isRuneSlot = (c: string): c is RuneSlot =>
+  c === 'R' || c === 'G' || c === 'B' || c === 'J';
+
+// se rune.colors contiene anche "Epic"/"Relic", li scartiamo
+const getRuneSlots = (rune: Sublimation): RuneSlot[] =>
+  (rune.colors ?? []).filter(isRuneSlot).slice(0, 3);
+
+const slotMatches = (equip: Slot, rune: RuneSlot) => {
+  if (equip === 'Any') return false;   // "Any" = slot vuoto
+  if (equip === 'J') return true;      // jolly equip = R/G/B (e anche J)
+  if (rune === 'J') return true;       // jolly rune = R/G/B (e anche J)
+  return equip === rune;               // match esatto
+};
+
+const COMBOS: [number, number, number][] = [
+  [0, 1, 2],
+  [0, 1, 3],
+  [0, 2, 3],
+  [1, 2, 3],
+];
+
+const matchesEquipmentSlots = (equipSlots: [Slot, Slot, Slot, Slot], rune: Sublimation) => {
+  // se l'utente non filtra per slot, non blocchiamo nulla
+  if (equipSlots.every(s => s === 'Any')) return true;
+
+  const rs = getRuneSlots(rune);
+  if (rs.length !== 3) return false;
+
+  return COMBOS.some(([a, b, c]) =>
+    slotMatches(equipSlots[a], rs[0]) &&
+    slotMatches(equipSlots[b], rs[1]) &&
+    slotMatches(equipSlots[c], rs[2])
+  );
+};
+
+const filteredRunes = useMemo(() => {
     return runes.filter(rune => {
       if (!rune.name) return false;
       const nameMatch = rune.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -62,12 +103,7 @@ export function Sublimations() {
       const matchesSearch = nameMatch || descMatch;
       const matchesCategory = selectedCategory === 'All Categories' || rune.category === selectedCategory;
 
-      const matchesSlots = slotFilters.every((filter, idx) => {
-        if (filter === 'Any') return true;
-        const slotColor = rune.colors[idx];
-        if (filter === 'J') return true;
-        return slotColor === filter;
-      });
+      const matchesSlots = matchesEquipmentSlots(slotFilters, rune);
 
       return matchesSearch && matchesCategory && matchesSlots;
     });
@@ -135,34 +171,34 @@ export function Sublimations() {
       <div className="slot-filter">
         <div className="slot-filter-title">Filter by Slots:</div>
         <div className="slot-filter-controls">
-          {[0, 1, 2].map(idx => (
-            <div key={idx} className="slot-filter-group">
-              <label className="slot-filter-label">Slot {idx + 1}</label>
-              <select
-                value={slotFilters[idx]}
-                onChange={(e) => {
-                  const newFilters = [...slotFilters] as [string, string, string];
-                  newFilters[idx] = e.target.value;
-                  setSlotFilters(newFilters);
-                }}
-                className="slot-filter-select"
-              >
-                <option value="Any">Any</option>
-                <option value="G">G Slot</option>
-                <option value="B">B Slot</option>
-                <option value="R">R Slot</option>
-                <option value="J">J Slot (Jolly)</option>
-              </select>
-            </div>
-          ))}
-          {(slotFilters[0] !== 'Any' || slotFilters[1] !== 'Any' || slotFilters[2] !== 'Any') && (
-            <button
-              onClick={() => setSlotFilters(['Any', 'Any', 'Any'])}
-              className="slot-filter-reset"
-            >
-              Clear Slot Filters
-            </button>
-          )}
+         {[0, 1, 2, 3].map(idx => (
+  <div key={idx} className="slot-filter-group">
+    <label className="slot-filter-label">Slot {idx + 1}</label>
+    <select
+      value={slotFilters[idx]}
+      onChange={(e) => {
+        const newFilters = [...slotFilters] as [Slot, Slot, Slot, Slot];
+        newFilters[idx] = e.target.value as Slot;
+        setSlotFilters(newFilters);
+      }}
+      className="slot-filter-select"
+    >
+      <option value="Any">Empty</option>
+      <option value="G">G Slot</option>
+      <option value="B">B Slot</option>
+      <option value="R">R Slot</option>
+      <option value="J">J Slot (Jolly)</option>
+    </select>
+  </div>
+))}
+{slotFilters.some(s => s !== 'Any') && (
+  <button
+    onClick={() => setSlotFilters(['Any', 'Any', 'Any', 'Any'])}
+    className="slot-filter-reset"
+  >
+    Clear Slot Filters
+  </button>
+)}
         </div>
       </div>
 
@@ -262,7 +298,11 @@ export function Sublimations() {
           <p className="text-lg font-medium">No sublimations found</p>
           <p className="text-sm">Try adjusting your search or category filter.</p>
           <button
-            onClick={() => { setSearchTerm(''); setSelectedCategory('All Categories'); }}
+           onClick={() => {
+  setSearchTerm('');
+  setSelectedCategory('All Categories');
+  setSlotFilters(['Any', 'Any', 'Any', 'Any']);
+}}
             className="mt-4 text-emerald-400 hover:underline text-sm"
           >
             Clear all filters
