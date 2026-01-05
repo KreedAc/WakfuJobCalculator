@@ -12,6 +12,7 @@ export function Sublimations() {
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [runeLevels, setRuneLevels] = useState<Record<string, number>>({});
   const [dataSource, setDataSource] = useState<'loading' | 'json' | 'fallback' | 'error'>('loading');
+  const [slotFilters, setSlotFilters] = useState<[string, string, string]>(['Any', 'Any', 'Any']);
 
   useEffect(() => {
     async function fetchData() {
@@ -60,9 +61,17 @@ export function Sublimations() {
 
       const matchesSearch = nameMatch || descMatch;
       const matchesCategory = selectedCategory === 'All Categories' || rune.category === selectedCategory;
-      return matchesSearch && matchesCategory;
+
+      const matchesSlots = slotFilters.every((filter, idx) => {
+        if (filter === 'Any') return true;
+        const slotColor = rune.colors[idx];
+        if (filter === 'J') return true;
+        return slotColor === filter;
+      });
+
+      return matchesSearch && matchesCategory && matchesSlots;
     });
-  }, [runes, searchTerm, selectedCategory]);
+  }, [runes, searchTerm, selectedCategory, slotFilters]);
 
   if (loading) {
     return (
@@ -121,6 +130,40 @@ export function Sublimations() {
             {cat}
           </div>
         ))}
+      </div>
+
+      <div className="slot-filter">
+        <div className="slot-filter-title">Filter by Slots:</div>
+        <div className="slot-filter-controls">
+          {[0, 1, 2].map(idx => (
+            <div key={idx} className="slot-filter-group">
+              <label className="slot-filter-label">Slot {idx + 1}</label>
+              <select
+                value={slotFilters[idx]}
+                onChange={(e) => {
+                  const newFilters = [...slotFilters] as [string, string, string];
+                  newFilters[idx] = e.target.value;
+                  setSlotFilters(newFilters);
+                }}
+                className="slot-filter-select"
+              >
+                <option value="Any">Any</option>
+                <option value="G">G Slot</option>
+                <option value="B">B Slot</option>
+                <option value="R">R Slot</option>
+                <option value="J">J Slot (Jolly)</option>
+              </select>
+            </div>
+          ))}
+          {(slotFilters[0] !== 'Any' || slotFilters[1] !== 'Any' || slotFilters[2] !== 'Any') && (
+            <button
+              onClick={() => setSlotFilters(['Any', 'Any', 'Any'])}
+              className="slot-filter-reset"
+            >
+              Clear Slot Filters
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="runes-grid">

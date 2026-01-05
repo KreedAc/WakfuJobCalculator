@@ -283,3 +283,91 @@
   font-family: monospace;
   font-size: 1rem;
 }
+
+.slot-filter {
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.slot-filter-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.slot-filter-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.slot-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.slot-filter-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.slot-filter-select {
+  padding: 8px 12px;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.slot-filter-select:hover {
+  border-color: #10b981;
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.slot-filter-select:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.slot-filter-select option {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+.slot-filter-reset {
+  padding: 8px 16px;
+  background: rgba(229, 62, 62, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  color: #fca5a5;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.slot-filter-reset:hover {
+  background: rgba(229, 62, 62, 0.25);
+  border-color: #ef4444;
+  color: #fecaca;
+}
