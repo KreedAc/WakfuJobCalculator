@@ -308,6 +308,8 @@
   gap: 12px;
   flex-wrap: wrap;
   align-items: flex-end;
+  position: relative;
+  z-index: 40;
 }
 
 .slot-filter-group {
