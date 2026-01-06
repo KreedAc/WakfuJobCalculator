@@ -3,6 +3,7 @@ import { Scroll, Search, AlertCircle, X, Filter } from 'lucide-react';
 import { FALLBACK_SUBLIMATIONS, type Sublimation } from '../data/fallbackSublimations';
 import { processDescription, initializeRuneLevels } from '../utils/sublimationUtils';
 import { LocalImage } from './LocalImage';
+import { SlotSelector } from './SlotSelector';
 import './Sublimations.css';
 
 export function Sublimations() {
@@ -170,24 +171,16 @@ const filteredRunes = useMemo(() => {
         <div className="slot-filter-title">Filter by Slots:</div>
         <div className="slot-filter-controls">
          {[0, 1, 2, 3].map(idx => (
-  <div key={idx} className="slot-filter-group">
-    <label className="slot-filter-label">Slot {idx + 1}</label>
-    <select
-      value={slotFilters[idx]}
-      onChange={(e) => {
-        const newFilters = [...slotFilters] as [Slot, Slot, Slot, Slot];
-        newFilters[idx] = e.target.value as Slot;
-        setSlotFilters(newFilters);
-      }}
-      className="slot-filter-select"
-    >
-      <option value="Any">Empty</option>
-      <option value="G">G Slot</option>
-      <option value="B">B Slot</option>
-      <option value="R">R Slot</option>
-      <option value="J">J Slot (Jolly)</option>
-    </select>
-  </div>
+  <SlotSelector
+    key={idx}
+    label={`Slot ${idx + 1}`}
+    value={slotFilters[idx]}
+    onChange={(newValue) => {
+      const newFilters = [...slotFilters] as [Slot, Slot, Slot, Slot];
+      newFilters[idx] = newValue as Slot;
+      setSlotFilters(newFilters);
+    }}
+  />
 ))}
 {slotFilters.some(s => s !== 'Any') && (
   <button
