@@ -19,13 +19,6 @@ export function Sublimations() {
   const [dataSource, setDataSource] = useState<'loading' | 'json' | 'fallback' | 'error'>('loading');
   type Slot = 'Any' | 'R' | 'G' | 'B' | 'J';
 
-  const SLOT_ICON: Record<Slot, string | null> = {
-  Any: null,
-  R: redSlot,
-  G: greenSlot,
-  B: blueSlot,
-  J: yellowSlot,
-};
 
 const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
   'Any', 'Any', 'Any', 'Any'
