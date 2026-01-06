@@ -194,6 +194,12 @@ const filteredRunes = useMemo(() => {
         setSlotFilters(newFilters);
       }}
       className="slot-filter-select"
+      style={{
+    backgroundImage: SLOT_ICON[slotFilters[idx]] ? `url(${SLOT_ICON[slotFilters[idx]]})` : "none",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "8px center",
+    backgroundSize: "18px 18px",
+    paddingLeft: SLOT_ICON[slotFilters[idx]] ? 34 : undefined,
     >
       <option value="Any">Empty</option>
       <option value="G">G Slot</option>
