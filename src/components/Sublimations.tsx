@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { Scroll, Search, AlertCircle, X, Filter } from 'lucide-react';
 import { FALLBACK_SUBLIMATIONS, type Sublimation } from '../data/fallbackSublimations';
 import { processDescription, initializeRuneLevels } from '../utils/sublimationUtils';
