@@ -10,10 +10,10 @@ interface SlotSelectorProps {
 
 const SLOT_OPTIONS = [
   { value: 'Any', label: 'Empty', icon: null },
-  { value: 'G', label: 'G Slot', icon: '/icons/green_slot.png' },
-  { value: 'B', label: 'B Slot', icon: '/icons/blue_slot.png' },
-  { value: 'R', label: 'R Slot', icon: '/icons/red_slot.png' },
-  { value: 'J', label: 'J Slot (Jolly)', icon: '/icons/yellow_slot.png' }
+  { value: 'G', icon: '/icons/green_slot.png' },
+  { value: 'B', icon:'/icons/blue_slot.png' },
+  { value: 'R', icon: '/icons/red_slot.png' },
+  { value: 'J', icon: '/icons/yellow_slot.png' }
 ];
 
 export function SlotSelector({ value, onChange, label }: SlotSelectorProps) {
