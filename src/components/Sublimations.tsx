@@ -1,129 +1,9 @@
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Scroll, Search, AlertCircle, X, Filter } from 'lucide-react';
 import { FALLBACK_SUBLIMATIONS, type Sublimation } from '../data/fallbackSublimations';
 import { processDescription, initializeRuneLevels } from '../utils/sublimationUtils';
 import { LocalImage } from './LocalImage';
 import './Sublimations.css';
-
-type Slot = 'Any' | 'R' | 'G' | 'B' | 'J';
-
-const SLOT_ICON_MAP: Record<'R' | 'G' | 'B' | 'J', string> = {
-  R: 'red_slot.png',
-  G: 'green_slot.png',
-  B: 'blue_slot.png',
-  J: 'yellow_slot.png',
-};
-
-function SlotDropdown({
-  value,
-  onChange,
-  className,
-}: {
-  value: Slot;
-  onChange: (v: Slot) => void;
-  className?: string;
-}) {
-  const [open, setOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const onDocClick = (e: MouseEvent) => {
-      if (!rootRef.current) return;
-      if (!rootRef.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener('mousedown', onDocClick);
-    return () => document.removeEventListener('mousedown', onDocClick);
-  }, []);
-
-  const renderValue = (v: Slot) => {
-    if (v === 'Any') return <span>Empty</span>;
-
-    const icon = SLOT_ICON_MAP[v];
-    return (
-      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-        <LocalImage src={`/icons/${icon}`} alt={v} fallbackText={v} />
-        <span style={{ position: 'absolute', left: -9999 }}>{v}</span>
-      </span>
-    );
-  };
-
-  const options: { value: Slot; label: string }[] = [
-    { value: 'Any', label: 'Empty' },
-    { value: 'R', label: 'R Slot' },
-    { value: 'G', label: 'G Slot' },
-    { value: 'B', label: 'B Slot' },
-    { value: 'J', label: 'J Slot (Jolly)' },
-  ];
-
-  return (
-    <div ref={rootRef} style={{ position: 'relative' }}>
-      <button
-        type="button"
-        className={className}
-        onClick={() => setOpen(o => !o)}
-        aria-haspopup="listbox"
-        aria-expanded={open}
-      >
-        {renderValue(value)}
-      </button>
-
-      {open && (
-        <div
-          role="listbox"
-          style={{
-            position: 'absolute',
-            top: 'calc(100% + 6px)',
-            left: 0,
-            right: 0,
-            zIndex: 50,
-            background: 'var(--background, #fff)',
-            border: '1px solid rgba(0,0,0,0.15)',
-            borderRadius: 8,
-            overflow: 'hidden',
-          }}
-        >
-          {options.map(opt => (
-            <button
-              key={opt.value}
-              type="button"
-              role="option"
-              aria-selected={opt.value === value}
-              onClick={() => {
-                onChange(opt.value);
-                setOpen(false);
-              }}
-              style={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 10,
-                padding: '8px 10px',
-                background: 'transparent',
-                border: 'none',
-                cursor: 'pointer',
-                textAlign: 'left',
-              }}
-            >
-              {opt.value === 'Any' ? (
-                <span>{opt.label}</span>
-              ) : (
-                <>
-                  <LocalImage
-                    src={`/icons/${SLOT_ICON_MAP[opt.value as 'R' | 'G' | 'B' | 'J']}`}
-                    alt={opt.value}
-                    fallbackText={opt.value}
-                  />
-                  <span>{opt.label}</span>
-                </>
-              )}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
 
 export function Sublimations() {
   const [runes, setRunes] = useState<Sublimation[]>([]);
@@ -195,8 +75,6 @@ const slotMatches = (equip: Slot, rune: RuneSlot) => {
 
 const COMBOS: [number, number, number][] = [
   [0, 1, 2],
-  [0, 1, 3],
-  [0, 2, 3],
   [1, 2, 3],
 ];
 
@@ -294,15 +172,21 @@ const filteredRunes = useMemo(() => {
          {[0, 1, 2, 3].map(idx => (
   <div key={idx} className="slot-filter-group">
     <label className="slot-filter-label">Slot {idx + 1}</label>
-   <SlotDropdown
-  value={slotFilters[idx]}
-  onChange={(v) => {
-    const newFilters = [...slotFilters] as [Slot, Slot, Slot, Slot];
-    newFilters[idx] = v;
-    setSlotFilters(newFilters);
-  }}
-  className="slot-filter-select"
-/>
+    <select
+      value={slotFilters[idx]}
+      onChange={(e) => {
+        const newFilters = [...slotFilters] as [Slot, Slot, Slot, Slot];
+        newFilters[idx] = e.target.value as Slot;
+        setSlotFilters(newFilters);
+      }}
+      className="slot-filter-select"
+    >
+      <option value="Any">Empty</option>
+      <option value="G">G Slot</option>
+      <option value="B">B Slot</option>
+      <option value="R">R Slot</option>
+      <option value="J">J Slot (Jolly)</option>
+    </select>
   </div>
 ))}
 {slotFilters.some(s => s !== 'Any') && (
