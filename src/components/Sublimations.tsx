@@ -294,21 +294,15 @@ const filteredRunes = useMemo(() => {
          {[0, 1, 2, 3].map(idx => (
   <div key={idx} className="slot-filter-group">
     <label className="slot-filter-label">Slot {idx + 1}</label>
-    <select
+   <SlotDropdown
   value={slotFilters[idx]}
-  onChange={(e) => {
+  onChange={(v) => {
     const newFilters = [...slotFilters] as [Slot, Slot, Slot, Slot];
-    newFilters[idx] = e.target.value as Slot;
+    newFilters[idx] = v;
     setSlotFilters(newFilters);
   }}
   className="slot-filter-select"
->
-  <option value="Any">Empty</option>
-  <option value="G">G Slot</option>
-  <option value="B">B Slot</option>
-  <option value="R">R Slot</option>
-  <option value="J">J Slot (Jolly)</option>
-</select>
+/>
   </div>
 ))}
 {slotFilters.some(s => s !== 'Any') && (
