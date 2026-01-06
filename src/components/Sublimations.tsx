@@ -65,6 +65,14 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
 
   type RuneSlot = 'R' | 'G' | 'B' | 'J';
 
+    const SLOT_ICON: Record<Slot, string | null> = {
+  Any: null,
+  R: redSlot,
+  G: greenSlot,
+  B: blueSlot,
+  J: yellowSlot,
+};
+
 const isRuneSlot = (c: string): c is RuneSlot =>
   c === 'R' || c === 'G' || c === 'B' || c === 'J';
 
