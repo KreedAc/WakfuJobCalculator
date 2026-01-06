@@ -4,7 +4,7 @@ import { FALLBACK_SUBLIMATIONS, type Sublimation } from '../data/fallbackSublima
 import { processDescription, initializeRuneLevels } from '../utils/sublimationUtils';
 import { LocalImage } from './LocalImage';
 import './Sublimations.css';
-redSlot = 'red_slot.png';
+import redSlot from "/project/public/icons/red_slot.png";
 import greenSlot from "project/public/icons/green_slot.png";
 import blueSlot from "project/public/icons/blue_slot.png";
 import yellowSlot from "project/public/icons/yellow_slot.png";
