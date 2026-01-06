@@ -7,7 +7,8 @@ import './Sublimations.css';
 import redSlot from "../public/icons/red_slot.png";
 import greenSlot from "../public/icons/green_slot.png";
 import blueSlot from "../public/icons/blue_slot.png";
-import yellowSlot from "../public/icons/yellow_slot.png";
+import yellowSlot from "/home/project/public/icons/yellow_slot.png";
+
 
 
 export function Sublimations() {
