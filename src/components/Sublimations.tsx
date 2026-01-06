@@ -4,12 +4,6 @@ import { FALLBACK_SUBLIMATIONS, type Sublimation } from '../data/fallbackSublima
 import { processDescription, initializeRuneLevels } from '../utils/sublimationUtils';
 import { LocalImage } from './LocalImage';
 import './Sublimations.css';
-//import redSlot from "/project/public/icons/red_slot.png";
-//import greenSlot from "project/public/icons/green_slot.png";
-//import blueSlot from "project/public/icons/blue_slot.png";
-//import yellowSlot from "project/public/icons/yellow_slot.png";
-const iconMap = { redSlot: 'red_slot.png', greenSlot: 'green_slot.png', blueSlot: 'blue_slot.png', yellowSlot: 'yellow_slot.png' };
-
 
 export function Sublimations() {
   const [runes, setRunes] = useState<Sublimation[]>([]);
@@ -19,7 +13,6 @@ export function Sublimations() {
   const [runeLevels, setRuneLevels] = useState<Record<string, number>>({});
   const [dataSource, setDataSource] = useState<'loading' | 'json' | 'fallback' | 'error'>('loading');
   type Slot = 'Any' | 'R' | 'G' | 'B' | 'J';
-
 
 const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
   'Any', 'Any', 'Any', 'Any'
@@ -66,14 +59,6 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
 
   type RuneSlot = 'R' | 'G' | 'B' | 'J';
 
-    const SLOT_ICON: Record<Slot, string | null> = {
-  Any: null,
-  R: redSlot,
-  G: greenSlot,
-  B: blueSlot,
-  J: yellowSlot,
-};
-
 const isRuneSlot = (c: string): c is RuneSlot =>
   c === 'R' || c === 'G' || c === 'B' || c === 'J';
 
@@ -90,6 +75,8 @@ const slotMatches = (equip: Slot, rune: RuneSlot) => {
 
 const COMBOS: [number, number, number][] = [
   [0, 1, 2],
+  [0, 1, 3],
+  [0, 2, 3],
   [1, 2, 3],
 ];
 
@@ -187,30 +174,21 @@ const filteredRunes = useMemo(() => {
          {[0, 1, 2, 3].map(idx => (
   <div key={idx} className="slot-filter-group">
     <label className="slot-filter-label">Slot {idx + 1}</label>
-   <select
-  value={slotFilters[idx]}
-  onChange={(e) => {
-    const newFilters = [...slotFilters] as [Slot, Slot, Slot, Slot];
-    newFilters[idx] = e.target.value as Slot;
-    setSlotFilters(newFilters);
-  }}
-  className="slot-filter-select"
-  style={{
-    backgroundImage: SLOT_ICON[slotFilters[idx]]
-      ? `url(${SLOT_ICON[slotFilters[idx]]})`
-      : "none",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "8px center",
-    backgroundSize: "18px 18px",
-    paddingLeft: SLOT_ICON[slotFilters[idx]] ? 34 : undefined,
-  }}
->
-  <option value="Any">Empty</option>
-  <option value="G">G Slot</option>
-  <option value="B">B Slot</option>
-  <option value="R">R Slot</option>
-  <option value="J">J Slot (Jolly)</option>
-</select>
+    <select
+      value={slotFilters[idx]}
+      onChange={(e) => {
+        const newFilters = [...slotFilters] as [Slot, Slot, Slot, Slot];
+        newFilters[idx] = e.target.value as Slot;
+        setSlotFilters(newFilters);
+      }}
+      className="slot-filter-select"
+    >
+      <option value="Any">Empty</option>
+      <option value="G">G Slot</option>
+      <option value="B">B Slot</option>
+      <option value="R">R Slot</option>
+      <option value="J">J Slot (Jolly)</option>
+    </select>
   </div>
 ))}
 {slotFilters.some(s => s !== 'Any') && (
