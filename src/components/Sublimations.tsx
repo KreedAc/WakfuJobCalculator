@@ -4,10 +4,10 @@ import { FALLBACK_SUBLIMATIONS, type Sublimation } from '../data/fallbackSublima
 import { processDescription, initializeRuneLevels } from '../utils/sublimationUtils';
 import { LocalImage } from './LocalImage';
 import './Sublimations.css';
-import redSlot from "../assets/red_slot.png";
-import greenSlot from "../assets/green_slot.png";
-import blueSlot from "../assets/blue_slot.png";
-import yellowSlot from "../assets/yellow_slot.png";
+import redSlot from "../icons/red_slot.png";
+import greenSlot from "../icons/green_slot.png";
+import blueSlot from "../icons/blue_slot.png";
+import yellowSlot from "../icons/yellow_slot.png";
 
 
 export function Sublimations() {
