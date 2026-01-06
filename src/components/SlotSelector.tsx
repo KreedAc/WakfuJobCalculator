@@ -10,10 +10,10 @@ interface SlotSelectorProps {
 
 const SLOT_OPTIONS = [
   { value: 'Any', label: 'Empty', icon: null },
-  { value: 'G', icon: '/icons/green_slot.png' },
-  { value: 'B', icon:'/icons/blue_slot.png' },
-  { value: 'R', icon: '/icons/red_slot.png' },
-  { value: 'J', icon: '/icons/yellow_slot.png' }
+  { value: 'G', label: 'Green', icon: '/icons/green_slot.png' },
+  { value: 'B', label: 'Blue', icon:'/icons/blue_slot.png' },
+  { value: 'R', label: 'Red', icon: '/icons/red_slot.png' },
+  { value: 'J', label: 'White', icon: '/icons/yellow_slot.png' }
 ];
 
 export function SlotSelector({ value, onChange, label }: SlotSelectorProps) {
@@ -23,7 +23,7 @@ export function SlotSelector({ value, onChange, label }: SlotSelectorProps) {
   return (
     <div className="slot-filter-group">
       <label className="slot-filter-label">{label}</label>
-      <div className="relative">
+      <div className={`relative ${isOpen ? 'z-[9999]' : ''}`}>
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
@@ -47,8 +47,7 @@ export function SlotSelector({ value, onChange, label }: SlotSelectorProps) {
         {isOpen && (
           <>
             <div
-              className="fixed inset-0 z-[9998]"
-              onClick={() => setIsOpen(false)}
+             className="fixed inset-0 z-[9998]" onClick={() => setIsOpen(false)}
             />
             <div className="absolute z-[9999] mt-1 w-full bg-slate-800 border border-emerald-500/30 rounded-lg shadow-xl overflow-hidden">
               {SLOT_OPTIONS.map(option => (
