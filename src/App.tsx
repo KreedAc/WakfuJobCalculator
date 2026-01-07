@@ -4,7 +4,6 @@ import { CalculatorPage } from './pages/CalculatorPage';
 import { SublimationsPage } from './pages/SublimationsPage';
 import { HamburgerMenu } from './components/HamburgerMenu';
 import { LanguageSelector } from './components/LanguageSelector';
-import { VisitorCounter } from './components/VisitorCounter';
 import { useClickOutside } from './hooks/useClickOutside';
 import { TRANSLATIONS, type Language } from './constants/translations';
 
@@ -90,9 +89,6 @@ function AppContent() {
         </Routes>
 
         <footer className="mt-16 text-emerald-200/40 text-xs text-center pb-8 font-medium">
-          <div className="flex justify-center mb-4">
-            <VisitorCounter />
-          </div>
           <p>WAKFU is an MMORPG published by Ankama.</p>
           <p className="mt-1">"wakfujobcalculator" is an unofficial website with no connection to Ankama.</p>
           <p className="mt-4 opacity-75">{new Date().getFullYear()} {t.createdBy} KreedAc and LadyKreedAc</p>
