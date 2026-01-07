@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Calculator } from './components/Calculator';
-import { Sublimations } from './components/Sublimations';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { CalculatorPage } from './pages/CalculatorPage';
+import { SublimationsPage } from './pages/SublimationsPage';
 import { HamburgerMenu } from './components/HamburgerMenu';
 import { LanguageSelector } from './components/LanguageSelector';
 import { useClickOutside } from './hooks/useClickOutside';
@@ -8,11 +9,11 @@ import { TRANSLATIONS, type Language } from './constants/translations';
 
 const BG_URL = '424478.jpg';
 
-export default function App() {
-  const [activeTab, setActiveTab] = useState<'calculator' | 'sublimations'>('calculator');
+function AppContent() {
   const [lang, setLang] = useState<Language>('en');
   const [menuOpen, setMenuOpen] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const location = useLocation();
 
   const t = TRANSLATIONS[lang];
 
@@ -32,10 +33,9 @@ export default function App() {
     trackVisit();
   }, []);
 
-  const handleTabChange = (tab: string) => {
-    setActiveTab(tab as 'calculator' | 'sublimations');
+  useEffect(() => {
     setHamburgerOpen(false);
-  };
+  }, [location.pathname]);
 
   const handleLanguageChange = (newLang: Language) => {
     setLang(newLang);
@@ -65,8 +65,7 @@ export default function App() {
             setHamburgerOpen(v => !v);
             setMenuOpen(false);
           }}
-          activeTab={activeTab}
-          onTabChange={handleTabChange}
+          currentPath={location.pathname}
           navCalcLabel={t.navCalc}
           navSubliLabel={t.navSubli}
         />
@@ -84,11 +83,10 @@ export default function App() {
       </div>
 
       <div className="w-full flex flex-col items-center z-10 pt-20">
-        {activeTab === 'calculator' && (
-          <Calculator language={lang} translations={t} />
-        )}
-
-        {activeTab === 'sublimations' && <Sublimations />}
+        <Routes>
+          <Route path="/" element={<CalculatorPage language={lang} />} />
+          <Route path="/sublimations" element={<SublimationsPage />} />
+        </Routes>
 
         <footer className="mt-16 text-emerald-200/40 text-xs text-center pb-8 font-medium">
           <p>WAKFU is an MMORPG published by Ankama.</p>
@@ -97,5 +95,13 @@ export default function App() {
         </footer>
       </div>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }

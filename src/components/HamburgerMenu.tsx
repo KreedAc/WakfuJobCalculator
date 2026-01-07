@@ -1,10 +1,10 @@
 import { Menu, Hammer, Scroll } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface HamburgerMenuProps {
   isOpen: boolean;
   onToggle: () => void;
-  activeTab: string;
-  onTabChange: (tab: string) => void;
+  currentPath: string;
   navCalcLabel: string;
   navSubliLabel: string;
 }
@@ -12,8 +12,7 @@ interface HamburgerMenuProps {
 export function HamburgerMenu({
   isOpen,
   onToggle,
-  activeTab,
-  onTabChange,
+  currentPath,
   navCalcLabel,
   navSubliLabel
 }: HamburgerMenuProps) {
@@ -40,20 +39,20 @@ export function HamburgerMenu({
           <div className="px-4 py-3 bg-white/5 border-b border-white/10">
             <p className="text-xs font-medium text-emerald-400 uppercase tracking-wider">Navigation</p>
           </div>
-          <button
-            onClick={() => { onTabChange('calculator'); }}
-            className={`w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors border-b border-white/5 flex items-center gap-2 ${activeTab === 'calculator' ? 'bg-white/10 text-emerald-300' : ''}`}
+          <Link
+            to="/"
+            className={`w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors border-b border-white/5 flex items-center gap-2 ${currentPath === '/' ? 'bg-white/10 text-emerald-300' : ''}`}
           >
             <Hammer className="w-4 h-4" />
             {navCalcLabel}
-          </button>
-          <button
-            onClick={() => { onTabChange('sublimations'); }}
-            className={`w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors border-b border-white/5 flex items-center gap-2 ${activeTab === 'sublimations' ? 'bg-white/10 text-emerald-300' : ''}`}
+          </Link>
+          <Link
+            to="/sublimations"
+            className={`w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors border-b border-white/5 flex items-center gap-2 ${currentPath === '/sublimations' ? 'bg-white/10 text-emerald-300' : ''}`}
           >
             <Scroll className="w-4 h-4" />
             {navSubliLabel}
-          </button>
+          </Link>
           <button disabled className="w-full text-left px-4 py-3 opacity-50 cursor-not-allowed text-sm font-medium">Work in progress</button>
         </div>
       )}
