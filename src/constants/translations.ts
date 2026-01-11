@@ -26,7 +26,8 @@ export const TRANSLATIONS = {
     createdBy: 'Created by',
     langLabel: 'Language',
     navCalc: 'XP Calculator',
-    navSubli: 'Sublimations'
+    navSubli: 'Sublimations',
+    navItemsCraft: 'Items Craft Guide (Work in progress)'
   },
   fr: {
     title: 'Calculateur d\'XP d\'Artisanat Wakfu',
@@ -47,7 +48,8 @@ export const TRANSLATIONS = {
     createdBy: 'Créé par',
     langLabel: 'Langue',
     navCalc: 'Calculateur XP',
-    navSubli: 'Sublimations'
+    navSubli: 'Sublimations',
+    navItemsCraft: 'Guide de Craft d\'Objets (Work in progress)'
   },
   es: {
     title: 'Calculadora de XP de Artesanía de Wakfu',
@@ -68,6 +70,7 @@ export const TRANSLATIONS = {
     createdBy: 'Creado por',
     langLabel: 'Idioma',
     navCalc: 'Calculadora XP',
-    navSubli: 'Sublimaciones'
+    navSubli: 'Sublimaciones',
+    navItemsCraft: 'Guía de Craft de Objetos (Work in progress)'
   }
 } as const;

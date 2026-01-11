@@ -1,4 +1,4 @@
-import { Menu, Hammer, Scroll } from 'lucide-react';
+import { Menu, Hammer, Scroll, Wrench } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface HamburgerMenuProps {
@@ -7,6 +7,7 @@ interface HamburgerMenuProps {
   currentPath: string;
   navCalcLabel: string;
   navSubliLabel: string;
+  navItemsCraftLabel: string;
 }
 
 export function HamburgerMenu({
@@ -14,7 +15,8 @@ export function HamburgerMenu({
   onToggle,
   currentPath,
   navCalcLabel,
-  navSubliLabel
+  navSubliLabel,
+  navItemsCraftLabel
 }: HamburgerMenuProps) {
   return (
     <div className="relative">
@@ -53,7 +55,16 @@ export function HamburgerMenu({
             <Scroll className="w-4 h-4" />
             {navSubliLabel}
           </Link>
-          <button disabled className="w-full text-left px-4 py-3 opacity-50 cursor-not-allowed text-sm font-medium">Work in progress</button>
+          <div className="px-4 py-2 bg-white/5 border-b border-white/10 mt-2">
+            <p className="text-xs font-medium text-amber-400/60 uppercase tracking-wider">Work in Progress</p>
+          </div>
+          <Link
+            to="/items-craft-guide"
+            className={`w-full text-left px-4 py-3 hover:bg-white/10 text-sm font-medium transition-colors flex items-center gap-2 ${currentPath === '/items-craft-guide' ? 'bg-white/10 text-emerald-300' : ''}`}
+          >
+            <Wrench className="w-4 h-4" />
+            {navItemsCraftLabel}
+          </Link>
         </div>
       )}
     </div>
