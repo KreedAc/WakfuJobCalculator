@@ -7,7 +7,7 @@ import { LanguageSelector } from './components/LanguageSelector';
 import { useClickOutside } from './hooks/useClickOutside';
 import { TRANSLATIONS, type Language } from './constants/translations';
 
-const BG_URL = '424478.jpg';
+const BG_URL = '/424478.jpg';
 
 function AppContent() {
   const [lang, setLang] = useState<Language>('en');
