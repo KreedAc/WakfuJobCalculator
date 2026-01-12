@@ -236,6 +236,10 @@ export function ItemsCraftGuidePage() {
   setRecipeChoice(new Map());
   setHideResults(true); // ✅ nascondi lista
 }}
+                      useEffect(() => {
+  setHideResults(false);
+  setSelectedId(null);
+}, [query]);
                       className={[
                         "w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border transition",
                         isSel ? "glass-strong" : "glass-soft hover:border-emerald-300/25",
