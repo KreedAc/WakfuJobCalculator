@@ -193,15 +193,35 @@ export function ItemsCraftGuidePage() {
                       <div className="mt-3">
                         <div className="text-emerald-200/70 text-sm mb-2">Ingredienti</div>
                         <ul className="space-y-1">
-                          {r.ingredients.map((ing, idx) => (
-                            <li key={idx} className="flex items-center justify-between gap-3">
-                              <span className="text-emerald-100">
-                                {getItemName(ing.itemId)}
-                                <span className="text-emerald-200/40 text-xs"> (#{ing.itemId})</span>
-                              </span>
-                              <span className="text-emerald-200/70">× {ing.qty}</span>
-                            </li>
-                          ))}
+                          {r.ingredients.map((ing, idx) => {
+  const ingItem = data.itemById.get(ing.itemId);
+  const ingIcon = getItemIconUrl(ingItem?.gfxId);
+
+  return (
+    <li key={idx} className="flex items-center justify-between gap-3">
+      <div className="flex items-center gap-3">
+        {ingIcon ? (
+          <img
+            src={ingIcon}
+            alt=""
+            className="w-8 h-8 rounded-lg bg-black/20"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-8 h-8 rounded-lg bg-black/20" />
+        )}
+
+        <span className="text-emerald-100">
+          {ingItem?.name ?? `#${ing.itemId}`}
+          <span className="text-emerald-200/40 text-xs"> (#{ing.itemId})</span>
+        </span>
+      </div>
+
+      <span className="text-emerald-200/70">× {ing.qty}</span>
+    </li>
+  );
+})}
+
                         </ul>
                       </div>
                     </div>
