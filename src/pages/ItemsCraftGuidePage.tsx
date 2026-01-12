@@ -14,7 +14,7 @@ export function ItemsCraftGuidePage() {
 
   useEffect(() => {
     loadWakfuData()
-      .then(d => {
+      .then((d) => {
         setItems(d.items);
         setItemsById(d.itemsById);
         setRecipesByResultId(d.recipesByResultId);
@@ -25,13 +25,11 @@ export function ItemsCraftGuidePage() {
   const results = useMemo(() => {
     const q = norm(query);
     if (!q) return [];
-    return items
-      .filter(it => norm(it.name).includes(q))
-      .slice(0, 30);
+    return items.filter((it) => norm(it.name).includes(q)).slice(0, 30);
   }, [items, query]);
 
   const selected = results[0] ?? null;
-  const recipes = selected ? (recipesByResultId.get(selected.id) ?? []) : [];
+  const recipes = selected ? recipesByResultId.get(selected.id) ?? [] : [];
 
   return (
     <div className="w-full max-w-5xl mx-auto p-4">
@@ -58,14 +56,16 @@ export function ItemsCraftGuidePage() {
       {selected && (
         <div className="rounded-2xl border border-emerald-300/15 bg-black/30 p-4">
           <div className="flex items-start gap-4">
-            <ItemIcon itemId={selected.id} />
+            <ItemIconLink itemId={selected.id} />
             <div className="flex-1">
               <div className="text-xl font-semibold text-emerald-200">{selected.name}</div>
+
               {selected.description && (
                 <div className="text-sm text-emerald-200/70 mt-1 whitespace-pre-line">
                   {selected.description}
                 </div>
               )}
+
               <div className="text-xs text-emerald-200/40 mt-2">ID: {selected.id}</div>
             </div>
           </div>
@@ -89,16 +89,19 @@ export function ItemsCraftGuidePage() {
                       {r.ingredients.map((ing, idx) => {
                         const it = itemsById.get(ing.itemId);
                         const label = it?.name ?? `#${ing.itemId}`;
+
                         return (
                           <div
                             key={`${ing.itemId}-${idx}`}
                             className="flex items-center gap-3 rounded-lg bg-black/20 border border-emerald-300/10 px-3 py-2"
                           >
-                            <ItemIcon itemId={ing.itemId} size={34} />
+                            <ItemIconLink itemId={ing.itemId} size={34} />
+
                             <div className="flex-1">
                               <div className="text-emerald-100 text-sm">{label}</div>
                               <div className="text-emerald-200/50 text-xs">ID: {ing.itemId}</div>
                             </div>
+
                             <div className="text-emerald-200 font-semibold">x{ing.qty}</div>
                           </div>
                         );
@@ -115,21 +118,39 @@ export function ItemsCraftGuidePage() {
   );
 }
 
-function ItemIcon({ itemId, size = 44 }: { itemId: number; size?: number }) {
-  const [src, setSrc] = useState(getItemIconUrl(itemId, "ankama"));
+/**
+ * Opzione A: niente <img> in pagina.
+ * Mostriamo un badge "IMG" che apre l'icona in una nuova tab.
+ * Include anche link wakassets (Wk) oltre ad Ankama (Ank).
+ */
+function ItemIconLink({ itemId, size = 44 }: { itemId: number; size?: number }) {
+  const ankama = getItemIconUrl(itemId, "ankama");
+  const wakassets = getItemIconUrl(itemId, "wakassets");
 
   return (
-    <img
-      src={src}
-      width={size}
-      height={size}
-      alt=""
-      className="rounded-xl bg-black/30 border border-emerald-300/10"
-      onError={() => {
-        // fallback: wakassets
-        if (src.includes("static.ankama.com")) setSrc(getItemIconUrl(itemId, "wakassets"));
-      }}
-      loading="lazy"
-    />
+    <div
+      style={{ width: size, height: size }}
+      className="rounded-xl bg-black/30 border border-emerald-300/10 flex items-center justify-center"
+      title={`Open icon:\nAnkama: ${ankama}\nWakassets: ${wakassets}`}
+    >
+      <div className="flex flex-col items-center justify-center leading-none">
+        <a
+          href={ankama}
+          target="_blank"
+          rel="noreferrer"
+          className="text-[10px] text-emerald-200/70 hover:text-emerald-200"
+        >
+          Ank
+        </a>
+        <a
+          href={wakassets}
+          target="_blank"
+          rel="noreferrer"
+          className="text-[10px] text-emerald-200/70 hover:text-emerald-200"
+        >
+          Wk
+        </a>
+      </div>
+    </div>
   );
 }
