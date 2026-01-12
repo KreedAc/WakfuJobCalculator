@@ -18,7 +18,7 @@ export type WakfuData = {
   recipes: CompactRecipe[];
   itemsById: Map<number, CompactItem>;
   recipesByResultId: Map<number, CompactRecipe[]>;
-  recipesByIngredientId: Map<number, CompactRecipe[]>;
+  craftableResultIds: Set<number>;
   ready: true;
 };
 
@@ -68,29 +68,26 @@ export async function loadWakfuData(): Promise<WakfuData> {
       fetch(baseUrl("data/recipes.compact.json")).then((r) => r.json()),
     ]);
 
-    const items: CompactItem[] = Array.isArray(itemsRaw) ? itemsRaw.map(normalizeItem).filter((x) => x.id > 0) : [];
-    const recipes: CompactRecipe[] = Array.isArray(recipesRaw) ? recipesRaw.map(normalizeRecipe).filter((x) => x.id > 0) : [];
+    const items: CompactItem[] = Array.isArray(itemsRaw)
+      ? itemsRaw.map(normalizeItem).filter((x) => x.id > 0)
+      : [];
+
+    const recipes: CompactRecipe[] = Array.isArray(recipesRaw)
+      ? recipesRaw.map(normalizeRecipe).filter((x) => x.id > 0)
+      : [];
 
     const itemsById = new Map<number, CompactItem>();
     for (const it of items) itemsById.set(it.id, it);
 
     const recipesByResultId = new Map<number, CompactRecipe[]>();
-    const recipesByIngredientId = new Map<number, CompactRecipe[]>();
+    const craftableResultIds = new Set<number>();
 
     for (const r of recipes) {
-      // indice per risultato
-      {
-        const arr = recipesByResultId.get(r.resultItemId) ?? [];
-        arr.push(r);
-        recipesByResultId.set(r.resultItemId, arr);
-      }
+      craftableResultIds.add(r.resultItemId);
 
-      // indice inverso per ingrediente
-      for (const ing of r.ingredients) {
-        const arr = recipesByIngredientId.get(ing.itemId) ?? [];
-        arr.push(r);
-        recipesByIngredientId.set(ing.itemId, arr);
-      }
+      const arr = recipesByResultId.get(r.resultItemId) ?? [];
+      arr.push(r);
+      recipesByResultId.set(r.resultItemId, arr);
     }
 
     return {
@@ -98,7 +95,7 @@ export async function loadWakfuData(): Promise<WakfuData> {
       recipes,
       itemsById,
       recipesByResultId,
-      recipesByIngredientId,
+      craftableResultIds,
       ready: true as const,
     };
   })();
