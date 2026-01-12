@@ -3,6 +3,7 @@ export type CompactItem = {
   name: string;
   description?: string | null;
   level?: number;
+  gfxId?: number | null;
 };
 
 export type CompactRecipe = {
