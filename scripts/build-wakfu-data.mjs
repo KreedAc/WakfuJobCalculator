@@ -1,88 +1,100 @@
-import fs from "node:fs";
 import { promises as fsp } from "node:fs";
 import path from "node:path";
 import { Readable } from "node:stream";
 
 const OUT_DIR = path.resolve("public/data");
 
+// ---------- helpers ----------
 function pickText(v) {
   if (!v) return null;
   if (typeof v === "string") return v;
-  if (typeof v === "object") return v.en ?? v.fr ?? v.es ?? v.pt ?? Object.values(v)[0] ?? null;
+  if (typeof v === "object") {
+    // prefer EN, poi FR/ES/PT, poi il primo valore
+    return v.en ?? v.fr ?? v.es ?? v.pt ?? Object.values(v)[0] ?? null;
+  }
   return null;
 }
 
-/**
- * In Wakfu gamedata spesso le info “vere” stanno in definition.item
- * oppure definition.resource / definition.collectibleResource ecc.
- * Questa funzione prova a "scendere" dove serve.
- */
-function coreDef(o) {
-  const def = o?.definition ?? o;
-  return def?.item ?? def?.resource ?? def?.collectibleResource ?? def;
-}
+function pickId(obj) {
+  // molti file hanno forme diverse
+  const o = obj ?? {};
+  const d = o.definition ?? {};
 
-function pickId(o) {
-  const d = coreDef(o);
-  const v =
-    o?.id ??
-    o?.definition?.id ??
-    d?.id ??
-    o?.definitionId ??
-    o?.itemId ??
-    o?.itemDefinitionId ??
-    o?.resourceId ??
-    o?.resourceDefinitionId ??
-    null;
+  // caso IMPORTANTISSIMO per items.json: definition.item.id
+  const defItem = d.item ?? d?.itemDefinition ?? null;
 
-  const n = Number(v);
-  return Number.isFinite(n) && n > 0 ? n : null;
-}
-
-function pickTitle(o) {
-  const def = o?.definition ?? o;
-  const d = coreDef(o);
   return (
-    pickText(def?.title) ??
-    pickText(def?.name) ??
-    pickText(d?.title) ??
-    pickText(d?.name) ??
+    o.id ??
+    o.definitionId ??
+    o.itemId ??
+    o.itemDefinitionId ??
+    o.resourceId ??
+    o.resourceDefinitionId ??
+    d.id ??
+    defItem?.id ??
+    defItem?.definitionId ??
     null
   );
 }
 
-function pickDescription(o) {
-  const def = o?.definition ?? o;
-  const d = coreDef(o);
-  return pickText(def?.description) ?? pickText(d?.description) ?? null;
+function pickTitle(obj) {
+  const o = obj ?? {};
+  const d = o.definition ?? {};
+  const defItem = d.item ?? null;
+
+  return (
+    pickText(o.title) ??
+    pickText(o.name) ??
+    pickText(o.itemTitle) ??
+    pickText(d.title) ??
+    pickText(d.name) ??
+    pickText(defItem?.title) ??
+    pickText(defItem?.name) ??
+    null
+  );
 }
 
-/**
- * L’icona NON è sempre gfxId: spesso è imageId o baseGfxId ecc.
- * Qui cerchiamo in più posti (anche dentro coreDef()).
- */
-function pickGfxId(o) {
-  const d = coreDef(o);
+function pickDescription(obj) {
+  const o = obj ?? {};
+  const d = o.definition ?? {};
+  const defItem = d.item ?? null;
+
+  return (
+    pickText(o.description) ??
+    pickText(d.description) ??
+    pickText(defItem?.description) ??
+    null
+  );
+}
+
+// (opzionale) proviamo a pescare un gfx/icon id, ma non blocca nulla se manca
+function pickGfxId(obj) {
+  const o = obj ?? {};
+  const d = o.definition ?? o;
+  const gp = d.graphicParameters ?? d?.item?.graphicParameters ?? null;
 
   const candidates = [
-    d?.imageId,
-    d?.gfxId,
+    // spesso stanno dentro graphicParameters
+    gp?.gfxId,
+    gp?.iconGfxId,
+    gp?.iconId,
+    gp?.smallIconId,
+    gp?.bigIconId,
+
+    // altre varianti
     d?.iconGfxId,
     d?.iconId,
-    d?.baseGfxId,
+    d?.smallIconId,
+    d?.bigIconId,
     d?.itemGfxId,
+    d?.gfxId,
+    d?.baseGfxId,
     d?.graphicId,
+    d?.imageId,
 
-    d?.properties?.imageId,
-    d?.properties?.gfxId,
-    d?.properties?.iconGfxId,
-    d?.properties?.iconId,
-
-    // fallback: se proprio l’icona è sul livello superiore
-    o?.imageId,
-    o?.gfxId,
-    o?.iconGfxId,
-    o?.iconId,
+    // collectibleResources ha collectGfxId
+    d?.collectGfxId,
+    o?.collectGfxId,
   ];
 
   for (const v of candidates) {
@@ -104,8 +116,8 @@ async function fetchJson(url) {
 }
 
 /**
- * Stream-parsing di un JSON array enorme:
- * estrae oggetti "{...}" top-level e li JSON.parse. Filtra per neededSet.
+ * Stream parse di un JSON array enorme: estrae oggetti top-level { ... }.
+ * Filtra per neededSet e ritorna compact items.
  */
 async function streamCompactItems(url, neededSet, sourceLabel) {
   const res = await fetch(url);
@@ -119,10 +131,10 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
 
   let inString = false, escape = false, depth = 0;
   let buf = "";
+
   const out = [];
   let parsed = 0;
   let matched = 0;
-  let printedDebug = false;
 
   function flushObject(s) {
     parsed++;
@@ -133,38 +145,20 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
       return;
     }
 
-    const id = pickId(obj);
+    const id = Number(pickId(obj));
     if (!id || !neededSet.has(id)) return;
 
     const title = pickTitle(obj);
     const description = pickDescription(obj);
     const gfxId = pickGfxId(obj);
 
-    if (!printedDebug) {
-      printedDebug = true;
-      const def = obj?.definition ?? obj;
-      const core = coreDef(obj);
-      console.log(`DEBUG (${sourceLabel}) first matched id=${id}`);
-      console.log("  defKeys:", def ? Object.keys(def) : null);
-      console.log("  coreKeys:", core ? Object.keys(core) : null);
-      console.log("  iconCandidates:", {
-        core_imageId: core?.imageId,
-        core_gfxId: core?.gfxId,
-        core_baseGfxId: core?.baseGfxId,
-        core_iconGfxId: core?.iconGfxId,
-        core_iconId: core?.iconId,
-        picked: gfxId,
-      });
-    }
-
     out.push({
       id,
       name: title ?? `#${id}`,
       description: description ?? null,
-      gfxId: gfxId,
+      gfxId: gfxId ?? null,
       source: sourceLabel,
     });
-
     matched++;
   }
 
@@ -219,6 +213,7 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
   return { out, parsed, matched };
 }
 
+// ---------- main ----------
 async function main() {
   await fsp.mkdir(OUT_DIR, { recursive: true });
 
@@ -256,14 +251,12 @@ async function main() {
   const resByRecipe = new Map();
   for (const row of recipeResRaw) {
     const recipeId = row?.recipeId ?? row?.definition?.recipeId ?? row?.recipeDefinitionId;
-
     const itemId =
       row?.productedItemId ??
       row?.productedItemDefinitionId ??
       row?.itemId ??
       row?.definition?.itemId ??
       row?.resultItemId;
-
     const qty =
       row?.productedItemQuantity ??
       row?.quantity ??
@@ -273,7 +266,6 @@ async function main() {
       1;
 
     if (!recipeId || !itemId) continue;
-
     const rid = Number(recipeId);
     if (!resByRecipe.has(rid)) {
       resByRecipe.set(rid, { resultItemId: Number(itemId), resultQty: Number(qty) || 1 });
@@ -293,7 +285,12 @@ async function main() {
     if (!res) continue;
 
     const ingredients = ingByRecipe.get(rid) ?? [];
-    recipesCompact.push({ id: rid, resultItemId: res.resultItemId, resultQty: res.resultQty, ingredients });
+    recipesCompact.push({
+      id: rid,
+      resultItemId: res.resultItemId,
+      resultQty: res.resultQty,
+      ingredients,
+    });
 
     neededItemIds.add(res.resultItemId);
     for (const ing of ingredients) neededItemIds.add(ing.itemId);
@@ -309,10 +306,18 @@ async function main() {
   console.log("recipes.compact:", recipesCompact.length);
   console.log("needed item ids:", neededItemIds.size);
 
-  // prendiamo item info da più JSON
-  const sources = ["items", "resources", "collectibleResources", "jobsItems"];
+  // IMPORTANTISSIMO:
+  // 1) prima items.json (testi quasi sempre migliori)
+  // 2) poi fallback
+  const sources = ["items", "jobsItems", "resources", "collectibleResources"];
 
   const itemById = new Map(); // id -> best record
+
+  const score = (x) => {
+    if (!x) return 0;
+    const hasRealName = x.name && !x.name.startsWith("#");
+    return (hasRealName ? 10 : 0) + (x.description ? 2 : 0) + (x.gfxId ? 1 : 0);
+  };
 
   for (const s of sources) {
     const url = `${base}/${s}.json`;
@@ -322,9 +327,7 @@ async function main() {
     console.log(`${s}: parsed=${parsed} matched=${matched}`);
 
     for (const it of out) {
-      // preferisci record con nome vero e con gfxId valorizzato
       const prev = itemById.get(it.id);
-      const score = (x) => (x ? (x.name && !x.name.startsWith("#") ? 2 : 0) + (x.gfxId ? 1 : 0) : 0);
       if (!prev || score(it) > score(prev)) itemById.set(it.id, it);
     }
   }
@@ -333,11 +336,14 @@ async function main() {
   const missing = [...neededItemIds].filter((id) => !itemById.has(id));
 
   await fsp.writeFile(path.join(OUT_DIR, "items.compact.json"), JSON.stringify(itemsCompact));
-  console.log("items.compact:", itemsCompact.length);
-  console.log("missing item ids:", missing.length);
-
   await fsp.writeFile(path.join(OUT_DIR, "missing_item_ids.json"), JSON.stringify(missing));
 
+  // mini report utile
+  const placeholder = itemsCompact.filter((x) => x.name?.startsWith("#")).length;
+
+  console.log("items.compact:", itemsCompact.length);
+  console.log("missing item ids:", missing.length);
+  console.log("placeholder names (#id):", placeholder);
   console.log("DONE ✅");
 }
 
