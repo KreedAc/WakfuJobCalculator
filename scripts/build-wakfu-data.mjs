@@ -156,16 +156,18 @@ async function streamItemsAndFilter(url, neededSet) {
     if (!id || !neededSet.has(id)) return;
 
     matched++;
-    const nameId = pickItemNameId(obj);
-    const lvl = pickItemLevel(obj);
+    const title = typeof obj?.title === "string" ? obj.title : null;
+const desc = typeof obj?.description === "string" ? obj.description : null;
 
-    out.push({
-      id,
-      nameId,
-      // placeholder: poi lo “traduciamo”
-      name: nameId ? "#" + nameId : "#" + id,
-      level: lvl,
-    });
+const lvl = pickItemLevel(obj);
+
+out.push({
+  id,
+  name: title ?? ("#" + id),
+  description: desc,
+  level: lvl,
+});
+
   }
 
   function onChar(ch) {
