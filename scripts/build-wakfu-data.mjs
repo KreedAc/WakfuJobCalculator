@@ -184,6 +184,9 @@ const desc = typeof obj?.description === "string" ? obj.description : null;
 
 const lvl = pickItemLevel(obj);
 
+const title = pickText(obj?.title);
+const desc = pickText(obj?.description);
+
 out.push({
   id,
   name: title ?? ("#" + id),
