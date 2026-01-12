@@ -58,16 +58,17 @@ out.push({
   level: typeof lvl === "number" ? lvl : undefined,
 });
 
-const pickItemNameId = (obj) =>
-  obj?.nameId ??
-  obj?.definition?.nameId ??
-  obj?.titleId ??
-  obj?.definition?.titleId ??
-  null;
+function pickItemNameId(obj) {
+  return (
+    obj?.nameId ??
+    obj?.definition?.nameId ??
+    obj?.titleId ??
+    obj?.definition?.titleId ??
+    null
+  );
+}
 
-// deve esistere perché il tuo script lo usa.
-// ritorna SEMPRE una stringa => niente più filtraggio a 0.
-const pickItemName = (obj) => {
+function pickItemName(obj) {
   const nid = pickItemNameId(obj);
   if (nid != null) return "#" + Number(nid);
 
@@ -75,8 +76,7 @@ const pickItemName = (obj) => {
   if (id != null) return "#" + Number(id);
 
   return "#unknown";
-};
-
+}
 
 async function fetchJson(url) {
   const res = await fetch(url);
