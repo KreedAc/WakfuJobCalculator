@@ -18,52 +18,96 @@ export type WakfuData = {
   recipes: CompactRecipe[];
   itemsById: Map<number, CompactItem>;
   recipesByResultId: Map<number, CompactRecipe[]>;
+  recipesByIngredientId: Map<number, CompactRecipe[]>;
   ready: true;
 };
 
 let _cache: Promise<WakfuData> | null = null;
 
-function baseUrl(path: string) {
-  // supporta deploy anche in sottocartelle
+function baseUrl(p: string) {
   const base = (import.meta as any).env?.BASE_URL ?? "/";
-  return `${base.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
+  return `${String(base).replace(/\/$/, "")}/${p.replace(/^\//, "")}`;
+}
+
+function toNum(v: unknown): number {
+  const n = typeof v === "number" ? v : Number(v);
+  return Number.isFinite(n) ? n : 0;
+}
+
+function normalizeItem(raw: any): CompactItem {
+  return {
+    id: toNum(raw?.id),
+    name: String(raw?.name ?? `#${raw?.id ?? "?"}`),
+    description: raw?.description == null ? null : String(raw.description),
+    gfxId: raw?.gfxId == null ? null : toNum(raw.gfxId) || null,
+    source: raw?.source ? String(raw.source) : undefined,
+  };
+}
+
+function normalizeRecipe(raw: any): CompactRecipe {
+  const ingredientsRaw = Array.isArray(raw?.ingredients) ? raw.ingredients : [];
+  return {
+    id: toNum(raw?.id),
+    resultItemId: toNum(raw?.resultItemId),
+    resultQty: toNum(raw?.resultQty) || 1,
+    ingredients: ingredientsRaw
+      .map((ing: any) => ({
+        itemId: toNum(ing?.itemId),
+        qty: toNum(ing?.qty) || 1,
+      }))
+      .filter((x: any) => x.itemId > 0 && x.qty > 0),
+  };
 }
 
 export async function loadWakfuData(): Promise<WakfuData> {
   if (_cache) return _cache;
 
   _cache = (async () => {
-    const [items, recipes] = await Promise.all([
-      fetch(baseUrl("data/items.compact.json")).then((r) => r.json()) as Promise<CompactItem[]>,
-      fetch(baseUrl("data/recipes.compact.json")).then((r) => r.json()) as Promise<CompactRecipe[]>,
+    const [itemsRaw, recipesRaw] = await Promise.all([
+      fetch(baseUrl("data/items.compact.json")).then((r) => r.json()),
+      fetch(baseUrl("data/recipes.compact.json")).then((r) => r.json()),
     ]);
+
+    const items: CompactItem[] = Array.isArray(itemsRaw) ? itemsRaw.map(normalizeItem).filter((x) => x.id > 0) : [];
+    const recipes: CompactRecipe[] = Array.isArray(recipesRaw) ? recipesRaw.map(normalizeRecipe).filter((x) => x.id > 0) : [];
 
     const itemsById = new Map<number, CompactItem>();
     for (const it of items) itemsById.set(it.id, it);
 
     const recipesByResultId = new Map<number, CompactRecipe[]>();
+    const recipesByIngredientId = new Map<number, CompactRecipe[]>();
+
     for (const r of recipes) {
-      const arr = recipesByResultId.get(r.resultItemId) ?? [];
-      arr.push(r);
-      recipesByResultId.set(r.resultItemId, arr);
+      // indice per risultato
+      {
+        const arr = recipesByResultId.get(r.resultItemId) ?? [];
+        arr.push(r);
+        recipesByResultId.set(r.resultItemId, arr);
+      }
+
+      // indice inverso per ingrediente
+      for (const ing of r.ingredients) {
+        const arr = recipesByIngredientId.get(ing.itemId) ?? [];
+        arr.push(r);
+        recipesByIngredientId.set(ing.itemId, arr);
+      }
     }
 
-    return { items, recipes, itemsById, recipesByResultId, ready: true as const };
+    return {
+      items,
+      recipes,
+      itemsById,
+      recipesByResultId,
+      recipesByIngredientId,
+      ready: true as const,
+    };
   })();
 
   return _cache;
 }
 
-/**
- * URL icona item:
- * - provider "ankama": prova URL ufficiale (spesso funziona)
- * - provider "wakassets": fallback community assets
- *
- * Nota: qui usiamo l'ID item. Non serve gfxId.
- */
 export function getItemIconUrl(itemId: number, provider: "ankama" | "wakassets" = "ankama") {
   if (provider === "ankama") {
-    // path comune usato da molte tool community
     return `https://static.ankama.com/wakfu/portal/game/item/115/${itemId}.png`;
   }
   return `https://vertylo.github.io/wakassets/items/${itemId}.png`;
