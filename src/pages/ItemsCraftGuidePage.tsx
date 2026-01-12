@@ -265,7 +265,7 @@ export function ItemsCraftGuidePage() {
     {selected.description}
   </div>
 )}
-                    <div className="text-xs text-emerald-200/55 mt-2">ID: {selected.id}</div>
+                    
                   </div>
                 </div>
 
