@@ -2,6 +2,8 @@ export type CompactItem = {
   id: number;
   name: string;
   description: string | null;
+  gfxId?: number | null;
+  source?: string;
 };
 
 export type CompactRecipe = {
@@ -16,77 +18,52 @@ export type WakfuData = {
   recipes: CompactRecipe[];
   itemsById: Map<number, CompactItem>;
   recipesByResultId: Map<number, CompactRecipe[]>;
+  ready: true;
 };
 
 let _cache: Promise<WakfuData> | null = null;
 
-function dataUrl(path: string) {
-  // Vite: BASE_URL è "/" in dev, ma può essere "/qualcosa/" in preview/deploy
-  const base = import.meta.env.BASE_URL ?? "/";
-  // base finisce con "/" (di solito), quindi concateniamo senza problemi
-  return `${base}data/${path}`;
+function baseUrl(path: string) {
+  // supporta deploy anche in sottocartelle
+  const base = (import.meta as any).env?.BASE_URL ?? "/";
+  return `${base.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
 }
 
-async function fetchJsonSafe<T>(url: string): Promise<T> {
-  const r = await fetch(url, { cache: "no-store" });
-  const text = await r.text();
-
-  if (!r.ok) {
-    throw new Error(`HTTP ${r.status} for ${url}\n${text.slice(0, 200)}`);
-  }
-
-  // Se per errore torna HTML (tipo index.html), lo intercettiamo
-  const trimmed = text.trim();
-  const looksLikeJson = trimmed.startsWith("[") || trimmed.startsWith("{");
-  if (!looksLikeJson) {
-    throw new Error(
-      `Non-JSON response from ${url}\nFirst chars: ${trimmed.slice(0, 80)}`
-    );
-  }
-
-  try {
-    return JSON.parse(text) as T;
-  } catch (e) {
-    throw new Error(`JSON parse error for ${url}\n${text.slice(0, 200)}`);
-  }
-}
-
-export function loadWakfuData(): Promise<WakfuData> {
+export async function loadWakfuData(): Promise<WakfuData> {
   if (_cache) return _cache;
-
-  // cache-busting leggero per evitare preview che serve file vecchi
-  const bust = Date.now();
-
-  const itemsUrl = `${dataUrl("items.compact.json")}?v=${bust}`;
-  const recipesUrl = `${dataUrl("recipes.compact.json")}?v=${bust}`;
 
   _cache = (async () => {
     const [items, recipes] = await Promise.all([
-      fetchJsonSafe<CompactItem[]>(itemsUrl),
-      fetchJsonSafe<CompactRecipe[]>(recipesUrl),
+      fetch(baseUrl("data/items.compact.json")).then((r) => r.json()) as Promise<CompactItem[]>,
+      fetch(baseUrl("data/recipes.compact.json")).then((r) => r.json()) as Promise<CompactRecipe[]>,
     ]);
 
     const itemsById = new Map<number, CompactItem>();
     for (const it of items) itemsById.set(it.id, it);
 
     const recipesByResultId = new Map<number, CompactRecipe[]>();
-    for (const rec of recipes) {
-      const arr = recipesByResultId.get(rec.resultItemId) ?? [];
-      arr.push(rec);
-      recipesByResultId.set(rec.resultItemId, arr);
+    for (const r of recipes) {
+      const arr = recipesByResultId.get(r.resultItemId) ?? [];
+      arr.push(r);
+      recipesByResultId.set(r.resultItemId, arr);
     }
 
-    return { items, recipes, itemsById, recipesByResultId };
+    return { items, recipes, itemsById, recipesByResultId, ready: true as const };
   })();
 
   return _cache;
 }
 
-export function getItemIconUrl(
-  itemId: number,
-  variant: "ankama" | "wakassets" = "ankama"
-) {
-  if (variant === "ankama") {
+/**
+ * URL icona item:
+ * - provider "ankama": prova URL ufficiale (spesso funziona)
+ * - provider "wakassets": fallback community assets
+ *
+ * Nota: qui usiamo l'ID item. Non serve gfxId.
+ */
+export function getItemIconUrl(itemId: number, provider: "ankama" | "wakassets" = "ankama") {
+  if (provider === "ankama") {
+    // path comune usato da molte tool community
     return `https://static.ankama.com/wakfu/portal/game/item/115/${itemId}.png`;
   }
   return `https://vertylo.github.io/wakassets/items/${itemId}.png`;
