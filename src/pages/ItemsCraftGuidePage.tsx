@@ -261,10 +261,10 @@ export function ItemsCraftGuidePage() {
                   <div className="flex-1">
                     <div className="text-xl font-semibold text-emerald-200">{selected.name}</div>
                     {selected.description && (
-                      <div className="text-sm text-emerald-200/80 mt-1 whitespace-pre-line">
-                        {selected.description}
-                      </div>
-                    )}
+  <div className="text-sm text-emerald-200/80 mt-1 whitespace-pre-line">
+    {selected.description}
+  </div>
+)}
                     <div className="text-xs text-emerald-200/55 mt-2">ID: {selected.id}</div>
                   </div>
                 </div>
