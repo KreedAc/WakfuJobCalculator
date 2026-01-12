@@ -14,6 +14,7 @@ export function ItemsCraftGuidePage() {
   const [items, setItems] = useState<CompactItem[]>([]);
   const [itemsById, setItemsById] = useState<Map<number, CompactItem>>(new Map());
   const [recipesByResultId, setRecipesByResultId] = useState<Map<number, CompactRecipe[]>>(new Map());
+  const [recipesByIngredientId, setRecipesByIngredientId] = useState<Map<number, CompactRecipe[]>>(new Map());
   const [loading, setLoading] = useState(true);
 
   const [selectedId, setSelectedId] = useState<number | null>(null);
@@ -24,27 +25,21 @@ export function ItemsCraftGuidePage() {
         setItems(d.items);
         setItemsById(d.itemsById);
         setRecipesByResultId(d.recipesByResultId);
+        setRecipesByIngredientId(d.recipesByIngredientId);
       })
       .finally(() => setLoading(false));
   }, []);
 
-  // precompute nome normalizzato per ricerca più stabile
   const itemsWithNorm = useMemo(() => {
-    return items.map((it) => ({
-      ...it,
-      _norm: norm(it.name),
-    }));
+    return items.map((it) => ({ ...it, _norm: norm(it.name) }));
   }, [items]);
 
   const results = useMemo(() => {
     const q = norm(query);
     if (!q) return [];
-    return itemsWithNorm
-      .filter((it) => it._norm.includes(q))
-      .slice(0, 30);
+    return itemsWithNorm.filter((it) => it._norm.includes(q)).slice(0, 30);
   }, [itemsWithNorm, query]);
 
-  // se cambio query e ho risultati, auto-seleziono il primo
   useEffect(() => {
     if (!query) {
       setSelectedId(null);
@@ -55,15 +50,19 @@ export function ItemsCraftGuidePage() {
   }, [query, results]);
 
   const selected: CompactItem | null = selectedId ? itemsById.get(selectedId) ?? null : null;
-  const recipes = selected ? recipesByResultId.get(selected.id) ?? [] : [];
+
+  // ricette che PRODUCONO questo item
+  const craftRecipes = selected ? recipesByResultId.get(selected.id) ?? [] : [];
+
+  // ricette in cui questo item è USATO come ingrediente
+  const usedInRecipes = selected ? recipesByIngredientId.get(selected.id) ?? [] : [];
 
   return (
     <div className="w-full max-w-5xl mx-auto p-4">
       <div className="flex items-end justify-between gap-4 flex-wrap">
         <h1 className="text-3xl font-bold text-emerald-300">Items Craft Guide</h1>
         <div className="text-xs text-emerald-200/50">
-          items: {items.length} • recipes: {Array.from(recipesByResultId.values()).reduce((a, b) => a + b.length, 0)} •{" "}
-          {loading ? "loading..." : "ready"}
+          items: {items.length} • recipes: {loading ? "..." : craftRecipes.length ? "ok" : "loaded"} • {loading ? "loading..." : "ready"}
         </div>
       </div>
 
@@ -79,13 +78,11 @@ export function ItemsCraftGuidePage() {
 
       {!query && <p className="mt-4 text-emerald-200/70">Type an item name to see its crafting recipe.</p>}
 
-      {query && results.length === 0 && !loading && (
-        <p className="mt-4 text-emerald-200/70">No items found.</p>
-      )}
+      {query && results.length === 0 && !loading && <p className="mt-4 text-emerald-200/70">No items found.</p>}
 
       {results.length > 0 && (
         <div className="mt-4 grid md:grid-cols-2 gap-4">
-          {/* risultati */}
+          {/* results */}
           <div className="rounded-2xl border border-emerald-300/15 bg-black/30 p-3">
             <div className="text-sm text-emerald-200/70 mb-2">Results ({results.length})</div>
             <div className="space-y-2 max-h-[420px] overflow-auto pr-1">
@@ -97,9 +94,7 @@ export function ItemsCraftGuidePage() {
                     onClick={() => setSelectedId(it.id)}
                     className={[
                       "w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border transition",
-                      isSel
-                        ? "bg-emerald-500/10 border-emerald-300/30"
-                        : "bg-black/20 border-emerald-300/10 hover:border-emerald-300/25",
+                      isSel ? "bg-emerald-500/10 border-emerald-300/30" : "bg-black/20 border-emerald-300/10 hover:border-emerald-300/25",
                     ].join(" ")}
                   >
                     <ItemIcon itemId={it.id} size={34} />
@@ -113,7 +108,7 @@ export function ItemsCraftGuidePage() {
             </div>
           </div>
 
-          {/* dettaglio + ricette */}
+          {/* detail */}
           {selected && (
             <div className="rounded-2xl border border-emerald-300/15 bg-black/30 p-4">
               <div className="flex items-start gap-4">
@@ -121,28 +116,25 @@ export function ItemsCraftGuidePage() {
                 <div className="flex-1">
                   <div className="text-xl font-semibold text-emerald-200">{selected.name}</div>
                   {selected.description && (
-                    <div className="text-sm text-emerald-200/70 mt-1 whitespace-pre-line">
-                      {selected.description}
-                    </div>
+                    <div className="text-sm text-emerald-200/70 mt-1 whitespace-pre-line">{selected.description}</div>
                   )}
                   <div className="text-xs text-emerald-200/40 mt-2">ID: {selected.id}</div>
                 </div>
               </div>
 
+              {/* crafting recipes (ingredients to make it) */}
               <div className="mt-6">
                 <h2 className="text-lg font-semibold text-emerald-300 mb-3">
-                  Recipes producing this item ({recipes.length})
+                  Crafting (ingredients to make it) • {craftRecipes.length}
                 </h2>
 
-                {recipes.length === 0 ? (
-                  <p className="text-emerald-200/70">No recipe found for this result item.</p>
+                {craftRecipes.length === 0 ? (
+                  <p className="text-emerald-200/70">No crafting recipe produces this item.</p>
                 ) : (
                   <div className="space-y-3">
-                    {recipes.map((r) => (
+                    {craftRecipes.map((r) => (
                       <div key={r.id} className="rounded-xl border border-emerald-300/10 bg-black/20 p-3">
-                        <div className="text-sm text-emerald-200/80 mb-2">
-                          Recipe #{r.id} • Output: x{r.resultQty}
-                        </div>
+                        <div className="text-sm text-emerald-200/80 mb-2">Recipe #{r.id} • Output: x{r.resultQty}</div>
 
                         <div className="grid md:grid-cols-2 gap-2">
                           {r.ingredients.map((ing, idx) => {
@@ -165,6 +157,33 @@ export function ItemsCraftGuidePage() {
                         </div>
                       </div>
                     ))}
+                  </div>
+                )}
+              </div>
+
+              {/* used-in recipes (optional but useful) */}
+              <div className="mt-8">
+                <h2 className="text-lg font-semibold text-emerald-300 mb-3">
+                  Used as ingredient in • {usedInRecipes.length}
+                </h2>
+
+                {usedInRecipes.length === 0 ? (
+                  <p className="text-emerald-200/70">Not used as ingredient (or data doesn’t include it).</p>
+                ) : (
+                  <div className="space-y-2">
+                    {usedInRecipes.slice(0, 12).map((r) => {
+                      const outItem = itemsById.get(r.resultItemId);
+                      return (
+                        <div key={r.id} className="flex items-center gap-3 rounded-lg bg-black/20 border border-emerald-300/10 px-3 py-2">
+                          <ItemIcon itemId={r.resultItemId} size={34} />
+                          <div className="flex-1">
+                            <div className="text-emerald-100 text-sm">{outItem?.name ?? `#${r.resultItemId}`}</div>
+                            <div className="text-emerald-200/50 text-xs">Recipe #{r.id} • Output x{r.resultQty}</div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                    {usedInRecipes.length > 12 && <div className="text-xs text-emerald-200/50 mt-1">…and more</div>}
                   </div>
                 )}
               </div>
