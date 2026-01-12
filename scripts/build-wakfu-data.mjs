@@ -47,8 +47,23 @@ const pickQty = (o) =>
   1;
 
 const pickItemId = (o) => o?.id ?? o?.definition?.id ?? o?.definitionId ?? null;
-const pickItemName = (o) => o?.name ?? o?.title ?? o?.definition?.name ?? o?.definition?.title ?? null;
-const pickItemLevel = (o) => o?.level ?? o?.definition?.level ?? o?.definition?.itemLevel ?? undefined;
+const name = pickItemName(obj);         // spesso è null
+const nameId = pickItemNameId(obj);     // spesso è qui
+const lvl = pickItemLevel(obj);
+
+// non scartare se manca name
+out.push({
+  id,
+  name: name ? String(name) : null,
+  nameId: nameId != null ? Number(nameId) : null,
+  level: typeof lvl === "number" ? lvl : undefined,
+});
+const pickItemNameId = (obj) =>
+  obj?.nameId ??
+  obj?.definition?.nameId ??
+  obj?.titleId ??
+  obj?.definition?.titleId ??
+  null;
 
 async function fetchJson(url) {
   const res = await fetch(url);
