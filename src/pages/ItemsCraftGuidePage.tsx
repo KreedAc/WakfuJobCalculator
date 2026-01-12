@@ -68,7 +68,7 @@ export function ItemsCraftGuidePage() {
       <div className="mt-4 flex gap-3 items-center">
         <input
           className="w-full rounded-xl bg-black/30 border border-emerald-300/20 px-4 py-3 outline-none focus:border-emerald-300/50"
-          placeholder={loading ? "Loading data..." : "Search craftable item name (e.g. Gobball Amulet)"}
+          placeholder={loading ? "Loading data..." : "Search craftable item name (e.g. Gobball Belt)"}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           disabled={loading}
