@@ -231,10 +231,11 @@ export function ItemsCraftGuidePage() {
                     <button
                       key={it.id}
                       onClick={() => {
-                        setSelectedId(it.id);
-                        setExpanded(new Set([it.id])); // apri root
-                        setRecipeChoice(new Map());
-                      }}
+  setSelectedId(it.id);
+  setExpanded(new Set([it.id])); // apri root
+  setRecipeChoice(new Map());
+  setHideResults(true); // ✅ nascondi lista
+}}
                       className={[
                         "w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border transition",
                         isSel ? "glass-strong" : "glass-soft hover:border-emerald-300/25",
