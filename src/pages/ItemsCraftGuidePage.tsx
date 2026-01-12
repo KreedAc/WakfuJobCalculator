@@ -11,10 +11,9 @@ function norm(s: string) {
 
 export function ItemsCraftGuidePage() {
   const [query, setQuery] = useState("");
-  const [items, setItems] = useState<CompactItem[]>([]);
+  const [itemsCraftable, setItemsCraftable] = useState<CompactItem[]>([]);
   const [itemsById, setItemsById] = useState<Map<number, CompactItem>>(new Map());
   const [recipesByResultId, setRecipesByResultId] = useState<Map<number, CompactRecipe[]>>(new Map());
-  const [recipesByIngredientId, setRecipesByIngredientId] = useState<Map<number, CompactRecipe[]>>(new Map());
   const [loading, setLoading] = useState(true);
 
   const [selectedId, setSelectedId] = useState<number | null>(null);
@@ -22,17 +21,20 @@ export function ItemsCraftGuidePage() {
   useEffect(() => {
     loadWakfuData()
       .then((d) => {
-        setItems(d.items);
+        // itemsById resta completo (serve per i nomi degli ingredienti)
         setItemsById(d.itemsById);
         setRecipesByResultId(d.recipesByResultId);
-        setRecipesByIngredientId(d.recipesByIngredientId);
+
+        // la ricerca mostra SOLO item craftabili (che hanno almeno una ricetta come risultato)
+        const craftable = d.items.filter((it) => d.craftableResultIds.has(it.id));
+        setItemsCraftable(craftable);
       })
       .finally(() => setLoading(false));
   }, []);
 
   const itemsWithNorm = useMemo(() => {
-    return items.map((it) => ({ ...it, _norm: norm(it.name) }));
-  }, [items]);
+    return itemsCraftable.map((it) => ({ ...it, _norm: norm(it.name) }));
+  }, [itemsCraftable]);
 
   const results = useMemo(() => {
     const q = norm(query);
@@ -51,34 +53,33 @@ export function ItemsCraftGuidePage() {
 
   const selected: CompactItem | null = selectedId ? itemsById.get(selectedId) ?? null : null;
 
-  // ricette che PRODUCONO questo item
+  // ricette che PRODUCONO questo item (essendo craftabile, almeno una dovrebbe esserci)
   const craftRecipes = selected ? recipesByResultId.get(selected.id) ?? [] : [];
-
-  // ricette in cui questo item è USATO come ingrediente
-  const usedInRecipes = selected ? recipesByIngredientId.get(selected.id) ?? [] : [];
 
   return (
     <div className="w-full max-w-5xl mx-auto p-4">
       <div className="flex items-end justify-between gap-4 flex-wrap">
         <h1 className="text-3xl font-bold text-emerald-300">Items Craft Guide</h1>
         <div className="text-xs text-emerald-200/50">
-          items: {items.length} • recipes: {loading ? "..." : craftRecipes.length ? "ok" : "loaded"} • {loading ? "loading..." : "ready"}
+          craftable items: {itemsCraftable.length} • {loading ? "loading..." : "ready"}
         </div>
       </div>
 
       <div className="mt-4 flex gap-3 items-center">
         <input
           className="w-full rounded-xl bg-black/30 border border-emerald-300/20 px-4 py-3 outline-none focus:border-emerald-300/50"
-          placeholder={loading ? "Loading data..." : "Search item name (e.g. Gobball Amulet / Apiwood)"}
+          placeholder={loading ? "Loading data..." : "Search craftable item name (e.g. Gobball Amulet)"}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           disabled={loading}
         />
       </div>
 
-      {!query && <p className="mt-4 text-emerald-200/70">Type an item name to see its crafting recipe.</p>}
+      {!query && <p className="mt-4 text-emerald-200/70">Type a craftable item name to see its recipe.</p>}
 
-      {query && results.length === 0 && !loading && <p className="mt-4 text-emerald-200/70">No items found.</p>}
+      {query && results.length === 0 && !loading && (
+        <p className="mt-4 text-emerald-200/70">No craftable items found for this search.</p>
+      )}
 
       {results.length > 0 && (
         <div className="mt-4 grid md:grid-cols-2 gap-4">
@@ -122,19 +123,20 @@ export function ItemsCraftGuidePage() {
                 </div>
               </div>
 
-              {/* crafting recipes (ingredients to make it) */}
               <div className="mt-6">
                 <h2 className="text-lg font-semibold text-emerald-300 mb-3">
-                  Crafting (ingredients to make it) • {craftRecipes.length}
+                  Crafting recipe{craftRecipes.length === 1 ? "" : "s"} ({craftRecipes.length})
                 </h2>
 
                 {craftRecipes.length === 0 ? (
-                  <p className="text-emerald-200/70">No crafting recipe produces this item.</p>
+                  <p className="text-emerald-200/70">No recipe found (unexpected for craftable item).</p>
                 ) : (
                   <div className="space-y-3">
                     {craftRecipes.map((r) => (
                       <div key={r.id} className="rounded-xl border border-emerald-300/10 bg-black/20 p-3">
-                        <div className="text-sm text-emerald-200/80 mb-2">Recipe #{r.id} • Output: x{r.resultQty}</div>
+                        <div className="text-sm text-emerald-200/80 mb-2">
+                          Recipe #{r.id} • Output: x{r.resultQty}
+                        </div>
 
                         <div className="grid md:grid-cols-2 gap-2">
                           {r.ingredients.map((ing, idx) => {
@@ -157,33 +159,6 @@ export function ItemsCraftGuidePage() {
                         </div>
                       </div>
                     ))}
-                  </div>
-                )}
-              </div>
-
-              {/* used-in recipes (optional but useful) */}
-              <div className="mt-8">
-                <h2 className="text-lg font-semibold text-emerald-300 mb-3">
-                  Used as ingredient in • {usedInRecipes.length}
-                </h2>
-
-                {usedInRecipes.length === 0 ? (
-                  <p className="text-emerald-200/70">Not used as ingredient (or data doesn’t include it).</p>
-                ) : (
-                  <div className="space-y-2">
-                    {usedInRecipes.slice(0, 12).map((r) => {
-                      const outItem = itemsById.get(r.resultItemId);
-                      return (
-                        <div key={r.id} className="flex items-center gap-3 rounded-lg bg-black/20 border border-emerald-300/10 px-3 py-2">
-                          <ItemIcon itemId={r.resultItemId} size={34} />
-                          <div className="flex-1">
-                            <div className="text-emerald-100 text-sm">{outItem?.name ?? `#${r.resultItemId}`}</div>
-                            <div className="text-emerald-200/50 text-xs">Recipe #{r.id} • Output x{r.resultQty}</div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                    {usedInRecipes.length > 12 && <div className="text-xs text-emerald-200/50 mt-1">…and more</div>}
                   </div>
                 )}
               </div>
