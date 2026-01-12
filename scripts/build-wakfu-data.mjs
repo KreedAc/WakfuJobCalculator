@@ -35,15 +35,34 @@ function pickDescription(o) {
 
 function pickGfxId(o) {
   const d = o?.definition ?? o;
-  return (
-    d?.gfxId ??
-    d?.graphicId ??
-    d?.iconGfxId ??
-    d?.iconId ??
-    d?.imageId ??
-    null
-  );
+
+  // molti file hanno campi diversi per l'icona
+  const candidates = [
+    d?.iconGfxId,
+    d?.iconId,
+    d?.smallIconId,
+    d?.bigIconId,
+    d?.itemIconId,
+    d?.itemGfxId,
+    d?.gfxId,
+    d?.baseGfxId,
+    d?.graphicId,
+    d?.imageId,
+    // a volte è annidato ancora
+    d?.properties?.iconGfxId,
+    d?.properties?.iconId,
+    o?.iconGfxId,
+    o?.iconId,
+  ];
+
+  for (const v of candidates) {
+    const n = Number(v);
+    if (Number.isFinite(n) && n > 0) return n;
+  }
+
+  return null;
 }
+
 
 async function fetchJson(url) {
   const res = await fetch(url);
