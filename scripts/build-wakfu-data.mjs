@@ -65,6 +65,19 @@ const pickItemNameId = (obj) =>
   obj?.definition?.titleId ??
   null;
 
+// deve esistere perché il tuo script lo usa.
+// ritorna SEMPRE una stringa => niente più filtraggio a 0.
+const pickItemName = (obj) => {
+  const nid = pickItemNameId(obj);
+  if (nid != null) return "#" + Number(nid);
+
+  const id = obj?.id ?? obj?.definition?.id ?? obj?.definitionId ?? obj?.itemId;
+  if (id != null) return "#" + Number(id);
+
+  return "#unknown";
+};
+
+
 async function fetchJson(url) {
   const res = await fetch(url);
   const text = await res.text();
