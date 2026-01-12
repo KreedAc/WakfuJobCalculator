@@ -22,7 +22,7 @@ function asArray(x) {
   return [];
 }
 
-// ---- recipes pickers (dal tuo sample funzionano) ----
+// ---------- recipes pickers ----------
 function pickRecipeId(r) {
   return Number(r?.id ?? r?.recipeId ?? r?.definition?.id ?? r?.definitionId ?? 0) || 0;
 }
@@ -59,9 +59,8 @@ function pickResItemId(row) {
   ) || 0;
 }
 
-// ---- items pickers (qui sta il problema: li rendiamo super robusti) ----
+// ---------- item pickers ----------
 function pickItemId(obj) {
-  // prova una lista ampia di percorsi tipici
   const candidates = [
     obj?.id,
     obj?.itemId,
@@ -73,26 +72,11 @@ function pickItemId(obj) {
     obj?.definition?.baseParameters?.definitionId,
     obj?.definition?.item?.id,
   ];
-
   for (const c of candidates) {
     const n = Number(c);
     if (Number.isFinite(n) && n > 0) return n;
   }
   return 0;
-}
-
-function pickItemNameId(obj) {
-  const candidates = [
-    obj?.nameId,
-    obj?.definition?.nameId,
-    obj?.titleId,
-    obj?.definition?.titleId,
-  ];
-  for (const c of candidates) {
-    const n = Number(c);
-    if (Number.isFinite(n) && n > 0) return n;
-  }
-  return null;
 }
 
 function pickItemLevel(obj) {
@@ -112,17 +96,17 @@ function pickItemLevel(obj) {
 function pickText(v) {
   if (typeof v === "string") return v;
 
-  // alcuni dump usano oggetti tipo { text: "..." } o { value: "..." }
   if (v && typeof v === "object") {
+    // casi comuni
     if (typeof v.text === "string") return v.text;
     if (typeof v.value === "string") return v.value;
 
-    // a volte { en: "...", fr: "..." } o simili
+    // multi-lingua
     if (typeof v.en === "string") return v.en;
     if (typeof v.fr === "string") return v.fr;
     if (typeof v.it === "string") return v.it;
 
-    // come fallback: prendi la prima stringa che trovi nell’oggetto
+    // prendi la prima stringa trovata
     for (const k of Object.keys(v)) {
       if (typeof v[k] === "string") return v[k];
     }
@@ -131,8 +115,7 @@ function pickText(v) {
   return null;
 }
 
-
-// Streaming parser: estrae ogni oggetto { ... } dell’array items.json
+// ---------- stream items.json ----------
 async function streamItemsAndFilter(url, neededSet) {
   const res = await fetch(url, {
     headers: { "User-Agent": "Mozilla/5.0", Accept: "*/*" },
@@ -167,28 +150,30 @@ async function streamItemsAndFilter(url, neededSet) {
     const id = pickItemId(obj);
     if (firstIds.length < 20) firstIds.push(id);
 
-    // stampa solo i primissimi oggetti (per capire struttura)
     if (debugPrinted < 2) {
       debugPrinted++;
       console.log("DEBUG item keys:", Object.keys(obj));
-      console.log("DEBUG id candidates -> picked:", id);
-      console.log("DEBUG nameId:", pickItemNameId(obj), "level:", pickItemLevel(obj));
-      // non stampo l’oggetto intero (può essere enorme)
+      console.log("DEBUG id picked:", id);
+      console.log("DEBUG raw title:", obj?.title);
+      console.log("DEBUG raw description:", obj?.description);
+      console.log("DEBUG pickText(title):", pickText(obj?.title));
     }
 
     if (!id || !neededSet.has(id)) return;
 
     matched++;
-    
-    const t = pickText(obj?.title);
-const d = pickText(obj?.description);
 
-out.push({
-  id,
-  name: t ?? ("#" + id),
-  description: d,
-  level: lvl,
-});
+    const lvl = pickItemLevel(obj);
+    const t = pickText(obj?.title);
+    const d = pickText(obj?.description);
+
+    out.push({
+      id,
+      name: t ?? ("#" + id),
+      description: d,
+      level: lvl,
+    });
+  }
 
   function onChar(ch) {
     if (depth === 0) {
@@ -296,7 +281,10 @@ async function main() {
 
   fs.writeFileSync("public/data/recipes.compact.json", JSON.stringify(recipesCompact));
   fs.writeFileSync("public/data/needed_item_ids.json", JSON.stringify([...neededItemIds]));
-  fs.writeFileSync("public/data/wakfu_version.json", JSON.stringify({ version, generatedAt: new Date().toISOString() }, null, 2));
+  fs.writeFileSync(
+    "public/data/wakfu_version.json",
+    JSON.stringify({ version, generatedAt: new Date().toISOString() }, null, 2)
+  );
 
   console.log("recipes.compact:", recipesCompact.length);
   console.log("needed item ids:", neededItemIds.size);
@@ -305,6 +293,12 @@ async function main() {
   const itemsCompact = await streamItemsAndFilter(`${base}/items.json`, neededItemIds);
 
   fs.writeFileSync("public/data/items.compact.json", JSON.stringify(itemsCompact));
+
+  const found = new Set(itemsCompact.map((i) => i.id));
+  const missingIds = [...neededItemIds].filter((id) => !found.has(id));
+  fs.writeFileSync("public/data/missing_item_ids.json", JSON.stringify(missingIds));
+  console.log("missing item ids:", missingIds.length);
+
   console.log("\nitems.compact:", itemsCompact.length);
   console.log("DONE ✅");
 }
