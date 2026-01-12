@@ -48,16 +48,16 @@ const pickQty = (o) =>
 
 const pickItemId = (o) => o?.id ?? o?.definition?.id ?? o?.definitionId ?? null;
 const name = pickItemName(obj);         // spesso è null
-const nameId = pickItemNameId(obj);     // spesso è qui
+const nameId = pickItemNameId(obj);
 const lvl = pickItemLevel(obj);
 
-// non scartare se manca name
+// non scartare: salva sempre id + nameId
 out.push({
   id,
-  name: name ? String(name) : null,
   nameId: nameId != null ? Number(nameId) : null,
   level: typeof lvl === "number" ? lvl : undefined,
 });
+
 const pickItemNameId = (obj) =>
   obj?.nameId ??
   obj?.definition?.nameId ??
