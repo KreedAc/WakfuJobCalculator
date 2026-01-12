@@ -106,6 +106,23 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
     const title = pickTitle(obj);
     const description = pickDescription(obj);
     const gfxId = pickGfxId(obj);
+    if (out.length === 0) {
+  const d = obj?.definition ?? obj;
+  console.log("DEBUG ICON FIELDS for first matched:");
+  console.log({
+    id,
+    hasDefinition: !!obj?.definition,
+    gfxId: d?.gfxId,
+    iconGfxId: d?.iconGfxId,
+    iconId: d?.iconId,
+    smallIconId: d?.smallIconId,
+    bigIconId: d?.bigIconId,
+    itemGfxId: d?.itemGfxId,
+    baseGfxId: d?.baseGfxId,
+    graphicId: d?.graphicId,
+    imageId: d?.imageId,
+  });
+}
 
     out.push({
       id,
