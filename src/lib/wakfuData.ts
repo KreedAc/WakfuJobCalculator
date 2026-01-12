@@ -2,7 +2,6 @@ export type CompactItem = {
   id: number;
   name: string;
   description: string | null;
-  // puoi tenere altri campi, ma non servono per i nomi
 };
 
 export type CompactRecipe = {
@@ -21,13 +20,19 @@ export type WakfuData = {
 
 let _cache: Promise<WakfuData> | null = null;
 
+/**
+ * Carica i JSON da /public/data/* (serviti come /data/* in Vite).
+ * Aggiunge cache-busting per evitare che Bolt/Vite servano dati vecchi.
+ */
 export function loadWakfuData(): Promise<WakfuData> {
   if (_cache) return _cache;
 
+  const bust = Date.now();
+
   _cache = (async () => {
     const [items, recipes] = await Promise.all([
-      fetch("/data/items.compact.json").then(r => r.json()) as Promise<CompactItem[]>,
-      fetch("/data/recipes.compact.json").then(r => r.json()) as Promise<CompactRecipe[]>,
+      fetch(`/data/items.compact.json?v=${bust}`).then((r) => r.json()) as Promise<CompactItem[]>,
+      fetch(`/data/recipes.compact.json?v=${bust}`).then((r) => r.json()) as Promise<CompactRecipe[]>,
     ]);
 
     const itemsById = new Map<number, CompactItem>();
@@ -47,9 +52,7 @@ export function loadWakfuData(): Promise<WakfuData> {
 }
 
 /**
- * Icon URL:
- * 1) prova URL Ankama (se esiste per quell'id)
- * 2) fallback Wakassets (repo di icone per ID)
+ * Link icona esterna (in Opzione A non la carichiamo in pagina, la apriamo in nuova tab).
  */
 export function getItemIconUrl(itemId: number, variant: "ankama" | "wakassets" = "ankama") {
   if (variant === "ankama") {
