@@ -220,8 +220,8 @@ export function ItemsCraftGuidePage() {
         <div className="mt-6 grid lg:grid-cols-12 gap-4">
           {/* LEFT */}
           <div className="lg:col-span-8 space-y-4">
-           {/* Results */}
-<div className="rounded-2xl glass p-3">
+           {!hideResults && (
+  <div className="rounded-2xl glass p-3">
 
               <div className="text-sm text-emerald-200/80 mb-2">Results ({results.length})</div>
 
