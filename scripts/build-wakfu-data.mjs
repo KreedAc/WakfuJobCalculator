@@ -96,9 +96,6 @@ async function streamItemsAndFilter(url, neededSet) {
       const id = Number(pickItemId(obj));
       if (!id || !neededSet.has(id)) return;
 
-      const name = pickItemName(obj);
-      if (!name) return;
-
       const lvl = pickItemLevel(obj);
       out.push({ id, name: String(name), level: typeof lvl === "number" ? lvl : undefined });
     } catch {}
