@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { loadWakfuData, type CompactItem, type CompactRecipe, type WakfuData } from "../lib/wakfuData";
-import { loadWakfuData, getItemIconUrl } from "../lib/wakfuData";
+import { loadWakfuData, getItemIconUrl, type CompactItem, type CompactRecipe, type WakfuData } from "../lib/wakfuData";
+
 
 function norm(s: string) {
   return s
