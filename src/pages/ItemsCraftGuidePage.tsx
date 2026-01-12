@@ -138,8 +138,23 @@ export function ItemsCraftGuidePage() {
             {/* Item details */}
             <section className="rounded-2xl border border-emerald-400/15 bg-slate-950/30 p-5">
               <div className="space-y-1">
-                <h2 className="text-2xl font-semibold text-emerald-100">{selectedItem.name}</h2>
-                <div className="text-emerald-200/60 text-sm">Item ID: {selectedItem.id}</div>
+                <div className="flex items-start gap-4">
+  {getItemIconUrl(selectedItem.gfxId) ? (
+    <img
+      src={getItemIconUrl(selectedItem.gfxId)!}
+      alt=""
+      className="w-16 h-16 rounded-xl bg-black/20"
+      loading="lazy"
+    />
+  ) : (
+    <div className="w-16 h-16 rounded-xl bg-black/20" />
+  )}
+
+  <div className="space-y-1">
+    <h2 className="text-2xl font-semibold text-emerald-100">{selectedItem.name}</h2>
+    <div className="text-emerald-200/60 text-sm">Item ID: {selectedItem.id}</div>
+  </div>
+</div>
                 {selectedItem.description ? (
                   <p className="text-emerald-200/75 mt-3">{selectedItem.description}</p>
                 ) : (
