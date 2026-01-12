@@ -46,18 +46,6 @@ const pickQty = (o) =>
   o?.resultQty ??
   1;
 
-const pickItemId = (o) => o?.id ?? o?.definition?.id ?? o?.definitionId ?? null;
-const name = pickItemName(obj);         // spesso è null
-const nameId = pickItemNameId(obj);
-const lvl = pickItemLevel(obj);
-
-// non scartare: salva sempre id + nameId
-out.push({
-  id,
-  nameId: nameId != null ? Number(nameId) : null,
-  level: typeof lvl === "number" ? lvl : undefined,
-});
-
 function pickItemNameId(obj) {
   return (
     obj?.nameId ??
