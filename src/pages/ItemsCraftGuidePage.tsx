@@ -222,7 +222,6 @@ export function ItemsCraftGuidePage() {
           <div className="lg:col-span-8 space-y-4">
            {!hideResults && (
   <div className="rounded-2xl glass p-3">
-    ...
   </div>
 )}
               <div className="text-sm text-emerald-200/80 mb-2">Results ({results.length})</div>
