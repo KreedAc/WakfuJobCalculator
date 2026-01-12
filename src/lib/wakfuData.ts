@@ -31,6 +31,19 @@ export async function loadWakfuData(): Promise<WakfuData> {
     }),
   ]);
 
+  export type CompactItem = {
+  id: number;
+  name: string;
+  description?: string | null;
+  gfxId?: number | null;
+};
+
+export function getItemIconUrl(gfxId?: number | null) {
+  if (!gfxId) return null;
+  return `https://static.ankama.com/wakfu/portal/game/item/115/${gfxId}.png`;
+}
+
+
   const itemById = new Map<number, CompactItem>();
   for (const it of items) itemById.set(it.id, it);
 
