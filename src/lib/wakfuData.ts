@@ -20,6 +20,11 @@ export type WakfuData = {
   recipesByResultItemId: Map<number, CompactRecipe[]>;
 };
 
+export function getItemIconUrl(gfxId?: number | null) {
+  if (!gfxId) return null;
+  return `https://static.ankama.com/wakfu/portal/game/item/115/${gfxId}.png`;
+}
+
 export async function loadWakfuData(): Promise<WakfuData> {
   const [items, recipes] = await Promise.all([
     fetch("/data/items.compact.json").then((r) => {
@@ -32,19 +37,6 @@ export async function loadWakfuData(): Promise<WakfuData> {
     }),
   ]);
 
-  export type CompactItem = {
-  id: number;
-  name: string;
-  description?: string | null;
-  gfxId?: number | null;
-};
-
-export function getItemIconUrl(gfxId?: number | null) {
-  if (!gfxId) return null;
-  return `https://static.ankama.com/wakfu/portal/game/item/115/${gfxId}.png`;
-}
-
-
   const itemById = new Map<number, CompactItem>();
   for (const it of items) itemById.set(it.id, it);
 
@@ -56,9 +48,4 @@ export function getItemIconUrl(gfxId?: number | null) {
   }
 
   return { items, recipes, itemById, recipesByResultItemId };
-}
-
-export function getItemIconUrl(gfxId?: number | null) {
-  if (!gfxId) return null;
-  return `https://static.ankama.com/wakfu/portal/game/item/115/${gfxId}.png`;
 }
