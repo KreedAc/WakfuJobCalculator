@@ -107,8 +107,23 @@ export function ItemsCraftGuidePage() {
                         onClick={() => setSelectedItemId(it.id)}
                         className="w-full text-left p-3 hover:bg-emerald-400/5 rounded-lg"
                       >
-                        <div className="text-emerald-100 font-medium">{it.name}</div>
-                        <div className="text-emerald-200/50 text-sm">ID: {it.id}</div>
+                        <div className="flex items-center gap-3">
+  {getItemIconUrl(it.gfxId) ? (
+    <img
+      src={getItemIconUrl(it.gfxId)!}
+      alt=""
+      className="w-10 h-10 rounded-lg bg-black/20"
+      loading="lazy"
+    />
+  ) : (
+    <div className="w-10 h-10 rounded-lg bg-black/20" />
+  )}
+
+  <div>
+    <div className="text-emerald-100 font-medium">{it.name}</div>
+    <div className="text-emerald-200/50 text-sm">ID: {it.id}</div>
+  </div>
+</div>
                       </button>
                     </li>
                   ))}
