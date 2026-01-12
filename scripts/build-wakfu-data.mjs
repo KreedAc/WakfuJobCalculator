@@ -179,22 +179,16 @@ async function streamItemsAndFilter(url, neededSet) {
     if (!id || !neededSet.has(id)) return;
 
     matched++;
-    const title = typeof obj?.title === "string" ? obj.title : null;
-const desc = typeof obj?.description === "string" ? obj.description : null;
-
-const lvl = pickItemLevel(obj);
-
-const title = pickText(obj?.title);
-const desc = pickText(obj?.description);
+    
+    const t = pickText(obj?.title);
+const d = pickText(obj?.description);
 
 out.push({
   id,
-  name: title ?? ("#" + id),
-  description: desc,
+  name: t ?? ("#" + id),
+  description: d,
   level: lvl,
 });
-
-  }
 
   function onChar(ch) {
     if (depth === 0) {
