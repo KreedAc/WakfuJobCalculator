@@ -12,45 +12,75 @@ function pickText(v) {
   return null;
 }
 
+/**
+ * In Wakfu gamedata spesso le info “vere” stanno in definition.item
+ * oppure definition.resource / definition.collectibleResource ecc.
+ * Questa funzione prova a "scendere" dove serve.
+ */
+function coreDef(o) {
+  const def = o?.definition ?? o;
+  return def?.item ?? def?.resource ?? def?.collectibleResource ?? def;
+}
+
 function pickId(o) {
-  return (
+  const d = coreDef(o);
+  const v =
     o?.id ??
     o?.definition?.id ??
+    d?.id ??
     o?.definitionId ??
     o?.itemId ??
     o?.itemDefinitionId ??
     o?.resourceId ??
     o?.resourceDefinitionId ??
+    null;
+
+  const n = Number(v);
+  return Number.isFinite(n) && n > 0 ? n : null;
+}
+
+function pickTitle(o) {
+  const def = o?.definition ?? o;
+  const d = coreDef(o);
+  return (
+    pickText(def?.title) ??
+    pickText(def?.name) ??
+    pickText(d?.title) ??
+    pickText(d?.name) ??
     null
   );
 }
 
-function pickTitle(o) {
-  return pickText(o?.title) ?? pickText(o?.name) ?? pickText(o?.definition?.title) ?? pickText(o?.definition?.name) ?? null;
-}
-
 function pickDescription(o) {
-  return pickText(o?.description) ?? pickText(o?.definition?.description) ?? null;
+  const def = o?.definition ?? o;
+  const d = coreDef(o);
+  return pickText(def?.description) ?? pickText(d?.description) ?? null;
 }
 
+/**
+ * L’icona NON è sempre gfxId: spesso è imageId o baseGfxId ecc.
+ * Qui cerchiamo in più posti (anche dentro coreDef()).
+ */
 function pickGfxId(o) {
-  const d = o?.definition ?? o;
+  const d = coreDef(o);
 
-  // molti file hanno campi diversi per l'icona
   const candidates = [
+    d?.imageId,
+    d?.gfxId,
     d?.iconGfxId,
     d?.iconId,
-    d?.smallIconId,
-    d?.bigIconId,
-    d?.itemIconId,
-    d?.itemGfxId,
-    d?.gfxId,
     d?.baseGfxId,
+    d?.itemGfxId,
     d?.graphicId,
-    d?.imageId,
-    // a volte è annidato ancora
+
+    d?.properties?.imageId,
+    d?.properties?.gfxId,
     d?.properties?.iconGfxId,
     d?.properties?.iconId,
+
+    // fallback: se proprio l’icona è sul livello superiore
+    o?.imageId,
+    o?.gfxId,
     o?.iconGfxId,
     o?.iconId,
   ];
@@ -59,10 +89,8 @@ function pickGfxId(o) {
     const n = Number(v);
     if (Number.isFinite(n) && n > 0) return n;
   }
-
   return null;
 }
-
 
 async function fetchJson(url) {
   const res = await fetch(url);
@@ -76,8 +104,8 @@ async function fetchJson(url) {
 }
 
 /**
- * Stream-parsing di un JSON array enorme: estrae oggetti "{...}" top-level e li JSON.parse.
- * Filtra per neededSet.
+ * Stream-parsing di un JSON array enorme:
+ * estrae oggetti "{...}" top-level e li JSON.parse. Filtra per neededSet.
  */
 async function streamCompactItems(url, neededSet, sourceLabel) {
   const res = await fetch(url);
@@ -94,62 +122,86 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
   const out = [];
   let parsed = 0;
   let matched = 0;
+  let printedDebug = false;
 
   function flushObject(s) {
     parsed++;
     let obj;
-    try { obj = JSON.parse(s); } catch { return; }
+    try {
+      obj = JSON.parse(s);
+    } catch {
+      return;
+    }
 
-    const id = Number(pickId(obj));
+    const id = pickId(obj);
     if (!id || !neededSet.has(id)) return;
 
     const title = pickTitle(obj);
     const description = pickDescription(obj);
     const gfxId = pickGfxId(obj);
-    if (out.length === 0) {
-  const d = obj?.definition ?? obj;
-  console.log("DEBUG ICON FIELDS for first matched:");
-  console.log({
-    id,
-    hasDefinition: !!obj?.definition,
-    gfxId: d?.gfxId,
-    iconGfxId: d?.iconGfxId,
-    iconId: d?.iconId,
-    smallIconId: d?.smallIconId,
-    bigIconId: d?.bigIconId,
-    itemGfxId: d?.itemGfxId,
-    baseGfxId: d?.baseGfxId,
-    graphicId: d?.graphicId,
-    imageId: d?.imageId,
-  });
-}
+
+    if (!printedDebug) {
+      printedDebug = true;
+      const def = obj?.definition ?? obj;
+      const core = coreDef(obj);
+      console.log(`DEBUG (${sourceLabel}) first matched id=${id}`);
+      console.log("  defKeys:", def ? Object.keys(def) : null);
+      console.log("  coreKeys:", core ? Object.keys(core) : null);
+      console.log("  iconCandidates:", {
+        core_imageId: core?.imageId,
+        core_gfxId: core?.gfxId,
+        core_baseGfxId: core?.baseGfxId,
+        core_iconGfxId: core?.iconGfxId,
+        core_iconId: core?.iconId,
+        picked: gfxId,
+      });
+    }
 
     out.push({
       id,
       name: title ?? `#${id}`,
       description: description ?? null,
-      gfxId: gfxId != null ? Number(gfxId) : null,
+      gfxId: gfxId,
       source: sourceLabel,
     });
+
     matched++;
   }
 
   function onChar(ch) {
     if (depth === 0) {
-      if (ch === "{") { depth = 1; buf = "{"; }
+      if (ch === "{") {
+        depth = 1;
+        buf = "{";
+      }
       return;
     }
 
     buf += ch;
 
     if (inString) {
-      if (escape) { escape = false; return; }
-      if (ch === "\\") { escape = true; return; }
-      if (ch === '"') { inString = false; return; }
+      if (escape) {
+        escape = false;
+        return;
+      }
+      if (ch === "\\") {
+        escape = true;
+        return;
+      }
+      if (ch === '"') {
+        inString = false;
+        return;
+      }
       return;
     } else {
-      if (ch === '"') { inString = true; return; }
-      if (ch === "{") { depth += 1; return; }
+      if (ch === '"') {
+        inString = true;
+        return;
+      }
+      if (ch === "{") {
+        depth += 1;
+        return;
+      }
       if (ch === "}") {
         depth -= 1;
         if (depth === 0) {
@@ -204,12 +256,14 @@ async function main() {
   const resByRecipe = new Map();
   for (const row of recipeResRaw) {
     const recipeId = row?.recipeId ?? row?.definition?.recipeId ?? row?.recipeDefinitionId;
+
     const itemId =
       row?.productedItemId ??
       row?.productedItemDefinitionId ??
       row?.itemId ??
       row?.definition?.itemId ??
       row?.resultItemId;
+
     const qty =
       row?.productedItemQuantity ??
       row?.quantity ??
@@ -247,13 +301,16 @@ async function main() {
 
   await fsp.writeFile(path.join(OUT_DIR, "recipes.compact.json"), JSON.stringify(recipesCompact));
   await fsp.writeFile(path.join(OUT_DIR, "needed_item_ids.json"), JSON.stringify([...neededItemIds]));
-  await fsp.writeFile(path.join(OUT_DIR, "wakfu_version.json"), JSON.stringify({ version, generatedAt: new Date().toISOString() }, null, 2));
+  await fsp.writeFile(
+    path.join(OUT_DIR, "wakfu_version.json"),
+    JSON.stringify({ version, generatedAt: new Date().toISOString() }, null, 2)
+  );
 
   console.log("recipes.compact:", recipesCompact.length);
   console.log("needed item ids:", neededItemIds.size);
 
-  // --- QUI la parte importante: prendiamo item info da più JSON ---
-  const sources = ["items", "resources", "collectibleResources", "jobsItems"]; // disponibili sul CDN :contentReference[oaicite:1]{index=1}
+  // prendiamo item info da più JSON
+  const sources = ["items", "resources", "collectibleResources", "jobsItems"];
 
   const itemById = new Map(); // id -> best record
 
@@ -265,7 +322,7 @@ async function main() {
     console.log(`${s}: parsed=${parsed} matched=${matched}`);
 
     for (const it of out) {
-      // preferisci record con nome "vero" e gfxId presente
+      // preferisci record con nome vero e con gfxId valorizzato
       const prev = itemById.get(it.id);
       const score = (x) => (x ? (x.name && !x.name.startsWith("#") ? 2 : 0) + (x.gfxId ? 1 : 0) : 0);
       if (!prev || score(it) > score(prev)) itemById.set(it.id, it);
@@ -279,7 +336,6 @@ async function main() {
   console.log("items.compact:", itemsCompact.length);
   console.log("missing item ids:", missing.length);
 
-  // opzionale: salva missing ids per debug
   await fsp.writeFile(path.join(OUT_DIR, "missing_item_ids.json"), JSON.stringify(missing));
 
   console.log("DONE ✅");
