@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import { loadWakfuData, getItemIconUrl, type CompactItem, type CompactRecipe } from "../lib/wakfuData";
+import {
+  loadWakfuData,
+  getItemIconUrl,
+  type CompactItem,
+  type CompactRecipe,
+} from "../lib/wakfuData";
 
 function norm(s: string) {
   return s.toLowerCase().trim();
@@ -11,13 +16,20 @@ export function ItemsCraftGuidePage() {
   const [itemsById, setItemsById] = useState<Map<number, CompactItem>>(new Map());
   const [recipesByResultId, setRecipesByResultId] = useState<Map<number, CompactRecipe[]>>(new Map());
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    setLoading(true);
+    setError(null);
+
     loadWakfuData()
       .then((d) => {
         setItems(d.items);
         setItemsById(d.itemsById);
         setRecipesByResultId(d.recipesByResultId);
+      })
+      .catch((e) => {
+        setError(e?.message ? String(e.message) : String(e));
       })
       .finally(() => setLoading(false));
   }, []);
@@ -33,7 +45,26 @@ export function ItemsCraftGuidePage() {
 
   return (
     <div className="w-full max-w-5xl mx-auto p-4">
-      <h1 className="text-3xl font-bold text-emerald-300 mb-4">Items Craft Guide</h1>
+      <h1 className="text-3xl font-bold text-emerald-300 mb-2">Items Craft Guide</h1>
+
+      {/* DEBUG BAR: ti dice subito se ha caricato i JSON */}
+      <div className="mb-4 text-xs text-emerald-200/60">
+        <span className="mr-3">items: {items.length}</span>
+        <span className="mr-3">recipes: {Array.from(recipesByResultId.values()).reduce((a, b) => a + b.length, 0)}</span>
+        <span>{loading ? "loading…" : "ready"}</span>
+      </div>
+
+      {error && (
+        <div className="mb-4 rounded-xl border border-red-400/30 bg-red-900/20 p-3">
+          <div className="text-red-200 font-semibold mb-1">Data load error</div>
+          <pre className="text-red-200/80 text-xs whitespace-pre-wrap">{error}</pre>
+          <div className="text-red-200/60 text-xs mt-2">
+            Controlla che esistano: <code className="opacity-90">public/data/items.compact.json</code> e{" "}
+            <code className="opacity-90">public/data/recipes.compact.json</code> (e che siano accessibili da browser come{" "}
+            <code className="opacity-90">/data/items.compact.json</code>).
+          </div>
+        </div>
+      )}
 
       <div className="flex gap-3 items-center mb-6">
         <input
@@ -45,15 +76,15 @@ export function ItemsCraftGuidePage() {
         />
       </div>
 
-      {!query && (
+      {!query && !error && (
         <p className="text-emerald-200/70">Type an item name to see its crafting recipe.</p>
       )}
 
-      {query && results.length === 0 && !loading && (
+      {query && results.length === 0 && !loading && !error && (
         <p className="text-emerald-200/70">No items found.</p>
       )}
 
-      {selected && (
+      {selected && !error && (
         <div className="rounded-2xl border border-emerald-300/15 bg-black/30 p-4">
           <div className="flex items-start gap-4">
             <ItemIconLink itemId={selected.id} />
@@ -119,9 +150,8 @@ export function ItemsCraftGuidePage() {
 }
 
 /**
- * Opzione A: niente <img> in pagina.
- * Mostriamo un badge "IMG" che apre l'icona in una nuova tab.
- * Include anche link wakassets (Wk) oltre ad Ankama (Ank).
+ * Opzione A: niente <img>.
+ * Badge con link per aprire l'icona in una nuova tab.
  */
 function ItemIconLink({ itemId, size = 44 }: { itemId: number; size?: number }) {
   const ankama = getItemIconUrl(itemId, "ankama");
