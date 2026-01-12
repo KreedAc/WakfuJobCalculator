@@ -26,6 +26,7 @@ export function ItemsCraftGuidePage() {
   // UI state
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [hideResults, setHideResults] = useState(false);
 
   // Tree controls
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
