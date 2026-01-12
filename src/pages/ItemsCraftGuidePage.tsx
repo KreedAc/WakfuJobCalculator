@@ -194,7 +194,7 @@ export function ItemsCraftGuidePage() {
                         <div className="text-emerald-200/70 text-sm mb-2">Ingredienti</div>
                         <ul className="space-y-1">
                           {r.ingredients.map((ing, idx) => {
-  const ingItem = data.itemById.get(ing.itemId);
+                            const ingItem = data.itemById.get(ing.itemId);
   const ingIcon = getItemIconUrl(ingItem?.gfxId);
 
   return (
