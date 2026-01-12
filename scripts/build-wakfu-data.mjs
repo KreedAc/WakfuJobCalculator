@@ -109,6 +109,29 @@ function pickItemLevel(obj) {
   return undefined;
 }
 
+function pickText(v) {
+  if (typeof v === "string") return v;
+
+  // alcuni dump usano oggetti tipo { text: "..." } o { value: "..." }
+  if (v && typeof v === "object") {
+    if (typeof v.text === "string") return v.text;
+    if (typeof v.value === "string") return v.value;
+
+    // a volte { en: "...", fr: "..." } o simili
+    if (typeof v.en === "string") return v.en;
+    if (typeof v.fr === "string") return v.fr;
+    if (typeof v.it === "string") return v.it;
+
+    // come fallback: prendi la prima stringa che trovi nell’oggetto
+    for (const k of Object.keys(v)) {
+      if (typeof v[k] === "string") return v[k];
+    }
+  }
+
+  return null;
+}
+
+
 // Streaming parser: estrae ogni oggetto { ... } dell’array items.json
 async function streamItemsAndFilter(url, neededSet) {
   const res = await fetch(url, {
