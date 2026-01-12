@@ -57,3 +57,8 @@ export function getItemIconUrl(gfxId?: number | null) {
 
   return { items, recipes, itemById, recipesByResultItemId };
 }
+
+export function getItemIconUrl(gfxId?: number | null) {
+  if (!gfxId) return null;
+  return `https://static.ankama.com/wakfu/portal/game/item/115/${gfxId}.png`;
+}
