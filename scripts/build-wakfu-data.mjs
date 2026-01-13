@@ -194,14 +194,16 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
     const title = pickTitle(obj);
     const description = pickDescription(obj);
     const gfxId = pickGfxId(obj);
+    const rarity = pickRarity(obj);
 
-    out.push({
-      id,
-      name: title ?? `#${id}`,
-      description: description ?? null,
-      gfxId: gfxId ?? null,
-      source: sourceLabel,
-    });
+out.push({
+  id,
+  name: title ?? `#${id}`,
+  description: description ?? null,
+  gfxId: gfxId != null ? Number(gfxId) : null,
+  rarity,                 // ✅ AGGIUNTO
+  source: sourceLabel,
+});
     matched++;
   }
 
