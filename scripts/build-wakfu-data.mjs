@@ -37,6 +37,29 @@ function pickId(obj) {
   );
 }
 
+function pickRarity(obj) {
+  const o = obj ?? {};
+  const d = o.definition ?? o;
+
+  // dove può vivere la rarity (dipende dal file)
+  const candidates = [
+    d?.rarity,
+    d?.rarityId,
+    d?.item?.rarity,
+    d?.item?.rarityId,
+    d?.properties?.rarity,
+    d?.properties?.rarityId,
+  ];
+
+  for (const v of candidates) {
+    if (v == null) continue;
+    if (typeof v === "number" && Number.isFinite(v)) return v;
+    if (typeof v === "string" && v.trim()) return v.trim();
+  }
+
+  return null;
+}
+
 function pickTitle(obj) {
   const o = obj ?? {};
   const d = o.definition ?? {};
