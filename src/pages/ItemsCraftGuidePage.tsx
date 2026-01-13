@@ -489,8 +489,21 @@ function RecipeNode(props: {
   );
 }
 
-function ItemIcon({ item, size = 44 }: { item: CompactItem; size?: number }) {
-  const [src, setSrc] = useState(getItemIconUrl(item.id, "ankama", item.gfxId ?? null, 115));
+function ItemIcon({
+  itemId,
+  size = 44,
+  itemsById,
+}: {
+  itemId: number;
+  size?: number;
+  itemsById?: Map<number, CompactItem>;
+}) {
+  const item = itemsById?.get(itemId);
+  const [src, setSrc] = useState(getItemIconUrl(item ?? itemId, "ankama"));
+
+  useEffect(() => {
+    setSrc(getItemIconUrl(item ?? itemId, "ankama"));
+  }, [itemId, item]);
 
   return (
     <img
@@ -499,17 +512,13 @@ function ItemIcon({ item, size = 44 }: { item: CompactItem; size?: number }) {
       height={size}
       alt=""
       className="rounded-xl bg-black/10 backdrop-blur-md border border-emerald-300/15"
-      loading="lazy"
       onError={() => {
-        // fallback: prova size 64 su Ankama, poi wakassets
-        if (src.includes("/item/115/")) {
-          setSrc(getItemIconUrl(item.id, "ankama", item.gfxId ?? null, 64));
-          return;
-        }
         if (src.includes("static.ankama.com")) {
-          setSrc(getItemIconUrl(item.id, "wakassets", item.gfxId ?? null, 115));
+          setSrc(getItemIconUrl(itemId, "wakassets"));
         }
       }}
+      loading="lazy"
     />
   );
 }
+
