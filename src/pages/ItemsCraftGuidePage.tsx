@@ -6,6 +6,13 @@ import {
   type CompactItem,
   type CompactRecipe,
 } from "../lib/wakfuData";
+import {
+  loadWakfuData,
+  getItemIconUrl,
+  rarityInfo,
+  type CompactItem,
+  type CompactRecipe,
+} from "../lib/wakfuData";
 
 function norm(s: string) {
   return s
