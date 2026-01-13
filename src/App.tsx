@@ -45,19 +45,28 @@ function AppContent() {
 
   return (
     <div className="relative min-h-screen text-white flex flex-col items-center p-6 overflow-hidden font-sans">
-      <div className="absolute inset-0 -z-10 bg-black">
-        <div
-          className="absolute inset-0 opacity-40 transition-opacity duration-700"
-          style={{
-            backgroundImage: `url(${BG_URL})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'blur(2px) saturate(1.1)'
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-teal-950/80 via-emerald-900/60 to-slate-900/80" />
-      </div>
-      <div className="absolute inset-0 -z-10 pointer-events-none" style={{ boxShadow: 'inset 0 0 250px rgba(0,0,0,0.55)' }} />
+   <div className="absolute inset-0 -z-10 bg-slate-950">
+  <div
+    className="absolute inset-0 opacity-55 transition-opacity duration-700"
+    style={{
+      backgroundImage: `url(${BG_URL})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      filter: "blur(1.5px) saturate(1.05) brightness(1.15)",
+    }}
+  />
+  {/* overlay più chiaro */}
+  <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/55 via-slate-900/45 to-slate-950/55" />
+  {/* “veil” chiaro per aumentare contrasto testo */}
+  <div className="absolute inset-0 bg-white/[0.04]" />
+</div>
+
+{/* vignette meno aggressiva */}
+<div
+  className="absolute inset-0 -z-10 pointer-events-none"
+  style={{ boxShadow: "inset 0 0 180px rgba(0,0,0,0.38)" }}
+/>
+
 
       <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-50">
         <HamburgerMenu
