@@ -23,7 +23,7 @@ export function ItemsCraftGuidePage() {
   const [itemsById, setItemsById] = useState<Map<number, CompactItem>>(new Map());
   const [recipesByResultId, setRecipesByResultId] = useState<Map<number, CompactRecipe[]>>(new Map());
 
-  // UI state
+  // UI
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [hideResults, setHideResults] = useState(false);
@@ -42,7 +42,7 @@ export function ItemsCraftGuidePage() {
       .finally(() => setLoading(false));
   }, []);
 
-  // quando cambi query: resetta selezione e torna a mostrare risultati
+  // quando cambi query: reset
   useEffect(() => {
     setHideResults(false);
     setSelectedId(null);
@@ -52,8 +52,8 @@ export function ItemsCraftGuidePage() {
 
   const isCraftable = (id: number) => (recipesByResultId.get(id)?.length ?? 0) > 0;
 
+  // solo craftabili (result di qualche recipe)
   const itemsCraftable = useMemo(() => {
-    // Mostra SOLO item craftabili (presenti come result in almeno una recipe)
     const craftableIds = new Set<number>([...recipesByResultId.keys()]);
     const craftable = items.filter((it) => craftableIds.has(it.id));
     return craftable.map((it) => ({ ...it, _norm: norm(it.name) })) as (CompactItem & { _norm: string })[];
@@ -72,20 +72,6 @@ export function ItemsCraftGuidePage() {
     if (selectedId) return itemsById.get(selectedId) ?? null;
     return null;
   }, [selectedId, itemsById]);
-
-  // Auto-seleziona il primo risultato e NASCONDE la lista risultati (come richiesto)
-  useEffect(() => {
-    if (!query) return;
-    if (selectedId) return;
-    if (results.length === 0) return;
-
-    const first = results[0];
-    setSelectedId(first.id);
-    setExpanded(new Set([first.id]));
-    setRecipeChoice(new Map());
-    setHideResults(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [results.length, query]);
 
   const toggleExpanded = (itemId: number) => {
     setExpanded((prev) => {
@@ -109,7 +95,89 @@ export function ItemsCraftGuidePage() {
     });
   };
 
-  // Build shopping list: somma solo gli ingredienti "leaf" NON espansi (oppure non craftabili)
+  // --------- NEW: espandi tutto il tree di default dopo selezione ----------
+  const computeExpandedAll = (rootId: number) => {
+    const open = new Set<number>();
+    const visiting = new Set<number>();
+
+    const walk = (itemId: number) => {
+      if (!isCraftable(itemId)) return;
+      if (visiting.has(itemId)) return; // evita loop
+      visiting.add(itemId);
+
+      open.add(itemId);
+
+      const recs = recipesByResultId.get(itemId) ?? [];
+      if (recs.length === 0) {
+        visiting.delete(itemId);
+        return;
+      }
+      const idx = recipeChoice.get(itemId) ?? 0;
+      const recipe = recs[Math.min(idx, recs.length - 1)];
+
+      for (const ing of recipe.ingredients) {
+        walk(ing.itemId);
+      }
+
+      visiting.delete(itemId);
+    };
+
+    walk(rootId);
+    return open;
+  };
+
+  const selectItem = (id: number) => {
+    setSelectedId(id);
+    setHideResults(true);
+    setRecipeChoice(new Map()); // reset scelte ricetta sul cambio item
+    // espandi tutto subito (con recipeChoice appena resettata, quindi recipe 0 per tutti)
+    // NB: expanded dipende anche da recipesByResultId, già caricato
+    const openAll = (() => {
+      const open = new Set<number>();
+      const visiting = new Set<number>();
+
+      const walk = (itemId: number) => {
+        const recs = recipesByResultId.get(itemId) ?? [];
+        if (recs.length === 0) return;
+
+        if (visiting.has(itemId)) return;
+        visiting.add(itemId);
+        open.add(itemId);
+
+        const recipe = recs[0]; // default: prima ricetta
+        for (const ing of recipe.ingredients) walk(ing.itemId);
+
+        visiting.delete(itemId);
+      };
+
+      walk(id);
+      return open;
+    })();
+
+    setExpanded(openAll);
+  };
+
+  // Se cambi ricetta di un nodo, ri-espandi tutto (per mostrare immediatamente i nuovi componenti)
+  const onCycleRecipeAndReexpand = (id: number) => {
+    setRecipeChoice((prev) => {
+      const next = new Map(prev);
+      const list = recipesByResultId.get(id) ?? [];
+      if (list.length <= 1) return next;
+
+      const curr = next.get(id) ?? 0;
+      const nextIdx = (curr + 1) % list.length;
+      next.set(id, nextIdx);
+      return next;
+    });
+
+    if (selectedId) {
+      // aspettiamo lo state update? facciamo una re-expand “best effort” subito con lo stato corrente:
+      // (andrà bene nella pratica; al prossimo render si riallinea)
+      setExpanded(computeExpandedAll(selectedId));
+    }
+  };
+
+  // --------- Shopping list: ora è calcolata SEMPRE sul tree (usando expanded attuale) ----------
   const shoppingList: ShoppingRow[] = useMemo(() => {
     if (!selected) return [];
 
@@ -127,18 +195,11 @@ export function ItemsCraftGuidePage() {
       }
       visited.add(itemId);
 
-      const craftable = isCraftable(itemId);
-      const isOpen = expanded.has(itemId);
-
-      // se non craftabile oppure non espanso => va in lista spesa
-      if (!craftable || !isOpen) {
-        add(itemId, qtyMul);
-        visited.delete(itemId);
-        return;
-      }
-
       const recs = recipesByResultId.get(itemId) ?? [];
-      if (recs.length === 0) {
+      const craftable = recs.length > 0;
+
+      // se non craftabile o collassato => resta in shopping list
+      if (!craftable || !expanded.has(itemId)) {
         add(itemId, qtyMul);
         visited.delete(itemId);
         return;
@@ -154,6 +215,7 @@ export function ItemsCraftGuidePage() {
       visited.delete(itemId);
     };
 
+    // Root: espandiamo sempre la sua ricetta (non lo mettiamo nella lista “da comprare”)
     const rootId = selected.id;
     const rootRecs = recipesByResultId.get(rootId) ?? [];
     if (rootRecs.length === 0) return [];
@@ -197,7 +259,7 @@ export function ItemsCraftGuidePage() {
         </div>
       </div>
 
-      {/* Search (centered) */}
+      {/* Search centered */}
       <div className="mt-5 flex justify-center">
         <div className="w-full max-w-2xl">
           <input
@@ -226,36 +288,25 @@ export function ItemsCraftGuidePage() {
         <div className="mt-6 grid lg:grid-cols-12 gap-4">
           {/* LEFT */}
           <div className="lg:col-span-8 space-y-4">
-            {/* Results (hidden after selection) */}
+            {/* Results */}
             {!hideResults && results.length > 0 && (
               <div className="rounded-2xl glass p-3">
                 <div className="text-sm text-emerald-200/80 mb-2">Results ({results.length})</div>
 
                 <div className="space-y-2 max-h-[260px] overflow-auto pr-1">
-                  {results.map((it) => {
-                    const isSel = it.id === (selected?.id ?? null);
-                    return (
-                      <button
-                        key={it.id}
-                        onClick={() => {
-                          setSelectedId(it.id);
-                          setExpanded(new Set([it.id])); // apri root
-                          setRecipeChoice(new Map());
-                          setHideResults(true); // ✅ nascondi lista
-                        }}
-                        className={[
-                          "w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border transition",
-                          isSel ? "glass-strong" : "glass-soft hover:border-emerald-300/25",
-                        ].join(" ")}
-                      >
-                        <ItemIcon itemId={it.id} size={34} />
-                        <div className="flex-1">
-                          <div className="text-emerald-100 text-sm font-medium">{it.name}</div>
-                          <div className="text-emerald-200/55 text-xs">ID: {it.id}</div>
-                        </div>
-                      </button>
-                    );
-                  })}
+                  {results.map((it) => (
+                    <button
+                      key={it.id}
+                      onClick={() => selectItem(it.id)}
+                      className="w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border transition glass-soft hover:border-emerald-300/25"
+                    >
+                      <ItemIcon itemId={it.id} size={34} />
+                      <div className="flex-1">
+                        <div className="text-emerald-100 text-sm font-medium">{it.name}</div>
+                        <div className="text-emerald-200/55 text-xs">ID: {it.id}</div>
+                      </div>
+                    </button>
+                  ))}
                 </div>
               </div>
             )}
@@ -268,7 +319,7 @@ export function ItemsCraftGuidePage() {
                   <div className="flex-1">
                     <div className="text-xl font-semibold text-emerald-200">{selected.name}</div>
 
-                    {/* ✅ niente descrizione */}
+                    {/* niente descrizione */}
 
                     <button
                       onClick={() => setHideResults(false)}
@@ -280,7 +331,7 @@ export function ItemsCraftGuidePage() {
                 </div>
 
                 <div className="mt-6">
-                  <h2 className="text-lg font-semibold text-emerald-300 mb-3">What you need</h2>
+                  <h2 className="text-lg font-semibold text-emerald-300 mb-3">Components</h2>
 
                   <RecipeNode
                     root
@@ -291,7 +342,7 @@ export function ItemsCraftGuidePage() {
                     expanded={expanded}
                     recipeChoice={recipeChoice}
                     onToggle={toggleExpanded}
-                    onCycleRecipe={cycleRecipe}
+                    onCycleRecipe={onCycleRecipeAndReexpand}
                     isCraftable={isCraftable}
                     visited={new Set<number>()}
                   />
@@ -315,7 +366,7 @@ export function ItemsCraftGuidePage() {
               </div>
 
               <div className="text-xs text-emerald-200/70 mt-1">
-                Expand an ingredient to “craft it”; otherwise it stays here.
+                Everything is expanded by default. Collapse something to add it here.
               </div>
 
               {shoppingList.length === 0 ? (
@@ -328,10 +379,7 @@ export function ItemsCraftGuidePage() {
                     const it = itemsById.get(row.itemId);
                     const label = it?.name ?? `#${row.itemId}`;
                     return (
-                      <div
-                        key={row.itemId}
-                        className="flex items-center gap-3 rounded-xl glass-soft px-3 py-2"
-                      >
+                      <div key={row.itemId} className="flex items-center gap-3 rounded-xl glass-soft px-3 py-2">
                         <ItemIcon itemId={row.itemId} size={32} />
                         <div className="flex-1">
                           <div className="text-emerald-100 text-sm">{label}</div>
@@ -396,7 +444,7 @@ function RecipeNode(props: {
     <div className="space-y-2">
       {!root && (
         <div
-          className={["flex items-center gap-3 rounded-xl px-3 py-2 border", "glass-soft"].join(" ")}
+          className="flex items-center gap-3 rounded-xl px-3 py-2 border glass-soft"
           style={{ marginLeft: depth * 16 }}
         >
           <button
