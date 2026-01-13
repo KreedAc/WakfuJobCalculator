@@ -1,8 +1,8 @@
-// src/pages/ItemsCraftGuidePage.tsx
 import { useEffect, useMemo, useState } from "react";
 import {
   loadWakfuData,
   getItemIconUrl,
+  getItemRarityLabel,
   type CompactItem,
   type CompactRecipe,
 } from "../lib/wakfuData";
@@ -44,7 +44,7 @@ export function ItemsCraftGuidePage() {
 
   const isCraftable = (id: number) => (recipesByResultId.get(id)?.length ?? 0) > 0;
 
-  // SOLO craftabili in ricerca
+  // Mostra SOLO item craftabili nella ricerca
   const craftableItems = useMemo(() => {
     const craftableIds = new Set<number>([...recipesByResultId.keys()]);
     return items
@@ -65,18 +65,6 @@ export function ItemsCraftGuidePage() {
     if (!selectedId) return null;
     return itemsById.get(selectedId) ?? null;
   }, [selectedId, itemsById]);
-
-  const onSelect = (itemId: number) => {
-    setSelectedId(itemId);
-    setExpanded(new Set([itemId])); // root “aperto”
-    setRecipeChoice(new Map());
-  };
-
-  const clearSelection = () => {
-    setSelectedId(null);
-    setExpanded(new Set());
-    setRecipeChoice(new Map());
-  };
 
   const toggleExpanded = (itemId: number) => {
     setExpanded((prev) => {
@@ -99,7 +87,7 @@ export function ItemsCraftGuidePage() {
     });
   };
 
-  // Shopping list: somma solo leaf NON espansi (o non craftabili)
+  // Shopping list: somma solo i leaf NON espansi (o non craftabili)
   const shoppingList: ShoppingRow[] = useMemo(() => {
     if (!selected) return [];
 
@@ -136,18 +124,22 @@ export function ItemsCraftGuidePage() {
       const idx = recipeChoice.get(itemId) ?? 0;
       const recipe = recs[Math.min(idx, recs.length - 1)];
 
-      for (const ing of recipe.ingredients) walk(ing.itemId, qtyMul * ing.qty);
+      for (const ing of recipe.ingredients) {
+        walk(ing.itemId, qtyMul * ing.qty);
+      }
 
       visited.delete(itemId);
     };
 
-    // Root: espandi sempre “virtualmente”
+    // root: espandi sempre (virtualmente)
     const rootRecs = recipesByResultId.get(selected.id) ?? [];
     if (rootRecs.length === 0) return [];
 
     const idx = recipeChoice.get(selected.id) ?? 0;
     const rootRecipe = rootRecs[Math.min(idx, rootRecs.length - 1)];
-    for (const ing of rootRecipe.ingredients) walk(ing.itemId, ing.qty);
+    for (const ing of rootRecipe.ingredients) {
+      walk(ing.itemId, ing.qty);
+    }
 
     return [...acc.entries()]
       .map(([itemId, qty]) => ({ itemId, qty }))
@@ -160,14 +152,22 @@ export function ItemsCraftGuidePage() {
 
   const copyShoppingList = async () => {
     const lines = shoppingList.map((r) => {
-      const name = itemsById.get(r.itemId)?.name ?? `#${r.itemId}`;
-      return `${name} x${r.qty}`;
+      const it = itemsById.get(r.itemId);
+      const name = it?.name ?? `#${r.itemId}`;
+      const rar = getItemRarityLabel(it);
+      return `${name}${rar ? ` (${rar})` : ""} x${r.qty}`;
     });
     try {
       await navigator.clipboard.writeText(lines.join("\n"));
     } catch {
       // ignore
     }
+  };
+
+  const onSelect = (itemId: number) => {
+    setSelectedId(itemId);
+    setExpanded(new Set([itemId])); // root aperto
+    setRecipeChoice(new Map());
   };
 
   return (
@@ -190,8 +190,7 @@ export function ItemsCraftGuidePage() {
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
-              // Se l'utente cambia query e vuole cercare altro, torna alla lista risultati
-              if (selectedId) clearSelection();
+              if (selectedId) setSelectedId(null);
             }}
             disabled={loading}
           />
@@ -205,18 +204,16 @@ export function ItemsCraftGuidePage() {
       )}
 
       {query && results.length === 0 && !loading && (
-        <p className="mt-4 text-center text-emerald-200/80">
-          No craftable items found for this search.
-        </p>
+        <p className="mt-4 text-center text-emerald-200/80">No craftable items found for this search.</p>
       )}
 
-      {/* RISULTATI: solo prima della selezione */}
+      {/* Results only before selection */}
       {!selected && query && results.length > 0 && (
         <div className="mt-6 flex justify-center">
           <div className="w-full max-w-2xl rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-3">
             <div className="text-sm text-emerald-200/80 mb-2">Results ({results.length})</div>
 
-            <div className="space-y-2 max-h-[340px] overflow-auto pr-1">
+            <div className="space-y-2 max-h-[320px] overflow-auto pr-1">
               {results.map((it) => (
                 <button
                   key={it.id}
@@ -226,44 +223,42 @@ export function ItemsCraftGuidePage() {
                   <ItemIcon item={it} size={34} />
                   <div className="flex-1 min-w-0">
                     <div className="text-emerald-100 text-sm font-medium truncate">{it.name}</div>
-                    <div className="text-emerald-200/55 text-xs">ID: {it.id}</div>
+                    <div className="flex items-center gap-2 mt-0.5">
+                      <RarityBadge item={it} />
+                      <div className="text-emerald-200/55 text-xs">ID: {it.id}</div>
+                    </div>
                   </div>
                 </button>
               ))}
             </div>
 
             <div className="mt-3 text-xs text-emerald-200/60">
-              Tip: click an item to show components + shopping list.
+              Tip: click an item to open the recipe tree + shopping list.
             </div>
           </div>
         </div>
       )}
 
-      {/* DOPO SELEZIONE: solo pannelli */}
+      {/* After selection */}
       {selected && (
         <div className="mt-6 grid lg:grid-cols-12 gap-4">
           {/* LEFT */}
           <div className="lg:col-span-8 space-y-4">
             <div className="rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-4">
               <div className="flex items-start gap-4">
-                <ItemIcon item={selected} size={46} />
+                <ItemIcon item={selected} />
                 <div className="flex-1 min-w-0">
                   <div className="text-xl font-semibold text-emerald-200 truncate">{selected.name}</div>
-                  <div className="text-xs text-emerald-200/50 mt-1">ID: {selected.id}</div>
+                  <div className="flex items-center gap-2 mt-1">
+                    <RarityBadge item={selected} />
+                    <div className="text-xs text-emerald-200/50">ID: {selected.id}</div>
+                  </div>
                 </div>
-
-                <button
-                  onClick={clearSelection}
-                  className="text-xs px-3 py-2 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35"
-                  title="Back to results"
-                >
-                  Change item
-                </button>
               </div>
 
               <div className="mt-6">
                 <h2 className="text-lg font-semibold text-emerald-300 mb-3">
-                  What you need
+                  What you need (expand craftable components)
                 </h2>
 
                 <RecipeNode
@@ -316,7 +311,10 @@ export function ItemsCraftGuidePage() {
                         <ItemIcon item={it ?? { id: row.itemId, name: label }} size={32} />
                         <div className="flex-1 min-w-0">
                           <div className="text-emerald-100 text-sm truncate">{label}</div>
-                          <div className="text-emerald-200/55 text-xs">ID: {row.itemId}</div>
+                          <div className="flex items-center gap-2 mt-0.5">
+                            <RarityBadge item={it ?? null} />
+                            <div className="text-emerald-200/55 text-xs">ID: {row.itemId}</div>
+                          </div>
                         </div>
                         <div className="text-emerald-200 font-semibold">x{row.qty}</div>
                       </div>
@@ -375,7 +373,7 @@ function RecipeNode(props: {
 
   return (
     <div className="space-y-2">
-      {/* header (non-root) */}
+      {/* non-root header */}
       {!root && (
         <div
           className="flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 bg-black/10"
@@ -393,9 +391,12 @@ function RecipeNode(props: {
 
           <div className="flex-1 min-w-0">
             <div className="text-emerald-100 text-sm truncate">{name}</div>
-            <div className="text-emerald-200/55 text-xs">
-              ID: {itemId} {craftable ? "• craftable" : "• not craftable"}
-              {loop ? " • loop" : ""}
+            <div className="flex items-center gap-2 mt-0.5">
+              <RarityBadge item={item ?? null} />
+              <div className="text-emerald-200/55 text-xs">
+                ID: {itemId} {craftable ? "• craftable" : "• not craftable"}
+                {loop ? " • loop" : ""}
+              </div>
             </div>
           </div>
 
@@ -418,8 +419,11 @@ function RecipeNode(props: {
             <ItemIcon item={item ?? { id: itemId, name }} size={32} />
             <div className="flex-1 min-w-0">
               <div className="text-emerald-100 text-sm font-medium truncate">{name}</div>
-              <div className="text-emerald-200/60 text-xs">
-                Root item • ID: {itemId} • {craftable ? "craftable" : "not craftable"}
+              <div className="flex items-center gap-2 mt-0.5">
+                <RarityBadge item={item ?? null} />
+                <div className="text-emerald-200/60 text-xs">
+                  Root item • ID: {itemId} • {craftable ? "craftable" : "not craftable"}
+                </div>
               </div>
             </div>
 
@@ -467,8 +471,11 @@ function RecipeNode(props: {
 
                   <div className="flex-1 min-w-0">
                     <div className="text-emerald-100 text-sm truncate">{ingName}</div>
-                    <div className="text-emerald-200/55 text-xs">
-                      ID: {ing.itemId} {ingCraftable ? "• craftable" : "• not craftable"}
+                    <div className="flex items-center gap-2 mt-0.5">
+                      <RarityBadge item={ingItem ?? null} />
+                      <div className="text-emerald-200/55 text-xs">
+                        ID: {ing.itemId} {ingCraftable ? "• craftable" : "• not craftable"}
+                      </div>
                     </div>
                   </div>
 
@@ -500,12 +507,22 @@ function RecipeNode(props: {
   );
 }
 
-function ItemIcon({ item, size = 44 }: { item: CompactItem; size?: number }) {
-  // Prima wakassets (usa gfxId), fallback ankama, fallback placeholder
-  const [src, setSrc] = useState(() => getItemIconUrl(item, "wakassets"));
+function RarityBadge({ item }: { item: CompactItem | null | undefined }) {
+  const label = getItemRarityLabel(item ?? null);
+  if (!label) return null;
+
+  return (
+    <span className="text-[10px] px-2 py-[2px] rounded-full border border-emerald-300/20 bg-black/10 text-emerald-100/90">
+      {label}
+    </span>
+  );
+}
+
+function ItemIcon({ item, size = 44 }: { item: Pick<CompactItem, "id" | "gfxId" | "name">; size?: number }) {
+  const [src, setSrc] = useState(getItemIconUrl(item, "ankama"));
 
   useEffect(() => {
-    setSrc(getItemIconUrl(item, "wakassets"));
+    setSrc(getItemIconUrl(item, "ankama"));
   }, [item.id, item.gfxId]);
 
   return (
@@ -514,26 +531,11 @@ function ItemIcon({ item, size = 44 }: { item: CompactItem; size?: number }) {
       width={size}
       height={size}
       alt=""
-      className="rounded-xl bg-black/10 backdrop-blur-md border border-emerald-300/15 object-cover"
-      loading="lazy"
+      className="rounded-xl bg-black/10 backdrop-blur-md border border-emerald-300/15"
       onError={() => {
-        // fallback 1: ankama
-        if (!src.includes("static.ankama.com")) {
-          setSrc(getItemIconUrl(item, "ankama"));
-          return;
-        }
-        // fallback 2: placeholder inline (evita immagini random)
-        setSrc(
-          "data:image/svg+xml;utf8," +
-            encodeURIComponent(
-              `<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'>
-                <rect width='100%' height='100%' rx='12' ry='12' fill='rgba(0,0,0,0.25)'/>
-                <text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle'
-                      fill='rgba(255,255,255,0.7)' font-family='Arial' font-size='14'>?</text>
-              </svg>`
-            )
-        );
+        if (src.includes("static.ankama.com")) setSrc(getItemIconUrl(item.id, "wakassets"));
       }}
+      loading="lazy"
     />
   );
 }
