@@ -4,116 +4,77 @@ import { Readable } from "node:stream";
 
 const OUT_DIR = path.resolve("public/data");
 
-// ---------- helpers ----------
 function pickText(v) {
   if (!v) return null;
   if (typeof v === "string") return v;
-  if (typeof v === "object") {
-    // prefer EN, poi FR/ES/PT, poi il primo valore
-    return v.en ?? v.fr ?? v.es ?? v.pt ?? Object.values(v)[0] ?? null;
-  }
+  if (typeof v === "object") return v.en ?? v.fr ?? v.es ?? v.pt ?? Object.values(v)[0] ?? null;
   return null;
 }
 
-function pickId(obj) {
-  // molti file hanno forme diverse
-  const o = obj ?? {};
-  const d = o.definition ?? {};
-
-  // caso IMPORTANTISSIMO per items.json: definition.item.id
-  const defItem = d.item ?? d?.itemDefinition ?? null;
-
+function pickId(o) {
   return (
-    o.id ??
-    o.definitionId ??
-    o.itemId ??
-    o.itemDefinitionId ??
-    o.resourceId ??
-    o.resourceDefinitionId ??
-    d.id ??
-    defItem?.id ??
-    defItem?.definitionId ??
+    o?.id ??
+    o?.definition?.id ??
+    o?.definitionId ??
+    o?.itemId ??
+    o?.itemDefinitionId ??
+    o?.resourceId ??
+    o?.resourceDefinitionId ??
     null
   );
 }
 
-function pickTitle(obj) {
-  const o = obj ?? {};
-  const d = o.definition ?? {};
-  const defItem = d.item ?? null;
-
+function pickTitle(o) {
   return (
-    pickText(o.title) ??
-    pickText(o.name) ??
-    pickText(o.itemTitle) ??
-    pickText(d.title) ??
-    pickText(d.name) ??
-    pickText(defItem?.title) ??
-    pickText(defItem?.name) ??
+    pickText(o?.title) ??
+    pickText(o?.name) ??
+    pickText(o?.definition?.title) ??
+    pickText(o?.definition?.name) ??
     null
   );
 }
 
-function pickDescription(obj) {
-  const o = obj ?? {};
-  const d = o.definition ?? {};
-  const defItem = d.item ?? null;
-
-  return (
-    pickText(o.description) ??
-    pickText(d.description) ??
-    pickText(defItem?.description) ??
-    null
-  );
+function pickDescription(o) {
+  return pickText(o?.description) ?? pickText(o?.definition?.description) ?? null;
 }
 
+// ✅ gfxId: prende quasi sempre da graphicParameters (items / jobsItems), e gestisce collectibleResources
 function pickGfxId(obj) {
   const o = obj ?? {};
-  const def = o.definition ?? null;
+  const d = o.definition ?? o;
 
-  // Nei file Ankama spesso l'icona sta qui:
-  // items.json: definition.item.graphicParameters
   const gp =
-    def?.item?.graphicParameters ??
-    def?.graphicParameters ??
-    o?.graphicParameters ??
+    d?.graphicParameters ??
+    d?.item?.graphicParameters ??
+    d?.item?.definition?.graphicParameters ??
     null;
 
-  // Alcuni dataset usano campi alternativi (resources / collectibleResources / jobsItems)
   const candidates = [
-    // standard più comune
-    gp?.iconGfxId,
+    // molto spesso qui
     gp?.gfxId,
+    gp?.iconGfxId,
     gp?.iconId,
     gp?.smallIconId,
     gp?.bigIconId,
-    gp?.itemGfxId,
-    gp?.imageId,
 
-    // varianti più “piatte”
-    def?.iconGfxId,
-    def?.gfxId,
-    def?.iconId,
-    def?.smallIconId,
-    def?.bigIconId,
-    def?.itemGfxId,
-    def?.baseGfxId,
-    def?.graphicId,
-    def?.imageId,
-
-    o?.iconGfxId,
-    o?.gfxId,
-    o?.iconId,
-    o?.smallIconId,
-    o?.bigIconId,
-    o?.itemGfxId,
-    o?.baseGfxId,
-    o?.graphicId,
-    o?.imageId,
+    // varianti
+    d?.iconGfxId,
+    d?.iconId,
+    d?.smallIconId,
+    d?.bigIconId,
+    d?.itemGfxId,
+    d?.gfxId,
+    d?.baseGfxId,
+    d?.graphicId,
+    d?.imageId,
 
     // collectibleResources
-    def?.collectGfxId,
+    d?.collectGfxId,
     o?.collectGfxId,
+
+    // annidati
+    d?.properties?.iconGfxId,
+    d?.properties?.iconId,
   ];
 
   for (const v of candidates) {
@@ -123,9 +84,44 @@ function pickGfxId(obj) {
   return null;
 }
 
+// ✅ rarity: prova varie posizioni
+function pickRarity(obj) {
+  const o = obj ?? {};
+  const d = o.definition ?? o;
+
+  const candidates = [
+    d?.rarity,
+    d?.item?.rarity,
+    d?.properties?.rarity,
+    d?.baseParameters?.rarity,
+    d?.item?.baseParameters?.rarity,
+    o?.rarity,
+  ];
+
+  for (const v of candidates) {
+    const n = Number(v);
+    if (Number.isFinite(n) && n >= 0) return n;
+  }
+  return null;
+}
+
+async function fetchWithRetry(url, opts = {}, tries = 3) {
+  let lastErr = null;
+  for (let i = 0; i < tries; i++) {
+    try {
+      const res = await fetch(url, opts);
+      return res;
+    } catch (e) {
+      lastErr = e;
+      // piccola pausa
+      await new Promise((r) => setTimeout(r, 250 * (i + 1)));
+    }
+  }
+  throw lastErr ?? new Error("fetch failed");
+}
 
 async function fetchJson(url) {
-  const res = await fetch(url);
+  const res = await fetchWithRetry(url, {}, 3);
   const text = await res.text();
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}\n${text.slice(0, 200)}`);
   try {
@@ -136,11 +132,11 @@ async function fetchJson(url) {
 }
 
 /**
- * Stream parse di un JSON array enorme: estrae oggetti top-level { ... }.
- * Filtra per neededSet e ritorna compact items.
+ * Stream parse di un JSON array enorme: estrae oggetti "{...}" top-level e li JSON.parse.
+ * Filtra per neededSet.
  */
 async function streamCompactItems(url, neededSet, sourceLabel) {
-  const res = await fetch(url);
+  const res = await fetchWithRetry(url, {}, 3);
   if (!res.ok) {
     const t = await res.text().catch(() => "");
     throw new Error(`HTTP ${res.status} for ${url}\n${t.slice(0, 200)}`);
@@ -149,7 +145,9 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
   const stream = Readable.fromWeb(res.body);
   stream.setEncoding("utf8");
 
-  let inString = false, escape = false, depth = 0;
+  let inString = false,
+    escape = false,
+    depth = 0;
   let buf = "";
 
   const out = [];
@@ -171,14 +169,17 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
     const title = pickTitle(obj);
     const description = pickDescription(obj);
     const gfxId = pickGfxId(obj);
+    const rarity = pickRarity(obj);
 
     out.push({
       id,
       name: title ?? `#${id}`,
       description: description ?? null,
-      gfxId: gfxId ?? null,
+      gfxId: gfxId != null ? Number(gfxId) : null,
+      rarity: rarity != null ? Number(rarity) : null,
       source: sourceLabel,
     });
+
     matched++;
   }
 
@@ -233,7 +234,6 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
   return { out, parsed, matched };
 }
 
-// ---------- main ----------
 async function main() {
   await fsp.mkdir(OUT_DIR, { recursive: true });
 
@@ -286,6 +286,7 @@ async function main() {
       1;
 
     if (!recipeId || !itemId) continue;
+
     const rid = Number(recipeId);
     if (!resByRecipe.has(rid)) {
       resByRecipe.set(rid, { resultItemId: Number(itemId), resultQty: Number(qty) || 1 });
@@ -305,12 +306,7 @@ async function main() {
     if (!res) continue;
 
     const ingredients = ingByRecipe.get(rid) ?? [];
-    recipesCompact.push({
-      id: rid,
-      resultItemId: res.resultItemId,
-      resultQty: res.resultQty,
-      ingredients,
-    });
+    recipesCompact.push({ id: rid, resultItemId: res.resultItemId, resultQty: res.resultQty, ingredients });
 
     neededItemIds.add(res.resultItemId);
     for (const ing of ingredients) neededItemIds.add(ing.itemId);
@@ -326,18 +322,15 @@ async function main() {
   console.log("recipes.compact:", recipesCompact.length);
   console.log("needed item ids:", neededItemIds.size);
 
-  // IMPORTANTISSIMO:
-  // 1) prima items.json (testi quasi sempre migliori)
-  // 2) poi fallback
-  const sources = ["items", "jobsItems", "resources", "collectibleResources"];
+  // --- items da più sorgenti ---
+  const sources = ["items", "resources", "collectibleResources", "jobsItems"];
 
   const itemById = new Map(); // id -> best record
 
-  const score = (x) => {
-    if (!x) return 0;
-    const hasRealName = x.name && !x.name.startsWith("#");
-    return (hasRealName ? 10 : 0) + (x.description ? 2 : 0) + (x.gfxId ? 1 : 0);
-  };
+  const score = (x) =>
+    (x?.name && !String(x.name).startsWith("#") ? 3 : 0) +
+    (x?.gfxId ? 2 : 0) +
+    (typeof x?.rarity === "number" ? 1 : 0);
 
   for (const s of sources) {
     const url = `${base}/${s}.json`;
@@ -358,12 +351,8 @@ async function main() {
   await fsp.writeFile(path.join(OUT_DIR, "items.compact.json"), JSON.stringify(itemsCompact));
   await fsp.writeFile(path.join(OUT_DIR, "missing_item_ids.json"), JSON.stringify(missing));
 
-  // mini report utile
-  const placeholder = itemsCompact.filter((x) => x.name?.startsWith("#")).length;
-
   console.log("items.compact:", itemsCompact.length);
   console.log("missing item ids:", missing.length);
-  console.log("placeholder names (#id):", placeholder);
   console.log("DONE ✅");
 }
 
