@@ -44,7 +44,7 @@ export function ItemsCraftGuidePage() {
 
   const isCraftable = (id: number) => (recipesByResultId.get(id)?.length ?? 0) > 0;
 
-  // Search only craftable items
+  // SOLO craftabili in ricerca
   const craftableItems = useMemo(() => {
     const craftableIds = new Set<number>([...recipesByResultId.keys()]);
     return items
@@ -65,6 +65,18 @@ export function ItemsCraftGuidePage() {
     if (!selectedId) return null;
     return itemsById.get(selectedId) ?? null;
   }, [selectedId, itemsById]);
+
+  const onSelect = (itemId: number) => {
+    setSelectedId(itemId);
+    setExpanded(new Set([itemId])); // root “aperto”
+    setRecipeChoice(new Map());
+  };
+
+  const clearSelection = () => {
+    setSelectedId(null);
+    setExpanded(new Set());
+    setRecipeChoice(new Map());
+  };
 
   const toggleExpanded = (itemId: number) => {
     setExpanded((prev) => {
@@ -87,7 +99,7 @@ export function ItemsCraftGuidePage() {
     });
   };
 
-  // Shopping list: sum leaves that are NOT expanded (or not craftable)
+  // Shopping list: somma solo leaf NON espansi (o non craftabili)
   const shoppingList: ShoppingRow[] = useMemo(() => {
     if (!selected) return [];
 
@@ -124,22 +136,18 @@ export function ItemsCraftGuidePage() {
       const idx = recipeChoice.get(itemId) ?? 0;
       const recipe = recs[Math.min(idx, recs.length - 1)];
 
-      for (const ing of recipe.ingredients) {
-        walk(ing.itemId, qtyMul * ing.qty);
-      }
+      for (const ing of recipe.ingredients) walk(ing.itemId, qtyMul * ing.qty);
 
       visited.delete(itemId);
     };
 
-    // root: always expand virtually
+    // Root: espandi sempre “virtualmente”
     const rootRecs = recipesByResultId.get(selected.id) ?? [];
     if (rootRecs.length === 0) return [];
 
     const idx = recipeChoice.get(selected.id) ?? 0;
     const rootRecipe = rootRecs[Math.min(idx, rootRecs.length - 1)];
-    for (const ing of rootRecipe.ingredients) {
-      walk(ing.itemId, ing.qty);
-    }
+    for (const ing of rootRecipe.ingredients) walk(ing.itemId, ing.qty);
 
     return [...acc.entries()]
       .map(([itemId, qty]) => ({ itemId, qty }))
@@ -162,12 +170,6 @@ export function ItemsCraftGuidePage() {
     }
   };
 
-  const onSelect = (itemId: number) => {
-    setSelectedId(itemId);
-    setExpanded(new Set([itemId])); // root opened (not used by root render, but used by shopping logic for children)
-    setRecipeChoice(new Map());
-  };
-
   return (
     <div className="w-full max-w-6xl mx-auto p-4">
       {/* Header */}
@@ -188,8 +190,8 @@ export function ItemsCraftGuidePage() {
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
-              // If you want to keep the selected item visible while typing, remove the next line:
-              if (selectedId) setSelectedId(null);
+              // Se l'utente cambia query e vuole cercare altro, torna alla lista risultati
+              if (selectedId) clearSelection();
             }}
             disabled={loading}
           />
@@ -208,22 +210,22 @@ export function ItemsCraftGuidePage() {
         </p>
       )}
 
-      {/* Results: show ONLY before selection */}
+      {/* RISULTATI: solo prima della selezione */}
       {!selected && query && results.length > 0 && (
         <div className="mt-6 flex justify-center">
           <div className="w-full max-w-2xl rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-3">
             <div className="text-sm text-emerald-200/80 mb-2">Results ({results.length})</div>
 
-            <div className="space-y-2 max-h-[320px] overflow-auto pr-1">
+            <div className="space-y-2 max-h-[340px] overflow-auto pr-1">
               {results.map((it) => (
                 <button
                   key={it.id}
                   onClick={() => onSelect(it.id)}
                   className="w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 bg-black/10 hover:border-emerald-300/25 transition"
                 >
-                  <ItemIcon itemId={it.id} size={34} itemsById={itemsById} />
-                  <div className="flex-1">
-                    <div className="text-emerald-100 text-sm font-medium">{it.name}</div>
+                  <ItemIcon item={it} size={34} />
+                  <div className="flex-1 min-w-0">
+                    <div className="text-emerald-100 text-sm font-medium truncate">{it.name}</div>
                     <div className="text-emerald-200/55 text-xs">ID: {it.id}</div>
                   </div>
                 </button>
@@ -231,29 +233,37 @@ export function ItemsCraftGuidePage() {
             </div>
 
             <div className="mt-3 text-xs text-emerald-200/60">
-              Tip: click an item to open the recipe tree + shopping list.
+              Tip: click an item to show components + shopping list.
             </div>
           </div>
         </div>
       )}
 
-      {/* After selection: show ONLY panels (left recipe, right shopping) */}
+      {/* DOPO SELEZIONE: solo pannelli */}
       {selected && (
         <div className="mt-6 grid lg:grid-cols-12 gap-4">
           {/* LEFT */}
           <div className="lg:col-span-8 space-y-4">
             <div className="rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-4">
               <div className="flex items-start gap-4">
-                <ItemIcon itemId={selected.id} itemsById={itemsById} />
-                <div className="flex-1">
-                  <div className="text-xl font-semibold text-emerald-200">{selected.name}</div>
+                <ItemIcon item={selected} size={46} />
+                <div className="flex-1 min-w-0">
+                  <div className="text-xl font-semibold text-emerald-200 truncate">{selected.name}</div>
                   <div className="text-xs text-emerald-200/50 mt-1">ID: {selected.id}</div>
                 </div>
+
+                <button
+                  onClick={clearSelection}
+                  className="text-xs px-3 py-2 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35"
+                  title="Back to results"
+                >
+                  Change item
+                </button>
               </div>
 
               <div className="mt-6">
                 <h2 className="text-lg font-semibold text-emerald-300 mb-3">
-                  What you need (expand craftable components)
+                  What you need
                 </h2>
 
                 <RecipeNode
@@ -288,7 +298,7 @@ export function ItemsCraftGuidePage() {
               </div>
 
               <div className="text-xs text-emerald-200/70 mt-1">
-                If you expand a craftable ingredient, it disappears from here and is replaced by its sub-ingredients.
+                Expand a craftable ingredient to replace it with its sub-ingredients.
               </div>
 
               {shoppingList.length === 0 ? (
@@ -296,15 +306,16 @@ export function ItemsCraftGuidePage() {
               ) : (
                 <div className="mt-4 space-y-2 max-h-[720px] overflow-auto pr-1">
                   {shoppingList.map((row) => {
-                    const label = itemsById.get(row.itemId)?.name ?? `#${row.itemId}`;
+                    const it = itemsById.get(row.itemId);
+                    const label = it?.name ?? `#${row.itemId}`;
                     return (
                       <div
                         key={row.itemId}
                         className="flex items-center gap-3 rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2"
                       >
-                        <ItemIcon itemId={row.itemId} size={32} itemsById={itemsById} />
-                        <div className="flex-1">
-                          <div className="text-emerald-100 text-sm">{label}</div>
+                        <ItemIcon item={it ?? { id: row.itemId, name: label }} size={32} />
+                        <div className="flex-1 min-w-0">
+                          <div className="text-emerald-100 text-sm truncate">{label}</div>
                           <div className="text-emerald-200/55 text-xs">ID: {row.itemId}</div>
                         </div>
                         <div className="text-emerald-200 font-semibold">x{row.qty}</div>
@@ -344,6 +355,7 @@ function RecipeNode(props: {
     recipeChoice,
     onToggle,
     onCycleRecipe,
+    isCraftable,
     visited,
   } = props;
 
@@ -363,7 +375,7 @@ function RecipeNode(props: {
 
   return (
     <div className="space-y-2">
-      {/* Non-root row header */}
+      {/* header (non-root) */}
       {!root && (
         <div
           className="flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 bg-black/10"
@@ -377,7 +389,7 @@ function RecipeNode(props: {
             {isOpen ? "−" : "+"}
           </button>
 
-          <ItemIcon itemId={itemId} size={28} itemsById={itemsById} />
+          <ItemIcon item={item ?? { id: itemId, name }} size={28} />
 
           <div className="flex-1 min-w-0">
             <div className="text-emerald-100 text-sm truncate">{name}</div>
@@ -399,13 +411,13 @@ function RecipeNode(props: {
         </div>
       )}
 
-      {/* Root card */}
+      {/* root card */}
       {root && (
         <div className="rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2">
           <div className="flex items-center gap-3">
-            <ItemIcon itemId={itemId} size={32} itemsById={itemsById} />
-            <div className="flex-1">
-              <div className="text-emerald-100 text-sm font-medium">{name}</div>
+            <ItemIcon item={item ?? { id: itemId, name }} size={32} />
+            <div className="flex-1 min-w-0">
+              <div className="text-emerald-100 text-sm font-medium truncate">{name}</div>
               <div className="text-emerald-200/60 text-xs">
                 Root item • ID: {itemId} • {craftable ? "craftable" : "not craftable"}
               </div>
@@ -424,13 +436,13 @@ function RecipeNode(props: {
         </div>
       )}
 
-      {/* Children */}
+      {/* children */}
       {isOpen && craftable && recipe && !loop && (
         <div className="space-y-2">
           {recipe.ingredients.map((ing, idx) => {
             const ingItem = itemsById.get(ing.itemId);
             const ingName = ingItem?.name ?? `#${ing.itemId}`;
-            const ingCraftable = (recipesByResultId.get(ing.itemId)?.length ?? 0) > 0;
+            const ingCraftable = isCraftable(ing.itemId);
 
             return (
               <div
@@ -451,7 +463,7 @@ function RecipeNode(props: {
                     <div className="w-[34px]" />
                   )}
 
-                  <ItemIcon itemId={ing.itemId} size={28} itemsById={itemsById} />
+                  <ItemIcon item={ingItem ?? { id: ing.itemId, name: ingName }} size={28} />
 
                   <div className="flex-1 min-w-0">
                     <div className="text-emerald-100 text-sm truncate">{ingName}</div>
@@ -471,10 +483,10 @@ function RecipeNode(props: {
                       itemsById={itemsById}
                       recipesByResultId={recipesByResultId}
                       expanded={expanded}
-                      recipeChoice={props.recipeChoice}
+                      recipeChoice={recipeChoice}
                       onToggle={onToggle}
                       onCycleRecipe={onCycleRecipe}
-                      isCraftable={props.isCraftable}
+                      isCraftable={isCraftable}
                       visited={nextVisited}
                     />
                   </div>
@@ -488,21 +500,13 @@ function RecipeNode(props: {
   );
 }
 
-function ItemIcon({
-  itemId,
-  size = 44,
-  itemsById,
-}: {
-  itemId: number;
-  size?: number;
-  itemsById?: Map<number, CompactItem>;
-}) {
-  const item = itemsById?.get(itemId);
-  const [src, setSrc] = useState(getItemIconUrl(item ?? itemId, "ankama"));
+function ItemIcon({ item, size = 44 }: { item: CompactItem; size?: number }) {
+  // Prima wakassets (usa gfxId), fallback ankama, fallback placeholder
+  const [src, setSrc] = useState(() => getItemIconUrl(item, "wakassets"));
 
   useEffect(() => {
-    setSrc(getItemIconUrl(item ?? itemId, "ankama"));
-  }, [itemId, item]);
+    setSrc(getItemIconUrl(item, "wakassets"));
+  }, [item.id, item.gfxId]);
 
   return (
     <img
@@ -510,11 +514,26 @@ function ItemIcon({
       width={size}
       height={size}
       alt=""
-      className="rounded-xl bg-black/10 backdrop-blur-md border border-emerald-300/15"
-      onError={() => {
-        if (src.includes("static.ankama.com")) setSrc(getItemIconUrl(item ?? itemId, "wakassets"));
-      }}
+      className="rounded-xl bg-black/10 backdrop-blur-md border border-emerald-300/15 object-cover"
       loading="lazy"
+      onError={() => {
+        // fallback 1: ankama
+        if (!src.includes("static.ankama.com")) {
+          setSrc(getItemIconUrl(item, "ankama"));
+          return;
+        }
+        // fallback 2: placeholder inline (evita immagini random)
+        setSrc(
+          "data:image/svg+xml;utf8," +
+            encodeURIComponent(
+              `<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'>
+                <rect width='100%' height='100%' rx='12' ry='12' fill='rgba(0,0,0,0.25)'/>
+                <text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle'
+                      fill='rgba(255,255,255,0.7)' font-family='Arial' font-size='14'>?</text>
+              </svg>`
+            )
+        );
+      }}
     />
   );
 }
