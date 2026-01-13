@@ -1,3 +1,4 @@
+// src/pages/ItemsCraftGuidePage.tsx
 import { useEffect, useMemo, useState } from "react";
 import {
   loadWakfuData,
@@ -43,7 +44,7 @@ export function ItemsCraftGuidePage() {
 
   const isCraftable = (id: number) => (recipesByResultId.get(id)?.length ?? 0) > 0;
 
-  // Mostra SOLO item craftabili nella ricerca
+  // Search only craftable items
   const craftableItems = useMemo(() => {
     const craftableIds = new Set<number>([...recipesByResultId.keys()]);
     return items
@@ -86,7 +87,7 @@ export function ItemsCraftGuidePage() {
     });
   };
 
-  // Shopping list: somma solo i leaf NON espansi (o non craftabili)
+  // Shopping list: sum leaves that are NOT expanded (or not craftable)
   const shoppingList: ShoppingRow[] = useMemo(() => {
     if (!selected) return [];
 
@@ -130,7 +131,7 @@ export function ItemsCraftGuidePage() {
       visited.delete(itemId);
     };
 
-    // root: espandi sempre (virtualmente)
+    // root: always expand virtually
     const rootRecs = recipesByResultId.get(selected.id) ?? [];
     if (rootRecs.length === 0) return [];
 
@@ -163,7 +164,7 @@ export function ItemsCraftGuidePage() {
 
   const onSelect = (itemId: number) => {
     setSelectedId(itemId);
-    setExpanded(new Set([itemId])); // root aperto
+    setExpanded(new Set([itemId])); // root opened (not used by root render, but used by shopping logic for children)
     setRecipeChoice(new Map());
   };
 
@@ -187,7 +188,7 @@ export function ItemsCraftGuidePage() {
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
-              // se cambi query, “sblocca” la possibilità di selezionare altro:
+              // If you want to keep the selected item visible while typing, remove the next line:
               if (selectedId) setSelectedId(null);
             }}
             disabled={loading}
@@ -207,7 +208,7 @@ export function ItemsCraftGuidePage() {
         </p>
       )}
 
-      {/* RISULTATI: mostrali SOLO quando non hai ancora selezionato */}
+      {/* Results: show ONLY before selection */}
       {!selected && query && results.length > 0 && (
         <div className="mt-6 flex justify-center">
           <div className="w-full max-w-2xl rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-3">
@@ -220,7 +221,7 @@ export function ItemsCraftGuidePage() {
                   onClick={() => onSelect(it.id)}
                   className="w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 bg-black/10 hover:border-emerald-300/25 transition"
                 >
-                  <ItemIcon item={it} size={34} />
+                  <ItemIcon itemId={it.id} size={34} itemsById={itemsById} />
                   <div className="flex-1">
                     <div className="text-emerald-100 text-sm font-medium">{it.name}</div>
                     <div className="text-emerald-200/55 text-xs">ID: {it.id}</div>
@@ -236,14 +237,14 @@ export function ItemsCraftGuidePage() {
         </div>
       )}
 
-      {/* DOPO SELEZIONE: mostra SOLO pannelli (sinistra ricetta, destra shopping) */}
+      {/* After selection: show ONLY panels (left recipe, right shopping) */}
       {selected && (
         <div className="mt-6 grid lg:grid-cols-12 gap-4">
           {/* LEFT */}
           <div className="lg:col-span-8 space-y-4">
             <div className="rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-4">
               <div className="flex items-start gap-4">
-                <ItemIcon item={selected} />
+                <ItemIcon itemId={selected.id} itemsById={itemsById} />
                 <div className="flex-1">
                   <div className="text-xl font-semibold text-emerald-200">{selected.name}</div>
                   <div className="text-xs text-emerald-200/50 mt-1">ID: {selected.id}</div>
@@ -259,7 +260,7 @@ export function ItemsCraftGuidePage() {
                   root
                   itemId={selected.id}
                   depth={0}
-                  itemsById={itemsById} itemsById={itemsById}
+                  itemsById={itemsById}
                   recipesByResultId={recipesByResultId}
                   expanded={expanded}
                   recipeChoice={recipeChoice}
@@ -295,14 +296,13 @@ export function ItemsCraftGuidePage() {
               ) : (
                 <div className="mt-4 space-y-2 max-h-[720px] overflow-auto pr-1">
                   {shoppingList.map((row) => {
-                    const it = itemsById.get(row.itemId);
-                    const label = it?.name ?? `#${row.itemId}`;
+                    const label = itemsById.get(row.itemId)?.name ?? `#${row.itemId}`;
                     return (
                       <div
                         key={row.itemId}
                         className="flex items-center gap-3 rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2"
                       >
-                        <ItemIcon item={it ?? { id: row.itemId, name: label }} size={32} />
+                        <ItemIcon itemId={row.itemId} size={32} itemsById={itemsById} />
                         <div className="flex-1">
                           <div className="text-emerald-100 text-sm">{label}</div>
                           <div className="text-emerald-200/55 text-xs">ID: {row.itemId}</div>
@@ -344,7 +344,6 @@ function RecipeNode(props: {
     recipeChoice,
     onToggle,
     onCycleRecipe,
-    isCraftable,
     visited,
   } = props;
 
@@ -364,7 +363,7 @@ function RecipeNode(props: {
 
   return (
     <div className="space-y-2">
-      {/* header riga (non-root) */}
+      {/* Non-root row header */}
       {!root && (
         <div
           className="flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 bg-black/10"
@@ -378,7 +377,7 @@ function RecipeNode(props: {
             {isOpen ? "−" : "+"}
           </button>
 
-          <ItemIcon item={item ?? { id: itemId, name }} size={28} />
+          <ItemIcon itemId={itemId} size={28} itemsById={itemsById} />
 
           <div className="flex-1 min-w-0">
             <div className="text-emerald-100 text-sm truncate">{name}</div>
@@ -400,11 +399,11 @@ function RecipeNode(props: {
         </div>
       )}
 
-      {/* root card */}
+      {/* Root card */}
       {root && (
         <div className="rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2">
           <div className="flex items-center gap-3">
-            <ItemIcon item={item ?? { id: itemId, name }} size={32} />
+            <ItemIcon itemId={itemId} size={32} itemsById={itemsById} />
             <div className="flex-1">
               <div className="text-emerald-100 text-sm font-medium">{name}</div>
               <div className="text-emerald-200/60 text-xs">
@@ -425,13 +424,13 @@ function RecipeNode(props: {
         </div>
       )}
 
-      {/* children */}
+      {/* Children */}
       {isOpen && craftable && recipe && !loop && (
         <div className="space-y-2">
           {recipe.ingredients.map((ing, idx) => {
             const ingItem = itemsById.get(ing.itemId);
             const ingName = ingItem?.name ?? `#${ing.itemId}`;
-            const ingCraftable = isCraftable(ing.itemId);
+            const ingCraftable = (recipesByResultId.get(ing.itemId)?.length ?? 0) > 0;
 
             return (
               <div
@@ -452,7 +451,7 @@ function RecipeNode(props: {
                     <div className="w-[34px]" />
                   )}
 
-                  <ItemIcon item={ingItem ?? { id: ing.itemId, name: ingName }} size={28} />
+                  <ItemIcon itemId={ing.itemId} size={28} itemsById={itemsById} />
 
                   <div className="flex-1 min-w-0">
                     <div className="text-emerald-100 text-sm truncate">{ingName}</div>
@@ -469,13 +468,13 @@ function RecipeNode(props: {
                     <RecipeNode
                       itemId={ing.itemId}
                       depth={depth + 2}
-                      itemsById={itemsById} itemsById={itemsById}
+                      itemsById={itemsById}
                       recipesByResultId={recipesByResultId}
                       expanded={expanded}
-                      recipeChoice={recipeChoice}
+                      recipeChoice={props.recipeChoice}
                       onToggle={onToggle}
                       onCycleRecipe={onCycleRecipe}
-                      isCraftable={isCraftable}
+                      isCraftable={props.isCraftable}
                       visited={nextVisited}
                     />
                   </div>
@@ -513,12 +512,9 @@ function ItemIcon({
       alt=""
       className="rounded-xl bg-black/10 backdrop-blur-md border border-emerald-300/15"
       onError={() => {
-        if (src.includes("static.ankama.com")) {
-          setSrc(getItemIconUrl(itemId, "wakassets"));
-        }
+        if (src.includes("static.ankama.com")) setSrc(getItemIconUrl(item ?? itemId, "wakassets"));
       }}
       loading="lazy"
     />
   );
 }
-
