@@ -469,7 +469,7 @@ function RecipeNode(props: {
                     <RecipeNode
                       itemId={ing.itemId}
                       depth={depth + 2}
-                      itemsById={itemsById}
+                      itemsById={itemsById} itemsById={itemsById}
                       recipesByResultId={recipesByResultId}
                       expanded={expanded}
                       recipeChoice={recipeChoice}
