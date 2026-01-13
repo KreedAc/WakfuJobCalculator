@@ -1,11 +1,10 @@
-// src/lib/wakfuData.ts
 export type CompactItem = {
   id: number;
   name: string;
   description?: string | null;
   gfxId?: number | null;
   rarity?: number | null;
-  source?: string;
+  source?: string | null;
 };
 
 export type CompactRecipe = {
@@ -22,40 +21,36 @@ export type WakfuData = {
   recipesByResultId: Map<number, CompactRecipe[]>;
 };
 
-async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
-  return (await res.json()) as T;
-}
+let _cache: Promise<WakfuData> | null = null;
 
-export async function loadWakfuData(): Promise<WakfuData> {
-  const [items, recipes] = await Promise.all([
-    fetchJson<CompactItem[]>("/data/items.compact.json"),
-    fetchJson<CompactRecipe[]>("/data/recipes.compact.json"),
-  ]);
-
-  const itemsById = new Map<number, CompactItem>();
-  for (const it of items) itemsById.set(it.id, it);
-
-  const recipesByResultId = new Map<number, CompactRecipe[]>();
-  for (const r of recipes) {
-    const arr = recipesByResultId.get(r.resultItemId) ?? [];
-    arr.push(r);
-    recipesByResultId.set(r.resultItemId, arr);
+export function rarityInfo(rarity: number | null | undefined): { label: string; cls: string } {
+  // mapping che mi hai dato:
+  // 1 = Unusual (grigio), 2 = Rare (verde), 3 = Mythical (arancione), 4 = Legendary (giallo)
+  switch (rarity) {
+    case 1:
+      return { label: "Unusual", cls: "border-slate-300/30 text-slate-100/90 bg-slate-400/10" };
+    case 2:
+      return { label: "Rare", cls: "border-emerald-300/30 text-emerald-100/90 bg-emerald-400/10" };
+    case 3:
+      return { label: "Mythical", cls: "border-orange-300/30 text-orange-100/90 bg-orange-400/10" };
+    case 4:
+      return { label: "Legendary", cls: "border-yellow-300/30 text-yellow-100/90 bg-yellow-400/10" };
+    default:
+      return { label: "Common", cls: "border-white/15 text-emerald-50/80 bg-white/5" };
   }
-
-  return { items, recipes, itemsById, recipesByResultId };
 }
 
 export function getItemIconUrl(
   itemOrId: CompactItem | number,
   provider: "ankama" | "wakassets" = "ankama"
-) {
+): string {
   const id = typeof itemOrId === "number" ? itemOrId : itemOrId.id;
-  const gfxId = typeof itemOrId === "number" ? null : (itemOrId.gfxId ?? null);
+  const gfx = typeof itemOrId === "number" ? null : itemOrId.gfxId ?? null;
 
-  // dalle tue prove: funziona con gfxId; fallback su id solo se non abbiamo altro
-  const key = gfxId && Number.isFinite(gfxId) ? gfxId : id;
+  // IMPORTANTISSIMO: dai tuoi test:
+  // - id spesso dà 403/404
+  // - gfxId funziona (200)
+  const key = gfx && gfx > 0 ? gfx : id;
 
   if (provider === "ankama") {
     return `https://static.ankama.com/wakfu/portal/game/item/115/${key}.png`;
@@ -63,17 +58,27 @@ export function getItemIconUrl(
   return `https://vertylo.github.io/wakassets/items/${key}.png`;
 }
 
-export function rarityInfo(rarity: number | null | undefined) {
-  switch (rarity ?? null) {
-    case 1:
-      return { label: "Unusual", cls: "text-slate-200/90 bg-white/10 border-white/15" };
-    case 2:
-      return { label: "Rare", cls: "text-emerald-200 bg-emerald-400/10 border-emerald-300/20" };
-    case 3:
-      return { label: "Mythical", cls: "text-orange-200 bg-orange-400/10 border-orange-300/20" };
-    case 4:
-      return { label: "Legendary", cls: "text-yellow-200 bg-yellow-400/10 border-yellow-300/20" };
-    default:
-      return { label: "—", cls: "text-emerald-200/50 bg-black/10 border-emerald-300/10" };
-  }
+export async function loadWakfuData(): Promise<WakfuData> {
+  if (_cache) return _cache;
+
+  _cache = (async () => {
+    const [items, recipes] = await Promise.all([
+      fetch("/data/items.compact.json").then((r) => r.json()) as Promise<CompactItem[]>,
+      fetch("/data/recipes.compact.json").then((r) => r.json()) as Promise<CompactRecipe[]>,
+    ]);
+
+    const itemsById = new Map<number, CompactItem>();
+    for (const it of items) itemsById.set(it.id, it);
+
+    const recipesByResultId = new Map<number, CompactRecipe[]>();
+    for (const rec of recipes) {
+      const arr = recipesByResultId.get(rec.resultItemId) ?? [];
+      arr.push(rec);
+      recipesByResultId.set(rec.resultItemId, arr);
+    }
+
+    return { items, recipes, itemsById, recipesByResultId };
+  })();
+
+  return _cache;
 }
