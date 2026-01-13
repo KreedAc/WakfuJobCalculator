@@ -30,7 +30,7 @@ export function ItemsCraftGuidePage() {
 
   // Tree controls
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
-  const [recipeChoice, setRecipeChoice] = useState<Map<number, number>>(new Map()); // itemId -> recipeIndex
+  const [recipeChoice, setRecipeChoice] = useState<Map<number, number>>(new Map());
 
   useEffect(() => {
     loadWakfuData()
@@ -68,7 +68,7 @@ export function ItemsCraftGuidePage() {
 
   const onSelect = (itemId: number) => {
     setSelectedId(itemId);
-    setExpanded(new Set()); // nessun ingrediente espanso all'inizio
+    setExpanded(new Set()); // niente progressivo prima della selezione: dopo selezione puoi espandere tu
     setRecipeChoice(new Map());
   };
 
@@ -187,7 +187,7 @@ export function ItemsCraftGuidePage() {
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
-              setSelectedId(null); // se cambi query, torni ai risultati
+              setSelectedId(null); // cambiando ricerca, torni ai risultati
             }}
             disabled={loading}
           />
