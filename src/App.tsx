@@ -67,6 +67,7 @@ function AppContent() {
   style={{ boxShadow: "inset 0 0 180px rgba(0,0,0,0.38)" }}
 />
 
+
       <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-50">
         <HamburgerMenu
           isOpen={hamburgerOpen}
