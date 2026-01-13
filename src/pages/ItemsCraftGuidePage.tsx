@@ -259,7 +259,7 @@ export function ItemsCraftGuidePage() {
                   root
                   itemId={selected.id}
                   depth={0}
-                  itemsById={itemsById}
+                  itemsById={itemsById} itemsById={itemsById}
                   recipesByResultId={recipesByResultId}
                   expanded={expanded}
                   recipeChoice={recipeChoice}
