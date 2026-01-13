@@ -67,33 +67,52 @@ function pickDescription(obj) {
   );
 }
 
-// (opzionale) proviamo a pescare un gfx/icon id, ma non blocca nulla se manca
 function pickGfxId(obj) {
   const o = obj ?? {};
-  const d = o.definition ?? o;
-  const gp = d.graphicParameters ?? d?.item?.graphicParameters ?? null;
+  const def = o.definition ?? null;
 
+  // Nei file Ankama spesso l'icona sta qui:
+  // items.json: definition.item.graphicParameters
+  const gp =
+    def?.item?.graphicParameters ??
+    def?.graphicParameters ??
+    o?.graphicParameters ??
+    null;
+
+  // Alcuni dataset usano campi alternativi (resources / collectibleResources / jobsItems)
   const candidates = [
-    // spesso stanno dentro graphicParameters
-    gp?.gfxId,
+    // standard più comune
     gp?.iconGfxId,
+    gp?.gfxId,
     gp?.iconId,
     gp?.smallIconId,
     gp?.bigIconId,
+    gp?.itemGfxId,
+    gp?.imageId,
 
-    // altre varianti
-    d?.iconGfxId,
-    d?.iconId,
-    d?.smallIconId,
-    d?.bigIconId,
-    d?.itemGfxId,
-    d?.gfxId,
-    d?.baseGfxId,
-    d?.graphicId,
-    d?.imageId,
+    // varianti più “piatte”
+    def?.iconGfxId,
+    def?.gfxId,
+    def?.iconId,
+    def?.smallIconId,
+    def?.bigIconId,
+    def?.itemGfxId,
+    def?.baseGfxId,
+    def?.graphicId,
+    def?.imageId,
 
-    // collectibleResources ha collectGfxId
-    d?.collectGfxId,
+    o?.iconGfxId,
+    o?.gfxId,
+    o?.iconId,
+    o?.smallIconId,
+    o?.bigIconId,
+    o?.itemGfxId,
+    o?.baseGfxId,
+    o?.graphicId,
+    o?.imageId,
+
+    // collectibleResources
+    def?.collectGfxId,
     o?.collectGfxId,
   ];
 
@@ -103,6 +122,7 @@ function pickGfxId(obj) {
   }
   return null;
 }
+
 
 async function fetchJson(url) {
   const res = await fetch(url);
