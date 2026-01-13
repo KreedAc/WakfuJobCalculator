@@ -1,16 +1,19 @@
-export type CompactItem = {
-  id: number;
-  name: string;
-  description: string | null;
-  gfxId: number | null;
-  source?: string;
-};
+// src/lib/wakfuData.ts
+export type CompactIngredient = { itemId: number; qty: number };
 
 export type CompactRecipe = {
   id: number;
   resultItemId: number;
   resultQty: number;
-  ingredients: { itemId: number; qty: number }[];
+  ingredients: CompactIngredient[];
+};
+
+export type CompactItem = {
+  id: number;
+  name: string;
+  description?: string | null;
+  gfxId?: number | null; // <-- IMPORTANTISSIMO: è quello da usare per le icone
+  source?: string;
 };
 
 export type WakfuData = {
@@ -22,23 +25,29 @@ export type WakfuData = {
 
 let _cache: Promise<WakfuData> | null = null;
 
-export async function loadWakfuData(): Promise<WakfuData> {
+async function fetchJson<T>(url: string): Promise<T> {
+  const r = await fetch(url, { cache: "no-store" });
+  if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
+  return (await r.json()) as T;
+}
+
+export function loadWakfuData(): Promise<WakfuData> {
   if (_cache) return _cache;
 
   _cache = (async () => {
     const [items, recipes] = await Promise.all([
-      fetch("/data/items.compact.json").then((r) => r.json()) as Promise<CompactItem[]>,
-      fetch("/data/recipes.compact.json").then((r) => r.json()) as Promise<CompactRecipe[]>,
+      fetchJson<CompactItem[]>("/data/items.compact.json"),
+      fetchJson<CompactRecipe[]>("/data/recipes.compact.json"),
     ]);
 
     const itemsById = new Map<number, CompactItem>();
     for (const it of items) itemsById.set(it.id, it);
 
     const recipesByResultId = new Map<number, CompactRecipe[]>();
-    for (const rec of recipes) {
-      const arr = recipesByResultId.get(rec.resultItemId) ?? [];
-      arr.push(rec);
-      recipesByResultId.set(rec.resultItemId, arr);
+    for (const r of recipes) {
+      const arr = recipesByResultId.get(r.resultItemId) ?? [];
+      arr.push(r);
+      recipesByResultId.set(r.resultItemId, arr);
     }
 
     return { items, recipes, itemsById, recipesByResultId };
@@ -48,28 +57,29 @@ export async function loadWakfuData(): Promise<WakfuData> {
 }
 
 /**
- * Costruisce URL icona.
- * IMPORTANTISSIMO: per Ankama devi usare gfxId (non itemId).
+ * Ritorna un URL icona.
+ * NOTA: per wakassets l'ID è "gfxId" (se presente), non l'itemId.
+ * Repo wakassets: https://vertylo.github.io/wakassets/{folder}/{ID}.png  :contentReference[oaicite:1]{index=1}
  */
 export function getItemIconUrl(
-  itemOrId: number | CompactItem,
-  provider: "ankama" | "wakassets" = "ankama"
+  itemOrId: CompactItem | number,
+  provider: "wakassets" | "ankama" = "wakassets"
 ) {
   const id = typeof itemOrId === "number" ? itemOrId : itemOrId.id;
-  const gfxId = typeof itemOrId === "number" ? null : itemOrId.gfxId;
+  const gfxId =
+    typeof itemOrId === "number"
+      ? null
+      : itemOrId.gfxId != null
+        ? Number(itemOrId.gfxId)
+        : null;
+
+  // Per le icone: se abbiamo gfxId usiamo quello, altrimenti fallback su itemId
+  const iconId = gfxId && Number.isFinite(gfxId) && gfxId > 0 ? gfxId : id;
 
   if (provider === "wakassets") {
-    // fallback community (non sempre completo)
-    return `https://vertylo.github.io/wakassets/items/${id}.png`;
+    return `https://vertylo.github.io/wakassets/items/${iconId}.png`;
   }
 
-  // Ankama: usa gfxId se esiste
-  // Path tipico usato dal portale Wakfu: /wakfu/portal/game/item/115/<gfxId>.png
-  // 115 = size folder che spesso funziona bene.
-  if (gfxId && gfxId > 0) {
-    return `https://static.ankama.com/wakfu/portal/game/item/115/${gfxId}.png`;
-  }
-
-  // fallback estremo (se gfxId manca)
-  return `https://static.ankama.com/wakfu/portal/game/item/115/${id}.png`;
+  // Fallback alternativo (spesso non affidabile / può dare 403)
+  return `https://static.ankama.com/wakfu/portal/game/item/115/${iconId}.png`;
 }
