@@ -1,9 +1,9 @@
-// src/lib/wakfuData.ts
 export type CompactItem = {
   id: number;
   name: string;
-  description?: string | null;
-  gfxId?: number | null; // IMPORTANT: serve per icone corrette
+  description: string | null;
+  gfxId: number | null;
+  source?: string;
 };
 
 export type CompactRecipe = {
@@ -20,46 +20,56 @@ export type WakfuData = {
   recipesByResultId: Map<number, CompactRecipe[]>;
 };
 
-let _cache: WakfuData | null = null;
+let _cache: Promise<WakfuData> | null = null;
 
 export async function loadWakfuData(): Promise<WakfuData> {
   if (_cache) return _cache;
 
-  const [items, recipes] = await Promise.all([
-    fetch("/data/items.compact.json").then((r) => r.json()) as Promise<CompactItem[]>,
-    fetch("/data/recipes.compact.json").then((r) => r.json()) as Promise<CompactRecipe[]>,
-  ]);
+  _cache = (async () => {
+    const [items, recipes] = await Promise.all([
+      fetch("/data/items.compact.json").then((r) => r.json()) as Promise<CompactItem[]>,
+      fetch("/data/recipes.compact.json").then((r) => r.json()) as Promise<CompactRecipe[]>,
+    ]);
 
-  const itemsById = new Map<number, CompactItem>();
-  for (const it of items) itemsById.set(it.id, it);
+    const itemsById = new Map<number, CompactItem>();
+    for (const it of items) itemsById.set(it.id, it);
 
-  const recipesByResultId = new Map<number, CompactRecipe[]>();
-  for (const rec of recipes) {
-    const arr = recipesByResultId.get(rec.resultItemId) ?? [];
-    arr.push(rec);
-    recipesByResultId.set(rec.resultItemId, arr);
-  }
+    const recipesByResultId = new Map<number, CompactRecipe[]>();
+    for (const rec of recipes) {
+      const arr = recipesByResultId.get(rec.resultItemId) ?? [];
+      arr.push(rec);
+      recipesByResultId.set(rec.resultItemId, arr);
+    }
 
-  _cache = { items, recipes, itemsById, recipesByResultId };
+    return { items, recipes, itemsById, recipesByResultId };
+  })();
+
   return _cache;
 }
 
 /**
- * URL icona.
- * Nota: l’URL Ankama usa (quasi sempre) gfxId / iconId, NON itemId.
- * Se gfxId non c’è, facciamo fallback su itemId ma può risultare sbagliato.
+ * Costruisce URL icona.
+ * IMPORTANTISSIMO: per Ankama devi usare gfxId (non itemId).
  */
 export function getItemIconUrl(
-  itemId: number,
-  provider: "ankama" | "wakassets" = "ankama",
-  gfxId?: number | null,
-  size: 115 | 64 = 115
+  itemOrId: number | CompactItem,
+  provider: "ankama" | "wakassets" = "ankama"
 ) {
-  if (provider === "ankama") {
-    const id = (gfxId && gfxId > 0 ? gfxId : itemId);
-    return `https://static.ankama.com/wakfu/portal/game/item/${size}/${id}.png`;
+  const id = typeof itemOrId === "number" ? itemOrId : itemOrId.id;
+  const gfxId = typeof itemOrId === "number" ? null : itemOrId.gfxId;
+
+  if (provider === "wakassets") {
+    // fallback community (non sempre completo)
+    return `https://vertylo.github.io/wakassets/items/${id}.png`;
   }
 
-  // Fallback community pack (spesso basato su itemId)
-  return `https://vertylo.github.io/wakassets/items/${itemId}.png`;
+  // Ankama: usa gfxId se esiste
+  // Path tipico usato dal portale Wakfu: /wakfu/portal/game/item/115/<gfxId>.png
+  // 115 = size folder che spesso funziona bene.
+  if (gfxId && gfxId > 0) {
+    return `https://static.ankama.com/wakfu/portal/game/item/115/${gfxId}.png`;
+  }
+
+  // fallback estremo (se gfxId manca)
+  return `https://static.ankama.com/wakfu/portal/game/item/115/${id}.png`;
 }
