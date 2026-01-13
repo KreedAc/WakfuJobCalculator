@@ -4,139 +4,91 @@ import { Readable } from "node:stream";
 
 const OUT_DIR = path.resolve("public/data");
 
-// ---------- helpers ----------
 function pickText(v) {
   if (!v) return null;
   if (typeof v === "string") return v;
-  if (typeof v === "object") {
-    // prefer EN, poi FR/ES/PT, poi il primo valore
-    return v.en ?? v.fr ?? v.es ?? v.pt ?? Object.values(v)[0] ?? null;
-  }
+  if (typeof v === "object") return v.en ?? v.fr ?? v.es ?? v.pt ?? Object.values(v)[0] ?? null;
   return null;
 }
 
-function pickId(obj) {
-  // molti file hanno forme diverse
-  const o = obj ?? {};
-  const d = o.definition ?? {};
-
-  // caso IMPORTANTISSIMO per items.json: definition.item.id
-  const defItem = d.item ?? d?.itemDefinition ?? null;
-
+function pickId(o) {
+  // IMPORTANTISSIMO: in items.json l'id sta spesso in definition.item.id
   return (
-    o.id ??
-    o.definitionId ??
-    o.itemId ??
-    o.itemDefinitionId ??
-    o.resourceId ??
-    o.resourceDefinitionId ??
-    d.id ??
-    defItem?.id ??
-    defItem?.definitionId ??
+    o?.id ??
+    o?.definition?.id ??
+    o?.definition?.item?.id ??
+    o?.definitionId ??
+    o?.itemId ??
+    o?.itemDefinitionId ??
+    o?.resourceId ??
+    o?.resourceDefinitionId ??
     null
   );
 }
 
-function pickRarity(obj) {
+function pickTitle(o) {
+  // items.json -> title sta top-level (title)
+  // jobsItems.json -> spesso c'è title/top-level o name/definition...
+  return (
+    pickText(o?.title) ??
+    pickText(o?.name) ??
+    pickText(o?.definition?.title) ??
+    pickText(o?.definition?.name) ??
+    pickText(o?.definition?.item?.title) ??
+    pickText(o?.definition?.item?.name) ??
+    null
+  );
+}
+
+function pickDescription(o) {
+  return (
+    pickText(o?.description) ??
+    pickText(o?.definition?.description) ??
+    pickText(o?.definition?.item?.description) ??
+    null
+  );
+}
+
+// (opzionale) proviamo a pescare un gfx/icon id (serve per le icone)
+function pickGfxId(obj) {
   const o = obj ?? {};
   const d = o.definition ?? o;
 
-  // dove può vivere la rarity (dipende dal file)
-  const candidates = [
-    d?.rarity,
-    d?.rarityId,
-    d?.item?.rarity,
-    d?.item?.rarityId,
-    d?.properties?.rarity,
-    d?.properties?.rarityId,
-  ];
-
-  for (const v of candidates) {
-    if (v == null) continue;
-    if (typeof v === "number" && Number.isFinite(v)) return v;
-    if (typeof v === "string" && v.trim()) return v.trim();
-  }
-
-  return null;
-}
-
-function pickTitle(obj) {
-  const o = obj ?? {};
-  const d = o.definition ?? {};
-  const defItem = d.item ?? null;
-
-  return (
-    pickText(o.title) ??
-    pickText(o.name) ??
-    pickText(o.itemTitle) ??
-    pickText(d.title) ??
-    pickText(d.name) ??
-    pickText(defItem?.title) ??
-    pickText(defItem?.name) ??
-    null
-  );
-}
-
-function pickDescription(obj) {
-  const o = obj ?? {};
-  const d = o.definition ?? {};
-  const defItem = d.item ?? null;
-
-  return (
-    pickText(o.description) ??
-    pickText(d.description) ??
-    pickText(defItem?.description) ??
-    null
-  );
-}
-
-function pickGfxId(obj) {
-  const o = obj ?? {};
-  const def = o.definition ?? null;
-
-  // Nei file Ankama spesso l'icona sta qui:
-  // items.json: definition.item.graphicParameters
+  // items.json: spesso in definition.item.graphicParameters
   const gp =
-    def?.item?.graphicParameters ??
-    def?.graphicParameters ??
+    d?.graphicParameters ??
+    d?.item?.graphicParameters ??
+    d?.item?.useParameters?.graphicParameters ??
+    d?.item?.baseParameters?.graphicParameters ??
     o?.graphicParameters ??
     null;
 
-  // Alcuni dataset usano campi alternativi (resources / collectibleResources / jobsItems)
   const candidates = [
-    // standard più comune
-    gp?.iconGfxId,
+    // spesso dentro graphicParameters
     gp?.gfxId,
+    gp?.iconGfxId,
     gp?.iconId,
     gp?.smallIconId,
     gp?.bigIconId,
-    gp?.itemGfxId,
-    gp?.imageId,
 
-    // varianti più “piatte”
-    def?.iconGfxId,
-    def?.gfxId,
-    def?.iconId,
-    def?.smallIconId,
-    def?.bigIconId,
-    def?.itemGfxId,
-    def?.baseGfxId,
-    def?.graphicId,
-    def?.imageId,
+    // altre varianti
+    d?.iconGfxId,
+    d?.iconId,
+    d?.smallIconId,
+    d?.bigIconId,
+    d?.itemGfxId,
+    d?.gfxId,
+    d?.baseGfxId,
+    d?.graphicId,
+    d?.imageId,
 
-    o?.iconGfxId,
-    o?.gfxId,
-    o?.iconId,
-    o?.smallIconId,
-    o?.bigIconId,
-    o?.itemGfxId,
-    o?.baseGfxId,
-    o?.graphicId,
-    o?.imageId,
-
-    // collectibleResources
-    def?.collectGfxId,
+    // collectibleResources -> collectGfxId
+    d?.collectGfxId,
     o?.collectGfxId,
+
+    // annidati a volte
+    d?.properties?.iconGfxId,
+    d?.properties?.iconId,
   ];
 
   for (const v of candidates) {
@@ -146,11 +98,46 @@ function pickGfxId(obj) {
   return null;
 }
 
+// rarità:
+// - items.json: definition.item.baseParameters.rarity
+// - jobsItems.json: definition.rarity (spesso)
+function pickRarity(obj) {
+  const o = obj ?? {};
+  const d = o.definition ?? o;
+  const it = d?.item ?? o?.definition?.item ?? null;
 
-async function fetchJson(url) {
+  const candidates = [
+    // items.json
+    it?.baseParameters?.rarity,
+    it?.rarity,
+    it?.baseParameters?.rarityId,
+    it?.properties?.rarity,
+
+    // jobsItems / altre
+    d?.rarity,
+    o?.rarity,
+
+    // fallback generici
+    d?.baseParameters?.rarity,
+    o?.baseParameters?.rarity,
+  ];
+
+  for (const v of candidates) {
+    const n = Number(v);
+    if (Number.isFinite(n) && n > 0) return n;
+  }
+  return null;
+}
+
+async function fetchText(url) {
   const res = await fetch(url);
   const text = await res.text();
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}\n${text.slice(0, 200)}`);
+  return text;
+}
+
+async function fetchJson(url) {
+  const text = await fetchText(url);
   try {
     return JSON.parse(text);
   } catch {
@@ -159,8 +146,8 @@ async function fetchJson(url) {
 }
 
 /**
- * Stream parse di un JSON array enorme: estrae oggetti top-level { ... }.
- * Filtra per neededSet e ritorna compact items.
+ * Stream parsing di un JSON array enorme: estrae oggetti "{...}" top-level e li JSON.parse.
+ * Filtra per neededSet.
  */
 async function streamCompactItems(url, neededSet, sourceLabel) {
   const res = await fetch(url);
@@ -172,7 +159,9 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
   const stream = Readable.fromWeb(res.body);
   stream.setEncoding("utf8");
 
-  let inString = false, escape = false, depth = 0;
+  let inString = false,
+    escape = false,
+    depth = 0;
   let buf = "";
 
   const out = [];
@@ -196,14 +185,14 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
     const gfxId = pickGfxId(obj);
     const rarity = pickRarity(obj);
 
-out.push({
-  id,
-  name: title ?? `#${id}`,
-  description: description ?? null,
-  gfxId: gfxId != null ? Number(gfxId) : null,
-  rarity,                 // ✅ AGGIUNTO
-  source: sourceLabel,
-});
+    out.push({
+      id,
+      name: title ?? `#${id}`,
+      description: description ?? null,
+      gfxId: gfxId != null ? Number(gfxId) : null,
+      rarity: rarity != null ? Number(rarity) : null,
+      source: sourceLabel,
+    });
     matched++;
   }
 
@@ -258,7 +247,6 @@ out.push({
   return { out, parsed, matched };
 }
 
-// ---------- main ----------
 async function main() {
   await fsp.mkdir(OUT_DIR, { recursive: true });
 
@@ -311,6 +299,7 @@ async function main() {
       1;
 
     if (!recipeId || !itemId) continue;
+
     const rid = Number(recipeId);
     if (!resByRecipe.has(rid)) {
       resByRecipe.set(rid, { resultItemId: Number(itemId), resultQty: Number(qty) || 1 });
@@ -351,23 +340,15 @@ async function main() {
   console.log("recipes.compact:", recipesCompact.length);
   console.log("needed item ids:", neededItemIds.size);
 
-  // IMPORTANTISSIMO:
-  // 1) prima items.json (testi quasi sempre migliori)
-  // 2) poi fallback
+  // fonti (items e jobsItems sono le più importanti)
   const sources = ["items", "jobsItems", "resources", "collectibleResources"];
 
   const itemById = new Map(); // id -> best record
-
-  const score = (x) => {
-    if (!x) return 0;
-    const hasRealName = x.name && !x.name.startsWith("#");
-    return (hasRealName ? 10 : 0) + (x.description ? 2 : 0) + (x.gfxId ? 1 : 0);
-  };
+  const score = (x) => (x ? (x.name && !x.name.startsWith("#") ? 2 : 0) + (x.gfxId ? 1 : 0) + (x.rarity ? 0.25 : 0) : 0);
 
   for (const s of sources) {
     const url = `${base}/${s}.json`;
     console.log(`Streaming ${s}.json and filtering ...`);
-
     const { out, parsed, matched } = await streamCompactItems(url, neededItemIds, s);
     console.log(`${s}: parsed=${parsed} matched=${matched}`);
 
@@ -383,12 +364,11 @@ async function main() {
   await fsp.writeFile(path.join(OUT_DIR, "items.compact.json"), JSON.stringify(itemsCompact));
   await fsp.writeFile(path.join(OUT_DIR, "missing_item_ids.json"), JSON.stringify(missing));
 
-  // mini report utile
-  const placeholder = itemsCompact.filter((x) => x.name?.startsWith("#")).length;
+  const placeholders = itemsCompact.filter((x) => String(x.name || "").startsWith("#")).length;
 
   console.log("items.compact:", itemsCompact.length);
   console.log("missing item ids:", missing.length);
-  console.log("placeholder names (#id):", placeholder);
+  console.log("placeholder names (#id):", placeholders);
   console.log("DONE ✅");
 }
 
