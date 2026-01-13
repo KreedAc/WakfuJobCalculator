@@ -1,69 +1,54 @@
 // src/lib/wakfuData.ts
-export type CompactIngredient = { itemId: number; qty: number };
+export type CompactItem = {
+  id: number;
+  name: string;
+  description?: string | null;
+  gfxId?: number | null;
+  rarity?: number | string | null;
+  source?: string;
+};
 
 export type CompactRecipe = {
   id: number;
   resultItemId: number;
   resultQty: number;
-  ingredients: CompactIngredient[];
-};
-
-export type CompactItem = {
-  id: number;
-  name: string;
-  description?: string | null;
-  gfxId?: number | null; // <-- IMPORTANTISSIMO: è quello da usare per le icone
-  source?: string;
+  ingredients: { itemId: number; qty: number }[];
 };
 
 export type WakfuData = {
   items: CompactItem[];
-  recipes: CompactRecipe[];
   itemsById: Map<number, CompactItem>;
+  recipes: CompactRecipe[];
   recipesByResultId: Map<number, CompactRecipe[]>;
 };
 
-let _cache: Promise<WakfuData> | null = null;
+export async function loadWakfuData(): Promise<WakfuData> {
+  const [items, recipes] = await Promise.all([
+    fetch("/data/items.compact.json").then((r) => r.json()) as Promise<CompactItem[]>,
+    fetch("/data/recipes.compact.json").then((r) => r.json()) as Promise<CompactRecipe[]>,
+  ]);
 
-async function fetchJson<T>(url: string): Promise<T> {
-  const r = await fetch(url, { cache: "no-store" });
-  if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
-  return (await r.json()) as T;
-}
+  const itemsById = new Map<number, CompactItem>();
+  for (const it of items) itemsById.set(it.id, it);
 
-export function loadWakfuData(): Promise<WakfuData> {
-  if (_cache) return _cache;
+  const recipesByResultId = new Map<number, CompactRecipe[]>();
+  for (const r of recipes) {
+    const arr = recipesByResultId.get(r.resultItemId) ?? [];
+    arr.push(r);
+    recipesByResultId.set(r.resultItemId, arr);
+  }
 
-  _cache = (async () => {
-    const [items, recipes] = await Promise.all([
-      fetchJson<CompactItem[]>("/data/items.compact.json"),
-      fetchJson<CompactRecipe[]>("/data/recipes.compact.json"),
-    ]);
-
-    const itemsById = new Map<number, CompactItem>();
-    for (const it of items) itemsById.set(it.id, it);
-
-    const recipesByResultId = new Map<number, CompactRecipe[]>();
-    for (const r of recipes) {
-      const arr = recipesByResultId.get(r.resultItemId) ?? [];
-      arr.push(r);
-      recipesByResultId.set(r.resultItemId, arr);
-    }
-
-    return { items, recipes, itemsById, recipesByResultId };
-  })();
-
-  return _cache;
+  return { items, itemsById, recipes, recipesByResultId };
 }
 
 /**
- * Ritorna un URL icona.
- * NOTA: per wakassets l'ID è "gfxId" (se presente), non l'itemId.
- * Repo wakassets: https://vertylo.github.io/wakassets/{folder}/{ID}.png  :contentReference[oaicite:1]{index=1}
+ * Icon URL:
+ * - "ankama": usa gfxId se presente (di solito è quello giusto per l’icona)
+ * - "wakassets": fallback community per id
  */
 export function getItemIconUrl(
-  itemOrId: CompactItem | number,
-  provider: "wakassets" | "ankama" = "wakassets"
+  itemOrId: number | Pick<CompactItem, "id" | "gfxId">,
+  provider: "ankama" | "wakassets" = "ankama"
 ) {
   const id = typeof itemOrId === "number" ? itemOrId : itemOrId.id;
   const gfxId =
@@ -73,13 +58,60 @@ export function getItemIconUrl(
         ? Number(itemOrId.gfxId)
         : null;
 
-  // Per le icone: se abbiamo gfxId usiamo quello, altrimenti fallback su itemId
-  const iconId = gfxId && Number.isFinite(gfxId) && gfxId > 0 ? gfxId : id;
-
   if (provider === "wakassets") {
-    return `https://vertylo.github.io/wakassets/items/${iconId}.png`;
+    return `https://vertylo.github.io/wakassets/items/${id}.png`;
   }
 
-  // Fallback alternativo (spesso non affidabile / può dare 403)
-  return `https://static.ankama.com/wakfu/portal/game/item/115/${iconId}.png`;
+  // Ankama:
+  // - se abbiamo gfxId, proviamo quella (molto spesso è la chiave corretta per l'icona item)
+  // - altrimenti fallback sull’id
+  if (gfxId && Number.isFinite(gfxId) && gfxId > 0) {
+    // path "200" è quello che in genere funziona meglio con gfxId
+    return `https://static.ankama.com/wakfu/portal/game/item/200/${gfxId}.png`;
+  }
+
+  return `https://static.ankama.com/wakfu/portal/game/item/115/${id}.png`;
+}
+
+/**
+ * Mappa “umana” della rarità.
+ * Nota: i codici numerici possono variare in base alle fonti: se non matcha, mostriamo fallback.
+ */
+const RARITY_ID_TO_LABEL: Record<number, string> = {
+  0: "Common",
+  1: "Common",
+  2: "Unusual",
+  3: "Rare",
+  4: "Mythical",
+  5: "Legendary",
+  6: "Relic",
+  7: "Souvenir",
+  8: "Epic",
+};
+
+function titleCase(s: string) {
+  return s
+    .toLowerCase()
+    .split(/[_\s-]+/g)
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+export function getItemRarityLabel(item?: CompactItem | null): string | null {
+  if (!item) return null;
+  const r = item.rarity;
+
+  if (r == null) return null;
+
+  if (typeof r === "number" && Number.isFinite(r)) {
+    return RARITY_ID_TO_LABEL[r] ?? `Rarity ${r}`;
+  }
+
+  if (typeof r === "string" && r.trim()) {
+    // es: "RARE", "MYTHICAL", ecc
+    return titleCase(r.trim());
+  }
+
+  return null;
 }
