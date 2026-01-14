@@ -494,4 +494,268 @@ export function ItemsCraftGuidePage() {
 
           {/* RIGHT */}
           <div className="lg:col-span-4">
-            <div className="rounded-2xl border border-emerald-
+            <div className="rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-4 h-full">
+              <div className="flex items-center justify-between gap-3">
+                <h2 className="text-lg font-semibold text-emerald-300">Shopping list</h2>
+                <button
+                  onClick={copyShoppingList}
+                  disabled={shoppingList.length === 0}
+                  className="text-xs px-3 py-2 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35 disabled:opacity-40"
+                >
+                  Copy
+                </button>
+              </div>
+
+              <div className="text-xs text-emerald-200/70 mt-1">
+                Aggregated for all selected items (with quantities). Expanding a craftable ingredient replaces it with sub-ingredients.
+              </div>
+
+              {shoppingList.length === 0 ? (
+                <div className="mt-4 text-emerald-200/80 text-sm">Nothing to buy.</div>
+              ) : (
+                <div className="mt-4 space-y-2 max-h-[720px] overflow-auto pr-1">
+                  {shoppingList.map((row) => {
+                    const it = itemsById.get(row.itemId);
+                    const name = it?.name ?? `#${row.itemId}`;
+                    const rInfo = rarityInfo(it?.rarity);
+
+                    return (
+                      <div
+                        key={row.itemId}
+                        className="flex items-center gap-3 rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2"
+                      >
+                        <ItemIcon itemId={row.itemId} itemsById={itemsById} size={32} />
+                        <div className="flex-1 min-w-0">
+                          <div className="text-emerald-100 text-sm truncate">{name}</div>
+                          <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
+                            {rInfo?.label ?? "—"}
+                          </div>
+                        </div>
+                        <div className="text-emerald-200 font-semibold">x{row.qty}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function RecipeNode(props: {
+  rootId: number;
+  root?: boolean;
+  itemId: number;
+  depth: number;
+  itemsById: Map<number, CompactItem>;
+  recipesByResultId: Map<number, CompactRecipe[]>;
+  expanded: Set<number>;
+  recipeChoice: Map<number, number>;
+  onToggle: (id: number) => void;
+  onCycleRecipe: (id: number) => void;
+  isCraftable: (id: number) => boolean;
+  visited: Set<number>;
+}) {
+  const {
+    root,
+    itemId,
+    depth,
+    itemsById,
+    recipesByResultId,
+    expanded,
+    recipeChoice,
+    onToggle,
+    onCycleRecipe,
+    isCraftable,
+    visited,
+  } = props;
+
+  const item = itemsById.get(itemId);
+  const name = item?.name ?? `#${itemId}`;
+  const rInfo = rarityInfo(item?.rarity);
+
+  const recipes = recipesByResultId.get(itemId) ?? [];
+  const craftable = recipes.length > 0;
+
+  const loop = visited.has(itemId);
+  const nextVisited = new Set(visited);
+  nextVisited.add(itemId);
+
+  const isOpen = root ? true : expanded.has(itemId);
+  const chosenIdx = recipeChoice.get(itemId) ?? 0;
+  const recipe = craftable ? recipes[Math.min(chosenIdx, recipes.length - 1)] : null;
+
+  return (
+    <div className="space-y-2">
+      {!root && (
+        <div
+          className="flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 bg-black/10"
+          style={{ marginLeft: depth * 16 }}
+        >
+          <button
+            onClick={() => onToggle(itemId)}
+            className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35"
+            title={isOpen ? "Collapse" : "Expand"}
+          >
+            {isOpen ? "−" : "+"}
+          </button>
+
+          <ItemIcon itemId={itemId} itemsById={itemsById} size={28} />
+
+          <div className="flex-1 min-w-0">
+            <div className="text-emerald-100 text-sm truncate">{name}</div>
+            <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
+              {rInfo?.label ?? "—"}{" "}
+              <span className="text-emerald-200/40">
+                • {craftable ? "craftable" : "not craftable"}
+                {loop ? " • loop" : ""}
+              </span>
+            </div>
+          </div>
+
+          {craftable && recipes.length > 1 && (
+            <button
+              onClick={() => onCycleRecipe(itemId)}
+              className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35"
+              title="Switch recipe"
+            >
+              Recipe {chosenIdx + 1}/{recipes.length}
+            </button>
+          )}
+        </div>
+      )}
+
+      {root && (
+        <div className="rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2">
+          <div className="flex items-center gap-3">
+            <ItemIcon itemId={itemId} itemsById={itemsById} size={32} />
+            <div className="flex-1 min-w-0">
+              <div className="text-emerald-100 text-sm font-medium truncate">{name}</div>
+              <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
+                {rInfo?.label ?? "—"}{" "}
+                <span className="text-emerald-200/40">
+                  • root • {craftable ? "craftable" : "not craftable"}
+                </span>
+              </div>
+            </div>
+
+            {craftable && recipes.length > 1 && (
+              <button
+                onClick={() => onCycleRecipe(itemId)}
+                className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35"
+                title="Switch recipe"
+              >
+                Recipe {chosenIdx + 1}/{recipes.length}
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      {isOpen && craftable && recipe && !loop && (
+        <div className="space-y-2">
+          {recipe.ingredients.map((ing, idx) => {
+            const ingItem = itemsById.get(ing.itemId);
+            const ingName = ingItem?.name ?? `#${ing.itemId}`;
+            const ingCraftable = isCraftable(ing.itemId);
+            const ingR = rarityInfo(ingItem?.rarity);
+
+            return (
+              <div
+                key={`${itemId}-${ing.itemId}-${idx}`}
+                className="rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2"
+                style={{ marginLeft: (depth + 1) * 16 }}
+              >
+                <div className="flex items-center gap-3">
+                  {ingCraftable ? (
+                    <button
+                      onClick={() => onToggle(ing.itemId)}
+                      className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35"
+                      title={expanded.has(ing.itemId) ? "Collapse ingredient" : "Expand ingredient"}
+                    >
+                      {expanded.has(ing.itemId) ? "−" : "+"}
+                    </button>
+                  ) : (
+                    <div className="w-[34px]" />
+                  )}
+
+                  <ItemIcon itemId={ing.itemId} itemsById={itemsById} size={28} />
+
+                  <div className="flex-1 min-w-0">
+                    <div className="text-emerald-100 text-sm truncate">{ingName}</div>
+                    <div className={`text-xs mt-0.5 ${ingR?.className ?? "text-emerald-200/40"}`}>
+                      {ingR?.label ?? "—"}{" "}
+                      <span className="text-emerald-200/40">
+                        • {ingCraftable ? "craftable" : "not craftable"}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="text-emerald-200 font-semibold">x{ing.qty}</div>
+                </div>
+
+                {ingCraftable && expanded.has(ing.itemId) && (
+                  <div className="mt-2">
+                    <RecipeNode
+                      rootId={props.rootId}
+                      itemId={ing.itemId}
+                      depth={depth + 2}
+                      itemsById={itemsById}
+                      recipesByResultId={recipesByResultId}
+                      expanded={expanded}
+                      recipeChoice={recipeChoice}
+                      onToggle={onToggle}
+                      onCycleRecipe={onCycleRecipe}
+                      isCraftable={isCraftable}
+                      visited={nextVisited}
+                    />
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ItemIcon({
+  itemId,
+  size = 44,
+  itemsById,
+}: {
+  itemId: number;
+  size?: number;
+  itemsById?: Map<number, CompactItem>;
+}) {
+  const item = itemsById?.get(itemId);
+  const gfx = item?.gfxId ?? itemId; // ✅ usa gfxId se c'è
+
+  const [src, setSrc] = useState(getItemIconUrl(gfx, "ankama"));
+
+  useEffect(() => {
+    const it = itemsById?.get(itemId);
+    const g = it?.gfxId ?? itemId;
+    setSrc(getItemIconUrl(g, "ankama"));
+  }, [itemId, itemsById]);
+
+  return (
+    <img
+      src={src}
+      width={size}
+      height={size}
+      alt=""
+      className="rounded-xl bg-black/10 backdrop-blur-md border border-emerald-300/15"
+      onError={() => {
+        const it = itemsById?.get(itemId);
+        const g = it?.gfxId ?? itemId;
+        if (src.includes("static.ankama.com")) setSrc(getItemIconUrl(g, "wakassets"));
+      }}
+      loading="lazy"
+    />
+  );
+}
