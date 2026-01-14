@@ -49,7 +49,7 @@ export function Calculator({ language, translations: t }: CalculatorProps) {
     const selected = LEVEL_RANGES.find(r => r.range === selectedRange);
     if (!selected) return;
     const craftCount = Math.ceil(selected.expDiff / expItem);
-    const resourceCount = craftCount * 5;
+    const resourceCount = craftCount * (selectedProfession === 'Leather Dealer' ? 4 : 5);
     setResult({
       ...selected,
       selectedProfession: selectedProfession as ProfessionId,
