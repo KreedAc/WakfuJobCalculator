@@ -1,3 +1,4 @@
+// scripts/build-wakfu-data.mjs
 import { promises as fsp } from "node:fs";
 import path from "node:path";
 import { Readable } from "node:stream";
@@ -12,11 +13,9 @@ function pickText(v) {
 }
 
 function pickId(o) {
-  // IMPORTANTISSIMO: in items.json l'id sta spesso in definition.item.id
   return (
     o?.id ??
     o?.definition?.id ??
-    o?.definition?.item?.id ??
     o?.definitionId ??
     o?.itemId ??
     o?.itemDefinitionId ??
@@ -27,51 +26,37 @@ function pickId(o) {
 }
 
 function pickTitle(o) {
-  // items.json -> title sta top-level (title)
-  // jobsItems.json -> spesso c'è title/top-level o name/definition...
   return (
     pickText(o?.title) ??
     pickText(o?.name) ??
     pickText(o?.definition?.title) ??
     pickText(o?.definition?.name) ??
-    pickText(o?.definition?.item?.title) ??
-    pickText(o?.definition?.item?.name) ??
     null
   );
 }
 
 function pickDescription(o) {
-  return (
-    pickText(o?.description) ??
-    pickText(o?.definition?.description) ??
-    pickText(o?.definition?.item?.description) ??
-    null
-  );
+  return pickText(o?.description) ?? pickText(o?.definition?.description) ?? null;
 }
 
-// (opzionale) proviamo a pescare un gfx/icon id (serve per le icone)
+// ✅ gfxId robusto: spesso sta in graphicParameters.gfxId
 function pickGfxId(obj) {
   const o = obj ?? {};
   const d = o.definition ?? o;
 
-  // items.json: spesso in definition.item.graphicParameters
   const gp =
     d?.graphicParameters ??
     d?.item?.graphicParameters ??
-    d?.item?.useParameters?.graphicParameters ??
-    d?.item?.baseParameters?.graphicParameters ??
-    o?.graphicParameters ??
+    d?.definition?.item?.graphicParameters ??
     null;
 
   const candidates = [
-    // spesso dentro graphicParameters
     gp?.gfxId,
     gp?.iconGfxId,
     gp?.iconId,
     gp?.smallIconId,
     gp?.bigIconId,
 
-    // altre varianti
     d?.iconGfxId,
     d?.iconId,
     d?.smallIconId,
@@ -82,13 +67,8 @@ function pickGfxId(obj) {
     d?.graphicId,
     d?.imageId,
 
-    // collectibleResources -> collectGfxId
     d?.collectGfxId,
     o?.collectGfxId,
-
-    // annidati a volte
-    d?.properties?.iconGfxId,
-    d?.properties?.iconId,
   ];
 
   for (const v of candidates) {
@@ -98,28 +78,20 @@ function pickGfxId(obj) {
   return null;
 }
 
-// rarità:
-// - items.json: definition.item.baseParameters.rarity
-// - jobsItems.json: definition.rarity (spesso)
+// ✅ rarity robusta: items.json ha baseParameters.rarity
 function pickRarity(obj) {
   const o = obj ?? {};
   const d = o.definition ?? o;
-  const it = d?.item ?? o?.definition?.item ?? null;
 
   const candidates = [
-    // items.json
-    it?.baseParameters?.rarity,
-    it?.rarity,
-    it?.baseParameters?.rarityId,
-    it?.properties?.rarity,
-
-    // jobsItems / altre
     d?.rarity,
-    o?.rarity,
-
-    // fallback generici
+    d?.rarityId,
+    d?.quality,
+    d?.properties?.rarity,
     d?.baseParameters?.rarity,
-    o?.baseParameters?.rarity,
+    d?.item?.rarity,
+    d?.item?.baseParameters?.rarity,
+    o?.rarity,
   ];
 
   for (const v of candidates) {
@@ -129,25 +101,16 @@ function pickRarity(obj) {
   return null;
 }
 
-async function fetchText(url) {
+async function fetchJson(url) {
   const res = await fetch(url);
   const text = await res.text();
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}\n${text.slice(0, 200)}`);
-  return text;
-}
-
-async function fetchJson(url) {
-  const text = await fetchText(url);
-  try {
-    return JSON.parse(text);
-  } catch {
-    throw new Error(`Non-JSON response from ${url}\n${text.slice(0, 200)}`);
-  }
+  return JSON.parse(text);
 }
 
 /**
- * Stream parsing di un JSON array enorme: estrae oggetti "{...}" top-level e li JSON.parse.
- * Filtra per neededSet.
+ * Stream parse JSON array huge: extract top-level objects "{...}" and JSON.parse.
+ * Filter by neededSet
  */
 async function streamCompactItems(url, neededSet, sourceLabel) {
   const res = await fetch(url);
@@ -163,7 +126,6 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
     escape = false,
     depth = 0;
   let buf = "";
-
   const out = [];
   let parsed = 0;
   let matched = 0;
@@ -266,7 +228,7 @@ async function main() {
   console.log("Downloading recipeResults.json ...");
   const recipeResRaw = await fetchJson(`${base}/recipeResults.json`);
 
-  // ingredienti per recipeId
+  // ingredients by recipeId
   const ingByRecipe = new Map();
   for (const row of recipeIngRaw) {
     const recipeId = row?.recipeId ?? row?.definition?.recipeId ?? row?.recipeDefinitionId;
@@ -280,7 +242,7 @@ async function main() {
     ingByRecipe.set(rid, arr);
   }
 
-  // risultato per recipeId (prendi il primo)
+  // results by recipeId (first one)
   const resByRecipe = new Map();
   for (const row of recipeResRaw) {
     const recipeId = row?.recipeId ?? row?.definition?.recipeId ?? row?.recipeDefinitionId;
@@ -340,15 +302,18 @@ async function main() {
   console.log("recipes.compact:", recipesCompact.length);
   console.log("needed item ids:", neededItemIds.size);
 
-  // fonti (items e jobsItems sono le più importanti)
+  // Sources on CDN
   const sources = ["items", "jobsItems", "resources", "collectibleResources"];
 
   const itemById = new Map(); // id -> best record
-  const score = (x) => (x ? (x.name && !x.name.startsWith("#") ? 2 : 0) + (x.gfxId ? 1 : 0) + (x.rarity ? 0.25 : 0) : 0);
+
+  const score = (x) =>
+    (x ? (x.name && !String(x.name).startsWith("#") ? 2 : 0) + (x.gfxId ? 1 : 0) + (x.rarity ? 1 : 0) : 0);
 
   for (const s of sources) {
     const url = `${base}/${s}.json`;
     console.log(`Streaming ${s}.json and filtering ...`);
+
     const { out, parsed, matched } = await streamCompactItems(url, neededItemIds, s);
     console.log(`${s}: parsed=${parsed} matched=${matched}`);
 
@@ -360,11 +325,10 @@ async function main() {
 
   const itemsCompact = [...itemById.values()].sort((a, b) => a.id - b.id);
   const missing = [...neededItemIds].filter((id) => !itemById.has(id));
+  const placeholders = itemsCompact.filter((x) => String(x.name || "").startsWith("#")).length;
 
   await fsp.writeFile(path.join(OUT_DIR, "items.compact.json"), JSON.stringify(itemsCompact));
   await fsp.writeFile(path.join(OUT_DIR, "missing_item_ids.json"), JSON.stringify(missing));
-
-  const placeholders = itemsCompact.filter((x) => String(x.name || "").startsWith("#")).length;
 
   console.log("items.compact:", itemsCompact.length);
   console.log("missing item ids:", missing.length);
