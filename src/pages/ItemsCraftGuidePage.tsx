@@ -1,3 +1,4 @@
+// src/pages/ItemsCraftGuidePage.tsx
 import { useEffect, useMemo, useState } from "react";
 import {
   loadWakfuData,
@@ -16,6 +17,36 @@ function norm(s: string) {
 
 type ShoppingRow = { itemId: number; qty: number };
 
+type RarityInfo = { label: string; className: string };
+function rarityInfo(r: number | null | undefined): RarityInfo | null {
+  // tua mappatura:
+  // 1 Unusual (grigio)
+  // 2 Rare (verde)
+  // 3 Mythical (arancione)
+  // 4 Legendary (giallo)
+  // 5 Relic (viola)
+  // 6 Souvenir (azzurro)
+  // 7 Epic (fucsia/rosa)
+  switch (r ?? null) {
+    case 1:
+      return { label: "Unusual", className: "text-zinc-300/90" };
+    case 2:
+      return { label: "Rare", className: "text-emerald-300" };
+    case 3:
+      return { label: "Mythical", className: "text-orange-300" };
+    case 4:
+      return { label: "Legendary", className: "text-yellow-300" };
+    case 5:
+      return { label: "Relic", className: "text-violet-300" };
+    case 6:
+      return { label: "Souvenir", className: "text-sky-300" };
+    case 7:
+      return { label: "Epic", className: "text-pink-300" };
+    default:
+      return null;
+  }
+}
+
 export function ItemsCraftGuidePage() {
   const [loading, setLoading] = useState(true);
 
@@ -26,9 +57,6 @@ export function ItemsCraftGuidePage() {
   // UI
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<number | null>(null);
-
-  // ✅ NEW: controlla se mostrare la lista risultati
-  const [showResults, setShowResults] = useState(true);
 
   // Tree controls
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
@@ -46,7 +74,7 @@ export function ItemsCraftGuidePage() {
 
   const isCraftable = (id: number) => (recipesByResultId.get(id)?.length ?? 0) > 0;
 
-  // Mostra SOLO item craftabili nella ricerca
+  // ricerca SOLO craftabili
   const craftableItems = useMemo(() => {
     const craftableIds = new Set<number>([...recipesByResultId.keys()]);
     return items
@@ -67,6 +95,16 @@ export function ItemsCraftGuidePage() {
     if (!selectedId) return null;
     return itemsById.get(selectedId) ?? null;
   }, [selectedId, itemsById]);
+
+  const onSelect = (itemId: number) => {
+    setSelectedId(itemId);
+    setExpanded(new Set([itemId])); // root aperto
+    setRecipeChoice(new Map());
+    // ✅ nascondi risultati subito dopo selezione
+    // (lo facciamo mettendo query = nome selezionato, ma soprattutto "selectedId != null" nasconde la lista)
+    const it = itemsById.get(itemId);
+    if (it) setQuery(it.name);
+  };
 
   const toggleExpanded = (itemId: number) => {
     setExpanded((prev) => {
@@ -89,7 +127,7 @@ export function ItemsCraftGuidePage() {
     });
   };
 
-  // Shopping list: somma solo i leaf NON espansi (o non craftabili)
+  // Shopping list: leaf NON espansi (o non craftabili)
   const shoppingList: ShoppingRow[] = useMemo(() => {
     if (!selected) return [];
 
@@ -133,12 +171,13 @@ export function ItemsCraftGuidePage() {
       visited.delete(itemId);
     };
 
-    // root: espandi sempre (virtualmente)
+    // root: sempre “espanso virtualmente”
     const rootRecs = recipesByResultId.get(selected.id) ?? [];
     if (rootRecs.length === 0) return [];
 
     const idx = recipeChoice.get(selected.id) ?? 0;
     const rootRecipe = rootRecs[Math.min(idx, rootRecs.length - 1)];
+
     for (const ing of rootRecipe.ingredients) {
       walk(ing.itemId, ing.qty);
     }
@@ -154,9 +193,11 @@ export function ItemsCraftGuidePage() {
 
   const copyShoppingList = async () => {
     const lines = shoppingList.map((r) => {
-      const name = itemsById.get(r.itemId)?.name ?? `#${r.itemId}`;
+      const it = itemsById.get(r.itemId);
+      const name = it?.name ?? `#${r.itemId}`;
       return `${name} x${r.qty}`;
     });
+
     try {
       await navigator.clipboard.writeText(lines.join("\n"));
     } catch {
@@ -164,13 +205,12 @@ export function ItemsCraftGuidePage() {
     }
   };
 
-  const onSelect = (itemId: number) => {
-    setSelectedId(itemId);
-    setExpanded(new Set([itemId])); // root aperto
+  // quando l’utente cambia query manualmente, riapre i risultati (deseleziona)
+  const onChangeQuery = (v: string) => {
+    setQuery(v);
+    if (selectedId) setSelectedId(null);
+    setExpanded(new Set());
     setRecipeChoice(new Map());
-
-    // ✅ nascondi automaticamente i risultati dopo la selezione
-    setShowResults(false);
   };
 
   return (
@@ -191,16 +231,7 @@ export function ItemsCraftGuidePage() {
             className="w-full rounded-xl bg-black/10 border border-emerald-300/25 backdrop-blur-md px-4 py-3 outline-none focus:border-emerald-300/60"
             placeholder={loading ? "Loading data..." : "Search craftable item name (e.g. Gobball Amulet)"}
             value={query}
-            onChange={(e) => {
-              const v = e.target.value;
-              setQuery(v);
-
-              // ✅ appena inizi a digitare di nuovo, ri-mostri i risultati
-              setShowResults(true);
-
-              // (consigliato) se stai cercando altro, resetta la selezione
-              if (selectedId) setSelectedId(null);
-            }}
+            onChange={(e) => onChangeQuery(e.target.value)}
             disabled={loading}
           />
         </div>
@@ -212,14 +243,14 @@ export function ItemsCraftGuidePage() {
         </p>
       )}
 
-      {query && results.length === 0 && !loading && (
+      {query && results.length === 0 && !loading && !selected && (
         <p className="mt-4 text-center text-emerald-200/80">
           No craftable items found for this search.
         </p>
       )}
 
-      {/* ✅ RISULTATI: mostrali solo se showResults = true e non hai selezionato */}
-      {!selected && showResults && query && results.length > 0 && (
+      {/* RISULTATI: mostrali SOLO quando NON hai selezionato */}
+      {!selected && query && results.length > 0 && (
         <div className="mt-6 flex justify-center">
           <div className="w-full max-w-2xl rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-3">
             <div className="text-sm text-emerald-200/80 mb-2">Results ({results.length})</div>
@@ -231,10 +262,16 @@ export function ItemsCraftGuidePage() {
                   onClick={() => onSelect(it.id)}
                   className="w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 bg-black/10 hover:border-emerald-300/25 transition"
                 >
-                  <ItemIcon itemId={it.id} size={34} itemsById={itemsById} />
-                  <div className="flex-1">
-                    <div className="text-emerald-100 text-sm font-medium">{it.name}</div>
-                    <div className="text-emerald-200/55 text-xs">ID: {it.id}</div>
+                  <ItemIcon itemId={it.id} itemsById={itemsById} size={34} />
+                  <div className="flex-1 min-w-0">
+                    <div className="text-emerald-100 text-sm font-medium truncate">{it.name}</div>
+                    {rarityInfo(it.rarity)?.label ? (
+                      <div className={`text-xs mt-0.5 ${rarityInfo(it.rarity)!.className}`}>
+                        {rarityInfo(it.rarity)!.label}
+                      </div>
+                    ) : (
+                      <div className="text-xs mt-0.5 text-emerald-200/40">—</div>
+                    )}
                   </div>
                 </button>
               ))}
@@ -247,7 +284,7 @@ export function ItemsCraftGuidePage() {
         </div>
       )}
 
-      {/* DOPO SELEZIONE: mostra SOLO pannelli (sinistra ricetta, destra shopping) */}
+      {/* DOPO SELEZIONE: mostra SOLO pannelli */}
       {selected && (
         <div className="mt-6 grid lg:grid-cols-12 gap-4">
           {/* LEFT */}
@@ -255,9 +292,15 @@ export function ItemsCraftGuidePage() {
             <div className="rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-4">
               <div className="flex items-start gap-4">
                 <ItemIcon itemId={selected.id} itemsById={itemsById} />
-                <div className="flex-1">
-                  <div className="text-xl font-semibold text-emerald-200">{selected.name}</div>
-                  <div className="text-xs text-emerald-200/50 mt-1">ID: {selected.id}</div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-xl font-semibold text-emerald-200 truncate">{selected.name}</div>
+                  {rarityInfo(selected.rarity) ? (
+                    <div className={`text-sm mt-0.5 ${rarityInfo(selected.rarity)!.className}`}>
+                      {rarityInfo(selected.rarity)!.label}
+                    </div>
+                  ) : (
+                    <div className="text-sm mt-0.5 text-emerald-200/40">—</div>
+                  )}
                 </div>
               </div>
 
@@ -307,16 +350,20 @@ export function ItemsCraftGuidePage() {
                 <div className="mt-4 space-y-2 max-h-[720px] overflow-auto pr-1">
                   {shoppingList.map((row) => {
                     const it = itemsById.get(row.itemId);
-                    const label = it?.name ?? `#${row.itemId}`;
+                    const name = it?.name ?? `#${row.itemId}`;
+                    const rInfo = rarityInfo(it?.rarity);
+
                     return (
                       <div
                         key={row.itemId}
                         className="flex items-center gap-3 rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2"
                       >
                         <ItemIcon itemId={row.itemId} itemsById={itemsById} size={32} />
-                        <div className="flex-1">
-                          <div className="text-emerald-100 text-sm">{label}</div>
-                          <div className="text-emerald-200/55 text-xs">ID: {row.itemId}</div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-emerald-100 text-sm truncate">{name}</div>
+                          <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
+                            {rInfo?.label ?? "—"}
+                          </div>
                         </div>
                         <div className="text-emerald-200 font-semibold">x{row.qty}</div>
                       </div>
@@ -361,6 +408,7 @@ function RecipeNode(props: {
 
   const item = itemsById.get(itemId);
   const name = item?.name ?? `#${itemId}`;
+  const rInfo = rarityInfo(item?.rarity);
 
   const recipes = recipesByResultId.get(itemId) ?? [];
   const craftable = recipes.length > 0;
@@ -375,6 +423,7 @@ function RecipeNode(props: {
 
   return (
     <div className="space-y-2">
+      {/* riga item (non-root) */}
       {!root && (
         <div
           className="flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 bg-black/10"
@@ -392,9 +441,12 @@ function RecipeNode(props: {
 
           <div className="flex-1 min-w-0">
             <div className="text-emerald-100 text-sm truncate">{name}</div>
-            <div className="text-emerald-200/55 text-xs">
-              ID: {itemId} {craftable ? "• craftable" : "• not craftable"}
-              {loop ? " • loop" : ""}
+            <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
+              {rInfo?.label ?? "—"}{" "}
+              <span className="text-emerald-200/40">
+                • {craftable ? "craftable" : "not craftable"}
+                {loop ? " • loop" : ""}
+              </span>
             </div>
           </div>
 
@@ -410,14 +462,18 @@ function RecipeNode(props: {
         </div>
       )}
 
+      {/* root card */}
       {root && (
         <div className="rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2">
           <div className="flex items-center gap-3">
             <ItemIcon itemId={itemId} itemsById={itemsById} size={32} />
-            <div className="flex-1">
-              <div className="text-emerald-100 text-sm font-medium">{name}</div>
-              <div className="text-emerald-200/60 text-xs">
-                Root item • ID: {itemId} • {craftable ? "craftable" : "not craftable"}
+            <div className="flex-1 min-w-0">
+              <div className="text-emerald-100 text-sm font-medium truncate">{name}</div>
+              <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
+                {rInfo?.label ?? "—"}{" "}
+                <span className="text-emerald-200/40">
+                  • root • {craftable ? "craftable" : "not craftable"}
+                </span>
               </div>
             </div>
 
@@ -434,12 +490,14 @@ function RecipeNode(props: {
         </div>
       )}
 
+      {/* children */}
       {isOpen && craftable && recipe && !loop && (
         <div className="space-y-2">
           {recipe.ingredients.map((ing, idx) => {
             const ingItem = itemsById.get(ing.itemId);
             const ingName = ingItem?.name ?? `#${ing.itemId}`;
             const ingCraftable = isCraftable(ing.itemId);
+            const ingR = rarityInfo(ingItem?.rarity);
 
             return (
               <div
@@ -464,8 +522,11 @@ function RecipeNode(props: {
 
                   <div className="flex-1 min-w-0">
                     <div className="text-emerald-100 text-sm truncate">{ingName}</div>
-                    <div className="text-emerald-200/55 text-xs">
-                      ID: {ing.itemId} {ingCraftable ? "• craftable" : "• not craftable"}
+                    <div className={`text-xs mt-0.5 ${ingR?.className ?? "text-emerald-200/40"}`}>
+                      {ingR?.label ?? "—"}{" "}
+                      <span className="text-emerald-200/40">
+                        • {ingCraftable ? "craftable" : "not craftable"}
+                      </span>
                     </div>
                   </div>
 
@@ -507,11 +568,15 @@ function ItemIcon({
   itemsById?: Map<number, CompactItem>;
 }) {
   const item = itemsById?.get(itemId);
-  const [src, setSrc] = useState(getItemIconUrl(item ?? itemId, "ankama"));
+  const gfx = item?.gfxId ?? itemId; // ✅ usa gfxId se c'è
+
+  const [src, setSrc] = useState(getItemIconUrl(gfx, "ankama"));
 
   useEffect(() => {
-    setSrc(getItemIconUrl(item ?? itemId, "ankama"));
-  }, [itemId, item]);
+    const it = itemsById?.get(itemId);
+    const g = it?.gfxId ?? itemId;
+    setSrc(getItemIconUrl(g, "ankama"));
+  }, [itemId, itemsById]);
 
   return (
     <img
@@ -521,10 +586,9 @@ function ItemIcon({
       alt=""
       className="rounded-xl bg-black/10 backdrop-blur-md border border-emerald-300/15"
       onError={() => {
-        // fallback
-        if (src.includes("static.ankama.com")) {
-          setSrc(getItemIconUrl(itemId, "wakassets"));
-        }
+        const it = itemsById?.get(itemId);
+        const g = it?.gfxId ?? itemId;
+        if (src.includes("static.ankama.com")) setSrc(getItemIconUrl(g, "wakassets"));
       }}
       loading="lazy"
     />
