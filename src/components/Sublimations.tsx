@@ -121,21 +121,24 @@ const filteredRunes = useMemo(() => {
 
   return (
     <div className="sublimation-container animate-in fade-in duration-500">
-      <div className="controls">
-        <div className="w-full flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-            <Scroll className="text-emerald-400" />
-            Sublimations Library
-            <span className="text-sm font-normal text-slate-400 ml-2 bg-slate-800 px-2 py-1 rounded-md">
-              {filteredRunes.length} items
-            </span>
-          </h2>
+      {/* Header */}
+      <div className="text-center mb-8">
+        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+          Sublimations Library
+        </h1>
+        <div className="flex justify-center items-center gap-3">
+          <span className="text-sm text-emerald-200/70">
+            {filteredRunes.length} items
+          </span>
           {dataSource === 'fallback' && (
             <div className="text-amber-400 text-xs flex items-center gap-1 bg-amber-900/30 px-3 py-1 rounded-full border border-amber-500/30">
               <AlertCircle size={12} /> using backup data (JSON missing)
             </div>
           )}
         </div>
+      </div>
+
+      <div className="controls">
 
         <div className="search-box">
           <input

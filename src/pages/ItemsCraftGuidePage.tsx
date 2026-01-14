@@ -289,9 +289,11 @@ export function ItemsCraftGuidePage() {
   return (
     <div className="w-full max-w-6xl mx-auto p-4">
       {/* Header */}
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-emerald-300">Items Craft Guide</h1>
-        <div className="text-xs text-emerald-200/70 mt-2">
+      <div className="text-center mb-8">
+        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+          Items Craft Guide
+        </h1>
+        <div className="text-xs text-emerald-200/70">
           craftable items: {craftableItems.length} • recipes: {recipesByResultId.size} •{" "}
           {loading ? "loading..." : "ready"}
         </div>
