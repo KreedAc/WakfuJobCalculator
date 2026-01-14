@@ -1,10 +1,11 @@
 // src/lib/wakfuData.ts
+
 export type CompactItem = {
   id: number;
   name: string;
   description?: string | null;
   gfxId?: number | null;
-  rarity?: number | null; // 1..7 (o null)
+  rarity?: number | null;
   source?: string;
 };
 
@@ -22,22 +23,12 @@ export type WakfuData = {
   recipesByResultId: Map<number, CompactRecipe[]>;
 };
 
-let cache: WakfuData | null = null;
-
-async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url);
-  if (!res.ok) {
-    throw new Error(`HTTP ${res.status} while fetching ${url}`);
-  }
-  return res.json() as Promise<T>;
-}
+const DATA_BASE = "/data";
 
 export async function loadWakfuData(): Promise<WakfuData> {
-  if (cache) return cache;
-
   const [items, recipes] = await Promise.all([
-    fetchJson<CompactItem[]>("/data/items.compact.json"),
-    fetchJson<CompactRecipe[]>("/data/recipes.compact.json"),
+    fetch(`${DATA_BASE}/items.compact.json`, { cache: "no-store" }).then((r) => r.json()) as Promise<CompactItem[]>,
+    fetch(`${DATA_BASE}/recipes.compact.json`, { cache: "no-store" }).then((r) => r.json()) as Promise<CompactRecipe[]>,
   ]);
 
   const itemsById = new Map<number, CompactItem>();
@@ -50,18 +41,19 @@ export async function loadWakfuData(): Promise<WakfuData> {
     recipesByResultId.set(r.resultItemId, arr);
   }
 
-  cache = { items, recipes, itemsById, recipesByResultId };
-  return cache;
+  // stable order (optional)
+  for (const [k, v] of recipesByResultId) {
+    v.sort((a, b) => a.id - b.id);
+    recipesByResultId.set(k, v);
+  }
+
+  return { items, recipes, itemsById, recipesByResultId };
 }
 
-/**
- * Icon URL
- * NOTA: per Wakfu spesso il PNG esiste con gfxId (non con id).
- * Quindi noi passiamo qui un NUMBER che può essere id oppure gfxId.
- */
-export function getItemIconUrl(idOrGfxId: number, provider: "ankama" | "wakassets" = "ankama") {
+export function getItemIconUrl(gfxOrId: number, provider: "ankama" | "wakassets" = "ankama"): string {
+  // IMPORTANT: Ankama spesso funziona solo con gfxId, non con itemId.
   if (provider === "ankama") {
-    return `https://static.ankama.com/wakfu/portal/game/item/115/${idOrGfxId}.png`;
+    return `https://static.ankama.com/wakfu/portal/game/item/115/${gfxOrId}.png`;
   }
-  return `https://vertylo.github.io/wakassets/items/${idOrGfxId}.png`;
+  return `https://vertylo.github.io/wakassets/items/${gfxOrId}.png`;
 }
