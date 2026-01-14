@@ -83,7 +83,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<CalculatorPage language={lang} />} />
           <Route path="/sublimations" element={<SublimationsPage />} />
-          <Route path="/items-craft-guide" element={<ItemsCraftGuidePage />} />
+          <Route path="/items-craft-guide" element={<ItemsCraftGuidePage language={lang} />} />
         </Routes>
 
         <footer className="mt-16 text-emerald-200/40 text-xs text-center pb-8 font-medium">

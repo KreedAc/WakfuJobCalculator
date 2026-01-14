@@ -4,11 +4,15 @@ import path from "node:path";
 import { Readable } from "node:stream";
 
 const OUT_DIR = path.resolve("public/data");
+const SUPPORTED_LANGUAGES = ["en", "fr", "es", "pt"];
 
-function pickText(v) {
+function pickText(v, lang = null) {
   if (!v) return null;
   if (typeof v === "string") return v;
-  if (typeof v === "object") return v.en ?? v.fr ?? v.es ?? v.pt ?? Object.values(v)[0] ?? null;
+  if (typeof v === "object") {
+    if (lang && v[lang]) return v[lang];
+    return v.en ?? v.fr ?? v.es ?? v.pt ?? Object.values(v)[0] ?? null;
+  }
   return null;
 }
 
@@ -25,18 +29,18 @@ function pickId(o) {
   );
 }
 
-function pickTitle(o) {
+function pickTitle(o, lang = null) {
   return (
-    pickText(o?.title) ??
-    pickText(o?.name) ??
-    pickText(o?.definition?.title) ??
-    pickText(o?.definition?.name) ??
+    pickText(o?.title, lang) ??
+    pickText(o?.name, lang) ??
+    pickText(o?.definition?.title, lang) ??
+    pickText(o?.definition?.name, lang) ??
     null
   );
 }
 
-function pickDescription(o) {
-  return pickText(o?.description) ?? pickText(o?.definition?.description) ?? null;
+function pickDescription(o, lang = null) {
+  return pickText(o?.description, lang) ?? pickText(o?.definition?.description, lang) ?? null;
 }
 
 // ✅ gfxId robusto: spesso sta in graphicParameters.gfxId
@@ -112,7 +116,7 @@ async function fetchJson(url) {
  * Stream parse JSON array huge: extract top-level objects "{...}" and JSON.parse.
  * Filter by neededSet
  */
-async function streamCompactItems(url, neededSet, sourceLabel) {
+async function streamCompactItems(url, neededSet, sourceLabel, lang = null) {
   const res = await fetch(url);
   if (!res.ok) {
     const t = await res.text().catch(() => "");
@@ -142,8 +146,8 @@ async function streamCompactItems(url, neededSet, sourceLabel) {
     const id = Number(pickId(obj));
     if (!id || !neededSet.has(id)) return;
 
-    const title = pickTitle(obj);
-    const description = pickDescription(obj);
+    const title = pickTitle(obj, lang);
+    const description = pickDescription(obj, lang);
     const gfxId = pickGfxId(obj);
     const rarity = pickRarity(obj);
 
@@ -305,35 +309,42 @@ async function main() {
   // Sources on CDN
   const sources = ["items", "jobsItems", "resources", "collectibleResources"];
 
-  const itemById = new Map(); // id -> best record
-
   const score = (x) =>
     (x ? (x.name && !String(x.name).startsWith("#") ? 2 : 0) + (x.gfxId ? 1 : 0) + (x.rarity ? 1 : 0) : 0);
 
-  for (const s of sources) {
-    const url = `${base}/${s}.json`;
-    console.log(`Streaming ${s}.json and filtering ...`);
+  for (const lang of SUPPORTED_LANGUAGES) {
+    console.log(`\n========== Generating items for language: ${lang.toUpperCase()} ==========`);
+    const itemById = new Map();
 
-    const { out, parsed, matched } = await streamCompactItems(url, neededItemIds, s);
-    console.log(`${s}: parsed=${parsed} matched=${matched}`);
+    for (const s of sources) {
+      const url = `${base}/${s}.json`;
+      console.log(`Streaming ${s}.json and filtering (${lang})...`);
 
-    for (const it of out) {
-      const prev = itemById.get(it.id);
-      if (!prev || score(it) > score(prev)) itemById.set(it.id, it);
+      const { out, parsed, matched } = await streamCompactItems(url, neededItemIds, s, lang);
+      console.log(`${s}: parsed=${parsed} matched=${matched}`);
+
+      for (const it of out) {
+        const prev = itemById.get(it.id);
+        if (!prev || score(it) > score(prev)) itemById.set(it.id, it);
+      }
+    }
+
+    const itemsCompact = [...itemById.values()].sort((a, b) => a.id - b.id);
+    const missing = [...neededItemIds].filter((id) => !itemById.has(id));
+    const placeholders = itemsCompact.filter((x) => String(x.name || "").startsWith("#")).length;
+
+    await fsp.writeFile(path.join(OUT_DIR, `items.compact.${lang}.json`), JSON.stringify(itemsCompact));
+
+    console.log(`items.compact.${lang}:`, itemsCompact.length);
+    console.log(`missing item ids (${lang}):`, missing.length);
+    console.log(`placeholder names (#id) (${lang}):`, placeholders);
+
+    if (lang === "en") {
+      await fsp.writeFile(path.join(OUT_DIR, "missing_item_ids.json"), JSON.stringify(missing));
     }
   }
 
-  const itemsCompact = [...itemById.values()].sort((a, b) => a.id - b.id);
-  const missing = [...neededItemIds].filter((id) => !itemById.has(id));
-  const placeholders = itemsCompact.filter((x) => String(x.name || "").startsWith("#")).length;
-
-  await fsp.writeFile(path.join(OUT_DIR, "items.compact.json"), JSON.stringify(itemsCompact));
-  await fsp.writeFile(path.join(OUT_DIR, "missing_item_ids.json"), JSON.stringify(missing));
-
-  console.log("items.compact:", itemsCompact.length);
-  console.log("missing item ids:", missing.length);
-  console.log("placeholder names (#id):", placeholders);
-  console.log("DONE ✅");
+  console.log("\n✅ DONE - All languages generated!");
 }
 
 main().catch((e) => {
