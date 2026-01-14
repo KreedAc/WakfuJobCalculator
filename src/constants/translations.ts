@@ -27,7 +27,7 @@ export const TRANSLATIONS = {
     langLabel: 'Language',
     navCalc: 'XP Calculator',
     navSubli: 'Sublimations',
-    navItemsCraft: 'Items Craft Guide (Work in progress)'
+    navItemsCraft: 'Items Craft Guide'
   },
   fr: {
     title: 'Calculateur d\'XP d\'Artisanat Wakfu',
