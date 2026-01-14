@@ -213,7 +213,7 @@ const filteredRunes = useMemo(() => {
                         const iconMap = { R: 'red_slot.png', G: 'green_slot.png', B: 'blue_slot.png' };
                         return (
                           <div key={idx} className="color-slot" title={`${color} Slot`}>
-                            <LocalImage src={`/icons/${iconMap[color as 'R' | 'G' | 'B']}`} alt={color} fallbackText={color} />
+                            <LocalImage src={`/data/icons/${iconMap[color as 'R' | 'G' | 'B']}`} alt={color} fallbackText={color} />
                           </div>
                         );
                       }
@@ -248,7 +248,7 @@ const filteredRunes = useMemo(() => {
                         return (
                           <LocalImage
                             key={idx}
-                            src={`/icons/${iconMap[r as keyof typeof iconMap]}`}
+                            src={`/data/icons/${iconMap[r as keyof typeof iconMap]}`}
                             alt={r}
                             className="w-6 h-6 object-contain drop-shadow-md"
                           />
