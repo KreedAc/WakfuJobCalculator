@@ -20,7 +20,6 @@ type SelectedRow = { itemId: number; qty: number };
 
 type RarityInfo = { label: string; className: string };
 function rarityInfo(r: number | null | undefined): RarityInfo | null {
-  // tua mappatura:
   // 1 Unusual (grigio)
   // 2 Rare (verde)
   // 3 Mythical (arancione)
@@ -58,11 +57,11 @@ export function ItemsCraftGuidePage() {
   // UI
   const [query, setQuery] = useState("");
 
-  // ✅ Multi-select state
+  // Multi-select
   const [selected, setSelected] = useState<SelectedRow[]>([]);
   const [activeItemId, setActiveItemId] = useState<number | null>(null);
 
-  // ✅ Per-root tree controls (ogni item selezionato ha il suo stato expand + recipeChoice)
+  // Per-root tree controls
   const [expandedByRoot, setExpandedByRoot] = useState<Map<number, Set<number>>>(new Map());
   const [recipeChoiceByRoot, setRecipeChoiceByRoot] = useState<Map<number, Map<number, number>>>(new Map());
 
@@ -78,7 +77,7 @@ export function ItemsCraftGuidePage() {
 
   const isCraftable = (id: number) => (recipesByResultId.get(id)?.length ?? 0) > 0;
 
-  // ricerca SOLO craftabili
+  // Search only craftables
   const craftableItems = useMemo(() => {
     const craftableIds = new Set<number>([...recipesByResultId.keys()]);
     return items
@@ -104,7 +103,7 @@ export function ItemsCraftGuidePage() {
     setExpandedByRoot((prev) => {
       if (prev.has(rootId)) return prev;
       const next = new Map(prev);
-      next.set(rootId, new Set<number>()); // root sempre open “virtualmente”, qui gestiamo solo ingredienti
+      next.set(rootId, new Set<number>());
       return next;
     });
 
@@ -116,7 +115,9 @@ export function ItemsCraftGuidePage() {
     });
   };
 
-  // ✅ Add item (o incrementa qty se già presente), poi nascondi risultati
+  const getExpanded = (rootId: number) => expandedByRoot.get(rootId) ?? new Set<number>();
+  const getRecipeChoice = (rootId: number) => recipeChoiceByRoot.get(rootId) ?? new Map<number, number>();
+
   const addItem = (itemId: number) => {
     ensureRootState(itemId);
 
@@ -131,16 +132,18 @@ export function ItemsCraftGuidePage() {
     });
 
     setActiveItemId(itemId);
-    setQuery(""); // ✅ così la lista risultati sparisce subito
+    setQuery(""); // hide results immediately
   };
 
   const removeItem = (itemId: number) => {
     setSelected((prev) => prev.filter((x) => x.itemId !== itemId));
+
     setExpandedByRoot((prev) => {
       const next = new Map(prev);
       next.delete(itemId);
       return next;
     });
+
     setRecipeChoiceByRoot((prev) => {
       const next = new Map(prev);
       next.delete(itemId);
@@ -149,7 +152,6 @@ export function ItemsCraftGuidePage() {
 
     setActiveItemId((curr) => {
       if (curr !== itemId) return curr;
-      // scegli un altro se presente
       const remaining = selected.filter((x) => x.itemId !== itemId);
       return remaining[0]?.itemId ?? null;
     });
@@ -172,10 +174,6 @@ export function ItemsCraftGuidePage() {
       return next;
     });
   };
-
-  // helpers per lo stato del root attivo
-  const getExpanded = (rootId: number) => expandedByRoot.get(rootId) ?? new Set<number>();
-  const getRecipeChoice = (rootId: number) => recipeChoiceByRoot.get(rootId) ?? new Map<number, number>();
 
   const toggleExpanded = (rootId: number, itemId: number) => {
     setExpandedByRoot((prev) => {
@@ -203,7 +201,7 @@ export function ItemsCraftGuidePage() {
     });
   };
 
-  // ✅ Shopping list aggregata su TUTTI gli item selezionati
+  // Shopping list aggregated for ALL selected items (with quantity)
   const shoppingList: ShoppingRow[] = useMemo(() => {
     if (selected.length === 0) return [];
 
@@ -213,12 +211,7 @@ export function ItemsCraftGuidePage() {
       acc.set(itemId, (acc.get(itemId) ?? 0) + qty);
     };
 
-    const walk = (
-      rootId: number,
-      itemId: number,
-      qtyMul: number,
-      visited: Set<number>
-    ) => {
+    const walk = (rootId: number, itemId: number, qtyMul: number, visited: Set<number>) => {
       if (visited.has(itemId)) {
         add(itemId, qtyMul);
         return;
@@ -228,7 +221,7 @@ export function ItemsCraftGuidePage() {
       const craftable = isCraftable(itemId);
       const expanded = getExpanded(rootId).has(itemId);
 
-      // se non craftable o non espanso => leaf
+      // leaf if not craftable or not expanded
       if (!craftable || !expanded) {
         add(itemId, qtyMul);
         visited.delete(itemId);
@@ -262,7 +255,6 @@ export function ItemsCraftGuidePage() {
       const rootChoice = getRecipeChoice(rootId).get(rootId) ?? 0;
       const rootRecipe = rootRecs[Math.min(rootChoice, rootRecs.length - 1)];
 
-      // root è sempre “open virtualmente”, qui espandiamo gli ingredienti di root
       const visited = new Set<number>();
       for (const ing of rootRecipe.ingredients) {
         walk(rootId, ing.itemId, ing.qty * rootQty, visited);
@@ -292,7 +284,6 @@ export function ItemsCraftGuidePage() {
     }
   };
 
-  // risultati: mostrali solo quando stai scrivendo (query non vuota)
   const showResults = query.trim().length > 0 && !loading;
 
   return (
@@ -323,9 +314,7 @@ export function ItemsCraftGuidePage() {
       <div className="mt-4">
         <div className="rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-3">
           <div className="flex items-center justify-between gap-3 flex-wrap">
-            <div className="text-sm text-emerald-200/80">
-              Selected items ({selected.length})
-            </div>
+            <div className="text-sm text-emerald-200/80">Selected items ({selected.length})</div>
 
             <button
               onClick={clearAll}
@@ -380,9 +369,7 @@ export function ItemsCraftGuidePage() {
                       >
                         −
                       </button>
-                      <div className="text-emerald-200 text-xs font-semibold w-8 text-center">
-                        {s.qty}
-                      </div>
+                      <div className="text-emerald-200 text-xs font-semibold w-8 text-center">{s.qty}</div>
                       <button
                         onClick={() => setQty(s.itemId, +1)}
                         className="w-7 h-7 rounded-lg border border-emerald-300/15 bg-black/10 hover:border-emerald-300/30"
@@ -411,14 +398,10 @@ export function ItemsCraftGuidePage() {
       {showResults && (
         <div className="mt-4 flex justify-center">
           <div className="w-full max-w-2xl rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-3">
-            <div className="text-sm text-emerald-200/80 mb-2">
-              Results ({results.length})
-            </div>
+            <div className="text-sm text-emerald-200/80 mb-2">Results ({results.length})</div>
 
             {results.length === 0 ? (
-              <div className="text-sm text-emerald-200/70">
-                No craftable items found.
-              </div>
+              <div className="text-sm text-emerald-200/70">No craftable items found.</div>
             ) : (
               <div className="space-y-2 max-h-[320px] overflow-auto pr-1">
                 {results.map((it) => (
@@ -430,7 +413,11 @@ export function ItemsCraftGuidePage() {
                     <ItemIcon itemId={it.id} itemsById={itemsById} size={34} />
                     <div className="flex-1 min-w-0">
                       <div className="text-emerald-100 text-sm font-medium truncate">{it.name}</div>
-                      <div className={`text-xs mt-0.5 ${rarityInfo(it.rarity)?.className ?? "text-emerald-200/40"}`}>
+                      <div
+                        className={`text-xs mt-0.5 ${
+                          rarityInfo(it.rarity)?.className ?? "text-emerald-200/40"
+                        }`}
+                      >
                         {rarityInfo(it.rarity)?.label ?? "—"}
                       </div>
                     </div>
@@ -449,7 +436,7 @@ export function ItemsCraftGuidePage() {
         </div>
       )}
 
-      {/* Panels: recipe left + shopping right */}
+      {/* Panels */}
       {activeItem && (
         <div className="mt-6 grid lg:grid-cols-12 gap-4">
           {/* LEFT */}
@@ -507,7 +494,8 @@ export function ItemsCraftGuidePage() {
               </div>
 
               <div className="text-xs text-emerald-200/70 mt-1">
-                Aggregated for all selected items (with quantities). Expanding a craftable ingredient replaces it with sub-ingredients.
+                Aggregated for all selected items (with quantities). Expanding a craftable ingredient replaces it with
+                sub-ingredients.
               </div>
 
               {shoppingList.length === 0 ? (
@@ -558,6 +546,8 @@ function RecipeNode(props: {
   onCycleRecipe: (id: number) => void;
   isCraftable: (id: number) => boolean;
   visited: Set<number>;
+  // ✅ NEW: when true, don't render the "self" row/header (used to avoid duplicates when nested under ingredient row)
+  hideSelfRow?: boolean;
 }) {
   const {
     root,
@@ -571,6 +561,7 @@ function RecipeNode(props: {
     onCycleRecipe,
     isCraftable,
     visited,
+    hideSelfRow,
   } = props;
 
   const item = itemsById.get(itemId);
@@ -584,13 +575,16 @@ function RecipeNode(props: {
   const nextVisited = new Set(visited);
   nextVisited.add(itemId);
 
-  const isOpen = root ? true : expanded.has(itemId);
+  // ✅ If we're nested under an ingredient row, that row already implies "open"
+  const isOpen = root ? true : hideSelfRow ? true : expanded.has(itemId);
+
   const chosenIdx = recipeChoice.get(itemId) ?? 0;
   const recipe = craftable ? recipes[Math.min(chosenIdx, recipes.length - 1)] : null;
 
   return (
     <div className="space-y-2">
-      {!root && (
+      {/* non-root header row (skip if hideSelfRow) */}
+      {!root && !hideSelfRow && (
         <div
           className="flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 bg-black/10"
           style={{ marginLeft: depth * 16 }}
@@ -628,6 +622,7 @@ function RecipeNode(props: {
         </div>
       )}
 
+      {/* root card */}
       {root && (
         <div className="rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2">
           <div className="flex items-center gap-3">
@@ -655,6 +650,7 @@ function RecipeNode(props: {
         </div>
       )}
 
+      {/* children */}
       {isOpen && craftable && recipe && !loop && (
         <div className="space-y-2">
           {recipe.ingredients.map((ing, idx) => {
@@ -697,12 +693,13 @@ function RecipeNode(props: {
                   <div className="text-emerald-200 font-semibold">x{ing.qty}</div>
                 </div>
 
+                {/* ✅ nested children WITHOUT repeating the header row */}
                 {ingCraftable && expanded.has(ing.itemId) && (
                   <div className="mt-2">
                     <RecipeNode
                       rootId={props.rootId}
                       itemId={ing.itemId}
-                      depth={depth + 2}
+                      depth={depth + 1} // keep indentation consistent
                       itemsById={itemsById}
                       recipesByResultId={recipesByResultId}
                       expanded={expanded}
@@ -711,6 +708,7 @@ function RecipeNode(props: {
                       onCycleRecipe={onCycleRecipe}
                       isCraftable={isCraftable}
                       visited={nextVisited}
+                      hideSelfRow
                     />
                   </div>
                 )}
@@ -733,7 +731,7 @@ function ItemIcon({
   itemsById?: Map<number, CompactItem>;
 }) {
   const item = itemsById?.get(itemId);
-  const gfx = item?.gfxId ?? itemId; // ✅ usa gfxId se c'è
+  const gfx = item?.gfxId ?? itemId;
 
   const [src, setSrc] = useState(getItemIconUrl(gfx, "ankama"));
 
