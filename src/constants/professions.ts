@@ -43,6 +43,16 @@ export const PROFESSION_NAMES: Record<Language, Record<ProfessionId, string>> = 
     'Leather Dealer': 'Peletero',
     'Tailor': 'Sastre',
     'Weapons Master': 'Maestro de armas'
+  },
+  pt: {
+    'Armorer': 'Armeiro',
+    'Baker': 'Padeiro',
+    'Chef': 'Chef',
+    'Handyman': 'Faz-Tudo',
+    'Jeweler': 'Joalheiro',
+    'Leather Dealer': 'Coureiro',
+    'Tailor': 'Alfaiate',
+    'Weapons Master': 'Mestre de Armas'
   }
 };
 
@@ -75,6 +85,16 @@ export const PROFESSION_RECIPES: Record<Language, Record<ProfessionId, string>> 
     'Armorer': 'Placa',
     'Jeweler': 'Gema',
     'Leather Dealer': 'Cuero',
+    'Tailor': 'Fibra'
+  },
+  pt: {
+    'Weapons Master': 'Cabo',
+    'Handyman': 'Esquadro',
+    'Baker': 'Óleo',
+    'Chef': 'Especiaria',
+    'Armorer': 'Placa',
+    'Jeweler': 'Gema',
+    'Leather Dealer': 'Couro',
     'Tailor': 'Fibra'
   }
 };

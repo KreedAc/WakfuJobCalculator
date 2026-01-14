@@ -35,7 +35,7 @@ export function LanguageSelector({
           id="lang-menu"
           className="absolute right-0 mt-2 w-44 rounded-xl overflow-hidden border border-white/20 bg-gray-900/95 text-white shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-200"
         >
-          {(['fr', 'en', 'es'] as Language[]).map(lang => (
+          {(['fr', 'en', 'es', 'pt'] as Language[]).map(lang => (
             <button
               key={lang}
               onClick={() => {
@@ -45,7 +45,7 @@ export function LanguageSelector({
             >
               <span className="text-xl">{FLAGS[lang]}</span>
               <span className="font-medium">
-                {lang === 'en' ? 'English' : lang === 'fr' ? 'Français' : 'Español'}
+                {lang === 'en' ? 'English' : lang === 'fr' ? 'Français' : lang === 'es' ? 'Español' : 'Português'}
               </span>
             </button>
           ))}
