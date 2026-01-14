@@ -72,7 +72,7 @@ export function Calculator({ language, translations: t }: CalculatorProps) {
         {t.subtitle}
       </p>
 
-      <form onSubmit={handleCalculate} className="backdrop-blur-xl bg-gray-900/60 border border-white/10 shadow-2xl rounded-3xl max-w-2xl w-full p-6 md:p-8 space-y-6">
+      <form onSubmit={handleCalculate} className="backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl max-w-2xl w-full p-6 md:p-8 space-y-6" style={{ background: 'rgba(15, 23, 42, 0.7)' }}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <label className="block text-sm font-medium text-emerald-300 ml-1">{t.selectProfession}</label>
@@ -83,7 +83,8 @@ export function Calculator({ language, translations: t }: CalculatorProps) {
               <select
                 value={selectedProfession}
                 onChange={(e) => setSelectedProfession(e.target.value as ProfessionId)}
-                className="w-full p-4 pl-12 rounded-xl bg-black/40 text-emerald-50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 appearance-none cursor-pointer hover:bg-black/50"
+                className="w-full p-4 pl-12 rounded-xl text-emerald-50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 appearance-none cursor-pointer"
+                style={{ background: 'rgba(0, 0, 0, 0.4)' }}
                 required
               >
                 <option value="" className="bg-gray-900 text-gray-400">-- {t.selectProfession} --</option>
@@ -105,7 +106,8 @@ export function Calculator({ language, translations: t }: CalculatorProps) {
               <select
                 value={selectedRange}
                 onChange={(e) => setSelectedRange(e.target.value)}
-                className="w-full p-4 pl-12 rounded-xl bg-black/40 text-emerald-50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 appearance-none cursor-pointer hover:bg-black/50"
+                className="w-full p-4 pl-12 rounded-xl text-emerald-50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 appearance-none cursor-pointer"
+                style={{ background: 'rgba(0, 0, 0, 0.4)' }}
                 required
               >
                 <option value="" className="bg-gray-900 text-gray-400">-- {t.selectRange} --</option>
@@ -132,7 +134,8 @@ export function Calculator({ language, translations: t }: CalculatorProps) {
                 value={expPerItem}
                 onChange={(e) => setExpPerItem(e.target.value)}
                 placeholder={t.expPlaceholder}
-                className="w-full p-4 rounded-xl bg-black/40 text-emerald-50 border border-white/10 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                className="w-full p-4 rounded-xl text-emerald-50 border border-white/10 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                style={{ background: 'rgba(0, 0, 0, 0.4)' }}
                 required
               />
               <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-emerald-400/50 text-sm font-medium">
@@ -151,8 +154,8 @@ export function Calculator({ language, translations: t }: CalculatorProps) {
       </form>
 
       {result && (
-        <div className="mt-8 backdrop-blur-xl bg-emerald-950/80 border border-emerald-500/30 rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-500">
-          <div className="bg-emerald-900/50 px-8 py-6 border-b border-white/10">
+        <div className="mt-8 backdrop-blur-xl border border-emerald-500/30 rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-500" style={{ background: 'rgba(30, 41, 59, 0.8)' }}>
+          <div className="px-8 py-6 border-b border-white/10" style={{ background: 'rgba(15, 23, 42, 0.6)' }}>
             <h2 className="text-2xl font-bold text-white flex items-center gap-3">
               <Hammer className="w-6 h-6 text-emerald-400" />
               {t.resultsFor} <span className="text-emerald-300">{PROFESSION_NAMES[language][result.selectedProfession]}</span>
