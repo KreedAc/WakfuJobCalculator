@@ -49,7 +49,7 @@ export const TRANSLATIONS = {
     langLabel: 'Langue',
     navCalc: 'Calculateur XP',
     navSubli: 'Sublimations',
-    navItemsCraft: 'Guide de Craft d\'Objets (Work in progress)'
+    navItemsCraft: 'Guide de Craft d\'Objets'
   },
   es: {
     title: 'Calculadora de XP de Artesanía de Wakfu',
