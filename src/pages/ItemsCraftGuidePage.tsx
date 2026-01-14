@@ -289,9 +289,9 @@ export function ItemsCraftGuidePage() {
   return (
     <div className="w-full max-w-6xl mx-auto p-4">
       {/* Header */}
-      <div className="flex items-end justify-between gap-4 flex-wrap">
-        <h1 className="text-3xl font-bold text-emerald-300">Items Craft Guide</h1>
-        <div className="text-xs text-emerald-200/70">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold text-emerald-300">Items Craft Guide</h1>
+        <div className="text-xs text-emerald-200/70 mt-2">
           craftable items: {craftableItems.length} • recipes: {recipesByResultId.size} •{" "}
           {loading ? "loading..." : "ready"}
         </div>
