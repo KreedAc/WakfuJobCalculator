@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { CalculatorPage } from './pages/CalculatorPage';
 import { SublimationsPage } from './pages/SublimationsPage';
 import { ItemsCraftGuidePage } from './pages/ItemsCraftGuidePage';
-import { HamburgerMenu } from './components/HamburgerMenu';
+import { Navbar } from './components/Navbar';
 import { LanguageSelector } from './components/LanguageSelector';
 import { useClickOutside } from './hooks/useClickOutside';
 import { TRANSLATIONS, type Language } from './constants/translations';
@@ -13,14 +13,12 @@ const BG_URL = '424478.jpg';
 function AppContent() {
   const [lang, setLang] = useState<Language>('en');
   const [menuOpen, setMenuOpen] = useState(false);
-  const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const location = useLocation();
 
   const t = TRANSLATIONS[lang];
 
   useClickOutside([
-    { id: 'lang', onClose: () => setMenuOpen(false) },
-    { id: 'hamburger', onClose: () => setHamburgerOpen(false) }
+    { id: 'lang', onClose: () => setMenuOpen(false) }
   ]);
 
   useEffect(() => {
@@ -33,10 +31,6 @@ function AppContent() {
     };
     trackVisit();
   }, []);
-
-  useEffect(() => {
-    setHamburgerOpen(false);
-  }, [location.pathname]);
 
   const handleLanguageChange = (newLang: Language) => {
     setLang(newLang);
@@ -69,12 +63,7 @@ function AppContent() {
 
 
       <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-50">
-        <HamburgerMenu
-          isOpen={hamburgerOpen}
-          onToggle={() => {
-            setHamburgerOpen(v => !v);
-            setMenuOpen(false);
-          }}
+        <Navbar
           currentPath={location.pathname}
           navCalcLabel={t.navCalc}
           navSubliLabel={t.navSubli}
@@ -85,10 +74,7 @@ function AppContent() {
           language={lang}
           onLanguageChange={handleLanguageChange}
           menuOpen={menuOpen}
-          onMenuToggle={() => {
-            setMenuOpen(v => !v);
-            setHamburgerOpen(false);
-          }}
+          onMenuToggle={() => setMenuOpen(v => !v)}
           label={t.langLabel}
         />
       </div>
