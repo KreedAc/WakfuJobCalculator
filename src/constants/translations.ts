@@ -71,6 +71,6 @@ export const TRANSLATIONS = {
     langLabel: 'Idioma',
     navCalc: 'Calculadora XP',
     navSubli: 'Sublimaciones',
-    navItemsCraft: 'Guía de Craft de Objetos (Work in progress)'
+    navItemsCraft: 'Guía de Craft de Objetos'
   }
 } as const;
