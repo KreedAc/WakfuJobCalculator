@@ -16,6 +16,7 @@ function norm(s: string) {
 }
 
 type ShoppingRow = { itemId: number; qty: number };
+type SelectedRow = { itemId: number; qty: number };
 
 type RarityInfo = { label: string; className: string };
 function rarityInfo(r: number | null | undefined): RarityInfo | null {
@@ -56,11 +57,14 @@ export function ItemsCraftGuidePage() {
 
   // UI
   const [query, setQuery] = useState("");
-  const [selectedId, setSelectedId] = useState<number | null>(null);
 
-  // Tree controls
-  const [expanded, setExpanded] = useState<Set<number>>(new Set());
-  const [recipeChoice, setRecipeChoice] = useState<Map<number, number>>(new Map()); // itemId -> recipeIndex
+  // ✅ Multi-select state
+  const [selected, setSelected] = useState<SelectedRow[]>([]);
+  const [activeItemId, setActiveItemId] = useState<number | null>(null);
+
+  // ✅ Per-root tree controls (ogni item selezionato ha il suo stato expand + recipeChoice)
+  const [expandedByRoot, setExpandedByRoot] = useState<Map<number, Set<number>>>(new Map());
+  const [recipeChoiceByRoot, setRecipeChoiceByRoot] = useState<Map<number, Map<number, number>>>(new Map());
 
   useEffect(() => {
     loadWakfuData()
@@ -91,54 +95,130 @@ export function ItemsCraftGuidePage() {
       .map(({ _norm, ...it }) => it);
   }, [craftableItems, query]);
 
-  const selected: CompactItem | null = useMemo(() => {
-    if (!selectedId) return null;
-    return itemsById.get(selectedId) ?? null;
-  }, [selectedId, itemsById]);
+  const activeItem: CompactItem | null = useMemo(() => {
+    if (!activeItemId) return null;
+    return itemsById.get(activeItemId) ?? null;
+  }, [activeItemId, itemsById]);
 
-  const onSelect = (itemId: number) => {
-    setSelectedId(itemId);
-    setExpanded(new Set([itemId])); // root aperto
-    setRecipeChoice(new Map());
-    // ✅ nascondi risultati subito dopo selezione
-    // (lo facciamo mettendo query = nome selezionato, ma soprattutto "selectedId != null" nasconde la lista)
-    const it = itemsById.get(itemId);
-    if (it) setQuery(it.name);
-  };
-
-  const toggleExpanded = (itemId: number) => {
-    setExpanded((prev) => {
-      const next = new Set(prev);
-      if (next.has(itemId)) next.delete(itemId);
-      else next.add(itemId);
-      return next;
-    });
-  };
-
-  const cycleRecipe = (itemId: number) => {
-    setRecipeChoice((prev) => {
+  const ensureRootState = (rootId: number) => {
+    setExpandedByRoot((prev) => {
+      if (prev.has(rootId)) return prev;
       const next = new Map(prev);
-      const list = recipesByResultId.get(itemId) ?? [];
-      if (list.length <= 1) return next;
+      next.set(rootId, new Set<number>()); // root sempre open “virtualmente”, qui gestiamo solo ingredienti
+      return next;
+    });
 
-      const curr = next.get(itemId) ?? 0;
-      next.set(itemId, (curr + 1) % list.length);
+    setRecipeChoiceByRoot((prev) => {
+      if (prev.has(rootId)) return prev;
+      const next = new Map(prev);
+      next.set(rootId, new Map<number, number>());
       return next;
     });
   };
 
-  // Shopping list: leaf NON espansi (o non craftabili)
+  // ✅ Add item (o incrementa qty se già presente), poi nascondi risultati
+  const addItem = (itemId: number) => {
+    ensureRootState(itemId);
+
+    setSelected((prev) => {
+      const idx = prev.findIndex((x) => x.itemId === itemId);
+      if (idx >= 0) {
+        const next = [...prev];
+        next[idx] = { ...next[idx], qty: next[idx].qty + 1 };
+        return next;
+      }
+      return [...prev, { itemId, qty: 1 }];
+    });
+
+    setActiveItemId(itemId);
+    setQuery(""); // ✅ così la lista risultati sparisce subito
+  };
+
+  const removeItem = (itemId: number) => {
+    setSelected((prev) => prev.filter((x) => x.itemId !== itemId));
+    setExpandedByRoot((prev) => {
+      const next = new Map(prev);
+      next.delete(itemId);
+      return next;
+    });
+    setRecipeChoiceByRoot((prev) => {
+      const next = new Map(prev);
+      next.delete(itemId);
+      return next;
+    });
+
+    setActiveItemId((curr) => {
+      if (curr !== itemId) return curr;
+      // scegli un altro se presente
+      const remaining = selected.filter((x) => x.itemId !== itemId);
+      return remaining[0]?.itemId ?? null;
+    });
+  };
+
+  const clearAll = () => {
+    setSelected([]);
+    setActiveItemId(null);
+    setExpandedByRoot(new Map());
+    setRecipeChoiceByRoot(new Map());
+  };
+
+  const setQty = (itemId: number, delta: number) => {
+    setSelected((prev) => {
+      const idx = prev.findIndex((x) => x.itemId === itemId);
+      if (idx < 0) return prev;
+      const next = [...prev];
+      const q = Math.max(1, next[idx].qty + delta);
+      next[idx] = { ...next[idx], qty: q };
+      return next;
+    });
+  };
+
+  // helpers per lo stato del root attivo
+  const getExpanded = (rootId: number) => expandedByRoot.get(rootId) ?? new Set<number>();
+  const getRecipeChoice = (rootId: number) => recipeChoiceByRoot.get(rootId) ?? new Map<number, number>();
+
+  const toggleExpanded = (rootId: number, itemId: number) => {
+    setExpandedByRoot((prev) => {
+      const next = new Map(prev);
+      const set = new Set(next.get(rootId) ?? []);
+      if (set.has(itemId)) set.delete(itemId);
+      else set.add(itemId);
+      next.set(rootId, set);
+      return next;
+    });
+  };
+
+  const cycleRecipe = (rootId: number, itemId: number) => {
+    setRecipeChoiceByRoot((prev) => {
+      const next = new Map(prev);
+      const map = new Map(next.get(rootId) ?? []);
+      const list = recipesByResultId.get(itemId) ?? [];
+      if (list.length <= 1) return prev;
+
+      const curr = map.get(itemId) ?? 0;
+      map.set(itemId, (curr + 1) % list.length);
+
+      next.set(rootId, map);
+      return next;
+    });
+  };
+
+  // ✅ Shopping list aggregata su TUTTI gli item selezionati
   const shoppingList: ShoppingRow[] = useMemo(() => {
-    if (!selected) return [];
+    if (selected.length === 0) return [];
 
     const acc = new Map<number, number>();
-    const visited = new Set<number>();
 
     const add = (itemId: number, qty: number) => {
       acc.set(itemId, (acc.get(itemId) ?? 0) + qty);
     };
 
-    const walk = (itemId: number, qtyMul: number) => {
+    const walk = (
+      rootId: number,
+      itemId: number,
+      qtyMul: number,
+      visited: Set<number>
+    ) => {
       if (visited.has(itemId)) {
         add(itemId, qtyMul);
         return;
@@ -146,9 +226,10 @@ export function ItemsCraftGuidePage() {
       visited.add(itemId);
 
       const craftable = isCraftable(itemId);
-      const open = expanded.has(itemId);
+      const expanded = getExpanded(rootId).has(itemId);
 
-      if (!craftable || !open) {
+      // se non craftable o non espanso => leaf
+      if (!craftable || !expanded) {
         add(itemId, qtyMul);
         visited.delete(itemId);
         return;
@@ -161,25 +242,31 @@ export function ItemsCraftGuidePage() {
         return;
       }
 
-      const idx = recipeChoice.get(itemId) ?? 0;
-      const recipe = recs[Math.min(idx, recs.length - 1)];
+      const choice = getRecipeChoice(rootId).get(itemId) ?? 0;
+      const recipe = recs[Math.min(choice, recs.length - 1)];
 
       for (const ing of recipe.ingredients) {
-        walk(ing.itemId, qtyMul * ing.qty);
+        walk(rootId, ing.itemId, qtyMul * ing.qty, visited);
       }
 
       visited.delete(itemId);
     };
 
-    // root: sempre “espanso virtualmente”
-    const rootRecs = recipesByResultId.get(selected.id) ?? [];
-    if (rootRecs.length === 0) return [];
+    for (const sel of selected) {
+      const rootId = sel.itemId;
+      const rootQty = sel.qty;
 
-    const idx = recipeChoice.get(selected.id) ?? 0;
-    const rootRecipe = rootRecs[Math.min(idx, rootRecs.length - 1)];
+      const rootRecs = recipesByResultId.get(rootId) ?? [];
+      if (rootRecs.length === 0) continue;
 
-    for (const ing of rootRecipe.ingredients) {
-      walk(ing.itemId, ing.qty);
+      const rootChoice = getRecipeChoice(rootId).get(rootId) ?? 0;
+      const rootRecipe = rootRecs[Math.min(rootChoice, rootRecs.length - 1)];
+
+      // root è sempre “open virtualmente”, qui espandiamo gli ingredienti di root
+      const visited = new Set<number>();
+      for (const ing of rootRecipe.ingredients) {
+        walk(rootId, ing.itemId, ing.qty * rootQty, visited);
+      }
     }
 
     return [...acc.entries()]
@@ -189,7 +276,7 @@ export function ItemsCraftGuidePage() {
         const nb = itemsById.get(b.itemId)?.name ?? "";
         return na.localeCompare(nb);
       });
-  }, [selected, expanded, recipeChoice, recipesByResultId, itemsById]);
+  }, [selected, expandedByRoot, recipeChoiceByRoot, recipesByResultId, itemsById]);
 
   const copyShoppingList = async () => {
     const lines = shoppingList.map((r) => {
@@ -205,13 +292,8 @@ export function ItemsCraftGuidePage() {
     }
   };
 
-  // quando l’utente cambia query manualmente, riapre i risultati (deseleziona)
-  const onChangeQuery = (v: string) => {
-    setQuery(v);
-    if (selectedId) setSelectedId(null);
-    setExpanded(new Set());
-    setRecipeChoice(new Map());
-  };
+  // risultati: mostrali solo quando stai scrivendo (query non vuota)
+  const showResults = query.trim().length > 0 && !loading;
 
   return (
     <div className="w-full max-w-6xl mx-auto p-4">
@@ -231,72 +313,155 @@ export function ItemsCraftGuidePage() {
             className="w-full rounded-xl bg-black/10 border border-emerald-300/25 backdrop-blur-md px-4 py-3 outline-none focus:border-emerald-300/60"
             placeholder={loading ? "Loading data..." : "Search craftable item name (e.g. Gobball Amulet)"}
             value={query}
-            onChange={(e) => onChangeQuery(e.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
             disabled={loading}
           />
         </div>
       </div>
 
-      {!query && (
-        <p className="mt-4 text-center text-emerald-200/80">
-          Type a craftable item name to see components and shopping list.
-        </p>
-      )}
-
-      {query && results.length === 0 && !loading && !selected && (
-        <p className="mt-4 text-center text-emerald-200/80">
-          No craftable items found for this search.
-        </p>
-      )}
-
-      {/* RISULTATI: mostrali SOLO quando NON hai selezionato */}
-      {!selected && query && results.length > 0 && (
-        <div className="mt-6 flex justify-center">
-          <div className="w-full max-w-2xl rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-3">
-            <div className="text-sm text-emerald-200/80 mb-2">Results ({results.length})</div>
-
-            <div className="space-y-2 max-h-[320px] overflow-auto pr-1">
-              {results.map((it) => (
-                <button
-                  key={it.id}
-                  onClick={() => onSelect(it.id)}
-                  className="w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 bg-black/10 hover:border-emerald-300/25 transition"
-                >
-                  <ItemIcon itemId={it.id} itemsById={itemsById} size={34} />
-                  <div className="flex-1 min-w-0">
-                    <div className="text-emerald-100 text-sm font-medium truncate">{it.name}</div>
-                    {rarityInfo(it.rarity)?.label ? (
-                      <div className={`text-xs mt-0.5 ${rarityInfo(it.rarity)!.className}`}>
-                        {rarityInfo(it.rarity)!.label}
-                      </div>
-                    ) : (
-                      <div className="text-xs mt-0.5 text-emerald-200/40">—</div>
-                    )}
-                  </div>
-                </button>
-              ))}
+      {/* Selected items bar */}
+      <div className="mt-4">
+        <div className="rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-3">
+          <div className="flex items-center justify-between gap-3 flex-wrap">
+            <div className="text-sm text-emerald-200/80">
+              Selected items ({selected.length})
             </div>
 
+            <button
+              onClick={clearAll}
+              disabled={selected.length === 0}
+              className="text-xs px-3 py-2 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35 disabled:opacity-40"
+            >
+              Clear all
+            </button>
+          </div>
+
+          {selected.length === 0 ? (
+            <div className="text-xs text-emerald-200/60 mt-2">
+              Add one or more items from the search results.
+            </div>
+          ) : (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {selected.map((s) => {
+                const it = itemsById.get(s.itemId);
+                const name = it?.name ?? `#${s.itemId}`;
+                const rInfo = rarityInfo(it?.rarity);
+                const isActive = s.itemId === activeItemId;
+
+                return (
+                  <div
+                    key={s.itemId}
+                    className={[
+                      "flex items-center gap-2 rounded-xl border px-2 py-2 bg-black/10",
+                      isActive ? "border-emerald-300/35" : "border-emerald-300/15",
+                    ].join(" ")}
+                  >
+                    <button
+                      onClick={() => setActiveItemId(s.itemId)}
+                      className="flex items-center gap-2 text-left"
+                      title="Show recipe on the left"
+                    >
+                      <ItemIcon itemId={s.itemId} itemsById={itemsById} size={28} />
+                      <div className="min-w-0">
+                        <div className="text-emerald-100 text-xs font-medium truncate max-w-[180px]">
+                          {name}
+                        </div>
+                        <div className={`text-[11px] ${rInfo?.className ?? "text-emerald-200/40"}`}>
+                          {rInfo?.label ?? "—"}
+                        </div>
+                      </div>
+                    </button>
+
+                    <div className="flex items-center gap-1 ml-1">
+                      <button
+                        onClick={() => setQty(s.itemId, -1)}
+                        className="w-7 h-7 rounded-lg border border-emerald-300/15 bg-black/10 hover:border-emerald-300/30"
+                        title="Decrease"
+                      >
+                        −
+                      </button>
+                      <div className="text-emerald-200 text-xs font-semibold w-8 text-center">
+                        {s.qty}
+                      </div>
+                      <button
+                        onClick={() => setQty(s.itemId, +1)}
+                        className="w-7 h-7 rounded-lg border border-emerald-300/15 bg-black/10 hover:border-emerald-300/30"
+                        title="Increase"
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <button
+                      onClick={() => removeItem(s.itemId)}
+                      className="ml-1 w-7 h-7 rounded-lg border border-emerald-300/15 bg-black/10 hover:border-emerald-300/30"
+                      title="Remove"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Results */}
+      {showResults && (
+        <div className="mt-4 flex justify-center">
+          <div className="w-full max-w-2xl rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-3">
+            <div className="text-sm text-emerald-200/80 mb-2">
+              Results ({results.length})
+            </div>
+
+            {results.length === 0 ? (
+              <div className="text-sm text-emerald-200/70">
+                No craftable items found.
+              </div>
+            ) : (
+              <div className="space-y-2 max-h-[320px] overflow-auto pr-1">
+                {results.map((it) => (
+                  <button
+                    key={it.id}
+                    onClick={() => addItem(it.id)}
+                    className="w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 bg-black/10 hover:border-emerald-300/25 transition"
+                  >
+                    <ItemIcon itemId={it.id} itemsById={itemsById} size={34} />
+                    <div className="flex-1 min-w-0">
+                      <div className="text-emerald-100 text-sm font-medium truncate">{it.name}</div>
+                      <div className={`text-xs mt-0.5 ${rarityInfo(it.rarity)?.className ?? "text-emerald-200/40"}`}>
+                        {rarityInfo(it.rarity)?.label ?? "—"}
+                      </div>
+                    </div>
+                    <div className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 bg-black/10">
+                      Add
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
+
             <div className="mt-3 text-xs text-emerald-200/60">
-              Tip: click an item to open the recipe tree + shopping list.
+              Tip: click “Add” to add the item (if already selected, quantity +1).
             </div>
           </div>
         </div>
       )}
 
-      {/* DOPO SELEZIONE: mostra SOLO pannelli */}
-      {selected && (
+      {/* Panels: recipe left + shopping right */}
+      {activeItem && (
         <div className="mt-6 grid lg:grid-cols-12 gap-4">
           {/* LEFT */}
           <div className="lg:col-span-8 space-y-4">
             <div className="rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-4">
               <div className="flex items-start gap-4">
-                <ItemIcon itemId={selected.id} itemsById={itemsById} />
+                <ItemIcon itemId={activeItem.id} itemsById={itemsById} />
                 <div className="flex-1 min-w-0">
-                  <div className="text-xl font-semibold text-emerald-200 truncate">{selected.name}</div>
-                  {rarityInfo(selected.rarity) ? (
-                    <div className={`text-sm mt-0.5 ${rarityInfo(selected.rarity)!.className}`}>
-                      {rarityInfo(selected.rarity)!.label}
+                  <div className="text-xl font-semibold text-emerald-200 truncate">{activeItem.name}</div>
+                  {rarityInfo(activeItem.rarity) ? (
+                    <div className={`text-sm mt-0.5 ${rarityInfo(activeItem.rarity)!.className}`}>
+                      {rarityInfo(activeItem.rarity)!.label}
                     </div>
                   ) : (
                     <div className="text-sm mt-0.5 text-emerald-200/40">—</div>
@@ -310,15 +475,16 @@ export function ItemsCraftGuidePage() {
                 </h2>
 
                 <RecipeNode
+                  rootId={activeItem.id}
                   root
-                  itemId={selected.id}
+                  itemId={activeItem.id}
                   depth={0}
                   itemsById={itemsById}
                   recipesByResultId={recipesByResultId}
-                  expanded={expanded}
-                  recipeChoice={recipeChoice}
-                  onToggle={toggleExpanded}
-                  onCycleRecipe={cycleRecipe}
+                  expanded={getExpanded(activeItem.id)}
+                  recipeChoice={getRecipeChoice(activeItem.id)}
+                  onToggle={(id) => toggleExpanded(activeItem.id, id)}
+                  onCycleRecipe={(id) => cycleRecipe(activeItem.id, id)}
                   isCraftable={isCraftable}
                   visited={new Set<number>()}
                 />
@@ -328,269 +494,4 @@ export function ItemsCraftGuidePage() {
 
           {/* RIGHT */}
           <div className="lg:col-span-4">
-            <div className="rounded-2xl border border-emerald-300/15 bg-black/10 backdrop-blur-md p-4 h-full">
-              <div className="flex items-center justify-between gap-3">
-                <h2 className="text-lg font-semibold text-emerald-300">Shopping list</h2>
-                <button
-                  onClick={copyShoppingList}
-                  disabled={shoppingList.length === 0}
-                  className="text-xs px-3 py-2 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35 disabled:opacity-40"
-                >
-                  Copy
-                </button>
-              </div>
-
-              <div className="text-xs text-emerald-200/70 mt-1">
-                If you expand a craftable ingredient, it disappears from here and is replaced by its sub-ingredients.
-              </div>
-
-              {shoppingList.length === 0 ? (
-                <div className="mt-4 text-emerald-200/80 text-sm">Nothing to buy.</div>
-              ) : (
-                <div className="mt-4 space-y-2 max-h-[720px] overflow-auto pr-1">
-                  {shoppingList.map((row) => {
-                    const it = itemsById.get(row.itemId);
-                    const name = it?.name ?? `#${row.itemId}`;
-                    const rInfo = rarityInfo(it?.rarity);
-
-                    return (
-                      <div
-                        key={row.itemId}
-                        className="flex items-center gap-3 rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2"
-                      >
-                        <ItemIcon itemId={row.itemId} itemsById={itemsById} size={32} />
-                        <div className="flex-1 min-w-0">
-                          <div className="text-emerald-100 text-sm truncate">{name}</div>
-                          <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
-                            {rInfo?.label ?? "—"}
-                          </div>
-                        </div>
-                        <div className="text-emerald-200 font-semibold">x{row.qty}</div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function RecipeNode(props: {
-  root?: boolean;
-  itemId: number;
-  depth: number;
-  itemsById: Map<number, CompactItem>;
-  recipesByResultId: Map<number, CompactRecipe[]>;
-  expanded: Set<number>;
-  recipeChoice: Map<number, number>;
-  onToggle: (id: number) => void;
-  onCycleRecipe: (id: number) => void;
-  isCraftable: (id: number) => boolean;
-  visited: Set<number>;
-}) {
-  const {
-    root,
-    itemId,
-    depth,
-    itemsById,
-    recipesByResultId,
-    expanded,
-    recipeChoice,
-    onToggle,
-    onCycleRecipe,
-    isCraftable,
-    visited,
-  } = props;
-
-  const item = itemsById.get(itemId);
-  const name = item?.name ?? `#${itemId}`;
-  const rInfo = rarityInfo(item?.rarity);
-
-  const recipes = recipesByResultId.get(itemId) ?? [];
-  const craftable = recipes.length > 0;
-
-  const loop = visited.has(itemId);
-  const nextVisited = new Set(visited);
-  nextVisited.add(itemId);
-
-  const isOpen = root ? true : expanded.has(itemId);
-  const chosenIdx = recipeChoice.get(itemId) ?? 0;
-  const recipe = craftable ? recipes[Math.min(chosenIdx, recipes.length - 1)] : null;
-
-  return (
-    <div className="space-y-2">
-      {/* riga item (non-root) */}
-      {!root && (
-        <div
-          className="flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 bg-black/10"
-          style={{ marginLeft: depth * 16 }}
-        >
-          <button
-            onClick={() => onToggle(itemId)}
-            className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35"
-            title={isOpen ? "Collapse" : "Expand"}
-          >
-            {isOpen ? "−" : "+"}
-          </button>
-
-          <ItemIcon itemId={itemId} itemsById={itemsById} size={28} />
-
-          <div className="flex-1 min-w-0">
-            <div className="text-emerald-100 text-sm truncate">{name}</div>
-            <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
-              {rInfo?.label ?? "—"}{" "}
-              <span className="text-emerald-200/40">
-                • {craftable ? "craftable" : "not craftable"}
-                {loop ? " • loop" : ""}
-              </span>
-            </div>
-          </div>
-
-          {craftable && recipes.length > 1 && (
-            <button
-              onClick={() => onCycleRecipe(itemId)}
-              className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35"
-              title="Switch recipe"
-            >
-              Recipe {chosenIdx + 1}/{recipes.length}
-            </button>
-          )}
-        </div>
-      )}
-
-      {/* root card */}
-      {root && (
-        <div className="rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2">
-          <div className="flex items-center gap-3">
-            <ItemIcon itemId={itemId} itemsById={itemsById} size={32} />
-            <div className="flex-1 min-w-0">
-              <div className="text-emerald-100 text-sm font-medium truncate">{name}</div>
-              <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
-                {rInfo?.label ?? "—"}{" "}
-                <span className="text-emerald-200/40">
-                  • root • {craftable ? "craftable" : "not craftable"}
-                </span>
-              </div>
-            </div>
-
-            {craftable && recipes.length > 1 && (
-              <button
-                onClick={() => onCycleRecipe(itemId)}
-                className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35"
-                title="Switch recipe"
-              >
-                Recipe {chosenIdx + 1}/{recipes.length}
-              </button>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* children */}
-      {isOpen && craftable && recipe && !loop && (
-        <div className="space-y-2">
-          {recipe.ingredients.map((ing, idx) => {
-            const ingItem = itemsById.get(ing.itemId);
-            const ingName = ingItem?.name ?? `#${ing.itemId}`;
-            const ingCraftable = isCraftable(ing.itemId);
-            const ingR = rarityInfo(ingItem?.rarity);
-
-            return (
-              <div
-                key={`${itemId}-${ing.itemId}-${idx}`}
-                className="rounded-xl border border-emerald-300/10 bg-black/10 px-3 py-2"
-                style={{ marginLeft: (depth + 1) * 16 }}
-              >
-                <div className="flex items-center gap-3">
-                  {ingCraftable ? (
-                    <button
-                      onClick={() => onToggle(ing.itemId)}
-                      className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 bg-black/10 hover:border-emerald-300/35"
-                      title={expanded.has(ing.itemId) ? "Collapse ingredient" : "Expand ingredient"}
-                    >
-                      {expanded.has(ing.itemId) ? "−" : "+"}
-                    </button>
-                  ) : (
-                    <div className="w-[34px]" />
-                  )}
-
-                  <ItemIcon itemId={ing.itemId} itemsById={itemsById} size={28} />
-
-                  <div className="flex-1 min-w-0">
-                    <div className="text-emerald-100 text-sm truncate">{ingName}</div>
-                    <div className={`text-xs mt-0.5 ${ingR?.className ?? "text-emerald-200/40"}`}>
-                      {ingR?.label ?? "—"}{" "}
-                      <span className="text-emerald-200/40">
-                        • {ingCraftable ? "craftable" : "not craftable"}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="text-emerald-200 font-semibold">x{ing.qty}</div>
-                </div>
-
-                {ingCraftable && expanded.has(ing.itemId) && (
-                  <div className="mt-2">
-                    <RecipeNode
-                      itemId={ing.itemId}
-                      depth={depth + 2}
-                      itemsById={itemsById}
-                      recipesByResultId={recipesByResultId}
-                      expanded={expanded}
-                      recipeChoice={recipeChoice}
-                      onToggle={onToggle}
-                      onCycleRecipe={onCycleRecipe}
-                      isCraftable={isCraftable}
-                      visited={nextVisited}
-                    />
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function ItemIcon({
-  itemId,
-  size = 44,
-  itemsById,
-}: {
-  itemId: number;
-  size?: number;
-  itemsById?: Map<number, CompactItem>;
-}) {
-  const item = itemsById?.get(itemId);
-  const gfx = item?.gfxId ?? itemId; // ✅ usa gfxId se c'è
-
-  const [src, setSrc] = useState(getItemIconUrl(gfx, "ankama"));
-
-  useEffect(() => {
-    const it = itemsById?.get(itemId);
-    const g = it?.gfxId ?? itemId;
-    setSrc(getItemIconUrl(g, "ankama"));
-  }, [itemId, itemsById]);
-
-  return (
-    <img
-      src={src}
-      width={size}
-      height={size}
-      alt=""
-      className="rounded-xl bg-black/10 backdrop-blur-md border border-emerald-300/15"
-      onError={() => {
-        const it = itemsById?.get(itemId);
-        const g = it?.gfxId ?? itemId;
-        if (src.includes("static.ankama.com")) setSrc(getItemIconUrl(g, "wakassets"));
-      }}
-      loading="lazy"
-    />
-  );
-}
+            <div className="rounded-2xl border border-emerald-
