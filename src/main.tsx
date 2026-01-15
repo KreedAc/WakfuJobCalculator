@@ -2,6 +2,17 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
+import { HelmetProvider } from "react-helmet-async";
+
+export default function App() {
+  return (
+    <HelmetProvider>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </HelmetProvider>
+  );
+}
 
 if (window.location.hostname === 'wakfujobcalculator.bolt.host') {
   window.location.href = 'https://wakfujobcalculator.com' + window.location.pathname + window.location.search + window.location.hash;
