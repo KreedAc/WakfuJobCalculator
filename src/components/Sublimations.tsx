@@ -67,6 +67,10 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
     fetchData();
   }, [language]);
 
+  useEffect(() => {
+    setSelectedCategory(t.allCategories);
+  }, [t.allCategories]);
+
   const categories = useMemo(() => {
     if (!runes.length) return [];
     const cats = new Set(runes.map(r => r.category).filter(Boolean));
