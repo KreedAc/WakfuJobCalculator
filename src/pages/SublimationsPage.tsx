@@ -1,5 +1,11 @@
 import { Sublimations } from '../components/Sublimations';
+import { TRANSLATIONS, type Language } from '../constants/translations';
 
-export function SublimationsPage() {
-  return <Sublimations />;
+interface SublimationsPageProps {
+  language: Language;
+}
+
+export function SublimationsPage({ language }: SublimationsPageProps) {
+  const t = TRANSLATIONS[language];
+  return <Sublimations language={language} translations={t} />;
 }

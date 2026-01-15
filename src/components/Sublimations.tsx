@@ -4,9 +4,15 @@ import { FALLBACK_SUBLIMATIONS, type Sublimation } from '../data/fallbackSublima
 import { processDescription, initializeRuneLevels } from '../utils/sublimationUtils';
 import { LocalImage } from './LocalImage';
 import { SlotSelector } from './SlotSelector';
+import { type Language } from '../constants/translations';
 import './Sublimations.css';
 
-export function Sublimations() {
+interface SublimationsProps {
+  language: Language;
+  translations: Record<string, string>;
+}
+
+export function Sublimations({ language, translations: t }: SublimationsProps) {
   const [runes, setRunes] = useState<Sublimation[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,7 +28,8 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('sublimations.json');
+        const sublimationsPath = `/data/sublimations.${language}.json`;
+        const response = await fetch(sublimationsPath);
         if (response.ok) {
           const data = await response.json();
           if (Array.isArray(data) && data.length > 0) {
@@ -35,7 +42,22 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
         }
         throw new Error("JSON file not found or empty");
       } catch (err) {
-        console.warn("Could not load sublimations.json, using fallback data:", err);
+        console.warn(`Could not load sublimations.${language}.json, trying fallback...`, err);
+        try {
+          const fallbackResponse = await fetch('sublimations.json');
+          if (fallbackResponse.ok) {
+            const data = await fallbackResponse.json();
+            if (Array.isArray(data) && data.length > 0) {
+              setRunes(data);
+              setRuneLevels(initializeRuneLevels(data));
+              setDataSource('json');
+              setLoading(false);
+              return;
+            }
+          }
+        } catch {
+          console.warn("Could not load any sublimations file, using fallback data");
+        }
         setRunes(FALLBACK_SUBLIMATIONS);
         setRuneLevels(initializeRuneLevels(FALLBACK_SUBLIMATIONS));
         setDataSource('fallback');
@@ -43,13 +65,13 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
       }
     }
     fetchData();
-  }, []);
+  }, [language]);
 
   const categories = useMemo(() => {
     if (!runes.length) return [];
     const cats = new Set(runes.map(r => r.category).filter(Boolean));
-    return ['All Categories', ...Array.from(cats).sort()];
-  }, [runes]);
+    return [t.allCategories, ...Array.from(cats).sort()];
+  }, [runes, t.allCategories]);
 
   const handleLevelChange = (runeName: string, newLevel: number) => {
   setRuneLevels(prev => ({
@@ -100,13 +122,13 @@ const filteredRunes = useMemo(() => {
       const descMatch = rune.description && rune.description.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesSearch = nameMatch || descMatch;
-      const matchesCategory = selectedCategory === 'All Categories' || rune.category === selectedCategory;
+      const matchesCategory = selectedCategory === t.allCategories || rune.category === selectedCategory;
 
       const matchesSlots = matchesEquipmentSlots(slotFilters, rune);
 
       return matchesSearch && matchesCategory && matchesSlots;
     });
-  }, [runes, searchTerm, selectedCategory, slotFilters]);
+  }, [runes, searchTerm, selectedCategory, slotFilters, t.allCategories]);
 
   if (loading) {
     return (
@@ -114,7 +136,7 @@ const filteredRunes = useMemo(() => {
         <div className="animate-spin mb-4">
           <Scroll size={32} />
         </div>
-        <p>Loading Sublimations...</p>
+        <p>{t.loadingSublimations}</p>
       </div>
     );
   }
@@ -124,15 +146,15 @@ const filteredRunes = useMemo(() => {
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
-          Sublimations Library
+          {t.sublimationsLibrary}
         </h1>
         <div className="flex justify-center items-center gap-3">
           <span className="text-sm text-emerald-200/70">
-            {filteredRunes.length} items
+            {filteredRunes.length} {t.items}
           </span>
           {dataSource === 'fallback' && (
             <div className="text-amber-400 text-xs flex items-center gap-1 bg-amber-900/30 px-3 py-1 rounded-full border border-amber-500/30">
-              <AlertCircle size={12} /> using backup data (JSON missing)
+              <AlertCircle size={12} /> {t.usingBackupData}
             </div>
           )}
         </div>
@@ -143,7 +165,7 @@ const filteredRunes = useMemo(() => {
         <div className="search-box">
           <input
             type="text"
-            placeholder="Search by name or description..."
+            placeholder={t.searchByNameOrDesc}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -171,12 +193,12 @@ const filteredRunes = useMemo(() => {
       </div>
 
       <div className="slot-filter">
-        <div className="slot-filter-title">Filter by Slots:</div>
+        <div className="slot-filter-title">{t.filterBySlots}</div>
         <div className="slot-filter-controls">
          {[0, 1, 2, 3].map(idx => (
   <SlotSelector
     key={idx}
-    label={`Slot ${idx + 1}`}
+    label={`${t.slot} ${idx + 1}`}
     value={slotFilters[idx]}
     onChange={(newValue) => {
       const newFilters = [...slotFilters] as [Slot, Slot, Slot, Slot];
@@ -190,7 +212,7 @@ const filteredRunes = useMemo(() => {
     onClick={() => setSlotFilters(['Any', 'Any', 'Any', 'Any'])}
     className="slot-filter-reset"
   >
-    Clear Slot Filters
+    {t.clearSlotFilters}
   </button>
 )}
         </div>
@@ -208,7 +230,7 @@ const filteredRunes = useMemo(() => {
                 <div className="rune-header">
                   <div className="flex-1">
                     <div className={`rune-name ${nameClass}`}>{rune.name}</div>
-                    {!isSpecial && <span className="rune-level-badge">Lvl. {currentLevel}</span>}
+                    {!isSpecial && <span className="rune-level-badge">{t.lvl} {currentLevel}</span>}
                   </div>
                   <div className="rune-colors">
                     {rune.colors.map((color, idx) => {
@@ -289,17 +311,17 @@ const filteredRunes = useMemo(() => {
       {!loading && filteredRunes.length === 0 && (
         <div className="flex flex-col items-center justify-center py-20 text-slate-400 bg-slate-900/50 rounded-xl border border-slate-800">
           <Filter size={48} className="mb-4 opacity-50" />
-          <p className="text-lg font-medium">No sublimations found</p>
-          <p className="text-sm">Try adjusting your search or category filter.</p>
+          <p className="text-lg font-medium">{t.noSublimationsFound}</p>
+          <p className="text-sm">{t.tryAdjustingFilters}</p>
           <button
            onClick={() => {
   setSearchTerm('');
-  setSelectedCategory('All Categories');
+  setSelectedCategory(t.allCategories);
   setSlotFilters(['Any', 'Any', 'Any', 'Any']);
 }}
             className="mt-4 text-emerald-400 hover:underline text-sm"
           >
-            Clear all filters
+            {t.clearAllFilters}
           </button>
         </div>
       )}

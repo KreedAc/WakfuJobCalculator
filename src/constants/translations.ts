@@ -68,7 +68,20 @@ export const TRANSLATIONS = {
     legendary: 'Legendary',
     relic: 'Relic',
     souvenir: 'Souvenir',
-    epic: 'Epic'
+    epic: 'Epic',
+    sublimationsLibrary: 'Sublimations Library',
+    loadingSublimations: 'Loading Sublimations...',
+    items: 'items',
+    usingBackupData: 'using backup data (JSON missing)',
+    searchByNameOrDesc: 'Search by name or description...',
+    allCategories: 'All Categories',
+    filterBySlots: 'Filter by Slots:',
+    slot: 'Slot',
+    clearSlotFilters: 'Clear Slot Filters',
+    noSublimationsFound: 'No sublimations found',
+    tryAdjustingFilters: 'Try adjusting your search or category filter.',
+    clearAllFilters: 'Clear all filters',
+    lvl: 'Lvl.'
   },
   fr: {
     title: 'Calculateur d\'XP d\'Artisanat Wakfu',
@@ -130,7 +143,20 @@ export const TRANSLATIONS = {
     legendary: 'Légendaire',
     relic: 'Relique',
     souvenir: 'Souvenir',
-    epic: 'Épique'
+    epic: 'Épique',
+    sublimationsLibrary: 'Bibliothèque de Sublimations',
+    loadingSublimations: 'Chargement des Sublimations...',
+    items: 'objets',
+    usingBackupData: 'utilisation des données de secours (JSON manquant)',
+    searchByNameOrDesc: 'Rechercher par nom ou description...',
+    allCategories: 'Toutes les catégories',
+    filterBySlots: 'Filtrer par Slots:',
+    slot: 'Slot',
+    clearSlotFilters: 'Effacer les filtres de slot',
+    noSublimationsFound: 'Aucune sublimation trouvée',
+    tryAdjustingFilters: 'Essayez d\'ajuster votre recherche ou votre filtre de catégorie.',
+    clearAllFilters: 'Effacer tous les filtres',
+    lvl: 'Niv.'
   },
   es: {
     title: 'Calculadora de XP de Artesanía de Wakfu',
@@ -192,7 +218,20 @@ export const TRANSLATIONS = {
     legendary: 'Legendario',
     relic: 'Reliquia',
     souvenir: 'Recuerdo',
-    epic: 'Épico'
+    epic: 'Épico',
+    sublimationsLibrary: 'Biblioteca de Sublimaciones',
+    loadingSublimations: 'Cargando Sublimaciones...',
+    items: 'objetos',
+    usingBackupData: 'usando datos de respaldo (JSON faltante)',
+    searchByNameOrDesc: 'Buscar por nombre o descripción...',
+    allCategories: 'Todas las categorías',
+    filterBySlots: 'Filtrar por Slots:',
+    slot: 'Slot',
+    clearSlotFilters: 'Borrar filtros de slot',
+    noSublimationsFound: 'No se encontraron sublimaciones',
+    tryAdjustingFilters: 'Intenta ajustar tu búsqueda o filtro de categoría.',
+    clearAllFilters: 'Borrar todos los filtros',
+    lvl: 'Niv.'
   },
   pt: {
     title: 'Calculadora de XP de Artesanato Wakfu',
@@ -254,6 +293,19 @@ export const TRANSLATIONS = {
     legendary: 'Lendário',
     relic: 'Relíquia',
     souvenir: 'Lembrança',
-    epic: 'Épico'
+    epic: 'Épico',
+    sublimationsLibrary: 'Biblioteca de Sublimações',
+    loadingSublimations: 'Carregando Sublimações...',
+    items: 'itens',
+    usingBackupData: 'usando dados de backup (JSON ausente)',
+    searchByNameOrDesc: 'Pesquisar por nome ou descrição...',
+    allCategories: 'Todas as categorias',
+    filterBySlots: 'Filtrar por Slots:',
+    slot: 'Slot',
+    clearSlotFilters: 'Limpar filtros de slot',
+    noSublimationsFound: 'Nenhuma sublimação encontrada',
+    tryAdjustingFilters: 'Tente ajustar sua pesquisa ou filtro de categoria.',
+    clearAllFilters: 'Limpar todos os filtros',
+    lvl: 'Nív.'
   }
 } as const;

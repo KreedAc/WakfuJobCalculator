@@ -82,7 +82,7 @@ function AppContent() {
       <div className="w-full flex flex-col items-center z-10 pt-20">
         <Routes>
           <Route path="/" element={<CalculatorPage language={lang} />} />
-          <Route path="/sublimations" element={<SublimationsPage />} />
+          <Route path="/sublimations" element={<SublimationsPage language={lang} />} />
           <Route path="/items-craft-guide" element={<ItemsCraftGuidePage language={lang} />} />
         </Routes>
 
