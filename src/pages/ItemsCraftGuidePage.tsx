@@ -591,13 +591,19 @@ function RecipeNode(props: {
   const chosenIdx = recipeChoice.get(itemId) ?? 0;
   const recipe = craftable ? recipes[Math.min(chosenIdx, recipes.length - 1)] : null;
 
+  const getDepthBackground = (d: number) => {
+    const baseOpacity = 0.7;
+    const darkening = Math.min(d * 0.08, 0.35);
+    return `rgba(30, 41, 59, ${baseOpacity + darkening})`;
+  };
+
   return (
     <div className="space-y-2">
       {/* non-root header row (skip if hideSelfRow) */}
       {!root && !hideSelfRow && (
         <div
           className="flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10"
-          style={{ marginLeft: depth * 16, background: 'rgba(30, 41, 59, 0.7)' }}
+          style={{ marginLeft: depth * 16, background: getDepthBackground(depth) }}
         >
           <button
             onClick={() => onToggle(itemId)}
@@ -676,7 +682,7 @@ function RecipeNode(props: {
               <div
                 key={`${itemId}-${ing.itemId}-${idx}`}
                 className="rounded-xl border border-emerald-300/10 px-3 py-2"
-                style={{ marginLeft: (depth + 1) * 16, background: 'rgba(30, 41, 59, 0.7)' }}
+                style={{ marginLeft: (depth + 1) * 16, background: getDepthBackground(depth + 1) }}
               >
                 <div className="flex items-center gap-3">
                   {ingCraftable ? (
