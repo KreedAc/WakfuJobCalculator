@@ -16,7 +16,7 @@ export function Sublimations({ language, translations: t }: SublimationsProps) {
   const [runes, setRunes] = useState<Sublimation[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState(t.allCategories);
+  const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [runeLevels, setRuneLevels] = useState<Record<string, number>>({});
   const [dataSource, setDataSource] = useState<'loading' | 'json' | 'fallback' | 'error'>('loading');
   type Slot = 'Any' | 'R' | 'G' | 'B' | 'J';
@@ -66,10 +66,6 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
     }
     fetchData();
   }, [language]);
-
-  useEffect(() => {
-    setSelectedCategory(t.allCategories);
-  }, [t.allCategories]);
 
   const categories = useMemo(() => {
     if (!runes.length) return [];
