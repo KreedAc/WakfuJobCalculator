@@ -3434,23 +3434,13 @@
     ]
   },
   {
-    "name": {
-      "en": "Healing",
-      "fr": "Cicatrisation test (cumul 5)",
-      "es": "Cicatrización",
-      "pt": "Cicatrização"
-    },
+    "name": "Healing",
     "colors": [
       "R",
       "R",
       "B"
     ],
-    "description": {
-      "en": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. According to the scroll, this effect can become more powerful if it is also applied to other equipment items. Max Stacking: 3",
-      "fr": "Ce parchemin peut être appliqué à une combinaison de châsses spécifique pour ajouter un effet unique sur l'objet. Cet effet peut être cumulé jusqu'à un niveau de 5.",
-      "es": "Este pergamino puede aplicarse a una combinación específica de engarces para añadir un efecto único al objeto. Según el pergamino, puede aumentar la potencia del efecto si se aplica en otros objetos equipables. Acumulación máx.: 3",
-      "pt": "Este pergaminho pode ser aplicado a uma combinação específica de engastes para conferir um efeito único ao item. Segundo o pergaminho, esse efeito pode aumentar se for aplicado a outras peças de equipamento. Acúmulo máximo: 3"
-    },
+    "description": "[X]% health points (bonus on HP modifier)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -5028,21 +5018,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Abnegation",
-      "fr": "Abnégation",
-      "es": "Abnegación",
-      "pt": "Abnegação"
-    },
+    "name": "Abnegation",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This sublimation fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the highest Elemental Mastery is greater than the Healing Mastery:\n\n-15% damage inflicted\n30% heals performed",
     "rarity": [
       "Epic"
     ],
@@ -5063,21 +5043,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Anatomy",
-      "fr": "Anatomie",
-      "es": "Anatomía",
-      "pt": "Runa Épica de Anatomia"
-    },
+    "name": "Anatomy",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa está incrustada em um item épico aprimorado para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the highest Elemental Mastery is greater than Rear Mastery:\n\n-20% damage inflicted\n40% damage inflicted from behind",
     "rarity": [
       "Epic"
     ],
@@ -5098,21 +5068,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Brutality",
-      "fr": "Brutalité",
-      "es": "Brutalidad",
-      "pt": "Runa Épica de Brutalidade"
-    },
+    "name": "Brutality",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa está incrustada em um item épico aprimorado para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the bearer has exactly 0 Range:\n\n+20% damage inflicted in melee and area of effect simultaneously",
     "rarity": [
       "Epic"
     ],
@@ -5133,21 +5093,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Chaos",
-      "fr": "Chaos",
-      "es": "Caos",
-      "pt": "Caos"
-    },
+    "name": "Chaos",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This sublimation fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, Elemental Masteries are set to 0.\n\n20% damage inflicted and heals performed",
     "rarity": [
       "Epic"
     ],
@@ -5168,21 +5118,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Colossal",
-      "fr": "Démesuré",
-      "es": "Desmesurado",
-      "pt": "Desmesura"
-    },
+    "name": "Colossal",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This sublimation fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the bearer has more Block than Critical Hit:\n\nThe Block is converted into Critical Hit",
     "rarity": [
       "Epic"
     ],
@@ -5203,21 +5143,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Controlling Space",
-      "fr": "Contrôle de l'espace",
-      "es": "Control del Espacio",
-      "pt": "Controle do Espaço"
-    },
+    "name": "Controlling Space",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has exactly 1 Range:\n\n15% damage inflicted and heals performed on targets that are 2, 3, or 4 cells away from the caster",
     "rarity": [
       "Epic"
     ],
@@ -5238,21 +5168,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Controlling Space II",
-      "fr": "Contrôle de l'espace II",
-      "es": "Control del Espacio II",
-      "pt": "Controle do Espaço II"
-    },
+    "name": "Controlling Space II",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This sublimation fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has at least 3 Range:\n\n30% indirect damage inflicted",
     "rarity": [
       "Epic"
     ],
@@ -5273,21 +5193,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Elemental Concentration",
-      "fr": "Concentration Elémentaire",
-      "es": "Concentración Elemental",
-      "pt": "Concentração Elementar"
-    },
+    "name": "Elemental Concentration",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat:\n20% damage inflicted and heals performed\n -30% elemental mastery in the 3 weakest elements",
     "rarity": [
       "Epic"
     ],
@@ -5308,21 +5218,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Elementalism",
-      "fr": "Elémentalisme",
-      "es": "Elementalismo",
-      "pt": "Elementalismo"
-    },
+    "name": "Elementalism",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This sublimation fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 3 equal Elemental Masteries:\n\n20% damage inflicted and heals performed",
     "rarity": [
       "Epic"
     ],
@@ -5343,21 +5243,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Engagement",
-      "fr": "Engagement",
-      "es": "Compromiso",
-      "pt": "Engajamento"
-    },
+    "name": "Engagement",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This sublimation fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 0 Healing Mastery or less:\n\n30% heals performed",
     "rarity": [
       "Epic"
     ],
@@ -5378,21 +5268,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Herculean Strength",
-      "fr": "Force Herculéenne",
-      "es": "Fuerza Hercúlea",
-      "pt": "Runa Épica de Força Hercúlea"
-    },
+    "name": "Herculean Strength",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa está incrustada em um item épico aprimorado para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has an odd number of AP:\n\n250% of level as Lock and Dodge",
     "rarity": [
       "Epic"
     ],
@@ -5413,21 +5293,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Inflexibility",
-      "fr": "Inflexibilité",
-      "es": "Inflexibilidad",
-      "pt": "Inflexibilidade"
-    },
+    "name": "Inflexibility",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 10 AP or less:\n\n15% damage inflicted\n10 Force of Will (if the character is at level 100 or greater)",
     "rarity": [
       "Epic"
     ],
@@ -5448,21 +5318,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Inflexibility II",
-      "fr": "Inflexibilité II",
-      "es": "Inflexibilidad II",
-      "pt": "Inflexibilidade II"
-    },
+    "name": "Inflexibility II",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This sublimation fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if Secondary Masteries are less than or equal to 0:\n\n+20% damage inflicted and heals performed",
     "rarity": [
       "Epic"
     ],
@@ -5483,21 +5343,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Iron Will",
-      "fr": "Volonté de fer",
-      "es": "Voluntad de Hierro",
-      "pt": "Força de Vontade"
-    },
+    "name": "Iron Will",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This sublimation fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 3 range or less:\n\n20 Force of Will",
     "rarity": [
       "Epic"
     ],
@@ -5518,21 +5368,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Measure",
-      "fr": "Mesure",
-      "es": "Medida",
-      "pt": "Medida"
-    },
+    "name": "Measure",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 40% Block or greater:\n\n10% Critical Hit\n10% damage inflicted on critical hit",
     "rarity": [
       "Epic"
     ],
@@ -5553,21 +5393,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Measure II",
-      "fr": "Mesure II",
-      "es": "Medida II",
-      "pt": "Medida II"
-    },
+    "name": "Measure II",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 50% Critical Hits or more: \n20 Block\n10 Force of Will",
     "rarity": [
       "Epic"
     ],
@@ -5588,21 +5418,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Measure III",
-      "fr": "Mesure III",
-      "es": "Medida III",
-      "pt": "Medida III"
-    },
+    "name": "Measure III",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 50% Critical Hits or less: \n20% damage inflicted on critical hit",
     "rarity": [
       "Epic"
     ],
@@ -5623,21 +5443,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Outrage",
-      "fr": "Furie",
-      "es": "Furia",
-      "pt": "Fúria"
-    },
+    "name": "Outrage",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has less that 100% of their level as Dodge:\n\n15% damage inflicted as Berserk\n100% of level as Lock",
     "rarity": [
       "Epic"
     ],
@@ -5658,21 +5468,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Outrage II",
-      "fr": "Furie II",
-      "es": "Furia II",
-      "pt": "Fúria II"
-    },
+    "name": "Outrage II",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 4 Range or greater:\n\n15% damage inflicter as Berserk and Ranged simultaneously\n1 Range",
     "rarity": [
       "Epic"
     ],
@@ -5693,21 +5493,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Pillar",
-      "fr": "Pilier",
-      "es": "Pilar",
-      "pt": "Pilar"
-    },
+    "name": "Pillar",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 50% Block or greater:\n\nBonus to HP modifier +30%\n-50% Armor Received",
     "rarity": [
       "Epic"
     ],
@@ -5728,21 +5518,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Pillar II",
-      "fr": "Pilier II",
-      "es": "Pilar II",
-      "pt": "Pilar II"
-    },
+    "name": "Pillar II",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 50% Block or more: \n-30% HP\n+30% in Armor given",
     "rarity": [
       "Epic"
     ],
@@ -5763,21 +5543,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Robust Health",
-      "fr": "Santé de fer",
-      "es": "Salud de hierro",
-      "pt": "Runa Épica de Saúde de Ferro"
-    },
+    "name": "Robust Health",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa está incrustada em um item épico aprimorado para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, for the state bearer:\n\n-30% HP (penalty to the HP modifier)\n30% Heals and Armor from fighters received",
     "rarity": [
       "Epic"
     ],
@@ -5798,21 +5568,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Steadfast",
-      "fr": "Constance",
-      "es": "Constancia",
-      "pt": "Constância"
-    },
+    "name": "Steadfast",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 10% Critical Hit or less:\n\n20% damage inflicted\n50 Critical Resistance",
     "rarity": [
       "Epic"
     ],
@@ -5833,21 +5593,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Steadfast II",
-      "fr": "Constance II",
-      "es": "Constancia II",
-      "pt": "Constância II"
-    },
+    "name": "Steadfast II",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This sublimation fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 10% Critical Hit or less:\n\n40% indirect damage",
     "rarity": [
       "Epic"
     ],
@@ -5868,21 +5618,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Surgical Precision",
-      "fr": "Précision chirurgicale",
-      "es": "Precisión quirúrgica",
-      "pt": "Precisão Cirúrgica"
-    },
+    "name": "Surgical Precision",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 1 Range or less:\n\n20% heals performed\n15% Armor Given and Received",
     "rarity": [
       "Epic"
     ],
@@ -5903,21 +5643,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Unraveling",
-      "fr": "Dénouement",
-      "es": "Desenlace",
-      "pt": "Desenlace"
-    },
+    "name": "Unraveling",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has at least 40% Critical Hit converts 100% of Critical Mastery to Elemental Mastery",
     "rarity": [
       "Epic"
     ],
@@ -5938,21 +5668,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Wakfu Pact",
-      "fr": "Pacte Wakfu",
-      "es": "Pacto Wakfu",
-      "pt": "Pacto Wakfu"
-    },
+    "name": "Wakfu Pact",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has 8 WP or greater:\n\n10 Force of Will\n15% Block",
     "rarity": [
       "Epic"
     ],
@@ -5973,21 +5693,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Wield type: Dagger",
-      "fr": "Maniement : Dague",
-      "es": "Manejo: Daga",
-      "pt": "Manejo: Adaga"
-    },
+    "name": "Wield type: Dagger",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has a Dagger equipped:\n\n25% damage inflicted on targets hit from the front\n15% from the side\n-30% from behind",
     "rarity": [
       "Epic"
     ],
@@ -6008,21 +5718,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Wield type: Shield",
-      "fr": "Maniement : Bouclier",
-      "es": "Manejo: Escudo",
-      "pt": "Manejo: Escudo"
-    },
+    "name": "Wield type: Shield",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the bearer has a Shield equipped:\n\n1 max MP\nPositive Range is set at 0",
     "rarity": [
       "Epic"
     ],
@@ -6043,21 +5743,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Positioning Knowledge",
-      "fr": "Science du placement",
-      "es": "Ciencia del Posicionamiento",
-      "pt": "Runa Épica de Arte do Posicionamento"
-    },
+    "name": "Positioning Knowledge",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa está incrustada em um item épico aprimorado para aumentar as características de quem o usa."
-    },
+    "description": "50 Elemental Resistance \n-200 Rear Resistance for the bearer at the start of combat.",
     "rarity": [
       "Epic"
     ],
@@ -6078,21 +5768,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Wield type: Two-handed",
-      "fr": "Maniement : Deux mains",
-      "es": "Manejo: Dos manos",
-      "pt": "Manejo: Duas mãos"
-    },
+    "name": "Wield type: Two-handed",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if the state bearer has a Two-Handed Weapon equipped ( maximum 12 AP before the sublimation effect):\n\n-2 max MP\n2 max AP",
     "rarity": [
       "Epic"
     ],
@@ -6113,21 +5793,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Alternation",
-      "fr": "Alternance",
-      "es": "Alternancia",
-      "pt": "Alternância"
-    },
+    "name": "Alternation",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "If the bearer has only used one element to cause damage during their turn:\nthey gain +20% Damage Inflicted and Heals performed in their other elements",
     "rarity": [
       "Relic"
     ],
@@ -6148,21 +5818,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Alternation II",
-      "fr": "Alternance II",
-      "es": "Alternancia II",
-      "pt": "Runa Relíquia de Alternância II"
-    },
+    "name": "Alternation II",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta runa está incrustada em um item relíquia aprimorado para aumentar as características de quem o usa."
-    },
+    "description": "If the bearer inflicts damage in an element: \nthey gain +15% Damage Inflicted and Heals performedy in the other elements for the next spell. \nOnly the first line of damage caused by the spell is taken into account.",
     "rarity": [
       "Relic"
     ],
@@ -6183,21 +5843,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Ancestral Energy",
-      "fr": "Energie ancestrale",
-      "es": "Energía ancestral",
-      "pt": "Energia Ancestral"
-    },
+    "name": "Ancestral Energy",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "At start of turn, with 6 WP or greater: \nAncestral Energy Bonus (Max. level: 3):\n4% Damage inflicted\r\n15 Elemental Resistance\n\nThe state is lost if the character starts their turn with less than 6 WP",
     "rarity": [
       "Relic"
     ],
@@ -6218,21 +5868,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Arrogance",
-      "fr": "Arrogance",
-      "es": "Arrogancia",
-      "pt": "Arrogância"
-    },
+    "name": "Arrogance",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "Steals 25% of melee damage inflicted\n-100 Elemental Resistance",
     "rarity": [
       "Relic"
     ],
@@ -6253,21 +5893,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Assimilation",
-      "fr": "Assimilation",
-      "es": "Asimilación",
-      "pt": "Assimilação"
-    },
+    "name": "Assimilation",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "-50 Elemental Resistance If the state bearer takes damage from an enemy: \n100 Resistance in the damage element (1 turn)",
     "rarity": [
       "Relic"
     ],
@@ -6288,21 +5918,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Beyond the Barrier",
-      "fr": "Par-delà la barrière",
-      "es": "Mas allá del parapeto",
-      "pt": "Além da Barreira"
-    },
+    "name": "Beyond the Barrier",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "If the spell costs 4 AP or more:\r\n15% critical damage.\r\nIf the spell costs 1 WP or more:\r\n15% critical damage",
     "rarity": [
       "Relic"
     ],
@@ -6323,21 +5943,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Brazier",
-      "fr": "Brasero",
-      "es": "Brasero",
-      "pt": "Braseiro"
-    },
+    "name": "Brazier",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "10% damage inflicted when the bearer meets certain conditions (these change each turn). \nTurn 1: The bearer is in melee or the spell is single-target \nTurn 2: The bearer is at a distance or the spell is single-target \nTurn 3: The bearer is at a distance or the spell is area-of-effect \nTurn 4: The bearer is in melee or the spell is area-of-effect",
     "rarity": [
       "Relic"
     ],
@@ -6358,21 +5968,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Breeze",
-      "fr": "Brise",
-      "es": "Brisa",
-      "pt": "Brisa"
-    },
+    "name": "Breeze",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "25% to area-of-effect spell damage on the spell's direct target\n-25% to area-of-effect spell damage on other targets",
     "rarity": [
       "Relic"
     ],
@@ -6393,21 +5993,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Calibration",
-      "fr": "Calibrage",
-      "es": "Calibrado",
-      "pt": "Calibragem"
-    },
+    "name": "Calibration",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "If the bearer inflicted melee damage on an enemy during their turn: \n25% Ranged Damage Inflicted for the following turn",
     "rarity": [
       "Relic"
     ],
@@ -6428,21 +6018,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Calibration II",
-      "fr": "Calibrage II",
-      "es": "Calibrado II",
-      "pt": "Calibragem II"
-    },
+    "name": "Calibration II",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "If the bearer inflicted melee damage on an enemy during their turn: \n10% Ranged Damage Inflicted for the following turn\r\nOnce per turn, stackable up to 5 times",
     "rarity": [
       "Relic"
     ],
@@ -6463,21 +6043,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Contact",
-      "fr": "Contact",
-      "es": "Contacto",
-      "pt": "Contato"
-    },
+    "name": "Contact",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "At end of turn, per adjacent enemy: \n5% of max HP as Armor",
     "rarity": [
       "Relic"
     ],
@@ -6498,21 +6068,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Directives",
-      "fr": "Directives",
-      "es": "Directivas",
-      "pt": "Diretivas"
-    },
+    "name": "Directives",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "15% damage inflicted by area-of-effect spells on targets in line with the state bearer",
     "rarity": [
       "Relic"
     ],
@@ -6533,21 +6093,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Distribution",
-      "fr": "Distribution",
-      "es": "Distribución",
-      "pt": "Distribuição"
-    },
+    "name": "Distribution",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "When the bearer heals an ally, 25% of healing is converted into Armor and 25% is lost",
     "rarity": [
       "Relic"
     ],
@@ -6568,21 +6118,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Ebullience",
-      "fr": "Pétulance",
-      "es": "Petulancia",
-      "pt": "Petulância"
-    },
+    "name": "Ebullience",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "If the bearer moves themself using a spell: \n1 AP (max 2 per turn)",
     "rarity": [
       "Relic"
     ],
@@ -6603,21 +6143,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Excess",
-      "fr": "Excès",
-      "es": "Exceso",
-      "pt": "Runa Relíquia de Excesso"
-    },
+    "name": "Excess",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta runa está incrustada em um item relíquia aprimorado para aumentar as características de quem o usa."
-    },
+    "description": "-10% Damage inflicted \nEvery 10 spells cast, the state bearer gains 100% Damage inflicted for the next spell \nSpells cast must cost at least 1 AP \nOnce the state is at level 10, the next spell gets the damage bonus",
     "rarity": [
       "Relic"
     ],
@@ -6638,21 +6168,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Excess II",
-      "fr": "Excès II",
-      "es": "Exceso II",
-      "pt": "Excesso II"
-    },
+    "name": "Excess II",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "-10% Damage inflicted \nEvery 5 spells cast, the state bearer gains 50% Damage inflicted for the next spell \nSpells cast must cost at least 1 AP \nOnce the state is at level 5, the next spell gets the damage bonus",
     "rarity": [
       "Relic"
     ],
@@ -6673,21 +6193,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Face-to-Face",
-      "fr": "Face-à-face",
-      "es": "Cara-a-cara",
-      "pt": "Cara a Cara"
-    },
+    "name": "Face-to-Face",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "At end of turn, if the bearer is facing an adjacent enemy: \n10% of max HP as Armor",
     "rarity": [
       "Relic"
     ],
@@ -6708,21 +6218,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Farsighted",
-      "fr": "Hypermétrope",
-      "es": "Hipermétrope",
-      "pt": "Hipermetrope"
-    },
+    "name": "Farsighted",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "30% damage inflicted on targets 7 or more cells away \notherwise -15%",
     "rarity": [
       "Relic"
     ],
@@ -6743,21 +6243,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Flame Aura",
-      "fr": "Aura de Flammes",
-      "es": "Aura de Llamas",
-      "pt": "Runa Relíquia de Aura de Chamas"
-    },
+    "name": "Flame Aura",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta runa está incrustada em um item relíquia aprimorado para aumentar as características de quem o usa."
-    },
+    "description": "Flaming (+15 Lvls.) (stackable) for the state bearer, for each damage spell received in melee. \n100% of level as Flaming at start of turn if no enemies are adjacent.",
     "rarity": [
       "Relic"
     ],
@@ -6778,21 +6268,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Guard Up",
-      "fr": "Garde levée",
-      "es": "Guardia Levantada",
-      "pt": "Runa Relíquia de Guarda Baixada"
-    },
+    "name": "Guard Up",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta runa está incrustada em um item relíquia aprimorado para aumentar as características de quem o usa."
-    },
+    "description": "-30% damage received during their own turn.",
     "rarity": [
       "Relic"
     ],
@@ -6813,21 +6293,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Gusto",
-      "fr": "Empressement",
-      "es": "Ahínco",
-      "pt": "Afã"
-    },
+    "name": "Gusto",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "If the bearer moves themself using a spell: \n1 MP (max 2 per turn)",
     "rarity": [
       "Relic"
     ],
@@ -6848,21 +6318,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Heartbreaking Blood",
-      "fr": "Sang de la Déchirure",
-      "es": "Sangre del Martirio",
-      "pt": "Runa Relíquia de Sangue do Talho"
-    },
+    "name": "Heartbreaking Blood",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta runa está incrustada em um item relíquia aprimorado para aumentar as características de quem o usa."
-    },
+    "description": "In an uneven round: \nThe bearer inflicts 25% more damage, and suffers 15% of the damage they inflict",
     "rarity": [
       "Relic"
     ],
@@ -6883,21 +6343,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Involuntary Heaviness",
-      "fr": "Lourdeur involontaire",
-      "es": "Pesadez involuntaria",
-      "pt": "Lentidão Involuntária"
-    },
+    "name": "Involuntary Heaviness",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "If the bearer is moved outside of their turn:\napplies Stabilized at the end of their next turn",
     "rarity": [
       "Relic"
     ],
@@ -6918,21 +6368,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Last Moment",
-      "fr": "Dernier instant",
-      "es": "Último instante",
-      "pt": "Último Instante"
-    },
+    "name": "Last Moment",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "If the spell costs 1 WP or more:\r\n5% damage per current WP on the bearer (max. 6)",
     "rarity": [
       "Relic"
     ],
@@ -6953,21 +6393,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Light Weapon",
-      "fr": "Arme de Lumière",
-      "es": "Arma de Luz",
-      "pt": "Arma de Luz"
-    },
+    "name": "Light Weapon",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "Damage caused by the bearer's weapon is reduced by 20% and applies a poison (Light Weapon) for three turns (second hand excluded) based on the number of AP used by the weapon.",
     "rarity": [
       "Relic"
     ],
@@ -6988,21 +6418,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Longevity",
-      "fr": "Longévité",
-      "es": "Longevidad",
-      "pt": "Longevidade"
-    },
+    "name": "Longevity",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "When suffering damage from the front and in melee, once per round: \n10% of missing HP as Armor 40% Armor given (1 turn)",
     "rarity": [
       "Relic"
     ],
@@ -7023,21 +6443,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Lunatic",
-      "fr": "Lunatique",
-      "es": "Lunático",
-      "pt": "Lunático"
-    },
+    "name": "Lunatic",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "Odd turns, at start of turn: \n25% Damage inflicted -25% Heals performed and Armor given \n\nEven turns, at start of turn: \n25% Heals performed and Armor given -25% Damage inflicted",
     "rarity": [
       "Relic"
     ],
@@ -7058,21 +6468,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Lunatic II",
-      "fr": "Lunatique II",
-      "es": "Lunático II",
-      "pt": "Lunático II"
-    },
+    "name": "Lunatic II",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "After inflicting damage on an enemy: \n-30% damage inflicted and 30% heals performed and Armor given for the following turn.\n\nAfter healing or giving armor to an ally: \n30% damage inflicted and -30% heals performed and armor given for the following turn.",
     "rarity": [
       "Relic"
     ],
@@ -7093,21 +6493,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Modularity",
-      "fr": "Modularité",
-      "es": "Modularidad",
-      "pt": "Modularidade"
-    },
+    "name": "Modularity",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "After taking damage: \n50 Elemental Resistance in this element (1 turn), not stackable\r\nA new element replaces the previous one",
     "rarity": [
       "Relic"
     ],
@@ -7128,21 +6518,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Natural Poise",
-      "fr": "Aplomb naturel",
-      "es": "Aplomo natural",
-      "pt": "Aprumo Natural"
-    },
+    "name": "Natural Poise",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "50 Elemental Resistance if the bearer has no Armor\notherwise -100 Elemental Resistance",
     "rarity": [
       "Relic"
     ],
@@ -7163,21 +6543,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Peaceful",
-      "fr": "Paisible",
-      "es": "Apacible",
-      "pt": "Pacífico"
-    },
+    "name": "Peaceful",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "For each movement, per MP used: \n+3% Block (max. 18) (1 turn) \n\nIf the state bearer performs a Block when it's not their turn: \nThe bonus is transformed into Critical Hits on the next turn",
     "rarity": [
       "Relic"
     ],
@@ -7198,21 +6568,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Rebirth",
-      "fr": "Renaissance",
-      "es": "Salvación",
-      "pt": "Renascimento"
-    },
+    "name": "Rebirth",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "-50 Elemental Resistance \nOnce per turn, when falling below 50% HP: \n1 MP\r\n15% Damage inflicted\r\n50 Elemental Resistance",
     "rarity": [
       "Relic"
     ],
@@ -7233,21 +6593,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Robust",
-      "fr": "Robuste",
-      "es": "Robusto",
-      "pt": "Robusto"
-    },
+    "name": "Robust",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "100% of level in Barrier against long-range damage (permanent)",
     "rarity": [
       "Relic"
     ],
@@ -7268,21 +6618,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Sentinel",
-      "fr": "Sentinelle",
-      "es": "Centinela",
-      "pt": "Sentinela"
-    },
+    "name": "Sentinel",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "At start of turn: \n3 Range 15% ranged damage 15% Heals performed \nThe bonus is lost the first time the character moves (MP) or at end of turn",
     "rarity": [
       "Relic"
     ],
@@ -7303,21 +6643,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Single Shared Armor",
-      "fr": "Cuirasse singulière",
-      "es": "Cota singular",
-      "pt": "Couraça Singular"
-    },
+    "name": "Single Shared Armor",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "30% of Armor given to allies who do not have Armor\n-50% Armor to allies who already have Armor",
     "rarity": [
       "Relic"
     ],
@@ -7338,21 +6668,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Single Shared Armor II",
-      "fr": "Cuirasse singulière II",
-      "es": "Cota singular II",
-      "pt": "Couraça Singular II"
-    },
+    "name": "Single Shared Armor II",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "40% Armor given on the first Armor placed on this turn\n-50% Armor given on all others",
     "rarity": [
       "Relic"
     ],
@@ -7373,21 +6693,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Smashell",
-      "fr": "Fracass'carapace",
-      "es": "Rompecaparazón",
-      "pt": "Despedaça-Carapaça"
-    },
+    "name": "Smashell",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "The first spell that inflicts damage this turn removes 30% Armor from the target",
     "rarity": [
       "Relic"
     ],
@@ -7408,21 +6718,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Sparkle",
-      "fr": "Pétillance",
-      "es": "Burbujeo",
-      "pt": "Brilhantismo"
-    },
+    "name": "Sparkle",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "At start of turn, if the bearer has no Armor: \n20% Damage inflicted (1 turn) \nOtherwise: -10% Damage inflicted (1 turn)",
     "rarity": [
       "Relic"
     ],
@@ -7443,21 +6743,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Stasification",
-      "fr": "Stasification",
-      "es": "Stasificación",
-      "pt": "Estasificação"
-    },
+    "name": "Stasification",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "The state bearer increases their damage inflicted by 2% per turn (permanent) (max 20)",
     "rarity": [
       "Relic"
     ],
@@ -7478,21 +6768,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Time Control",
-      "fr": "Contrôle du temps",
-      "es": "Control del tiempo",
-      "pt": "Controle do Tempo"
-    },
+    "name": "Time Control",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "Every 3 spells cast\nCritical Hit is set to 100",
     "rarity": [
       "Relic"
     ],
@@ -7513,21 +6793,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Trust",
-      "fr": "Confiance",
-      "es": "Confianza",
-      "pt": "Confiança"
-    },
+    "name": "Trust",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "30% Block if the bearer did not receive healing in the previous turn.",
     "rarity": [
       "Relic"
     ],
@@ -7548,21 +6818,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Vehemence",
-      "fr": "Véhémence",
-      "es": "Vehemencia",
-      "pt": "Veemência"
-    },
+    "name": "Vehemence",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "Each turn steals 50% of damage inflicted by the first spell that inflicts damage\n-50% Armor received",
     "rarity": [
       "Relic"
     ],
@@ -7583,21 +6843,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Yeah",
-      "fr": "Wé",
-      "es": "Seh",
-      "pt": "Nhé"
-    },
+    "name": "Yeah",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "Even Turn: \nAfter using a WP-based spell, the state bearer regains 2 AP (max of 1/turn). \n\nOdd Turn: \nAfter using a WP-based spell, the state bearer loses 2 AP (max 1/turn).",
     "rarity": [
       "Relic"
     ],
@@ -7618,21 +6868,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Wakfu Seal",
-      "fr": "Sceau de Wakfu",
-      "es": "Sello de Wakfu",
-      "pt": "Selo de Wakfu"
-    },
+    "name": "Wakfu Seal",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "The state bearer increases their heals performed by 2% per turn (Permanent, max 20%)",
     "rarity": [
       "Relic"
     ],
@@ -7653,21 +6893,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Punishment",
-      "fr": "Châtiment",
-      "es": "Castigo",
-      "pt": "Castigo"
-    },
+    "name": "Punishment",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "At start of turn if there are at least 2 enemies in melee: +1MP +1AP",
     "rarity": [
       "Relic"
     ],
@@ -7688,21 +6918,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Absolution",
-      "fr": "Absolution",
-      "es": "Absolución",
-      "pt": "Absolvição"
-    },
+    "name": "Absolution",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "At start of turn if there are at least 2 allies in melee: +1MP +1AP",
     "rarity": [
       "Relic"
     ],
@@ -7723,21 +6943,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Single Block",
-      "fr": "Parade unique",
-      "es": "Anticipación única",
-      "pt": "Parada Única"
-    },
+    "name": "Single Block",
     "colors": [
       "Relic"
     ],
-    "description": {
-      "en": "This sublimation fits into a relic item to increase the wearer's stats.",
-      "fr": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta sublimación se engarza en un objeto reliquia para aumentar las características de su portador.",
-      "pt": "Esta sublimação pode ser engastada em um item relíquia para aumentar as características de quem o usa."
-    },
+    "description": "When performing a Block: -30% extra damage recieved -100% block",
     "rarity": [
       "Relic"
     ],
@@ -7758,21 +6968,11 @@
     ]
   },
   {
-    "name": {
-      "en": "Critical Secret",
-      "fr": "Secret critique",
-      "es": "Secreto crítico",
-      "pt": "Segredo Crítico"
-    },
+    "name": "Critical Secret",
     "colors": [
       "Epic"
     ],
-    "description": {
-      "en": "This rune fits into an epic item to increase the wearer's stats.",
-      "fr": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
-      "es": "Esta runa se engarza en un objeto épico para aumentar las características de su portador.",
-      "pt": "Esta runa pode ser engastada em um item épico para aumentar as características de quem o usa."
-    },
+    "description": "At the start of combat, if Critical Mastery is less than or equal to 0: 30% critical hit",
     "rarity": [
       "Epic"
     ],
