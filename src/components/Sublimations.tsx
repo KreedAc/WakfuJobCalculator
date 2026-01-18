@@ -136,7 +136,7 @@ const filteredRunes = useMemo(() => {
 
   if (loading) {
     return (
-      <div className="w-full flex flex-col items-center justify-center py-20 text-emerald-400">
+      <div className="w-full flex flex-col items-center justify-center py-20 text-emerald-700">
         <div className="animate-spin mb-4">
           <Scroll size={32} />
         </div>
@@ -149,15 +149,15 @@ const filteredRunes = useMemo(() => {
     <div className="sublimation-container animate-in fade-in duration-500">
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-700 to-emerald-700">
           {t.sublimationsLibrary}
         </h1>
         <div className="flex justify-center items-center gap-3">
-          <span className="text-sm text-emerald-200/70">
+          <span className="text-sm text-slate-600">
             {filteredRunes.length} {t.items}
           </span>
           {dataSource === 'fallback' && (
-            <div className="text-amber-400 text-xs flex items-center gap-1 bg-amber-900/30 px-3 py-1 rounded-full border border-amber-500/30">
+            <div className="text-amber-700 text-xs flex items-center gap-1 bg-amber-100 px-3 py-1 rounded-full border border-amber-400/40">
               <AlertCircle size={12} /> {t.usingBackupData}
             </div>
           )}
@@ -177,7 +177,7 @@ const filteredRunes = useMemo(() => {
             <Search size={18} />
           </button>
           {searchTerm && (
-            <button onClick={() => setSearchTerm('')} className="absolute right-12 text-slate-400 hover:text-white">
+            <button onClick={() => setSearchTerm('')} className="absolute right-12 text-slate-500 hover:text-slate-800">
               <X size={16} />
             </button>
           )}
@@ -313,7 +313,7 @@ const filteredRunes = useMemo(() => {
       </div>
 
       {!loading && filteredRunes.length === 0 && (
-        <div className="flex flex-col items-center justify-center py-20 text-slate-400 bg-slate-900/50 rounded-xl border border-slate-800">
+        <div className="flex flex-col items-center justify-center py-20 text-slate-600 bg-white/60 rounded-xl border border-emerald-500/20">
           <Filter size={48} className="mb-4 opacity-50" />
           <p className="text-lg font-medium">{t.noSublimationsFound}</p>
           <p className="text-sm">{t.tryAdjustingFilters}</p>
@@ -323,7 +323,7 @@ const filteredRunes = useMemo(() => {
   setSelectedCategory(t.allCategories);
   setSlotFilters(['Any', 'Any', 'Any', 'Any']);
 }}
-            className="mt-4 text-emerald-400 hover:underline text-sm"
+            className="mt-4 text-emerald-700 hover:underline text-sm font-medium"
           >
             {t.clearAllFilters}
           </button>

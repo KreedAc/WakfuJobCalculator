@@ -12,10 +12,10 @@
   gap: 16px;
   margin-bottom: 24px;
   padding: 20px;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   backdrop-filter: blur(10px);
 }
 
@@ -30,10 +30,10 @@
 .search-box input {
   width: 100%;
   padding: 12px 48px 12px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   border-radius: 12px;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.7);
+  color: #1e293b;
   font-size: 1rem;
   transition: all 0.3s ease;
 }
@@ -42,7 +42,7 @@
   border-color: #10b981;
   outline: none;
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .search-icon-btn {
@@ -65,19 +65,20 @@
 
 .category-tab {
   padding: 8px 16px;
-  background: rgba(30, 41, 59, 0.6);
+  background: rgba(255, 255, 255, 0.75);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
   font-size: 0.9rem;
-  color: #94a3b8;
+  color: #475569;
   font-weight: 500;
 }
 
 .category-tab:hover {
-  background: rgba(30, 41, 59, 0.9);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1e293b;
+  border-color: rgba(16, 185, 129, 0.35);
 }
 
 .category-tab.active {
@@ -97,23 +98,23 @@
 }
 
 .rune-card {
-  background: rgba(30, 41, 59, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
   backdrop-filter: blur(10px);
   height: 100%;
 }
 
 .rune-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.3);
-  border-color: rgba(16, 185, 129, 0.4);
-  background: rgba(30, 41, 59, 0.9);
+  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.15);
+  border-color: rgba(16, 185, 129, 0.5);
+  background: rgba(255, 255, 255, 0.98);
 }
 
 .card-content {
@@ -134,25 +135,25 @@
 .rune-name {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #e2e8f0;
+  color: #1e293b;
   line-height: 1.2;
   margin-bottom: 4px;
 }
 
 .rune-name.relic-name {
-  color: #c084fc;
-  text-shadow: 0 0 10px rgba(192, 132, 252, 0.2);
+  color: #a855f7;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.15);
 }
 
 .rune-name.epic-name {
-  color: #f472b6;
-  text-shadow: 0 0 10px rgba(244, 114, 182, 0.2);
+  color: #ec4899;
+  text-shadow: 0 0 10px rgba(236, 72, 153, 0.15);
 }
 
 .rune-level-badge {
   font-size: 0.75rem;
   color: #64748b;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(16, 185, 129, 0.1);
   padding: 2px 8px;
   border-radius: 12px;
   display: inline-block;
@@ -171,8 +172,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(240, 253, 244, 0.8);
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .color-slot img {
@@ -206,7 +207,7 @@
   align-items: center;
   margin-bottom: 16px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.15);
 }
 
 .obtenation {
@@ -214,31 +215,31 @@
   align-items: center;
   gap: 8px;
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .obtenation img {
   width: 28px;
   height: 28px;
   border-radius: 6px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(240, 253, 244, 0.5);
 }
 
 .rune-description {
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(240, 253, 244, 0.6);
   padding: 16px;
   border-radius: 12px;
   margin-bottom: 16px;
   font-size: 0.95rem;
   line-height: 1.5;
-  color: #cbd5e1;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  color: #334155;
+  border: 1px solid rgba(16, 185, 129, 0.15);
   flex-grow: 1;
 }
 
 .level-controls {
   margin-top: auto;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(240, 253, 244, 0.5);
   padding: 12px;
   border-radius: 12px;
   display: flex;
@@ -250,7 +251,7 @@
   flex: 1;
   height: 6px;
   border-radius: 3px;
-  background: #334155;
+  background: #d1fae5;
   outline: none;
   -webkit-appearance: none;
   cursor: pointer;
@@ -288,19 +289,19 @@
 
 .slot-filter {
   position: relative;
-  z-index: 10000; /* sopra la griglia */
+  z-index: 10000;
   margin-bottom: 24px;
   padding: 16px 20px;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   backdrop-filter: blur(10px);
 }
 
 .slot-filter-title {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #cbd5e1;
+  color: #334155;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -325,17 +326,17 @@
 .slot-filter-label {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #94a3b8;
+  color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .slot-filter-select {
   padding: 8px 12px;
-  background: rgba(30, 41, 59, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(16, 185, 129, 0.3);
   border-radius: 8px;
-  color: #e2e8f0;
+  color: #1e293b;
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -344,27 +345,27 @@
 
 .slot-filter-select:hover {
   border-color: #10b981;
-  background: rgba(30, 41, 59, 0.95);
+  background: rgba(255, 255, 255, 1);
 }
 
 .slot-filter-select:focus {
   outline: none;
   border-color: #10b981;
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
-  background: rgba(30, 41, 59, 0.95);
+  background: rgba(255, 255, 255, 1);
 }
 
 .slot-filter-select option {
-  background: #1e293b;
-  color: #e2e8f0;
+  background: #ffffff;
+  color: #1e293b;
 }
 
 .slot-filter-reset {
   padding: 8px 16px;
-  background: rgba(229, 62, 62, 0.15);
+  background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.3);
   border-radius: 8px;
-  color: #fca5a5;
+  color: #dc2626;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
@@ -373,7 +374,7 @@
 }
 
 .slot-filter-reset:hover {
-  background: rgba(229, 62, 62, 0.25);
-  border-color: #ef4444;
-  color: #fecaca;
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #dc2626;
+  color: #b91c1c;
 }
