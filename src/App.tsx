@@ -38,27 +38,27 @@ function AppContent() {
   };
 
   return (
-    <div className="relative min-h-screen text-slate-800 flex flex-col items-center p-6 overflow-hidden font-sans">
-   <div className="absolute inset-0 -z-10 bg-slate-100">
+    <div className="relative min-h-screen text-white flex flex-col items-center p-6 overflow-hidden font-sans">
+   <div className="absolute inset-0 -z-10 bg-slate-900">
   <div
-    className="absolute inset-0 opacity-45 transition-opacity duration-700"
+    className="absolute inset-0 opacity-65 transition-opacity duration-700"
     style={{
       backgroundImage: `url(${BG_URL})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
-      filter: "blur(1.5px) saturate(0.9) brightness(1.65)",
+      filter: "blur(1.5px) saturate(1.1) brightness(1.25)",
     }}
   />
-  {/* overlay molto più chiaro */}
-  <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/50 via-white/40 to-slate-50/50" />
-  {/* veil bianco forte per uno sfondo molto chiaro */}
-  <div className="absolute inset-0 bg-white/[0.55]" />
+  {/* overlay più chiaro */}
+  <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/35 via-slate-900/25 to-slate-950/35" />
+  {/* "veil" chiaro per aumentare contrasto testo */}
+  <div className="absolute inset-0 bg-white/[0.08]" />
 </div>
 
-{/* vignette molto leggera */}
+{/* vignette meno aggressiva */}
 <div
   className="absolute inset-0 -z-10 pointer-events-none"
-  style={{ boxShadow: "inset 0 0 200px rgba(0,0,0,0.08)" }}
+  style={{ boxShadow: "inset 0 0 180px rgba(0,0,0,0.25)" }}
 />
 
 
@@ -86,7 +86,7 @@ function AppContent() {
           <Route path="/items-craft-guide" element={<ItemsCraftGuidePage language={lang} />} />
         </Routes>
 
-        <footer className="mt-16 text-slate-600 text-xs text-center pb-8 font-medium">
+        <footer className="mt-16 text-emerald-200/40 text-xs text-center pb-8 font-medium">
           <p>WAKFU is an MMORPG published by Ankama.</p>
           <p className="mt-1">"wakfujobcalculator" is an unofficial website with no connection to Ankama.</p>
           <p className="mt-4 opacity-75">{new Date().getFullYear()} {t.createdBy} KreedAc and LadyKreedAc</p>

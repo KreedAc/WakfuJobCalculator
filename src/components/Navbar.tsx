@@ -15,13 +15,13 @@ export function Navbar({
   navItemsCraftLabel
 }: NavbarProps) {
   return (
-    <nav className="flex items-center gap-2 backdrop-blur-xl bg-white/80 border border-emerald-500/25 shadow-xl rounded-2xl px-4 py-2">
+    <nav className="flex items-center gap-2 backdrop-blur-xl bg-gray-900/60 border border-white/10 shadow-xl rounded-2xl px-4 py-2">
       <Link
         to="/"
         className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
           currentPath === '/'
-            ? 'bg-emerald-500/20 text-emerald-700 border border-emerald-500/40'
-            : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-700'
+            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+            : 'text-emerald-100/80 hover:bg-white/10 hover:text-emerald-200'
         }`}
       >
         <Hammer className="w-4 h-4" />
@@ -32,8 +32,8 @@ export function Navbar({
         to="/sublimations"
         className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
           currentPath === '/sublimations'
-            ? 'bg-emerald-500/20 text-emerald-700 border border-emerald-500/40'
-            : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-700'
+            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+            : 'text-emerald-100/80 hover:bg-white/10 hover:text-emerald-200'
         }`}
       >
         <Scroll className="w-4 h-4" />
@@ -44,8 +44,8 @@ export function Navbar({
         to="/items-craft-guide"
         className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
           currentPath === '/items-craft-guide'
-            ? 'bg-emerald-500/20 text-emerald-700 border border-emerald-500/40'
-            : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-700'
+            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+            : 'text-emerald-100/80 hover:bg-white/10 hover:text-emerald-200'
         }`}
       >
         <Wrench className="w-4 h-4" />

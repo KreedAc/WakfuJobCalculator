@@ -288,10 +288,10 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
     <div className="w-full max-w-6xl mx-auto p-4">
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-700 to-emerald-700">
+        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
           {t.itemsCraftTitle}
         </h1>
-        <div className="text-xs text-slate-600">
+        <div className="text-xs text-emerald-200/70">
           {t.craftableItems}: {craftableItems.length} • {t.recipes}: {recipesByResultId.size} •{" "}
           {loading ? t.loading + "..." : t.ready}
         </div>
@@ -301,8 +301,8 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
       <div className="mt-5 flex justify-center">
         <div className="w-full max-w-2xl">
           <input
-            className="w-full rounded-xl border border-emerald-500/25 backdrop-blur-md px-4 py-3 text-slate-800 outline-none focus:border-emerald-500/60"
-            style={{ background: 'rgba(255, 255, 255, 0.8)' }}
+            className="w-full rounded-xl border border-emerald-300/25 backdrop-blur-md px-4 py-3 outline-none focus:border-emerald-300/60"
+            style={{ background: 'rgba(0, 0, 0, 0.4)' }}
             placeholder={loading ? t.loadingData : t.searchPlaceholder}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -313,22 +313,22 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
 
       {/* Selected items bar */}
       <div className="mt-4">
-        <div className="rounded-2xl border border-emerald-500/25 backdrop-blur-md p-3" style={{ background: 'rgba(255, 255, 255, 0.85)' }}>
+        <div className="rounded-2xl border border-emerald-300/15 backdrop-blur-md p-3" style={{ background: 'rgba(30, 41, 59, 0.6)' }}>
           <div className="flex items-center justify-between gap-3 flex-wrap">
-            <div className="text-sm text-slate-700">{t.selectedItems} ({selected.length})</div>
+            <div className="text-sm text-emerald-200/80">{t.selectedItems} ({selected.length})</div>
 
             <button
               onClick={clearAll}
               disabled={selected.length === 0}
-              className="text-xs px-3 py-2 rounded-lg border border-emerald-500/25 hover:border-emerald-500/40 disabled:opacity-40 text-slate-700"
-              style={{ background: 'rgba(255, 255, 255, 0.7)' }}
+              className="text-xs px-3 py-2 rounded-lg border border-emerald-300/20 hover:border-emerald-300/35 disabled:opacity-40"
+              style={{ background: 'rgba(0, 0, 0, 0.3)' }}
             >
               {t.clearAll}
             </button>
           </div>
 
           {selected.length === 0 ? (
-            <div className="text-xs text-slate-600 mt-2">
+            <div className="text-xs text-emerald-200/60 mt-2">
               {t.addOneOrMore}
             </div>
           ) : (
@@ -344,9 +344,9 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                     key={s.itemId}
                     className={[
                       "flex items-center gap-2 rounded-xl border px-2 py-2",
-                      isActive ? "border-emerald-500/40" : "border-emerald-500/20",
+                      isActive ? "border-emerald-300/35" : "border-emerald-300/15",
                     ].join(" ")}
-                    style={{ background: 'rgba(255, 255, 255, 0.9)' }}
+                    style={{ background: 'rgba(30, 41, 59, 0.7)' }}
                   >
                     <button
                       onClick={() => setActiveItemId(s.itemId)}
@@ -355,10 +355,10 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                     >
                       <ItemIcon itemId={s.itemId} itemsById={itemsById} size={28} />
                       <div className="min-w-0">
-                        <div className="text-slate-800 text-xs font-medium truncate max-w-[180px]">
+                        <div className="text-emerald-100 text-xs font-medium truncate max-w-[180px]">
                           {name}
                         </div>
-                        <div className={`text-[11px] ${rInfo?.className ?? "text-slate-600"}`}>
+                        <div className={`text-[11px] ${rInfo?.className ?? "text-emerald-200/40"}`}>
                           {rInfo?.label ?? "—"}
                         </div>
                       </div>
@@ -367,17 +367,17 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                     <div className="flex items-center gap-1 ml-1">
                       <button
                         onClick={() => setQty(s.itemId, -1)}
-                        className="w-7 h-7 rounded-lg border border-emerald-500/20 hover:border-emerald-500/35 text-slate-700"
-                        style={{ background: 'rgba(255, 255, 255, 0.7)' }}
+                        className="w-7 h-7 rounded-lg border border-emerald-300/15 hover:border-emerald-300/30"
+                        style={{ background: 'rgba(0, 0, 0, 0.3)' }}
                         title={t.decrease}
                       >
                         −
                       </button>
-                      <div className="text-slate-800 text-xs font-semibold w-8 text-center">{s.qty}</div>
+                      <div className="text-emerald-200 text-xs font-semibold w-8 text-center">{s.qty}</div>
                       <button
                         onClick={() => setQty(s.itemId, +1)}
-                        className="w-7 h-7 rounded-lg border border-emerald-500/20 hover:border-emerald-500/35 text-slate-700"
-                        style={{ background: 'rgba(255, 255, 255, 0.7)' }}
+                        className="w-7 h-7 rounded-lg border border-emerald-300/15 hover:border-emerald-300/30"
+                        style={{ background: 'rgba(0, 0, 0, 0.3)' }}
                         title={t.increase}
                       >
                         +
@@ -386,8 +386,8 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
 
                     <button
                       onClick={() => removeItem(s.itemId)}
-                      className="ml-1 w-7 h-7 rounded-lg border border-emerald-500/20 hover:border-emerald-500/35 text-slate-700"
-                      style={{ background: 'rgba(255, 255, 255, 0.7)' }}
+                      className="ml-1 w-7 h-7 rounded-lg border border-emerald-300/15 hover:border-emerald-300/30"
+                      style={{ background: 'rgba(0, 0, 0, 0.3)' }}
                       title={t.remove}
                     >
                       ✕
@@ -403,32 +403,32 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
       {/* Results */}
       {showResults && (
         <div className="mt-4 flex justify-center">
-          <div className="w-full max-w-2xl rounded-2xl border border-emerald-500/25 backdrop-blur-md p-3" style={{ background: 'rgba(255, 255, 255, 0.85)' }}>
-            <div className="text-sm text-slate-700 mb-2">{t.results} ({results.length})</div>
+          <div className="w-full max-w-2xl rounded-2xl border border-emerald-300/15 backdrop-blur-md p-3" style={{ background: 'rgba(30, 41, 59, 0.6)' }}>
+            <div className="text-sm text-emerald-200/80 mb-2">{t.results} ({results.length})</div>
 
             {results.length === 0 ? (
-              <div className="text-sm text-slate-600">{t.noCraftableFound}</div>
+              <div className="text-sm text-emerald-200/70">{t.noCraftableFound}</div>
             ) : (
               <div className="space-y-2 max-h-[320px] overflow-auto pr-1">
                 {results.map((it) => (
                   <button
                     key={it.id}
                     onClick={() => addItem(it.id)}
-                    className="w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-500/20 hover:border-emerald-500/35 transition"
-                    style={{ background: 'rgba(255, 255, 255, 0.9)' }}
+                    className="w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 hover:border-emerald-300/25 transition"
+                    style={{ background: 'rgba(30, 41, 59, 0.7)' }}
                   >
                     <ItemIcon itemId={it.id} itemsById={itemsById} size={34} />
                     <div className="flex-1 min-w-0">
-                      <div className="text-slate-800 text-sm font-medium truncate">{it.name}</div>
+                      <div className="text-emerald-100 text-sm font-medium truncate">{it.name}</div>
                       <div
                         className={`text-xs mt-0.5 ${
-                          rarityInfo(it.rarity, t)?.className ?? "text-slate-600"
+                          rarityInfo(it.rarity, t)?.className ?? "text-emerald-200/40"
                         }`}
                       >
                         {rarityInfo(it.rarity, t)?.label ?? "—"}
                       </div>
                     </div>
-                    <div className="text-xs px-2 py-1 rounded-lg border border-emerald-500/25 text-slate-700" style={{ background: 'rgba(255, 255, 255, 0.7)' }}>
+                    <div className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20" style={{ background: 'rgba(0, 0, 0, 0.3)' }}>
                       {t.add}
                     </div>
                   </button>
@@ -436,7 +436,7 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
               </div>
             )}
 
-            <div className="mt-3 text-xs text-slate-600">
+            <div className="mt-3 text-xs text-emerald-200/60">
               {t.addTip}
             </div>
           </div>
@@ -448,23 +448,23 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
         <div className="mt-6 grid lg:grid-cols-12 gap-4">
           {/* LEFT */}
           <div className="lg:col-span-8 space-y-4">
-            <div className="rounded-2xl border border-emerald-500/25 backdrop-blur-md p-4" style={{ background: 'rgba(255, 255, 255, 0.9)' }}>
+            <div className="rounded-2xl border border-emerald-300/15 backdrop-blur-md p-4" style={{ background: 'rgba(30, 41, 59, 0.7)' }}>
               <div className="flex items-start gap-4">
                 <ItemIcon itemId={activeItem.id} itemsById={itemsById} />
                 <div className="flex-1 min-w-0">
-                  <div className="text-xl font-semibold text-slate-800 truncate">{activeItem.name}</div>
+                  <div className="text-xl font-semibold text-emerald-200 truncate">{activeItem.name}</div>
                   {rarityInfo(activeItem.rarity, t) ? (
                     <div className={`text-sm mt-0.5 ${rarityInfo(activeItem.rarity, t)!.className}`}>
                       {rarityInfo(activeItem.rarity, t)!.label}
                     </div>
                   ) : (
-                    <div className="text-sm mt-0.5 text-slate-600">—</div>
+                    <div className="text-sm mt-0.5 text-emerald-200/40">—</div>
                   )}
                 </div>
               </div>
 
               <div className="mt-6">
-                <h2 className="text-lg font-semibold text-emerald-700 mb-3">
+                <h2 className="text-lg font-semibold text-emerald-300 mb-3">
                   {t.whatYouNeed}
                 </h2>
 
@@ -489,25 +489,25 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
 
           {/* RIGHT */}
           <div className="lg:col-span-4">
-            <div className="rounded-2xl border border-emerald-500/25 backdrop-blur-md p-4 h-full" style={{ background: 'rgba(255, 255, 255, 0.9)' }}>
+            <div className="rounded-2xl border border-emerald-300/15 backdrop-blur-md p-4 h-full" style={{ background: 'rgba(30, 41, 59, 0.7)' }}>
               <div className="flex items-center justify-between gap-3">
-                <h2 className="text-lg font-semibold text-emerald-700">{t.shoppingList}</h2>
+                <h2 className="text-lg font-semibold text-emerald-300">{t.shoppingList}</h2>
                 <button
                   onClick={copyShoppingList}
                   disabled={shoppingList.length === 0}
-                  className="text-xs px-3 py-2 rounded-lg border border-emerald-500/25 hover:border-emerald-500/40 disabled:opacity-40 text-slate-700"
-                  style={{ background: 'rgba(255, 255, 255, 0.7)' }}
+                  className="text-xs px-3 py-2 rounded-lg border border-emerald-300/20 hover:border-emerald-300/35 disabled:opacity-40"
+                  style={{ background: 'rgba(0, 0, 0, 0.3)' }}
                 >
                   {t.copy}
                 </button>
               </div>
 
-              <div className="text-xs text-slate-600 mt-1">
+              <div className="text-xs text-emerald-200/70 mt-1">
                 {t.shoppingListHint}
               </div>
 
               {shoppingList.length === 0 ? (
-                <div className="mt-4 text-slate-700 text-sm">{t.nothingToBuy}</div>
+                <div className="mt-4 text-emerald-200/80 text-sm">{t.nothingToBuy}</div>
               ) : (
                 <div className="mt-4 space-y-2 max-h-[720px] overflow-auto pr-1">
                   {shoppingList.map((row) => {
@@ -518,17 +518,17 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                     return (
                       <div
                         key={row.itemId}
-                        className="flex items-center gap-3 rounded-xl border border-emerald-500/20 px-3 py-2"
-                        style={{ background: 'rgba(255, 255, 255, 0.9)' }}
+                        className="flex items-center gap-3 rounded-xl border border-emerald-300/10 px-3 py-2"
+                        style={{ background: 'rgba(30, 41, 59, 0.7)' }}
                       >
                         <ItemIcon itemId={row.itemId} itemsById={itemsById} size={32} />
                         <div className="flex-1 min-w-0">
-                          <div className="text-slate-800 text-sm truncate">{name}</div>
-                          <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-slate-600"}`}>
+                          <div className="text-emerald-100 text-sm truncate">{name}</div>
+                          <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
                             {rInfo?.label ?? "—"}
                           </div>
                         </div>
-                        <div className="text-slate-800 font-semibold">x{row.qty}</div>
+                        <div className="text-emerald-200 font-semibold">x{row.qty}</div>
                       </div>
                     );
                   })}
@@ -592,9 +592,9 @@ function RecipeNode(props: {
   const recipe = craftable ? recipes[Math.min(chosenIdx, recipes.length - 1)] : null;
 
   const getDepthBackground = (d: number) => {
-    const baseOpacity = 0.9;
-    const lightening = Math.min(d * 0.03, 0.1);
-    return `rgba(255, 255, 255, ${baseOpacity - lightening})`;
+    const baseOpacity = 0.7;
+    const darkening = Math.min(d * 0.08, 0.35);
+    return `rgba(30, 41, 59, ${baseOpacity + darkening})`;
   };
 
   return (
@@ -602,13 +602,13 @@ function RecipeNode(props: {
       {/* non-root header row (skip if hideSelfRow) */}
       {!root && !hideSelfRow && (
         <div
-          className="flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-500/20"
+          className="flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10"
           style={{ marginLeft: depth * 16, background: getDepthBackground(depth) }}
         >
           <button
             onClick={() => onToggle(itemId)}
-            className="text-xs px-2 py-1 rounded-lg border border-emerald-500/25 hover:border-emerald-500/40 text-slate-700"
-            style={{ background: 'rgba(255, 255, 255, 0.7)' }}
+            className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 hover:border-emerald-300/35"
+            style={{ background: 'rgba(0, 0, 0, 0.3)' }}
             title={isOpen ? t.collapse : t.expand}
           >
             {isOpen ? "−" : "+"}
@@ -617,10 +617,10 @@ function RecipeNode(props: {
           <ItemIcon itemId={itemId} itemsById={itemsById} size={28} />
 
           <div className="flex-1 min-w-0">
-            <div className="text-slate-800 text-sm truncate">{name}</div>
-            <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-slate-600"}`}>
+            <div className="text-emerald-100 text-sm truncate">{name}</div>
+            <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
               {rInfo?.label ?? "—"}{" "}
-              <span className="text-slate-600">
+              <span className="text-emerald-200/40">
                 • {craftable ? t.craftable : t.notCraftable}
                 {loop ? ` • ${t.loop}` : ""}
               </span>
@@ -630,8 +630,8 @@ function RecipeNode(props: {
           {craftable && recipes.length > 1 && (
             <button
               onClick={() => onCycleRecipe(itemId)}
-              className="text-xs px-2 py-1 rounded-lg border border-emerald-500/25 hover:border-emerald-500/40 text-slate-700"
-              style={{ background: 'rgba(255, 255, 255, 0.7)' }}
+              className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 hover:border-emerald-300/35"
+              style={{ background: 'rgba(0, 0, 0, 0.3)' }}
               title={t.switchRecipe}
             >
               {t.recipeNum} {chosenIdx + 1}/{recipes.length}
@@ -642,14 +642,14 @@ function RecipeNode(props: {
 
       {/* root card */}
       {root && (
-        <div className="rounded-xl border border-emerald-500/20 px-3 py-2" style={{ background: 'rgba(255, 255, 255, 0.9)' }}>
+        <div className="rounded-xl border border-emerald-300/10 px-3 py-2" style={{ background: 'rgba(30, 41, 59, 0.7)' }}>
           <div className="flex items-center gap-3">
             <ItemIcon itemId={itemId} itemsById={itemsById} size={32} />
             <div className="flex-1 min-w-0">
-              <div className="text-slate-800 text-sm font-medium truncate">{name}</div>
-              <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-slate-600"}`}>
+              <div className="text-emerald-100 text-sm font-medium truncate">{name}</div>
+              <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
                 {rInfo?.label ?? "—"}{" "}
-                <span className="text-slate-600">
+                <span className="text-emerald-200/40">
                   • {t.root} • {craftable ? t.craftable : t.notCraftable}
                 </span>
               </div>
@@ -658,8 +658,8 @@ function RecipeNode(props: {
             {craftable && recipes.length > 1 && (
               <button
                 onClick={() => onCycleRecipe(itemId)}
-                className="text-xs px-2 py-1 rounded-lg border border-emerald-500/25 hover:border-emerald-500/40 text-slate-700"
-                style={{ background: 'rgba(255, 255, 255, 0.7)' }}
+                className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 hover:border-emerald-300/35"
+                style={{ background: 'rgba(0, 0, 0, 0.3)' }}
                 title={t.switchRecipe}
               >
                 {t.recipeNum} {chosenIdx + 1}/{recipes.length}
@@ -681,15 +681,15 @@ function RecipeNode(props: {
             return (
               <div
                 key={`${itemId}-${ing.itemId}-${idx}`}
-                className="rounded-xl border border-emerald-500/20 px-3 py-2"
+                className="rounded-xl border border-emerald-300/10 px-3 py-2"
                 style={{ marginLeft: (depth + 1) * 16, background: getDepthBackground(depth + 1) }}
               >
                 <div className="flex items-center gap-3">
                   {ingCraftable ? (
                     <button
                       onClick={() => onToggle(ing.itemId)}
-                      className="text-xs px-2 py-1 rounded-lg border border-emerald-500/25 hover:border-emerald-500/40 text-slate-700"
-                      style={{ background: 'rgba(255, 255, 255, 0.7)' }}
+                      className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 hover:border-emerald-300/35"
+                      style={{ background: 'rgba(0, 0, 0, 0.3)' }}
                       title={expanded.has(ing.itemId) ? t.collapseIngredient : t.expandIngredient}
                     >
                       {expanded.has(ing.itemId) ? "−" : "+"}
@@ -701,16 +701,16 @@ function RecipeNode(props: {
                   <ItemIcon itemId={ing.itemId} itemsById={itemsById} size={28} />
 
                   <div className="flex-1 min-w-0">
-                    <div className="text-slate-800 text-sm truncate">{ingName}</div>
-                    <div className={`text-xs mt-0.5 ${ingR?.className ?? "text-slate-600"}`}>
+                    <div className="text-emerald-100 text-sm truncate">{ingName}</div>
+                    <div className={`text-xs mt-0.5 ${ingR?.className ?? "text-emerald-200/40"}`}>
                       {ingR?.label ?? "—"}{" "}
-                      <span className="text-slate-600">
+                      <span className="text-emerald-200/40">
                         • {ingCraftable ? t.craftable : t.notCraftable}
                       </span>
                     </div>
                   </div>
 
-                  <div className="text-slate-800 font-semibold">x{ing.qty}</div>
+                  <div className="text-emerald-200 font-semibold">x{ing.qty}</div>
                 </div>
 
                 {ingCraftable && expanded.has(ing.itemId) && (
@@ -767,8 +767,8 @@ function ItemIcon({
       width={size}
       height={size}
       alt=""
-      className="rounded-xl backdrop-blur-md border border-emerald-500/20"
-      style={{ background: 'rgba(240, 253, 244, 0.5)' }}
+      className="rounded-xl backdrop-blur-md border border-emerald-300/15"
+      style={{ background: 'rgba(0, 0, 0, 0.2)' }}
       onError={() => {
         const it = itemsById?.get(itemId);
         const g = it?.gfxId ?? itemId;
