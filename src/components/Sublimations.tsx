@@ -260,7 +260,7 @@ const filteredRunes = useMemo(() => {
                     {rune.obtenation && rune.obtenation.name && (
                       <>
                         <LocalImage
-                          src={rune.obtenation.localIcon.replace('/icons/', '/data/icons/')}
+                          src={rune.obtenation.localIcon}
                           alt=""
                           className="w-7 h-7 rounded bg-slate-700"
                         />
