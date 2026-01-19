@@ -6,7 +6,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Critical Hit",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -40,7 +40,7 @@
       "R",
       "R"
     ],
-    "description": "[X]% Damage Inflicted on aligned targets 2 or more cells away from the state bearer",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -74,7 +74,7 @@
       "R",
       "G"
     ],
-    "description": "-20 Force of Will. Reduces the next AP loss suffered by 1, [X] time(s). The effect is reapplied every turn",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Mythic"
     ],
@@ -106,7 +106,7 @@
       "R",
       "B"
     ],
-    "description": "If the state bearer does not have any armor at end of turn: [X]% of level as Armor",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -140,7 +140,7 @@
       "R",
       "R"
     ],
-    "description": "Ending a turn adjacent to an enemy applies -[X]% Armor received to it (1 turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -174,7 +174,7 @@
       "R",
       "G"
     ],
-    "description": "Heal: [X]% of HP lost of the caster on killing an enemy (2 activations per turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -207,7 +207,7 @@
       "G",
       "R"
     ],
-    "description": "-10% Damage inflicted with a weapon. When inflicting damage on an enemy with a two-handed weapon: Steals [X]% of level in Lock (1 turn not stackable)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -241,7 +241,7 @@
       "B",
       "B"
     ],
-    "description": "When inflicting damage on an enemy with a weapon: That enemy reduces their damage on the state bearer by -[X] % (1 turn not stackable) The state bearer must have a shield equipped",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -274,7 +274,7 @@
       "G",
       "R"
     ],
-    "description": "When the state bearer suffers direct close-combat damage once per turn of the attacker: The state bearer inflicts light damage on the attacker ([X]% of level)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -308,7 +308,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% Heals performed on an ally adjacent to another ally",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -342,7 +342,7 @@
       "R",
       "B"
     ],
-    "description": "When the state bearer starts their turn with all their WP (or all their QB): [X]% Critical Hit (1 turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -375,7 +375,7 @@
       "B",
       "R"
     ],
-    "description": "-10% Heals performed. The state bearer is healed by [X] % of heals performed on their allies",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -409,7 +409,7 @@
       "G",
       "B"
     ],
-    "description": "The first critical hit in the turn inflicts [X]% additional damageThe following ones inflict -[Y]% less damage",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -447,7 +447,7 @@
       "G",
       "R"
     ],
-    "description": "When ending turn with less than 50% HP: Heals: [X] % of missing HP",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -481,7 +481,7 @@
       "R",
       "B"
     ],
-    "description": "At the start of the first turn if secondary masteries are <= 0: [X] max WP and [X] Range -[Y]% Armor given and received",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Mythic"
     ],
@@ -518,7 +518,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% non-critical damage and heals inflicted -[X]% critical damage and heals inflicted",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -552,7 +552,7 @@
       "B",
       "R"
     ],
-    "description": "When the state bearer starts their turn with 50% or less of their WP (or their QB): [X]% Critical Damage inflicted (1 turn) [Y]% of level as Armor",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -591,7 +591,7 @@
       "B",
       "R"
     ],
-    "description": "If no other shield dagger or two-handed weapon is equipped at start of fight: [X]% of level in Elemental Mastery [Y]% of Damage inflicted on a target with Armor",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -630,7 +630,7 @@
       "B",
       "G"
     ],
-    "description": "When the state bearer suffers direct close-combat damage once per turn of the attacker: The state bearer turns toward them.",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -657,7 +657,7 @@
       "R",
       "G"
     ],
-    "description": "Heal [X]% of max HP when below 20% max hp (once per fight)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -691,7 +691,7 @@
       "B",
       "R"
     ],
-    "description": "At start of fight: [X]% of level as Dodge",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -725,7 +725,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% DMG inflicted on targets exactly 3 cells away",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -759,7 +759,7 @@
       "G",
       "R"
     ],
-    "description": "At start of fight: [X]% of level as Lock",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -793,7 +793,7 @@
       "R",
       "B"
     ],
-    "description": "At start of turn: Converts [X]% of current HP into Armor",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -827,7 +827,7 @@
       "G",
       "R"
     ],
-    "description": "-20% Heals received. When the bearer inflicts damage in a diagonal line: Steals [X]% of damage inflicted",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -861,7 +861,7 @@
       "B",
       "B"
     ],
-    "description": "Recover [X] AP when you cause an enemy to lose Armor (2 activations per turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Mythic"
     ],
@@ -893,7 +893,7 @@
       "B",
       "B"
     ],
-    "description": "[X]% Armor given",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -927,7 +927,7 @@
       "B",
       "G"
     ],
-    "description": "When the bearer removes all of a target's armor: [X]% damage inflicted for the rest of the turn 30% maximum",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -961,7 +961,7 @@
       "G",
       "G"
     ],
-    "description": "Each time indirect dmg inflicted: -[X]% Direct dmg +[X]% Indirect DMG (Max 40%)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -995,7 +995,7 @@
       "B",
       "G"
     ],
-    "description": "Outside of your turn: [X] FoW. During your turn: -[Y] FoW",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1034,7 +1034,7 @@
       "G",
       "B"
     ],
-    "description": "-20% Heals performed. For each turn without performing heals: [X]% Heals performed Stackable up to 40%",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1068,7 +1068,7 @@
       "G",
       "R"
     ],
-    "description": "Reduces direct damage received greater than 20% of max HP by 400% of level (once per round)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -1095,7 +1095,7 @@
       "G",
       "B"
     ],
-    "description": "At end of turn if the state bearer has 2 or more AP: [X] Elemental Resistance (1 turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Mythic"
     ],
@@ -1127,7 +1127,7 @@
       "B",
       "G"
     ],
-    "description": "At start of fight: [X]% Block (1 turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1161,7 +1161,7 @@
       "G",
       "G"
     ],
-    "description": "When you inflict direct dmg. Once per turn: Inflict [X]% of level as Light damage on enemies aligned with the target",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1195,7 +1195,7 @@
       "G",
       "G"
     ],
-    "description": "1 mp After dodging with loss ([X] max per turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Mythic"
     ],
@@ -1227,7 +1227,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Damage from behind -[Y]% frontal and side Damage",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1266,7 +1266,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Armor given to an aligned ally at a distance",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1300,7 +1300,7 @@
       "R",
       "G"
     ],
-    "description": "Gains [X]% of level as Flaming on killing an enemy (1 activation per turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -1333,7 +1333,7 @@
       "G",
       "B"
     ],
-    "description": "-10% Damage inflicted with a weapon. When inflicting damage on an enemy with a two-handed weapon: Steals [X]% of level in Dodge (1 turn not stackable)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1367,7 +1367,7 @@
       "B",
       "R"
     ],
-    "description": "Receive [X]% of max HP as Armor when below 20% max hp (once per fight)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1401,7 +1401,7 @@
       "R",
       "R"
     ],
-    "description": "Regains [X]% of max HP as Armor by killing an enemy (2 activations per turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Mythic"
     ],
@@ -1433,7 +1433,7 @@
       "G",
       "R"
     ],
-    "description": "When you cause an enemy to lose armor: inflict [X]% of level as dmg on the target. (2 activations per turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -1466,7 +1466,7 @@
       "G",
       "B"
     ],
-    "description": " + [X]% Water dmg when casting a fire/air/earth spell. Stacks up to 30%. consumed on next direct Water dmg.",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1500,7 +1500,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Earth DMG",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1534,7 +1534,7 @@
       "R",
       "G"
     ],
-    "description": " + [X]% Fire dmg when casting a water/air/earth spell. Stacks up to 30%. consumed on next direct Fire dmg.",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1568,7 +1568,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Air DMG",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1602,7 +1602,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Water DMG",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1636,7 +1636,7 @@
       "B",
       "R"
     ],
-    "description": " + [X]% Earth dmg when casting a fire/air/water spell. Stacks up to 30%. consumed on next direct Earth dmg.",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1670,7 +1670,7 @@
       "G",
       "G"
     ],
-    "description": " + [X]% Air dmg when casting a fire/water/earth spell. Stacks up to 30%. consumed on next direct Air dmg.",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1704,7 +1704,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% Fire DMG",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1738,7 +1738,7 @@
       "R",
       "B"
     ],
-    "description": "After suffering a loss of 2 MP: [X] Force of Will (3 turns)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -1771,7 +1771,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% to characteristic bonuses received. Affects all characteristic bonuses (Masteries Resistances Armor) received in combat and cast by an entity other than the state bearer.The value is always rounded down.",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1805,7 +1805,7 @@
       "R",
       "G"
     ],
-    "description": "Recovers [X] MP on killing an enemy (2 activations per turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Mythic"
     ],
@@ -1837,7 +1837,7 @@
       "R",
       "R"
     ],
-    "description": "[X]% Indirect Damage",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1871,7 +1871,7 @@
       "G",
       "B"
     ],
-    "description": "Receive [X] Resistances when below 20% max hp (once per fight)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1905,7 +1905,7 @@
       "R",
       "G"
     ],
-    "description": "Increases Health Steals performed by [X]%",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1939,7 +1939,7 @@
       "G",
       "R"
     ],
-    "description": "Even turns: [X] Force of Will. Odd turns: -[X] Force of Will",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -1972,7 +1972,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Damage inflicted in a diagonal line",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2006,7 +2006,7 @@
       "B",
       "B"
     ],
-    "description": "- 1 WP max. + 1 wp at end of turn if you did not spend any WP during the turn",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -2033,7 +2033,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Critical Hit -[X]% Damage and Heals",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2066,7 +2066,7 @@
       "B",
       "G"
     ],
-    "description": " On the state bearer's first turn:1 WP (non-regenerable)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -2093,7 +2093,7 @@
       "B",
       "R"
     ],
-    "description": "[X]% Damage Inflicted on targets in close combat",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2127,7 +2127,7 @@
       "G",
       "R"
     ],
-    "description": "- [X]% indirect Damage received",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Mythic"
     ],
@@ -2159,7 +2159,7 @@
       "G",
       "G"
     ],
-    "description": "[X]% Critical Hits per turn (max 30)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2193,7 +2193,7 @@
       "R",
       "R"
     ],
-    "description": "-15% Damage inflicted. At start of turn: 25% Damage inflicted if a single enemy was hit the previous turn",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -2220,7 +2220,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Heals performed on an aligned ally at a distance",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2254,7 +2254,7 @@
       "B",
       "G"
     ],
-    "description": "[X] Damage inflicted with a Weapon. When inflicting damage on an enemy with a two-handed weapon: Incurable (level: AP cost of the weapon) on the enemy and state bearer",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2288,7 +2288,7 @@
       "R",
       "G"
     ],
-    "description": "Melee damage removes [X]% of level in Armor from the target -[Y]% Armor received",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2327,7 +2327,7 @@
       "G",
       "B"
     ],
-    "description": "[X]% Damage from behind on even turns. [X]% frontal Damage on odd turns",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2361,7 +2361,7 @@
       "B",
       "R"
     ],
-    "description": "-20 Force of Will. Reduces the next MP loss suffered by 1, [X] time(s). The effect is reapplied every turn",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Mythic"
     ],
@@ -2393,7 +2393,7 @@
       "B",
       "B"
     ],
-    "description": "When HP are at less than 50%: [X]% of level as Lock",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2427,7 +2427,7 @@
       "B",
       "B"
     ],
-    "description": "1 AP [X] Elemental Resistance",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2460,7 +2460,7 @@
       "R",
       "B"
     ],
-    "description": "- [X]% to characterstic penalties received. Affects all characterstic penalties (Masteries, Resitances, Armor, Critical Hits, etc.) received in combat and cast by an entity other than the state bearer. The value is always rounded down.",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2494,7 +2494,7 @@
       "B",
       "G"
     ],
-    "description": "When HP are at less than 50%: [X]% of level as Dodge",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2528,7 +2528,7 @@
       "B",
       "B"
     ],
-    "description": "1 WP [X] Force of Will",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 3.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2562,7 +2562,7 @@
       "B",
       "B"
     ],
-    "description": "-50 Elemental Resistance, -15% Damage received during a Block",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -2589,7 +2589,7 @@
       "G",
       "R"
     ],
-    "description": "Reduces Ranged Damage suffered by 50% of level [X] times per turn",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2623,7 +2623,7 @@
       "G",
       "G"
     ],
-    "description": "1 Range [X] Lock [X] Dodge",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2656,7 +2656,7 @@
       "B",
       "G"
     ],
-    "description": "At start of fight [X]% of level as Armor",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2690,7 +2690,7 @@
       "G",
       "B"
     ],
-    "description": "Reduces Melee Damage suffered by 50% of level [X] times per turn",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2724,7 +2724,7 @@
       "R",
       "R"
     ],
-    "description": "1 MP [X]% Damage inflicted",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2757,7 +2757,7 @@
       "R",
       "G"
     ],
-    "description": "[X]% Blocks per turn (max 40)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Mythic"
     ],
@@ -2789,7 +2789,7 @@
       "G",
       "B"
     ],
-    "description": "At the start of combat :Any Dodge by the state bearer is converted into Armor, at a rate 1 to [X].Converted Dodge is lost.",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 3.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2823,7 +2823,7 @@
       "R",
       "R"
     ],
-    "description": "20% indirect Damage in even rounds",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -2850,7 +2850,7 @@
       "G",
       "B"
     ],
-    "description": "-20% Damage inflicted. At start of turn:10% Damage inflicted per enemy hit in the previous turn.",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -2877,7 +2877,7 @@
       "G",
       "B"
     ],
-    "description": "When HP are at less than 50%: [X]% Block",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2911,7 +2911,7 @@
       "B",
       "G"
     ],
-    "description": "At start of fight: [X]% Critical Hit (1 turn) of [X]% level as Critical Mastery (1 turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2945,7 +2945,7 @@
       "G",
       "B"
     ],
-    "description": "-15% Damage inflicted. At start of turn: 5% Damage inflicted per entity hit in the previous turn.",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -2972,7 +2972,7 @@
       "B",
       "R"
     ],
-    "description": "When healing an ally, if the ally has less than 15% HP: Heal Ally: [X]% of HP max of the target enemy",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -3005,7 +3005,7 @@
       "B",
       "R"
     ],
-    "description": "After suffering a loss of 3 AP: [X] Force of Will (3 turns)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 3.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3039,7 +3039,7 @@
       "R",
       "R"
     ],
-    "description": "At end of turn: Unused AP are carried over to the next turn Max [X] AP",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Mythic"
     ],
@@ -3071,7 +3071,7 @@
       "G",
       "G"
     ],
-    "description": "At start of fight: All Masteries: [X]% of level. All Resistances: [Y]",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3110,7 +3110,7 @@
       "B",
       "G"
     ],
-    "description": "If there are no allies 1 to 4 cells from the bearer: [X]% Damage Inflicted",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3144,7 +3144,7 @@
       "R",
       "B"
     ],
-    "description": "After suffering a loss of 3 MP: [X] Force of Will (3 turns)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 3.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3178,7 +3178,7 @@
       "B",
       "R"
     ],
-    "description": "[X]% Armor received",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3212,7 +3212,7 @@
       "B",
       "R"
     ],
-    "description": "Performing a Block gives Preparation (+[X] Lvl.)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3246,7 +3246,7 @@
       "B",
       "B"
     ],
-    "description": "At start of fight: Reduces Healing Mastery to 0. 10% Heals performed",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -3273,7 +3273,7 @@
       "G",
       "G"
     ],
-    "description": "At end of turn if a critical hit was performed: Heal: [X]% of HP lost of the caster",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3307,7 +3307,7 @@
       "R",
       "G"
     ],
-    "description": "Recovers [X] AP on killing an enemy (2 activations per turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Mythic"
     ],
@@ -3339,7 +3339,7 @@
       "R",
       "G"
     ],
-    "description": "When HP are above 90%: [X]% of level in Elemental Mastery",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3373,7 +3373,7 @@
       "B",
       "B"
     ],
-    "description": "At end of turn: 50% of unused MP are carried over to the next turn Max [X] MP",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -3406,7 +3406,7 @@
       "G",
       "G"
     ],
-    "description": "When HP are at less than 50%: [X]% Critical Hit",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3440,7 +3440,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% health points (bonus on HP modifier)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3474,7 +3474,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% Damage Inflicted on targets 2 cells away (1 cell between the state bearer and the target)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3508,7 +3508,7 @@
       "G",
       "G"
     ],
-    "description": "At start of fight: [X]% Critical Hit [X]% Block [X] Force of Will",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Mythic"
     ],
@@ -3540,7 +3540,7 @@
       "B",
       "R"
     ],
-    "description": "After suffering a loss of 2 AP: [X] Force of Will (3 turns)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -3573,7 +3573,7 @@
       "G",
       "R"
     ],
-    "description": "At end of turn if the state bearer has 6 or more AP:60 Elemental Resistance (2 turns)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -3600,7 +3600,7 @@
       "G",
       "G"
     ],
-    "description": "If the bearer has no Armor: [X]% Armor given",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3634,7 +3634,7 @@
       "G",
       "R"
     ],
-    "description": "[X] Critical Resistance",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3668,7 +3668,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Block",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3702,7 +3702,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% DMG inflicted on targets 5 cells or further away",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3736,7 +3736,7 @@
       "B",
       "B"
     ],
-    "description": "-[X]% Damage received when the bearer is not in line of sight [Y]% Damage received when the bearer is in line of sight",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3775,7 +3775,7 @@
       "R",
       "G"
     ],
-    "description": "When HP are above 90%: [X]% Critical Hit",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3809,7 +3809,7 @@
       "G",
       "B"
     ],
-    "description": "[X]% Damage inflicted on a target with armor",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3843,7 +3843,7 @@
       "B",
       "G"
     ],
-    "description": "Regains 1 AP by removing 1 AP or MP from an enemy ([X] max per turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Mythic"
     ],
@@ -3875,7 +3875,7 @@
       "G",
       "R"
     ],
-    "description": "For each penalty or loss applied to an enemy: Blood strains +[X] lvls (Blood stains: [X]% dmg received by the caster. max 40%)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3909,7 +3909,7 @@
       "G",
       "B"
     ],
-    "description": "When HP are above 90%: [X]% Block",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3943,7 +3943,7 @@
       "G",
       "B"
     ],
-    "description": "Outside of your turn: -[X] FoW. During your turn: [Y] FoW",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3982,7 +3982,7 @@
       "R",
       "B"
     ],
-    "description": "If a non-critical hit is performed with an elemental spell: [X]% Critical Hit on the following turn",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4016,7 +4016,7 @@
       "G",
       "R"
     ],
-    "description": "As long as the bearer has no Armor: [X]% Damage inflicted",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4050,7 +4050,7 @@
       "B",
       "G"
     ],
-    "description": "Each time a non-critical spell is case: [X]% Critical Hit. Bonus is lost on next critical spell",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4084,7 +4084,7 @@
       "R",
       "R"
     ],
-    "description": "After locking an enemy: [X]% of level as Armor",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Mythic"
     ],
@@ -4116,7 +4116,7 @@
       "B",
       "R"
     ],
-    "description": "At start of turn if HP are above 90%: 1 MP",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -4143,7 +4143,7 @@
       "R",
       "G"
     ],
-    "description": "When you suffer ranged direct dmg: 6% extra DMG inflicted on the attacked. 1 turn Non stackable",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4177,7 +4177,7 @@
       "B",
       "R"
     ],
-    "description": "At end of turn, per enemy in close combat: [X]% DMG inflicted for the following turn.",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4211,7 +4211,7 @@
       "G",
       "G"
     ],
-    "description": "[X] Rear Resistance",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4245,7 +4245,7 @@
       "G",
       "B"
     ],
-    "description": "Each time a non-critical spell is cast: +[X]% Critical DMG (Stackable up to 40%). Bonus is lost on next critical spell",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4279,7 +4279,7 @@
       "G",
       "B"
     ],
-    "description": "At start of turn if HP are above 90%: [X] AP",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Mythic"
     ],
@@ -4306,7 +4306,7 @@
       "R",
       "G"
     ],
-    "description": "When performing a block on a direct enemy attack: [X]% damage inflicted (1 turn) -10% Block",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -4339,7 +4339,7 @@
       "G",
       "G"
     ],
-    "description": "[X]% critical damage inflicted if the target has > 50% HP -[X]% critical damage inflicted if the target has <= 50% HP",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4373,7 +4373,7 @@
       "G",
       "R"
     ],
-    "description": "At the start of the first turn if secondary masteries are <= 0: [X]% damage inflicted",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4407,7 +4407,7 @@
       "B",
       "G"
     ],
-    "description": "At the start of the first turn if secondary masteries are <= 0: [X]% Block",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4441,7 +4441,7 @@
       "B",
       "R"
     ],
-    "description": "When the bearer starts their turn below 20% HP: [X]% Damage inflicted (1 turn) [Y]% of level as armor",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4480,7 +4480,7 @@
       "R",
       "R"
     ],
-    "description": "Ending a turn adjacent to an enemy applies -[X]% Heals performed to it (1 turn)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4514,7 +4514,7 @@
       "G",
       "B"
     ],
-    "description": "If there are two or more allies 1 to 4 cells from the bearer: [X]% Damage Inflicted",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4548,7 +4548,7 @@
       "G",
       "G"
     ],
-    "description": "At start of fight: -[X] max WP. For each WP spent during the turn: [Y]% damage inflicted (1 turn) (max 30)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4587,7 +4587,7 @@
       "B",
       "R"
     ],
-    "description": "At the start of the first turn if secondary masteries are <= 0: [X]% Critical Hit",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4621,7 +4621,7 @@
       "G",
       "B"
     ],
-    "description": "-1 Range +[X]% of level as Lock and Dodge",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -4654,7 +4654,7 @@
       "G",
       "G"
     ],
-    "description": "Each time a critical hit is performed (5 activations per turn): Preparation (+[X] Lvl.)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4688,7 +4688,7 @@
       "R",
       "G"
     ],
-    "description": "[X]% Damage inflicted on targets without line of sight 3 or more cells away from the state bearer",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4722,7 +4722,7 @@
       "R",
       "B"
     ],
-    "description": "At start of turn if no WP were used during the previous turn: [X]% Damage inflicted [X]% Heals performed",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4756,7 +4756,7 @@
       "B",
       "B"
     ],
-    "description": "[X] max AP 75 Elemental Resistance",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -4789,7 +4789,7 @@
       "G",
       "B"
     ],
-    "description": "-1 max MP [X]% Damage inflicted",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 2.",
     "rarity": [
       "Rare",
       "Mythic"
@@ -4822,7 +4822,7 @@
       "R",
       "R"
     ],
-    "description": "At the start of combat per MP above 4: [X]% Damage inflicted (maximum 24)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 4.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4856,7 +4856,7 @@
       "R",
       "B"
     ],
-    "description": "At end of turn: Unused AP is carried over to the next turn as Critical Hit: 10% Critical Hit por AP (max [X] AP)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Mythic"
     ],
@@ -4888,7 +4888,7 @@
       "R",
       "G"
     ],
-    "description": "If the bearer uses a spell to move: Preparation + [X] lvl ([X]% damage inflicted on next damage)",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4922,7 +4922,7 @@
       "R",
       "B"
     ],
-    "description": "When inflicting single-target damage on an enemy: [X] extra damage infliced on this target on the next turn",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4956,7 +4956,7 @@
       "B",
       "G"
     ],
-    "description": "When single-target healing an ally: [X] extra heals performed on this target on the next turn",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4990,7 +4990,7 @@
       "R",
       "B"
     ],
-    "description": "At end of turn, if an enemy is adjacent: [X]% of damage inflicted for the following turn",
+    "description": "This scroll can be applied to a specific combination of sockets to add a single effect to an item. This effect can stack up to level 6.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -5022,7 +5022,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the highest Elemental Mastery is greater than the Healing Mastery:\n\n-15% damage inflicted\n30% heals performed",
+    "description": "This sublimation fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5047,7 +5047,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the highest Elemental Mastery is greater than Rear Mastery:\n\n-20% damage inflicted\n40% damage inflicted from behind",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5072,7 +5072,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the bearer has exactly 0 Range:\n\n+20% damage inflicted in melee and area of effect simultaneously",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5097,7 +5097,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, Elemental Masteries are set to 0.\n\n20% damage inflicted and heals performed",
+    "description": "This sublimation fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5122,7 +5122,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the bearer has more Block than Critical Hit:\n\nThe Block is converted into Critical Hit",
+    "description": "This sublimation fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5147,7 +5147,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has exactly 1 Range:\n\n15% damage inflicted and heals performed on targets that are 2, 3, or 4 cells away from the caster",
+    "description": "This sublimation fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5197,7 +5197,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat:\n20% damage inflicted and heals performed\n -30% elemental mastery in the 3 weakest elements",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5222,7 +5222,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 3 equal Elemental Masteries:\n\n20% damage inflicted and heals performed",
+    "description": "This sublimation fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5247,7 +5247,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 0 Healing Mastery or less:\n\n30% heals performed",
+    "description": "This sublimation fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5272,7 +5272,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has an odd number of AP:\n\n250% of level as Lock and Dodge",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5297,7 +5297,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 10 AP or less:\n\n15% damage inflicted\n10 Force of Will (if the character is at level 100 or greater)",
+    "description": "This sublimation fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5347,7 +5347,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 3 range or less:\n\n20 Force of Will",
+    "description": "This sublimation fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5372,7 +5372,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 40% Block or greater:\n\n10% Critical Hit\n10% damage inflicted on critical hit",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5447,7 +5447,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has less that 100% of their level as Dodge:\n\n15% damage inflicted as Berserk\n100% of level as Lock",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5497,7 +5497,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 50% Block or greater:\n\nBonus to HP modifier +30%\n-50% Armor Received",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5547,7 +5547,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, for the state bearer:\n\n-30% HP (penalty to the HP modifier)\n30% Heals and Armor from fighters received",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5572,7 +5572,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 10% Critical Hit or less:\n\n20% damage inflicted\n50 Critical Resistance",
+    "description": "This sublimation fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5622,7 +5622,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 1 Range or less:\n\n20% heals performed\n15% Armor Given and Received",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5647,7 +5647,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has at least 40% Critical Hit converts 100% of Critical Mastery to Elemental Mastery",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5672,7 +5672,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 8 WP or greater:\n\n10 Force of Will\n15% Block",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5697,7 +5697,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has a Dagger equipped:\n\n25% damage inflicted on targets hit from the front\n15% from the side\n-30% from behind",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5722,7 +5722,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the bearer has a Shield equipped:\n\n1 max MP\nPositive Range is set at 0",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5747,7 +5747,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "50 Elemental Resistance \n-200 Rear Resistance for the bearer at the start of combat.",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5768,11 +5768,11 @@
     ]
   },
   {
-    "name": "Wield type: two-handed",
+    "name": "Wield type: Two-handed",
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has a Two-Handed Weapon equipped ( maximum 12 AP before the sublimation effect):\n\n-2 max MP\n2 max AP",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
@@ -5797,7 +5797,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer has only used one element to cause damage during their turn:\nthey gain +20% Damage Inflicted and Heals performed in their other elements",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -5847,7 +5847,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn, with 6 WP or greater: \nAncestral Energy Bonus (Max. level: 3):\n4% Damage inflicted\r\n15 Elemental Resistance\n\nThe state is lost if the character starts their turn with less than 6 WP",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -5872,7 +5872,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Steals 25% of melee damage inflicted\n-100 Elemental Resistance",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -5897,7 +5897,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-50 Elemental Resistance If the state bearer takes damage from an enemy: \n100 Resistance in the damage element (1 turn)",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -5922,7 +5922,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the spell costs 4 AP or more:\r\n15% critical damage.\r\nIf the spell costs 1 WP or more:\r\n15% critical damage",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -5947,7 +5947,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "10% damage inflicted when the bearer meets certain conditions (these change each turn). \nTurn 1: The bearer is in melee or the spell is single-target \nTurn 2: The bearer is at a distance or the spell is single-target \nTurn 3: The bearer is at a distance or the spell is area-of-effect \nTurn 4: The bearer is in melee or the spell is area-of-effect",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -5972,7 +5972,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "25% to area-of-effect spell damage on the spell's direct target\n-25% to area-of-effect spell damage on other targets",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -5997,7 +5997,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer inflicted melee damage on an enemy during their turn: \n25% Ranged Damage Inflicted for the following turn",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6047,7 +6047,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At end of turn, per adjacent enemy: \n5% of max HP as Armor",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6072,7 +6072,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "15% damage inflicted by area-of-effect spells on targets in line with the state bearer",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6097,7 +6097,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "When the bearer heals an ally, 25% of healing is converted into Armor and 25% is lost",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6122,7 +6122,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer moves themself using a spell: \n1 AP (max 2 per turn)",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6147,7 +6147,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-10% Damage inflicted \nEvery 10 spells cast, the state bearer gains 100% Damage inflicted for the next spell \nSpells cast must cost at least 1 AP \nOnce the state is at level 10, the next spell gets the damage bonus",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6222,7 +6222,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "30% damage inflicted on targets 7 or more cells away \notherwise -15%",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6247,7 +6247,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Flaming (+15 Lvls.) (stackable) for the state bearer, for each damage spell received in melee. \n100% of level as Flaming at start of turn if no enemies are adjacent.",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6272,7 +6272,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-30% damage received during their own turn.",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6297,7 +6297,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer moves themself using a spell: \n1 MP (max 2 per turn)",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6322,7 +6322,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "In an uneven round: \nThe bearer inflicts 25% more damage, and suffers 15% of the damage they inflict",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6347,7 +6347,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer is moved outside of their turn:\napplies Stabilized at the end of their next turn",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6372,7 +6372,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the spell costs 1 WP or more:\r\n5% damage per current WP on the bearer (max. 6)",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6397,7 +6397,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Damage caused by the bearer's weapon is reduced by 20% and applies a poison (Light Weapon) for three turns (second hand excluded) based on the number of AP used by the weapon.",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6422,7 +6422,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "When suffering damage from the front and in melee, once per round: \n10% of missing HP as Armor 40% Armor given (1 turn)",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6447,7 +6447,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Odd turns, at start of turn: \n25% Damage inflicted -25% Heals performed and Armor given \n\nEven turns, at start of turn: \n25% Heals performed and Armor given -25% Damage inflicted",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6497,7 +6497,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "After taking damage: \n50 Elemental Resistance in this element (1 turn), not stackable\r\nA new element replaces the previous one",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6522,7 +6522,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "50 Elemental Resistance if the bearer has no Armor\notherwise -100 Elemental Resistance",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6547,7 +6547,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "For each movement, per MP used: \n+3% Block (max. 18) (1 turn) \n\nIf the state bearer performs a Block when it's not their turn: \nThe bonus is transformed into Critical Hits on the next turn",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6572,7 +6572,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-50 Elemental Resistance \nOnce per turn, when falling below 50% HP: \n1 MP\r\n15% Damage inflicted\r\n50 Elemental Resistance",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6597,7 +6597,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "100% of level in Barrier against long-range damage (permanent)",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6622,7 +6622,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn: \n3 Range 15% ranged damage 15% Heals performed \nThe bonus is lost the first time the character moves (MP) or at end of turn",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6647,7 +6647,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "30% of Armor given to allies who do not have Armor\n-50% Armor to allies who already have Armor",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6697,7 +6697,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "The first spell that inflicts damage this turn removes 30% Armor from the target",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6722,7 +6722,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn, if the bearer has no Armor: \n20% Damage inflicted (1 turn) \nOtherwise: -10% Damage inflicted (1 turn)",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6747,7 +6747,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "The state bearer increases their damage inflicted by 2% per turn (permanent) (max 20)",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6772,7 +6772,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Every 3 spells cast\nCritical Hit is set to 100",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6797,7 +6797,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "30% Block if the bearer did not receive healing in the previous turn.",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6822,7 +6822,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Each turn steals 50% of damage inflicted by the first spell that inflicts damage\n-50% Armor received",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6847,7 +6847,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Even Turn: \nAfter using a WP-based spell, the state bearer regains 2 AP (max of 1/turn). \n\nOdd Turn: \nAfter using a WP-based spell, the state bearer loses 2 AP (max 1/turn).",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6872,7 +6872,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "The state bearer increases their heals performed by 2% per turn (Permanent, max 20%)",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6897,7 +6897,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn if there are at least 2 enemies in melee: +1MP +1AP",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6922,7 +6922,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn if there are at least 2 allies in melee: +1MP +1AP",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6947,7 +6947,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "When performing a Block: -30% extra damage recieved -100% block",
+    "description": "This sublimation fits into a relic item to increase the wearer's stats.",
     "rarity": [
       "Relic"
     ],
@@ -6972,7 +6972,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if Critical Mastery is less than or equal to 0: 30% critical hit",
+    "description": "This rune fits into an epic item to increase the wearer's stats.",
     "rarity": [
       "Epic"
     ],
