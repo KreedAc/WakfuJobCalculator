@@ -119,13 +119,25 @@ const matchesEquipmentSlots = (equipSlots: [Slot, Slot, Slot, Slot], rune: Subli
   );
 };
 
-const filteredRunes = useMemo(() => {
+const normalizeText = (text: string) => {
+    return text
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+  };
+
+  const filteredRunes = useMemo(() => {
     return runes.filter(rune => {
       if (!rune.name) return false;
-      const nameMatch = rune.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const descMatch = rune.description && rune.description.toLowerCase().includes(searchTerm.toLowerCase());
 
-      const matchesSearch = nameMatch || descMatch;
+      const normalizedSearchTerm = normalizeText(searchTerm);
+      const normalizedName = normalizeText(rune.name);
+      const normalizedDesc = rune.description ? normalizeText(rune.description) : '';
+
+      const nameMatch = normalizedName.includes(normalizedSearchTerm);
+      const descMatch = normalizedDesc.includes(normalizedSearchTerm);
+
+      const matchesSearch = searchTerm === '' || nameMatch || descMatch;
       const matchesCategory = selectedCategory === t.allCategories || rune.category === selectedCategory;
 
       const matchesSlots = matchesEquipmentSlots(slotFilters, rune);
