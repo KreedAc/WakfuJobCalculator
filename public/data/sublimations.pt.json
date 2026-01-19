@@ -1,0 +1,6995 @@
+[
+  {
+    "name": "Influência",
+    "colors": [
+      "G",
+      "B",
+      "G"
+    ],
+    "description": "[X]% Critical Hit",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +3% Critical hit",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Runic Mimic",
+      "localIcon": "/icons/runic.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Extensão",
+    "colors": [
+      "B",
+      "R",
+      "R"
+    ],
+    "description": "[X]% Damage Inflicted on aligned targets 2 or more cells away from the state bearer",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% Damage Inflicted",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Runic Mimic",
+      "localIcon": "/icons/runic.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Reprovação",
+    "colors": [
+      "G",
+      "R",
+      "G"
+    ],
+    "description": "-20 Force of Will. Reduces the next AP loss suffered by 1, [X] time(s). The effect is reapplied every turn",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: reduces 1 more \"AP loss\" suffered ",
+    "maxLevel": 6,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Runic Mimic",
+      "localIcon": "/icons/runic.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Arcanos",
+    "colors": [
+      "B",
+      "R",
+      "B"
+    ],
+    "description": "If the state bearer does not have any armor at end of turn: [X]% of level as Armor",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +50% armor",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Tainela Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 50,
+        "increment": 50,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Mãozinha",
+    "colors": [
+      "G",
+      "R",
+      "R"
+    ],
+    "description": "Ending a turn adjacent to an enemy applies -[X]% Armor received to it (1 turn)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: -5% armor received",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Tainela Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Utility",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Volta Vital",
+    "colors": [
+      "G",
+      "R",
+      "G"
+    ],
+    "description": "Heal: [X]% of HP lost of the caster on killing an enemy (2 activations per turn)",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +10% HP",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Tainela Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 10,
+        "increment": 10,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Roubo de Bloqueio",
+    "colors": [
+      "G",
+      "G",
+      "R"
+    ],
+    "description": "-10% Damage inflicted with a weapon. When inflicting damage on an enemy with a two-handed weapon: Steals [X]% of level in Lock (1 turn not stackable)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: steals +15% of level in Lock",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Tainela Rift",
+      "localIcon": "icons/rift.png"
+    },
+    "category": "Utility",
+    "values": [
+      {
+        "base": 15,
+        "increment": 15,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Arma Sólida",
+    "colors": [
+      "B",
+      "B",
+      "B"
+    ],
+    "description": "When inflicting damage on an enemy with a weapon: That enemy reduces their damage on the state bearer by -[X] % (1 turn not stackable) The state bearer must have a shield equipped",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: reduces the DMG by another -5%",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Sufokia Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Contra-Ataque",
+    "colors": [
+      "R",
+      "G",
+      "R"
+    ],
+    "description": "When the state bearer suffers direct close-combat damage once per turn of the attacker: The state bearer inflicts light damage on the attacker ([X]% of level)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +10% of level DMG",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Sufokia Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 10,
+        "increment": 10,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Natureza",
+    "colors": [
+      "G",
+      "R",
+      "B"
+    ],
+    "description": "[X]% Heals performed on an ally adjacent to another ally",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% Heals",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Sufokia Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Influência do Wakfu",
+    "colors": [
+      "R",
+      "R",
+      "B"
+    ],
+    "description": "When the state bearer starts their turn with all their WP (or all their QB): [X]% Critical Hit (1 turn)",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +10% Critical Hit",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Sufokia Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 10,
+        "increment": 10,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Revigorada",
+    "colors": [
+      "G",
+      "B",
+      "R"
+    ],
+    "description": "-10% Heals performed. The state bearer is healed by [X] % of heals performed on their allies",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% healed",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Amakna Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Crítico Técnico",
+    "colors": [
+      "R",
+      "G",
+      "B"
+    ],
+    "description": "The first critical hit in the turn inflicts [X]% additional damageThe following ones inflict -[Y]% less damage",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +6% additional DMG -3% less DMG",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Amakna Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 6,
+        "increment": 6,
+        "placeholder": "X"
+      },
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "Y"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Precaução",
+    "colors": [
+      "R",
+      "G",
+      "R"
+    ],
+    "description": "When ending turn with less than 50% HP: Heals: [X] % of missing HP",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% of missing health",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Amakna Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Abandono",
+    "colors": [
+      "G",
+      "R",
+      "B"
+    ],
+    "description": "At the start of the first turn if secondary masteries are <= 0: [X] max WP and [X] Range -[Y]% Armor given and received",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: +1 max WP +1 Range -10% armor given/received",
+    "maxLevel": 6,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Amakna Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Utility",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": 10,
+        "increment": 10,
+        "placeholder": "Y"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Coragem",
+    "colors": [
+      "B",
+      "R",
+      "B"
+    ],
+    "description": "[X]% non-critical damage and heals inflicted -[X]% critical damage and heals inflicted",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% non-crit DMG/Heal. -2% crit DMG/Heal",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Frigost Rift",
+      "localIcon": "/icons/rift_ulti.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Wakfu Berserk",
+    "colors": [
+      "B",
+      "B",
+      "R"
+    ],
+    "description": "When the state bearer starts their turn with 50% or less of their WP (or their QB): [X]% Critical Damage inflicted (1 turn) [Y]% of level as Armor",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +3% Critical Damage +100% armor",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Frigost Rift",
+      "localIcon": "/icons/rift_ulti.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": 100,
+        "increment": 100,
+        "placeholder": "Y"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Especialista em Armas Leves",
+    "colors": [
+      "R",
+      "B",
+      "R"
+    ],
+    "description": "If no other shield dagger or two-handed weapon is equipped at start of fight: [X]% of level in Elemental Mastery [Y]% of Damage inflicted on a target with Armor",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +25% level of Elemental Mastery +2% Damage inflicted on a target with Armor",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Frigost Rift",
+      "localIcon": "/icons/rift_ulti.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 25,
+        "increment": 25,
+        "placeholder": "X"
+      },
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "Y"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Meia-Volta",
+    "colors": [
+      "B",
+      "B",
+      "G"
+    ],
+    "description": "When the state bearer suffers direct close-combat damage once per turn of the attacker: The state bearer turns toward them.",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Frigost Rift",
+      "localIcon": "/icons/rift_ulti.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Última Cura",
+    "colors": [
+      "G",
+      "R",
+      "G"
+    ],
+    "description": "Heal [X]% of max HP when below 20% max hp (once per fight)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: heal +5% of max HP",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Blackspore Dungeon",
+      "localIcon": "/icons/sugnuf.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Evasão",
+    "colors": [
+      "R",
+      "B",
+      "R"
+    ],
+    "description": "At start of fight: [X]% of level as Dodge",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +50% of level as Dodge",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Blackspore Dungeon",
+      "localIcon": "/icons/sugnuf.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 50,
+        "increment": 50,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Visão Intermediária",
+    "colors": [
+      "B",
+      "R",
+      "B"
+    ],
+    "description": "[X]% DMG inflicted on targets exactly 3 cells away",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +3% DMG",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Blackspore Dungeon",
+      "localIcon": "/icons/sugnuf.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Interceptação",
+    "colors": [
+      "R",
+      "G",
+      "R"
+    ],
+    "description": "At start of fight: [X]% of level as Lock",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +50% of level as Lock",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Dirty Trouffe Estate Dungeon",
+      "localIcon": "/icons/rascal.png"
+    },
+    "category": "Utility",
+    "values": [
+      {
+        "base": 50,
+        "increment": 50,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Carapaça Sanguínea",
+    "colors": [
+      "B",
+      "R",
+      "B"
+    ],
+    "description": "At start of turn: Converts [X]% of current HP into Armor",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +10% current HP converted",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Dirty Trouffe Estate Dungeon",
+      "localIcon": "/icons/rascal.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 10,
+        "increment": 10,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Loucura Vampírica",
+    "colors": [
+      "R",
+      "G",
+      "R"
+    ],
+    "description": "-20% Heals received. When the bearer inflicts damage in a diagonal line: Steals [X]% of damage inflicted",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% DMG stolen",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Dirty Trouffe Estate Dungeon",
+      "localIcon": "/icons/rascal.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Ruptura de PA",
+    "colors": [
+      "B",
+      "B",
+      "B"
+    ],
+    "description": "Recover [X] AP when you cause an enemy to lose Armor (2 activations per turn)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: Recovers +1 AP",
+    "maxLevel": 4,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Treechnid Dungeon",
+      "localIcon": "/icons/soft_oak.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Invólucro Rochoso",
+    "colors": [
+      "R",
+      "B",
+      "B"
+    ],
+    "description": "[X]% Armor given",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +3% Armor given",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Treechnid Dungeon",
+      "localIcon": "/icons/soft_oak.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Temeridade",
+    "colors": [
+      "B",
+      "B",
+      "G"
+    ],
+    "description": "When the bearer removes all of a target's armor: [X]% damage inflicted for the rest of the turn 30% maximum",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +3% DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Treechnid Dungeon",
+      "localIcon": "/icons/soft_oak.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Valor Adicionado",
+    "colors": [
+      "B",
+      "G",
+      "G"
+    ],
+    "description": "Each time indirect dmg inflicted: -[X]% Direct dmg +[X]% Indirect DMG (Max 40%)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: -2% Direct DMG +2% Indirect DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Great Zomkin's Compost Dungeon",
+      "localIcon": "/icons/culinary.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Vontade Indireta",
+    "colors": [
+      "G",
+      "B",
+      "G"
+    ],
+    "description": "Outside of your turn: [X] FoW. During your turn: -[Y] FoW",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +3 FoW outisde of turn. -4 FoW during turn",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Great Zomkin's Compost Dungeon",
+      "localIcon": "/icons/culinary.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "Y"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Acumulação",
+    "colors": [
+      "G",
+      "G",
+      "B"
+    ],
+    "description": "-20% Heals performed. For each turn without performing heals: [X]% Heals performed Stackable up to 40%",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Heals",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Great Zomkin's Compost Dungeon",
+      "localIcon": "/icons/culinary.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Solidez",
+    "colors": [
+      "R",
+      "G",
+      "R"
+    ],
+    "description": "Reduces direct damage received greater than 20% of max HP by 400% of level (once per round)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Lenald Palace Dungeon",
+      "localIcon": "/icons/lenald.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Tenacidade",
+    "colors": [
+      "G",
+      "G",
+      "B"
+    ],
+    "description": "At end of turn if the state bearer has 2 or more AP: [X] Elemental Resistance (1 turn)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: +25 Elemental Resistance",
+    "maxLevel": 4,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Lenald Palace Dungeon",
+      "localIcon": "/icons/lenald.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 25,
+        "increment": 25,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Evasão",
+    "colors": [
+      "B",
+      "B",
+      "G"
+    ],
+    "description": "At start of fight: [X]% Block (1 turn)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Block",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Kween's Gawden Dungeon",
+      "localIcon": "/icons/viziew.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Propagação",
+    "colors": [
+      "R",
+      "G",
+      "G"
+    ],
+    "description": "When you inflict direct dmg. Once per turn: Inflict [X]% of level as Light damage on enemies aligned with the target",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +10% of level as DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Kween's Gawden Dungeon",
+      "localIcon": "/icons/viziew.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 10,
+        "increment": 10,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Fugir",
+    "colors": [
+      "B",
+      "G",
+      "G"
+    ],
+    "description": "1 mp After dodging with loss ([X] max per turn)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: +1 max per turn",
+    "maxLevel": 6,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Kween's Gawden Dungeon",
+      "localIcon": "/icons/viziew.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Destruição",
+    "colors": [
+      "G",
+      "B",
+      "G"
+    ],
+    "description": "[X]% Damage from behind -[Y]% frontal and side Damage",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +3% Dmg behind -2% frontal/side DMG",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Bonta Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "Y"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Extensão da Armadura",
+    "colors": [
+      "R",
+      "B",
+      "G"
+    ],
+    "description": "[X]% Armor given to an aligned ally at a distance",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% Armor given",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Bonta Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Retorno das Chamas",
+    "colors": [
+      "R",
+      "R",
+      "G"
+    ],
+    "description": "Gains [X]% of level as Flaming on killing an enemy (1 activation per turn)",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +50% of lvl",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Bonta Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 50,
+        "increment": 50,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Roubo de Esquiva",
+    "colors": [
+      "G",
+      "G",
+      "B"
+    ],
+    "description": "-10% Damage inflicted with a weapon. When inflicting damage on an enemy with a two-handed weapon: Steals [X]% of level in Dodge (1 turn not stackable)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +15% of lvl in Dodge",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Bonta Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": 15,
+        "increment": 15,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Última Armadura",
+    "colors": [
+      "R",
+      "B",
+      "R"
+    ],
+    "description": "Receive [X]% of max HP as Armor when below 20% max hp (once per fight)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% of max HP as Armor",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Srambad Dungeon",
+      "localIcon": "/icons/srambad.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Retorno da Armadura",
+    "colors": [
+      "B",
+      "R",
+      "R"
+    ],
+    "description": "Regains [X]% of max HP as Armor by killing an enemy (2 activations per turn)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: +5% of max HP",
+    "maxLevel": 4,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Srambad Dungeon",
+      "localIcon": "/icons/srambad.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Ruptura Violenta",
+    "colors": [
+      "G",
+      "G",
+      "R"
+    ],
+    "description": "When you cause an enemy to lose armor: inflict [X]% of level as dmg on the target. (2 activations per turn)",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +10% of DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Srambad Dungeon",
+      "localIcon": "/icons/srambad.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 10,
+        "increment": 10,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Congelamento Secundário",
+    "colors": [
+      "G",
+      "G",
+      "B"
+    ],
+    "description": " + [X]% Water dmg when casting a fire/air/earth spell. Stacks up to 30%. consumed on next direct Water dmg.",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% Water DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Enurado Dungeon",
+      "localIcon": "/icons/enurado.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Telurismo",
+    "colors": [
+      "G",
+      "G",
+      "R"
+    ],
+    "description": "[X]% Earth DMG",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% Earth DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Enurado Dungeon",
+      "localIcon": "/icons/enurado.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Queimadura Secundária",
+    "colors": [
+      "R",
+      "R",
+      "G"
+    ],
+    "description": " + [X]% Fire dmg when casting a water/air/earth spell. Stacks up to 30%. consumed on next direct Fire dmg.",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% Fire DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Enurado Dungeon",
+      "localIcon": "/icons/enurado.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Ventilação",
+    "colors": [
+      "R",
+      "B",
+      "G"
+    ],
+    "description": "[X]% Air DMG",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% Air DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Enurado Dungeon",
+      "localIcon": "/icons/enurado.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Congelamento",
+    "colors": [
+      "B",
+      "B",
+      "G"
+    ],
+    "description": "[X]% Water DMG",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% Water DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Blopera Dungeon",
+      "localIcon": "/icons/blopera.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Telurismo Secundário",
+    "colors": [
+      "B",
+      "B",
+      "R"
+    ],
+    "description": " + [X]% Earth dmg when casting a fire/air/water spell. Stacks up to 30%. consumed on next direct Earth dmg.",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% Earth DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Blopera Dungeon",
+      "localIcon": "/icons/blopera.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Ventilação Secundária",
+    "colors": [
+      "R",
+      "G",
+      "G"
+    ],
+    "description": " + [X]% Air dmg when casting a fire/water/earth spell. Stacks up to 30%. consumed on next direct Air dmg.",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% Air DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Blopera Dungeon",
+      "localIcon": "/icons/blopera.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Queimadura",
+    "colors": [
+      "R",
+      "R",
+      "B"
+    ],
+    "description": "[X]% Fire DMG",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% Fire DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Blopera Dungeon",
+      "localIcon": "/icons/blopera.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Desenvoltura",
+    "colors": [
+      "B",
+      "R",
+      "B"
+    ],
+    "description": "After suffering a loss of 2 MP: [X] Force of Will (3 turns)",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +5 Force of Will",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Wellspring of Evil Dungeon",
+      "localIcon": "/icons/bulbrute.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Prosperidade",
+    "colors": [
+      "G",
+      "R",
+      "B"
+    ],
+    "description": "[X]% to characteristic bonuses received. Affects all characteristic bonuses (Masteries Resistances Armor) received in combat and cast by an entity other than the state bearer.The value is always rounded down.",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +3% to characteristic bonuses",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Wellspring of Evil Dungeon",
+      "localIcon": "/icons/bulbrute.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Volta PM",
+    "colors": [
+      "B",
+      "R",
+      "G"
+    ],
+    "description": "Recovers [X] MP on killing an enemy (2 activations per turn)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: +1 MP",
+    "maxLevel": 4,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Wellspring of Evil Dungeon",
+      "localIcon": "/icons/bulbrute.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Ruína",
+    "colors": [
+      "R",
+      "R",
+      "R"
+    ],
+    "description": "[X]% Indirect Damage",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Indirect Damage",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Sandyoptera Mother-Hive Dungeon",
+      "localIcon": "/icons/sandy.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Últimas Resistências",
+    "colors": [
+      "B",
+      "G",
+      "B"
+    ],
+    "description": "Receive [X] Resistances when below 20% max hp (once per fight)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +20 Resistances",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Sandyoptera Mother-Hive Dungeon",
+      "localIcon": "/icons/sandy.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 20,
+        "increment": 20,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Poço de Vitalidade",
+    "colors": [
+      "G",
+      "R",
+      "G"
+    ],
+    "description": "Increases Health Steals performed by [X]%",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Health Steals",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Sandyoptera Mother-Hive Dungeon",
+      "localIcon": "/icons/sandy.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Ciclotimia",
+    "colors": [
+      "B",
+      "G",
+      "R"
+    ],
+    "description": "Even turns: [X] Force of Will. Odd turns: -[X] Force of Will",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +10 FoW Even turns. -10 FoW Odd turns",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Womewo's Labowatowy Dungeon",
+      "localIcon": "/icons/womewo.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": 10,
+        "increment": 10,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Loucura",
+    "colors": [
+      "R",
+      "G",
+      "R"
+    ],
+    "description": "[X]% Damage inflicted in a diagonal line",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +6% DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Womewo's Labowatowy Dungeon",
+      "localIcon": "/icons/womewo.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 6,
+        "increment": 6,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Salvaguarda do Wakfu",
+    "colors": [
+      "R",
+      "B",
+      "B"
+    ],
+    "description": "- 1 WP max. + 1 wp at end of turn if you did not spend any WP during the turn",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Womewo's Labowatowy Dungeon",
+      "localIcon": "/icons/womewo.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Teoria da Matéria",
+    "colors": [
+      "B",
+      "G",
+      "R"
+    ],
+    "description": "[X]% Critical Hit -[X]% Damage and Heals",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +50% Crit/ -50% DMG and Heals",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Mecha Factory Dungeon",
+      "localIcon": "/icons/vertox.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 50,
+        "increment": 50,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Dimensionalidade",
+    "colors": [
+      "R",
+      "B",
+      "G"
+    ],
+    "description": " On the state bearer's first turn:1 WP (non-regenerable)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Mecha Factory Dungeon",
+      "localIcon": "/icons/vertox.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Emboscada",
+    "colors": [
+      "B",
+      "B",
+      "R"
+    ],
+    "description": "[X]% Damage Inflicted on targets in close combat",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% Damage Inflicted",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Mecha Factory Dungeon",
+      "localIcon": "/icons/vertox.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Determinação",
+    "colors": [
+      "G",
+      "G",
+      "R"
+    ],
+    "description": "- [X]% indirect Damage received",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: -15% Indirect Damage received",
+    "maxLevel": 4,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Ow El Dungeon",
+      "localIcon": "/icons/robowl.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 15,
+        "increment": 15,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Influência Lenta",
+    "colors": [
+      "R",
+      "G",
+      "G"
+    ],
+    "description": "[X]% Critical Hits per turn (max 30)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +1% Critical Hits per turn",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ow El Dungeon",
+      "localIcon": "/icons/robowl.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Focalização",
+    "colors": [
+      "G",
+      "R",
+      "R"
+    ],
+    "description": "-15% Damage inflicted. At start of turn: 25% Damage inflicted if a single enemy was hit the previous turn",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Ow El Dungeon",
+      "localIcon": "/icons/robowl.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Altruísmo",
+    "colors": [
+      "B",
+      "G",
+      "R"
+    ],
+    "description": "[X]% Heals performed on an aligned ally at a distance",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% Heals",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Moon Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Arma Envenenada",
+    "colors": [
+      "B",
+      "B",
+      "G"
+    ],
+    "description": "[X] Damage inflicted with a Weapon. When inflicting damage on an enemy with a two-handed weapon: Incurable (level: AP cost of the weapon) on the enemy and state bearer",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% DMG infliected with weapon",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Moon Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": -20,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Mania",
+    "colors": [
+      "B",
+      "R",
+      "G"
+    ],
+    "description": "Melee damage removes [X]% of level in Armor from the target -[Y]% Armor received",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +50% of lvl in Armor removed. -3% armor received",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Moon Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 50,
+        "increment": 50,
+        "placeholder": "X"
+      },
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "Y"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Relações Sociais",
+    "colors": [
+      "B",
+      "G",
+      "B"
+    ],
+    "description": "[X]% Damage from behind on even turns. [X]% frontal Damage on odd turns",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% on both effects",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Moon Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Clamor",
+    "colors": [
+      "G",
+      "B",
+      "R"
+    ],
+    "description": "-20 Force of Will. Reduces the next MP loss suffered by 1, [X] time(s). The effect is reapplied every turn",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: reduces 1 more \"MP loss\" suffered ",
+    "maxLevel": 6,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Crocodyl Dungeon",
+      "localIcon": "/icons/nyl.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Bloqueio Berserk",
+    "colors": [
+      "B",
+      "B",
+      "B"
+    ],
+    "description": "When HP are at less than 50%: [X]% of level as Lock",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +50% of lvl as Lock",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Crocodyl Dungeon",
+      "localIcon": "/icons/nyl.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 50,
+        "increment": 50,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Vivacidade",
+    "colors": [
+      "R",
+      "B",
+      "B"
+    ],
+    "description": "1 AP [X] Elemental Resistance",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +75 resistances",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Crocodyl Dungeon",
+      "localIcon": "/icons/nyl.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": -150,
+        "increment": 75,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Resistência",
+    "colors": [
+      "G",
+      "R",
+      "B"
+    ],
+    "description": "- [X]% to characterstic penalties received. Affects all characterstic penalties (Masteries, Resitances, Armor, Critical Hits, etc.) received in combat and cast by an entity other than the state bearer. The value is always rounded down.",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: -5% ",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Kannivore Dungeon",
+      "localIcon": "/icons/grozepin.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Esquiva Berserk",
+    "colors": [
+      "B",
+      "B",
+      "G"
+    ],
+    "description": "When HP are at less than 50%: [X]% of level as Dodge",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +50% of lvl as Dodge",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Kannivore Dungeon",
+      "localIcon": "/icons/grozepin.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 50,
+        "increment": 50,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Devastação",
+    "colors": [
+      "B",
+      "B",
+      "B"
+    ],
+    "description": "1 WP [X] Force of Will",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +10 Force of Will",
+    "maxLevel": 3,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Kannivore Dungeon",
+      "localIcon": "/icons/grozepin.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": -30,
+        "increment": 10,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Especialista em Paradas",
+    "colors": [
+      "G",
+      "B",
+      "B"
+    ],
+    "description": "-50 Elemental Resistance, -15% Damage received during a Block",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Kanniball Dungeon",
+      "localIcon": "/icons/kanniball.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Barreira a Distância",
+    "colors": [
+      "G",
+      "G",
+      "R"
+    ],
+    "description": "Reduces Ranged Damage suffered by 50% of level [X] times per turn",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: + 2 times per turn",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Kanniball Dungeon",
+      "localIcon": "/icons/kanniball.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Visibilidade",
+    "colors": [
+      "B",
+      "G",
+      "G"
+    ],
+    "description": "1 Range [X] Lock [X] Dodge",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +150 Lock + 150 Dodge",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Kanniball Dungeon",
+      "localIcon": "/icons/kanniball.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": -300,
+        "increment": 150,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Muralha",
+    "colors": [
+      "R",
+      "B",
+      "G"
+    ],
+    "description": "At start of fight [X]% of level as Armor",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +150% of lvl as Armor",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Tropickle Dungeon",
+      "localIcon": "/icons/koko.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 150,
+        "increment": 150,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Barreira Curta Distância",
+    "colors": [
+      "G",
+      "G",
+      "B"
+    ],
+    "description": "Reduces Melee Damage suffered by 50% of level [X] times per turn",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: + 2 times per turn",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Tropickle Dungeon",
+      "localIcon": "/icons/koko.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Presteza",
+    "colors": [
+      "G",
+      "R",
+      "R"
+    ],
+    "description": "1 MP [X]% Damage inflicted",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +10% DMG inflicted",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Tropickle Dungeon",
+      "localIcon": "/icons/koko.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": -20,
+        "increment": 10,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Evasão Lenta",
+    "colors": [
+      "R",
+      "R",
+      "G"
+    ],
+    "description": "[X]% Blocks per turn (max 40)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional level: +3% Blocks",
+    "maxLevel": 4,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "1 Steles - Forbidden City Dungeon",
+      "localIcon": "/icons/pandora.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Topologia",
+    "colors": [
+      "B",
+      "G",
+      "B"
+    ],
+    "description": "At the start of combat :Any Dodge by the state bearer is converted into Armor, at a rate 1 to [X].Converted Dodge is lost.",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: the Armor gained increases by 100%",
+    "maxLevel": 3,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "2 Steles - Forbidden City Dungeon",
+      "localIcon": "/icons/pandora.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Ruína Cíclica",
+    "colors": [
+      "R",
+      "R",
+      "R"
+    ],
+    "description": "20% indirect Damage in even rounds",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "3 Steles - Forbidden City Dungeon",
+      "localIcon": "/icons/pandora.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Frenesi",
+    "colors": [
+      "R",
+      "G",
+      "B"
+    ],
+    "description": "-20% Damage inflicted. At start of turn:10% Damage inflicted per enemy hit in the previous turn.",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "1 Agua Stele - Any lvl 200 Zinith Dungeon",
+      "localIcon": "/icons/agua.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Parada Berserk",
+    "colors": [
+      "B",
+      "G",
+      "B"
+    ],
+    "description": "When HP are at less than 50%: [X]% Block",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Block",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Badgerox's Lair Dungeon",
+      "localIcon": "/icons/badger.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Espanto",
+    "colors": [
+      "G",
+      "B",
+      "G"
+    ],
+    "description": "At start of fight: [X]% Critical Hit (1 turn) of [X]% level as Critical Mastery (1 turn)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% for both effects",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Badgerox's Lair Dungeon",
+      "localIcon": "/icons/badger.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Raiva",
+    "colors": [
+      "R",
+      "G",
+      "B"
+    ],
+    "description": "-15% Damage inflicted. At start of turn: 5% Damage inflicted per entity hit in the previous turn.",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Badgerox's Lair Dungeon",
+      "localIcon": "/icons/badger.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Integridade",
+    "colors": [
+      "B",
+      "B",
+      "R"
+    ],
+    "description": "When healing an ally, if the ally has less than 15% HP: Heal Ally: [X]% of HP max of the target enemy",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: Heal Ally +7% of HP Max of target",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "2 Steles Aguabrial - Badgerox's Lair Dungeon",
+      "localIcon": "/icons/badger.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": 7,
+        "increment": 7,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Firmeza",
+    "colors": [
+      "R",
+      "B",
+      "R"
+    ],
+    "description": "After suffering a loss of 3 AP: [X] Force of Will (3 turns)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +10 FoW",
+    "maxLevel": 3,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Or'Hodruin  Dungeon",
+      "localIcon": "/icons/sorhon.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 10,
+        "increment": 10,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Salvaguarda",
+    "colors": [
+      "B",
+      "R",
+      "R"
+    ],
+    "description": "At end of turn: Unused AP are carried over to the next turn Max [X] AP",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: +1 AP max",
+    "maxLevel": 6,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Or'Hodruin  Dungeon",
+      "localIcon": "/icons/sorhon.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Assolação",
+    "colors": [
+      "G",
+      "G",
+      "G"
+    ],
+    "description": "At start of fight: All Masteries: [X]% of level. All Resistances: [Y]",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% of level Masteries +3 resis",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Or'Hodruin  Dungeon",
+      "localIcon": "/icons/sorhon.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "Y"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Lobo Solitário",
+    "colors": [
+      "R",
+      "B",
+      "G"
+    ],
+    "description": "If there are no allies 1 to 4 cells from the bearer: [X]% Damage Inflicted",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "2 Steles Aguabrial - Or'Hodruin  Dungeon",
+      "localIcon": "/icons/agua.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Leveza",
+    "colors": [
+      "B",
+      "R",
+      "B"
+    ],
+    "description": "After suffering a loss of 3 MP: [X] Force of Will (3 turns)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +10 FoW",
+    "maxLevel": 3,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Dreggons' Sanctuary Dungeon",
+      "localIcon": "/icons/egg.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 10,
+        "increment": 10,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Escamas de Lua",
+    "colors": [
+      "G",
+      "B",
+      "R"
+    ],
+    "description": "[X]% Armor received",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +3% Armor received",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Dreggons' Sanctuary Dungeon",
+      "localIcon": "/icons/egg.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Espinhos",
+    "colors": [
+      "B",
+      "B",
+      "R"
+    ],
+    "description": "Performing a Block gives Preparation (+[X] Lvl.)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +1 lvl Preparation",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Dreggons' Sanctuary Dungeon",
+      "localIcon": "/icons/egg.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Segredo da Vida",
+    "colors": [
+      "G",
+      "B",
+      "B"
+    ],
+    "description": "At start of fight: Reduces Healing Mastery to 0. 10% Heals performed",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "2 Steles Aguabrial - Dreggons' Sanctuary Dungeon",
+      "localIcon": "/icons/agua.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Especialista em Golpes Críticos",
+    "colors": [
+      "B",
+      "G",
+      "G"
+    ],
+    "description": "At end of turn if a critical hit was performed: Heal: [X]% of HP lost of the caster",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% of HP lost",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Iced-Over Crest Dungeon",
+      "localIcon": "/icons/ashdragon.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Volta PA",
+    "colors": [
+      "B",
+      "R",
+      "G"
+    ],
+    "description": "Recovers [X] AP on killing an enemy (2 activations per turn)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: +1 AP recovered each activation",
+    "maxLevel": 4,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Iced-Over Crest Dungeon",
+      "localIcon": "/icons/ashdragon.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Carnificina",
+    "colors": [
+      "R",
+      "R",
+      "G"
+    ],
+    "description": "When HP are above 90%: [X]% of level in Elemental Mastery",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +15% of level in Elem Masteries",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Iced-Over Crest Dungeon",
+      "localIcon": "/icons/ashdragon.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 15,
+        "increment": 15,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Tolerância",
+    "colors": [
+      "R",
+      "B",
+      "B"
+    ],
+    "description": "At end of turn: 50% of unused MP are carried over to the next turn Max [X] MP",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +1 Max MP",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "2 Steles Aguabrial - Iced-Over Crest Dungeon",
+      "localIcon": "/icons/agua.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Crítico Berserk",
+    "colors": [
+      "R",
+      "G",
+      "G"
+    ],
+    "description": "When HP are at less than 50%: [X]% Critical Hit",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Crit",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Pandala Tomb Dungeon",
+      "localIcon": "/icons/tanuki.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Cicatrização",
+    "colors": [
+      "R",
+      "R",
+      "B"
+    ],
+    "description": "[X]% health points (bonus on HP modifier)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% HP",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Pandala Tomb Dungeon",
+      "localIcon": "/icons/tanuki.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Emboscada Afastada",
+    "colors": [
+      "R",
+      "R",
+      "B"
+    ],
+    "description": "[X]% Damage Inflicted on targets 2 cells away (1 cell between the state bearer and the target)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% DMG",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Pandala Tomb Dungeon",
+      "localIcon": "/icons/tanuki.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Assolação Secundária",
+    "colors": [
+      "G",
+      "G",
+      "G"
+    ],
+    "description": "At start of fight: [X]% Critical Hit [X]% Block [X] Force of Will",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: +3% Crit +3% Block +3 force of Will",
+    "maxLevel": 6,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Blightopard Canyon Dungeon",
+      "localIcon": "/icons/blighto.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Insistência",
+    "colors": [
+      "R",
+      "B",
+      "R"
+    ],
+    "description": "After suffering a loss of 2 AP: [X] Force of Will (3 turns)",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +5 Force of Will",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Blightopard Canyon Dungeon",
+      "localIcon": "/icons/blighto.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Persistência",
+    "colors": [
+      "R",
+      "G",
+      "R"
+    ],
+    "description": "At end of turn if the state bearer has 6 or more AP:60 Elemental Resistance (2 turns)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Blightopard Canyon Dungeon",
+      "localIcon": "/icons/blighto.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Alocentrismo",
+    "colors": [
+      "G",
+      "G",
+      "G"
+    ],
+    "description": "If the bearer has no Armor: [X]% Armor given",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Armor given",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Tundrazor Dungeon",
+      "localIcon": "/icons/buffalo.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Escudo Crítico",
+    "colors": [
+      "B",
+      "G",
+      "R"
+    ],
+    "description": "[X] Critical Resistance",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5 Critical Resistance",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Tundrazor Dungeon",
+      "localIcon": "/icons/buffalo.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Evasão Contínua",
+    "colors": [
+      "G",
+      "G",
+      "R"
+    ],
+    "description": "[X]% Block",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +3% Block",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Tundrazor Dungeon",
+      "localIcon": "/icons/buffalo.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Acribia",
+    "colors": [
+      "R",
+      "G",
+      "R"
+    ],
+    "description": "[X]% DMG inflicted on targets 5 cells or further away",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% DMG",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Crabstacean Dungeon",
+      "localIcon": "/icons/crabs.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Arte do Escondimento",
+    "colors": [
+      "B",
+      "B",
+      "B"
+    ],
+    "description": "-[X]% Damage received when the bearer is not in line of sight [Y]% Damage received when the bearer is in line of sight",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: -6% dmg received outside of LoS +3% dmg received in LoS",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Crabstacean Dungeon",
+      "localIcon": "/icons/crabs.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 6,
+        "increment": 6,
+        "placeholder": "X"
+      },
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "Y"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Influência Vital",
+    "colors": [
+      "G",
+      "R",
+      "G"
+    ],
+    "description": "When HP are above 90%: [X]% Critical Hit",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% Crit",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Crabstacean Dungeon",
+      "localIcon": "/icons/crabs.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Soca-Carapaça",
+    "colors": [
+      "R",
+      "G",
+      "B"
+    ],
+    "description": "[X]% Damage inflicted on a target with armor",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +6% DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Sunsloth Dungeon",
+      "localIcon": "/icons/sunsloth.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 6,
+        "increment": 6,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Proveito",
+    "colors": [
+      "B",
+      "B",
+      "G"
+    ],
+    "description": "Regains 1 AP by removing 1 AP or MP from an enemy ([X] max per turn)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional level: +1 max per turn",
+    "maxLevel": 6,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Sunsloth Dungeon",
+      "localIcon": "/icons/sunsloth.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Sanguinolência",
+    "colors": [
+      "R",
+      "G",
+      "R"
+    ],
+    "description": "For each penalty or loss applied to an enemy: Blood strains +[X] lvls (Blood stains: [X]% dmg received by the caster. max 40%)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2 lvls of blood stains",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Sunsloth Dungeon",
+      "localIcon": "/icons/sunsloth.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Conservação",
+    "colors": [
+      "B",
+      "G",
+      "B"
+    ],
+    "description": "When HP are above 90%: [X]% Block",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +10% Block",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Vandalophrenic Dungeon",
+      "localIcon": "/icons/hogin.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 10,
+        "increment": 10,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Vontade Direta",
+    "colors": [
+      "B",
+      "G",
+      "B"
+    ],
+    "description": "Outside of your turn: -[X] FoW. During your turn: [Y] FoW",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: -4 FoW outisde of turn. +3 FoW during turn",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Vandalophrenic Dungeon",
+      "localIcon": "/icons/hogin.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "Y"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Influência Paradoxal",
+    "colors": [
+      "G",
+      "R",
+      "B"
+    ],
+    "description": "If a non-critical hit is performed with an elemental spell: [X]% Critical Hit on the following turn",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Crit",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Vandalophrenic Dungeon",
+      "localIcon": "/icons/hogin.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Força Branda",
+    "colors": [
+      "G",
+      "G",
+      "R"
+    ],
+    "description": "As long as the bearer has no Armor: [X]% Damage inflicted",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +3% DMG",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Plantiguard Dungeon",
+      "localIcon": "/icons/bear.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Equilíbrio Crítico",
+    "colors": [
+      "G",
+      "B",
+      "G"
+    ],
+    "description": "Each time a non-critical spell is case: [X]% Critical Hit. Bonus is lost on next critical spell",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% Critical Hit",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Plantiguard Dungeon",
+      "localIcon": "/icons/bear.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Interposição",
+    "colors": [
+      "B",
+      "R",
+      "R"
+    ],
+    "description": "After locking an enemy: [X]% of level as Armor",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional level: +50% of lvl as Armor",
+    "maxLevel": 4,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Plantiguard Dungeon",
+      "localIcon": "/icons/bear.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 50,
+        "increment": 50,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Agilidade Vital",
+    "colors": [
+      "G",
+      "B",
+      "R"
+    ],
+    "description": "At start of turn if HP are above 90%: 1 MP",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Pingwin Dungeon",
+      "localIcon": "/icons/sumorse.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Represália",
+    "colors": [
+      "R",
+      "R",
+      "G"
+    ],
+    "description": "When you suffer ranged direct dmg: 6% extra DMG inflicted on the attacked. 1 turn Non stackable",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +6% DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Pingwin Dungeon",
+      "localIcon": "/icons/sumorse.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 6,
+        "increment": 6,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Preparo",
+    "colors": [
+      "R",
+      "B",
+      "R"
+    ],
+    "description": "At end of turn, per enemy in close combat: [X]% DMG inflicted for the following turn.",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +1% DMG",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Pingwin Dungeon",
+      "localIcon": "/icons/sumorse.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Escudo Dorsal",
+    "colors": [
+      "R",
+      "G",
+      "G"
+    ],
+    "description": "[X] Rear Resistance",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5 Rear Resistance",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Scramshell Dungeon",
+      "localIcon": "/icons/tortu.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Consolação Crítica",
+    "colors": [
+      "B",
+      "G",
+      "B"
+    ],
+    "description": "Each time a non-critical spell is cast: +[X]% Critical DMG (Stackable up to 40%). Bonus is lost on next critical spell",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +6% Critical DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Scramshell Dungeon",
+      "localIcon": "/icons/tortu.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 6,
+        "increment": 6,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Força Vital",
+    "colors": [
+      "R",
+      "G",
+      "B"
+    ],
+    "description": "At start of turn if HP are above 90%: [X] AP",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "N/A",
+    "maxLevel": 2,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Scramshell Dungeon",
+      "localIcon": "/icons/tortu.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Parada Ofensiva",
+    "colors": [
+      "R",
+      "R",
+      "G"
+    ],
+    "description": "When performing a block on a direct enemy attack: [X]% damage inflicted (1 turn) -10% Block",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +2% DMG",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Osamosa Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Crítico Estratégico",
+    "colors": [
+      "R",
+      "G",
+      "G"
+    ],
+    "description": "[X]% critical damage inflicted if the target has > 50% HP -[X]% critical damage inflicted if the target has <= 50% HP",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional lvl +3% crit DMG if HP>50. -3% crit DMG if HP<=50%",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Osamosa Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Neutralidade",
+    "colors": [
+      "B",
+      "G",
+      "R"
+    ],
+    "description": "At the start of the first turn if secondary masteries are <= 0: [X]% damage inflicted",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +8% DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Osamosa Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 8,
+        "increment": 8,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Pretensão",
+    "colors": [
+      "G",
+      "B",
+      "G"
+    ],
+    "description": "At the start of the first turn if secondary masteries are <= 0: [X]% Block",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Block",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Osamosa Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Último Suspiro",
+    "colors": [
+      "G",
+      "B",
+      "R"
+    ],
+    "description": "When the bearer starts their turn below 20% HP: [X]% Damage inflicted (1 turn) [Y]% of level as armor",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +3% DI +50% of lvl as Armor",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Mount Zinit Ultimate Rift",
+      "localIcon": "/icons/rift_ulti.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": 50,
+        "increment": 50,
+        "placeholder": "Y"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Pé Firme",
+    "colors": [
+      "B",
+      "R",
+      "R"
+    ],
+    "description": "Ending a turn adjacent to an enemy applies -[X]% Heals performed to it (1 turn)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: -5% Heals",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Mount Zinit Ultimate Rift",
+      "localIcon": "/icons/rift_ulti.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Sensibilidade",
+    "colors": [
+      "R",
+      "G",
+      "B"
+    ],
+    "description": "If there are two or more allies 1 to 4 cells from the bearer: [X]% Damage Inflicted",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Mount Zinit Ultimate Rift",
+      "localIcon": "/icons/rift_ulti.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Potência Bruta",
+    "colors": [
+      "G",
+      "G",
+      "G"
+    ],
+    "description": "At start of fight: -[X] max WP. For each WP spent during the turn: [Y]% damage inflicted (1 turn) (max 30)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: -1 max WP +2% DMG",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Mount Zinit Ultimate Rift",
+      "localIcon": "/icons/rift_ulti.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "Y"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Ambição",
+    "colors": [
+      "G",
+      "B",
+      "R"
+    ],
+    "description": "At the start of the first turn if secondary masteries are <= 0: [X]% Critical Hit",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Crit",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Shustuft Crust Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Combate Aproximado",
+    "colors": [
+      "R",
+      "G",
+      "B"
+    ],
+    "description": "-1 Range +[X]% of level as Lock and Dodge",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +50% of level as Lock and Dodge",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Shustuft Crust Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 50,
+        "increment": 50,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Preparação Crítica",
+    "colors": [
+      "R",
+      "G",
+      "G"
+    ],
+    "description": "Each time a critical hit is performed (5 activations per turn): Preparation (+[X] Lvl.)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2 lvl Preparation",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Shustuft Crust Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Trancamento",
+    "colors": [
+      "G",
+      "R",
+      "G"
+    ],
+    "description": "[X]% Damage inflicted on targets without line of sight 3 or more cells away from the state bearer",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% DMG",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Shustuft Crust Rift",
+      "localIcon": "/icons/rift.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Intervalo",
+    "colors": [
+      "G",
+      "R",
+      "B"
+    ],
+    "description": "At start of turn if no WP were used during the previous turn: [X]% Damage inflicted [X]% Heals performed",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% DMG +4% Heals",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Shustuft Crust Ultimate Rift",
+      "localIcon": "/icons/rift_ulti.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Carapaça",
+    "colors": [
+      "R",
+      "B",
+      "B"
+    ],
+    "description": "[X] max AP 75 Elemental Resistance",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +1 AP",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Shustuft Crust Ultimate Rift",
+      "localIcon": "/icons/rift_ulti.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": -2,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Armadura Pesada",
+    "colors": [
+      "R",
+      "G",
+      "B"
+    ],
+    "description": "-1 max MP [X]% Damage inflicted",
+    "rarity": [
+      "Rare",
+      "Mythic"
+    ],
+    "effect": "Per additional level: +5% DMG",
+    "maxLevel": 2,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Shustuft Crust Ultimate Rift",
+      "localIcon": "/icons/rift_ulti.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Peso-pena",
+    "colors": [
+      "R",
+      "R",
+      "R"
+    ],
+    "description": "At the start of combat per MP above 4: [X]% Damage inflicted (maximum 24)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% DI per MP",
+    "maxLevel": 4,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Shustuft Crust Ultimate Rift",
+      "localIcon": "/icons/rift_ulti.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Salvaguarda Crítica",
+    "colors": [
+      "B",
+      "R",
+      "B"
+    ],
+    "description": "At end of turn: Unused AP is carried over to the next turn as Critical Hit: 10% Critical Hit por AP (max [X] AP)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "",
+    "maxLevel": 6,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Heart of Nox's Clock",
+      "localIcon": "/icons/nox.png"
+    },
+    "category": "Stat gains",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Impulsão",
+    "colors": [
+      "G",
+      "R",
+      "G"
+    ],
+    "description": "If the bearer uses a spell to move: Preparation + [X] lvl ([X]% damage inflicted on next damage)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Heart of Nox's Clock",
+      "localIcon": "/icons/nox.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Sentença",
+    "colors": [
+      "R",
+      "R",
+      "B"
+    ],
+    "description": "When inflicting single-target damage on an enemy: [X] extra damage infliced on this target on the next turn",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Heart of Nox's Clock",
+      "localIcon": "/icons/nox.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 3,
+        "increment": 3,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Diagnóstico",
+    "colors": [
+      "G",
+      "B",
+      "G"
+    ],
+    "description": "When single-target healing an ally: [X] extra heals performed on this target on the next turn",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Heart of Nox's Clock",
+      "localIcon": "/icons/nox.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Preparo Secundário",
+    "colors": [
+      "B",
+      "R",
+      "B"
+    ],
+    "description": "At end of turn, if an enemy is adjacent: [X]% of damage inflicted for the following turn",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Nox",
+      "localIcon": "/icons/nox.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Abnegação",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the highest Elemental Mastery is greater than the Healing Mastery:\n\n-15% damage inflicted\n30% heals performed",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Anatomia",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the highest Elemental Mastery is greater than Rear Mastery:\n\n-20% damage inflicted\n40% damage inflicted from behind",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Brutalidade",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the bearer has exactly 0 Range:\n\n+20% damage inflicted in melee and area of effect simultaneously",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Caos",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, Elemental Masteries are set to 0.\n\n20% damage inflicted and heals performed",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Desmesura",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the bearer has more Block than Critical Hit:\n\nThe Block is converted into Critical Hit",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Controle do Espaço",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has exactly 1 Range:\n\n15% damage inflicted and heals performed on targets that are 2, 3, or 4 cells away from the caster",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Vandalphrenic Meat",
+      "localIcon": "/icons/craft.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Controle do Espaço II",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has at least 3 Range:\n\n30% indirect damage inflicted",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Concentração Elementar",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat:\n20% damage inflicted and heals performed\n -30% elemental mastery in the 3 weakest elements",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Elementalismo",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 3 equal Elemental Masteries:\n\n20% damage inflicted and heals performed",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Engajamento",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 0 Healing Mastery or less:\n\n30% heals performed",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Força Hercúlea",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has an odd number of AP:\n\n250% of level as Lock and Dodge",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Inflexibilidade",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 10 AP or less:\n\n15% damage inflicted\n10 Force of Will (if the character is at level 100 or greater)",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Inflexibilidade II",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if Secondary Masteries are less than or equal to 0:\n\n+20% damage inflicted and heals performed",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Força de Vontade",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 3 range or less:\n\n20 Force of Will",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Medida",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 40% Block or greater:\n\n10% Critical Hit\n10% damage inflicted on critical hit",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Medida II",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 50% Critical Hits or more: \n20 Block\n10 Force of Will",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Medida III",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 50% Critical Hits or less: \n20% damage inflicted on critical hit",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Fúria",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has less that 100% of their level as Dodge:\n\n15% damage inflicted as Berserk\n100% of level as Lock",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Sunsloth Meat",
+      "localIcon": "/icons/craft.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Fúria II",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 4 Range or greater:\n\n15% damage inflicter as Berserk and Ranged simultaneously\n1 Range",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Crabstacean Meat",
+      "localIcon": "/icons/craft.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Pilar",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 50% Block or greater:\n\nBonus to HP modifier +30%\n-50% Armor Received",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Tundrazor Meat",
+      "localIcon": "/icons/craft.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Pilar II",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 50% Block or more: \n-30% HP\n+30% in Armor given",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Saúde de Ferro",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, for the state bearer:\n\n-30% HP (penalty to the HP modifier)\n30% Heals and Armor from fighters received",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Constância",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 10% Critical Hit or less:\n\n20% damage inflicted\n50 Critical Resistance",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Constância II",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 10% Critical Hit or less:\n\n40% indirect damage",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Precisão Cirúrgica",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 1 Range or less:\n\n20% heals performed\n15% Armor Given and Received",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Desenlace",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has at least 40% Critical Hit converts 100% of Critical Mastery to Elemental Mastery",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Pacto Wakfu",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has 8 WP or greater:\n\n10 Force of Will\n15% Block",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Manejo: Adaga",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has a Dagger equipped:\n\n25% damage inflicted on targets hit from the front\n15% from the side\n-30% from behind",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Manejo: Escudo",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the bearer has a Shield equipped:\n\n1 max MP\nPositive Range is set at 0",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Arte do posicionamento",
+    "colors": [
+      "Epic"
+    ],
+    "description": "50 Elemental Resistance \n-200 Rear Resistance for the bearer at the start of combat.",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Manejo: Duas mãos",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if the state bearer has a Two-Handed Weapon equipped ( maximum 12 AP before the sublimation effect):\n\n-2 max MP\n2 max AP",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Alternância",
+    "colors": [
+      "Relic"
+    ],
+    "description": "If the bearer has only used one element to cause damage during their turn:\nthey gain +20% Damage Inflicted and Heals performed in their other elements",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Alternância II",
+    "colors": [
+      "Relic"
+    ],
+    "description": "If the bearer inflicts damage in an element: \nthey gain +15% Damage Inflicted and Heals performedy in the other elements for the next spell. \nOnly the first line of damage caused by the spell is taken into account.",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Energia Ancestral",
+    "colors": [
+      "Relic"
+    ],
+    "description": "At start of turn, with 6 WP or greater: \nAncestral Energy Bonus (Max. level: 3):\n4% Damage inflicted\r\n15 Elemental Resistance\n\nThe state is lost if the character starts their turn with less than 6 WP",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Plantiguard Meat",
+      "localIcon": "/icons/craft.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Arrogância",
+    "colors": [
+      "Relic"
+    ],
+    "description": "Steals 25% of melee damage inflicted\n-100 Elemental Resistance",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Assimilação",
+    "colors": [
+      "Relic"
+    ],
+    "description": "-50 Elemental Resistance If the state bearer takes damage from an enemy: \n100 Resistance in the damage element (1 turn)",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Além da Barreira",
+    "colors": [
+      "Relic"
+    ],
+    "description": "If the spell costs 4 AP or more:\r\n15% critical damage.\r\nIf the spell costs 1 WP or more:\r\n15% critical damage",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Braseiro",
+    "colors": [
+      "Relic"
+    ],
+    "description": "10% damage inflicted when the bearer meets certain conditions (these change each turn). \nTurn 1: The bearer is in melee or the spell is single-target \nTurn 2: The bearer is at a distance or the spell is single-target \nTurn 3: The bearer is at a distance or the spell is area-of-effect \nTurn 4: The bearer is in melee or the spell is area-of-effect",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Brisa",
+    "colors": [
+      "Relic"
+    ],
+    "description": "25% to area-of-effect spell damage on the spell's direct target\n-25% to area-of-effect spell damage on other targets",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Calibragem",
+    "colors": [
+      "Relic"
+    ],
+    "description": "If the bearer inflicted melee damage on an enemy during their turn: \n25% Ranged Damage Inflicted for the following turn",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Calibragem II",
+    "colors": [
+      "Relic"
+    ],
+    "description": "If the bearer inflicted melee damage on an enemy during their turn: \n10% Ranged Damage Inflicted for the following turn\r\nOnce per turn, stackable up to 5 times",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Contato",
+    "colors": [
+      "Relic"
+    ],
+    "description": "At end of turn, per adjacent enemy: \n5% of max HP as Armor",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Diretivas",
+    "colors": [
+      "Relic"
+    ],
+    "description": "15% damage inflicted by area-of-effect spells on targets in line with the state bearer",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Distribuição",
+    "colors": [
+      "Relic"
+    ],
+    "description": "When the bearer heals an ally, 25% of healing is converted into Armor and 25% is lost",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Petulância",
+    "colors": [
+      "Relic"
+    ],
+    "description": "If the bearer moves themself using a spell: \n1 AP (max 2 per turn)",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Excesso",
+    "colors": [
+      "Relic"
+    ],
+    "description": "-10% Damage inflicted \nEvery 10 spells cast, the state bearer gains 100% Damage inflicted for the next spell \nSpells cast must cost at least 1 AP \nOnce the state is at level 10, the next spell gets the damage bonus",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Excesso II",
+    "colors": [
+      "Relic"
+    ],
+    "description": "-10% Damage inflicted \nEvery 5 spells cast, the state bearer gains 50% Damage inflicted for the next spell \nSpells cast must cost at least 1 AP \nOnce the state is at level 5, the next spell gets the damage bonus",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Cara a Cara",
+    "colors": [
+      "Relic"
+    ],
+    "description": "At end of turn, if the bearer is facing an adjacent enemy: \n10% of max HP as Armor",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Hipermetrope",
+    "colors": [
+      "Relic"
+    ],
+    "description": "30% damage inflicted on targets 7 or more cells away \notherwise -15%",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Aura de Chamas",
+    "colors": [
+      "Relic"
+    ],
+    "description": "Flaming (+15 Lvls.) (stackable) for the state bearer, for each damage spell received in melee. \n100% of level as Flaming at start of turn if no enemies are adjacent.",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Guarda Baixada",
+    "colors": [
+      "Relic"
+    ],
+    "description": "-30% damage received during their own turn.",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Afã",
+    "colors": [
+      "Relic"
+    ],
+    "description": "If the bearer moves themself using a spell: \n1 MP (max 2 per turn)",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Sangue do Talho",
+    "colors": [
+      "Relic"
+    ],
+    "description": "In an uneven round: \nThe bearer inflicts 25% more damage, and suffers 15% of the damage they inflict",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Lentidão Involuntária",
+    "colors": [
+      "Relic"
+    ],
+    "description": "If the bearer is moved outside of their turn:\napplies Stabilized at the end of their next turn",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Último Instante",
+    "colors": [
+      "Relic"
+    ],
+    "description": "If the spell costs 1 WP or more:\r\n5% damage per current WP on the bearer (max. 6)",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Arma de Luz",
+    "colors": [
+      "Relic"
+    ],
+    "description": "Damage caused by the bearer's weapon is reduced by 20% and applies a poison (Light Weapon) for three turns (second hand excluded) based on the number of AP used by the weapon.",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Longevidade",
+    "colors": [
+      "Relic"
+    ],
+    "description": "When suffering damage from the front and in melee, once per round: \n10% of missing HP as Armor 40% Armor given (1 turn)",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Scramshell Meat",
+      "localIcon": "/icons/craft.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Lunático",
+    "colors": [
+      "Relic"
+    ],
+    "description": "Odd turns, at start of turn: \n25% Damage inflicted -25% Heals performed and Armor given \n\nEven turns, at start of turn: \n25% Heals performed and Armor given -25% Damage inflicted",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Lunático II",
+    "colors": [
+      "Relic"
+    ],
+    "description": "After inflicting damage on an enemy: \n-30% damage inflicted and 30% heals performed and Armor given for the following turn.\n\nAfter healing or giving armor to an ally: \n30% damage inflicted and -30% heals performed and armor given for the following turn.",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Modularidade",
+    "colors": [
+      "Relic"
+    ],
+    "description": "After taking damage: \n50 Elemental Resistance in this element (1 turn), not stackable\r\nA new element replaces the previous one",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Aprumo Natural",
+    "colors": [
+      "Relic"
+    ],
+    "description": "50 Elemental Resistance if the bearer has no Armor\notherwise -100 Elemental Resistance",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Pacífico",
+    "colors": [
+      "Relic"
+    ],
+    "description": "For each movement, per MP used: \n+3% Block (max. 18) (1 turn) \n\nIf the state bearer performs a Block when it's not their turn: \nThe bonus is transformed into Critical Hits on the next turn",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Thirster Scalp",
+      "localIcon": "/icons/craft.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Renascimento",
+    "colors": [
+      "Relic"
+    ],
+    "description": "-50 Elemental Resistance \nOnce per turn, when falling below 50% HP: \n1 MP\r\n15% Damage inflicted\r\n50 Elemental Resistance",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Pingwin Meat",
+      "localIcon": "/icons/craft.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Robusto",
+    "colors": [
+      "Relic"
+    ],
+    "description": "100% of level in Barrier against long-range damage (permanent)",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Sentinela",
+    "colors": [
+      "Relic"
+    ],
+    "description": "At start of turn: \n3 Range 15% ranged damage 15% Heals performed \nThe bonus is lost the first time the character moves (MP) or at end of turn",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Couraça Singular",
+    "colors": [
+      "Relic"
+    ],
+    "description": "30% of Armor given to allies who do not have Armor\n-50% Armor to allies who already have Armor",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Couraça Singular II",
+    "colors": [
+      "Relic"
+    ],
+    "description": "40% Armor given on the first Armor placed on this turn\n-50% Armor given on all others",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Despedaça-Carapaça",
+    "colors": [
+      "Relic"
+    ],
+    "description": "The first spell that inflicts damage this turn removes 30% Armor from the target",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Brilhantismo",
+    "colors": [
+      "Relic"
+    ],
+    "description": "At start of turn, if the bearer has no Armor: \n20% Damage inflicted (1 turn) \nOtherwise: -10% Damage inflicted (1 turn)",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Estasificação",
+    "colors": [
+      "Relic"
+    ],
+    "description": "The state bearer increases their damage inflicted by 2% per turn (permanent) (max 20)",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Controle do Tempo",
+    "colors": [
+      "Relic"
+    ],
+    "description": "Every 3 spells cast\nCritical Hit is set to 100",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Confiança",
+    "colors": [
+      "Relic"
+    ],
+    "description": "30% Block if the bearer did not receive healing in the previous turn.",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Veemência",
+    "colors": [
+      "Relic"
+    ],
+    "description": "Each turn steals 50% of damage inflicted by the first spell that inflicts damage\n-50% Armor received",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Support",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Nhé",
+    "colors": [
+      "Relic"
+    ],
+    "description": "Even Turn: \nAfter using a WP-based spell, the state bearer regains 2 AP (max of 1/turn). \n\nOdd Turn: \nAfter using a WP-based spell, the state bearer loses 2 AP (max 1/turn).",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Selo de Wakfu",
+    "colors": [
+      "Relic"
+    ],
+    "description": "The state bearer increases their heals performed by 2% per turn (Permanent, max 20%)",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Speed Stone",
+      "localIcon": "/icons/2_rooms.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Castigo",
+    "colors": [
+      "Relic"
+    ],
+    "description": "At start of turn if there are at least 2 enemies in melee: +1MP +1AP",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Balance Stone",
+      "localIcon": "/icons/3_rooms.png"
+    },
+    "category": "Stat gains",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Absolvição",
+    "colors": [
+      "Relic"
+    ],
+    "description": "At start of turn if there are at least 2 allies in melee: +1MP +1AP",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Adventure Stone",
+      "localIcon": "/icons/4_rooms.png"
+    },
+    "category": "Stat gains",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Parada Única",
+    "colors": [
+      "Relic"
+    ],
+    "description": "When performing a Block: -30% extra damage recieved -100% block",
+    "rarity": [
+      "Relic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Companionship Stone",
+      "localIcon": "/icons/3_characters.png"
+    },
+    "category": "Defensive",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Segredo Crítico",
+    "colors": [
+      "Epic"
+    ],
+    "description": "At the start of combat, if Critical Mastery is less than or equal to 0: 30% critical hit",
+    "rarity": [
+      "Epic"
+    ],
+    "effect": "",
+    "maxLevel": 1,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ultimate Stone",
+      "localIcon": "/icons/ub.png"
+    },
+    "category": "Stat gains",
+    "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  }
+]
