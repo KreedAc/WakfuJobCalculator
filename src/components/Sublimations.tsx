@@ -126,20 +126,31 @@ const normalizeText = (text: string) => {
       .toLowerCase();
   };
 
+  const matchesSearchText = (text: string, searchTerm: string): boolean => {
+    const normalizedText = normalizeText(text);
+    const normalizedSearch = normalizeText(searchTerm);
+
+    const words = normalizedText.split(/\s+/);
+
+    return words.some(word => word.startsWith(normalizedSearch)) ||
+           normalizedText.includes(normalizedSearch);
+  };
+
   const filteredRunes = useMemo(() => {
     return runes.filter(rune => {
       if (!rune.name) return false;
 
-      const normalizedSearchTerm = normalizeText(searchTerm);
-      const normalizedName = normalizeText(rune.name);
-      const normalizedDesc = rune.description ? normalizeText(rune.description) : '';
+      if (searchTerm === '') {
+        const matchesCategory = selectedCategory === t.allCategories || rune.category === selectedCategory;
+        const matchesSlots = matchesEquipmentSlots(slotFilters, rune);
+        return matchesCategory && matchesSlots;
+      }
 
-      const nameMatch = normalizedName.includes(normalizedSearchTerm);
-      const descMatch = normalizedDesc.includes(normalizedSearchTerm);
+      const nameMatch = matchesSearchText(rune.name, searchTerm);
+      const descMatch = rune.description ? matchesSearchText(rune.description, searchTerm) : false;
 
-      const matchesSearch = searchTerm === '' || nameMatch || descMatch;
+      const matchesSearch = nameMatch || descMatch;
       const matchesCategory = selectedCategory === t.allCategories || rune.category === selectedCategory;
-
       const matchesSlots = matchesEquipmentSlots(slotFilters, rune);
 
       return matchesSearch && matchesCategory && matchesSlots;
