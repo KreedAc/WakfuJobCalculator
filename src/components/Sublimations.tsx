@@ -130,10 +130,11 @@ const normalizeText = (text: string) => {
     const normalizedText = normalizeText(text);
     const normalizedSearch = normalizeText(searchTerm);
 
+    if (normalizedSearch.length === 0) return true;
+
     const words = normalizedText.split(/\s+/);
 
-    return words.some(word => word.startsWith(normalizedSearch)) ||
-           normalizedText.includes(normalizedSearch);
+    return words.some(word => word.startsWith(normalizedSearch));
   };
 
   const filteredRunes = useMemo(() => {
