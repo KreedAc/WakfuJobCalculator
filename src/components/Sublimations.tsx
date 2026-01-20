@@ -119,39 +119,15 @@ const matchesEquipmentSlots = (equipSlots: [Slot, Slot, Slot, Slot], rune: Subli
   );
 };
 
-const normalizeText = (text: string) => {
-    return text
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase();
-  };
-
-  const matchesSearchText = (text: string, searchTerm: string): boolean => {
-    const normalizedText = normalizeText(text);
-    const normalizedSearch = normalizeText(searchTerm);
-
-    if (normalizedSearch.length === 0) return true;
-
-    const words = normalizedText.split(/\s+/);
-
-    return words.some(word => word.startsWith(normalizedSearch));
-  };
-
-  const filteredRunes = useMemo(() => {
+const filteredRunes = useMemo(() => {
     return runes.filter(rune => {
       if (!rune.name) return false;
-
-      if (searchTerm === '') {
-        const matchesCategory = selectedCategory === t.allCategories || rune.category === selectedCategory;
-        const matchesSlots = matchesEquipmentSlots(slotFilters, rune);
-        return matchesCategory && matchesSlots;
-      }
-
-      const nameMatch = matchesSearchText(rune.name, searchTerm);
-      const descMatch = rune.description ? matchesSearchText(rune.description, searchTerm) : false;
+      const nameMatch = rune.name.toLowerCase().includes(searchTerm.toLowerCase());
+      const descMatch = rune.description && rune.description.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesSearch = nameMatch || descMatch;
       const matchesCategory = selectedCategory === t.allCategories || rune.category === selectedCategory;
+
       const matchesSlots = matchesEquipmentSlots(slotFilters, rune);
 
       return matchesSearch && matchesCategory && matchesSlots;

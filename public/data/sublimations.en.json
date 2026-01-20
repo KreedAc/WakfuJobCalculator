@@ -201,7 +201,7 @@
     ]
   },
   {
-    "name": "Lock Steal",
+    "name": "lock Steal",
     "colors": [
       "G",
       "G",
@@ -855,7 +855,7 @@
     ]
   },
   {
-    "name": "AP Rupture",
+    "name": "Ap Rupture",
     "colors": [
       "B",
       "B",
@@ -1494,7 +1494,7 @@
     ]
   },
   {
-    "name": "Earthbound",
+    "name": "Earthbound ",
     "colors": [
       "G",
       "G",
@@ -1698,7 +1698,7 @@
     ]
   },
   {
-    "name": "Burn",
+    "name": "Burn ",
     "colors": [
       "R",
       "R",
@@ -2751,7 +2751,7 @@
     ]
   },
   {
-    "name": "Slow Escape",
+    "name": "Slow Evasion",
     "colors": [
       "R",
       "R",
@@ -4171,7 +4171,7 @@
     ]
   },
   {
-    "name": "Embellishment",
+    "name": "Embellishement",
     "colors": [
       "R",
       "B",
@@ -5768,7 +5768,7 @@
     ]
   },
   {
-    "name": "Wield type: two-handed",
+    "name": "Wield type: Two-handed",
     "colors": [
       "Epic"
     ],
@@ -6193,7 +6193,7 @@
     ]
   },
   {
-    "name": "Face to Face",
+    "name": "Face-to-Face",
     "colors": [
       "Relic"
     ],

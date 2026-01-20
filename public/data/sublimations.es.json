@@ -1,6 +1,6 @@
 [
   {
-    "name": "Influjo",
+    "name": "Influence",
     "colors": [
       "G",
       "B",
@@ -34,7 +34,7 @@
     ]
   },
   {
-    "name": "Longitud",
+    "name": "Length",
     "colors": [
       "B",
       "R",
@@ -68,7 +68,7 @@
     ]
   },
   {
-    "name": "Reprobación",
+    "name": "Condemnation",
     "colors": [
       "G",
       "R",
@@ -100,7 +100,7 @@
     ]
   },
   {
-    "name": "Arcanos",
+    "name": "Arcana",
     "colors": [
       "B",
       "R",
@@ -134,7 +134,7 @@
     ]
   },
   {
-    "name": "Mano aliada",
+    "name": "Strong Hand",
     "colors": [
       "G",
       "R",
@@ -168,7 +168,7 @@
     ]
   },
   {
-    "name": "Vuelta vital",
+    "name": "Vital Return",
     "colors": [
       "G",
       "R",
@@ -201,7 +201,7 @@
     ]
   },
   {
-    "name": "Robo de placaje",
+    "name": "lock Steal",
     "colors": [
       "G",
       "G",
@@ -235,7 +235,7 @@
     ]
   },
   {
-    "name": "Arma sólida",
+    "name": "Solid Weapon",
     "colors": [
       "B",
       "B",
@@ -268,7 +268,7 @@
     ]
   },
   {
-    "name": "Contraataque",
+    "name": "Counterattack",
     "colors": [
       "R",
       "G",
@@ -302,7 +302,7 @@
     ]
   },
   {
-    "name": "Naturaleza",
+    "name": "Nature",
     "colors": [
       "G",
       "R",
@@ -336,7 +336,7 @@
     ]
   },
   {
-    "name": "Influjo del Wakfu",
+    "name": "Wakfu Influence",
     "colors": [
       "R",
       "R",
@@ -369,7 +369,7 @@
     ]
   },
   {
-    "name": "Revigorización",
+    "name": "Reinvigoration",
     "colors": [
       "G",
       "B",
@@ -403,7 +403,7 @@
     ]
   },
   {
-    "name": "Crítico técnico",
+    "name": "Technical Critical",
     "colors": [
       "R",
       "G",
@@ -441,7 +441,7 @@
     ]
   },
   {
-    "name": "Precaución",
+    "name": "Precaution",
     "colors": [
       "R",
       "G",
@@ -475,7 +475,7 @@
     ]
   },
   {
-    "name": "Abandono",
+    "name": "Abandon",
     "colors": [
       "G",
       "R",
@@ -512,7 +512,7 @@
     ]
   },
   {
-    "name": "Coraje",
+    "name": "Courage",
     "colors": [
       "B",
       "R",
@@ -546,7 +546,7 @@
     ]
   },
   {
-    "name": "Wakfu Berserker",
+    "name": "Berserk Wakfu",
     "colors": [
       "B",
       "B",
@@ -585,7 +585,7 @@
     ]
   },
   {
-    "name": "Experto en armas ligeras",
+    "name": "Light Weapons Expert",
     "colors": [
       "R",
       "B",
@@ -624,7 +624,7 @@
     ]
   },
   {
-    "name": "Media vuelta",
+    "name": "About-Turn",
     "colors": [
       "B",
       "B",
@@ -651,7 +651,7 @@
     ]
   },
   {
-    "name": "Última Cura",
+    "name": "Last Heal",
     "colors": [
       "G",
       "R",
@@ -685,7 +685,7 @@
     ]
   },
   {
-    "name": "Evasión",
+    "name": "Evasion",
     "colors": [
       "R",
       "B",
@@ -719,7 +719,7 @@
     ]
   },
   {
-    "name": "Visión Intermedia",
+    "name": "Intermediate Vision",
     "colors": [
       "B",
       "R",
@@ -753,7 +753,7 @@
     ]
   },
   {
-    "name": "Interceptación",
+    "name": "Interception",
     "colors": [
       "R",
       "G",
@@ -787,7 +787,7 @@
     ]
   },
   {
-    "name": "Caparazón Sanguinario",
+    "name": "Blood Carapace",
     "colors": [
       "B",
       "R",
@@ -821,7 +821,7 @@
     ]
   },
   {
-    "name": "Locura Vampírica",
+    "name": "Vampiric Madness",
     "colors": [
       "R",
       "G",
@@ -855,7 +855,7 @@
     ]
   },
   {
-    "name": "Ruptura PA",
+    "name": "Ap Rupture",
     "colors": [
       "B",
       "B",
@@ -887,7 +887,7 @@
     ]
   },
   {
-    "name": "Envoltorio Rocoso",
+    "name": "Rocky Envelope",
     "colors": [
       "R",
       "B",
@@ -921,7 +921,7 @@
     ]
   },
   {
-    "name": "Temeridad",
+    "name": "Recklessness",
     "colors": [
       "B",
       "B",
@@ -955,7 +955,7 @@
     ]
   },
   {
-    "name": "Valor Añadido",
+    "name": "Added Value",
     "colors": [
       "B",
       "G",
@@ -989,7 +989,7 @@
     ]
   },
   {
-    "name": "Voluntad Indirecta",
+    "name": "Indirect Force of Will",
     "colors": [
       "G",
       "B",
@@ -1028,7 +1028,7 @@
     ]
   },
   {
-    "name": "Acumulación",
+    "name": "Accumulation",
     "colors": [
       "G",
       "G",
@@ -1062,7 +1062,7 @@
     ]
   },
   {
-    "name": "Solidez",
+    "name": "Solidity",
     "colors": [
       "R",
       "G",
@@ -1089,7 +1089,7 @@
     ]
   },
   {
-    "name": "Tenacidad",
+    "name": "Tenacity",
     "colors": [
       "G",
       "G",
@@ -1121,7 +1121,7 @@
     ]
   },
   {
-    "name": "Escapatoria",
+    "name": "Escape",
     "colors": [
       "B",
       "B",
@@ -1155,7 +1155,7 @@
     ]
   },
   {
-    "name": "Propagación",
+    "name": "Propagation",
     "colors": [
       "R",
       "G",
@@ -1189,7 +1189,7 @@
     ]
   },
   {
-    "name": "Huida",
+    "name": "Flee",
     "colors": [
       "B",
       "G",
@@ -1221,7 +1221,7 @@
     ]
   },
   {
-    "name": "Destrucción",
+    "name": "Destruction",
     "colors": [
       "G",
       "B",
@@ -1260,7 +1260,7 @@
     ]
   },
   {
-    "name": "Longitud de armadura",
+    "name": "Armor Length",
     "colors": [
       "R",
       "B",
@@ -1294,7 +1294,7 @@
     ]
   },
   {
-    "name": "Respuesta ardiente",
+    "name": "Flaming Return",
     "colors": [
       "R",
       "R",
@@ -1327,7 +1327,7 @@
     ]
   },
   {
-    "name": "Robo de esquiva",
+    "name": "Dodge Steal",
     "colors": [
       "G",
       "G",
@@ -1361,7 +1361,7 @@
     ]
   },
   {
-    "name": "Última Armadura",
+    "name": "Last Armor",
     "colors": [
       "R",
       "B",
@@ -1395,7 +1395,7 @@
     ]
   },
   {
-    "name": "Vuelta de Armadura",
+    "name": "Armor Return",
     "colors": [
       "B",
       "R",
@@ -1427,7 +1427,7 @@
     ]
   },
   {
-    "name": "Ruptura Violenta",
+    "name": "Violent Rupture",
     "colors": [
       "G",
       "G",
@@ -1460,7 +1460,7 @@
     ]
   },
   {
-    "name": "Congelación Secundaria",
+    "name": "Secondary Freezing",
     "colors": [
       "G",
       "G",
@@ -1494,7 +1494,7 @@
     ]
   },
   {
-    "name": "Telurismo",
+    "name": "Earthbound ",
     "colors": [
       "G",
       "G",
@@ -1528,7 +1528,7 @@
     ]
   },
   {
-    "name": "Quemadura Secundaria",
+    "name": "Secondary Burn",
     "colors": [
       "R",
       "R",
@@ -1562,7 +1562,7 @@
     ]
   },
   {
-    "name": "Ventilación",
+    "name": "Ventilation",
     "colors": [
       "R",
       "B",
@@ -1596,7 +1596,7 @@
     ]
   },
   {
-    "name": "Congelación",
+    "name": "Freezing",
     "colors": [
       "B",
       "B",
@@ -1630,7 +1630,7 @@
     ]
   },
   {
-    "name": "Telurismo Secundario",
+    "name": "Secondary Earthbound",
     "colors": [
       "B",
       "B",
@@ -1664,7 +1664,7 @@
     ]
   },
   {
-    "name": "Ventilación Secundaria",
+    "name": "Secondary Ventilation",
     "colors": [
       "R",
       "G",
@@ -1698,7 +1698,7 @@
     ]
   },
   {
-    "name": "Quemadura",
+    "name": "Burn ",
     "colors": [
       "R",
       "R",
@@ -1732,7 +1732,7 @@
     ]
   },
   {
-    "name": "Ligereza",
+    "name": "Poise",
     "colors": [
       "B",
       "R",
@@ -1765,7 +1765,7 @@
     ]
   },
   {
-    "name": "Prosperidad",
+    "name": "Prosperity",
     "colors": [
       "G",
       "R",
@@ -1799,7 +1799,7 @@
     ]
   },
   {
-    "name": "Devolución de PM",
+    "name": "MP Return",
     "colors": [
       "B",
       "R",
@@ -1831,7 +1831,7 @@
     ]
   },
   {
-    "name": "Ruina",
+    "name": "Ruin",
     "colors": [
       "R",
       "R",
@@ -1865,7 +1865,7 @@
     ]
   },
   {
-    "name": "Últimas Resistencias",
+    "name": "Last Resistance",
     "colors": [
       "B",
       "G",
@@ -1899,7 +1899,7 @@
     ]
   },
   {
-    "name": "Pozo de Vitalidad",
+    "name": "Vitality Well",
     "colors": [
       "G",
       "R",
@@ -1933,7 +1933,7 @@
     ]
   },
   {
-    "name": "Ciclotimia",
+    "name": "Cyclothymia",
     "colors": [
       "B",
       "G",
@@ -1966,7 +1966,7 @@
     ]
   },
   {
-    "name": "Locura",
+    "name": "Madness",
     "colors": [
       "R",
       "G",
@@ -2000,7 +2000,7 @@
     ]
   },
   {
-    "name": "Guardado del Wakfu",
+    "name": "Wakfu Conservation",
     "colors": [
       "R",
       "B",
@@ -2027,7 +2027,7 @@
     ]
   },
   {
-    "name": "Teoría de la Materia",
+    "name": "Theory of Matter",
     "colors": [
       "B",
       "G",
@@ -2060,7 +2060,7 @@
     ]
   },
   {
-    "name": "Dimensionalidad",
+    "name": "Dimensionality",
     "colors": [
       "R",
       "B",
@@ -2087,7 +2087,7 @@
     ]
   },
   {
-    "name": "Emboscada",
+    "name": "Ambush",
     "colors": [
       "B",
       "B",
@@ -2121,7 +2121,7 @@
     ]
   },
   {
-    "name": "Determinación",
+    "name": "Determination",
     "colors": [
       "G",
       "G",
@@ -2153,7 +2153,7 @@
     ]
   },
   {
-    "name": "Influjo lento",
+    "name": "Slow Influence",
     "colors": [
       "R",
       "G",
@@ -2187,7 +2187,7 @@
     ]
   },
   {
-    "name": "Focalización",
+    "name": "Focalization",
     "colors": [
       "G",
       "R",
@@ -2214,7 +2214,7 @@
     ]
   },
   {
-    "name": "Altruismo",
+    "name": "Altruism",
     "colors": [
       "B",
       "G",
@@ -2248,7 +2248,7 @@
     ]
   },
   {
-    "name": "Arma envenenada",
+    "name": "Poisoned Weapon",
     "colors": [
       "B",
       "B",
@@ -2282,7 +2282,7 @@
     ]
   },
   {
-    "name": "Manía",
+    "name": "Mania",
     "colors": [
       "B",
       "R",
@@ -2321,7 +2321,7 @@
     ]
   },
   {
-    "name": "Relaciones sociales",
+    "name": "Social Relations",
     "colors": [
       "B",
       "G",
@@ -2387,7 +2387,7 @@
     ]
   },
   {
-    "name": "Placaje Berserker",
+    "name": "Berserk Lock",
     "colors": [
       "B",
       "B",
@@ -2421,7 +2421,7 @@
     ]
   },
   {
-    "name": "Vivacidad",
+    "name": "Vivacity",
     "colors": [
       "R",
       "B",
@@ -2454,7 +2454,7 @@
     ]
   },
   {
-    "name": "Aguante",
+    "name": "Endurance",
     "colors": [
       "G",
       "R",
@@ -2488,7 +2488,7 @@
     ]
   },
   {
-    "name": "Esquiva Berserker",
+    "name": "Berserk Dodge",
     "colors": [
       "B",
       "B",
@@ -2522,7 +2522,7 @@
     ]
   },
   {
-    "name": "Devastación",
+    "name": "Devastation",
     "colors": [
       "B",
       "B",
@@ -2556,7 +2556,7 @@
     ]
   },
   {
-    "name": "Experto en Anticipación",
+    "name": "Blocking Expert",
     "colors": [
       "G",
       "B",
@@ -2583,7 +2583,7 @@
     ]
   },
   {
-    "name": "Barrera a Distancia",
+    "name": "Distance Barrier",
     "colors": [
       "G",
       "G",
@@ -2617,7 +2617,7 @@
     ]
   },
   {
-    "name": "Visibilidad",
+    "name": "Visibility",
     "colors": [
       "B",
       "G",
@@ -2650,7 +2650,7 @@
     ]
   },
   {
-    "name": "Muralla",
+    "name": "Wall",
     "colors": [
       "R",
       "B",
@@ -2684,7 +2684,7 @@
     ]
   },
   {
-    "name": "Barrera en Melé",
+    "name": "Melee Barrier",
     "colors": [
       "G",
       "G",
@@ -2718,7 +2718,7 @@
     ]
   },
   {
-    "name": "Velocidad",
+    "name": "Swiftness",
     "colors": [
       "G",
       "R",
@@ -2751,7 +2751,7 @@
     ]
   },
   {
-    "name": "Escapatoria lenta",
+    "name": "Slow Evasion",
     "colors": [
       "R",
       "R",
@@ -2783,7 +2783,7 @@
     ]
   },
   {
-    "name": "Topología",
+    "name": "Topology",
     "colors": [
       "B",
       "G",
@@ -2817,7 +2817,7 @@
     ]
   },
   {
-    "name": "Ruina cíclica",
+    "name": "Cyclical Ruin",
     "colors": [
       "R",
       "R",
@@ -2844,7 +2844,7 @@
     ]
   },
   {
-    "name": "Frenesí",
+    "name": "Frenzy",
     "colors": [
       "R",
       "G",
@@ -2871,7 +2871,7 @@
     ]
   },
   {
-    "name": "Anticipación Berserker",
+    "name": "Berserk Block",
     "colors": [
       "B",
       "G",
@@ -2905,7 +2905,7 @@
     ]
   },
   {
-    "name": "Estupefacción",
+    "name": "Stupefaction",
     "colors": [
       "G",
       "B",
@@ -2939,7 +2939,7 @@
     ]
   },
   {
-    "name": "Rabia",
+    "name": "Fury",
     "colors": [
       "R",
       "G",
@@ -2966,7 +2966,7 @@
     ]
   },
   {
-    "name": "Integridad",
+    "name": "Integrity",
     "colors": [
       "B",
       "B",
@@ -2999,7 +2999,7 @@
     ]
   },
   {
-    "name": "Firmeza",
+    "name": "Resolute",
     "colors": [
       "R",
       "B",
@@ -3033,7 +3033,7 @@
     ]
   },
   {
-    "name": "Guardado",
+    "name": "Save",
     "colors": [
       "B",
       "R",
@@ -3065,7 +3065,7 @@
     ]
   },
   {
-    "name": "Estragos",
+    "name": "Devastate",
     "colors": [
       "G",
       "G",
@@ -3104,7 +3104,7 @@
     ]
   },
   {
-    "name": "Lobo Solitario",
+    "name": "Lone Wolf",
     "colors": [
       "R",
       "B",
@@ -3138,7 +3138,7 @@
     ]
   },
   {
-    "name": "Ligereza",
+    "name": "Lightness",
     "colors": [
       "B",
       "R",
@@ -3172,7 +3172,7 @@
     ]
   },
   {
-    "name": "Fragmentos de Luna",
+    "name": "Moon Scales",
     "colors": [
       "G",
       "B",
@@ -3206,7 +3206,7 @@
     ]
   },
   {
-    "name": "Espinas",
+    "name": "Spines",
     "colors": [
       "B",
       "B",
@@ -3240,7 +3240,7 @@
     ]
   },
   {
-    "name": "Secreto de la Vida",
+    "name": "Secret of Life",
     "colors": [
       "G",
       "B",
@@ -3267,7 +3267,7 @@
     ]
   },
   {
-    "name": "Experto en Golpes Críticos",
+    "name": "Critical Hit Expert",
     "colors": [
       "B",
       "G",
@@ -3301,7 +3301,7 @@
     ]
   },
   {
-    "name": "Devolución de PA",
+    "name": "AP Return",
     "colors": [
       "B",
       "R",
@@ -3333,7 +3333,7 @@
     ]
   },
   {
-    "name": "Carnicería",
+    "name": "Carnage",
     "colors": [
       "R",
       "R",
@@ -3367,7 +3367,7 @@
     ]
   },
   {
-    "name": "Tolerancia",
+    "name": "Tolerance",
     "colors": [
       "R",
       "B",
@@ -3400,7 +3400,7 @@
     ]
   },
   {
-    "name": "Crítico Berserker",
+    "name": "Berserk Critical",
     "colors": [
       "R",
       "G",
@@ -3434,7 +3434,7 @@
     ]
   },
   {
-    "name": "Sanación",
+    "name": "Healing",
     "colors": [
       "R",
       "R",
@@ -3468,7 +3468,7 @@
     ]
   },
   {
-    "name": "Emboscada alejada",
+    "name": "Distant Ambush",
     "colors": [
       "R",
       "R",
@@ -3502,7 +3502,7 @@
     ]
   },
   {
-    "name": "Estragos secundarios",
+    "name": "Secondary Devastation",
     "colors": [
       "G",
       "G",
@@ -3534,7 +3534,7 @@
     ]
   },
   {
-    "name": "Terquedad",
+    "name": "Obstinacy",
     "colors": [
       "R",
       "B",
@@ -3567,7 +3567,7 @@
     ]
   },
   {
-    "name": "Persistencia",
+    "name": "Persistence",
     "colors": [
       "R",
       "G",
@@ -3594,7 +3594,7 @@
     ]
   },
   {
-    "name": "Alocentrismo",
+    "name": "Allocentrism",
     "colors": [
       "G",
       "G",
@@ -3628,7 +3628,7 @@
     ]
   },
   {
-    "name": "Escudo Crítico",
+    "name": "Critical Shield",
     "colors": [
       "B",
       "G",
@@ -3662,7 +3662,7 @@
     ]
   },
   {
-    "name": "Escapatoria Continua",
+    "name": "Constant Evasion",
     "colors": [
       "G",
       "G",
@@ -3696,7 +3696,7 @@
     ]
   },
   {
-    "name": "Acribia",
+    "name": "Scrupulosity",
     "colors": [
       "R",
       "G",
@@ -3730,7 +3730,7 @@
     ]
   },
   {
-    "name": "Arte del Escondite",
+    "name": "Art of Concealment",
     "colors": [
       "B",
       "B",
@@ -3769,7 +3769,7 @@
     ]
   },
   {
-    "name": "Influjo Vital",
+    "name": "Vital Influence",
     "colors": [
       "G",
       "R",
@@ -3803,7 +3803,7 @@
     ]
   },
   {
-    "name": "Caparagolpiza",
+    "name": "Bashell",
     "colors": [
       "R",
       "G",
@@ -3837,7 +3837,7 @@
     ]
   },
   {
-    "name": "Provecho",
+    "name": "Profit",
     "colors": [
       "B",
       "B",
@@ -3869,7 +3869,7 @@
     ]
   },
   {
-    "name": "Sanguinolencia",
+    "name": "Blood Stains",
     "colors": [
       "R",
       "G",
@@ -3903,7 +3903,7 @@
     ]
   },
   {
-    "name": "Conservación",
+    "name": "Conservation",
     "colors": [
       "B",
       "G",
@@ -3937,7 +3937,7 @@
     ]
   },
   {
-    "name": "Voluntad Directa",
+    "name": "Direct Force of Will",
     "colors": [
       "B",
       "G",
@@ -3976,7 +3976,7 @@
     ]
   },
   {
-    "name": "Influjo Paradójico",
+    "name": "Paradoxical Influence",
     "colors": [
       "G",
       "R",
@@ -4010,7 +4010,7 @@
     ]
   },
   {
-    "name": "Fuerza Ligera",
+    "name": "Light Strength",
     "colors": [
       "G",
       "G",
@@ -4044,7 +4044,7 @@
     ]
   },
   {
-    "name": "Balanza Crítica",
+    "name": "Critical Scale",
     "colors": [
       "G",
       "B",
@@ -4078,7 +4078,7 @@
     ]
   },
   {
-    "name": "Interposición",
+    "name": "Interposition",
     "colors": [
       "B",
       "R",
@@ -4110,7 +4110,7 @@
     ]
   },
   {
-    "name": "Agilidad Vital",
+    "name": "Vital Agility",
     "colors": [
       "G",
       "B",
@@ -4137,7 +4137,7 @@
     ]
   },
   {
-    "name": "Represalias",
+    "name": "Reprisal",
     "colors": [
       "R",
       "R",
@@ -4171,7 +4171,7 @@
     ]
   },
   {
-    "name": "Adrezo",
+    "name": "Embellishement",
     "colors": [
       "R",
       "B",
@@ -4205,7 +4205,7 @@
     ]
   },
   {
-    "name": "Escudo Dorsal",
+    "name": "Rear Shield",
     "colors": [
       "R",
       "G",
@@ -4239,7 +4239,7 @@
     ]
   },
   {
-    "name": "Consuelo Crítico",
+    "name": "Critical Consolation",
     "colors": [
       "B",
       "G",
@@ -4273,7 +4273,7 @@
     ]
   },
   {
-    "name": "Fuerza Vital",
+    "name": "Vital Strength",
     "colors": [
       "R",
       "G",
@@ -4300,7 +4300,7 @@
     ]
   },
   {
-    "name": "Anticipación ofensiva",
+    "name": "Offensive Block",
     "colors": [
       "R",
       "R",
@@ -4333,7 +4333,7 @@
     ]
   },
   {
-    "name": "Crítico táctico",
+    "name": "Tactical Critical",
     "colors": [
       "R",
       "G",
@@ -4367,7 +4367,7 @@
     ]
   },
   {
-    "name": "Neutralidad",
+    "name": "Neutrality",
     "colors": [
       "B",
       "G",
@@ -4401,7 +4401,7 @@
     ]
   },
   {
-    "name": "Pretensión",
+    "name": "Pretension",
     "colors": [
       "G",
       "B",
@@ -4435,7 +4435,7 @@
     ]
   },
   {
-    "name": "Último Aliento",
+    "name": "Last Breath",
     "colors": [
       "G",
       "B",
@@ -4474,7 +4474,7 @@
     ]
   },
   {
-    "name": "Pie firme",
+    "name": "Firm Foot",
     "colors": [
       "B",
       "R",
@@ -4508,7 +4508,7 @@
     ]
   },
   {
-    "name": "Ser sensible",
+    "name": "Sensitivity",
     "colors": [
       "R",
       "G",
@@ -4542,7 +4542,7 @@
     ]
   },
   {
-    "name": "Potencia bruta",
+    "name": "Raw Power",
     "colors": [
       "G",
       "G",
@@ -4581,7 +4581,7 @@
     ]
   },
   {
-    "name": "Ambición",
+    "name": "Ambition",
     "colors": [
       "G",
       "B",
@@ -4615,7 +4615,7 @@
     ]
   },
   {
-    "name": "Combate Cercano",
+    "name": "Brawling",
     "colors": [
       "R",
       "G",
@@ -4648,7 +4648,7 @@
     ]
   },
   {
-    "name": "Preparación Crítica",
+    "name": "Critical Preparation",
     "colors": [
       "R",
       "G",
@@ -4682,7 +4682,7 @@
     ]
   },
   {
-    "name": "Bloqueo",
+    "name": "Locking",
     "colors": [
       "G",
       "R",
@@ -4716,7 +4716,7 @@
     ]
   },
   {
-    "name": "Retraso",
+    "name": "Delay",
     "colors": [
       "G",
       "R",
@@ -4750,7 +4750,7 @@
     ]
   },
   {
-    "name": "Caparazón",
+    "name": "Carapace",
     "colors": [
       "R",
       "B",
@@ -4783,7 +4783,7 @@
     ]
   },
   {
-    "name": "Armadura Pesada",
+    "name": "Heavy Armor",
     "colors": [
       "R",
       "G",
@@ -4816,7 +4816,7 @@
     ]
   },
   {
-    "name": "Peso Pluma",
+    "name": "Featherweight",
     "colors": [
       "R",
       "R",
@@ -4850,7 +4850,7 @@
     ]
   },
   {
-    "name": "Guardado Crítico",
+    "name": "Critical Save",
     "colors": [
       "B",
       "R",
@@ -4882,7 +4882,7 @@
     ]
   },
   {
-    "name": "Bote",
+    "name": "Surge",
     "colors": [
       "G",
       "R",
@@ -4916,7 +4916,7 @@
     ]
   },
   {
-    "name": "Juicio",
+    "name": "Judgment",
     "colors": [
       "R",
       "R",
@@ -4950,7 +4950,7 @@
     ]
   },
   {
-    "name": "Diagnóstico",
+    "name": "Diagnosis",
     "colors": [
       "G",
       "B",
@@ -4984,7 +4984,7 @@
     ]
   },
   {
-    "name": "Adrezo Secundario",
+    "name": "Secondary Embellishment",
     "colors": [
       "B",
       "R",
@@ -5018,7 +5018,7 @@
     ]
   },
   {
-    "name": "Abnegación",
+    "name": "Abnegation",
     "colors": [
       "Epic"
     ],
@@ -5043,7 +5043,7 @@
     ]
   },
   {
-    "name": "Anatomía",
+    "name": "Anatomy",
     "colors": [
       "Epic"
     ],
@@ -5068,7 +5068,7 @@
     ]
   },
   {
-    "name": "Brutalidad",
+    "name": "Brutality",
     "colors": [
       "Epic"
     ],
@@ -5093,7 +5093,7 @@
     ]
   },
   {
-    "name": "Caos",
+    "name": "Chaos",
     "colors": [
       "Epic"
     ],
@@ -5118,7 +5118,7 @@
     ]
   },
   {
-    "name": "Desmesurado",
+    "name": "Colossal",
     "colors": [
       "Epic"
     ],
@@ -5143,7 +5143,7 @@
     ]
   },
   {
-    "name": "Control del Espacio",
+    "name": "Controlling Space",
     "colors": [
       "Epic"
     ],
@@ -5168,7 +5168,7 @@
     ]
   },
   {
-    "name": "Control del Espacio II",
+    "name": "Controlling Space II",
     "colors": [
       "Epic"
     ],
@@ -5193,7 +5193,7 @@
     ]
   },
   {
-    "name": "Concentración Elemental",
+    "name": "Elemental Concentration",
     "colors": [
       "Epic"
     ],
@@ -5218,7 +5218,7 @@
     ]
   },
   {
-    "name": "Elementalismo",
+    "name": "Elementalism",
     "colors": [
       "Epic"
     ],
@@ -5243,7 +5243,7 @@
     ]
   },
   {
-    "name": "Compromiso",
+    "name": "Engagement",
     "colors": [
       "Epic"
     ],
@@ -5268,7 +5268,7 @@
     ]
   },
   {
-    "name": "Fuerza Hercúlea",
+    "name": "Herculean Strength",
     "colors": [
       "Epic"
     ],
@@ -5293,7 +5293,7 @@
     ]
   },
   {
-    "name": "Inflexibilidad",
+    "name": "Inflexibility",
     "colors": [
       "Epic"
     ],
@@ -5318,7 +5318,7 @@
     ]
   },
   {
-    "name": "Inflexibilidad II",
+    "name": "Inflexibility II",
     "colors": [
       "Epic"
     ],
@@ -5343,7 +5343,7 @@
     ]
   },
   {
-    "name": "Voluntad de Hierro",
+    "name": "Iron Will",
     "colors": [
       "Epic"
     ],
@@ -5368,7 +5368,7 @@
     ]
   },
   {
-    "name": "Medida",
+    "name": "Measure",
     "colors": [
       "Epic"
     ],
@@ -5393,7 +5393,7 @@
     ]
   },
   {
-    "name": "Medida II",
+    "name": "Measure II",
     "colors": [
       "Epic"
     ],
@@ -5418,7 +5418,7 @@
     ]
   },
   {
-    "name": "Medida III",
+    "name": "Measure III",
     "colors": [
       "Epic"
     ],
@@ -5443,7 +5443,7 @@
     ]
   },
   {
-    "name": "Furia",
+    "name": "Outrage",
     "colors": [
       "Epic"
     ],
@@ -5468,7 +5468,7 @@
     ]
   },
   {
-    "name": "Furia II",
+    "name": "Outrage II",
     "colors": [
       "Epic"
     ],
@@ -5493,7 +5493,7 @@
     ]
   },
   {
-    "name": "Pilar",
+    "name": "Pillar",
     "colors": [
       "Epic"
     ],
@@ -5518,7 +5518,7 @@
     ]
   },
   {
-    "name": "Pilar II",
+    "name": "Pillar II",
     "colors": [
       "Epic"
     ],
@@ -5543,7 +5543,7 @@
     ]
   },
   {
-    "name": "Salud de hierro",
+    "name": "Robust Health",
     "colors": [
       "Epic"
     ],
@@ -5568,7 +5568,7 @@
     ]
   },
   {
-    "name": "Constancia",
+    "name": "Steadfast",
     "colors": [
       "Epic"
     ],
@@ -5593,7 +5593,7 @@
     ]
   },
   {
-    "name": "Constancia II",
+    "name": "Steadfast II",
     "colors": [
       "Epic"
     ],
@@ -5618,7 +5618,7 @@
     ]
   },
   {
-    "name": "Precisión quirúrgica",
+    "name": "Surgical Precision",
     "colors": [
       "Epic"
     ],
@@ -5643,7 +5643,7 @@
     ]
   },
   {
-    "name": "Desenlace",
+    "name": "Unraveling",
     "colors": [
       "Epic"
     ],
@@ -5668,7 +5668,7 @@
     ]
   },
   {
-    "name": "Pacto Wakfu",
+    "name": "Wakfu Pact",
     "colors": [
       "Epic"
     ],
@@ -5693,7 +5693,7 @@
     ]
   },
   {
-    "name": "Manejo: Daga",
+    "name": "Wield type: Dagger",
     "colors": [
       "Epic"
     ],
@@ -5718,7 +5718,7 @@
     ]
   },
   {
-    "name": "Manejo: Escudo",
+    "name": "Wield type: Shield",
     "colors": [
       "Epic"
     ],
@@ -5743,7 +5743,7 @@
     ]
   },
   {
-    "name": "Ciencia del Posicionamiento",
+    "name": "Positioning Knowledge",
     "colors": [
       "Epic"
     ],
@@ -5768,7 +5768,7 @@
     ]
   },
   {
-    "name": "Manejo: Dos manos",
+    "name": "Wield type: Two-handed",
     "colors": [
       "Epic"
     ],
@@ -5793,7 +5793,7 @@
     ]
   },
   {
-    "name": "Alternancia",
+    "name": "Alternation",
     "colors": [
       "Relic"
     ],
@@ -5818,7 +5818,7 @@
     ]
   },
   {
-    "name": "Alternancia II",
+    "name": "Alternation II",
     "colors": [
       "Relic"
     ],
@@ -5843,7 +5843,7 @@
     ]
   },
   {
-    "name": "Energía Ancestral",
+    "name": "Ancestral Energy",
     "colors": [
       "Relic"
     ],
@@ -5868,7 +5868,7 @@
     ]
   },
   {
-    "name": "Arrogancia",
+    "name": "Arrogance",
     "colors": [
       "Relic"
     ],
@@ -5893,7 +5893,7 @@
     ]
   },
   {
-    "name": "Asimilación",
+    "name": "Assimilation",
     "colors": [
       "Relic"
     ],
@@ -5918,7 +5918,7 @@
     ]
   },
   {
-    "name": "Más Allá del Parapeto",
+    "name": "Beyond the Barrier",
     "colors": [
       "Relic"
     ],
@@ -5943,7 +5943,7 @@
     ]
   },
   {
-    "name": "Brasero",
+    "name": "Brazier",
     "colors": [
       "Relic"
     ],
@@ -5968,7 +5968,7 @@
     ]
   },
   {
-    "name": "Brisa",
+    "name": "Breeze",
     "colors": [
       "Relic"
     ],
@@ -5993,7 +5993,7 @@
     ]
   },
   {
-    "name": "Calibrado",
+    "name": "Calibration",
     "colors": [
       "Relic"
     ],
@@ -6018,7 +6018,7 @@
     ]
   },
   {
-    "name": "Calibrado II",
+    "name": "Calibration II",
     "colors": [
       "Relic"
     ],
@@ -6043,7 +6043,7 @@
     ]
   },
   {
-    "name": "Contacto",
+    "name": "Contact",
     "colors": [
       "Relic"
     ],
@@ -6068,7 +6068,7 @@
     ]
   },
   {
-    "name": "Directivas",
+    "name": "Directives",
     "colors": [
       "Relic"
     ],
@@ -6093,7 +6093,7 @@
     ]
   },
   {
-    "name": "Distribución",
+    "name": "Distribution",
     "colors": [
       "Relic"
     ],
@@ -6118,7 +6118,7 @@
     ]
   },
   {
-    "name": "Petulancia",
+    "name": "Ebullience",
     "colors": [
       "Relic"
     ],
@@ -6143,7 +6143,7 @@
     ]
   },
   {
-    "name": "Exceso",
+    "name": "Excess",
     "colors": [
       "Relic"
     ],
@@ -6168,7 +6168,7 @@
     ]
   },
   {
-    "name": "Exceso II",
+    "name": "Excess II",
     "colors": [
       "Relic"
     ],
@@ -6193,7 +6193,7 @@
     ]
   },
   {
-    "name": "Cara a Cara",
+    "name": "Face-to-Face",
     "colors": [
       "Relic"
     ],
@@ -6218,7 +6218,7 @@
     ]
   },
   {
-    "name": "Hipermétrope",
+    "name": "Farsighted",
     "colors": [
       "Relic"
     ],
@@ -6243,7 +6243,7 @@
     ]
   },
   {
-    "name": "Aura de Llamas",
+    "name": "Flame Aura",
     "colors": [
       "Relic"
     ],
@@ -6268,7 +6268,7 @@
     ]
   },
   {
-    "name": "Guardia Levantada",
+    "name": "Guard Up",
     "colors": [
       "Relic"
     ],
@@ -6293,7 +6293,7 @@
     ]
   },
   {
-    "name": "Ahínco",
+    "name": "Gusto",
     "colors": [
       "Relic"
     ],
@@ -6318,7 +6318,7 @@
     ]
   },
   {
-    "name": "Sangre del Martirio",
+    "name": "Heartbreaking Blood",
     "colors": [
       "Relic"
     ],
@@ -6343,7 +6343,7 @@
     ]
   },
   {
-    "name": "Pesadez Involuntaria",
+    "name": "Involuntary Heaviness",
     "colors": [
       "Relic"
     ],
@@ -6368,7 +6368,7 @@
     ]
   },
   {
-    "name": "Último Instante",
+    "name": "Last Moment",
     "colors": [
       "Relic"
     ],
@@ -6393,7 +6393,7 @@
     ]
   },
   {
-    "name": "Arma de Luz",
+    "name": "Light Weapon",
     "colors": [
       "Relic"
     ],
@@ -6418,7 +6418,7 @@
     ]
   },
   {
-    "name": "Longevidad",
+    "name": "Longevity",
     "colors": [
       "Relic"
     ],
@@ -6443,7 +6443,7 @@
     ]
   },
   {
-    "name": "Lunático",
+    "name": "Lunatic",
     "colors": [
       "Relic"
     ],
@@ -6468,7 +6468,7 @@
     ]
   },
   {
-    "name": "Lunático II",
+    "name": "Lunatic II",
     "colors": [
       "Relic"
     ],
@@ -6493,7 +6493,7 @@
     ]
   },
   {
-    "name": "Modularidad",
+    "name": "Modularity",
     "colors": [
       "Relic"
     ],
@@ -6518,7 +6518,7 @@
     ]
   },
   {
-    "name": "Aplomo Natural",
+    "name": "Natural Poise",
     "colors": [
       "Relic"
     ],
@@ -6543,7 +6543,7 @@
     ]
   },
   {
-    "name": "Apacible",
+    "name": "Peaceful",
     "colors": [
       "Relic"
     ],
@@ -6568,7 +6568,7 @@
     ]
   },
   {
-    "name": "Resurrección",
+    "name": "Rebirth",
     "colors": [
       "Relic"
     ],
@@ -6593,7 +6593,7 @@
     ]
   },
   {
-    "name": "Robusto",
+    "name": "Robust",
     "colors": [
       "Relic"
     ],
@@ -6618,7 +6618,7 @@
     ]
   },
   {
-    "name": "Centinela",
+    "name": "Sentinel",
     "colors": [
       "Relic"
     ],
@@ -6643,7 +6643,7 @@
     ]
   },
   {
-    "name": "Cota Singular",
+    "name": "Single Shared Armor",
     "colors": [
       "Relic"
     ],
@@ -6668,7 +6668,7 @@
     ]
   },
   {
-    "name": "Cota Singular",
+    "name": "Single Shared Armor II",
     "colors": [
       "Relic"
     ],
@@ -6693,7 +6693,7 @@
     ]
   },
   {
-    "name": "Rompecaparazón",
+    "name": "Smashell",
     "colors": [
       "Relic"
     ],
@@ -6718,7 +6718,7 @@
     ]
   },
   {
-    "name": "Burbujeo",
+    "name": "Sparkle",
     "colors": [
       "Relic"
     ],
@@ -6743,7 +6743,7 @@
     ]
   },
   {
-    "name": "Stasificación",
+    "name": "Stasification",
     "colors": [
       "Relic"
     ],
@@ -6768,7 +6768,7 @@
     ]
   },
   {
-    "name": "Control del Tiempo",
+    "name": "Time Control",
     "colors": [
       "Relic"
     ],
@@ -6793,7 +6793,7 @@
     ]
   },
   {
-    "name": "Confianza",
+    "name": "Trust",
     "colors": [
       "Relic"
     ],
@@ -6818,7 +6818,7 @@
     ]
   },
   {
-    "name": "Vehemencia",
+    "name": "Vehemence",
     "colors": [
       "Relic"
     ],
@@ -6843,7 +6843,7 @@
     ]
   },
   {
-    "name": "Seh",
+    "name": "Yeah",
     "colors": [
       "Relic"
     ],
@@ -6868,7 +6868,7 @@
     ]
   },
   {
-    "name": "Sello de Wakfu",
+    "name": "Wakfu Seal",
     "colors": [
       "Relic"
     ],
@@ -6893,7 +6893,7 @@
     ]
   },
   {
-    "name": "Castigo",
+    "name": "Punishment",
     "colors": [
       "Relic"
     ],
@@ -6918,7 +6918,7 @@
     ]
   },
   {
-    "name": "Absolución",
+    "name": "Absolution",
     "colors": [
       "Relic"
     ],
@@ -6943,7 +6943,7 @@
     ]
   },
   {
-    "name": "Anticipación Única",
+    "name": "Single Block",
     "colors": [
       "Relic"
     ],
@@ -6968,7 +6968,7 @@
     ]
   },
   {
-    "name": "Secreto Crítico",
+    "name": "Critical Secret",
     "colors": [
       "Epic"
     ],
