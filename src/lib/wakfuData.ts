@@ -27,7 +27,7 @@ const DATA_BASE = "/data";
 
 export async function loadWakfuData(language: string = "en"): Promise<WakfuData> {
   const [items, recipes] = await Promise.all([
-    fetch(`${DATA_BASE}/items.compact.en.json`, { cache: "no-store" }).then((r) => r.json()) as Promise<CompactItem[]>,
+    fetch(`${DATA_BASE}/items.compact.${language}.json`, { cache: "no-store" }).then((r) => r.json()) as Promise<CompactItem[]>,
     fetch(`${DATA_BASE}/recipes.compact.json`, { cache: "no-store" }).then((r) => r.json()) as Promise<CompactRecipe[]>,
   ]);
 
