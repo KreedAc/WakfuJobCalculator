@@ -81,7 +81,9 @@ export const TRANSLATIONS = {
     noSublimationsFound: 'No sublimations found',
     tryAdjustingFilters: 'Try adjusting your search or category filter.',
     clearAllFilters: 'Clear all filters',
-    lvl: 'Lvl.'
+    lvl: 'Lvl.',
+    about: 'About',
+    changelog: 'Changelog'
   },
   fr: {
     title: 'Calculateur d\'XP d\'Artisanat Wakfu',
@@ -156,7 +158,9 @@ export const TRANSLATIONS = {
     noSublimationsFound: 'Aucune sublimation trouvée',
     tryAdjustingFilters: 'Essayez d\'ajuster votre recherche ou votre filtre de catégorie.',
     clearAllFilters: 'Effacer tous les filtres',
-    lvl: 'Niv.'
+    lvl: 'Niv.',
+    about: 'À propos',
+    changelog: 'Journal des modifications'
   },
   es: {
     title: 'Calculadora de XP de Artesanía de Wakfu',
@@ -231,7 +235,9 @@ export const TRANSLATIONS = {
     noSublimationsFound: 'No se encontraron sublimaciones',
     tryAdjustingFilters: 'Intenta ajustar tu búsqueda o filtro de categoría.',
     clearAllFilters: 'Borrar todos los filtros',
-    lvl: 'Niv.'
+    lvl: 'Niv.',
+    about: 'Acerca de',
+    changelog: 'Registro de cambios'
   },
   pt: {
     title: 'Calculadora de XP de Artesanato Wakfu',
@@ -306,6 +312,8 @@ export const TRANSLATIONS = {
     noSublimationsFound: 'Nenhuma sublimação encontrada',
     tryAdjustingFilters: 'Tente ajustar sua pesquisa ou filtro de categoria.',
     clearAllFilters: 'Limpar todos os filtros',
-    lvl: 'Nív.'
+    lvl: 'Nív.',
+    about: 'Sobre',
+    changelog: 'Registro de alterações'
   }
 } as const;

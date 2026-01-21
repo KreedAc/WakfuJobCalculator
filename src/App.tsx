@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { CalculatorPage } from './pages/CalculatorPage';
 import { SublimationsPage } from './pages/SublimationsPage';
 import { ItemsCraftGuidePage } from './pages/ItemsCraftGuidePage';
+import { AboutPage } from './pages/AboutPage';
+import { ChangelogPage } from './pages/ChangelogPage';
 import { Navbar } from './components/Navbar';
 import { LanguageSelector } from './components/LanguageSelector';
 import { useClickOutside } from './hooks/useClickOutside';
@@ -84,11 +86,28 @@ function AppContent() {
           <Route path="/" element={<CalculatorPage language={lang} />} />
           <Route path="/sublimations" element={<SublimationsPage language={lang} />} />
           <Route path="/items-craft-guide" element={<ItemsCraftGuidePage language={lang} />} />
+          <Route path="/about" element={<AboutPage language={lang} />} />
+          <Route path="/changelog" element={<ChangelogPage language={lang} />} />
         </Routes>
 
         <footer className="mt-16 text-emerald-200/40 text-xs text-center pb-8 font-medium">
           <p>WAKFU is an MMORPG published by Ankama.</p>
           <p className="mt-1">"wakfujobcalculator" is an unofficial website with no connection to Ankama.</p>
+          <div className="flex items-center justify-center gap-4 mt-4">
+            <Link
+              to="/about"
+              className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline"
+            >
+              {t.about}
+            </Link>
+            <span className="opacity-50">•</span>
+            <Link
+              to="/changelog"
+              className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline"
+            >
+              {t.changelog}
+            </Link>
+          </div>
           <p className="mt-4 opacity-75">{new Date().getFullYear()} {t.createdBy} KreedAc and LadyKreedAc</p>
         </footer>
       </div>
