@@ -4,15 +4,13 @@ import { FALLBACK_SUBLIMATIONS, type Sublimation } from '../data/fallbackSublima
 import { processDescription, initializeRuneLevels } from '../utils/sublimationUtils';
 import { LocalImage } from './LocalImage';
 import { SlotSelector } from './SlotSelector';
-import { type Language } from '../constants/translations';
 import './Sublimations.css';
 
 interface SublimationsProps {
-  language: Language;
   translations: Record<string, string>;
 }
 
-export function Sublimations({ language, translations: t }: SublimationsProps) {
+export function Sublimations({ translations: t }: SublimationsProps) {
   const [runes, setRunes] = useState<Sublimation[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -28,7 +26,7 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
   useEffect(() => {
     async function fetchData() {
       try {
-        const sublimationsPath = `/data/sublimations.${language}.json`;
+        const sublimationsPath = `/data/sublimations.en.json`;
         const response = await fetch(sublimationsPath);
         if (response.ok) {
           const data = await response.json();
@@ -42,7 +40,7 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
         }
         throw new Error("JSON file not found or empty");
       } catch (err) {
-        console.warn(`Could not load sublimations.${language}.json, trying fallback...`, err);
+        console.warn(`Could not load sublimations.en.json, trying fallback...`, err);
         try {
           const fallbackResponse = await fetch('sublimations.json');
           if (fallbackResponse.ok) {
@@ -65,7 +63,7 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
       }
     }
     fetchData();
-  }, [language]);
+  }, []);
 
   useEffect(() => {
     setSelectedCategory(t.allCategories);

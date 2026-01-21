@@ -7,5 +7,5 @@ interface SublimationsPageProps {
 
 export function SublimationsPage({ language }: SublimationsPageProps) {
   const t = TRANSLATIONS[language];
-  return <Sublimations language={language} translations={t} />;
+  return <Sublimations translations={t} />;
 }
