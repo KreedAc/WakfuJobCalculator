@@ -1,4 +1,4 @@
-import { Hammer, Scroll, Wrench, BookOpen } from 'lucide-react';
+import { Hammer, Scroll, Wrench } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface NavbarProps {
@@ -6,15 +6,13 @@ interface NavbarProps {
   navCalcLabel: string;
   navSubliLabel: string;
   navItemsCraftLabel: string;
-  navGuidesLabel: string;
 }
 
 export function Navbar({
   currentPath,
   navCalcLabel,
   navSubliLabel,
-  navItemsCraftLabel,
-  navGuidesLabel
+  navItemsCraftLabel
 }: NavbarProps) {
   return (
     <nav className="flex items-center gap-2 backdrop-blur-xl bg-gray-900/60 border border-white/10 shadow-xl rounded-2xl px-4 py-2">
@@ -52,18 +50,6 @@ export function Navbar({
       >
         <Wrench className="w-4 h-4" />
         <span className="hidden sm:inline">{navItemsCraftLabel}</span>
-      </Link>
-
-      <Link
-        to="/guides"
-        className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
-          currentPath.startsWith('/guides')
-            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-            : 'text-emerald-100/80 hover:bg-white/10 hover:text-emerald-200'
-        }`}
-      >
-        <BookOpen className="w-4 h-4" />
-        <span className="hidden sm:inline">{navGuidesLabel}</span>
       </Link>
     </nav>
   );

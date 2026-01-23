@@ -76,7 +76,6 @@ function AppContent() {
           navCalcLabel={t.navCalc}
           navSubliLabel={t.navSubli}
           navItemsCraftLabel={t.navItemsCraft}
-          navGuidesLabel={t.navGuidesLabel}
         />
 
         <LanguageSelector
