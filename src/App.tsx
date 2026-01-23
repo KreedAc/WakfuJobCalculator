@@ -5,6 +5,12 @@ import { SublimationsPage } from './pages/SublimationsPage';
 import { ItemsCraftGuidePage } from './pages/ItemsCraftGuidePage';
 import { AboutPage } from './pages/AboutPage';
 import { ChangelogPage } from './pages/ChangelogPage';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { TermsOfServicePage } from './pages/TermsOfServicePage';
+import { ContactPage } from './pages/ContactPage';
+import { GuidesPage } from './pages/GuidesPage';
+import { BeginnersGuideProfessions } from './pages/guides/BeginnersGuideProfessions';
+import { CompleteSublimationsGuide } from './pages/guides/CompleteSublimationsGuide';
 import { Navbar } from './components/Navbar';
 import { LanguageSelector } from './components/LanguageSelector';
 import { useClickOutside } from './hooks/useClickOutside';
@@ -70,6 +76,7 @@ function AppContent() {
           navCalcLabel={t.navCalc}
           navSubliLabel={t.navSubli}
           navItemsCraftLabel={t.navItemsCraft}
+          navGuidesLabel={t.navGuidesLabel}
         />
 
         <LanguageSelector
@@ -86,29 +93,49 @@ function AppContent() {
           <Route path="/" element={<CalculatorPage language={lang} />} />
           <Route path="/sublimations" element={<SublimationsPage language={lang} />} />
           <Route path="/items-craft-guide" element={<ItemsCraftGuidePage language={lang} />} />
+          <Route path="/guides" element={<GuidesPage language={lang} />} />
+          <Route path="/guides/beginners-guide-professions" element={<BeginnersGuideProfessions language={lang} />} />
+          <Route path="/guides/complete-sublimations-guide" element={<CompleteSublimationsGuide language={lang} />} />
           <Route path="/about" element={<AboutPage language={lang} />} />
           <Route path="/changelog" element={<ChangelogPage language={lang} />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage language={lang} />} />
+          <Route path="/terms" element={<TermsOfServicePage language={lang} />} />
+          <Route path="/contact" element={<ContactPage language={lang} />} />
         </Routes>
 
-        <footer className="mt-16 text-emerald-200/40 text-xs text-center pb-8 font-medium">
+        <footer className="mt-16 text-emerald-200/40 text-xs text-center pb-8 font-medium space-y-4">
           <p>WAKFU is an MMORPG published by Ankama.</p>
-          <p className="mt-1">"wakfujobcalculator" is an unofficial website with no connection to Ankama.</p>
-          <div className="flex items-center justify-center gap-4 mt-4">
-            <Link
-              to="/about"
-              className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline"
-            >
+          <p>"wakfujobcalculator" is an unofficial website with no connection to Ankama.</p>
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link to="/guides" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+              Guides
+            </Link>
+            <span className="opacity-50">•</span>
+            <Link to="/about" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
               {t.about}
             </Link>
             <span className="opacity-50">•</span>
-            <Link
-              to="/changelog"
-              className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline"
-            >
+            <Link to="/changelog" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
               {t.changelog}
             </Link>
+            <span className="opacity-50">•</span>
+            <Link to="/contact" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+              Contact
+            </Link>
           </div>
-          <p className="mt-4 opacity-75">{new Date().getFullYear()} {t.createdBy} KreedAc and LadyKreedAc</p>
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link to="/privacy" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+              Privacy Policy
+            </Link>
+            <span className="opacity-50">•</span>
+            <Link to="/terms" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+              Terms of Service
+            </Link>
+          </div>
+
+          <p className="opacity-75">{new Date().getFullYear()} {t.createdBy} KreedAc and LadyKreedAc</p>
         </footer>
       </div>
     </div>
