@@ -49,18 +49,18 @@ function AppContent() {
     <div className="relative min-h-screen text-white flex flex-col items-center p-6 overflow-hidden font-sans">
    <div className="absolute inset-0 -z-10 bg-slate-900">
   <div
-    className="absolute inset-0 opacity-65 transition-opacity duration-700"
+    className="absolute inset-0 opacity-70 transition-opacity duration-700"
     style={{
       backgroundImage: `url(${BG_URL})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
-      filter: "blur(1.5px) saturate(1.1) brightness(1.25)",
+      filter: "blur(1.5px) saturate(1.1) brightness(1.5)",
     }}
   />
   {/* overlay più chiaro */}
-  <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/35 via-slate-900/25 to-slate-950/35" />
+  <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-slate-900/15 to-slate-950/20" />
   {/* "veil" chiaro per aumentare contrasto testo */}
-  <div className="absolute inset-0 bg-white/[0.08]" />
+  <div className="absolute inset-0 bg-white/[0.12]" />
 </div>
 
 {/* vignette meno aggressiva */}
