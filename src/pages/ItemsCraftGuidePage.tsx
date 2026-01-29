@@ -62,6 +62,9 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
   const [expandedByRoot, setExpandedByRoot] = useState<Map<number, Set<number>>>(new Map());
   const [recipeChoiceByRoot, setRecipeChoiceByRoot] = useState<Map<number, Map<number, number>>>(new Map());
 
+  // Checked items in shopping list
+  const [checkedItems, setCheckedItems] = useState<Set<number>>(new Set());
+
   useEffect(() => {
     setLoading(true);
     loadWakfuData(language)
@@ -160,6 +163,19 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
     setActiveItemId(null);
     setExpandedByRoot(new Map());
     setRecipeChoiceByRoot(new Map());
+    setCheckedItems(new Set());
+  };
+
+  const toggleCheckedItem = (itemId: number) => {
+    setCheckedItems((prev) => {
+      const next = new Set(prev);
+      if (next.has(itemId)) {
+        next.delete(itemId);
+      } else {
+        next.add(itemId);
+      }
+      return next;
+    });
   };
 
   const setQty = (itemId: number, delta: number) => {
@@ -514,21 +530,34 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                     const it = itemsById.get(row.itemId);
                     const name = it?.name ?? `#${row.itemId}`;
                     const rInfo = rarityInfo(it?.rarity, t);
+                    const isChecked = checkedItems.has(row.itemId);
 
                     return (
                       <div
                         key={row.itemId}
-                        className="flex items-center gap-3 rounded-xl border border-emerald-300/10 px-3 py-2"
+                        className={`flex items-center gap-3 rounded-xl border border-emerald-300/10 px-3 py-2 transition-opacity ${
+                          isChecked ? 'opacity-50' : ''
+                        }`}
                         style={{ background: 'rgba(30, 41, 59, 0.7)' }}
                       >
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => toggleCheckedItem(row.itemId)}
+                          className="w-5 h-5 rounded border-emerald-300/30 bg-emerald-900/20 text-emerald-500 focus:ring-2 focus:ring-emerald-500/50 cursor-pointer"
+                        />
                         <ItemIcon itemId={row.itemId} itemsById={itemsById} size={32} />
                         <div className="flex-1 min-w-0">
-                          <div className="text-emerald-100 text-sm truncate">{name}</div>
+                          <div className={`text-emerald-100 text-sm truncate ${isChecked ? 'line-through' : ''}`}>
+                            {name}
+                          </div>
                           <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
                             {rInfo?.label ?? "—"}
                           </div>
                         </div>
-                        <div className="text-emerald-200 font-semibold">x{row.qty}</div>
+                        <div className={`text-emerald-200 font-semibold ${isChecked ? 'line-through' : ''}`}>
+                          x{row.qty}
+                        </div>
                       </div>
                     );
                   })}
