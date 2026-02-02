@@ -11,6 +11,8 @@ import { ContactPage } from './pages/ContactPage';
 import { GuidesPage } from './pages/GuidesPage';
 import { BeginnersGuideProfessions } from './pages/guides/BeginnersGuideProfessions';
 import { CompleteSublimationsGuide } from './pages/guides/CompleteSublimationsGuide';
+import { CookiePolicyPage } from './pages/CookiePolicyPage';
+import { DisclaimerPage } from './pages/DisclaimerPage';
 import { Navbar } from './components/Navbar';
 import { LanguageSelector } from './components/LanguageSelector';
 import { useClickOutside } from './hooks/useClickOutside';
@@ -117,6 +119,8 @@ function AppContent() {
           <Route path="/changelog" element={<ChangelogPage language={lang} />} />
           <Route path="/privacy" element={<PrivacyPolicyPage language={lang} />} />
           <Route path="/terms" element={<TermsOfServicePage language={lang} />} />
+          <Route path="/cookies" element={<CookiePolicyPage language={lang} />} />
+          <Route path="/disclaimer" element={<DisclaimerPage language={lang} />} />
           <Route path="/contact" element={<ContactPage language={lang} />} />
         </Routes>
 
@@ -149,6 +153,14 @@ function AppContent() {
             <span className="opacity-50">•</span>
             <Link to="/terms" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
               Terms of Service
+            </Link>
+            <span className="opacity-50">•</span>
+            <Link to="/cookies" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+              Cookie Policy
+            </Link>
+            <span className="opacity-50">•</span>
+            <Link to="/disclaimer" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+              Disclaimer
             </Link>
           </div>
 
