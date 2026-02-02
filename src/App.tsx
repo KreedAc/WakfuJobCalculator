@@ -15,6 +15,11 @@ import { Navbar } from './components/Navbar';
 import { LanguageSelector } from './components/LanguageSelector';
 import { useClickOutside } from './hooks/useClickOutside';
 import { TRANSLATIONS, type Language } from './constants/translations';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 const BG_URL = '424478.jpg';
 
@@ -31,14 +36,27 @@ function AppContent() {
 
   useEffect(() => {
     const trackVisit = async () => {
+      const sessionKey = 'visit_tracked';
+      const hasTracked = sessionStorage.getItem(sessionKey);
+
+      if (hasTracked) {
+        return;
+      }
+
       try {
+        await supabase.from('visitors').insert({
+          user_agent: navigator.userAgent,
+          page: location.pathname
+        });
+
+        sessionStorage.setItem(sessionKey, 'true');
         console.log('Page visit tracked');
       } catch (error) {
         console.log('Tracking skipped');
       }
     };
     trackVisit();
-  }, []);
+  }, [location.pathname]);
 
   const handleLanguageChange = (newLang: Language) => {
     setLang(newLang);
