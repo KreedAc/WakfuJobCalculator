@@ -552,6 +552,7 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                   isCraftable={isCraftable}
                   visited={new Set<number>()}
                   t={t}
+                  language={language}
                 />
               </div>
             </div>
@@ -647,6 +648,7 @@ function RecipeNode(props: {
   visited: Set<number>;
   hideSelfRow?: boolean;
   t: TranslationType;
+  language: Language;
 }) {
   const {
     root,
@@ -662,6 +664,7 @@ function RecipeNode(props: {
     visited,
     hideSelfRow,
     t,
+    language,
   } = props;
 
   const item = itemsById.get(itemId);
@@ -670,6 +673,15 @@ function RecipeNode(props: {
 
   const recipes = recipesByResultId.get(itemId) ?? [];
   const craftable = recipes.length > 0;
+
+  const getProfessionForItem = (id: number) => {
+    const itemRecipes = recipesByResultId.get(id);
+    if (!itemRecipes || itemRecipes.length === 0) return null;
+    return getProfessionFromRecipe(itemRecipes[0], itemsById);
+  };
+
+  const profession = getProfessionForItem(itemId);
+  const professionName = profession ? PROFESSION_NAMES[language][profession] : null;
 
   const loop = visited.has(itemId);
   const nextVisited = new Set(visited);
@@ -715,6 +727,11 @@ function RecipeNode(props: {
                 {loop ? ` • ${t.loop}` : ""}
               </span>
             </div>
+            {professionName && (
+              <div className="text-[10px] text-emerald-300/60 italic mt-0.5">
+                {professionName}
+              </div>
+            )}
           </div>
 
           {craftable && recipes.length > 1 && (
@@ -743,6 +760,11 @@ function RecipeNode(props: {
                   • {t.root} • {craftable ? t.craftable : t.notCraftable}
                 </span>
               </div>
+              {professionName && (
+                <div className="text-[10px] text-emerald-300/60 italic mt-0.5">
+                  {professionName}
+                </div>
+              )}
             </div>
 
             {craftable && recipes.length > 1 && (
@@ -767,6 +789,8 @@ function RecipeNode(props: {
             const ingName = ingItem?.name ?? `#${ing.itemId}`;
             const ingCraftable = isCraftable(ing.itemId);
             const ingR = rarityInfo(ingItem?.rarity, t);
+            const ingProfession = getProfessionForItem(ing.itemId);
+            const ingProfessionName = ingProfession ? PROFESSION_NAMES[language][ingProfession] : null;
 
             return (
               <div
@@ -798,6 +822,11 @@ function RecipeNode(props: {
                         • {ingCraftable ? t.craftable : t.notCraftable}
                       </span>
                     </div>
+                    {ingProfessionName && (
+                      <div className="text-[10px] text-emerald-300/60 italic mt-0.5">
+                        {ingProfessionName}
+                      </div>
+                    )}
                   </div>
 
                   <div className="text-emerald-200 font-semibold">x{ing.qty}</div>
@@ -819,6 +848,7 @@ function RecipeNode(props: {
                       visited={nextVisited}
                       hideSelfRow
                       t={t}
+                      language={language}
                     />
                   </div>
                 )}
