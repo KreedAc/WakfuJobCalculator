@@ -16,43 +16,6 @@ export type CompactRecipe = {
   ingredients: { itemId: number; qty: number }[];
 };
 
-export type ProfessionId =
-  | 'Armorer'
-  | 'Baker'
-  | 'Chef'
-  | 'Handyman'
-  | 'Jeweler'
-  | 'Leather Dealer'
-  | 'Tailor'
-  | 'Weapons Master';
-
-const RECIPE_COMPONENT_KEYWORDS: Record<ProfessionId, string[]> = {
-  'Weapons Master': ['handle', 'manche', 'mango', 'cabo'],
-  'Handyman': ['bracket', 'equerre', 'escuadrita', 'esquadro'],
-  'Baker': ['oil', 'huile', 'aceite', 'óleo'],
-  'Chef': ['spice', 'epice', 'especia', 'especiaria'],
-  'Armorer': ['plate', 'plaque', 'placa'],
-  'Jeweler': ['gem', 'gemme', 'gema'],
-  'Leather Dealer': ['leather', 'cuir', 'cuero', 'couro'],
-  'Tailor': ['fiber', 'fibre', 'fibra']
-};
-
-export function getProfessionFromRecipe(recipe: CompactRecipe, itemsById: Map<number, CompactItem>): ProfessionId | null {
-  for (const ing of recipe.ingredients) {
-    const item = itemsById.get(ing.itemId);
-    if (!item) continue;
-
-    const nameLower = item.name.toLowerCase();
-
-    for (const [profession, keywords] of Object.entries(RECIPE_COMPONENT_KEYWORDS)) {
-      if (keywords.some(kw => nameLower.includes(kw))) {
-        return profession as ProfessionId;
-      }
-    }
-  }
-  return null;
-}
-
 export type WakfuData = {
   items: CompactItem[];
   recipes: CompactRecipe[];
