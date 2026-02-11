@@ -189,6 +189,17 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
     });
   };
 
+  const setQtyDirect = (itemId: number, value: number) => {
+    setSelected((prev) => {
+      const idx = prev.findIndex((x) => x.itemId === itemId);
+      if (idx < 0) return prev;
+      const next = [...prev];
+      const q = Math.max(1, Math.floor(value));
+      next[idx] = { ...next[idx], qty: q };
+      return next;
+    });
+  };
+
   const toggleExpanded = (rootId: number, itemId: number) => {
     setExpandedByRoot((prev) => {
       const next = new Map(prev);
@@ -389,7 +400,25 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                       >
                         −
                       </button>
-                      <div className="text-emerald-200 text-xs font-semibold w-8 text-center">{s.qty}</div>
+                      <input
+                        type="number"
+                        min="1"
+                        value={s.qty}
+                        onChange={(e) => {
+                          const val = parseInt(e.target.value, 10);
+                          if (!isNaN(val) && val > 0) {
+                            setQtyDirect(s.itemId, val);
+                          }
+                        }}
+                        onBlur={(e) => {
+                          const val = parseInt(e.target.value, 10);
+                          if (isNaN(val) || val < 1) {
+                            setQtyDirect(s.itemId, 1);
+                          }
+                        }}
+                        className="text-emerald-200 text-xs font-semibold w-12 text-center rounded border border-emerald-300/15 focus:border-emerald-300/30 outline-none"
+                        style={{ background: 'rgba(0, 0, 0, 0.3)' }}
+                      />
                       <button
                         onClick={() => setQty(s.itemId, +1)}
                         className="w-7 h-7 rounded-lg border border-emerald-300/15 hover:border-emerald-300/30"
