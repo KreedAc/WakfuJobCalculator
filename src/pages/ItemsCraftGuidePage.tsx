@@ -416,7 +416,7 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                             setQtyDirect(s.itemId, 1);
                           }
                         }}
-                        className="text-emerald-200 text-xs font-semibold w-12 text-center rounded border border-emerald-300/15 focus:border-emerald-300/30 outline-none"
+                        className="text-emerald-200 text-xs font-semibold w-12 text-center rounded border border-emerald-300/15 focus:border-emerald-300/30 outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         style={{ background: 'rgba(0, 0, 0, 0.3)' }}
                       />
                       <button
