@@ -3,10 +3,12 @@ import { useEffect, useMemo, useState } from "react";
 import {
   loadWakfuData,
   getItemIconUrl,
+  getProfessionFromRecipe,
   type CompactItem,
   type CompactRecipe,
 } from "../lib/wakfuData";
 import { TRANSLATIONS, type Language } from "../constants/translations";
+import { PROFESSION_NAMES } from "../constants/professions";
 
 function norm(s: string) {
   return s
@@ -77,6 +79,12 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
   }, [language]);
 
   const isCraftable = (id: number) => (recipesByResultId.get(id)?.length ?? 0) > 0;
+
+  const getProfession = (itemId: number) => {
+    const recipes = recipesByResultId.get(itemId);
+    if (!recipes || recipes.length === 0) return null;
+    return getProfessionFromRecipe(recipes[0], itemsById);
+  };
 
   // Search only craftables
   const craftableItems = useMemo(() => {
@@ -366,6 +374,9 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                 const rInfo = rarityInfo(it?.rarity, t);
                 const isActive = s.itemId === activeItemId;
 
+                const profession = getProfession(s.itemId);
+                const professionName = profession ? PROFESSION_NAMES[language][profession] : null;
+
                 return (
                   <div
                     key={s.itemId}
@@ -388,6 +399,11 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                         <div className={`text-[11px] ${rInfo?.className ?? "text-emerald-200/40"}`}>
                           {rInfo?.label ?? "—"}
                         </div>
+                        {professionName && (
+                          <div className="text-[10px] text-emerald-300/60 italic">
+                            {professionName}
+                          </div>
+                        )}
                       </div>
                     </button>
 
@@ -505,6 +521,15 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                   ) : (
                     <div className="text-sm mt-0.5 text-emerald-200/40">—</div>
                   )}
+                  {(() => {
+                    const profession = getProfession(activeItem.id);
+                    const professionName = profession ? PROFESSION_NAMES[language][profession] : null;
+                    return professionName ? (
+                      <div className="text-xs text-emerald-300/70 italic mt-1">
+                        {professionName}
+                      </div>
+                    ) : null;
+                  })()}
                 </div>
               </div>
 
@@ -560,6 +585,8 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                     const name = it?.name ?? `#${row.itemId}`;
                     const rInfo = rarityInfo(it?.rarity, t);
                     const isChecked = checkedItems.has(row.itemId);
+                    const profession = getProfession(row.itemId);
+                    const professionName = profession ? PROFESSION_NAMES[language][profession] : null;
 
                     return (
                       <div
@@ -583,6 +610,11 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                           <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
                             {rInfo?.label ?? "—"}
                           </div>
+                          {professionName && (
+                            <div className="text-[10px] text-emerald-300/60 italic">
+                              {professionName}
+                            </div>
+                          )}
                         </div>
                         <div className={`text-emerald-200 font-semibold ${isChecked ? 'line-through' : ''}`}>
                           x{row.qty}
