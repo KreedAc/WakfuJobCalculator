@@ -1,0 +1,1482 @@
+{
+  "_meta": {
+    "generatedAt": "2026-02-25T10:04:17.830Z",
+    "source": "wakfu client i18n jars"
+  },
+  "locations": {
+    "Amakna - Emelka Forest": {
+      "en": "amakna - emelka forest",
+      "fr": "amakna - foret d'emelka",
+      "es": "amakna - bosque de emelka",
+      "pt": "amakna - floresta de emelka"
+    },
+    "Amakna - Emelka Forest (enter Holey Crevasse)": {
+      "en": "Amakna - Emelka Forest (enter holey crevasse)",
+      "fr": "Amakna - Emelka Forest (entrer crevasse de la trouee)",
+      "es": "Amakna - Emelka Forest (entrar grieta del claro)",
+      "pt": "Amakna - Emelka Forest (entrar fenda esburacada)"
+    },
+    "Amakna - Riktus Plain": {
+      "en": "amakna - riktus plain",
+      "fr": "amakna - plaine des riktus",
+      "es": "amakna - llanura de los riktus",
+      "pt": "amakna - planicie dos riktus"
+    },
+    "Amakna - Riktus Plain (enter Crackled Hideaway)": {
+      "en": "Amakna - Riktus Plain (enter crackled hideaway)",
+      "fr": "Amakna - Riktus Plain (entrer planque craquelee)",
+      "es": "Amakna - Riktus Plain (entrar escondite crujiente)",
+      "pt": "Amakna - Riktus Plain (entrar esconderijo crepitante)"
+    },
+    "Amakna - Singing Fields": {
+      "en": "amakna - singing fields",
+      "fr": "amakna - champs qui chantent",
+      "es": "amakna - campos cantarines",
+      "pt": "amakna - campos cantantes"
+    },
+    "Amakna - Singing Fields (enter Refinement Complex)": {
+      "en": "amakna - singing fields (enter refinement complex)",
+      "fr": "amakna - champs qui chantent (entrer complexe d'epuration)",
+      "es": "amakna - campos cantarines (entrar complejo de depuracion)",
+      "pt": "amakna - campos cantantes (entrar complexo de refinamento)"
+    },
+    "Astrub - Astrub Cemetery": {
+      "en": "astrub - astrub cemetery",
+      "fr": "astrub - cimetiere d'astrub",
+      "es": "astrub - cementerio de astrub",
+      "pt": "astrub - cemiterio de astrub"
+    },
+    "Astrub - Astrub Fields": {
+      "en": "astrub - astrub fields",
+      "fr": "astrub - champs d'astrub",
+      "es": "astrub - campos de astrub",
+      "pt": "astrub - campos de astrub"
+    },
+    "Astrub - Astrub Forest": {
+      "en": "astrub - astrub forest",
+      "fr": "astrub - foret d'astrub",
+      "es": "astrub - bosque de astrub",
+      "pt": "astrub - floresta de astrub"
+    },
+    "Astrub - Astrub Forest (enter Dilapidated Sawmill)": {
+      "en": "Astrub - Astrub Forest (enter dilapidated sawmill)",
+      "fr": "Astrub - Astrub Forest (entrer scierie vetuste)",
+      "es": "Astrub - Astrub Forest (entrar aserradero vetusto)",
+      "pt": "Astrub - Astrub Forest (entrar serraria dilapidada)"
+    },
+    "Astrub - Astrub Mountains": {
+      "en": "astrub - astrub mountains",
+      "fr": "astrub - montagnes d'astrub",
+      "es": "astrub - montanas de astrub",
+      "pt": "astrub - montanhas de astrub"
+    },
+    "Astrub - Astrub Plains": {
+      "en": "astrub - Astrub Plains",
+      "fr": "astrub - Astrub Plains",
+      "es": "astrub - Astrub Plains",
+      "pt": "astrub - Astrub Plains"
+    },
+    "Astrub - Fishermen's Hamlet": {
+      "en": "astrub - fishermen's hamlet",
+      "fr": "astrub - hameau des pecheurs",
+      "es": "astrub - aldea de los pescadores",
+      "pt": "astrub - aldeia dos pescadores"
+    },
+    "Astrub - Tainela": {
+      "en": "astrub - tainela",
+      "fr": "astrub - tainela",
+      "es": "astrub - tainela",
+      "pt": "astrub - tainela"
+    },
+    "Astrub Mines": {
+      "en": "astrub mines",
+      "fr": "mines d'astrub",
+      "es": "minas de astrub",
+      "pt": "minas de astrub"
+    },
+    "Bilbiza": {
+      "en": "bilbiza",
+      "fr": "bilbyza",
+      "es": "bilbyza",
+      "pt": "bilbyza"
+    },
+    "Bilbiza - Costa del Jellix (enter Sacred Piece Vault)": {
+      "en": "Bilbiza - Costa del Jellix (enter sacred piece vault)",
+      "fr": "Bilbiza - Costa del Jellix (entrer caveau de la sainte piece)",
+      "es": "Bilbiza - Costa del Jellix (entrar covacha de la pieza sagrada)",
+      "pt": "Bilbiza - Costa del Jellix (entrar cofre da peca sagrada)"
+    },
+    "Bilbiza - Costa del Jellix (enter Tight Cove)": {
+      "en": "Bilbiza - Costa del Jellix (enter tight cove)",
+      "fr": "Bilbiza - Costa del Jellix (entrer crique etriquee)",
+      "es": "Bilbiza - Costa del Jellix (entrar cala estrecha)",
+      "pt": "Bilbiza - Costa del Jellix (entrar enseada estreita)"
+    },
+    "Bilbiza - Jellith Dimension": {
+      "en": "bilbiza - Jellith Dimension",
+      "fr": "bilbyza - Jellith Dimension",
+      "es": "bilbyza - Jellith Dimension",
+      "pt": "bilbyza - Jellith Dimension"
+    },
+    "Bonta - Cania Plains": {
+      "en": "bonta - cania plains",
+      "fr": "bonta - plaines de cania",
+      "es": "bonta - llanuras de cania",
+      "pt": "bonta - planicies de cania"
+    },
+    "Bonta - Kara (enter Exhausted Mine)": {
+      "en": "bonta - kara (enter exhausted mine)",
+      "fr": "bonta - kara (entrer mine epuisee)",
+      "es": "bonta - kara (entrar mina agotada)",
+      "pt": "bonta - kara (entrar mina esgotada)"
+    },
+    "Bonta - Thicket of Yurbut": {
+      "en": "bonta - Thicket of Yurbut",
+      "fr": "bonta - Thicket of Yurbut",
+      "es": "bonta - Thicket of Yurbut",
+      "pt": "bonta - Thicket of Yurbut"
+    },
+    "Bonta - Thicket of Yurbut (enter Cutting Storeroom)": {
+      "en": "bonta - thicket of yurbut (enter cutting storeroom)",
+      "fr": "bonta - fourre de tonkult (entrer reserve de boutures)",
+      "es": "bonta - bosquecillo de tukulo (entrar reserva de esquejes)",
+      "pt": "bonta - matagal do telbrioko (entrar despensa de mudas)"
+    },
+    "Bonta - Thicket of Yurbut (enter Yurbut Hole)": {
+      "en": "bonta - thicket of yurbut (enter yurbut hole)",
+      "fr": "bonta - fourre de tonkult (entrer fente de tonkult)",
+      "es": "bonta - bosquecillo de tukulo (entrar socavon de tukulo)",
+      "pt": "bonta - matagal do telbrioko (entrar buraco de telbrioko)"
+    },
+    "Brakmar - Pabong Fields": {
+      "en": "brakmar - pabong fields",
+      "fr": "brakmar - champs pabong",
+      "es": "brakmar - campos teril",
+      "pt": "brakmar - campos pabongo"
+    },
+    "Brakmar - Pabong Fields (enter Hoodlums' Squat)": {
+      "en": "brakmar - pabong fields (enter hoodlums' squat)",
+      "fr": "brakmar - champs pabong (entrer squat d'encapuchonnes)",
+      "es": "brakmar - campos teril (entrar casa okupa de los encapuchados)",
+      "pt": "brakmar - campos pabongo (entrar terreno invadido dos encapuzados)"
+    },
+    "Brakmar - Pabong Fields (enter Pabong Flow)": {
+      "en": "brakmar - pabong fields (enter pabong flow)",
+      "fr": "brakmar - champs pabong (entrer coulee pabong)",
+      "es": "brakmar - campos teril (entrar rio de lava tumpoco)",
+      "pt": "brakmar - campos pabongo (entrar corrente pabongo)"
+    },
+    "Brakmar - Sidimote Moors": {
+      "en": "brakmar - sidimote moors",
+      "fr": "brakmar - landes de sidimote",
+      "es": "brakmar - landas de sidimote",
+      "pt": "brakmar - estepes de sidimote"
+    },
+    "Brakmar - Sidimote Moors (enter Scarred Hollow)": {
+      "en": "brakmar - sidimote moors (enter scarred hollow)",
+      "fr": "brakmar - landes de sidimote (entrer creux scareux)",
+      "es": "brakmar - landas de sidimote (entrar cueva escarada)",
+      "pt": "brakmar - estepes de sidimote (entrar vale cicatrizado)"
+    },
+    "Chillberg - Harebourg Castle (enter Shoemaker's Forgotten Hideout)": {
+      "en": "Chillberg - Harebourg Castle (enter shoemaker's forgotten hideout)",
+      "fr": "Chillberg - Harebourg Castle (entrer planque oubliee du cordonnier)",
+      "es": "Chillberg - Harebourg Castle (entrar escondite olvidado del zapatero)",
+      "pt": "Chillberg - Harebourg Castle (entrar esconderijo esquecido do sapateiro)"
+    },
+    "Chillberg Island - Ice Floe": {
+      "en": "chillberg island - ice floe",
+      "fr": "ile sberg - la banquise",
+      "es": "isla berg - banquisa",
+      "pt": "ilha bergue - banquisa"
+    },
+    "Chillberg Island - Ice Floe (enter Snowbound Snowbound Cavern)": {
+      "en": "Chillberg Island - Ice Floe (enter Snowbound Snowbound Cavern)",
+      "fr": "Chillberg Island - Ice Floe (entrer Snowbound Snowbound Cavern)",
+      "es": "Chillberg Island - Ice Floe (entrar Snowbound Snowbound Cavern)",
+      "pt": "Chillberg Island - Ice Floe (entrar Snowbound Snowbound Cavern)"
+    },
+    "Chillberg Island - Snowbound Snowbound Village": {
+      "en": "chillberg island - snowbound snowbound village",
+      "fr": "ile sberg - village enseveli enseveli",
+      "es": "isla berg - pueblo sepultado sepultado",
+      "pt": "ilha bergue - aldeia soterrada soterrada"
+    },
+    "Enurado": {
+      "en": "enurado",
+      "fr": "enutrosor",
+      "es": "anutropia",
+      "pt": "enutropia"
+    },
+    "Enurado - (enter Fortified Chest)": {
+      "en": "enurado - (enter fortified chest)",
+      "fr": "enutrosor - (entrer coffre fortifie)",
+      "es": "anutropia - (entrar caja fortificada)",
+      "pt": "enutropia - (entrar bau fortificado)"
+    },
+    "Enurado - (enter Investment with Interest)": {
+      "en": "enurado - (enter investment with interest)",
+      "fr": "enutrosor - (entrer placement avec interets)",
+      "es": "anutropia - (entrar inversion con intereses)",
+      "pt": "enutropia - (entrar investimento com juros)"
+    },
+    "Enurado - (enter Pure Gold Basin)": {
+      "en": "enurado - (enter pure gold basin)",
+      "fr": "enutrosor - (entrer bassin d'or pur)",
+      "es": "anutropia - (entrar gruta de oro fundido)",
+      "pt": "enutropia - (entrar bacia do ouro puro)"
+    },
+    "Ereboria - Bitter-Hammer Cavern (enter Ghostof Smuggler's Hideout)": {
+      "en": "Ereboria - Bitter-Hammer Cavern (enter ghostof smuggler's hideout)",
+      "fr": "Ereboria - Bitter-Hammer Cavern (entrer planque du contrebandier gostof)",
+      "es": "Ereboria - Bitter-Hammer Cavern (entrar escondite del contrabandista gostofo)",
+      "pt": "Ereboria - Bitter-Hammer Cavern (entrar esconderijo do contrabandista fantasmado)"
+    },
+    "Ereboria - Cursed Beach": {
+      "en": "ereboria - cursed beach",
+      "fr": "ereboria - plage maudite",
+      "es": "ereboria - playa maldita",
+      "pt": "ereboria - praia amaldicoada"
+    },
+    "Ereboria - Cursed Beach (enter Captain Bow Mewhere's Lair)": {
+      "en": "Ereboria - Cursed Beach (enter captain bow mewhere's lair)",
+      "fr": "Ereboria - Cursed Beach (entrer antre du capitaine chacha separou)",
+      "es": "Ereboria - Cursed Beach (entrar antro del capitan miaumiau ondesta)",
+      "pt": "Ereboria - Cursed Beach (entrar antro do capitao miaw sperou)"
+    },
+    "Ereboria - Pirate Beach": {
+      "en": "ereboria - pirate beach",
+      "fr": "ereboria - plage des pirates",
+      "es": "ereboria - playa de los piratas",
+      "pt": "ereboria - praia dos piratas"
+    },
+    "Ereboria - Pirate Beach (enter into Smuggler's Hiding Place)": {
+      "en": "Ereboria - Pirate Beach (enter into Smuggler's Hiding Place)",
+      "fr": "Ereboria - Pirate Beach (entrer into Smuggler's Hiding Place)",
+      "es": "Ereboria - Pirate Beach (entrar into Smuggler's Hiding Place)",
+      "pt": "Ereboria - Pirate Beach (entrar into Smuggler's Hiding Place)"
+    },
+    "Forfut": {
+      "en": "forfut",
+      "fr": "katrepat",
+      "es": "kuatropatas",
+      "pt": "dezist"
+    },
+    "Forfut - (enter Atonement Abyss)": {
+      "en": "forfut - (enter atonement abyss)",
+      "fr": "katrepat - (entrer precipice d'expiation)",
+      "es": "kuatropatas - (entrar precipicio de la expiacion)",
+      "pt": "dezist - (entrar abismo da expiacao)"
+    },
+    "Forfut - (enter Dingy Hollow)": {
+      "en": "forfut - (enter dingy hollow)",
+      "fr": "katrepat - (entrer creux obscur)",
+      "es": "kuatropatas - (entrar cueva oscura)",
+      "pt": "dezist - (entrar vale obscuro)"
+    },
+    "Forfut (enter Shivering Hole)": {
+      "en": "forfut (enter shivering hole)",
+      "fr": "katrepat (entrer trou frissonnant)",
+      "es": "kuatropatas (entrar agujero escalofriante)",
+      "pt": "dezist (entrar buraco do calafrio)"
+    },
+    "Kelba - (enter Pointless Foundations)": {
+      "en": "kelba - (enter pointless foundations)",
+      "fr": "kelba - (entrer fondations insensees)",
+      "es": "kelba - (entrar cimientos sin sentido)",
+      "pt": "kelba - (entrar fundacoes inuteis)"
+    },
+    "Kelba - Kelba Peaks": {
+      "en": "kelba - Kelba Peaks",
+      "fr": "kelba - Kelba Peaks",
+      "es": "kelba - Kelba Peaks",
+      "pt": "kelba - Kelba Peaks"
+    },
+    "Kelba - Kelba Peaks (enter Black Crow's Alley)": {
+      "en": "Kelba - Kelba Peaks (enter black crow's alley)",
+      "fr": "Kelba - Kelba Peaks (entrer impasse du corbeau noir)",
+      "es": "Kelba - Kelba Peaks (entrar pasadizo del cuervo negro)",
+      "pt": "Kelba - Kelba Peaks (entrar beco do corvo negro)"
+    },
+    "Kelba - Lands of Kelba": {
+      "en": "kelba - Lands of Kelba",
+      "fr": "kelba - Lands of Kelba",
+      "es": "kelba - Lands of Kelba",
+      "pt": "kelba - Lands of Kelba"
+    },
+    "Kelba - Lands of Kelba (enter Dusty Plateau Hollow)": {
+      "en": "Kelba - Lands of Kelba (enter dusty plateau hollow)",
+      "fr": "Kelba - Lands of Kelba (entrer creux du plateau poussiereux)",
+      "es": "Kelba - Lands of Kelba (entrar cueva de la meseta polvorienta)",
+      "pt": "Kelba - Lands of Kelba (entrar vale do planalto empoeirado)"
+    },
+    "Monk Island": {
+      "en": "monk island",
+      "fr": "ile aux moines",
+      "es": "isla de los monjes",
+      "pt": "ilha dos monges"
+    },
+    "Monk Island - (enter Abandoned Cell of the Zealous Convert)": {
+      "en": "monk island - (enter abandoned cell of the zealous convert)",
+      "fr": "ile aux moines - (entrer cellule abandonnee du repenti aigu)",
+      "es": "isla de los monjes - (entrar celda abandonada del arrepentido cronico)",
+      "pt": "ilha dos monges - (entrar cela abandonada do penitente convertido)"
+    },
+    "Monk Island - (enter Forgotten Excarnation Cleft)": {
+      "en": "monk island - (enter Forgotten Excarnation Cleft)",
+      "fr": "ile aux moines - (entrer Forgotten Excarnation Cleft)",
+      "es": "isla de los monjes - (entrar Forgotten Excarnation Cleft)",
+      "pt": "ilha dos monges - (entrar Forgotten Excarnation Cleft)"
+    },
+    "Monk Island - (enter Underground Canal)": {
+      "en": "monk island - (enter underground canal)",
+      "fr": "ile aux moines - (entrer canal souterrain)",
+      "es": "isla de los monjes - (entrar canal subterraneo)",
+      "pt": "ilha dos monges - (entrar canal subterraneo)"
+    },
+    "Moon Island - Moon Beach": {
+      "en": "moon island - moon beach",
+      "fr": "ile de moon - plage de moon",
+      "es": "isla de moon - playa de moon",
+      "pt": "ilha de moon - praia de moon"
+    },
+    "Moon Island - Moon Beach (next to Crocodyl Dungeon)": {
+      "en": "moon island - Moon Beach (next to Crocodyl Dungeon)",
+      "fr": "ile de moon - Moon Beach (next to Crocodyl Dungeon)",
+      "es": "isla de moon - Moon Beach (next to Crocodyl Dungeon)",
+      "pt": "ilha de moon - Moon Beach (next to Crocodyl Dungeon)"
+    },
+    "Moon Island - Moon Jungle": {
+      "en": "moon island - moon jungle",
+      "fr": "ile de moon - jungle de moon",
+      "es": "isla de moon - jungla de moon",
+      "pt": "ilha de moon - selva de moon"
+    },
+    "Ohwymi": {
+      "en": "ohwymi",
+      "fr": "saharach",
+      "es": "picahari",
+      "pt": "espetarida"
+    },
+    "Ohwymi - (enter Vast Crevasse)": {
+      "en": "ohwymi - (enter vast crevasse)",
+      "fr": "saharach - (entrer creux vaste)",
+      "es": "picahari - (entrar gran falla)",
+      "pt": "espetarida - (entrar vale grande)"
+    },
+    "Ohwymi - Castuc Cemetery - The Fungopole": {
+      "en": "ohwymi - Castuc Cemetery - The Fungopole",
+      "fr": "saharach - Castuc Cemetery - The Fungopole",
+      "es": "picahari - Castuc Cemetery - The Fungopole",
+      "pt": "espetarida - Castuc Cemetery - The Fungopole"
+    },
+    "Sadida Kingdom - Deforested Forest": {
+      "en": "sadida kingdom - deforested forest",
+      "fr": "royaume sadida - foret deforestee",
+      "es": "reino sadida - bosque desforestado",
+      "pt": "reino sadida - floresta desflorestada"
+    },
+    "Sadida Kingdom - Gerbean Galleries (enter Contaminated Seed Reserve)": {
+      "en": "sadida kingdom - gerbean galleries (enter contaminated seed reserve)",
+      "fr": "royaume sadida - galeries des gerbouilles (entrer reserve de graines contaminees)",
+      "es": "reino sadida - galerias de las gerbilindas (entrar reserva de semillas contaminadas)",
+      "pt": "reino sadida - galerias das gerbelas (entrar deposito de sementes contaminadas)"
+    },
+    "Sadida Kingdom - Gerbean Galleries (enter Old Mining Site)": {
+      "en": "sadida kingdom - gerbean galleries (enter old mining site)",
+      "fr": "royaume sadida - galeries des gerbouilles (entrer ancien site de minage)",
+      "es": "reino sadida - galerias de las gerbilindas (entrar antigua excavacion minera)",
+      "pt": "reino sadida - galerias das gerbelas (entrar antigo local de mineracao)"
+    },
+    "Sadida Kingdom - Gerbean Galleries (enter Stubby Outskirts)": {
+      "en": "sadida kingdom - gerbean galleries (enter stubby outskirts)",
+      "fr": "royaume sadida - galeries des gerbouilles (entrer oree des souches)",
+      "es": "reino sadida - galerias de las gerbilindas (entrar linde de tocones)",
+      "pt": "reino sadida - galerias das gerbelas (entrar suburbios atarracados)"
+    },
+    "Sadida Kingdom - Web-Entangled Hill": {
+      "en": "sadida kingdom - web-entangled hill",
+      "fr": "royaume sadida - colline entoilee",
+      "es": "reino sadida - colina entelada",
+      "pt": "reino sadida - colina presa na teia"
+    },
+    "Shhhdoku Kingdom - Inside Grampar": {
+      "en": "Shhhdoku Kingdom - inside grampar",
+      "fr": "Shhhdoku Kingdom - interieur de grampar",
+      "es": "Shhhdoku Kingdom - interior de grampar",
+      "pt": "Shhhdoku Kingdom - interior de vovz"
+    },
+    "Shhhudoku Kingdom - Murmoor (enter Submerged Mound)": {
+      "en": "Shhhudoku Kingdom - Murmoor (enter submerged mound)",
+      "fr": "Shhhudoku Kingdom - Murmoor (entrer monticule immerge)",
+      "es": "Shhhudoku Kingdom - Murmoor (entrar monticulo sumergido)",
+      "pt": "Shhhudoku Kingdom - Murmoor (entrar monte submerso)"
+    },
+    "Srambad": {
+      "en": "srambad",
+      "fr": "srambad",
+      "es": "sramvil",
+      "pt": "sramvil"
+    },
+    "Srambad - (enter Malt Storeroom)": {
+      "en": "srambad - (enter malt storeroom)",
+      "fr": "srambad - (entrer reserve de malt)",
+      "es": "sramvil - (entrar reserva de cebada)",
+      "pt": "sramvil - (entrar despensa de malte)"
+    },
+    "Srambad - (enter Open Grave)": {
+      "en": "srambad - (enter open grave)",
+      "fr": "srambad - (entrer tombeau ouvert)",
+      "es": "sramvil - (entrar tumba abierta)",
+      "pt": "sramvil - (entrar cova aberta)"
+    },
+    "Sufokia - Puddly Mountains": {
+      "en": "Sufokia - puddly mountains",
+      "fr": "Sufokia - montagne des flaqueux",
+      "es": "Sufokia - montana de los charcosos",
+      "pt": "Sufokia - montanha dos charcosos"
+    },
+    "Sufokia - Puddly Mountains (enter Spiritual Inlet)": {
+      "en": "Sufokia - Puddly Mountains (enter spiritual inlet)",
+      "fr": "Sufokia - Puddly Mountains (entrer crique spirituelle)",
+      "es": "Sufokia - Puddly Mountains (entrar cala espiritual)",
+      "pt": "Sufokia - Puddly Mountains (entrar passagem espiritual)"
+    },
+    "Sufokia - Terrana Dune": {
+      "en": "Sufokia - Terrana Dune",
+      "fr": "Sufokia - Terrana Dune",
+      "es": "Sufokia - Terrana Dune",
+      "pt": "Sufokia - Terrana Dune"
+    },
+    "Sufokia - Terrana Dune (enter Boat Warehouse in castle wall)": {
+      "en": "sufokia - terrana dune (enter Boat Warehouse in castle wall)",
+      "fr": "sufokia - la dune kane (entrer Boat Warehouse in castle wall)",
+      "es": "sufokia - duna cana (entrar Boat Warehouse in castle wall)",
+      "pt": "sufokia - dunas terraneas (entrar Boat Warehouse in castle wall)"
+    },
+    "Sufokia - Terrana Dune (enter Grainy Faultline in castle wall)": {
+      "en": "sufokia - terrana dune (enter Grainy Faultline in castle wall)",
+      "fr": "sufokia - la dune kane (entrer Grainy Faultline in castle wall)",
+      "es": "sufokia - duna cana (entrar Grainy Faultline in castle wall)",
+      "pt": "sufokia - dunas terraneas (entrar Grainy Faultline in castle wall)"
+    },
+    "Trool Fair": {
+      "en": "trool fair",
+      "fr": "foire du trool",
+      "es": "feria del trool",
+      "pt": "feira do trool"
+    },
+    "Wabbit Island - (enter Flooded Stowe in Constwuction)": {
+      "en": "Wabbit Island - (enter Flooded Stowe in Constwuction)",
+      "fr": "Wabbit Island - (entrer Flooded Stowe in Constwuction)",
+      "es": "Wabbit Island - (entrar Flooded Stowe in Constwuction)",
+      "pt": "Wabbit Island - (entrar Flooded Stowe in Constwuction)"
+    },
+    "Wabbit Island - The Big Cawwot": {
+      "en": "Wabbit Island - the big cawwot",
+      "fr": "Wabbit Island - glosse calotte",
+      "es": "Wabbit Island - glan zanaholia",
+      "pt": "Wabbit Island - glande cenoula"
+    },
+    "Wabbit Island - The Wa's Fowtwess": {
+      "en": "Wabbit Island - the wa's fowtwess",
+      "fr": "Wabbit Island - fowtewesse du wa",
+      "es": "Wabbit Island - fowtaleza del wey",
+      "pt": "Wabbit Island - fowtaleza do wei"
+    },
+    "Wabbit Island - The Wa's Fowtwess (enter Uncwossable Wails)": {
+      "en": "Wabbit Island - The Wa's Fowtwess (enter uncwossable wails)",
+      "fr": "Wabbit Island - The Wa's Fowtwess (entrer wails intwavewsables)",
+      "es": "Wabbit Island - The Wa's Fowtwess (entrar wailes inatwavesables)",
+      "pt": "Wabbit Island - The Wa's Fowtwess (entrar twilhos intwansponiveis)"
+    },
+    "Wabbit Island - Wabbit Tunnels (enter Cawwoty Signals)": {
+      "en": "Wabbit Island - Wabbit Tunnels (enter cawwoty signals)",
+      "fr": "Wabbit Island - Wabbit Tunnels (entrer aiguillage cawotte)",
+      "es": "Wabbit Island - Wabbit Tunnels (entrar cambio de agujas zanahowio)",
+      "pt": "Wabbit Island - Wabbit Tunnels (entrar direcionamento cenouwado)"
+    },
+    "Wabbit Island - Wabbit Tunnels (enter Fwactuwed Gallewy)": {
+      "en": "Wabbit Island - Wabbit Tunnels (enter Fwactuwed Gallewy)",
+      "fr": "Wabbit Island - Wabbit Tunnels (entrer Fwactuwed Gallewy)",
+      "es": "Wabbit Island - Wabbit Tunnels (entrar Fwactuwed Gallewy)",
+      "pt": "Wabbit Island - Wabbit Tunnels (entrar Fwactuwed Gallewy)"
+    },
+    "Wild Estate": {
+      "en": "wild estate",
+      "fr": "domaine sauvage",
+      "es": "tierras salvajes",
+      "pt": "dominio selvagem"
+    },
+    "Wild Estate - (enter Bruskabis Cave)": {
+      "en": "wild estate - (enter bruskabis cave)",
+      "fr": "domaine sauvage - (entrer caverne de bruskabis)",
+      "es": "tierras salvajes - (entrar caverna de retabismo)",
+      "pt": "dominio selvagem - (entrar caverna dos bruskabis)"
+    },
+    "Wild Estate - (enter Enigmatic Excavation)": {
+      "en": "wild estate - (enter enigmatic excavation)",
+      "fr": "domaine sauvage - (entrer excavation enigmatique)",
+      "es": "tierras salvajes - (entrar excavacion enigmatica)",
+      "pt": "dominio selvagem - (entrar escavacao enigmatica)"
+    },
+    "Wild Estate - (enter Excarnal Crevasse)": {
+      "en": "wild estate - (enter excarnal crevasse)",
+      "fr": "domaine sauvage - (entrer crevasse excarnee)",
+      "es": "tierras salvajes - (entrar grieta excarnada)",
+      "pt": "dominio selvagem - (entrar fenda escarnada)"
+    },
+    "Wild Estate - (enter Excavated Temple Dead End)": {
+      "en": "wild estate - (enter excavated temple dead end)",
+      "fr": "domaine sauvage - (entrer cul-du-sac du temple excave)",
+      "es": "tierras salvajes - (entrar pasadizo sin salida del templo excavado)",
+      "pt": "dominio selvagem - (entrar passagem sem saida no templo escavado)"
+    },
+    "Wild Estate - (enter Old Cook's Reserves)": {
+      "en": "wild estate - (enter old cook's reserves)",
+      "fr": "domaine sauvage - (entrer ancienne reserve du cuistot)",
+      "es": "tierras salvajes - (entrar antigua despensa del cocinero)",
+      "pt": "dominio selvagem - (entrar antiga despensa do cozinheiro)"
+    },
+    "Wild Estate - (enter Plateau Excavation)": {
+      "en": "wild estate - (enter plateau excavation)",
+      "fr": "domaine sauvage - (entrer excavation du plateau)",
+      "es": "tierras salvajes - (entrar excavacion de la meseta)",
+      "pt": "dominio selvagem - (entrar escavacao do plato)"
+    },
+    "Xelorium - Present": {
+      "en": "xelorium - Present",
+      "fr": "xelorium - Present",
+      "es": "xelorium - Present",
+      "pt": "xelorium - Present"
+    }
+  },
+  "artifacts": {
+    "Draconic Ocarina": {
+      "en": "draconic ocarina",
+      "fr": "ocarina draconique",
+      "es": "ocarina draconica",
+      "pt": "ocarina dragontina"
+    },
+    "I.D.S.": {
+      "en": "i.d.s.",
+      "fr": "s.i.d",
+      "es": "s.i.d.",
+      "pt": "s.d.i."
+    },
+    "Jumpin' Gap Jacks": {
+      "en": "jumpin' gap jacks",
+      "fr": "spieds rebonttis",
+      "es": "espies rebotis",
+      "pt": "botas pula-pula"
+    },
+    "Paws of Ecaflip": {
+      "en": "paws of ecaflip",
+      "fr": "papattes d'ecaflip",
+      "es": "patitas de zurcarak",
+      "pt": "patinhas de ecaflip"
+    },
+    "The Excarnal Scepter": {
+      "en": "the excarnal scepter",
+      "fr": "sceptre excarne",
+      "es": "cetro excarnado",
+      "pt": "cetro escarnado"
+    },
+    "Traverse Compass": {
+      "en": "traverse compass",
+      "fr": "boussole de traverse",
+      "es": "brujula de travesia",
+      "pt": "bussola da travessia"
+    },
+    "Woyal Bow of Pwodding": {
+      "en": "woyal bow of pwodding",
+      "fr": "awc d'appwoche wayal",
+      "es": "awco de apwoximacion weal",
+      "pt": "awco de apwoximacao weal"
+    },
+    "Xelor's Sandglass": {
+      "en": "xelor's sandglass",
+      "fr": "sablier de xelor",
+      "es": "reloj de arena de xelor",
+      "pt": "ampulheta de xelor"
+    }
+  },
+  "achievements": {
+    "Amakna Forest Treasure": {
+      "en": "amakna forest treasure",
+      "fr": "tresor de la foret d'amakna",
+      "es": "tesoro del bosque de amakna",
+      "pt": "tesouro da floresta de amakna"
+    },
+    "Amaknian Treasure - Holey": {
+      "en": "amaknian treasure - holey",
+      "fr": "tresor d'amakna - troue",
+      "es": "tesoro de amakna - boscoso",
+      "pt": "tesouro de amakna - furado"
+    },
+    "Amaknian Treasure - New": {
+      "en": "amaknian treasure - new",
+      "fr": "tresor d'amakna - nouveau",
+      "es": "tesoro de amakna - nuevo",
+      "pt": "tesouro de amakna - novo"
+    },
+    "Amaknian Treasure - Period": {
+      "en": "amaknian treasure - period",
+      "fr": "tresor d'amakna - d'epoque",
+      "es": "tesoro de amakna - de epoca",
+      "pt": "tesouro de amakna - de epoca"
+    },
+    "Amaknian Treasure - Periodic": {
+      "en": "amaknian treasure - periodic",
+      "fr": "tresor d'amakna - periodique",
+      "es": "tesoro de amakna - periodico",
+      "pt": "tesouro de amakna - periodico"
+    },
+    "Amaknian Treasure - Purified": {
+      "en": "amaknian treasure - purified",
+      "fr": "tresor d'amakna - epure",
+      "es": "tesoro de amakna - depurado",
+      "pt": "tesouro de amakna - refinado"
+    },
+    "Ashen Mourning Treasure": {
+      "en": "ashen mourning treasure",
+      "fr": "tresor gueulant cendre",
+      "es": "tesoro quejumbroso ceniciento",
+      "pt": "tesouro queixoso cinzento"
+    },
+    "Astrubian Treasure - Athletic": {
+      "en": "astrubian treasure - athletic",
+      "fr": "tresor d'astrub - athletique",
+      "es": "tesoro de astrub - atletico",
+      "pt": "tesouro de astrub - atletico"
+    },
+    "Astrubian Treasure - Chestnut Brown": {
+      "en": "astrubian treasure - chestnut brown",
+      "fr": "tresor d'astrub - alezan",
+      "es": "tesoro de astrub - alazan",
+      "pt": "tesouro de astrub - alazao"
+    },
+    "Astrubian Treasure - Forest": {
+      "en": "astrubian treasure - forest",
+      "fr": "tresor d'astrub - foret",
+      "es": "tesoro de astrub - bosque",
+      "pt": "tesouro de astrub - floresta"
+    },
+    "Astrubian Treasure - Frenzied": {
+      "en": "astrubian treasure - frenzied",
+      "fr": "tresor d'astrub - frenetique",
+      "es": "tesoro de astrub - frenerico",
+      "pt": "tesouro de astrub - frenetico"
+    },
+    "Astrubian Treasure - Hamlet": {
+      "en": "astrubian treasure - hamlet",
+      "fr": "tresor d'astrub - hameau",
+      "es": "tesoro de astrub - aldea",
+      "pt": "tesouro de astrub - aldeia"
+    },
+    "Astrubian Treasure - Instantaneous": {
+      "en": "astrubian treasure - instantaneous",
+      "fr": "tresor d'astrub - instantane",
+      "es": "tesoro de astrub - instantaneo",
+      "pt": "tesouro de astrub - instantaneo"
+    },
+    "Astrubian Treasure - Mountains": {
+      "en": "astrubian treasure - mountains",
+      "fr": "tresor d'astrub - montagnes",
+      "es": "tesoro de astrub - montanas",
+      "pt": "tesouro de astrub - montanhas"
+    },
+    "Astrubian Treasure - Sewers": {
+      "en": "astrubian treasure - sewers",
+      "fr": "tresor d'astrub - egouts",
+      "es": "tesoro de astrub - alcantarillas",
+      "pt": "tesouro de astrub - esgoto"
+    },
+    "Astrubian Treasure - Strawberry Roan": {
+      "en": "astrubian treasure - strawberry roan",
+      "fr": "tresor d'astrub - aubere",
+      "es": "tesoro de astrub - overo",
+      "pt": "tesouro de astrub - rosilho"
+    },
+    "Astrubian Treasure - Well-Built": {
+      "en": "astrubian treasure - well-built",
+      "fr": "tresor d'astrub - baraque",
+      "es": "tesoro de astrub - fornido",
+      "pt": "tesouro de astrub - bombado"
+    },
+    "Beach Treasure": {
+      "en": "beach treasure",
+      "fr": "tresor de la plage",
+      "es": "tesoro de la playa",
+      "pt": "tesouro da praia"
+    },
+    "Bilbizan Treasure - Adorer": {
+      "en": "bilbizan treasure - adorer",
+      "fr": "tresor de bilbyza -  adorateur",
+      "es": "tesoro de bilbyza - adorador",
+      "pt": "tesouro de bilbyza - adorador"
+    },
+    "Bilbizan Treasure - Amusing": {
+      "en": "bilbizan treasure - amusing",
+      "fr": "tresor de bilbyza - amusant",
+      "es": "tesoro de bilbyza - divertido",
+      "pt": "tesouro de bilbyza - divertido"
+    },
+    "Bilbizan Treasure - Confined": {
+      "en": "bilbizan treasure - confined",
+      "fr": "tresor de bilbyza -  confine",
+      "es": "tesoro de bilbyza - encerrado",
+      "pt": "tesouro de bilbyza - confinado"
+    },
+    "Bonta Forest Treasure": {
+      "en": "bonta forest treasure",
+      "fr": "tresor de la foret de bonta",
+      "es": "tesoro del bosque de bonta",
+      "pt": "tesouro da floresta de bonta"
+    },
+    "Bontarian Treasure - Cutting": {
+      "en": "bontarian treasure - cutting",
+      "fr": "tresor de bonta - bouture",
+      "es": "tesoro de bonta - con esquejes",
+      "pt": "tesouro de bonta - estacado"
+    },
+    "Bontarian Treasure - Cyclic": {
+      "en": "bontarian treasure - cyclic",
+      "fr": "tresor de bonta - cyclique",
+      "es": "tesoro de bonta - ciclico",
+      "pt": "tesouro de bonta - ciclico"
+    },
+    "Bontarian Treasure - Dated": {
+      "en": "bontarian treasure - dated",
+      "fr": "tresor de bonta - date",
+      "es": "tesoro de bonta - desfasado",
+      "pt": "tesouro de bonta - velho"
+    },
+    "Bontarian Treasure - Exhausted": {
+      "en": "bontarian treasure - exhausted",
+      "fr": "tresor de bonta - epuise",
+      "es": "tesoro de bonta - agotado",
+      "pt": "tesouro de bonta - esgotado"
+    },
+    "Bontarian Treasure - Thick": {
+      "en": "bontarian treasure - thick",
+      "fr": "tresor de bonta - fourre",
+      "es": "tesoro de bonta - tukulo",
+      "pt": "tesouro de bonta - denso"
+    },
+    "Brakmarian Treasure - Sagging": {
+      "en": "brakmarian treasure - sagging",
+      "fr": "tresor de brakmar - tombant",
+      "es": "tesoro de brakmar - caido",
+      "pt": "tesouro de brakmar - caindo"
+    },
+    "Brakmarian Treasure - Scarred": {
+      "en": "brakmarian treasure - scarred",
+      "fr": "tresor de brakmar - scareux",
+      "es": "tesoro de brakmar - escarado",
+      "pt": "tesouro de brakmar - escarado"
+    },
+    "Brakmarian Treasure - Squat": {
+      "en": "brakmarian treasure - squat",
+      "fr": "tresor de brakmar - squat",
+      "es": "tesoro de brakmar - okupado",
+      "pt": "tesouro de brakmar - ocupado"
+    },
+    "Brakmarian Treasure - Stationary": {
+      "en": "brakmarian treasure - stationary",
+      "fr": "tresor de brakmar - arrete",
+      "es": "tesoro de brakmar - detenido",
+      "pt": "tesouro de brakmar - parado"
+    },
+    "Brakmarian Treasure - Sulfurous": {
+      "en": "brakmarian treasure - sulfurous",
+      "fr": "tresor de brakmar - sulfure",
+      "es": "tesoro de brakmar - sulfurado",
+      "pt": "tesouro de brakmar - sulfuroso"
+    },
+    "Canyon Treasure": {
+      "en": "canyon treasure",
+      "fr": "tresor du canyon",
+      "es": "tesoro del canon",
+      "pt": "tesouro do desfiladeiro"
+    },
+    "Chillberg Island Treasure - Klim": {
+      "en": "chillberg island treasure - klim",
+      "fr": "tresor de l'ile sberg - klim",
+      "es": "tesoro de isla berg - klim",
+      "pt": "tesouro da ilha bergue - klim"
+    },
+    "Chillberg Island Treasure - Mayor Cantile": {
+      "en": "chillberg island treasure - mayor cantile",
+      "fr": "tresor de l'ile sberg -  maire cantile",
+      "es": "tesoro de isla berg - alcaldesa lario",
+      "pt": "tesouro da ilha bergue - prefeita berna"
+    },
+    "Clifftop Treasure": {
+      "en": "clifftop treasure",
+      "fr": "tresor de la falaise",
+      "es": "tesoro del acantilado",
+      "pt": "tesouro da falesia"
+    },
+    "Contaminated Treasure": {
+      "en": "contaminated treasure",
+      "fr": "tresor contamine",
+      "es": "tesoro contaminado",
+      "pt": "tesouro contaminado"
+    },
+    "Desert Treasure": {
+      "en": "desert treasure",
+      "fr": "tresor du desert",
+      "es": "tesoro del desierto",
+      "pt": "tesouro do deserto"
+    },
+    "Dunic Treasure": {
+      "en": "dunic treasure",
+      "fr": "tresor de la dune",
+      "es": "tesoro de la duna",
+      "pt": "tesouro da duna"
+    },
+    "Enurado Treasure - Fortified": {
+      "en": "enurado treasure - fortified",
+      "fr": "tresor d'enutrosor - fortifie",
+      "es": "tesoro de anutropia - fortificado",
+      "pt": "tesouro de enutropia - fortificado"
+    },
+    "Enurado Treasure - Hon-Hourary": {
+      "en": "enurado treasure - hon-hourary",
+      "fr": "tresor de enutrosor - hon-horaire",
+      "es": "tesoro de anutropia - hon-horario",
+      "pt": "tesouro de enutropia - hon-horario"
+    },
+    "Enurado Treasure - Interest": {
+      "en": "enurado treasure - interest",
+      "fr": "tresor d'enutrosor - interets",
+      "es": "tesoro de anutropia - intereses",
+      "pt": "tesouro de enutropia - juros"
+    },
+    "Enurado Treasure - Pure": {
+      "en": "enurado treasure - pure",
+      "fr": "tresor d'enutrosor - pur",
+      "es": "tesoro de anutropia - puro",
+      "pt": "tesouro de enutropia - puro"
+    },
+    "Enurado Treasure - Time-On": {
+      "en": "enurado treasure - time-on",
+      "fr": "tresor de enutrosor - temps-on",
+      "es": "tesoro de anutropia - tiemp-on",
+      "pt": "tesouro de enutropia - tempo-oral"
+    },
+    "Ereboria Treasure - Abandoned Captain": {
+      "en": "ereboria treasure - abandoned captain",
+      "fr": "tresor d'ereboria - capitaine abandonne",
+      "es": "tesoro de ereboria - capitan abandonado",
+      "pt": "tesouro de ereboria - capitao abandonado"
+    },
+    "Ereboria Treasure - Exalted": {
+      "en": "ereboria treasure - exalted",
+      "fr": "tresor d'ereboria - exalte",
+      "es": "tesoro de ereboria - exaltado",
+      "pt": "tesouro de ereboria - exaltado"
+    },
+    "Ereboria Treasure - Ghostof Smuggler": {
+      "en": "ereboria treasure - ghostof smuggler",
+      "fr": "tresor d'ereboria - le contrebandier gostof",
+      "es": "tesoro de ereboria - el contrabandista gostofo",
+      "pt": "tesouro de ereboria - o contrabandista fantasmado"
+    },
+    "Ereboria Treasure - Smuggler": {
+      "en": "ereboria treasure - smuggler",
+      "fr": "tresor d'ereboria - la contrebandiere",
+      "es": "tesoro de ereboria - la contrabandista",
+      "pt": "tesouro de ereboria - a contrabandista"
+    },
+    "Floating Jelly Treasure": {
+      "en": "floating jelly treasure",
+      "fr": "tresor gelee flottante",
+      "es": "tesoro gelatina flotante",
+      "pt": "tesouro da geleia flutuante"
+    },
+    "Forfut Treasure - Acrobat": {
+      "en": "forfut treasure - acrobat",
+      "fr": "tresor de katrepat - acrobate",
+      "es": "tesoro de kuatropatas - acrobata",
+      "pt": "tesouro de dezist - acrobata"
+    },
+    "Forfut Treasure - Atonement": {
+      "en": "forfut treasure - atonement",
+      "fr": "tresor de katrepat -  l'expiation",
+      "es": "tesoro de kuatropatas - la expiacion",
+      "pt": "tesouro de dezist - a expiacao"
+    },
+    "Forfut Treasure - Dingy": {
+      "en": "forfut treasure - dingy",
+      "fr": "tresor de katrepat - obscur",
+      "es": "tesoro de kuatropatas - oscuro",
+      "pt": "tesouro de dezist - obscuro"
+    },
+    "Forfut Treasure - Enjoyable": {
+      "en": "forfut treasure - enjoyable",
+      "fr": "tresor de katrepat - plaisant",
+      "es": "tesoro de kuatropatas - ameno",
+      "pt": "tesouro de dezist - agradavel"
+    },
+    "Forfut Treasure - Shivering": {
+      "en": "forfut treasure - shivering",
+      "fr": "tresor de katrepat -  frissonnant",
+      "es": "tesoro de kuatropatas - escalofriante",
+      "pt": "tesouro de dezist - arrepiado"
+    },
+    "Frigost Treasure - Scarlet": {
+      "en": "frigost treasure - scarlet",
+      "fr": "tresor sur frigost - ecarlate",
+      "es": "tesoro en frigost - escarlata",
+      "pt": "tesouro de frigost - escarlate"
+    },
+    "Furnace Treasure": {
+      "en": "furnace treasure",
+      "fr": "tresor de la fournaise",
+      "es": "tesoro del crater",
+      "pt": "tesouro da fornalha"
+    },
+    "Hidden Treasure": {
+      "en": "hidden treasure",
+      "fr": "tresor planque",
+      "es": "tesoro escondido",
+      "pt": "tesouro escondido"
+    },
+    "Kelba Treasure - Acclaimed": {
+      "en": "kelba treasure - acclaimed",
+      "fr": "tresor de kelba - acclame",
+      "es": "tesoro de kelba - aclamado",
+      "pt": "tesouro de kelba - aclamado"
+    },
+    "Kelba Treasure - Dull White": {
+      "en": "kelba treasure - dull white",
+      "fr": "tresor sur kelba - incane",
+      "es": "tesoro en kelba - cano",
+      "pt": "tesouro de kelba - desbotado"
+    },
+    "Kelba Treasure - Dusty": {
+      "en": "kelba treasure - dusty",
+      "fr": "tresor de kelba - poussiereux",
+      "es": "tesoro de kelba - polvoriento",
+      "pt": "tesouro de kelba - empoeirado"
+    },
+    "Kelba Treasure - Fun": {
+      "en": "kelba treasure - fun",
+      "fr": "tresor de kelba - ludique",
+      "es": "tesoro de kelba - ludico",
+      "pt": "tesouro de kelba - ludico"
+    },
+    "Kelba Treasure - Garnet": {
+      "en": "kelba treasure - garnet",
+      "fr": "tresor sur kelba - grenat",
+      "es": "tesoro en kelba - granate",
+      "pt": "tesouro de kelba - granada"
+    },
+    "Kelba Treasure - Golden Brown": {
+      "en": "kelba treasure - golden brown",
+      "fr": "tresor sur kelba - mordore",
+      "es": "tesoro en kelba - dorado",
+      "pt": "tesouro de kelba - acobreado"
+    },
+    "Kelba Treasure - Lauded": {
+      "en": "kelba treasure - lauded",
+      "fr": "tresor de kelba - ovationne",
+      "es": "tesoro de kelba - ovacionado",
+      "pt": "tesouro de kelba - ovacionado"
+    },
+    "Kelba Treasure - Pallid": {
+      "en": "kelba treasure - pallid",
+      "fr": "tresor sur kelba - bleme",
+      "es": "tesoro en kelba - apagado",
+      "pt": "tesouro de kelba - palido"
+    },
+    "Kelba Treasure - Pointless": {
+      "en": "kelba treasure - pointless",
+      "fr": "tresor de kelba - insense",
+      "es": "tesoro de kelba - sin sentido",
+      "pt": "tesouro de kelba - tolo"
+    },
+    "Kelba Treasure - Reefs": {
+      "en": "kelba treasure - reefs",
+      "fr": "tresor de kelba - les recifs",
+      "es": "tesoro de kelba - los arrecifes",
+      "pt": "tesouro de kelba - recifes"
+    },
+    "Monk Island Treasure - Cleft": {
+      "en": "monk island treasure - cleft",
+      "fr": "tresor de l'ile aux moines -  l'isoloire",
+      "es": "tesoro de la isla de los monjes - cubiculo",
+      "pt": "tesouro da ilha dos monges - cubiculo"
+    },
+    "Monk Island Treasure - Deathly Pale": {
+      "en": "monk island treasure - deathly pale",
+      "fr": "tresor sur l'ile aux moines - livide",
+      "es": "tesoro en la isla de los monjes - livido",
+      "pt": "tesouro da ilha dos monges - livido"
+    },
+    "Monk Island Treasure - Jet Black": {
+      "en": "monk island treasure - jet black",
+      "fr": "tresor sur l'ile aux moines - moreau",
+      "es": "tesoro en la isla de los monjes - moro",
+      "pt": "tesouro da ilha dos monges - murzelo"
+    },
+    "Monk Island Treasure - Library": {
+      "en": "monk island treasure - library",
+      "fr": "tresor de l'ile aux moines - la bibliotheque",
+      "es": "tesoro de la isla de los monjes - la biblioteca",
+      "pt": "tesouro da ilha dos monges - a biblioteca"
+    },
+    "Monk Island Treasure - Opaline": {
+      "en": "monk island treasure - opaline",
+      "fr": "tresor sur l'ile aux moines - opalin",
+      "es": "tesoro en la isla de los monjes - opalino",
+      "pt": "tesouro da ilha dos monges - opalino"
+    },
+    "Monk Island Treasure - Wax Storeroom": {
+      "en": "monk island treasure - wax storeroom",
+      "fr": "tresor de l'ile aux moines -  la reserve de cire",
+      "es": "tesoro de la isla de los monjes - la reserva de cera",
+      "pt": "tesouro da ilha dos monges - a reserva de cera"
+    },
+    "Moon Treasure - Planned": {
+      "en": "moon treasure - planned",
+      "fr": "tresor de moon - planifie",
+      "es": "tesoro de moon - planificado",
+      "pt": "tesouro de moon - planejado"
+    },
+    "Moon Treasure - Portable": {
+      "en": "moon treasure - portable",
+      "fr": "tresor de moon - portatif",
+      "es": "tesoro de moon - portatil",
+      "pt": "tesouro de moon - portatil"
+    },
+    "Moon Treasure - Programmed": {
+      "en": "moon treasure - programmed",
+      "fr": "tresor de moon - programme",
+      "es": "tesoro de moon - programado",
+      "pt": "tesouro de moon - programado"
+    },
+    "Moon Treasure - Transferable": {
+      "en": "moon treasure - transferable",
+      "fr": "tresor de moon - transferable",
+      "es": "tesoro de moon - transferible",
+      "pt": "tesouro de moon - transferivel"
+    },
+    "Moon Treasure - Yieldable": {
+      "en": "moon treasure - yieldable",
+      "fr": "tresor de moon - cessible",
+      "es": "tesoro de moon - cedible",
+      "pt": "tesouro de moon - transmissivel"
+    },
+    "Ohwymi Treasure - Ashen": {
+      "en": "ohwymi treasure - ashen",
+      "fr": "tresor a saharach - tourdille",
+      "es": "tesoro en el picahari - tordillo",
+      "pt": "tesouro de espetarida - tordilho"
+    },
+    "Ohwymi Treasure - Deflated": {
+      "en": "ohwymi treasure - deflated",
+      "fr": "tresor de saharach - le creve",
+      "es": "tesoro del picahari - el fallido",
+      "pt": "tesouro de espetarida - esgotado"
+    },
+    "Ohwymi Treasure - Dried": {
+      "en": "ohwymi treasure - dried",
+      "fr": "tresor de saharach - asseche",
+      "es": "tesoro del picahari - reseco",
+      "pt": "tesouro de espetarida - ressecado"
+    },
+    "Ohwymi Treasure - Perched": {
+      "en": "ohwymi treasure - perched",
+      "fr": "tresor de saharach - perche",
+      "es": "tesoro del picahari - encaramado",
+      "pt": "tesouro de espetarida - empoleirado"
+    },
+    "Ohwymi Treasure - Vermilion": {
+      "en": "ohwymi treasure - vermilion",
+      "fr": "tresor a saharach - vermeil",
+      "es": "tesoro en el picahari - bermejo",
+      "pt": "tesouro de espetarida - colorado"
+    },
+    "Reef Treasure": {
+      "en": "reef treasure",
+      "fr": "tresor des recifs",
+      "es": "tesoro del arrecife",
+      "pt": "tesouro dos recifes"
+    },
+    "Sadida Kingdom Treasure - Cerulean": {
+      "en": "sadida kingdom treasure - cerulean",
+      "fr": "tresor au royaume sadida - ceruleen",
+      "es": "tesoro en el reino sadida - ceruleo",
+      "pt": "tesouro do reino sadida - ceruleo"
+    },
+    "Sadida Kingdom Treasure - Chopped": {
+      "en": "sadida kingdom treasure - chopped",
+      "fr": "tresor du royaume sadida - entaille",
+      "es": "tesoro del reino sadida - el entallado",
+      "pt": "tesouro do reino sadida - talhado"
+    },
+    "Sadida Kingdom Treasure - Crimson": {
+      "en": "sadida kingdom treasure - crimson",
+      "fr": "tresor au royaume sadida - cramoisi",
+      "es": "tesoro en el reino sadida - carmesi",
+      "pt": "tesouro do reino sadida - carmim"
+    },
+    "Sadida Kingdom Treasure - Dun": {
+      "en": "sadida kingdom treasure - dun",
+      "fr": "tresor au royaume sadida - louvet",
+      "es": "tesoro en el reino sadida - bayo oscuro",
+      "pt": "tesouro do reino sadida - lobuno"
+    },
+    "Sadida Kingdom Treasure - Sprouted": {
+      "en": "sadida kingdom treasure - sprouted",
+      "fr": "tresor du royaume sadida -  germe",
+      "es": "tesoro del reino sadida - el germinado",
+      "pt": "tesouro do reino sadida - germinado"
+    },
+    "Sadida Kingdom Treasure - Wooded": {
+      "en": "sadida kingdom treasure - wooded",
+      "fr": "tresor du royaume sadida -  boise",
+      "es": "tesoro del reino sadida - tocon",
+      "pt": "tesouro do reino sadida - arborizado"
+    },
+    "Sandbank Treasure": {
+      "en": "sandbank treasure",
+      "fr": "tresor du banc de sable",
+      "es": "tesoro del banco de arena",
+      "pt": "tesouro do banco de areia"
+    },
+    "Shhhudoku Treasure - Submerged": {
+      "en": "shhhudoku treasure - submerged",
+      "fr": "tresor de chuchoku - immerge",
+      "es": "tesoro de susurron i - sumergido",
+      "pt": "tesouro de shiudoku - imerso"
+    },
+    "Singing Treasure": {
+      "en": "singing treasure",
+      "fr": "tresor chantant",
+      "es": "tesoro cantarin",
+      "pt": "tesouro cantante"
+    },
+    "Snowbound Treasure": {
+      "en": "snowbound treasure",
+      "fr": "tresor enseveli",
+      "es": "tesoro sepultado",
+      "pt": "tesouro soterrado"
+    },
+    "Sodden Mourning Treasure": {
+      "en": "sodden mourning treasure",
+      "fr": "tresor gueulant humide",
+      "es": "tesoro quejumbroso humedo",
+      "pt": "tesouro queixoso umido"
+    },
+    "Sporous Treasure": {
+      "en": "sporous treasure",
+      "fr": "tresor sporeux",
+      "es": "tesoro esporulado",
+      "pt": "tesouro esporulado"
+    },
+    "Spring Treasure": {
+      "en": "spring treasure",
+      "fr": "tresor de la source",
+      "es": "tesoro de la fuente",
+      "pt": "tesouro da fonte"
+    },
+    "Srambadian Treasure - Malted": {
+      "en": "srambadian treasure - malted",
+      "fr": "tresor de srambad - malte",
+      "es": "tesoro de sramvil - cebado",
+      "pt": "tesouro de sramvil - maltado"
+    },
+    "Srambadian Treasure - Open": {
+      "en": "srambadian treasure - open",
+      "fr": "tresor de srambad - ouvert",
+      "es": "tesoro de sramvil - abierto",
+      "pt": "tesouro de sramvil - aberto"
+    },
+    "Srambadian Treasure - Rare": {
+      "en": "srambadian treasure - rare",
+      "fr": "tresor de srambad - rare",
+      "es": "tesoro de sramvil - escaso",
+      "pt": "tesouro de sramvil - raro"
+    },
+    "Srambadian Treasure - Regular": {
+      "en": "srambadian treasure - regular",
+      "fr": "tresor de srambad - regulier",
+      "es": "tesoro de sramvil - regular",
+      "pt": "tesouro de sramvil - regular"
+    },
+    "Sufokian Treasure - Fissured": {
+      "en": "sufokian treasure - fissured",
+      "fr": "tresor de sufokia - fissure",
+      "es": "tesoro de sufokia - fisurado",
+      "pt": "tesouro de sufokia - fissurado"
+    },
+    "Sufokian Treasure - Grainy": {
+      "en": "sufokian treasure - grainy",
+      "fr": "tresor de sufokia - sablonneux",
+      "es": "tesoro de sufokia - el arenoso",
+      "pt": "tesouro de sufokia - arenoso"
+    },
+    "Sufokian Treasure - Never-Ending": {
+      "en": "sufokian treasure - never-ending",
+      "fr": "tresor de sufokia - interminable",
+      "es": "tesoro de sufokia - interminable",
+      "pt": "tesouro de sufokia - interminavel"
+    },
+    "Sufokian Treasure - Stored": {
+      "en": "sufokian treasure - stored",
+      "fr": "tresor de sufokia - entrepose",
+      "es": "tesoro de sufokia - almacenado",
+      "pt": "tesouro de sufokia - entreposto"
+    },
+    "Sufokian Treasure - Sunken": {
+      "en": "sufokian treasure - sunken",
+      "fr": "tresor de sufokia - englouti",
+      "es": "tesoro de sufokia - sumergido",
+      "pt": "tesouro de sufokia - submerso"
+    },
+    "Swampy Treasure": {
+      "en": "swampy treasure",
+      "fr": "tresor marecageux",
+      "es": "tesoro pantanoso",
+      "pt": "tesouro pantanoso"
+    },
+    "Terrace Treasure": {
+      "en": "terrace treasure",
+      "fr": "tresor de la terrasse",
+      "es": "tesoro de la terraza",
+      "pt": "tesouro do terraco"
+    },
+    "Traverse Treasure - In the Clouds": {
+      "en": "traverse treasure - in the clouds",
+      "fr": "tresor de traverse - dans les nuages",
+      "es": "tesoro de travesia - en las nubes",
+      "pt": "tesouro de traves - nas nuvens"
+    },
+    "Traverse Treasure - In the Fog": {
+      "en": "traverse treasure - in the fog",
+      "fr": "tresor de traverse - dans le brouillard",
+      "es": "tesoro de travesia - en la niebla",
+      "pt": "tesouro de traves - na neblina"
+    },
+    "Traverse Treasure - In the Haze": {
+      "en": "traverse treasure - in the haze",
+      "fr": "tresor de traverse - dans la brouillasse",
+      "es": "tesoro de travesia - en la neblina",
+      "pt": "tesouro de traves - no nevoeiro"
+    },
+    "Traverse Treasure - In the Mist": {
+      "en": "traverse treasure - in the mist",
+      "fr": "tresor de traverse - dans la brume",
+      "es": "tesoro de travesia - en la bruma",
+      "pt": "tesouro de traves - na bruma"
+    },
+    "Treasure on Stilts": {
+      "en": "treasure on stilts",
+      "fr": "tresor sur pilotis",
+      "es": "tesoro sobre pilotes",
+      "pt": "tesouro sobre pilares"
+    },
+    "Troolgodyte Treasure": {
+      "en": "troolgodyte treasure",
+      "fr": "tresor troolgrodyte",
+      "es": "tesoro troolglodita",
+      "pt": "tesouro troolgordita"
+    },
+    "Wabbit Island Treasure - Cawwoty": {
+      "en": "wabbit island treasure - cawwoty",
+      "fr": "tresor de l'ile des wabbits - cawotte",
+      "es": "tesoro de la isla de los wabbits - zanahowio",
+      "pt": "tesouro da ilha dos wabbits - cenouwado"
+    },
+    "Wabbit Island Treasure - Cwunched": {
+      "en": "wabbit island treasure - cwunched",
+      "fr": "tresor de l'ile des wabbits - cwoque",
+      "es": "tesoro de la isla de los wabbits - mowdisqueado",
+      "pt": "tesouro da ilha dos wabbits - mowdido"
+    },
+    "Wabbit Island Treasure - Dewailed": {
+      "en": "wabbit island treasure - dewailed",
+      "fr": "tresor de l'ile des wabbits - dewaille",
+      "es": "tesoro de la isla de los wabbits - descawwilado",
+      "pt": "tesouro da ilha dos wabbits - descawwilhado"
+    },
+    "Wabbit Island Treasure - Diwty": {
+      "en": "wabbit island treasure - diwty",
+      "fr": "tresor de l'ile des wabbits - encwasse",
+      "es": "tesoro de la isla de los wabbits - encastwado",
+      "pt": "tesouro da ilha dos wabbits - engowduwado"
+    },
+    "Wabbit Island Treasure - Dusty": {
+      "en": "wabbit island treasure - dusty",
+      "fr": "tresor de l'ile des wabbits - poussieweux",
+      "es": "tesoro de la isla de los wabbits - polvoriento",
+      "pt": "tesouro da ilha dos wabbits - empoeiwado"
+    },
+    "Wabbit Island Treasure - Dwenched": {
+      "en": "wabbit island treasure - dwenched",
+      "fr": "tresor de l'ile des wabbits - twempe",
+      "es": "tesoro de la isla de los wabbits - mojado",
+      "pt": "tesouro da ilha dos wabbits - enchawcado"
+    },
+    "Wabbit Island Treasure - Impwisoned": {
+      "en": "wabbit island treasure - impwisoned",
+      "fr": "tresor de l'ile des wabbits - emmuwe",
+      "es": "tesoro de la isla de los wabbits - empawedado",
+      "pt": "tesouro da ilha dos wabbits - encawceiwado"
+    },
+    "Wabbit Island Treasure - Inundated": {
+      "en": "wabbit island treasure - inundated",
+      "fr": "tresor de l'ile des wabbits - inonde",
+      "es": "tesoro de la isla de los wabbits - inundado",
+      "pt": "tesouro da ilha dos wabbits - inundado"
+    },
+    "Wabbit Island Treasure - Mai Tai": {
+      "en": "wabbit island treasure - mai tai",
+      "fr": "tresor de l'ile des wabbits - baillet",
+      "es": "tesoro de la isla de los wabbits - pallete",
+      "pt": "tesouro da ilha dos wabbits - baio"
+    },
+    "Wabbit Island Treasure - Wan": {
+      "en": "wabbit island treasure - wan",
+      "fr": "tresor de l'ile des wabbits - blafard",
+      "es": "tesoro de la isla de los wabbits - palido",
+      "pt": "tesouro da ilha dos wabbits - macilento"
+    },
+    "Wabbit Treasure - Accessible": {
+      "en": "wabbit treasure - accessible",
+      "fr": "tresor des wabbits - accessible",
+      "es": "tesoro de los wabbits - accesible",
+      "pt": "tesouro dos wabbits - acessivel"
+    },
+    "Wabbit Treasure - Ancient": {
+      "en": "wabbit treasure - ancient",
+      "fr": "tresor des wabbits - ancien",
+      "es": "tesoro de los wabbits - antiguo",
+      "pt": "tesouro dos wabbits - antigo"
+    },
+    "Wabbit Treasure - Joyful": {
+      "en": "wabbit treasure - joyful",
+      "fr": "tresor des wabbits - joyeux",
+      "es": "tesoro de los wabbits - alegre",
+      "pt": "tesouro dos wabbits - alegre"
+    },
+    "Wabbit Treasure - Seasonal": {
+      "en": "wabbit treasure - seasonal",
+      "fr": "tresor des wabbits - saisonnier",
+      "es": "tesoro de los wabbits - estacional",
+      "pt": "tesouro dos wabbits - sazonal"
+    },
+    "Walled Treasure": {
+      "en": "walled treasure",
+      "fr": "tresor emmure",
+      "es": "tesoro emparedado",
+      "pt": "tesouro murado"
+    },
+    "Whispering Treasure": {
+      "en": "whispering treasure",
+      "fr": "tresor chuchotant",
+      "es": "tesoro susurrante",
+      "pt": "tesouro sussurrante"
+    },
+    "Wild Estate Treasure - Abysmal": {
+      "en": "wild estate treasure - abysmal",
+      "fr": "tresor du domaine sauvage - abyssal",
+      "es": "tesoro de tierras salvajes - abisal",
+      "pt": "tesouro do dominio selvagem - abissal"
+    },
+    "Wild Estate Treasure - Ancestral": {
+      "en": "wild estate treasure - ancestral",
+      "fr": "tresor du domaine sauvage - ancestral",
+      "es": "tesoro de tierras salvajes - el ancestral",
+      "pt": "tesouro do dominio selvagem - ancestral"
+    },
+    "Wild Estate Treasure - Attractive": {
+      "en": "wild estate treasure - attractive",
+      "fr": "tresor du domaine sauvage - attirant",
+      "es": "tesoro de tierras salvajes - el atrayente",
+      "pt": "tesouro do dominio selvagem - atraente"
+    },
+    "Wild Estate Treasure - Inaccessible": {
+      "en": "wild estate treasure - inaccessible",
+      "fr": "tresor du domaine sauvage - inaccessible",
+      "es": "tesoro de tierras salvajes - el inaccesible",
+      "pt": "tesouro do dominio selvagem - inacessivel"
+    },
+    "Wild Estate Treasure - Iron Gray": {
+      "en": "wild estate treasure - iron gray",
+      "fr": "tresor au domaine sauvage - pinchard",
+      "es": "tesoro en tierras salvajes - topino",
+      "pt": "tesouro do dominio selvagem - cinza"
+    },
+    "Wild Estate Treasure - Navigated": {
+      "en": "wild estate treasure - navigated",
+      "fr": "tresor du domaine sauvage - navigue",
+      "es": "tesoro de tierras salvajes - navegado",
+      "pt": "tesouro do dominio selvagem - navegado"
+    },
+    "Wild Estate Treasure - Plateau": {
+      "en": "wild estate treasure - plateau",
+      "fr": "tresor du domaine sauvage - du plateau",
+      "es": "tesoro de tierras salvajes - la meseta",
+      "pt": "tesouro do dominio selvagem - planalto"
+    },
+    "Wild Estate Treasure - Roan": {
+      "en": "wild estate treasure - roan",
+      "fr": "tresor au domaine sauvage - rouan",
+      "es": "tesoro en tierras salvajes - ruano",
+      "pt": "tesouro do dominio selvagem - ruao"
+    },
+    "Wild Estate Treasure - Sanguine": {
+      "en": "wild estate treasure - sanguine",
+      "fr": "tresor au domaine sauvage - pourpre",
+      "es": "tesoro en tierras salvajes - purpura",
+      "pt": "tesouro do dominio selvagem - purpura"
+    },
+    "Wild Estate Treasure - Stashed": {
+      "en": "wild estate treasure - stashed",
+      "fr": "tresor du domaine sauvage - accule",
+      "es": "tesoro de tierras salvajes - el recondito",
+      "pt": "tesouro do dominio selvagem - encurralado"
+    },
+    "Wild Estate Treasure - Steamy": {
+      "en": "wild estate treasure - steamy",
+      "fr": "tresor du domaine sauvage - vaporeux",
+      "es": "tesoro de tierras salvajes - el vaporoso",
+      "pt": "tesouro do dominio selvagem - vaporoso"
+    },
+    "Wild Estate Treasure - Trained": {
+      "en": "wild estate treasure - trained",
+      "fr": "tresor du domaine sauvage - entraine",
+      "es": "tesoro de tierras salvajes - entrenado",
+      "pt": "tesouro do dominio selvagem - treinado"
+    },
+    "Wild Estate Treasure - Well-Rounded": {
+      "en": "wild estate treasure - well-rounded",
+      "fr": "tresor du domaine sauvage - rebondi",
+      "es": "tesoro de tierras salvajes - el redondeado",
+      "pt": "tesouro do dominio selvagem - arredondado"
+    },
+    "Windy Clifftop Treasure": {
+      "en": "windy clifftop treasure",
+      "fr": "tresor de la falaise venteuse",
+      "es": "tesoro del acantilado ventoso",
+      "pt": "tesouro da falesia ventosa"
+    },
+    "Xelorium Treasure - LoXerRium": {
+      "en": "xelorium treasure - loxerrium",
+      "fr": "tresor du xelorium - loxerrium",
+      "es": "tesoro de xelorium - loxerium",
+      "pt": "tesouro do xelorium - loxerrium"
+    },
+    "Xelorium Treasure - RiumLoXer": {
+      "en": "xelorium treasure - riumloxer",
+      "fr": "tresor du xelorium - riumloxer",
+      "es": "tesoro de xelorium - riumloxe",
+      "pt": "tesouro do xelorium - riumloxer"
+    }
+  }
+}

@@ -1,0 +1,2833 @@
+{
+  "_meta": {
+    "generatedAt": "2026-02-25T10:04:17.830Z",
+    "source": "wakfu client i18n jars"
+  },
+  "blocks": [
+    {
+      "kind": "locations",
+      "translated": 57,
+      "missing": [],
+      "ambiguous": [
+        {
+          "term": "Amakna - Emelka Forest (enter Holey Crevasse)",
+          "parts": [
+            {
+              "part": "Amakna - Emelka Forest",
+              "candidates": [
+                {
+                  "id": "content.54.1673",
+                  "en": "emelka forest",
+                  "fr": "foret d'emelka",
+                  "es": "bosque de emelka",
+                  "pt": "floresta de emelka"
+                },
+                {
+                  "id": "content.61.287",
+                  "en": "amakna - emelka",
+                  "fr": "amakna - emelka",
+                  "es": "amakna - emelka",
+                  "pt": "amakna - emelka"
+                },
+                {
+                  "id": "nation.short.30",
+                  "en": "amakna",
+                  "fr": "amakna",
+                  "es": "amakna",
+                  "pt": "amakna"
+                },
+                {
+                  "id": "worldDescription.emelka",
+                  "en": "emelka",
+                  "fr": "emelka",
+                  "es": "emelka",
+                  "pt": "emelka"
+                },
+                {
+                  "id": "content.124.593",
+                  "en": "forest",
+                  "fr": "foret",
+                  "es": "bosque",
+                  "pt": "floresta"
+                },
+                {
+                  "id": "incarnam.tuto.ui.mineral.title",
+                  "en": "ores",
+                  "fr": "minerais",
+                  "es": "minerales",
+                  "pt": "minerios"
+                },
+                {
+                  "id": "content.6.1122",
+                  "en": "rest",
+                  "fr": "repos",
+                  "es": "descanso",
+                  "pt": "descanso"
+                },
+                {
+                  "id": "content.67.1051",
+                  "en": "17 = zinit - vessel (present)\n18 = not used\n19 = zinit - beach\n20 = tunnels 2, ecaflipus - garbage peak\n21 = not used\n22 = haven bag\n23 = amakna – inn\n24 = astrub - cemetery, monk island, ecaflipus - monastery dome\n25 = not used\n26 = bonta - cania plains\n27 = mystic moe's\n28 = dungeons 3, bwork temple\n29 = astrub - forest, amakna - emelka forest, ecaflipus - floating forest\n30 = bilbiza\n31 = jellith dimension\n32 = astrub - center\n33 = astrub - fields, astrub - plains\n34 = astrub - mountains, ecaflipus\n35 = sadida kingdom (past), moowolf's lair\n36 = not used\n37 = not used",
+                  "fr": "17 = zinit - vaisseau (present)\n18 = non utilise\n19 = zinit - plage\n20 =  souterrains 2, ecaflipus - piton de la foutaise\n21 = non utilise\n22 = havre-sac\n23 = amakna – taverne\n24 = astrub - cimetiere, ile aux moines, ecaflipus - couvent dome\n25 = non utilise\n26 = bonta - plaines de cania\n27 = chez irmalama\n28 = donjons 3, temple bwork\n29 = astrub - foret, amakna - foret d'emelka, ecaflipus - foret flottante\n30 = bilbyza\n31 = gelaxieme dimension\n32 = astrub - centre\n33 = astrub - champs, astrub - plaines\n34 = astrub - montagnes, ecaflipus\n35 = royaume sadida (passe), antre du meulou\n36 = non utilise\n37 = non utilise",
+                  "es": "17 = zinit - nave (presente)\n18 = no utilizado\n19 = zinit - playa\n20 = subterraneos 2, zurcalia - rincon con encancamo\n21 = no utilizado\n22 = merkasako\n23 = amakna – taberna\n24 = astrub - cementerio, isla de los monjes, zurcalia - convento aireado\n25 = no utilizado\n26 = bonta - llanuras de cania\n27 = morada de irmalama\n28 = mazmorras 3, templo bwork\n29 = astrub - bosque, amakna - bosque d'emelka, zurcalia - bosque flotante\n30 = bilbyza\n31 = gelexta dimension\n32 = astrub - centro\n33 = astrub - campos, astrub - llanuras\n34 = astrub - montana, zurcalia\n35 = reino sadida (pasado), antro de maxilubo\n36 = no utilizado\n37 = no utilizado",
+                  "pt": "17 = zinit - nave (presente)\n18 = nao utilizado\n19 = zinit - praia\n20 = tuneis subterraneos 2, ecafliperama - cume dos condenados\n21 = nao utilizado\n22 = saco de viagem\n23 = amakna - taberna\n24 = astrub - cemiterio, ilha dos monges, ecafliperama - convento ventania\n25 = nao utilizado\n26 = bonta - planicies de cania\n27 = fofura mistica\n28 = calaboucos 3, templo bwork\n29 = astrub - floresta, amakna - floresta de emelka, ecafliperama - floresta flutuante\n30 = bilbyza\n31 = gelatesima dimensao\n32 = astrub - centro\n33 = astrub - campos, astrub - planicies\n34 = astrub - montanhas, ecafliperama\n35 = reino sadida (passado), antro do mulobo\n36 = nao utilizado\n37 = nao utilizado"
+                },
+                {
+                  "id": "desc.or",
+                  "en": "or",
+                  "fr": "ou",
+                  "es": "o",
+                  "pt": "ou"
+                },
+                {
+                  "id": "language.es",
+                  "en": "es",
+                  "fr": "es",
+                  "es": "es",
+                  "pt": "es"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Amakna - Riktus Plain (enter Crackled Hideaway)",
+          "parts": [
+            {
+              "part": "Amakna - Riktus Plain",
+              "candidates": [
+                {
+                  "id": "content.54.1672",
+                  "en": "riktus plain",
+                  "fr": "plaine des riktus",
+                  "es": "llanura de los riktus",
+                  "pt": "planicie dos riktus"
+                },
+                {
+                  "id": "nation.short.30",
+                  "en": "amakna",
+                  "fr": "amakna",
+                  "es": "amakna",
+                  "pt": "amakna"
+                },
+                {
+                  "id": "nation.short.34",
+                  "en": "riktus",
+                  "fr": "riktus",
+                  "es": "riktus",
+                  "pt": "riktus"
+                },
+                {
+                  "id": "content.67.1060",
+                  "en": "119 = combat - crackler dungeon\n120 = combat - dark treechnid dungeon\n121 = boss - soft oak\n122 = combat - strich dungeon, amakna - riktus plain\n123 = boss - royal strich\n124 = combat - musical blop dungeon\n125 = boss - blopgang amadeus blopzart\n126 = combat - chafer dungeon\n127 = combat - rogue dungeon\n128 = boss - remington smisse\n129 = combat - magik riktus dungeon\n130 = boss - magik hat\n131 = combat - pandalucia\n132 = boss - pandalucia\n133 = combat - pandalucia 2\n134 = boss - pandalucia 2\n135 = combat - blightopards\n136 = boss - blightopards\n137 = combat - pandala cemetery\n138 = boss - pandala cemetery\n139 = combat - sadida kingdom",
+                  "fr": "119 = combat - donjon craqueleur\n120 = combat - donjon abraknyde sombre\n121 = boss - chene mou\n122 = combat - donjon truche, amakna - plaine des riktus\n123 = boss - truche royale\n124 = combat - donjon blops musicaux\n125 = boss - blopgang amadeus blopzart\n126 = combat - donjon chafer\n127 = combat - donjon roublard\n128 = boss - remington smisse\n129 = combat - donjon magik riktus\n130 = boss - chapo magik\n131 = combat - pandalousie\n132 = boss - pandalousie\n133 = combat - pandalousie 2\n134 = boss - pandalousie 2\n135 = combat - fleopards\n136 = boss - fleopards\n137 = combat - cimetiere de pandala\n138 = boss - cimetiere de pandala\n139 = combat - royaume sadida",
+                  "es": "119 = combate - mazmorra montana conohos\n120 = combate - mazmorra abraknida oscura\n121 = jefe - roble blando\n122 = combate - mazmorra pestruceria abandonada, amakna - llanura de los riktus\n123 = jefe - pestruz real\n124 = combate - mazmorra de los blops musicales\n125 = jefe - blopgang amadeus blopzart\n126 = combate - mazmorra de los chafers\n127 = combate - mazmorra de los tymadores\n128 = jefe - remington smis\n129 = combate - mazmorra guarida de los magik riktus\n130 = jefe - sombrero magiko\n131 = combate - pandalucia\n132 = jefe - pandalucia\n133 = combate - pandalucia 2\n134 = jefe - pandalucia 2\n135 = combate - plaguepardos\n136 = jefe - plaguepardos\n137 = combate - cementerio de pandala\n138 = jefe - cementerio de pandala\n139 = combate - reino sadida",
+                  "pt": "119 = combate - calabouco smagador\n120 = combate - calabouco arvraknideo sombrio\n121 = chefe - carvalho mole\n122 = combate - calabouco truz, amakna - planicie dos riktus\n123 = chefe - truz real\n124 = combate - calabouco blops musicais\n125 = chefe - blopgang amadeus blopzart\n126 = combate - calabouco chafer\n127 = combate - calabouco ladino\n128 = chefe - remington smif\n129 = combate - calabouco riktus magikus\n130 = chefe - chapeu magikus\n131 = combate - pandaluzia\n132 = chefe - pandaluzia\n133 = combate - pandaluzia 2\n134 = chefe - pandaluzia 2\n135 = combate - flagelopardos\n136 = chefe - flagelopardos\n137 = combate - cemiterio de pandala\n138 = chefe - cemiterio de pandala\n139 = combate - reino sadida"
+                },
+                {
+                  "id": "content.67.1055",
+                  "en": "104 = tree of life\n105 = forgotten dimension\n106 = mount zinit peak\n107 = ohwymi - ouginak camp\n108 = mineral tower\n109 = battlefields\n110 = badgerox dungeon\n111 = dreggon dungeon\n112 = ethernal dungeon\n113 = dor'mor dungeon\n114 = amakna\n115 = bonta\n116 = brakmar\n117 = sufokia\n118 = rogue dungeon\n119 = magik riktus dungeon\n120 = amakna - riktus plain\n121 = amakna - mines, amakna - hq\n122 = bonta - mines, bonta - hq\n123 = brakmar - mines, brakmar - hq\n124 = sufokia - mines, sufokia - hq\n125 = nations - maritime routes\n126 = crackler dungeon",
+                  "fr": "104 = arbre de vie\n105 = dimension oubliee\n106 = pointe du mont zinit\n107 = saharach - camp ouginak\n108 = tour minerale\n109 = champs de bataille\n110 = donjon blerox\n111 = donjon dragoeuf\n112 = donjon ethernel\n113 = donjon dor'mor\n114 = amakna\n115 = bonta\n116 = brakmar\n117 = sufokia\n118 = donjon roublard\n119 = donjon magik riktus\n120 = amakna - plaine des riktus\n121 = amakna - mines, amakna - qg\n122 = bonta - mines, bonta - qg\n123 = brakmar - mines, brakmar - qg\n124 = sufokia - mines, sufokia - qg\n125 = nations - routes maritimes\n126 = donjon craqueleur",
+                  "es": "104 = arbol de vida\n105 = dimension olvidada\n106 = pico del monte zinit\n107 = picahari - campamento uginak\n108 = torre mineral\n109 = campos de batalla\n110 = mazmorra guarida de los tejaroxores\n111 = mazmorra santuario de los dragohuevos\n112 = mazmorra eterno\n113 = mazmorra dor'mor\n114 = amakna\n115 = bonta\n116 = brakmar\n117 = sufokia\n118 = mazmorra de los tymadores\n119 = mazmorra guarida de los magik riktus\n120 = amakna - llanura de los riktus\n121 = amakna - mina, amakna - cuartel general\n122 = bonta - mina, bonta - cuartel general\n123 = brakmar - mina, brakmar - cuartel general\n124 = sufokia - mina, sufokia - cuartel general\n125 = naciones - rutas maritimas\n126 = mazmorra montana conohos",
+                  "pt": "104 = arvore da vida\n105 = dimensao esquecida\n106 = ponta do monte zinit\n107 = espetarida - acampamento kilorf\n108 = torre mineral\n109 = campos de batalha\n110 = calabouco texox\n111 = calabouco dragovo\n112 - calabouco eter-no\n113 = calabouco dor'mor\n114 = amakna\n115 = bonta\n116 = brakmar\n117 = sufokia\n118 = calabouco ladino\n119 = calabouco riktus magikus\n120 = amakna - planicie dos riktus\n121 = amakna - minas, amakna - qg\n122 = bonta - minas, bonta - qg\n123 = brakmar - minas, brakmar - qg\n124 = sufokia - minas, sufokia - qg\n125 = nacoes - rotas maritimas\n126 = calabouco smagador"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.33.382102",
+                  "en": "a",
+                  "fr": "a",
+                  "es": "a",
+                  "pt": "a"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Astrub - Astrub Forest (enter Dilapidated Sawmill)",
+          "parts": [
+            {
+              "part": "Astrub - Astrub Forest",
+              "candidates": [
+                {
+                  "id": "content.54.1617",
+                  "en": "astrub forest",
+                  "fr": "foret d'astrub",
+                  "es": "bosque de astrub",
+                  "pt": "floresta de astrub"
+                },
+                {
+                  "id": "incarnam.tuto.ui.astrub.title",
+                  "en": "astrub",
+                  "fr": "astrub",
+                  "es": "astrub",
+                  "pt": "astrub"
+                },
+                {
+                  "id": "content.124.593",
+                  "en": "forest",
+                  "fr": "foret",
+                  "es": "bosque",
+                  "pt": "floresta"
+                },
+                {
+                  "id": "incarnam.tuto.ui.mineral.title",
+                  "en": "ores",
+                  "fr": "minerais",
+                  "es": "minerales",
+                  "pt": "minerios"
+                },
+                {
+                  "id": "content.6.1122",
+                  "en": "rest",
+                  "fr": "repos",
+                  "es": "descanso",
+                  "pt": "descanso"
+                },
+                {
+                  "id": "STRENGTHShort",
+                  "en": "str",
+                  "fr": "for",
+                  "es": "fuer",
+                  "pt": "for"
+                },
+                {
+                  "id": "desc.or",
+                  "en": "or",
+                  "fr": "ou",
+                  "es": "o",
+                  "pt": "ou"
+                },
+                {
+                  "id": "language.es",
+                  "en": "es",
+                  "fr": "es",
+                  "es": "es",
+                  "pt": "es"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Astrub - Astrub Plains",
+          "parts": [
+            {
+              "part": "Astrub Plains",
+              "candidates": [
+                {
+                  "id": "content.54.1622",
+                  "en": "astrub plains",
+                  "fr": "plaines d'astrub",
+                  "es": "llanura de astrub",
+                  "pt": "planicies de astrub"
+                },
+                {
+                  "id": "content.61.238",
+                  "en": "astrub - plains",
+                  "fr": "astrub - plaines",
+                  "es": "astrub - llanura",
+                  "pt": "astrub - planicies"
+                },
+                {
+                  "id": "content.66.75801",
+                  "en": "astrub plains",
+                  "fr": "plaines d'astrub",
+                  "es": "llanura de astrub",
+                  "pt": "planicies de astrub"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Astrub Sewers",
+          "candidates": [
+            {
+              "id": "content.35.1767",
+              "en": "astrub sewers",
+              "fr": "egouts d'astrub",
+              "es": "alcantarillas de astrub",
+              "pt": "esgoto de astrub"
+            },
+            {
+              "id": "content.35.2178",
+              "en": "astrub sewers",
+              "fr": "egouts d'astrub",
+              "es": "alcantarillas de astrub",
+              "pt": "esgoto de astrub"
+            },
+            {
+              "id": "content.35.2179",
+              "en": "astrub sewers",
+              "fr": "egouts d'astrub",
+              "es": "alcantarillas de astrub",
+              "pt": "esgoto de astrub"
+            },
+            {
+              "id": "content.35.2180",
+              "en": "astrub sewers",
+              "fr": "egouts d'astrub",
+              "es": "alcantarillas de astrub",
+              "pt": "esgoto de astrub"
+            },
+            {
+              "id": "content.35.2181",
+              "en": "astrub sewers",
+              "fr": "egouts d'astrub",
+              "es": "alcantarillas de astrub",
+              "pt": "esgoto de astrub"
+            },
+            {
+              "id": "content.35.2182",
+              "en": "astrub sewers",
+              "fr": "egouts d'astrub",
+              "es": "alcantarillas de astrub",
+              "pt": "esgoto de astrub"
+            },
+            {
+              "id": "content.35.2183",
+              "en": "astrub sewers",
+              "fr": "egouts d'astrub",
+              "es": "alcantarillas de astrub",
+              "pt": "esgoto de astrub"
+            },
+            {
+              "id": "content.35.2184",
+              "en": "astrub sewers",
+              "fr": "egouts d'astrub",
+              "es": "alcantarillas de astrub",
+              "pt": "esgoto de astrub"
+            },
+            {
+              "id": "content.35.6091",
+              "en": "astrub sewers",
+              "fr": "egouts d'astrub",
+              "es": "alcantarillas de astrub",
+              "pt": "esgotos de astrub"
+            },
+            {
+              "id": "content.35.6093",
+              "en": "astrub sewers",
+              "fr": "egouts d'astrub",
+              "es": "alcantarillas de astrub",
+              "pt": "esgotos de astrub"
+            }
+          ]
+        },
+        {
+          "term": "Bilbiza - Costa del Jellix (enter Sacred Piece Vault)",
+          "parts": [
+            {
+              "part": "Bilbiza - Costa del Jellix",
+              "candidates": [
+                {
+                  "id": "content.66.61501",
+                  "en": "costa del jellix",
+                  "fr": "costa del gelax",
+                  "es": "costa de gelax",
+                  "pt": "costa del gelax"
+                },
+                {
+                  "id": "content.35.7492",
+                  "en": "bilbiza",
+                  "fr": "bilbyza",
+                  "es": "bilbyza",
+                  "pt": "bilbyza"
+                },
+                {
+                  "id": "cost",
+                  "en": "cost",
+                  "fr": "cout",
+                  "es": "coste",
+                  "pt": "custo"
+                },
+                {
+                  "id": "language.de",
+                  "en": "de",
+                  "fr": "de",
+                  "es": "de",
+                  "pt": "de"
+                },
+                {
+                  "id": "content.33.45964",
+                  "en": "[li]",
+                  "fr": "[li]",
+                  "es": "[li]",
+                  "pt": "[li]"
+                },
+                {
+                  "id": "quest.saharach.noiresporePeur.TresContent",
+                  "en": "-d",
+                  "fr": "-d",
+                  "es": "-d",
+                  "pt": "-d"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                },
+                {
+                  "id": "content.33.382102",
+                  "en": "a",
+                  "fr": "a",
+                  "es": "a",
+                  "pt": "a"
+                },
+                {
+                  "id": "content.47.8562",
+                  "en": "o",
+                  "fr": "o",
+                  "es": "o",
+                  "pt": "o"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Bilbiza - Costa del Jellix (enter Tight Cove)",
+          "parts": [
+            {
+              "part": "Bilbiza - Costa del Jellix",
+              "candidates": [
+                {
+                  "id": "content.66.61501",
+                  "en": "costa del jellix",
+                  "fr": "costa del gelax",
+                  "es": "costa de gelax",
+                  "pt": "costa del gelax"
+                },
+                {
+                  "id": "content.35.7492",
+                  "en": "bilbiza",
+                  "fr": "bilbyza",
+                  "es": "bilbyza",
+                  "pt": "bilbyza"
+                },
+                {
+                  "id": "cost",
+                  "en": "cost",
+                  "fr": "cout",
+                  "es": "coste",
+                  "pt": "custo"
+                },
+                {
+                  "id": "language.de",
+                  "en": "de",
+                  "fr": "de",
+                  "es": "de",
+                  "pt": "de"
+                },
+                {
+                  "id": "content.33.45964",
+                  "en": "[li]",
+                  "fr": "[li]",
+                  "es": "[li]",
+                  "pt": "[li]"
+                },
+                {
+                  "id": "quest.saharach.noiresporePeur.TresContent",
+                  "en": "-d",
+                  "fr": "-d",
+                  "es": "-d",
+                  "pt": "-d"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                },
+                {
+                  "id": "content.33.382102",
+                  "en": "a",
+                  "fr": "a",
+                  "es": "a",
+                  "pt": "a"
+                },
+                {
+                  "id": "content.47.8562",
+                  "en": "o",
+                  "fr": "o",
+                  "es": "o",
+                  "pt": "o"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Bilbiza - Jellith Dimension",
+          "parts": [
+            {
+              "part": "Jellith Dimension",
+              "candidates": [
+                {
+                  "id": "content.35.7460",
+                  "en": "jellith dimension",
+                  "fr": "gelaxieme dimension",
+                  "es": "gelexta dimension",
+                  "pt": "gelatesima dimensao"
+                },
+                {
+                  "id": "content.54.1160",
+                  "en": "jellith dimension",
+                  "fr": "gelaxieme dimension",
+                  "es": "gelexta dimension",
+                  "pt": "gelatesima dimensao"
+                },
+                {
+                  "id": "content.77.553",
+                  "en": "jellith dimension",
+                  "fr": "gelaxieme dimension",
+                  "es": "gelexta dimension",
+                  "pt": "gelatesima dimensao"
+                },
+                {
+                  "id": "content.89.1078",
+                  "en": "jellith dimension",
+                  "fr": "gelaxieme dimension",
+                  "es": "gelexta dimension",
+                  "pt": "dimensao gelatinosa"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Bonta - Thicket of Yurbut",
+          "parts": [
+            {
+              "part": "Thicket of Yurbut",
+              "candidates": [
+                {
+                  "id": "content.77.403",
+                  "en": "thicket of yurbut",
+                  "fr": "fourre de tonkult",
+                  "es": "bosquecillo de tukulo",
+                  "pt": "matagal do telbrioko"
+                },
+                {
+                  "id": "content.54.624",
+                  "en": "thicket of yurbut",
+                  "fr": "fourre de tonkult",
+                  "es": "bosquecillo de tukulo",
+                  "pt": "matagal de telbrioko"
+                },
+                {
+                  "id": "content.54.770",
+                  "en": "thicket of yurbut",
+                  "fr": "fourre de tonkult",
+                  "es": "bosquecillo de tukulo",
+                  "pt": "matagal de telbrioko"
+                },
+                {
+                  "id": "content.54.1735",
+                  "en": "thicket of yurbut",
+                  "fr": "fourre de tonkult",
+                  "es": "bosquecillo de tukulo",
+                  "pt": "matagal de telbrioko"
+                },
+                {
+                  "id": "content.66.40101",
+                  "en": "thicket of yurbut",
+                  "fr": "fourre de tonkult",
+                  "es": "bosquecillo de tukulo",
+                  "pt": "matagal de telbrioko"
+                },
+                {
+                  "id": "content.66.84301",
+                  "en": "thicket of yurbut",
+                  "fr": "fourre de tonkult",
+                  "es": "bosquecillo de tukulo",
+                  "pt": "matagal de telbrioko"
+                },
+                {
+                  "id": "content.83.7502",
+                  "en": "thicket of yurbut",
+                  "fr": "fourre de tonkult",
+                  "es": "bosquecillo de tukulo",
+                  "pt": "matagal de telbrioko"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Chillberg - Harebourg Castle (enter Shoemaker's Forgotten Hideout)",
+          "parts": [
+            {
+              "part": "Chillberg - Harebourg Castle",
+              "candidates": [
+                {
+                  "id": "content.35.7494",
+                  "en": "harebourg castle",
+                  "fr": "chateau de harebourg",
+                  "es": "castillo de kontatras",
+                  "pt": "castelo traspafrent"
+                },
+                {
+                  "id": "quest.sadida.05.02",
+                  "en": "harebourg!",
+                  "fr": "harebourg !",
+                  "es": "¡kontatras!",
+                  "pt": "traspafrent!"
+                },
+                {
+                  "id": "cast",
+                  "en": "cast",
+                  "fr": "lancer",
+                  "es": "lanzar",
+                  "pt": "lancar"
+                },
+                {
+                  "id": "ARMOR_RECEIVEDShort",
+                  "en": "are",
+                  "fr": "are",
+                  "es": "are",
+                  "pt": "are"
+                },
+                {
+                  "id": "content.8.2071",
+                  "en": "chi",
+                  "fr": "chi",
+                  "es": "chi",
+                  "pt": "chi"
+                },
+                {
+                  "id": "critere.ferocity",
+                  "en": "ch",
+                  "fr": "cc",
+                  "es": "gc",
+                  "pt": "ac"
+                },
+                {
+                  "id": "content.76.10135",
+                  "en": "hi.",
+                  "fr": "salut.",
+                  "es": "hola.",
+                  "pt": "ola."
+                },
+                {
+                  "id": "content.76.10551",
+                  "en": "ha...",
+                  "fr": "ha...",
+                  "es": "ah...",
+                  "pt": "ha..."
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Chillberg Island - Ice Floe (enter Snowbound Snowbound Cavern)",
+          "parts": [
+            {
+              "part": "Chillberg Island - Ice Floe",
+              "candidates": [
+                {
+                  "id": "content.61.126",
+                  "en": "chillberg island",
+                  "fr": "ile sberg",
+                  "es": "isla berg",
+                  "pt": "ilha bergue"
+                },
+                {
+                  "id": "content.83.18259",
+                  "en": "ice floe",
+                  "fr": "la banquise",
+                  "es": "banquisa",
+                  "pt": "banquisa"
+                },
+                {
+                  "id": "content.6.467",
+                  "en": "ice",
+                  "fr": "glace",
+                  "es": "hielo",
+                  "pt": "gelo"
+                },
+                {
+                  "id": "content.8.2071",
+                  "en": "chi",
+                  "fr": "chi",
+                  "es": "chi",
+                  "pt": "chi"
+                },
+                {
+                  "id": "content.76.8549",
+                  "en": "... and?",
+                  "fr": "... et ?",
+                  "es": "... ¿y?",
+                  "pt": "... e?"
+                },
+                {
+                  "id": "critere.ferocity",
+                  "en": "ch",
+                  "fr": "cc",
+                  "es": "gc",
+                  "pt": "ac"
+                },
+                {
+                  "id": "content.76.10135",
+                  "en": "hi.",
+                  "fr": "salut.",
+                  "es": "hola.",
+                  "pt": "ola."
+                },
+                {
+                  "id": "quest.saharach.noiresporePeur.TresContent",
+                  "en": "-d",
+                  "fr": "-d",
+                  "es": "-d",
+                  "pt": "-d"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                }
+              ]
+            },
+            {
+              "part": "Snowbound Snowbound Cavern",
+              "candidates": [
+                {
+                  "id": "content.54.1290",
+                  "en": "snowbound snowbound cavern",
+                  "fr": "caverne ensevelie ensevelie",
+                  "es": "caverna sepultada sepultada",
+                  "pt": "caverna soterrada soterrada pela neve"
+                },
+                {
+                  "id": "content.89.1480",
+                  "en": "snowbound snowbound cavern",
+                  "fr": "caverne ensevelie ensevelie",
+                  "es": "caverna sepultada sepultada",
+                  "pt": "caverna soterrada soterrada"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Ereboria - Bitter-Hammer Cavern (enter Ghostof Smuggler's Hideout)",
+          "parts": [
+            {
+              "part": "Ereboria - Bitter-Hammer Cavern",
+              "candidates": [
+                {
+                  "id": "content.35.8095",
+                  "en": "bitter-hammer cavern",
+                  "fr": "caverne des marteaux-aigris",
+                  "es": "cueva de los martilloseco",
+                  "pt": "caverna dos martelos amargos"
+                },
+                {
+                  "id": "content.15.30427",
+                  "en": "bitter hammer",
+                  "fr": "marteau aigri",
+                  "es": "martillo seco",
+                  "pt": "martelo amargo"
+                },
+                {
+                  "id": "content.38.1107",
+                  "en": "ereboria",
+                  "fr": "ereboria",
+                  "es": "ereboria",
+                  "pt": "ereboria"
+                },
+                {
+                  "id": "content.8.6788",
+                  "en": "hammer",
+                  "fr": "marteau",
+                  "es": "martillo",
+                  "pt": "martelo"
+                },
+                {
+                  "id": "content.54.1847",
+                  "en": "cave",
+                  "fr": "grotte",
+                  "es": "gruta",
+                  "pt": "gruta"
+                },
+                {
+                  "id": "desc.or",
+                  "en": "or",
+                  "fr": "ou",
+                  "es": "o",
+                  "pt": "ou"
+                },
+                {
+                  "id": "content.76.6020",
+                  "en": "me?!",
+                  "fr": "moi ?!",
+                  "es": "¡¿yo!?",
+                  "pt": "eu?!"
+                },
+                {
+                  "id": "content.76.10551",
+                  "en": "ha...",
+                  "fr": "ha...",
+                  "es": "ah...",
+                  "pt": "ha..."
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                },
+                {
+                  "id": "content.33.382102",
+                  "en": "a",
+                  "fr": "a",
+                  "es": "a",
+                  "pt": "a"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Ereboria - Cursed Beach (enter Captain Bow Mewhere's Lair)",
+          "parts": [
+            {
+              "part": "Ereboria - Cursed Beach",
+              "candidates": [
+                {
+                  "id": "content.35.8096",
+                  "en": "cursed beach",
+                  "fr": "plage maudite",
+                  "es": "playa maldita",
+                  "pt": "praia amaldicoada"
+                },
+                {
+                  "id": "content.38.1107",
+                  "en": "ereboria",
+                  "fr": "ereboria",
+                  "es": "ereboria",
+                  "pt": "ereboria"
+                },
+                {
+                  "id": "content.8.3837",
+                  "en": "cursed",
+                  "fr": "maudit",
+                  "es": "maldito",
+                  "pt": "amaldicoado"
+                },
+                {
+                  "id": "content.3.7281",
+                  "en": "curse",
+                  "fr": "malediction",
+                  "es": "maldicion",
+                  "pt": "maldicao"
+                },
+                {
+                  "id": "content.54.1714",
+                  "en": "beach",
+                  "fr": "plage",
+                  "es": "playa",
+                  "pt": "praia"
+                },
+                {
+                  "id": "critere.ferocity",
+                  "en": "ch",
+                  "fr": "cc",
+                  "es": "gc",
+                  "pt": "ac"
+                },
+                {
+                  "id": "desc.or",
+                  "en": "or",
+                  "fr": "ou",
+                  "es": "o",
+                  "pt": "ou"
+                },
+                {
+                  "id": "content.13.240226",
+                  "en": "[se]",
+                  "fr": "[se]",
+                  "es": "[se]",
+                  "pt": "[se]"
+                },
+                {
+                  "id": "quest.saharach.noiresporePeur.TresContent",
+                  "en": "-d",
+                  "fr": "-d",
+                  "es": "-d",
+                  "pt": "-d"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Ereboria - Pirate Beach (enter into Smuggler's Hiding Place)",
+          "parts": [
+            {
+              "part": "Ereboria - Pirate Beach",
+              "candidates": [
+                {
+                  "id": "content.35.8094",
+                  "en": "pirate beach",
+                  "fr": "plage des pirates",
+                  "es": "playa de los piratas",
+                  "pt": "praia dos piratas"
+                },
+                {
+                  "id": "content.38.1107",
+                  "en": "ereboria",
+                  "fr": "ereboria",
+                  "es": "ereboria",
+                  "pt": "ereboria"
+                },
+                {
+                  "id": "content.54.1714",
+                  "en": "beach",
+                  "fr": "plage",
+                  "es": "playa",
+                  "pt": "praia"
+                },
+                {
+                  "id": "content.7.4988",
+                  "en": "rat",
+                  "fr": "rat",
+                  "es": "rata",
+                  "pt": "rato"
+                },
+                {
+                  "id": "critere.ferocity",
+                  "en": "ch",
+                  "fr": "cc",
+                  "es": "gc",
+                  "pt": "ac"
+                },
+                {
+                  "id": "critere.range",
+                  "en": "ra",
+                  "fr": "po",
+                  "es": "al",
+                  "pt": "al"
+                },
+                {
+                  "id": "desc.or",
+                  "en": "or",
+                  "fr": "ou",
+                  "es": "o",
+                  "pt": "ou"
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                },
+                {
+                  "id": "content.33.382102",
+                  "en": "a",
+                  "fr": "a",
+                  "es": "a",
+                  "pt": "a"
+                },
+                {
+                  "id": "content.47.8562",
+                  "en": "o",
+                  "fr": "o",
+                  "es": "o",
+                  "pt": "o"
+                }
+              ]
+            },
+            {
+              "part": "into Smuggler's Hiding Place",
+              "candidates": [
+                {
+                  "id": "content.54.1294",
+                  "en": "smuggler's hiding place",
+                  "fr": "cache de la contrebandiere",
+                  "es": "escondite de la contrabandista",
+                  "pt": "esconderijo da contrabandista"
+                },
+                {
+                  "id": "content.3.4671",
+                  "en": "hiding",
+                  "fr": "raclee",
+                  "es": "tunda",
+                  "pt": "surra"
+                },
+                {
+                  "id": "content.15.24608",
+                  "en": "ding",
+                  "fr": "le dong",
+                  "es": "dong",
+                  "pt": "dong"
+                },
+                {
+                  "id": "INDIRECT_DMGShort",
+                  "en": "idi",
+                  "fr": "dii",
+                  "es": "dii",
+                  "pt": "dii"
+                },
+                {
+                  "id": "INTELLIGENCEShort",
+                  "en": "int",
+                  "fr": "int",
+                  "es": "int",
+                  "pt": "int"
+                },
+                {
+                  "id": "build.to",
+                  "en": "to",
+                  "fr": "vers",
+                  "es": "hacia",
+                  "pt": "para"
+                },
+                {
+                  "id": "FINAL_DMG_IN_PERCENTShort",
+                  "en": "di",
+                  "fr": "di",
+                  "es": "daf",
+                  "pt": "dc"
+                },
+                {
+                  "id": "content.76.10135",
+                  "en": "hi.",
+                  "fr": "salut.",
+                  "es": "hola.",
+                  "pt": "ola."
+                },
+                {
+                  "id": "quest.saharach.noiresporePeur.TresContent",
+                  "en": "-d",
+                  "fr": "-d",
+                  "es": "-d",
+                  "pt": "-d"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Kelba - Kelba Peaks",
+          "parts": [
+            {
+              "part": "Kelba Peaks",
+              "candidates": [
+                {
+                  "id": "content.38.738",
+                  "en": "kelba peaks",
+                  "fr": "pics de kelba",
+                  "es": "picos de kelba",
+                  "pt": "picos de kelba"
+                },
+                {
+                  "id": "content.38.740",
+                  "en": "kelba peaks",
+                  "fr": "pics de kelba",
+                  "es": "picos de kelba",
+                  "pt": "picos de kelba"
+                },
+                {
+                  "id": "content.54.1480",
+                  "en": "kelba peaks",
+                  "fr": "pics de kelba",
+                  "es": "picos de kelba",
+                  "pt": "picos de kelba"
+                },
+                {
+                  "id": "content.61.324",
+                  "en": "kelba - peaks",
+                  "fr": "kelba - les pics",
+                  "es": "kelba - picos",
+                  "pt": "kelba - picos"
+                },
+                {
+                  "id": "content.66.69601",
+                  "en": "kelba peaks",
+                  "fr": "pics de kelba",
+                  "es": "picos de kelba",
+                  "pt": "picos de kelba"
+                },
+                {
+                  "id": "content.106.861",
+                  "en": "kelba - peaks",
+                  "fr": "kelba - les pics",
+                  "es": "kelba - picos",
+                  "pt": "kelba - picos"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Kelba - Kelba Peaks (enter Black Crow's Alley)",
+          "parts": [
+            {
+              "part": "Kelba - Kelba Peaks",
+              "candidates": [
+                {
+                  "id": "content.38.738",
+                  "en": "kelba peaks",
+                  "fr": "pics de kelba",
+                  "es": "picos de kelba",
+                  "pt": "picos de kelba"
+                },
+                {
+                  "id": "content.35.7459",
+                  "en": "kelba",
+                  "fr": "kelba",
+                  "es": "kelba",
+                  "pt": "kelba"
+                },
+                {
+                  "id": "content.3.3718",
+                  "en": "pea",
+                  "fr": "pois",
+                  "es": "guisantes",
+                  "pt": "ervilha"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                },
+                {
+                  "id": "content.33.382102",
+                  "en": "a",
+                  "fr": "a",
+                  "es": "a",
+                  "pt": "a"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Kelba - Lands of Kelba",
+          "parts": [
+            {
+              "part": "Lands of Kelba",
+              "candidates": [
+                {
+                  "id": "content.38.737",
+                  "en": "lands of kelba",
+                  "fr": "landes de kelba",
+                  "es": "landas de kelba",
+                  "pt": "estepes de kelba"
+                },
+                {
+                  "id": "content.54.920",
+                  "en": "lands of kelba",
+                  "fr": "landes de kelba",
+                  "es": "landas de kelba",
+                  "pt": "terras de kelba"
+                },
+                {
+                  "id": "content.54.1479",
+                  "en": "lands of kelba",
+                  "fr": "landes de kelba",
+                  "es": "landas de kelba",
+                  "pt": "estepes de kelba"
+                },
+                {
+                  "id": "content.66.56301",
+                  "en": "lands of kelba",
+                  "fr": "landes de kelba",
+                  "es": "landas de kelba",
+                  "pt": "terras de kelba"
+                },
+                {
+                  "id": "content.66.69501",
+                  "en": "lands of kelba",
+                  "fr": "landes de kelba",
+                  "es": "landas de kelba",
+                  "pt": "estepes de kelba"
+                },
+                {
+                  "id": "content.83.13975",
+                  "en": "lands of kelba",
+                  "fr": "landes de kelba",
+                  "es": "landas de kelba",
+                  "pt": "terras de kelba"
+                },
+                {
+                  "id": "content.83.25153",
+                  "en": "lands of kelba",
+                  "fr": "landes de kelba",
+                  "es": "landas de kelba",
+                  "pt": "estepes de kelba"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Kelba - Lands of Kelba (enter Dusty Plateau Hollow)",
+          "parts": [
+            {
+              "part": "Kelba - Lands of Kelba",
+              "candidates": [
+                {
+                  "id": "content.38.737",
+                  "en": "lands of kelba",
+                  "fr": "landes de kelba",
+                  "es": "landas de kelba",
+                  "pt": "estepes de kelba"
+                },
+                {
+                  "id": "content.61.322",
+                  "en": "kelba - lands",
+                  "fr": "kelba - les landes",
+                  "es": "kelba - landas",
+                  "pt": "kelba - estepes"
+                },
+                {
+                  "id": "news.newzone.zonekelba",
+                  "en": "new island accessible - kelba:\n- lands of kelba zaap saved",
+                  "fr": "nouvelle ile accessible - kelba :\n- zaap des landes de kelba enregistre",
+                  "es": "nueva isla accesible - kelba:\n- zaap de las landas de kelba guardado.",
+                  "pt": "nova ilha disponivel - kelba:\n- zaap das terras de kelba salvo"
+                },
+                {
+                  "id": "content.35.7459",
+                  "en": "kelba",
+                  "fr": "kelba",
+                  "es": "kelba",
+                  "pt": "kelba"
+                },
+                {
+                  "id": "content.76.8549",
+                  "en": "... and?",
+                  "fr": "... et ?",
+                  "es": "... ¿y?",
+                  "pt": "... e?"
+                },
+                {
+                  "id": "quest.saharach.noiresporePeur.TresContent",
+                  "en": "-d",
+                  "fr": "-d",
+                  "es": "-d",
+                  "pt": "-d"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                },
+                {
+                  "id": "content.33.382102",
+                  "en": "a",
+                  "fr": "a",
+                  "es": "a",
+                  "pt": "a"
+                },
+                {
+                  "id": "content.47.8562",
+                  "en": "o",
+                  "fr": "o",
+                  "es": "o",
+                  "pt": "o"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Monk Island - (enter Forgotten Excarnation Cleft)",
+          "parts": [
+            {
+              "part": "Forgotten Excarnation Cleft",
+              "candidates": [
+                {
+                  "id": "content.54.1293",
+                  "en": "forgotten excarnation cleft",
+                  "fr": "isoloir oublie d'excarnation",
+                  "es": "cubiculo olvidado de excarnacion",
+                  "pt": "fissura esquecida da excarnacao"
+                },
+                {
+                  "id": "content.89.1472",
+                  "en": "forgotten excarnation cleft",
+                  "fr": "isoloir oublie d'excarnation",
+                  "es": "cubiculo olvidado de excarnacion",
+                  "pt": "fissura esquecida da escarnacao"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Moon Island - Moon Beach (next to Crocodyl Dungeon)",
+          "parts": [
+            {
+              "part": "Moon Beach (next to Crocodyl Dungeon)",
+              "candidates": [
+                {
+                  "id": "content.54.1590",
+                  "en": "crocodyl dungeon",
+                  "fr": "donjon des crocodailles",
+                  "es": "mazmorra de los cocodrails delnilo",
+                  "pt": "calabouco dos crocodyls"
+                },
+                {
+                  "id": "content.54.1531",
+                  "en": "moon beach",
+                  "fr": "plage de moon",
+                  "es": "playa de moon",
+                  "pt": "praia de moon"
+                },
+                {
+                  "id": "dungeon.ladder.dungeon",
+                  "en": "dungeon",
+                  "fr": "donjon",
+                  "es": "mazmorra",
+                  "pt": "calabouco"
+                },
+                {
+                  "id": "content.54.1714",
+                  "en": "beach",
+                  "fr": "plage",
+                  "es": "playa",
+                  "pt": "praia"
+                },
+                {
+                  "id": "desc.mru.next",
+                  "en": "next",
+                  "fr": "suivant",
+                  "es": "siguiente",
+                  "pt": "proximo"
+                },
+                {
+                  "id": "content.7.3880",
+                  "en": "moon",
+                  "fr": "moon",
+                  "es": "moon",
+                  "pt": "moon"
+                },
+                {
+                  "id": "content.7.5847",
+                  "en": "roc",
+                  "fr": "roc",
+                  "es": "roca",
+                  "pt": "roc"
+                },
+                {
+                  "id": "build.to",
+                  "en": "to",
+                  "fr": "vers",
+                  "es": "hacia",
+                  "pt": "para"
+                },
+                {
+                  "id": "critere.ferocity",
+                  "en": "ch",
+                  "fr": "cc",
+                  "es": "gc",
+                  "pt": "ac"
+                },
+                {
+                  "id": "CRITICAL_RESShort",
+                  "en": "cr",
+                  "fr": "rcc",
+                  "es": "rc",
+                  "pt": "rgc"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Ohwymi - Castuc Cemetery - The Fungopole",
+          "parts": [
+            {
+              "part": "Castuc Cemetery - The Fungopole",
+              "candidates": [
+                {
+                  "id": "content.35.7735",
+                  "en": "castuc cemetery",
+                  "fr": "cimetiere cacterre",
+                  "es": "cementerio cacterro",
+                  "pt": "cemiterio cacterra"
+                },
+                {
+                  "id": "content.54.1273",
+                  "en": "the fungopole",
+                  "fr": "la fungopee",
+                  "es": "la fongopea",
+                  "pt": "a fungopeia"
+                },
+                {
+                  "id": "content.54.1840",
+                  "en": "cemetery",
+                  "fr": "cimetiere",
+                  "es": "cementerio",
+                  "pt": "cemiterio"
+                },
+                {
+                  "id": "cast",
+                  "en": "cast",
+                  "fr": "lancer",
+                  "es": "lanzar",
+                  "pt": "lancar"
+                },
+                {
+                  "id": "partySearch.moodName1",
+                  "en": "fun",
+                  "fr": "fun",
+                  "es": "diversion",
+                  "pt": "diversao"
+                },
+                {
+                  "id": "desc.mru.askReditionProtector",
+                  "en": "go",
+                  "fr": "se rendre",
+                  "es": "ir",
+                  "pt": "ir"
+                },
+                {
+                  "id": "content.76.6020",
+                  "en": "me?!",
+                  "fr": "moi ?!",
+                  "es": "¡¿yo!?",
+                  "pt": "eu?!"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.8.6157",
+                  "en": "y",
+                  "fr": "y",
+                  "es": "y",
+                  "pt": "y"
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Ohywmi",
+          "candidates": [
+            {
+              "id": "quest.brume.pierre.02.12",
+              "en": "... oh.",
+              "fr": "... oh.",
+              "es": "... ah.",
+              "pt": "... ah."
+            },
+            {
+              "id": "content.8.6157",
+              "en": "y",
+              "fr": "y",
+              "es": "y",
+              "pt": "y"
+            },
+            {
+              "id": "content.47.8562",
+              "en": "o",
+              "fr": "o",
+              "es": "o",
+              "pt": "o"
+            }
+          ]
+        },
+        {
+          "term": "Shhhdoku Kingdom - Inside Grampar",
+          "parts": [
+            {
+              "part": "Shhhdoku Kingdom",
+              "candidates": [
+                {
+                  "id": "content.90.172",
+                  "en": "king",
+                  "fr": "roi",
+                  "es": "rey",
+                  "pt": "rei"
+                },
+                {
+                  "id": "quest.brume.qg.cgt.discours.01.07",
+                  "en": "**shhh...",
+                  "fr": "**chut...",
+                  "es": "**shh...",
+                  "pt": "**shhh..."
+                },
+                {
+                  "id": "critere.true",
+                  "en": "ok",
+                  "fr": "ok",
+                  "es": "ok",
+                  "pt": "ok"
+                },
+                {
+                  "id": "quest.saharach.noiresporePeur.TresContent",
+                  "en": "-d",
+                  "fr": "-d",
+                  "es": "-d",
+                  "pt": "-d"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.47.8562",
+                  "en": "o",
+                  "fr": "o",
+                  "es": "o",
+                  "pt": "o"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Shhhudoku Kingdom - Murmoor (enter Submerged Mound)",
+          "parts": [
+            {
+              "part": "Shhhudoku Kingdom - Murmoor",
+              "candidates": [
+                {
+                  "id": "content.38.451",
+                  "en": "shhhudoku kingdom",
+                  "fr": "royaume chuchoku",
+                  "es": "reino susurrante",
+                  "pt": "reino de shiudoku"
+                },
+                {
+                  "id": "content.35.7952",
+                  "en": "murmoor",
+                  "fr": "chuchoplaine",
+                  "es": "llanura de los susurros",
+                  "pt": "sussuplanicie"
+                },
+                {
+                  "id": "content.90.172",
+                  "en": "king",
+                  "fr": "roi",
+                  "es": "rey",
+                  "pt": "rei"
+                },
+                {
+                  "id": "quest.brume.qg.cgt.discours.01.07",
+                  "en": "**shhh...",
+                  "fr": "**chut...",
+                  "es": "**shh...",
+                  "pt": "**shhh..."
+                },
+                {
+                  "id": "critere.true",
+                  "en": "ok",
+                  "fr": "ok",
+                  "es": "ok",
+                  "pt": "ok"
+                },
+                {
+                  "id": "desc.or",
+                  "en": "or",
+                  "fr": "ou",
+                  "es": "o",
+                  "pt": "ou"
+                },
+                {
+                  "id": "quest.saharach.noiresporePeur.TresContent",
+                  "en": "-d",
+                  "fr": "-d",
+                  "es": "-d",
+                  "pt": "-d"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.47.8562",
+                  "en": "o",
+                  "fr": "o",
+                  "es": "o",
+                  "pt": "o"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Sufokia - Puddly Mountains",
+          "parts": [
+            {
+              "part": "Sufokia",
+              "candidates": [
+                {
+                  "id": "nation.short.33",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "temporaryAmaknaArchipelagoName4",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.15.12030",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.35.7184",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.38.785",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.38.960",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.38.974",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.61.89",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.61.343",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.61.402",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Sufokia - Puddly Mountains (enter Spiritual Inlet)",
+          "parts": [
+            {
+              "part": "Sufokia - Puddly Mountains",
+              "candidates": [
+                {
+                  "id": "content.54.1696",
+                  "en": "puddly mountains",
+                  "fr": "montagne des flaqueux",
+                  "es": "montana de los charcosos",
+                  "pt": "montanha dos charcosos"
+                },
+                {
+                  "id": "content.77.686",
+                  "en": "mountain",
+                  "fr": "montagne",
+                  "es": "montana",
+                  "pt": "montanha"
+                },
+                {
+                  "id": "nation.short.33",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.7.4927",
+                  "en": "puddly",
+                  "fr": "flaqueux",
+                  "es": "charcosos",
+                  "pt": "charcoso"
+                },
+                {
+                  "id": "critere.true",
+                  "en": "ok",
+                  "fr": "ok",
+                  "es": "ok",
+                  "pt": "ok"
+                },
+                {
+                  "id": "quest.saharach.noiresporePeur.TresContent",
+                  "en": "-d",
+                  "fr": "-d",
+                  "es": "-d",
+                  "pt": "-d"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.8.6157",
+                  "en": "y",
+                  "fr": "y",
+                  "es": "y",
+                  "pt": "y"
+                },
+                {
+                  "id": "content.33.382102",
+                  "en": "a",
+                  "fr": "a",
+                  "es": "a",
+                  "pt": "a"
+                },
+                {
+                  "id": "content.47.8562",
+                  "en": "o",
+                  "fr": "o",
+                  "es": "o",
+                  "pt": "o"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Sufokia - Terrana Dune",
+          "parts": [
+            {
+              "part": "Sufokia",
+              "candidates": [
+                {
+                  "id": "nation.short.33",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "temporaryAmaknaArchipelagoName4",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.15.12030",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.35.7184",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.38.785",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.38.960",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.38.974",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.61.89",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.61.343",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                },
+                {
+                  "id": "content.61.402",
+                  "en": "sufokia",
+                  "fr": "sufokia",
+                  "es": "sufokia",
+                  "pt": "sufokia"
+                }
+              ]
+            },
+            {
+              "part": "Terrana Dune",
+              "candidates": [
+                {
+                  "id": "content.7.3923",
+                  "en": "terrana dune",
+                  "fr": "dune kane",
+                  "es": "duna cana",
+                  "pt": "dunas terraneas"
+                },
+                {
+                  "id": "content.54.830",
+                  "en": "terrana dune",
+                  "fr": "la dune kane",
+                  "es": "duna cana",
+                  "pt": "dunas terraneas"
+                },
+                {
+                  "id": "content.54.1415",
+                  "en": "terrana dune",
+                  "fr": "dune kane",
+                  "es": "duna cana",
+                  "pt": "dunas terraneas"
+                },
+                {
+                  "id": "content.54.1697",
+                  "en": "terrana dune",
+                  "fr": "la dune kane",
+                  "es": "duna cana",
+                  "pt": "dunas terraneas"
+                },
+                {
+                  "id": "content.66.50501",
+                  "en": "terrana dune",
+                  "fr": "la dune kane",
+                  "es": "duna cana",
+                  "pt": "dunas terraneas"
+                },
+                {
+                  "id": "content.66.80901",
+                  "en": "terrana dune",
+                  "fr": "dune kane",
+                  "es": "duna cana",
+                  "pt": "dunas terraneas"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Sufokia - Terrana Dune (enter Boat Warehouse in castle wall)",
+          "parts": [
+            {
+              "part": "Boat Warehouse in castle wall",
+              "candidates": [
+                {
+                  "id": "content.54.1357",
+                  "en": "boat warehouse",
+                  "fr": "entrepot a bateaux",
+                  "es": "almacen de barcos",
+                  "pt": "armazem do barco"
+                },
+                {
+                  "id": "content.54.1184",
+                  "en": "warehouse",
+                  "fr": "entrepot",
+                  "es": "almacen",
+                  "pt": "armazem"
+                },
+                {
+                  "id": "content.35.6507",
+                  "en": "house",
+                  "fr": "maison",
+                  "es": "casa",
+                  "pt": "casa"
+                },
+                {
+                  "id": "cast",
+                  "en": "cast",
+                  "fr": "lancer",
+                  "es": "lanzar",
+                  "pt": "lancar"
+                },
+                {
+                  "id": "content.8.6029",
+                  "en": "wall",
+                  "fr": "muraille",
+                  "es": "muralla",
+                  "pt": "muralha"
+                },
+                {
+                  "id": "content.89.110",
+                  "en": "boat",
+                  "fr": "barque",
+                  "es": "barco",
+                  "pt": "barco"
+                },
+                {
+                  "id": "all",
+                  "en": "all",
+                  "fr": "tout",
+                  "es": "todo",
+                  "pt": "todos"
+                },
+                {
+                  "id": "ARMOR_RECEIVEDShort",
+                  "en": "are",
+                  "fr": "are",
+                  "es": "are",
+                  "pt": "are"
+                },
+                {
+                  "id": "desc.mru.craftUse",
+                  "en": "use",
+                  "fr": "utiliser",
+                  "es": "utilizar",
+                  "pt": "usar"
+                },
+                {
+                  "id": "content.13.240226",
+                  "en": "[se]",
+                  "fr": "[se]",
+                  "es": "[se]",
+                  "pt": "[se]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Sufokia - Terrana Dune (enter Grainy Faultline in castle wall)",
+          "parts": [
+            {
+              "part": "Grainy Faultline in castle wall",
+              "candidates": [
+                {
+                  "id": "content.54.1301",
+                  "en": "grainy faultline",
+                  "fr": "faille sablonneuse",
+                  "es": "falla arenosa",
+                  "pt": "falha granulosa"
+                },
+                {
+                  "id": "cast",
+                  "en": "cast",
+                  "fr": "lancer",
+                  "es": "lanzar",
+                  "pt": "lancar"
+                },
+                {
+                  "id": "weather.info.rainIntensity",
+                  "en": "rain",
+                  "fr": "precipitations",
+                  "es": "precipitaciones",
+                  "pt": "chuva"
+                },
+                {
+                  "id": "content.3.6989",
+                  "en": "line",
+                  "fr": "ligne",
+                  "es": "linea",
+                  "pt": "linha"
+                },
+                {
+                  "id": "content.8.6029",
+                  "en": "wall",
+                  "fr": "muraille",
+                  "es": "muralla",
+                  "pt": "muralha"
+                },
+                {
+                  "id": "all",
+                  "en": "all",
+                  "fr": "tout",
+                  "es": "todo",
+                  "pt": "todos"
+                },
+                {
+                  "id": "critere.range",
+                  "en": "ra",
+                  "fr": "po",
+                  "es": "al",
+                  "pt": "al"
+                },
+                {
+                  "id": "content.33.45964",
+                  "en": "[li]",
+                  "fr": "[li]",
+                  "es": "[li]",
+                  "pt": "[li]"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.8.6157",
+                  "en": "y",
+                  "fr": "y",
+                  "es": "y",
+                  "pt": "y"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Wabbit Island - (enter Flooded Stowe in Constwuction)",
+          "parts": [
+            {
+              "part": "Wabbit Island",
+              "candidates": [
+                {
+                  "id": "content.35.7560",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.38.259",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.62.1564",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.77.591",
+                  "en": "wabbit island",
+                  "fr": "wabbit island",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.77.1384",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.83.20110",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.83.34798",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.151.20",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                }
+              ]
+            },
+            {
+              "part": "Flooded Stowe in Constwuction",
+              "candidates": [
+                {
+                  "id": "content.54.1281",
+                  "en": "flooded stowe in constwuction",
+                  "fr": "wesewve en constwuction innondee",
+                  "es": "wesewva en constwuccion inundada",
+                  "pt": "wesewva em constwucao inundada"
+                },
+                {
+                  "id": "content.89.1498",
+                  "en": "flooded stowe in constwuction",
+                  "fr": "wesewve de constwuction inondee",
+                  "es": "wesewva en constwuccion inundada",
+                  "pt": "wesewva de constwucao inundada"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Wabbit Island - The Big Cawwot",
+          "parts": [
+            {
+              "part": "Wabbit Island",
+              "candidates": [
+                {
+                  "id": "content.35.7560",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.38.259",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.62.1564",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.77.591",
+                  "en": "wabbit island",
+                  "fr": "wabbit island",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.77.1384",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.83.20110",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.83.34798",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.151.20",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Wabbit Island - The Wa's Fowtwess",
+          "parts": [
+            {
+              "part": "Wabbit Island",
+              "candidates": [
+                {
+                  "id": "content.35.7560",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.38.259",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.62.1564",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.77.591",
+                  "en": "wabbit island",
+                  "fr": "wabbit island",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.77.1384",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.83.20110",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.83.34798",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.151.20",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Wabbit Island - The Wa's Fowtwess (enter Uncwossable Wails)",
+          "parts": [
+            {
+              "part": "Wabbit Island - The Wa's Fowtwess",
+              "candidates": [
+                {
+                  "id": "content.66.63101",
+                  "en": "the wa's fowtwess",
+                  "fr": "fowtewesse du wa",
+                  "es": "fowtaleza del wey",
+                  "pt": "fowtaleza do wei"
+                },
+                {
+                  "id": "content.35.7560",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "news.newzone.zonewabbit3srambad",
+                  "en": "new island accessible - wabbit island \"the wa's fowtwess\":\n- new daily quests from otomai's disciple on wabbit island unlocked\n\nnew divine dimension accessible - ingloriom:\n- ingloriom dimensional portal saved.\n\nnew divine dimension accessible - srambad:\n- srambad dimensional portal saved.",
+                  "fr": "nouvelle region accessible - ile des wabbits \"fowtewesse du wa\" :\n- nouvelles quetes journalieres du disciple d'otomai de l'ile des wabbits debloquees\n\nnouvelle dimension divine accessible - inglorium :\n- portail dimensionnel de l'inglorium enregistre\n\nnouvelle dimension divine accessible - srambad :\n- portail dimensionnel de srambad enregistre",
+                  "es": "nueva region accesible - isla de los wabbits \"fowtaleza del wey\":\n- nuevas misiones diarias del discipulo de otomai de la isla de los wabbits desbloqueadas.\n\nnueva dimension divina accesible - inglorium:\n- portal dimensional de inglorium guardado.\n\nnueva dimension divina accesible - sramvil:\n- portal dimensional de sramvil guardado.",
+                  "pt": "nova regiao acessivel - ilha dos wabbits \"fowtaleza do wei\":\n- novas missoes diarias do discipulo de otomai na ilha dos wabbits desbloqueadas\n\nnova dimensao divina acessivel - ingloriom:\n- portal dimensional de ingloriom salvo\n\nnova dimensao divina acessivel - sramvil:\n- portal dimensional de sramvil salvo"
+                },
+                {
+                  "id": "content.7.5346",
+                  "en": "wabbit",
+                  "fr": "wabbit",
+                  "es": "wabbit",
+                  "pt": "wabbit"
+                },
+                {
+                  "id": "content.76.8549",
+                  "en": "... and?",
+                  "fr": "... et ?",
+                  "es": "... ¿y?",
+                  "pt": "... e?"
+                },
+                {
+                  "id": "language.es",
+                  "en": "es",
+                  "fr": "es",
+                  "es": "es",
+                  "pt": "es"
+                },
+                {
+                  "id": "content.33.309702",
+                  "en": "ss",
+                  "fr": "ss",
+                  "es": "ss",
+                  "pt": "ss"
+                },
+                {
+                  "id": "quest.saharach.noiresporePeur.TresContent",
+                  "en": "-d",
+                  "fr": "-d",
+                  "es": "-d",
+                  "pt": "-d"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Wabbit Island - Wabbit Tunnels (enter Cawwoty Signals)",
+          "parts": [
+            {
+              "part": "Wabbit Island - Wabbit Tunnels",
+              "candidates": [
+                {
+                  "id": "content.35.7559",
+                  "en": "wabbit tunnels",
+                  "fr": "souterrains wabbit",
+                  "es": "subterraneos de los wabbits",
+                  "pt": "tuneis wabbit"
+                },
+                {
+                  "id": "content.35.7560",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.3.3542",
+                  "en": "tunnel",
+                  "fr": "tunnel",
+                  "es": "tunel",
+                  "pt": "tunel"
+                },
+                {
+                  "id": "content.7.5346",
+                  "en": "wabbit",
+                  "fr": "wabbit",
+                  "es": "wabbit",
+                  "pt": "wabbit"
+                },
+                {
+                  "id": "content.76.8549",
+                  "en": "... and?",
+                  "fr": "... et ?",
+                  "es": "... ¿y?",
+                  "pt": "... e?"
+                },
+                {
+                  "id": "quest.saharach.noiresporePeur.TresContent",
+                  "en": "-d",
+                  "fr": "-d",
+                  "es": "-d",
+                  "pt": "-d"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                },
+                {
+                  "id": "content.33.382102",
+                  "en": "a",
+                  "fr": "a",
+                  "es": "a",
+                  "pt": "a"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Wabbit Island - Wabbit Tunnels (enter Fwactuwed Gallewy)",
+          "parts": [
+            {
+              "part": "Wabbit Island - Wabbit Tunnels",
+              "candidates": [
+                {
+                  "id": "content.35.7559",
+                  "en": "wabbit tunnels",
+                  "fr": "souterrains wabbit",
+                  "es": "subterraneos de los wabbits",
+                  "pt": "tuneis wabbit"
+                },
+                {
+                  "id": "content.35.7560",
+                  "en": "wabbit island",
+                  "fr": "ile des wabbits",
+                  "es": "isla de los wabbits",
+                  "pt": "ilha dos wabbits"
+                },
+                {
+                  "id": "content.3.3542",
+                  "en": "tunnel",
+                  "fr": "tunnel",
+                  "es": "tunel",
+                  "pt": "tunel"
+                },
+                {
+                  "id": "content.7.5346",
+                  "en": "wabbit",
+                  "fr": "wabbit",
+                  "es": "wabbit",
+                  "pt": "wabbit"
+                },
+                {
+                  "id": "content.76.8549",
+                  "en": "... and?",
+                  "fr": "... et ?",
+                  "es": "... ¿y?",
+                  "pt": "... e?"
+                },
+                {
+                  "id": "quest.saharach.noiresporePeur.TresContent",
+                  "en": "-d",
+                  "fr": "-d",
+                  "es": "-d",
+                  "pt": "-d"
+                },
+                {
+                  "id": "smiley.degoute",
+                  "en": "s",
+                  "fr": "s",
+                  "es": "s",
+                  "pt": "s"
+                },
+                {
+                  "id": "content.15.29235",
+                  "en": "!\"(-e@)\"",
+                  "fr": "!\"(-e@)\"",
+                  "es": "!\"(-e@)\"",
+                  "pt": "!\"(-e@)\""
+                },
+                {
+                  "id": "content.33.382102",
+                  "en": "a",
+                  "fr": "a",
+                  "es": "a",
+                  "pt": "a"
+                }
+              ]
+            },
+            {
+              "part": "Fwactuwed Gallewy",
+              "candidates": [
+                {
+                  "id": "content.54.1282",
+                  "en": "fwactuwed gallewy",
+                  "fr": "galewie fwactuwee",
+                  "es": "galewia fwactuwada",
+                  "pt": "galewia fwatulada"
+                },
+                {
+                  "id": "content.89.1496",
+                  "en": "fwactuwed gallewy",
+                  "fr": "galewie fwactuwee",
+                  "es": "galewia fwactuwada",
+                  "pt": "galewia fwatuwada"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "term": "Xelorium - Present",
+          "parts": [
+            {
+              "part": "Present",
+              "candidates": [
+                {
+                  "id": "content.7.2528",
+                  "en": "presenter",
+                  "fr": "presentateur",
+                  "es": "presentador",
+                  "pt": "apresentador"
+                },
+                {
+                  "id": "content.89.2075",
+                  "en": "to the present",
+                  "fr": "vers le present",
+                  "es": "hacia el presente",
+                  "pt": "para o presente"
+                },
+                {
+                  "id": "content.15.10512",
+                  "en": "present your wares",
+                  "fr": "faire une presentation",
+                  "es": "hacer una presentacion",
+                  "pt": "mostrar a mercadoria"
+                },
+                {
+                  "id": "content.38.733",
+                  "en": "present xelorium",
+                  "fr": "xelorium present",
+                  "es": "xelorium - presente",
+                  "pt": "xelorium presente"
+                },
+                {
+                  "id": "content.54.1455",
+                  "en": "xelorium - present",
+                  "fr": "xelorium - present",
+                  "es": "xelorium - presente",
+                  "pt": "xelorium - presente"
+                },
+                {
+                  "id": "gift.consumeOne",
+                  "en": "collect a present",
+                  "fr": "recuperer un cadeau",
+                  "es": "conseguir un regalo",
+                  "pt": "coletar um presente"
+                },
+                {
+                  "id": "content.54.1466",
+                  "en": "present time rift",
+                  "fr": "faille temporelle du present",
+                  "es": "falla temporal del presente",
+                  "pt": "falha temporal do presente"
+                },
+                {
+                  "id": "content.3.3629",
+                  "en": "power presentation",
+                  "fr": "demonstration de puissance",
+                  "es": "demostracion de poder",
+                  "pt": "demonstracao de potencia"
+                },
+                {
+                  "id": "content.15.22521",
+                  "en": "present sandglass sand",
+                  "fr": "sable du temps present",
+                  "es": "arena del tiempo presente",
+                  "pt": "areia do tempo presente"
+                },
+                {
+                  "id": "content.12.588",
+                  "en": "present xelor sprout",
+                  "fr": "germe de xelor du present",
+                  "es": "brote de xelor del presente",
+                  "pt": "broto de xelor do presente"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "artifacts",
+      "translated": 8,
+      "missing": [],
+      "ambiguous": []
+    },
+    {
+      "kind": "achievements",
+      "translated": 146,
+      "missing": [],
+      "ambiguous": [
+        {
+          "term": "Amakna Treasure - Crackled",
+          "candidates": [
+            {
+              "id": "content.85.264",
+              "en": "treasure",
+              "fr": "tresor",
+              "es": "tesoro",
+              "pt": "tesouro"
+            },
+            {
+              "id": "nation.short.30",
+              "en": "amakna",
+              "fr": "amakna",
+              "es": "amakna",
+              "pt": "amakna"
+            },
+            {
+              "id": "desc.mru.fissurer",
+              "en": "crack",
+              "fr": "fissurer",
+              "es": "agrietar",
+              "pt": "fissurar"
+            },
+            {
+              "id": "content.76.12834",
+              "en": "sure.",
+              "fr": "oui oui.",
+              "es": "si, si.",
+              "pt": "sim, sim."
+            },
+            {
+              "id": "content.106.177",
+              "en": "rack",
+              "fr": "ratelier",
+              "es": "armero",
+              "pt": "raque"
+            },
+            {
+              "id": "breed.9",
+              "en": "cra",
+              "fr": "cra",
+              "es": "ocra",
+              "pt": "cra"
+            },
+            {
+              "id": "critere.range",
+              "en": "ra",
+              "fr": "po",
+              "es": "al",
+              "pt": "al"
+            },
+            {
+              "id": "CRITICAL_RESShort",
+              "en": "cr",
+              "fr": "rcc",
+              "es": "rc",
+              "pt": "rgc"
+            },
+            {
+              "id": "quest.saharach.noiresporePeur.TresContent",
+              "en": "-d",
+              "fr": "-d",
+              "es": "-d",
+              "pt": "-d"
+            },
+            {
+              "id": "smiley.degoute",
+              "en": "s",
+              "fr": "s",
+              "es": "s",
+              "pt": "s"
+            }
+          ]
+        },
+        {
+          "term": "Ereboria Treaasure - Truckam Driver",
+          "candidates": [
+            {
+              "id": "content.38.1107",
+              "en": "ereboria",
+              "fr": "ereboria",
+              "es": "ereboria",
+              "pt": "ereboria"
+            },
+            {
+              "id": "content.3.4296",
+              "en": "drive",
+              "fr": "pulsion",
+              "es": "pulsion",
+              "pt": "impulso"
+            },
+            {
+              "id": "content.76.12834",
+              "en": "sure.",
+              "fr": "oui oui.",
+              "es": "si, si.",
+              "pt": "sim, sim."
+            },
+            {
+              "id": "desc.or",
+              "en": "or",
+              "fr": "ou",
+              "es": "o",
+              "pt": "ou"
+            },
+            {
+              "id": "quest.saharach.noiresporePeur.TresContent",
+              "en": "-d",
+              "fr": "-d",
+              "es": "-d",
+              "pt": "-d"
+            },
+            {
+              "id": "smiley.degoute",
+              "en": "s",
+              "fr": "s",
+              "es": "s",
+              "pt": "s"
+            },
+            {
+              "id": "content.15.29235",
+              "en": "!\"(-e@)\"",
+              "fr": "!\"(-e@)\"",
+              "es": "!\"(-e@)\"",
+              "pt": "!\"(-e@)\""
+            },
+            {
+              "id": "content.33.382102",
+              "en": "a",
+              "fr": "a",
+              "es": "a",
+              "pt": "a"
+            },
+            {
+              "id": "content.47.8562",
+              "en": "o",
+              "fr": "o",
+              "es": "o",
+              "pt": "o"
+            }
+          ]
+        },
+        {
+          "term": "Kelba Treasure - Feathered",
+          "candidates": [
+            {
+              "id": "content.62.1904",
+              "en": "kelba treasure - feathered",
+              "fr": "tresor de kelba - emplume",
+              "es": "tesoro de kelba - plumifero",
+              "pt": "tesouro de kelba - emplumado"
+            },
+            {
+              "id": "content.106.272",
+              "en": "kelba treasure - feathered",
+              "fr": "tresor de kelba - plume",
+              "es": "tesoro de kelba - emplumado",
+              "pt": "tesouro de kelba - plumado"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
