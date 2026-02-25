@@ -187,50 +187,53 @@ export default function TreasuresPage({ language }: { language: Lang }) {
   }, [treasures, query, i18n, language]);
 
   return (
-    <div className="w-full">
-      <div className="mx-auto max-w-6xl px-4 py-8">
-        <div className="backdrop-blur-xl bg-gray-900/60 border border-white/10 shadow-xl rounded-3xl p-6">
-          <div className="mb-6">
-            <h1 className="text-3xl font-bold text-white">{t.title}</h1>
-            <p className="mt-1 text-emerald-100/70">{t.subtitle}</p>
-          </div>
+    <div className="w-full max-w-6xl mx-auto px-4 flex flex-col items-center animate-in fade-in duration-500">
+      <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+        {t.title}
+      </h1>
+      <p className="text-emerald-100/90 mb-10 text-center max-w-2xl text-lg leading-relaxed drop-shadow-md">
+        {t.subtitle}
+      </p>
 
-          <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="w-full">
+        <div className="backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl p-6 md:p-8" style={{ background: 'rgba(15, 23, 42, 0.7)' }}>
+
+          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="relative w-full sm:max-w-md">
-              <Search className="pointer-events-none absolute left-3 top-3 h-4 w-4 text-emerald-100/60" />
+              <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-emerald-400" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t.searchPlaceholder}
-                className="w-full rounded-xl border border-white/10 bg-black/20 py-2 pl-9 pr-3 text-sm text-white shadow-sm outline-none ring-0 focus:border-emerald-400/40"
+                className="w-full rounded-xl border border-white/10 bg-black/40 py-3 pl-12 pr-4 text-sm text-white shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-500/50"
               />
             </div>
 
-            <div className="text-sm text-emerald-100/70">
+            <div className="text-sm text-emerald-300 font-medium">
               {t.counts(filtered.length, treasures.length)}
             </div>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-black/20 shadow-sm">
+          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-black/40 shadow-lg">
             <table className="w-full min-w-[900px] table-auto">
-              <thead className="bg-white/5">
+              <thead className="bg-black/40 backdrop-blur-sm">
               <tr>
-                <th className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider text-emerald-100/70 w-16">
+                <th className="px-4 py-4 text-center text-xs font-semibold uppercase tracking-wider text-emerald-300 w-16">
                   ✓
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-emerald-100/70">
+                <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-wider text-emerald-300">
                   {t.columns.achievement}
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-emerald-100/70">
+                <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-wider text-emerald-300">
                   {t.columns.location}
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-emerald-100/70">
+                <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-wider text-emerald-300">
                   {t.columns.coords}
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-emerald-100/70">
+                <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-wider text-emerald-300">
                   {t.columns.artifacts}
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-emerald-100/70">
+                <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-wider text-emerald-300">
                   {t.columns.rewards}
                 </th>
               </tr>
@@ -240,32 +243,32 @@ export default function TreasuresPage({ language }: { language: Lang }) {
               {filtered.map((tr, idx) => (
                 <tr
                   key={`${tr.achievement}-${idx}`}
-                  className="border-t border-white/10 hover:bg-white/5"
+                  className="border-t border-white/10 hover:bg-emerald-500/5 transition-colors duration-150"
                 >
-                  <td className="px-4 py-3 text-center">
+                  <td className="px-4 py-4 text-center">
                     <input
                       type="checkbox"
                       checked={completedTreasures.has(tr.achievement)}
                       onChange={() => toggleTreasure(tr.achievement)}
-                      className="h-4 w-4 cursor-pointer rounded border-white/20 bg-black/20 text-emerald-500 focus:ring-2 focus:ring-emerald-500/40 focus:ring-offset-0"
+                      className="h-5 w-5 cursor-pointer rounded border-white/20 bg-black/40 text-emerald-500 focus:ring-2 focus:ring-emerald-500/50 focus:ring-offset-0"
                     />
                   </td>
-                  <td className="px-4 py-3 text-sm font-medium text-white">
+                  <td className="px-4 py-4 text-sm font-semibold text-emerald-50">
                     {translateAchievement(tr.achievement)}
                   </td>
-                  <td className="px-4 py-3 text-sm text-emerald-100/80">
+                  <td className="px-4 py-4 text-sm text-emerald-100/90">
                     {translateLocation(tr.zone)}
                   </td>
-                  <td className="px-4 py-3 text-sm text-emerald-100/80">
+                  <td className="px-4 py-4 text-sm text-emerald-100/80">
                     {formatCoords(tr.coords)}
                   </td>
-                  <td className="px-4 py-3 text-sm text-emerald-100/80">
+                  <td className="px-4 py-4 text-sm text-emerald-100/90">
                     {(tr.artifacts || []).length ? (
                       <div className="flex flex-wrap gap-2">
                         {tr.artifacts.map((a) => (
                           <span
                             key={a}
-                            className="rounded-full bg-white/10 px-2 py-1 text-xs text-emerald-100/80 border border-white/10"
+                            className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs text-emerald-100 border border-emerald-500/30 font-medium"
                           >
                             {translateArtifact(a)}
                           </span>
@@ -275,7 +278,7 @@ export default function TreasuresPage({ language }: { language: Lang }) {
                       <span className="text-emerald-100/40">—</span>
                     )}
                   </td>
-                  <td className="px-4 py-3 text-sm text-emerald-100/80">
+                  <td className="px-4 py-4 text-sm text-emerald-100/90">
                     {tr.rewards || <span className="text-emerald-100/40">—</span>}
                   </td>
                 </tr>
@@ -283,7 +286,7 @@ export default function TreasuresPage({ language }: { language: Lang }) {
 
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={6} className="px-4 py-10 text-center text-sm text-emerald-100/70">
+                  <td colSpan={6} className="px-4 py-16 text-center text-base text-emerald-100/70">
                     {t.empty}
                   </td>
                 </tr>
@@ -291,7 +294,6 @@ export default function TreasuresPage({ language }: { language: Lang }) {
               </tbody>
             </table>
           </div>
-
         </div>
       </div>
     </div>
