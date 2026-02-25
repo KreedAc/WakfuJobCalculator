@@ -1,0 +1,1805 @@
+[
+  {
+    "achievement": "Traverse Treasure - In the Haze",
+    "zone": "Astrub - Astrub Fields",
+    "coords": {
+      "x": -8,
+      "y": -6
+    },
+    "artifacts": [
+      "Traverse Compass"
+    ],
+    "rewards": "15,384 XP, The Baroness"
+  },
+  {
+    "achievement": "Traverse Treasure - In the Clouds",
+    "zone": "Astrub - Astrub Forest",
+    "coords": {
+      "x": -10,
+      "y": 4
+    },
+    "artifacts": [
+      "Traverse Compass"
+    ],
+    "rewards": "15,384 XP, Top Hat"
+  },
+  {
+    "achievement": "Traverse Treasure - In the Fog",
+    "zone": "Astrub - Astrub Cemetery",
+    "coords": {
+      "x": 4,
+      "y": 4
+    },
+    "artifacts": [
+      "Traverse Compass"
+    ],
+    "rewards": "15,384 XP, The Baron"
+  },
+  {
+    "achievement": "Traverse Treasure - In the Mist",
+    "zone": "Astrub - Tainela",
+    "coords": {
+      "x": -13,
+      "y": -2
+    },
+    "artifacts": [
+      "Traverse Compass"
+    ],
+    "rewards": "15,384 XP, Nobility Ring"
+  },
+  {
+    "achievement": "Astrubian Treasure - Chestnut Brown",
+    "zone": "Astrub - Astrub Forest",
+    "coords": {
+      "x": -12,
+      "y": 2
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Astrubian Treasure - Strawberry Roan",
+    "zone": "Astrub - Astrub Mountains",
+    "coords": {
+      "x": -2,
+      "y": -9
+    },
+    "artifacts": [
+      "Draconic Ocarina",
+      "Paws of Ecaflip"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Frigost Treasure - Scarlet",
+    "zone": "Chillberg Island - Ice Floe",
+    "coords": {
+      "x": 2,
+      "y": -5
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Kelba Treasure - Dull White",
+    "zone": "Kelba - Lands of Kelba",
+    "coords": {
+      "x": -8,
+      "y": 2
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Kelba Treasure - Garnet",
+    "zone": "Kelba - Lands of Kelba",
+    "coords": {
+      "x": -2,
+      "y": 3
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Kelba Treasure - Golden Brown",
+    "zone": "Kelba - Kelba Peaks",
+    "coords": {
+      "x": -9,
+      "y": -4
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Kelba Treasure - Pallid",
+    "zone": "Kelba - Kelba Peaks",
+    "coords": {
+      "x": -6,
+      "y": -3
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Monk Island Treasure - Deathly Pale",
+    "zone": "Monk Island",
+    "coords": {
+      "x": -2,
+      "y": -1
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Monk Island Treasure - Jet Black",
+    "zone": "Monk Island",
+    "coords": {
+      "x": -2,
+      "y": -5
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Monk Island Treasure - Opaline",
+    "zone": "Monk Island",
+    "coords": {
+      "x": 4,
+      "y": -5
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Ohwymi Treasure - Ashen",
+    "zone": "Ohwymi",
+    "coords": {
+      "x": -4,
+      "y": -5
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Ohwymi Treasure - Vermilion",
+    "zone": "Ohwymi",
+    "coords": {
+      "x": 2,
+      "y": 1
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Sadida Kingdom Treasure - Cerulean",
+    "zone": "Sadida Kingdom - Web-Entangled Hill",
+    "coords": {
+      "x": -2,
+      "y": 2
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Sadida Kingdom Treasure - Crimson",
+    "zone": "Sadida Kingdom - Web-Entangled Hill",
+    "coords": {
+      "x": -7,
+      "y": -1
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Sadida Kingdom Treasure - Dun",
+    "zone": "Sadida Kingdom - Deforested Forest",
+    "coords": {
+      "x": 1,
+      "y": 2
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Wabbit Island Treasure - Mai Tai",
+    "zone": "Wabbit Island - The Big Cawwot",
+    "coords": {
+      "x": -4,
+      "y": -7
+    },
+    "artifacts": [
+      "Draconic Ocarina",
+      "Paws of Ecaflip"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Wabbit Island Treasure - Wan",
+    "zone": "Wabbit Island - The Big Cawwot",
+    "coords": {
+      "x": -9,
+      "y": -6
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Iron Gray",
+    "zone": "Wild Estate",
+    "coords": {
+      "x": 3,
+      "y": 1
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Roan",
+    "zone": "Wild Estate",
+    "coords": {
+      "x": 0,
+      "y": 1
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Sanguine",
+    "zone": "Wild Estate",
+    "coords": {
+      "x": 4,
+      "y": -6
+    },
+    "artifacts": [
+      "Draconic Ocarina"
+    ],
+    "rewards": "46,152 XP 2,000 K"
+  },
+  {
+    "achievement": "Amakna Treasure - Crackled",
+    "zone": "Amakna - Riktus Plain (enter Crackled Hideaway)",
+    "coords": {
+      "x": 3,
+      "y": 2
+    },
+    "artifacts": [
+      "The Excarnal Scepter",
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Singing Treasure",
+    "zone": "Amakna - Emelka Forest",
+    "coords": {
+      "x": 5,
+      "y": -3
+    },
+    "artifacts": [
+      "The Excarnal Scepter",
+      "Paws of Ecaflip",
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Astrubian Treasure - Sewers",
+    "zone": "Astrub Sewers",
+    "coords": {
+      "x": 1,
+      "y": 2
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Bontarian Treasure - Exhausted",
+    "zone": "Bonta - Kara (enter Exhausted Mine)",
+    "coords": {
+      "x": -2,
+      "y": 5
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Walled Treasure",
+    "zone": "Bonta - Thicket of Yurbut",
+    "coords": {
+      "x": 5,
+      "y": 2
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Ashen Mourning Treasure",
+    "zone": "Brakmar - Pabong Fields",
+    "coords": {
+      "x": 7,
+      "y": -9
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Brakmarian Treasure - Scarred",
+    "zone": "Brakmar - Sidimote Moors (enter Scarred Hollow)",
+    "coords": {
+      "x": 3,
+      "y": -5
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Chillberg Island Treasure - Mayor Cantile",
+    "zone": "Chillberg Island - Ice Floe (enter Snowbound Snowbound Cavern)",
+    "coords": {
+      "x": 0,
+      "y": -2
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Ereboria Treasure - Ghostof Smuggler",
+    "zone": "Ereboria - Bitter-Hammer Cavern (enter Ghostof Smuggler's Hideout)",
+    "coords": {
+      "x": 2,
+      "y": -6
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Forfut Treasure - Shivering",
+    "zone": "Forfut (enter Shivering Hole)",
+    "coords": {
+      "x": 5,
+      "y": -2
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Kelba Treasure - Dusty",
+    "zone": "Kelba - Lands of Kelba (enter Dusty Plateau Hollow)",
+    "coords": {
+      "x": -3,
+      "y": 5
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Monk Island Treasure - Cleft",
+    "zone": "Monk Island - (enter Forgotten Excarnation Cleft)",
+    "coords": {
+      "x": 0,
+      "y": -5
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Sadida Kingdom Treasure - Sprouted",
+    "zone": "Sadida Kingdom - Gerbean Galleries (enter Contaminated Seed Reserve)",
+    "coords": {
+      "x": 6,
+      "y": 8
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Canyon Treasure",
+    "zone": "Sufokia - Puddly Mountains",
+    "coords": {
+      "x": -4,
+      "y": 1
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Sufokian Treasure - Grainy",
+    "zone": "Sufokia - Puddly Mountains (enter Spiritual Inlet)",
+    "coords": {
+      "x": -5,
+      "y": -1
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Ancestral",
+    "zone": "Wild Estate - (enter Excavated Temple Dead End)",
+    "coords": {
+      "x": -5,
+      "y": -7
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Steamy",
+    "zone": "Wild Estate - (enter Enigmatic Excavation)",
+    "coords": {
+      "x": 0,
+      "y": -6
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Attractive",
+    "zone": "Wild Estate - (enter Enigmatic Excavation)",
+    "coords": {
+      "x": 0,
+      "y": -6
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Plateau",
+    "zone": "Wild Estate - (enter Plateau Excavation)",
+    "coords": {
+      "x": -5,
+      "y": -3
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Stashed",
+    "zone": "Wild Estate - (enter Excarnal Crevasse)",
+    "coords": {
+      "x": -2,
+      "y": -3
+    },
+    "artifacts": [
+      "The Excarnal Scepter"
+    ],
+    "rewards": "99,996 XP 3,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Inaccessible",
+    "zone": "Wild Estate - (enter Old Cook's Reserves)",
+    "coords": {
+      "x": 0,
+      "y": -8
+    },
+    "artifacts": [
+      "The Excarnal Scepter",
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Well-Rounded",
+    "zone": "Wild Estate - (enter Excarnal Crevasse)",
+    "coords": {
+      "x": -2,
+      "y": -3
+    },
+    "artifacts": [
+      "The Excarnal Scepter",
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Amakna Forest Treasure",
+    "zone": "Amakna - Emelka Forest",
+    "coords": {
+      "x": 3,
+      "y": -4
+    },
+    "artifacts": [
+      "Paws of Ecaflip",
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Astrubian Treasure - Athletic",
+    "zone": "Astrub Mines",
+    "coords": {
+      "x": 2,
+      "y": 0
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Astrubian Treasure - Frenzied",
+    "zone": "Astrub Mines",
+    "coords": {
+      "x": -3,
+      "y": 0
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Astrubian Treasure - Well-Built",
+    "zone": "Astrub Mines",
+    "coords": {
+      "x": -2,
+      "y": -4
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Bilbizan Treasure - Amusing",
+    "zone": "Bilbiza",
+    "coords": {
+      "x": 0,
+      "y": -7
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Ereboria Treasure - Exalted",
+    "zone": "Ereboria - Cursed Beach",
+    "coords": {
+      "x": 0,
+      "y": -3
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Ereboria Treaasure - Truckam Driver",
+    "zone": "Ereboria - Pirate Beach",
+    "coords": {
+      "x": -4,
+      "y": 3
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Forfut Treasure - Acrobat",
+    "zone": "Forfut",
+    "coords": {
+      "x": 5,
+      "y": 1
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Forfut Treasure - Enjoyable",
+    "zone": "Forfut",
+    "coords": {
+      "x": -4,
+      "y": 0
+    },
+    "artifacts": [
+      "Paws of Ecaflip",
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Kelba Treasure - Acclaimed",
+    "zone": "Kelba - Kelba Peaks",
+    "coords": {
+      "x": -9,
+      "y": -1
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Kelba Treasure - Fun",
+    "zone": "Kelba - Kelba Peaks",
+    "coords": {
+      "x": -10,
+      "y": 0
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Kelba Treasure - Lauded",
+    "zone": "Kelba - Lands of Kelba",
+    "coords": {
+      "x": -1,
+      "y": 2
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Moon Treasure - Portable",
+    "zone": "Moon Island - Moon Jungle",
+    "coords": {
+      "x": -2,
+      "y": -11
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Moon Treasure - Transferable",
+    "zone": "Moon Island - Moon Beach (next to Crocodyl Dungeon)",
+    "coords": {
+      "x": 0,
+      "y": 0
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Moon Treasure - Yieldable",
+    "zone": "Moon Island - Moon Beach",
+    "coords": {
+      "x": 0,
+      "y": 2
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Ohwymi Treasure - Dried",
+    "zone": "Ohwymi",
+    "coords": {
+      "x": -1,
+      "y": 0
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Ohwymi Treasure - Perched",
+    "zone": "Ohwymi",
+    "coords": {
+      "x": -7,
+      "y": -4
+    },
+    "artifacts": [
+      "Paws of Ecaflip",
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Wabbit Treasure - Accessible",
+    "zone": "Wabbit Island - The Big Cawwot",
+    "coords": {
+      "x": -5,
+      "y": -7
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Wabbit Treasure - Joyful",
+    "zone": "Wabbit Island - The Wa's Fowtwess",
+    "coords": {
+      "x": -10,
+      "y": -10
+    },
+    "artifacts": [
+      "Paws of Ecaflip",
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Trained",
+    "zone": "Wild Estate",
+    "coords": {
+      "x": 0,
+      "y": -6
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Navigated",
+    "zone": "Wild Estate",
+    "coords": {
+      "x": -1,
+      "y": -6
+    },
+    "artifacts": [
+      "Paws of Ecaflip"
+    ],
+    "rewards": "169,224 XP 5,000 K"
+  },
+  {
+    "achievement": "Clifftop Treasure",
+    "zone": "Amakna - Emelka Forest",
+    "coords": {
+      "x": 2,
+      "y": -7
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Astrubian Treasure - Hamlet",
+    "zone": "Astrub - Fishermen's Hamlet",
+    "coords": {
+      "x": -2,
+      "y": 7
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Astrubian Treasure - Mountains",
+    "zone": "Astrub - Astrub Mountains",
+    "coords": {
+      "x": 0,
+      "y": -7
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Floating Jelly Treasure",
+    "zone": "Bilbiza - Jellith Dimension",
+    "coords": {
+      "x": 0,
+      "y": -4
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Bonta Forest Treasure",
+    "zone": "Bonta - Thicket of Yurbut",
+    "coords": {
+      "x": 9,
+      "y": 1
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Windy Clifftop Treasure",
+    "zone": "Bonta - Cania Plains",
+    "coords": {
+      "x": 3,
+      "y": 8
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Beach Treasure",
+    "zone": "Brakmar - Pabong Fields",
+    "coords": {
+      "x": 7,
+      "y": -5
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Furnace Treasure",
+    "zone": "Brakmar - Sidimote Moors",
+    "coords": {
+      "x": 2,
+      "y": -9
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Snowbound Treasure",
+    "zone": "Chillberg Island - Snowbound Snowbound Village",
+    "coords": {
+      "x": 1,
+      "y": -7
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Kelba Treasure - Reefs",
+    "zone": "Kelba - Lands of Kelba",
+    "coords": {
+      "x": -3,
+      "y": -1
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Desert Treasure",
+    "zone": "Ohwymi",
+    "coords": {
+      "x": -4,
+      "y": 0
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Troolgodyte Treasure",
+    "zone": "Ohywmi",
+    "coords": {
+      "x": -7,
+      "y": -4
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Whispering Treasure",
+    "zone": "Shhhdoku Kingdom - Inside Grampar",
+    "coords": {
+      "x": -2,
+      "y": -10
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Sandbank Treasure",
+    "zone": "Sufokia - Terrana Dune",
+    "coords": {
+      "x": 8,
+      "y": 1
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Spring Treasure",
+    "zone": "Sufokia - Terrana Dune",
+    "coords": {
+      "x": 6,
+      "y": -2
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Contaminated Treasure",
+    "zone": "Ohwymi - Castuc Cemetery - The Fungopole",
+    "coords": {
+      "x": -2,
+      "y": 0
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Sporous Treasure",
+    "zone": "Ohwymi - Castuc Cemetery - The Fungopole",
+    "coords": {
+      "x": 0,
+      "y": 4
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Hidden Treasure",
+    "zone": "Ohwymi - Castuc Cemetery - The Fungopole",
+    "coords": {
+      "x": 1,
+      "y": 5
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Reef Treasure",
+    "zone": "Trool Fair",
+    "coords": {
+      "x": 0,
+      "y": -18
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Terrace Treasure",
+    "zone": "Trool Fair",
+    "coords": {
+      "x": -4,
+      "y": -5
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "2,076,840 XP 15,000 K"
+  },
+  {
+    "achievement": "Wabbit Island Treasure - Dwenched",
+    "zone": "Wabbit Island - (enter Flooded Stowe in Constwuction)",
+    "coords": {
+      "x": -6,
+      "y": -5
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks",
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Wabbit Island Treasure - Cawwoty",
+    "zone": "Wabbit Island - (enter Flooded Stowe in Constwuction)",
+    "coords": {
+      "x": -6,
+      "y": -5
+    },
+    "artifacts": [
+      "Jumpin' Gap Jacks",
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Wabbit Island Treasure - Inundated",
+    "zone": "Wabbit Island - (enter Flooded Stowe in Constwuction)",
+    "coords": {
+      "x": -6,
+      "y": -5
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Wabbit Island Treasure - Impwisoned",
+    "zone": "Wabbit Island - Wabbit Tunnels (enter Fwactuwed Gallewy)",
+    "coords": {
+      "x": -2,
+      "y": -3
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Wabbit Island Treasure - Cwunched",
+    "zone": "Wabbit Island - Wabbit Tunnels (enter Fwactuwed Gallewy)",
+    "coords": {
+      "x": -2,
+      "y": -3
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Wabbit Island Treasure - Diwty",
+    "zone": "Wabbit Island - Wabbit Tunnels (enter Cawwoty Signals)",
+    "coords": {
+      "x": -4,
+      "y": -6
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Wabbit Island Treasure - Dusty",
+    "zone": "Wabbit Island - Wabbit Tunnels (enter Cawwoty Signals)",
+    "coords": {
+      "x": -4,
+      "y": -6
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Amaknian Treasure - Holey",
+    "zone": "Amakna - Emelka Forest (enter Holey Crevasse)",
+    "coords": {
+      "x": 1,
+      "y": -7
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Treasure on Stilts",
+    "zone": "Amakna - Riktus Plain",
+    "coords": {
+      "x": 2,
+      "y": 6
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Bilbizan Treasure - Adorer",
+    "zone": "Bilbiza - Costa del Jellix (enter Sacred Piece Vault)",
+    "coords": {
+      "x": 3,
+      "y": -5
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Bontarian Treasure - Thick",
+    "zone": "Bonta - Thicket of Yurbut (enter Yurbut Hole)",
+    "coords": {
+      "x": 5,
+      "y": 0
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Swampy Treasure",
+    "zone": "Bonta - Cania Plains",
+    "coords": {
+      "x": 3,
+      "y": 5
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Sodden Mourning Treasure",
+    "zone": "Brakmar - Pabong Fields",
+    "coords": {
+      "x": 6,
+      "y": -1
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Brakmarian Treasure - Sulfurous",
+    "zone": "Brakmar - Pabong Fields (enter Pabong Flow)",
+    "coords": {
+      "x": 5,
+      "y": -4
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Chillberg Island Treasure - Klim",
+    "zone": "Chillberg - Harebourg Castle (enter Shoemaker's Forgotten Hideout)",
+    "coords": {
+      "x": 3,
+      "y": 1
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Ereboria Treasure - Smuggler",
+    "zone": "Ereboria - Pirate Beach (enter into Smuggler's Hiding Place)",
+    "coords": {
+      "x": -6,
+      "y": -1
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Forfut Treasure - Dingy",
+    "zone": "Forfut - (enter Dingy Hollow)",
+    "coords": {
+      "x": 4,
+      "y": 1
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Kelba Treasure - Feathered",
+    "zone": "Kelba - Kelba Peaks (enter Black Crow's Alley)",
+    "coords": {
+      "x": -7,
+      "y": -2
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Monk Island Treasure - Library",
+    "zone": "Monk Island - (enter Abandoned Cell of the Zealous Convert)",
+    "coords": {
+      "x": 0,
+      "y": -2
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Sadida Kingdom Treasure - Chopped",
+    "zone": "Sadida Kingdom - Gerbean Galleries (enter Old Mining Site)",
+    "coords": {
+      "x": 7,
+      "y": 5
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Dunic Treasure",
+    "zone": "Sufokia - Terrana Dune",
+    "coords": {
+      "x": 6,
+      "y": 3
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Sufokian Treasure - Fissured",
+    "zone": "Sufokia - Terrana Dune (enter Grainy Faultline in castle wall)",
+    "coords": {
+      "x": 3,
+      "y": -2
+    },
+    "artifacts": [
+      "Woyal Bow of Pwodding"
+    ],
+    "rewards": "4,230,600 XP 25,000 K"
+  },
+  {
+    "achievement": "Amaknian Treasure - Purified",
+    "zone": "Amakna - Singing Fields (enter Refinement Complex)",
+    "coords": {
+      "x": 4,
+      "y": -2
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Astrubian Treasure - Forest",
+    "zone": "Astrub - Astrub Forest (enter Dilapidated Sawmill)",
+    "coords": {
+      "x": -6,
+      "y": 4
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Bilbizan Treasure - Confined",
+    "zone": "Bilbiza - Costa del Jellix (enter Tight Cove)",
+    "coords": {
+      "x": -3,
+      "y": -12
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Bontarian Treasure - Cutting",
+    "zone": "Bonta - Thicket of Yurbut (enter Cutting Storeroom)",
+    "coords": {
+      "x": 5,
+      "y": -1
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Brakmarian Treasure - Squat",
+    "zone": "Brakmar - Pabong Fields (enter Hoodlums' Squat)",
+    "coords": {
+      "x": 3,
+      "y": -2
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Enurado Treasure - Fortified",
+    "zone": "Enurado - (enter Fortified Chest)",
+    "coords": {
+      "x": 6,
+      "y": -5
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Enurado Treasure - Interest",
+    "zone": "Enurado - (enter Investment with Interest)",
+    "coords": {
+      "x": 1,
+      "y": -7
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Enurado Treasure - Pure",
+    "zone": "Enurado - (enter Pure Gold Basin)",
+    "coords": {
+      "x": 2,
+      "y": 0
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Ereboria Treasure - Abandoned Captain",
+    "zone": "Ereboria - Cursed Beach (enter Captain Bow Mewhere's Lair)",
+    "coords": {
+      "x": 1,
+      "y": -7
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Forfut Treasure - Atonement",
+    "zone": "Forfut - (enter Atonement Abyss)",
+    "coords": {
+      "x": -3,
+      "y": 2
+    },
+    "artifacts": [
+      "I.D.S.",
+      "Jumpin' Gap Jacks"
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Kelba Treasure - Pointless",
+    "zone": "Kelba - (enter Pointless Foundations)",
+    "coords": {
+      "x": -8,
+      "y": -1
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Monk Island Treasure - Wax Storeroom",
+    "zone": "Monk Island - (enter Underground Canal)",
+    "coords": {
+      "x": 0,
+      "y": -2
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Ohwymi Treasure - Deflated",
+    "zone": "Ohwymi - (enter Vast Crevasse)",
+    "coords": {
+      "x": 2,
+      "y": -4
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Sadida Kingdom Treasure - Wooded",
+    "zone": "Sadida Kingdom - Gerbean Galleries (enter Stubby Outskirts)",
+    "coords": {
+      "x": 8,
+      "y": 9
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Shhhudoku Treasure - Submerged",
+    "zone": "Shhhudoku Kingdom - Murmoor (enter Submerged Mound)",
+    "coords": {
+      "x": -6,
+      "y": -1
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Srambadian Treasure - Malted",
+    "zone": "Srambad - (enter Malt Storeroom)",
+    "coords": {
+      "x": 6,
+      "y": 2
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Srambadian Treasure - Open",
+    "zone": "Srambad - (enter Open Grave)",
+    "coords": {
+      "x": 1,
+      "y": -1
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Sufokian Treasure - Stored",
+    "zone": "Sufokia - Terrana Dune (enter Boat Warehouse in castle wall)",
+    "coords": {
+      "x": 4,
+      "y": 1
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Wabbit Island Treasure - Dewailed",
+    "zone": "Wabbit Island - The Wa's Fowtwess (enter Uncwossable Wails)",
+    "coords": {
+      "x": -6,
+      "y": -12
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Wild Estate Treasure - Abysmal",
+    "zone": "Wild Estate - (enter Bruskabis Cave)",
+    "coords": {
+      "x": -1,
+      "y": 0
+    },
+    "artifacts": [
+      "I.D.S."
+    ],
+    "rewards": "18,230,041 XP 35,000 K"
+  },
+  {
+    "achievement": "Amaknian Treasure - New",
+    "zone": "Amakna - Singing Fields",
+    "coords": {
+      "x": 5,
+      "y": 1
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Amaknian Treasure - Period",
+    "zone": "Amakna - Emelka Forest",
+    "coords": {
+      "x": 3,
+      "y": -6
+    },
+    "artifacts": [
+      "Xelor's Sandglass",
+      "Paws of Ecaflip"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Amaknian Treasure - Periodic",
+    "zone": "Amakna - Riktus Plain",
+    "coords": {
+      "x": 3,
+      "y": 3
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Astrubian Treasure - Instantaneous",
+    "zone": "Astrub - Astrub Plains",
+    "coords": {
+      "x": -4,
+      "y": 3
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Bontarian Treasure - Cyclic",
+    "zone": "Bonta - Thicket of Yurbut",
+    "coords": {
+      "x": 10,
+      "y": 3
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Bontarian Treasure - Dated",
+    "zone": "Bonta - Cania Plains",
+    "coords": {
+      "x": 0,
+      "y": 8
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Brakmarian Treasure - Sagging",
+    "zone": "Brakmar - Pabong Fields",
+    "coords": {
+      "x": 11,
+      "y": -5
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Brakmarian Treasure - Stationary",
+    "zone": "Brakmar - Sidimote Moors",
+    "coords": {
+      "x": 4,
+      "y": -6
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Enurado Treasure - Hon-Hourary",
+    "zone": "Enurado",
+    "coords": {
+      "x": 0,
+      "y": -3
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Enurado Treasure - Time-On",
+    "zone": "Enurado",
+    "coords": {
+      "x": 3,
+      "y": -8
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Moon Treasure - Planned",
+    "zone": "Moon Island - Moon Beach",
+    "coords": {
+      "x": 3,
+      "y": 3
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Moon Treasure - Programmed",
+    "zone": "Moon Island - Moon Jungle",
+    "coords": {
+      "x": 1,
+      "y": -4
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Srambadian Treasure - Rare",
+    "zone": "Srambad",
+    "coords": {
+      "x": 2,
+      "y": -4
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Srambadian Treasure - Regular",
+    "zone": "Srambad",
+    "coords": {
+      "x": 5,
+      "y": 0
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Sufokian Treasure - Never-Ending",
+    "zone": "Sufokia - Terrana Dune",
+    "coords": {
+      "x": 6,
+      "y": 2
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Sufokian Treasure - Sunken",
+    "zone": "Sufokia - Terrana Dune",
+    "coords": {
+      "x": 5,
+      "y": -4
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Wabbit Treasure - Ancient",
+    "zone": "Wabbit Island - The Big Cawwot",
+    "coords": {
+      "x": -2,
+      "y": -6
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Wabbit Treasure - Seasonal",
+    "zone": "Wabbit Island - The Wa's Fowtwess",
+    "coords": {
+      "x": -14,
+      "y": -14
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Xelorium Treasure - LoXerRium",
+    "zone": "Xelorium - Present",
+    "coords": {
+      "x": 2,
+      "y": 4
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  },
+  {
+    "achievement": "Xelorium Treasure - RiumLoXer",
+    "zone": "Xelorium - Present",
+    "coords": {
+      "x": 0,
+      "y": -1
+    },
+    "artifacts": [
+      "Xelor's Sandglass"
+    ],
+    "rewards": "22,960,620 XP 40,000 K"
+  }
+]
