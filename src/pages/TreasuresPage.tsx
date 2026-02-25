@@ -11,6 +11,8 @@ type Treasure = {
   rewards: string;
 };
 
+const STORAGE_KEY = 'wakfu-treasures-completed';
+
 type TreasuresI18n = {
   _meta?: any;
   locations?: Record<string, Record<Lang, string>>;
@@ -87,6 +89,14 @@ export default function TreasuresPage({ language }: { language: Lang }) {
   const [treasures, setTreasures] = useState<Treasure[]>([]);
   const [i18n, setI18n] = useState<TreasuresI18n | null>(null);
   const [query, setQuery] = useState('');
+  const [completedTreasures, setCompletedTreasures] = useState<Set<string>>(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? new Set(JSON.parse(saved)) : new Set();
+    } catch {
+      return new Set();
+    }
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -141,6 +151,19 @@ export default function TreasuresPage({ language }: { language: Lang }) {
     return hit || name;
   };
 
+  const toggleTreasure = (achievement: string) => {
+    setCompletedTreasures((prev) => {
+      const next = new Set(prev);
+      if (next.has(achievement)) {
+        next.delete(achievement);
+      } else {
+        next.add(achievement);
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([...next]));
+      return next;
+    });
+  };
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return treasures;
@@ -192,6 +215,9 @@ export default function TreasuresPage({ language }: { language: Lang }) {
             <table className="w-full min-w-[900px] table-auto">
               <thead className="bg-white/5">
               <tr>
+                <th className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider text-emerald-100/70 w-16">
+                  ✓
+                </th>
                 <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-emerald-100/70">
                   {t.columns.achievement}
                 </th>
@@ -216,6 +242,14 @@ export default function TreasuresPage({ language }: { language: Lang }) {
                   key={`${tr.achievement}-${idx}`}
                   className="border-t border-white/10 hover:bg-white/5"
                 >
+                  <td className="px-4 py-3 text-center">
+                    <input
+                      type="checkbox"
+                      checked={completedTreasures.has(tr.achievement)}
+                      onChange={() => toggleTreasure(tr.achievement)}
+                      className="h-4 w-4 cursor-pointer rounded border-white/20 bg-black/20 text-emerald-500 focus:ring-2 focus:ring-emerald-500/40 focus:ring-offset-0"
+                    />
+                  </td>
                   <td className="px-4 py-3 text-sm font-medium text-white">
                     {translateAchievement(tr.achievement)}
                   </td>
@@ -249,7 +283,7 @@ export default function TreasuresPage({ language }: { language: Lang }) {
 
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="px-4 py-10 text-center text-sm text-emerald-100/70">
+                  <td colSpan={6} className="px-4 py-10 text-center text-sm text-emerald-100/70">
                     {t.empty}
                   </td>
                 </tr>
