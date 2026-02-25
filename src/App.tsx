@@ -136,8 +136,10 @@ function AppContent() {
         </Routes>
 
         <footer className="mt-16 text-emerald-200/40 text-xs text-center pb-8 font-medium space-y-4">
-          <p>WAKFU is an MMORPG published by Ankama.</p>
-          <p>"wakfujobcalculator" is an unofficial website with no connection to Ankama.</p>
+          <div className="bg-black/30 backdrop-blur-sm border border-white/10 rounded-xl p-4 max-w-2xl mx-auto mb-6">
+            <p className="text-emerald-200/60 mb-2">WAKFU is an MMORPG published by Ankama.</p>
+            <p className="text-emerald-200/60">Wakfu Job Calculator is an unofficial website with no connection to Ankama.</p>
+          </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link to="/guides" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
