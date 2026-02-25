@@ -68,6 +68,24 @@ export function ChangelogPage({ language }: ChangelogPageProps) {
 
   const changelog: ChangelogEntry[] = [
     {
+      version: '2.1.0',
+      date: '2026-02-25',
+      changes: [
+        { type: 'feature', text: language === 'en' ? 'Added Treasures page with hunt locations, coordinates, artifacts and rewards' :
+          language === 'fr' ? 'Ajout de la page Trésors avec emplacements, coordonnées, artefacts et récompenses' :
+          language === 'es' ? 'Agregada página de Tesoros con ubicaciones, coordenadas, artefactos y recompensas' :
+          'Adicionada página de Tesouros com locais, coordenadas, artefatos e recompensas' },
+        { type: 'feature', text: language === 'en' ? 'Added checkboxes to track completed treasures with persistent storage' :
+          language === 'fr' ? 'Ajout de cases à cocher pour suivre les trésors complétés avec stockage persistant' :
+          language === 'es' ? 'Agregadas casillas para rastrear tesoros completados con almacenamiento persistente' :
+          'Adicionadas caixas de seleção para rastrear tesouros completados com armazenamento persistente' },
+        { type: 'improvement', text: language === 'en' ? 'Multi-language support for treasure locations, artifacts and achievements' :
+          language === 'fr' ? 'Support multilingue pour les emplacements, artefacts et succès de trésors' :
+          language === 'es' ? 'Soporte multiidioma para ubicaciones, artefactos y logros de tesoros' :
+          'Suporte multilíngue para locais, artefatos e conquistas de tesouros' }
+      ]
+    },
+    {
       version: '2.0.0',
       date: '2026-01-21',
       changes: [
