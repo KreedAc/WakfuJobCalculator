@@ -258,10 +258,6 @@ export default function TreasuresPage({ language }: { language: Lang }) {
             </table>
           </div>
 
-          <div className="mt-4 text-xs text-emerald-100/60">
-            Tip: run <span className="font-mono">npm run fetch:i18n:client</span> and{' '}
-            <span className="font-mono">npm run treasures:i18n</span> to generate in-game translations.
-          </div>
         </div>
       </div>
     </div>
