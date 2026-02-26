@@ -9,7 +9,7 @@ export type Language = keyof typeof FLAGS;
 
 export const TRANSLATIONS = {
   en: {
-    title: 'Wakfu Crafting XP Calculator',
+    title: 'Wakfu Job XP Calculator',
     subtitle: 'Select your profession, choose a level range, and enter the EXP per crafted item.',
     selectProfession: 'Select Profession',
     selectRange: 'Select Level Range',
