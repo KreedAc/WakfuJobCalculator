@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Search } from 'lucide-react';
+import { Search, ChevronDown, ChevronUp } from 'lucide-react';
 
 type Lang = 'en' | 'fr' | 'es' | 'pt';
 
@@ -97,6 +97,7 @@ export default function TreasuresPage({ language }: { language: Lang }) {
   const [treasures, setTreasures] = useState<Treasure[]>([]);
   const [i18n, setI18n] = useState<TreasuresI18n | null>(null);
   const [query, setQuery] = useState('');
+  const [isExpanded, setIsExpanded] = useState(false);
   const [completedTreasures, setCompletedTreasures] = useState<Set<string>>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -205,13 +206,28 @@ export default function TreasuresPage({ language }: { language: Lang }) {
 
       {/* How it works section */}
       <div className="mb-10 w-full">
-        <div className="backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl p-6 md:p-8" style={{ background: 'rgba(15, 23, 42, 0.7)' }}>
-          <h2 className="text-2xl md:text-3xl font-bold text-emerald-300 mb-4">
-            {UI[language].howItWorksTitle || 'How It Works'}
-          </h2>
-          <p className="text-emerald-100/90 leading-relaxed text-base">
-            {UI[language].howItWorks || ''}
-          </p>
+        <div className="backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl overflow-hidden" style={{ background: 'rgba(15, 23, 42, 0.7)' }}>
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="w-full flex items-center justify-between p-6 md:p-8 hover:bg-white/5 transition-colors duration-200"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-emerald-300">
+              {UI[language].howItWorksTitle || 'How It Works'}
+            </h2>
+            {isExpanded ? (
+              <ChevronUp className="h-6 w-6 text-emerald-300 flex-shrink-0" />
+            ) : (
+              <ChevronDown className="h-6 w-6 text-emerald-300 flex-shrink-0" />
+            )}
+          </button>
+
+          {isExpanded && (
+            <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 animate-in fade-in slide-in-from-top-2 duration-300">
+              <p className="text-emerald-100/90 leading-relaxed text-base">
+                {UI[language].howItWorks || ''}
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
