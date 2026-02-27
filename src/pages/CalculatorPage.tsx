@@ -12,10 +12,10 @@ export function CalculatorPage({ language }: CalculatorPageProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col items-center px-4">
       <Calculator language={language} translations={t} />
 
-      <div className="max-w-4xl mx-auto mt-12 px-4">
+      <div className="max-w-4xl w-full mx-auto mt-12">
         <div className="backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl overflow-hidden" style={{ background: 'rgba(15, 23, 42, 0.7)' }}>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
