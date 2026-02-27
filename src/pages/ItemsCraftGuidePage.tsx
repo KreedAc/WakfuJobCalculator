@@ -325,32 +325,6 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
         </div>
       </div>
 
-      {/* How it works section */}
-      <div className="mb-8">
-        <div className="backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl overflow-hidden" style={{ background: 'rgba(15, 23, 42, 0.7)' }}>
-          <button
-            onClick={() => setShowHowItWorks(!showHowItWorks)}
-            className="w-full text-left p-6 md:p-8 hover:bg-white/5 transition-colors"
-          >
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl md:text-3xl font-bold text-emerald-300">
-                {t.itemsCraftHowItWorksTitle}
-              </h2>
-              <span className="text-emerald-300 text-2xl ml-4">
-                {showHowItWorks ? '−' : '+'}
-              </span>
-            </div>
-          </button>
-          {showHowItWorks && (
-            <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0">
-              <p className="text-emerald-100/90 leading-relaxed text-base">
-                {t.itemsCraftHowItWorks}
-              </p>
-            </div>
-          )}
-        </div>
-      </div>
-
       {/* Search centered */}
       <div className="mt-5 flex justify-center">
         <div className="w-full max-w-2xl">
@@ -623,6 +597,32 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
           </div>
         </div>
       )}
+
+      {/* How it works section */}
+      <div className="mt-8">
+        <div className="backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl overflow-hidden" style={{ background: 'rgba(15, 23, 42, 0.7)' }}>
+          <button
+            onClick={() => setShowHowItWorks(!showHowItWorks)}
+            className="w-full text-left p-6 md:p-8 hover:bg-white/5 transition-colors"
+          >
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl md:text-3xl font-bold text-emerald-300">
+                {t.itemsCraftHowItWorksTitle}
+              </h2>
+              <span className="text-emerald-300 text-2xl ml-4">
+                {showHowItWorks ? '−' : '+'}
+              </span>
+            </div>
+          </button>
+          {showHowItWorks && (
+            <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0">
+              <p className="text-emerald-100/90 leading-relaxed text-base">
+                {t.itemsCraftHowItWorks}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
