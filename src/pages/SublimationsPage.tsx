@@ -21,13 +21,13 @@ export function SublimationsPage({ language }: SublimationsPageProps) {
             onClick={() => setIsExpanded(!isExpanded)}
             className="w-full flex items-center justify-between p-3 md:p-4 hover:bg-white/5 transition-all duration-200"
           >
-            <h2 className="text-sm md:text-base font-bold text-cyan-200">
+            <h2 className="text-sm md:text-base font-bold text-orange-200">
               {t.sublimationsHowItWorksTitle}
             </h2>
             {isExpanded ? (
-              <ChevronUp className="h-4 w-4 text-cyan-200 flex-shrink-0" />
+              <ChevronUp className="h-4 w-4 text-orange-200 flex-shrink-0" />
             ) : (
-              <ChevronDown className="h-4 w-4 text-cyan-200 flex-shrink-0" />
+              <ChevronDown className="h-4 w-4 text-orange-200 flex-shrink-0" />
             )}
           </button>
 
