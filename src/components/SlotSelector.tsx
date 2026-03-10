@@ -49,7 +49,7 @@ export function SlotSelector({ value, onChange, label }: SlotSelectorProps) {
             <div
              className="fixed inset-0 z-[9998]" onClick={() => setIsOpen(false)}
             />
-            <div className="absolute z-[9999] mt-1 w-full bg-slate-800 border border-emerald-500/30 rounded-lg shadow-xl overflow-hidden">
+            <div className="glass-strong absolute z-[9999] mt-1 w-full rounded-lg shadow-xl overflow-hidden">
               {SLOT_OPTIONS.map(option => (
                 <button
                   key={option.value}

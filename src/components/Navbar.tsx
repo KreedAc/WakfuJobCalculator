@@ -23,10 +23,10 @@ function Btn({
   return (
     <Link
       to={to}
-      className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+      className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
         active
-          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-          : 'text-emerald-100/80 hover:bg-white/10 hover:text-emerald-200'
+          ? 'glass-soft text-emerald-300 shadow-lg shadow-emerald-500/10'
+          : 'text-emerald-100/80 hover:glass-soft hover:text-emerald-200 hover:shadow-md hover:shadow-emerald-500/5'
       }`}
     >
       <Icon className="w-4 h-4" />
@@ -43,7 +43,7 @@ export function Navbar({
   navTreasuresLabel,
 }: NavbarProps) {
   return (
-    <nav className="flex items-center gap-2 backdrop-blur-xl bg-gray-900/60 border border-white/10 shadow-xl rounded-2xl px-4 py-2">
+    <nav className="glass flex items-center gap-2 rounded-2xl px-4 py-2">
       <Btn to="/" active={currentPath === '/'} icon={Hammer} label={navCalcLabel} />
       <Btn
         to="/sublimations"
