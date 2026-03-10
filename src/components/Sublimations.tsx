@@ -134,7 +134,7 @@ const filteredRunes = useMemo(() => {
 
   if (loading) {
     return (
-      <div className="w-full flex flex-col items-center justify-center py-20 text-emerald-400">
+      <div className="w-full flex flex-col items-center justify-center py-20 text-cyan-300">
         <div className="animate-spin mb-4">
           <Scroll size={32} />
         </div>
@@ -147,15 +147,15 @@ const filteredRunes = useMemo(() => {
     <div className="sublimation-container animate-in fade-in duration-500">
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_8px_12px_rgba(0,0,0,0.3)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-blue-100 to-purple-200">
           {t.sublimationsLibrary}
         </h1>
         <div className="flex justify-center items-center gap-3">
-          <span className="text-sm text-emerald-200/70">
+          <span className="text-sm text-white/70">
             {filteredRunes.length} {t.items}
           </span>
           {dataSource === 'fallback' && (
-            <div className="text-amber-400 text-xs flex items-center gap-1 bg-amber-900/30 px-3 py-1 rounded-full border border-amber-500/30">
+            <div className="text-amber-400 text-xs flex items-center gap-1 glass-soft px-3 py-1 rounded-full">
               <AlertCircle size={12} /> {t.usingBackupData}
             </div>
           )}

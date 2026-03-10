@@ -25,7 +25,7 @@ export function LanguageSelector({
           e.stopPropagation();
           onMenuToggle();
         }}
-        className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/10 border border-white/20 backdrop-blur shadow text-sm transition-colors"
+        className="glass flex items-center gap-2 px-3 py-2 rounded-xl hover:glass-strong active:glass shadow-lg text-sm transition-all duration-200"
       >
         <span className="text-lg">{FLAGS[language]}</span>
         <span className="hidden sm:inline font-medium">{label}</span>
@@ -33,7 +33,7 @@ export function LanguageSelector({
       {menuOpen && (
         <div
           id="lang-menu"
-          className="absolute right-0 mt-2 w-44 rounded-xl overflow-hidden border border-white/20 bg-gray-900/95 text-white shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-200"
+          className="absolute right-0 mt-2 w-44 rounded-xl overflow-hidden glass-strong text-white shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200"
         >
           {(['fr', 'en', 'es', 'pt'] as Language[]).map(lang => (
             <button

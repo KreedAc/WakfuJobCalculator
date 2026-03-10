@@ -76,27 +76,23 @@ function AppContent() {
 
   return (
     <div className="relative min-h-screen text-white flex flex-col items-center p-6 overflow-hidden font-sans">
-   <div className="absolute inset-0 -z-10 bg-slate-900">
-  <div
-    className="absolute inset-0 opacity-70 transition-opacity duration-700"
-    style={{
-      backgroundImage: `url(${BG_URL})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      filter: "blur(1.5px) saturate(1.1) brightness(1.5)",
-    }}
-  />
-  {/* overlay più chiaro */}
-  <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-slate-900/15 to-slate-950/20" />
-  {/* "veil" chiaro per aumentare contrasto testo */}
-  <div className="absolute inset-0 bg-white/[0.12]" />
-</div>
+      {/* Liquid Glass Background */}
+      <div className="absolute inset-0 -z-10">
+        {/* Base gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-pink-800" />
 
-{/* vignette meno aggressiva */}
-<div
-  className="absolute inset-0 -z-10 pointer-events-none"
-  style={{ boxShadow: "inset 0 0 180px rgba(0,0,0,0.25)" }}
-/>
+        {/* Animated liquid blobs */}
+        <div className="absolute top-0 -left-20 w-96 h-96 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 rounded-full blur-3xl liquid-blob" style={{ animationDelay: '0s' }} />
+        <div className="absolute top-40 right-0 w-80 h-80 bg-gradient-to-br from-purple-400/30 to-pink-500/30 rounded-full blur-3xl liquid-blob" style={{ animationDelay: '5s' }} />
+        <div className="absolute bottom-20 left-1/3 w-96 h-96 bg-gradient-to-br from-indigo-400/30 to-purple-500/30 rounded-full blur-3xl liquid-blob" style={{ animationDelay: '10s' }} />
+        <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-gradient-to-br from-pink-400/30 to-rose-500/30 rounded-full blur-3xl liquid-blob" style={{ animationDelay: '15s' }} />
+
+        {/* Glass overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
+
+        {/* Subtle noise texture */}
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' /%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' /%3E%3C/svg%3E")' }} />
+      </div>
 
 
       <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-50">
@@ -135,44 +131,44 @@ function AppContent() {
           <Route path="/contact" element={<ContactPage language={lang} />} />
         </Routes>
 
-        <footer className="mt-16 text-emerald-200/40 text-xs text-center pb-8 font-medium space-y-4">
-          <div className="bg-black/30 backdrop-blur-sm border border-white/10 rounded-xl p-4 max-w-2xl mx-auto mb-6">
-            <p className="text-emerald-200/60 mb-2">WAKFU is an MMORPG published by Ankama.</p>
-            <p className="text-emerald-200/60">Wakfu Job Calculator is an unofficial website with no connection to Ankama.</p>
+        <footer className="mt-16 text-white/50 text-xs text-center pb-8 font-medium space-y-4">
+          <div className="glass-soft rounded-2xl p-6 max-w-2xl mx-auto mb-6">
+            <p className="text-white/80 mb-2">WAKFU is an MMORPG published by Ankama.</p>
+            <p className="text-white/80">Wakfu Job Calculator is an unofficial website with no connection to Ankama.</p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link to="/guides" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+            <Link to="/guides" className="text-white/70 hover:text-white transition-colors duration-200 underline">
               Guides
             </Link>
             <span className="opacity-50">•</span>
-            <Link to="/about" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+            <Link to="/about" className="text-white/70 hover:text-white transition-colors duration-200 underline">
               {t.about}
             </Link>
             <span className="opacity-50">•</span>
-            <Link to="/changelog" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+            <Link to="/changelog" className="text-white/70 hover:text-white transition-colors duration-200 underline">
               {t.changelog}
             </Link>
             <span className="opacity-50">•</span>
-            <Link to="/contact" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+            <Link to="/contact" className="text-white/70 hover:text-white transition-colors duration-200 underline">
               Contact
             </Link>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link to="/privacy" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+            <Link to="/privacy" className="text-white/70 hover:text-white transition-colors duration-200 underline">
               Privacy Policy
             </Link>
             <span className="opacity-50">•</span>
-            <Link to="/terms" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+            <Link to="/terms" className="text-white/70 hover:text-white transition-colors duration-200 underline">
               Terms of Service
             </Link>
             <span className="opacity-50">•</span>
-            <Link to="/cookies" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+            <Link to="/cookies" className="text-white/70 hover:text-white transition-colors duration-200 underline">
               Cookie Policy
             </Link>
             <span className="opacity-50">•</span>
-            <Link to="/disclaimer" className="text-emerald-300/60 hover:text-emerald-300 transition-colors duration-200 underline">
+            <Link to="/disclaimer" className="text-white/70 hover:text-white transition-colors duration-200 underline">
               Disclaimer
             </Link>
           </div>

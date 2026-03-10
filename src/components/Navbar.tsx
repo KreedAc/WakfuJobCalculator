@@ -25,8 +25,8 @@ function Btn({
       to={to}
       className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
         active
-          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-          : 'text-emerald-100/80 hover:bg-white/10 hover:text-emerald-200'
+          ? 'glass-strong text-cyan-200 shadow-lg'
+          : 'text-white/80 hover:glass-soft hover:text-white'
       }`}
     >
       <Icon className="w-4 h-4" />
@@ -43,7 +43,7 @@ export function Navbar({
   navTreasuresLabel,
 }: NavbarProps) {
   return (
-    <nav className="flex items-center gap-2 backdrop-blur-xl bg-gray-900/60 border border-white/10 shadow-xl rounded-2xl px-4 py-2">
+    <nav className="flex items-center gap-2 glass shadow-xl rounded-2xl px-4 py-2">
       <Btn to="/" active={currentPath === '/'} icon={Hammer} label={navCalcLabel} />
       <Btn
         to="/sublimations"
