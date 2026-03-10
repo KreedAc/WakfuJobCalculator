@@ -25,8 +25,8 @@ function Btn({
       to={to}
       className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
         active
-          ? 'glass-strong text-orange-200 shadow-lg'
-          : 'text-white/80 hover:glass-soft hover:text-white'
+          ? 'glass-strong text-sky-200 shadow-lg'
+          : 'text-slate-800/80 hover:glass-soft hover:text-slate-800'
       }`}
     >
       <Icon className="w-4 h-4" />

@@ -134,7 +134,7 @@ const filteredRunes = useMemo(() => {
 
   if (loading) {
     return (
-      <div className="w-full flex flex-col items-center justify-center py-20 text-orange-300">
+      <div className="w-full flex flex-col items-center justify-center py-20 text-sky-300">
         <div className="animate-spin mb-4">
           <Scroll size={32} />
         </div>
@@ -147,7 +147,7 @@ const filteredRunes = useMemo(() => {
     <div className="sublimation-container animate-in fade-in duration-500">
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_8px_12px_rgba(0,0,0,0.3)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-orange-200 via-amber-100 to-red-200">
+        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_8px_12px_rgba(0,0,0,0.3)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-sky-200 via-white100 to-cyan-200">
           {t.sublimationsLibrary}
         </h1>
         <div className="flex justify-center items-center gap-3">

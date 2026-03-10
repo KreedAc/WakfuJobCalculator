@@ -21,19 +21,19 @@ export function CalculatorPage({ language }: CalculatorPageProps) {
             onClick={() => setIsExpanded(!isExpanded)}
             className="w-full flex items-center justify-between p-3 md:p-4 hover:bg-white/5 transition-all duration-200"
           >
-            <h2 className="text-sm md:text-base font-bold text-orange-200">
+            <h2 className="text-sm md:text-base font-bold text-sky-200">
               {t.calcHowItWorksTitle}
             </h2>
             {isExpanded ? (
-              <ChevronUp className="h-4 w-4 text-orange-200 flex-shrink-0" />
+              <ChevronUp className="h-4 w-4 text-sky-200 flex-shrink-0" />
             ) : (
-              <ChevronDown className="h-4 w-4 text-orange-200 flex-shrink-0" />
+              <ChevronDown className="h-4 w-4 text-sky-200 flex-shrink-0" />
             )}
           </button>
 
           {isExpanded && (
             <div className="px-3 md:px-4 pb-3 md:pb-4 pt-0 animate-in fade-in slide-in-from-top-2 duration-300">
-              <p className="text-white/90 leading-relaxed text-[10px]">
+              <p className="text-slate-800/90 leading-relaxed text-[10px]">
                 {t.calcHowItWorks}
               </p>
             </div>
