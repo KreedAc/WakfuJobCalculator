@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    background: linear-gradient(
+      135deg,
+      #064e3b 0%,
+      #065f46 25%,
+      #047857 50%,
+      #065f46 75%,
+      #064e3b 100%
+    );
+    background-size: 400% 400%;
+    animation: emerald-gradient 15s ease infinite;
+    min-height: 100vh;
+  }
+}
+
+@keyframes emerald-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* --- Liquid Glass UI --- */
 .glass {
   background: linear-gradient(
