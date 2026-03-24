@@ -391,7 +391,7 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
                 <thead><tr className="border-b border-emerald-500/15">{['Metric','Build A','Build B'].map(h=><th key={h} className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{h}</th>)}</tr></thead>
                 <tbody>
                   {[['Total HP',fmt(taHP),fmt(tbHP)],['% Resistance',`${taRes}%`,`${tbRes}%`],['% Block',`${taBlock}%`,`${tbBlock}%`],['Blocking Expert',taExpert?'Yes':'No',tbExpert?'Yes':'No']].map(([l,a,b])=>(
-                    <tr key={l} className="border-b border-emerald-500/07"><td className="px-4 py-2 text-emerald-100/80">{l}</td><td className="px-4 py-2 text-emerald-100/80">{a}</td><td className=\"px-4 py-2 text-emerald-100/80">{b}</td></tr>
+                    <tr key={l} className="border-b border-emerald-500/07"><td className="px-4 py-2 text-emerald-100/80">{l}</td><td className="px-4 py-2 text-emerald-100/80">{a}</td><td className={'px-4 py-2 text-emerald-100/80'}>{b}</td></tr>
                   ))}
                   <tr>{(()=>{const w=winCls(ehpA,ehpB);return(<><td className="px-4 py-2 text-emerald-100/80">EHP ★</td><td className={`px-4 py-2 ${w.a}`}>{fmt(ehpA)}</td><td className={`px-4 py-2 ${w.b}`}>{fmt(ehpB)}</td></>);})()}</tr>
                 </tbody>
