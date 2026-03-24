@@ -87,8 +87,8 @@ function SecLabel({ children }: { children: React.ReactNode }) {
 const FacingIcon = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <circle cx="10" cy="4" r="2.2"/>
-    <circle cx="8.2" cy="3.5" r="0.5" fill="white" opacity="0.8"/>
-    <circle cx="11.8" cy="3.5" r="0.5" fill="white" opacity="0.8"/>
+    <circle cx="8.2" cy="3.5" r="0.5" fill="currentColor" opacity="0.25"/>
+    <circle cx="11.8" cy="3.5" r="0.5" fill="currentColor" opacity="0.25"/>
     <rect x="7.5" y="7" width="5" height="6" rx="1.2"/>
     <rect x="5" y="7.5" width="2" height="4.5" rx="1"/>
     <rect x="13" y="7.5" width="2" height="4.5" rx="1"/>
@@ -100,7 +100,7 @@ const FacingIcon = () => (
 const SideIcon = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <circle cx="10" cy="4" r="2.2"/>
-    <circle cx="11.2" cy="3.4" r="0.55" fill="white" opacity="0.8"/>
+    <circle cx="11.2" cy="3.4" r="0.55" fill="currentColor" opacity="0.25"/>
     <rect x="8.5" y="7" width="3" height="6" rx="1.2"/>
     <rect x="11.2" y="7.5" width="2" height="4" rx="1"/>
     <rect x="8.5" y="13.5" width="2" height="5" rx="1"/>
@@ -116,8 +116,8 @@ const RearIcon = () => (
     <rect x="13" y="7.5" width="2" height="4.5" rx="1"/>
     <rect x="7.5" y="13.5" width="2" height="5" rx="1"/>
     <rect x="10.5" y="13.5" width="2" height="5" rx="1"/>
-    <line x1="8" y1="8.5" x2="12" y2="8.5" stroke="white" strokeWidth="0.8" opacity="0.35"/>
-    <line x1="8" y1="10.5" x2="12" y2="10.5" stroke="white" strokeWidth="0.8" opacity="0.35"/>
+    <line x1="8" y1="8.5" x2="12" y2="8.5" stroke="currentColor" strokeWidth="0.8" opacity="0.35"/>
+    <line x1="8" y1="10.5" x2="12" y2="10.5" stroke="currentColor" strokeWidth="0.8" opacity="0.35"/>
   </svg>
 );
 
