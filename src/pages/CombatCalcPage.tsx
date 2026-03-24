@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import type { Language } from '../constants/translations';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -84,10 +84,56 @@ function SecLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+function PersonFront() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="11" cy="4.5" r="2.8" />
+      <path d="M7 8.5 C7 8 7.5 7.5 8 7.5 L14 7.5 C14.5 7.5 15 8 15 8.5 L15 14 C15 14.5 14.5 15 14 15 L8 15 C7.5 15 7 14.5 7 14 Z" />
+      <rect x="7" y="15" width="3" height="5.5" rx="1.2" />
+      <rect x="12" y="15" width="3" height="5.5" rx="1.2" />
+      <rect x="4" y="8.5" width="3" height="4.5" rx="1.2" />
+      <rect x="15" y="8.5" width="3" height="4.5" rx="1.2" />
+    </svg>
+  );
+}
+
+function PersonSide() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="4.5" r="2.8" />
+      <path d="M10 8 C10 7.5 10.5 7 11 7 L14 7 C14.5 7 15 7.5 15 8 L15 14 C15 14.5 14.5 15 14 15 L11 15 C10.5 15 10 14.5 10 14 Z" />
+      <rect x="11" y="15" width="2.5" height="5.5" rx="1.2" />
+      <rect x="13.5" y="15" width="2.5" height="4.5" rx="1.2" />
+      <path d="M10 9 L7 10.5 C6.5 10.8 6.5 11.5 7 11.8 L10 13" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M15 9 L15 12" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function PersonRear() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="11" cy="4.5" r="2.8" />
+      <path d="M7 8.5 C7 8 7.5 7.5 8 7.5 L14 7.5 C14.5 7.5 15 8 15 8.5 L15 14 C15 14.5 14.5 15 14 15 L8 15 C7.5 15 7 14.5 7 14 Z" />
+      <rect x="7" y="15" width="3" height="5.5" rx="1.2" />
+      <rect x="12" y="15" width="3" height="5.5" rx="1.2" />
+      <rect x="4" y="8.5" width="3" height="4.5" rx="1.2" />
+      <rect x="15" y="8.5" width="3" height="4.5" rx="1.2" />
+      <path d="M9 9.5 Q11 11 13 9.5" fill="none" stroke="white" strokeWidth="1.2" strokeLinecap="round" opacity="0.35" />
+      <path d="M9 12 Q11 13.2 13 12" fill="none" stroke="white" strokeWidth="1.2" strokeLinecap="round" opacity="0.35" />
+    </svg>
+  );
+}
+
 function RadioPos({ pos, setPos }: { pos: Position; setPos: (p: Position) => void }) {
+  const positions: { v: Position; icon: React.ReactNode; label: string }[] = [
+    { v: 'facing', icon: <PersonFront />, label: 'Facing' },
+    { v: 'side',   icon: <PersonSide />,  label: 'Side'   },
+    { v: 'rear',   icon: <PersonRear />,  label: 'Rear'   },
+  ];
   return (
     <div className="flex gap-2 flex-wrap">
-      {([['facing','🧍','Facing'],['side','↔️','Side'],['rear','🔄','Rear']] as const).map(([v,icon,label]) => (
+      {positions.map(({ v, icon, label }) => (
         <button key={v} onClick={() => setPos(v)}
           className={`flex items-center gap-2 flex-1 min-w-[100px] px-3 py-2.5 rounded-xl border text-sm font-semibold transition-all duration-200
             ${pos === v ? 'glass-soft border-emerald-500/55 text-emerald-300 shadow-sm shadow-emerald-500/15' : 'border-emerald-500/16 text-emerald-200/65 hover:border-emerald-500/30 hover:text-emerald-200'}`}
@@ -391,7 +437,7 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
                 <thead><tr className="border-b border-emerald-500/15">{['Metric','Build A','Build B'].map(h=><th key={h} className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{h}</th>)}</tr></thead>
                 <tbody>
                   {[['Total HP',fmt(taHP),fmt(tbHP)],['% Resistance',`${taRes}%`,`${tbRes}%`],['% Block',`${taBlock}%`,`${tbBlock}%`],['Blocking Expert',taExpert?'Yes':'No',tbExpert?'Yes':'No']].map(([l,a,b])=>(
-                    <tr key={l} className="border-b border-emerald-500/07"><td className="px-4 py-2 text-emerald-100/80">{l}</td><td className="px-4 py-2 text-emerald-100/80">{a}</td><td className="px-4 py-2 text-emerald-100/80">{b}</td></tr>
+                    <tr key={l} className="border-b border-emerald-500/07"><td className="px-4 py-2 text-emerald-100/80">{l}</td><td className="px-4 py-2 text-emerald-100/80">{a}</td><td className=\"px-4 py-2 text-emerald-100/80">{b}</td></tr>
                   ))}
                   <tr>{(()=>{const w=winCls(ehpA,ehpB);return(<><td className="px-4 py-2 text-emerald-100/80">EHP ★</td><td className={`px-4 py-2 ${w.a}`}>{fmt(ehpA)}</td><td className={`px-4 py-2 ${w.b}`}>{fmt(ehpB)}</td></>);})()}</tr>
                 </tbody>
