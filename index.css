@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   WAKFU JOB CALCULATOR — CREAM THEME
+   Replace the entire contents of src/index.css with this file.
+   ============================================================ */
+
+/* --- CSS Custom Properties --- */
+:root {
+  --cream-bg:        oklch(94% 0.028 78);
+  --cream-surface:   oklch(98% 0.018 72);
+  --cream-mid:       oklch(91% 0.032 75);
+  --text-primary:    oklch(22% 0.030 58);
+  --text-secondary:  oklch(42% 0.025 62);
+  --text-muted:      oklch(58% 0.020 68);
+  --accent:          oklch(55% 0.14 78);
+  --accent-light:    oklch(88% 0.08 78);
+  --accent2:         oklch(50% 0.10 150);
+  --accent2-light:   oklch(88% 0.07 150);
+  --border:          oklch(82% 0.030 72);
+  --border-accent:   oklch(72% 0.08 78);
+  --shadow:          oklch(55% 0.045 72 / 0.18);
+}
+
+/* --- Base --- */
+html, body {
+  background: var(--cream-bg);
+  color: var(--text-primary);
+}
+
+/* --- Cream Glass UI --- */
+.glass {
+  background: linear-gradient(
+    135deg,
+    oklch(98% 0.020 74 / 0.72) 0%,
+    oklch(96% 0.025 70 / 0.60) 100%
+  );
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  box-shadow:
+    0 8px 32px var(--shadow),
+    inset 0 1px 1px oklch(100% 0 0 / 0.6),
+    inset 0 -1px 1px oklch(75% 0.03 72 / 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass:hover {
+  border-color: var(--border-accent);
+  box-shadow:
+    0 12px 40px oklch(55% 0.045 72 / 0.25),
+    inset 0 1px 2px oklch(100% 0 0 / 0.7),
+    inset 0 -1px 2px oklch(75% 0.03 72 / 0.25);
+}
+
+.glass-soft {
+  background: linear-gradient(
+    135deg,
+    oklch(99% 0.015 74 / 0.55) 0%,
+    oklch(97% 0.020 70 / 0.45) 100%
+  );
+  border: 1px solid oklch(84% 0.025 72);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  box-shadow:
+    0 4px 16px oklch(55% 0.04 72 / 0.12),
+    inset 0 1px 1px oklch(100% 0 0 / 0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-soft:hover {
+  border-color: var(--border-accent);
+  box-shadow:
+    0 6px 24px oklch(55% 0.04 72 / 0.18),
+    inset 0 1px 2px oklch(100% 0 0 / 0.6);
+}
+
+.glass-strong {
+  background: linear-gradient(
+    135deg,
+    oklch(97% 0.022 74 / 0.85) 0%,
+    oklch(95% 0.028 70 / 0.75) 100%
+  );
+  border: 1px solid var(--border-accent);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  box-shadow:
+    0 12px 40px oklch(55% 0.04 72 / 0.22),
+    inset 0 2px 2px oklch(100% 0 0 / 0.65),
+    inset 0 -2px 2px oklch(75% 0.03 72 / 0.22);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-strong:hover {
+  border-color: oklch(65% 0.10 78);
+  box-shadow:
+    0 16px 48px oklch(55% 0.04 72 / 0.28),
+    inset 0 2px 3px oklch(100% 0 0 / 0.7),
+    inset 0 -2px 3px oklch(75% 0.03 72 / 0.25);
+}
+
+/* Shimmer effect */
+@keyframes liquid-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.glass-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(100% 0 0 / 0.18) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: liquid-shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* --- Select & Input overrides for cream --- */
+select,
+input[type="number"],
+input[type="text"] {
+  color: var(--text-primary) !important;
+}
+
+select option {
+  background: oklch(97% 0.02 74);
+  color: var(--text-primary);
+}
+
+/* --- Tailwind color token overrides --- */
+/* These map old emerald/slate Tailwind classes to cream equivalents */
+
+.text-white            { color: var(--text-primary) !important; }
+.text-emerald-50       { color: var(--text-primary) !important; }
+.text-emerald-100      { color: var(--text-secondary) !important; }
+.text-emerald-200      { color: var(--text-secondary) !important; }
+.text-emerald-300      { color: var(--accent) !important; }
+.text-emerald-400      { color: var(--accent) !important; }
+
+.text-emerald-100\/80  { color: oklch(42% 0.025 62 / 0.9) !important; }
+.text-emerald-100\/90  { color: var(--text-secondary) !important; }
+.text-emerald-200\/40  { color: oklch(55% 0.020 68 / 0.5) !important; }
+.text-emerald-200\/60  { color: var(--text-muted) !important; }
+.text-emerald-200\/80  { color: var(--text-secondary) !important; }
+.text-emerald-300\/60  { color: oklch(50% 0.10 78 / 0.8) !important; }
+.text-emerald-300\/80  { color: var(--accent) !important; }
+
+/* bg overrides */
+.bg-gradient-to-r.from-emerald-600.to-teal-600 {
+  background: linear-gradient(135deg, oklch(55% 0.14 78), oklch(52% 0.13 65)) !important;
+}
+.hover\:from-emerald-500:hover,
+.hover\:to-teal-500:hover {
+  background: linear-gradient(135deg, oklch(50% 0.14 78), oklch(48% 0.13 65)) !important;
+}
+
+/* focus ring */
+.focus\:ring-emerald-500\/50:focus {
+  --tw-ring-color: oklch(55% 0.14 78 / 0.4) !important;
+}
+
+/* placeholder */
+.placeholder-gray-500::placeholder {
+  color: var(--text-muted);
+}
+
+/* --- Calculator title gradient (from-emerald-200 via-teal-100 to-emerald-200) --- */
+.from-emerald-200.via-teal-100.to-emerald-200 {
+  --tw-gradient-from:  oklch(42% 0.12 78)  !important;
+  --tw-gradient-via:   oklch(30% 0.03 58)  !important;
+  --tw-gradient-to:    oklch(42% 0.12 78)  !important;
+}
+
+/* --- "How it works" panel background override --- */
+/* CalculatorPage.tsx uses inline style bg-slate-900/70; override with cream */
+[style*="rgba(15, 23, 42, 0.7)"],
+[style*="rgb(15, 23, 42)"] {
+  background: linear-gradient(135deg, oklch(98% 0.020 74 / 0.72), oklch(96% 0.025 70 / 0.60)) !important;
+}
+
+/* --- Shadow overrides for hover states --- */
+.hover\:shadow-emerald-500\/20:hover { --tw-shadow-color: oklch(55% 0.14 78 / 0.2) !important; }
+.shadow-emerald-500\/10              { --tw-shadow-color: oklch(55% 0.14 78 / 0.1) !important; }
+
+/* --- Border overrides --- */
+.border-emerald-500\/20 { border-color: oklch(72% 0.08 78 / 0.3) !important; }
+.border-emerald-500\/30 { border-color: oklch(72% 0.08 78 / 0.4) !important; }
+.border-white\/5        { border-color: oklch(82% 0.025 72 / 0.5) !important; }
+.border-white\/10       { border-color: oklch(82% 0.025 72) !important; }
+
+/* --- bg-black overrides --- */
+.bg-black\/30 { background: oklch(90% 0.022 74 / 0.6) !important; }
+
+/* scrollbar */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: oklch(90% 0.03 78); }
+::-webkit-scrollbar-thumb { background: var(--border-accent); border-radius: 3px; }
