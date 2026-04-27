@@ -1,0 +1,423 @@
+/* ============================================================
+   WAKFU JOB CALCULATOR — CREAM THEME
+   Replace the entire contents of src/components/Sublimations.css
+   ============================================================ */
+
+.sublimation-container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  min-height: 50vh;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: linear-gradient(135deg, oklch(98% 0.020 74 / 0.72), oklch(96% 0.025 70 / 0.60));
+  border-radius: 16px;
+  box-shadow:
+    0 8px 32px oklch(55% 0.045 72 / 0.18),
+    inset 0 1px 1px oklch(100% 0 0 / 0.6),
+    inset 0 -1px 1px oklch(75% 0.03 72 / 0.2);
+  border: 1px solid oklch(82% 0.030 72);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-box {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px 48px 12px 20px;
+  border: 1px solid oklch(84% 0.025 72);
+  border-radius: 12px;
+  background: linear-gradient(135deg, oklch(99% 0.015 74 / 0.55), oklch(97% 0.020 70 / 0.45));
+  color: oklch(22% 0.030 58);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+}
+
+.search-box input::placeholder {
+  color: oklch(58% 0.020 68);
+}
+
+.search-box input:focus {
+  border-color: oklch(55% 0.14 78);
+  outline: none;
+  box-shadow:
+    0 0 0 2px oklch(55% 0.14 78 / 0.2),
+    0 4px 24px oklch(55% 0.04 72 / 0.12);
+  background: linear-gradient(135deg, oklch(99% 0.015 74 / 0.65), oklch(97% 0.020 70 / 0.55));
+}
+
+.search-icon-btn {
+  position: absolute;
+  right: 12px;
+  color: oklch(55% 0.14 78);
+  background: none;
+  border: none;
+  pointer-events: none;
+}
+
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 4px;
+  justify-content: center;
+}
+
+.category-tab {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, oklch(99% 0.015 74 / 0.55), oklch(97% 0.020 70 / 0.45));
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid oklch(84% 0.025 72);
+  font-size: 0.9rem;
+  color: oklch(42% 0.025 62);
+  font-weight: 500;
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+}
+
+.category-tab:hover {
+  background: linear-gradient(135deg, oklch(97% 0.022 74 / 0.85), oklch(95% 0.028 70 / 0.75));
+  color: oklch(22% 0.030 58);
+  box-shadow:
+    0 6px 24px oklch(55% 0.04 72 / 0.18),
+    inset 0 1px 2px oklch(100% 0 0 / 0.6);
+}
+
+.category-tab.active {
+  background: linear-gradient(135deg, oklch(55% 0.14 78), oklch(52% 0.13 65));
+  color: oklch(98% 0.012 72);
+  border-color: oklch(65% 0.12 78);
+  box-shadow:
+    0 4px 12px oklch(55% 0.14 78 / 0.35),
+    inset 0 1px 2px oklch(100% 0 0 / 0.2);
+}
+
+.runes-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  padding-bottom: 40px;
+}
+
+.rune-card {
+  background: linear-gradient(135deg, oklch(98% 0.020 74 / 0.72), oklch(96% 0.025 70 / 0.60));
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px oklch(55% 0.045 72 / 0.18),
+    inset 0 1px 1px oklch(100% 0 0 / 0.6),
+    inset 0 -1px 1px oklch(75% 0.03 72 / 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid oklch(82% 0.030 72);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  height: 100%;
+}
+
+.rune-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 40px oklch(55% 0.045 72 / 0.25),
+    inset 0 1px 2px oklch(100% 0 0 / 0.7),
+    inset 0 -1px 2px oklch(75% 0.03 72 / 0.25);
+  border-color: oklch(72% 0.08 78);
+  background: linear-gradient(135deg, oklch(97% 0.022 74 / 0.85), oklch(95% 0.028 70 / 0.75));
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.rune-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.rune-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: oklch(22% 0.030 58);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.rune-name.relic-name {
+  color: oklch(45% 0.15 300);
+  text-shadow: 0 0 10px oklch(65% 0.12 300 / 0.2);
+}
+
+.rune-name.epic-name {
+  color: oklch(48% 0.16 340);
+  text-shadow: 0 0 10px oklch(65% 0.13 340 / 0.2);
+}
+
+.rune-level-badge {
+  font-size: 0.75rem;
+  color: oklch(55% 0.020 68);
+  background: oklch(88% 0.020 72);
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.rune-colors {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.color-slot {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: oklch(90% 0.025 74);
+  border: 1px solid oklch(82% 0.030 72);
+}
+
+.color-slot img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.special-badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.special-badge.epic {
+  background: linear-gradient(135deg, oklch(48% 0.16 340), oklch(52% 0.18 350));
+  color: white;
+}
+
+.special-badge.relic {
+  background: linear-gradient(135deg, oklch(42% 0.15 300), oklch(48% 0.17 310));
+  color: white;
+}
+
+.rune-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid oklch(84% 0.022 72);
+}
+
+.obtenation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: oklch(42% 0.025 62);
+}
+
+.obtenation img {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: oklch(90% 0.025 74);
+}
+
+.rune-description {
+  background: linear-gradient(135deg, oklch(99% 0.015 74 / 0.55), oklch(97% 0.020 70 / 0.45));
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: oklch(38% 0.025 62);
+  border: 1px solid oklch(84% 0.025 72);
+  flex-grow: 1;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.level-controls {
+  margin-top: auto;
+  background: oklch(90% 0.022 74);
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.level-slider {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: oklch(84% 0.028 74);
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.level-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: oklch(55% 0.14 78);
+  cursor: pointer;
+  border: 2px solid oklch(98% 0.012 72);
+  box-shadow: 0 2px 6px oklch(55% 0.14 78 / 0.35);
+}
+
+.level-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: oklch(55% 0.14 78);
+  cursor: pointer;
+  border: 2px solid oklch(98% 0.012 72);
+  box-shadow: 0 2px 6px oklch(55% 0.14 78 / 0.35);
+}
+
+.level-display {
+  min-width: 40px;
+  text-align: center;
+  font-weight: 700;
+  color: oklch(55% 0.14 78);
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+.slot-filter {
+  position: relative;
+  z-index: 10000;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, oklch(98% 0.020 74 / 0.72), oklch(96% 0.025 70 / 0.60));
+  border-radius: 12px;
+  border: 1px solid oklch(82% 0.030 72);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  box-shadow:
+    0 8px 32px oklch(55% 0.045 72 / 0.18),
+    inset 0 1px 1px oklch(100% 0 0 / 0.6);
+}
+
+.slot-filter-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: oklch(38% 0.025 62);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.slot-filter-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  position: relative;
+  z-index: 40;
+}
+
+.slot-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.slot-filter-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: oklch(50% 0.10 78);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.slot-filter-select {
+  padding: 8px 12px;
+  background: linear-gradient(135deg, oklch(99% 0.015 74 / 0.55), oklch(97% 0.020 70 / 0.45));
+  border: 1px solid oklch(82% 0.030 72);
+  border-radius: 8px;
+  color: oklch(22% 0.030 58);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 140px;
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+}
+
+.slot-filter-select:hover {
+  border-color: oklch(55% 0.14 78);
+  background: linear-gradient(135deg, oklch(97% 0.022 74 / 0.85), oklch(95% 0.028 70 / 0.75));
+  box-shadow:
+    0 6px 24px oklch(55% 0.04 72 / 0.18),
+    inset 0 1px 2px oklch(100% 0 0 / 0.6);
+}
+
+.slot-filter-select:focus {
+  outline: none;
+  border-color: oklch(55% 0.14 78);
+  box-shadow:
+    0 0 0 2px oklch(55% 0.14 78 / 0.2),
+    0 6px 24px oklch(55% 0.04 72 / 0.18);
+}
+
+.slot-filter-select option {
+  background: oklch(97% 0.02 74);
+  color: oklch(22% 0.030 58);
+}
+
+.slot-filter-reset {
+  padding: 8px 16px;
+  background: oklch(88% 0.08 25 / 0.4);
+  border: 1px solid oklch(72% 0.10 25 / 0.5);
+  border-radius: 8px;
+  color: oklch(42% 0.12 25);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.slot-filter-reset:hover {
+  background: oklch(84% 0.10 25 / 0.5);
+  border-color: oklch(65% 0.12 25);
+  color: oklch(35% 0.12 25);
+}
