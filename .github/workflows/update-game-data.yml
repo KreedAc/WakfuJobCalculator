@@ -1,0 +1,46 @@
+name: Update game data
+
+on:
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: 'Dump sample raw items in the log'
+        type: boolean
+        default: false
+  schedule:
+    # First day of each month at 06:00 UTC — Wakfu patches land roughly monthly.
+    - cron: '0 6 1 * *'
+
+permissions:
+  contents: write
+
+jobs:
+  sublimations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build localized sublimations from Ankama CDN
+        run: node --max-old-space-size=4096 scripts/build-sublimations-data.mjs ${{ inputs.debug && '--debug' || '' }}
+
+      - name: Show report summary
+        run: |
+          if [ -f scripts/sublimations.i18n.report.json ]; then
+            node -e "const r=require('./scripts/sublimations.i18n.report.json');console.log('version:',r.version);console.log('matched:',r.matched+'/'+r.curatedCount);console.log('unmatched:',r.unmatched);console.log('partial placeholders:',r.partialPlaceholders.length)"
+          fi
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/sublimations.*.json
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            git commit -m "Update localized sublimations data from Ankama CDN"
+            git push
+          fi

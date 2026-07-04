@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Sublimations } from '../components/Sublimations';
+import { PageSeo } from '../components/PageSeo';
 import { TRANSLATIONS, type Language } from '../constants/translations';
 
 interface SublimationsPageProps {
@@ -13,7 +14,8 @@ export function SublimationsPage({ language }: SublimationsPageProps) {
 
   return (
     <div className="w-full">
-      <Sublimations translations={t} />
+      <PageSeo title={t.sublimationsLibrary} description={t.sublimationsHowItWorks.slice(0, 155)} path="/sublimations" />
+      <Sublimations translations={t} language={language} />
 
       <div className="max-w-6xl mx-auto mt-12 px-4">
         <div className="backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl overflow-hidden" style={{ background: 'rgba(15, 23, 42, 0.7)' }}>

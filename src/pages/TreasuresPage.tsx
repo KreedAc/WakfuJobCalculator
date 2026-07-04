@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Search, ChevronDown, ChevronUp } from 'lucide-react';
+import { PageSeo } from '../components/PageSeo';
 
 type Lang = 'en' | 'fr' | 'es' | 'pt';
 
@@ -197,6 +198,7 @@ export default function TreasuresPage({ language }: { language: Lang }) {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 flex flex-col items-center animate-in fade-in duration-500">
+      <PageSeo title={t.title} description={t.subtitle} path="/treasures" />
       <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
         {t.title}
       </h1>

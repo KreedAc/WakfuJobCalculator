@@ -23,3 +23,7 @@ dist-ssr
 .env
 
 vite.config.ts.timestamp-*
+
+# script-generated report, not served
+scripts/treasures.i18n.report.json
+scripts/sublimations.i18n.report.json

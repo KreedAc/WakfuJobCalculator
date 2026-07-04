@@ -7,6 +7,7 @@ import {
   type CompactItem,
   type CompactRecipe,
 } from "../lib/wakfuData";
+import { PageSeo } from "../components/PageSeo";
 import { TRANSLATIONS, type Language } from "../constants/translations";
 
 function norm(s: string) {
@@ -314,6 +315,7 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
 
   return (
     <div className="w-full max-w-6xl mx-auto p-4">
+      <PageSeo title={t.itemsCraftTitle} description={t.itemsCraftHowItWorks.slice(0, 155)} path="/items-craft-guide" />
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">

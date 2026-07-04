@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import type { Language } from '../constants/translations';
+import { PageSeo } from '../components/PageSeo';
+import {
+  COMBAT_CALC_T,
+  COMBAT_TAB_ICONS,
+  COMBAT_TAB_IDS,
+  type CombatCalcT,
+  type CombatTabId,
+} from '../constants/combatCalcTranslations';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 type Position = 'facing' | 'side' | 'rear';
-const TABS = ['⚔️ Damage','❤️ Heal','💚 Armor','⚖️ Build','🛡️ Tank','📏 Resistance','⚡ FoW','⛓️ Lock','🩸 HP/EHP','🗡️ EM'] as const;
-type Tab = typeof TABS[number];
 
 // ─── Small reusable UI ───────────────────────────────────────────────────────
 function Num({ label, value, onChange, min, max, placeholder, tip }: {
@@ -84,10 +90,10 @@ function SecLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function RadioPos({ pos, setPos }: { pos: Position; setPos: (p: Position) => void }) {
+function RadioPos({ pos, setPos, t }: { pos: Position; setPos: (p: Position) => void; t: CombatCalcT }) {
   return (
     <div className="flex gap-2 flex-wrap">
-      {([['facing','🧍','Facing'],['side','↔️','Side'],['rear','🔄','Rear']] as const).map(([v,icon,label]) => (
+      {([['facing','🧍',t.posFacing],['side','↔️',t.posSide],['rear','🔄',t.posRear]] as const).map(([v,icon,label]) => (
         <button key={v} onClick={() => setPos(v)}
           className={`flex items-center gap-2 flex-1 min-w-[100px] px-3 py-2.5 rounded-xl border text-sm font-semibold transition-all duration-200
             ${pos === v ? 'glass-soft border-emerald-500/55 text-emerald-300 shadow-sm shadow-emerald-500/15' : 'border-emerald-500/16 text-emerald-200/65 hover:border-emerald-500/30 hover:text-emerald-200'}`}
@@ -109,7 +115,8 @@ function winCls(a: number, b: number) {
 interface CombatCalcPageProps { language: Language; }
 
 export function CombatCalcPage({ language }: CombatCalcPageProps) {
-  const [tab, setTab] = useState<Tab>('⚔️ Damage');
+  const ct = COMBAT_CALC_T[language];
+  const [tab, setTab] = useState<CombatTabId>('damage');
 
   // ── Damage ──
   const [dBase,setDBase]=useState(100); const [dElem,setDElem]=useState(0); const [dRange,setDRange]=useState(0);
@@ -199,159 +206,160 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
   // ─── Render ─────────────────────────────────────────────────────────────────
   return (
     <div className="max-w-4xl w-full flex flex-col items-center animate-in fade-in duration-500">
+      <PageSeo title={ct.pageTitle} description={ct.pageSubtitle} path="/combat-calc" />
       <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
-        {language === 'fr' ? 'Calculateur de Combat' : 'Combat Calculator'}
+        {ct.pageTitle}
       </h1>
       <p className="text-emerald-100/80 mb-8 text-center max-w-2xl text-base leading-relaxed drop-shadow-md">
-        {language === 'fr' ? 'Calculez vos dégâts, soins, armures, et bien plus.' : 'Calculate damage, heals, armor, resistances and more.'}
+        {ct.pageSubtitle}
       </p>
 
       {/* Tabs */}
       <div className="glass rounded-2xl p-3 mb-5 flex flex-wrap gap-1.5 w-full">
-        {TABS.map(t => (
-          <button key={t} onClick={() => setTab(t)}
+        {COMBAT_TAB_IDS.map(id => (
+          <button key={id} onClick={() => setTab(id)}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 whitespace-nowrap
-              ${tab===t ? 'glass-soft border border-emerald-500/55 text-emerald-300 shadow-sm shadow-emerald-500/10' : 'text-emerald-200/60 hover:text-emerald-200 border border-transparent hover:border-emerald-500/20'}`}
-          >{t}</button>
+              ${tab===id ? 'glass-soft border border-emerald-500/55 text-emerald-300 shadow-sm shadow-emerald-500/10' : 'text-emerald-200/60 hover:text-emerald-200 border border-transparent hover:border-emerald-500/20'}`}
+          >{COMBAT_TAB_ICONS[id]} {ct.tabs[id]}</button>
         ))}
       </div>
 
       <div className="w-full">
 
         {/* ══ DAMAGE ══ */}
-        {tab==='⚔️ Damage' && (
+        {tab==='damage' && (
           <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">⚔️ Damage Calculator</h2>
+            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">⚔️ {ct.damageTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="Spell Base Value" value={dBase} onChange={setDBase} min={0} tip="Raw damage value from the spell description." />
-              <Num label="Elemental Mastery" value={dElem} onChange={setDElem} />
-              <Num label="Melee / Distance Mastery" value={dRange} onChange={setDRange} tip="Melee if 1–2 cells away. Distance if 3+ cells." />
+              <Num label={ct.spellBaseValue} value={dBase} onChange={setDBase} min={0} tip={ct.tipSpellBase} />
+              <Num label={ct.elementalMastery} value={dElem} onChange={setDElem} />
+              <Num label={ct.meleeDistanceMastery} value={dRange} onChange={setDRange} tip={ct.tipMeleeDistance} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="Berserk Mastery (≤50% HP)" value={dBerserk} onChange={setDBerserk} tip="Only applies when caster is at 50% HP or less." />
-              {dPos==='rear' && <Num label="Rear Mastery" value={dRear} onChange={setDRear} tip="Added to masteries only when attacking from Rear." />}
-              <Num label="Critical Mastery" value={dCrit} onChange={setDCrit} tip="Added only on a critical hit." />
+              <Num label={ct.berserkMastery} value={dBerserk} onChange={setDBerserk} tip={ct.tipBerserk} />
+              {dPos==='rear' && <Num label={ct.rearMastery} value={dRear} onChange={setDRear} tip={ct.tipRear} />}
+              <Num label={ct.criticalMastery} value={dCrit} onChange={setDCrit} tip={ct.tipCritMastery} />
             </div>
-            <SecLabel>Bonuses &amp; Conditions</SecLabel>
+            <SecLabel>{ct.bonusesConditions}</SecLabel>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="% Damage Inflicted" value={dDI} onChange={setDDI} />
-              <Num label="Enemy % Resistance" value={dRes} onChange={setDRes} min={0} max={90} tip="Capped at 90% since update 1.68." />
-              <Num label="Fixed Damage Bonus" value={dFixed} onChange={setDFixed} tip="Added after masteries, not affected by resistance." />
+              <Num label={ct.dmgInflictedPct} value={dDI} onChange={setDDI} />
+              <Num label={ct.enemyResistance} value={dRes} onChange={setDRes} min={0} max={90} tip={ct.tipEnemyResistance} />
+              <Num label={ct.fixedDamageBonus} value={dFixed} onChange={setDFixed} tip={ct.tipFixedDamage} />
             </div>
-            <SecLabel>Position vs Target</SecLabel>
-            <RadioPos pos={dPos} setPos={setDPos} />
+            <SecLabel>{ct.positionVsTarget}</SecLabel>
+            <RadioPos pos={dPos} setPos={setDPos} t={ct} />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <Sel label="Block" value={dBlock} onChange={setDBlock} options={[{label:'Not blocked',value:1},{label:'Blocked (×0.80)',value:0.8},{label:'Blocked + Expert (×0.68)',value:0.68}]} />
-              <Num label="Barrier" value={dBarrier} onChange={setDBarrier} min={0} tip="Flat value subtracted after fixed damage." />
+              <Sel label={ct.block} value={dBlock} onChange={setDBlock} options={[{label:ct.blockNotBlocked,value:1},{label:ct.blockBlocked,value:0.8},{label:ct.blockExpert,value:0.68}]} />
+              <Num label={ct.barrier} value={dBarrier} onChange={setDBarrier} min={0} tip={ct.tipBarrier} />
             </div>
             <div className="flex gap-4 flex-wrap pt-1">
-              <Check label="Critical Hit" checked={dIsCrit} onChange={setDIsCrit} />
-              <Check label="Caster at ≤50% HP" checked={dIsBerserk} onChange={setDIsBerserk} />
+              <Check label={ct.criticalHit} checked={dIsCrit} onChange={setDIsCrit} />
+              <Check label={ct.casterBelowHalfHp} checked={dIsBerserk} onChange={setDIsBerserk} />
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-2">
-              <ResBox label="Final Damage" value={fmt(dIsCrit?critDmg:normalDmg)} />
-              <ResBox label="Normal Hit" value={fmt(normalDmg)} color="text-blue-300" border="border-blue-400/50" />
-              <ResBox label="Critical Hit" value={fmt(critDmg)} color="text-yellow-300" border="border-yellow-400/50" />
-              <ResBox label="Sum of Masteries" value={fmt(dIsCrit?mastCrit:mastNorm)} color="text-emerald-100/80" border="border-emerald-500/30" />
+              <ResBox label={ct.finalDamage} value={fmt(dIsCrit?critDmg:normalDmg)} />
+              <ResBox label={ct.normalHit} value={fmt(normalDmg)} color="text-blue-300" border="border-blue-400/50" />
+              <ResBox label={ct.criticalHit} value={fmt(critDmg)} color="text-yellow-300" border="border-yellow-400/50" />
+              <ResBox label={ct.sumOfMasteries} value={fmt(dIsCrit?mastCrit:mastNorm)} color="text-emerald-100/80" border="border-emerald-500/30" />
             </div>
           </div>
         )}
 
         {/* ══ HEAL ══ */}
-        {tab==='❤️ Heal' && (
+        {tab==='heal' && (
           <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">❤️ Heal Calculator</h2>
+            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">❤️ {ct.healTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="Spell Base Value" value={hBase} onChange={setHBase} min={0} />
-              <Num label="Elemental Mastery" value={hElem} onChange={setHElem} />
-              <Num label="Melee / Distance Mastery" value={hRange} onChange={setHRange} tip="Melee if 1–2 cells. Distance if 3+ cells." />
+              <Num label={ct.spellBaseValue} value={hBase} onChange={setHBase} min={0} />
+              <Num label={ct.elementalMastery} value={hElem} onChange={setHElem} />
+              <Num label={ct.meleeDistanceMastery} value={hRange} onChange={setHRange} tip={ct.tipMeleeDistance} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="Healing Mastery" value={hHeal} onChange={setHHeal} tip="Always added to heal masteries." />
-              <Num label="Berserk Mastery (≤50% HP)" value={hBerserk} onChange={setHBerserk} />
-              <Num label="Critical Mastery" value={hCrit} onChange={setHCrit} />
+              <Num label={ct.healingMastery} value={hHeal} onChange={setHHeal} tip={ct.tipHealingMastery} />
+              <Num label={ct.berserkMastery} value={hBerserk} onChange={setHBerserk} />
+              <Num label={ct.criticalMastery} value={hCrit} onChange={setHCrit} />
             </div>
-            <SecLabel>Heal Bonuses &amp; Resistances</SecLabel>
+            <SecLabel>{ct.healBonusesResistances}</SecLabel>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="% Heals Performed (caster)" value={hHP} onChange={setHHP} tip="Conditional HP% (e.g. at distance) is added here." />
-              <Num label="% Heals Received (target)" value={hHR} onChange={setHHR} tip="Works regardless of who cast the spell." />
-              <Num label="Target Heal Resistance %" value={hHealRes} onChange={setHHealRes} min={0} tip="Increases each time the target is healed." />
+              <Num label={ct.healsPerformed} value={hHP} onChange={setHHP} tip={ct.tipHealsPerformed} />
+              <Num label={ct.healsReceived} value={hHR} onChange={setHHR} tip={ct.tipHealsReceived} />
+              <Num label={ct.healResistance} value={hHealRes} onChange={setHHealRes} min={0} tip={ct.tipHealResistance} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <Num label="% Incurable" value={hIncur} onChange={setHIncur} min={0} max={100} tip="Reduces heals received by this % amount." />
+              <Num label={ct.incurable} value={hIncur} onChange={setHIncur} min={0} max={100} tip={ct.tipIncurable} />
             </div>
             <div className="flex gap-4 flex-wrap pt-1">
-              <Check label="Critical Hit" checked={hIsCrit} onChange={setHIsCrit} />
-              <Check label="Caster at ≤50% HP" checked={hIsBerserk} onChange={setHIsBerserk} />
+              <Check label={ct.criticalHit} checked={hIsCrit} onChange={setHIsCrit} />
+              <Check label={ct.casterBelowHalfHp} checked={hIsBerserk} onChange={setHIsBerserk} />
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-2">
-              <ResBox label="Final Heal" value={fmt(hIsCrit?critHeal:normalHeal)} color="text-red-300" border="border-red-400/50" />
-              <ResBox label="Normal Heal" value={fmt(normalHeal)} color="text-red-300" border="border-red-400/50" />
-              <ResBox label="Critical Heal" value={fmt(critHeal)} color="text-yellow-300" border="border-yellow-400/50" />
-              <ResBox label="Sum of Masteries" value={fmt(hIsCrit?hMastCrit:hMastNorm)} color="text-emerald-100/80" border="border-emerald-500/30" />
+              <ResBox label={ct.finalHeal} value={fmt(hIsCrit?critHeal:normalHeal)} color="text-red-300" border="border-red-400/50" />
+              <ResBox label={ct.normalHeal} value={fmt(normalHeal)} color="text-red-300" border="border-red-400/50" />
+              <ResBox label={ct.criticalHeal} value={fmt(critHeal)} color="text-yellow-300" border="border-yellow-400/50" />
+              <ResBox label={ct.sumOfMasteries} value={fmt(hIsCrit?hMastCrit:hMastNorm)} color="text-emerald-100/80" border="border-emerald-500/30" />
             </div>
           </div>
         )}
 
         {/* ══ ARMOR ══ */}
-        {tab==='💚 Armor' && (
+        {tab==='armor' && (
           <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">💚 Armor Calculator</h2>
+            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">💚 {ct.armorTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="Spell Base Value" value={arBase} onChange={setArBase} min={0} />
-              <Num label="% Armor Given (on allies)" value={arGiven} onChange={setArGiven} tip="Only applies when casting on an ally." />
-              <Num label="% Armor Received (target)" value={arReceived} onChange={setArReceived} tip="Works regardless of who cast the spell." />
+              <Num label={ct.spellBaseValue} value={arBase} onChange={setArBase} min={0} />
+              <Num label={ct.armorGiven} value={arGiven} onChange={setArGiven} tip={ct.tipArmorGiven} />
+              <Num label={ct.armorReceived} value={arReceived} onChange={setArReceived} tip={ct.tipArmorReceived} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <Num label="% Crumbly" value={arCrumbly} onChange={setArCrumbly} min={0} max={100} tip="Reduces armor generated by this %." />
-              <Num label="Target Max HP (for 50% cap)" value={arMaxHP} onChange={setArMaxHP} min={0} placeholder="0 = skip cap" tip="Armor cannot exceed 50% of max HP." />
+              <Num label={ct.crumbly} value={arCrumbly} onChange={setArCrumbly} min={0} max={100} tip={ct.tipCrumbly} />
+              <Num label={ct.targetMaxHp} value={arMaxHP} onChange={setArMaxHP} min={0} placeholder={ct.skipCapPlaceholder} tip={ct.tipTargetMaxHp} />
             </div>
             <div className="flex gap-4 flex-wrap pt-1">
-              <Check label="Critical Hit (×1.25)" checked={arIsCrit} onChange={setArIsCrit} />
-              <Check label="Casting on an ally" checked={arOnAlly} onChange={setArOnAlly} />
+              <Check label={ct.critX125} checked={arIsCrit} onChange={setArIsCrit} />
+              <Check label={ct.castingOnAlly} checked={arOnAlly} onChange={setArOnAlly} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-2">
-              <ResBox label="Armor Generated" value={fmt(armorVal)} color="text-green-300" border="border-green-400/50" />
-              <ResBox label="After Crumbly" value={fmt(armorCrumb)} color="text-green-300" border="border-green-400/50" />
-              <ResBox label="50% HP Cap" value={armorCap!==null?fmt(armorCap):'N/A'} color="text-emerald-100/80" border="border-emerald-500/30" />
+              <ResBox label={ct.armorGenerated} value={fmt(armorVal)} color="text-green-300" border="border-green-400/50" />
+              <ResBox label={ct.afterCrumbly} value={fmt(armorCrumb)} color="text-green-300" border="border-green-400/50" />
+              <ResBox label={ct.hpCap} value={armorCap!==null?fmt(armorCap):'N/A'} color="text-emerald-100/80" border="border-emerald-500/30" />
             </div>
           </div>
         )}
 
         {/* ══ BUILD ══ */}
-        {tab==='⚖️ Build' && (
+        {tab==='build' && (
           <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">⚖️ Build Comparison — Effective Masteries</h2>
-            <p className="text-sm text-emerald-100/60">Accounts for masteries, % Damage Inflicted and Crit Chance in a single metric.</p>
+            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">⚖️ {ct.buildTitle}</h2>
+            <p className="text-sm text-emerald-100/60">{ct.buildNote}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <SecLabel><span className="text-blue-400/70">Build A</span></SecLabel>
+                <SecLabel><span className="text-blue-400/70">{ct.buildA}</span></SecLabel>
                 <div className="grid grid-cols-2 gap-2">
-                  <Num label="Elemental Mastery" value={baElem} onChange={setBaElem} />
-                  <Num label="Melee/Dist Mastery" value={baRange} onChange={setBaRange} />
-                  <Num label="Critical Mastery" value={baCrit} onChange={setBaCrit} />
-                  <Num label="% Dmg Inflicted" value={baDI} onChange={setBaDI} />
-                  <Num label="% Crit Hit Chance" value={baCH} onChange={setBaCH} min={0} max={100} />
-                  <Num label="% Crit DI bonus" value={baCritDI} onChange={setBaCritDI} />
+                  <Num label={ct.elementalMastery} value={baElem} onChange={setBaElem} />
+                  <Num label={ct.meleeDistShort} value={baRange} onChange={setBaRange} />
+                  <Num label={ct.criticalMastery} value={baCrit} onChange={setBaCrit} />
+                  <Num label={ct.dmgInflictedPct} value={baDI} onChange={setBaDI} />
+                  <Num label={ct.critHitChancePct} value={baCH} onChange={setBaCH} min={0} max={100} />
+                  <Num label={ct.critDiBonus} value={baCritDI} onChange={setBaCritDI} />
                 </div>
               </div>
               <div>
-                <SecLabel><span className="text-emerald-400/70">Build B</span></SecLabel>
+                <SecLabel><span className="text-emerald-400/70">{ct.buildB}</span></SecLabel>
                 <div className="grid grid-cols-2 gap-2">
-                  <Num label="Elemental Mastery" value={bbElem} onChange={setBbElem} />
-                  <Num label="Melee/Dist Mastery" value={bbRange} onChange={setBbRange} />
-                  <Num label="Critical Mastery" value={bbCrit} onChange={setBbCrit} />
-                  <Num label="% Dmg Inflicted" value={bbDI} onChange={setBbDI} />
-                  <Num label="% Crit Hit Chance" value={bbCH} onChange={setBbCH} min={0} max={100} />
-                  <Num label="% Crit DI bonus" value={bbCritDI} onChange={setBbCritDI} />
+                  <Num label={ct.elementalMastery} value={bbElem} onChange={setBbElem} />
+                  <Num label={ct.meleeDistShort} value={bbRange} onChange={setBbRange} />
+                  <Num label={ct.criticalMastery} value={bbCrit} onChange={setBbCrit} />
+                  <Num label={ct.dmgInflictedPct} value={bbDI} onChange={setBbDI} />
+                  <Num label={ct.critHitChancePct} value={bbCH} onChange={setBbCH} min={0} max={100} />
+                  <Num label={ct.critDiBonus} value={bbCritDI} onChange={setBbCritDI} />
                 </div>
               </div>
             </div>
             <div className="glass-soft rounded-2xl overflow-hidden mt-2">
               <table className="w-full text-sm">
-                <thead><tr className="border-b border-emerald-500/15">{['Metric','Build A','Build B'].map(h=><th key={h} className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{h}</th>)}</tr></thead>
+                <thead><tr className="border-b border-emerald-500/15">{[ct.metric,ct.buildA,ct.buildB].map(h=><th key={h} className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{h}</th>)}</tr></thead>
                 <tbody>
-                  {[['EM (Normal)',fmtD(emA.em),fmtD(emB.em)],['EMcrit',fmtD(emA.emcrit),fmtD(emB.emcrit)],['EM Average ★',fmtD(emA.avg),fmtD(emB.avg)]].map(([l,a,b])=>{
+                  {[[ct.emNormal,fmtD(emA.em),fmtD(emB.em)],[ct.emCrit,fmtD(emA.emcrit),fmtD(emB.emcrit)],[ct.emAverage,fmtD(emA.avg),fmtD(emB.avg)]].map(([l,a,b])=>{
                     const w=winCls(parseFloat(a),parseFloat(b));
                     return <tr key={l} className="border-b border-emerald-500/07 last:border-0"><td className="px-4 py-2 text-emerald-100/80">{l}</td><td className={`px-4 py-2 ${w.a}`}>{a}</td><td className={`px-4 py-2 ${w.b}`}>{b}</td></tr>;
                   })}
@@ -362,38 +370,38 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
         )}
 
         {/* ══ TANK ══ */}
-        {tab==='🛡️ Tank' && (
+        {tab==='tank' && (
           <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">🛡️ Tankiness — EHP Comparison</h2>
-            <p className="text-sm text-emerald-100/60">Converts resistances and block into equivalent HP for direct comparison.</p>
+            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">🛡️ {ct.tankTitle}</h2>
+            <p className="text-sm text-emerald-100/60">{ct.tankNote}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <SecLabel><span className="text-blue-400/70">Build A</span></SecLabel>
+                <SecLabel><span className="text-blue-400/70">{ct.buildA}</span></SecLabel>
                 <div className="grid grid-cols-2 gap-2">
-                  <Num label="Total HP" value={taHP} onChange={setTaHP} />
-                  <Num label="% Resistance" value={taRes} onChange={setTaRes} min={0} max={90} tip="Use Resistance tab to convert from flat." />
-                  <Num label="% Block Chance" value={taBlock} onChange={setTaBlock} min={0} max={100} />
+                  <Num label={ct.totalHp} value={taHP} onChange={setTaHP} />
+                  <Num label={ct.resistancePct} value={taRes} onChange={setTaRes} min={0} max={90} tip={ct.tipUseResTab} />
+                  <Num label={ct.blockChancePct} value={taBlock} onChange={setTaBlock} min={0} max={100} />
                 </div>
-                <div className="mt-2"><Check label="Blocking Expert sublimation" checked={taExpert} onChange={setTaExpert} /></div>
+                <div className="mt-2"><Check label={ct.blockingExpert} checked={taExpert} onChange={setTaExpert} /></div>
               </div>
               <div>
-                <SecLabel><span className="text-emerald-400/70">Build B</span></SecLabel>
+                <SecLabel><span className="text-emerald-400/70">{ct.buildB}</span></SecLabel>
                 <div className="grid grid-cols-2 gap-2">
-                  <Num label="Total HP" value={tbHP} onChange={setTbHP} />
-                  <Num label="% Resistance" value={tbRes} onChange={setTbRes} min={0} max={90} />
-                  <Num label="% Block Chance" value={tbBlock} onChange={setTbBlock} min={0} max={100} />
+                  <Num label={ct.totalHp} value={tbHP} onChange={setTbHP} />
+                  <Num label={ct.resistancePct} value={tbRes} onChange={setTbRes} min={0} max={90} />
+                  <Num label={ct.blockChancePct} value={tbBlock} onChange={setTbBlock} min={0} max={100} />
                 </div>
-                <div className="mt-2"><Check label="Blocking Expert sublimation" checked={tbExpert} onChange={setTbExpert} /></div>
+                <div className="mt-2"><Check label={ct.blockingExpert} checked={tbExpert} onChange={setTbExpert} /></div>
               </div>
             </div>
             <div className="glass-soft rounded-2xl overflow-hidden mt-2">
               <table className="w-full text-sm">
-                <thead><tr className="border-b border-emerald-500/15">{['Metric','Build A','Build B'].map(h=><th key={h} className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{h}</th>)}</tr></thead>
+                <thead><tr className="border-b border-emerald-500/15">{[ct.metric,ct.buildA,ct.buildB].map(h=><th key={h} className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{h}</th>)}</tr></thead>
                 <tbody>
-                  {[['Total HP',fmt(taHP),fmt(tbHP)],['% Resistance',`${taRes}%`,`${tbRes}%`],['% Block',`${taBlock}%`,`${tbBlock}%`],['Blocking Expert',taExpert?'Yes':'No',tbExpert?'Yes':'No']].map(([l,a,b])=>(
+                  {[[ct.totalHp,fmt(taHP),fmt(tbHP)],[ct.resistancePct,`${taRes}%`,`${tbRes}%`],[ct.blockPct,`${taBlock}%`,`${tbBlock}%`],[ct.blockingExpert,taExpert?ct.yes:ct.no,tbExpert?ct.yes:ct.no]].map(([l,a,b])=>(
                     <tr key={l} className="border-b border-emerald-500/07"><td className="px-4 py-2 text-emerald-100/80">{l}</td><td className="px-4 py-2 text-emerald-100/80">{a}</td><td className={'px-4 py-2 text-emerald-100/80'}>{b}</td></tr>
                   ))}
-                  <tr>{(()=>{const w=winCls(ehpA,ehpB);return(<><td className="px-4 py-2 text-emerald-100/80">EHP ★</td><td className={`px-4 py-2 ${w.a}`}>{fmt(ehpA)}</td><td className={`px-4 py-2 ${w.b}`}>{fmt(ehpB)}</td></>);})()}</tr>
+                  <tr>{(()=>{const w=winCls(ehpA,ehpB);return(<><td className="px-4 py-2 text-emerald-100/80">{ct.ehpStar}</td><td className={`px-4 py-2 ${w.a}`}>{fmt(ehpA)}</td><td className={`px-4 py-2 ${w.b}`}>{fmt(ehpB)}</td></>);})()}</tr>
                 </tbody>
               </table>
             </div>
@@ -401,25 +409,25 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
         )}
 
         {/* ══ RESISTANCE ══ */}
-        {tab==='📏 Resistance' && (
+        {tab==='resistance' && (
           <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">📏 Flat ↔ % Resistance Converter</h2>
-            <SecLabel>Flat Resistance → % Resistance</SecLabel>
+            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">📏 {ct.resTitle}</h2>
+            <SecLabel>{ct.flatToPct}</SecLabel>
             <div className="flex items-end gap-3 flex-wrap">
-              <div className="flex-1 min-w-[140px]"><Num label="Flat Resistance" value={rFlat} onChange={setRFlat} /></div>
+              <div className="flex-1 min-w-[140px]"><Num label={ct.flatResistance} value={rFlat} onChange={setRFlat} /></div>
               <span className="text-xl text-emerald-400/55 pb-2">→</span>
-              <ResBox label="% Resistance" value={fmtD(flatToPerc(rFlat),1)+'%'} />
+              <ResBox label={ct.resistancePct} value={fmtD(flatToPerc(rFlat),1)+'%'} />
             </div>
-            <SecLabel>% Resistance → Flat Resistance</SecLabel>
+            <SecLabel>{ct.pctToFlat}</SecLabel>
             <div className="flex items-end gap-3 flex-wrap">
-              <div className="flex-1 min-w-[140px]"><Num label="% Resistance (0–90)" value={rPerc} onChange={setRPerc} min={0} max={90} /></div>
+              <div className="flex-1 min-w-[140px]"><Num label={ct.resRange} value={rPerc} onChange={setRPerc} min={0} max={90} /></div>
               <span className="text-xl text-emerald-400/55 pb-2">→</span>
-              <ResBox label="Flat Resistance" value={fmt(percToFlat(rPerc))} />
+              <ResBox label={ct.flatResistance} value={fmt(percToFlat(rPerc))} />
             </div>
-            <SecLabel>Reference Table</SecLabel>
+            <SecLabel>{ct.referenceTable}</SecLabel>
             <div className="glass-soft rounded-2xl overflow-hidden">
               <table className="w-full text-sm">
-                <thead><tr className="border-b border-emerald-500/15"><th className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">% Resistance</th><th className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">Flat needed</th></tr></thead>
+                <thead><tr className="border-b border-emerald-500/15"><th className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{ct.resistancePct}</th><th className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{ct.flatNeeded}</th></tr></thead>
                 <tbody>{resTable.map(p=><tr key={p} className="border-b border-emerald-500/07 last:border-0"><td className="px-4 py-2 text-emerald-100/80">{p}%</td><td className="px-4 py-2 text-emerald-100/80">{fmt(percToFlat(p))}</td></tr>)}</tbody>
               </table>
             </div>
@@ -427,88 +435,88 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
         )}
 
         {/* ══ FOW ══ */}
-        {tab==='⚡ FoW' && (
+        {tab==='fow' && (
           <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">⚡ Force of Will — AP / MP Removal</h2>
+            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">⚡ {ct.fowTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="Base Removal Value" value={fowBase} onChange={setFowBase} min={0} tip="Raw AP/MP removal from spell description." />
-              <Num label="Caster Force of Will" value={fowCaster} onChange={setFowCaster} tip="Target gains +10 FoW per AP/MP removed." />
-              <Num label="Target Force of Will" value={fowTarget} onChange={setFowTarget} />
+              <Num label={ct.baseRemovalValue} value={fowBase} onChange={setFowBase} min={0} tip={ct.tipBaseRemoval} />
+              <Num label={ct.casterFow} value={fowCaster} onChange={setFowCaster} tip={ct.tipCasterFow} />
+              <Num label={ct.targetFow} value={fowTarget} onChange={setFowTarget} />
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-2">
-              <ResBox label="FoW Factor (FF)" value={fmtD(ff,3)} color="text-yellow-300" border="border-yellow-400/50" />
-              <ResBox label="Effective Removal" value={fmtD(fowEff,3)} color="text-yellow-300" border="border-yellow-400/50" />
-              <ResBox label="Guaranteed Remove" value={String(fowFloor)} color="text-blue-300" border="border-blue-400/50" />
-              <ResBox label="Chance to Remove +1" value={fowChance+'%'} color="text-blue-300" border="border-blue-400/50" />
+              <ResBox label={ct.fowFactor} value={fmtD(ff,3)} color="text-yellow-300" border="border-yellow-400/50" />
+              <ResBox label={ct.effectiveRemoval} value={fmtD(fowEff,3)} color="text-yellow-300" border="border-yellow-400/50" />
+              <ResBox label={ct.guaranteedRemove} value={String(fowFloor)} color="text-blue-300" border="border-blue-400/50" />
+              <ResBox label={ct.chanceRemovePlusOne} value={fowChance+'%'} color="text-blue-300" border="border-blue-400/50" />
             </div>
           </div>
         )}
 
         {/* ══ LOCK ══ */}
-        {tab==='⛓️ Lock' && (
+        {tab==='lock' && (
           <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">⛓️ Lock / Dodge — MP / AP Losses</h2>
-            <p className="text-sm text-emerald-100/60">MP/AP losses when a target (lvl 100+) dodges. Lockers are weighted: A×1, B×½, C×⅓, D×¼.</p>
+            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">⛓️ {ct.lockTitle}</h2>
+            <p className="text-sm text-emerald-100/60">{ct.lockNote}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="Locker A Lock" value={lkLA} onChange={setLkLA} min={0} tip="Strongest locker — full value." />
-              <Num label="Locker B Lock" value={lkLB} onChange={setLkLB} min={0} tip="Counts at ½ value." />
-              <Num label="Locker C Lock" value={lkLC} onChange={setLkLC} min={0} tip="Counts at ⅓ value." />
+              <Num label={ct.lockerALock} value={lkLA} onChange={setLkLA} min={0} tip={ct.tipLockerA} />
+              <Num label={ct.lockerBLock} value={lkLB} onChange={setLkLB} min={0} tip={ct.tipLockerB} />
+              <Num label={ct.lockerCLock} value={lkLC} onChange={setLkLC} min={0} tip={ct.tipLockerC} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="Locker D Lock" value={lkLD} onChange={setLkLD} min={0} tip="Counts at ¼ value." />
-              <Num label="Target Dodge" value={lkDodge} onChange={setLkDodge} min={0} />
-              <Sel label="Locker Orientation" value={lkOrient} onChange={setLkOrient} options={[{label:'At least one facing (factor 0)',value:0},{label:'At least one showing side (factor 1)',value:1},{label:'All showing back (factor 2)',value:2}]} />
+              <Num label={ct.lockerDLock} value={lkLD} onChange={setLkLD} min={0} tip={ct.tipLockerD} />
+              <Num label={ct.targetDodge} value={lkDodge} onChange={setLkDodge} min={0} />
+              <Sel label={ct.lockerOrientation} value={lkOrient} onChange={setLkOrient} options={[{label:ct.orientFacing,value:0},{label:ct.orientSide,value:1},{label:ct.orientBack,value:2}]} />
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-2">
-              <ResBox label="Combined Lock (L)" value={fmtD(L,1)} color="text-purple-300" border="border-purple-400/50" />
-              <ResBox label="X value" value={fmtD(X,3)} color="text-purple-300" border="border-purple-400/50" />
-              <ResBox label="MP Loss" value={String(mpLoss)} color="text-purple-300" border="border-purple-400/50" />
-              <ResBox label="AP Loss" value={String(apLoss)} color="text-purple-300" border="border-purple-400/50" />
+              <ResBox label={ct.combinedLock} value={fmtD(L,1)} color="text-purple-300" border="border-purple-400/50" />
+              <ResBox label={ct.xValue} value={fmtD(X,3)} color="text-purple-300" border="border-purple-400/50" />
+              <ResBox label={ct.mpLoss} value={String(mpLoss)} color="text-purple-300" border="border-purple-400/50" />
+              <ResBox label={ct.apLoss} value={String(apLoss)} color="text-purple-300" border="border-purple-400/50" />
             </div>
           </div>
         )}
 
         {/* ══ HP/EHP ══ */}
-        {tab==='🩸 HP/EHP' && (
+        {tab==='hp' && (
           <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">🩸 HP &amp; EHP Calculator</h2>
-            <SecLabel>Total HP from Stats</SecLabel>
+            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">🩸 {ct.hpTitle}</h2>
+            <SecLabel>{ct.totalHpFromStats}</SecLabel>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="Character Level" value={hpLevel} onChange={setHpLevel} min={1} />
-              <Num label="Flat HP Bonus" value={hpFlat} onChange={setHpFlat} />
-              <Num label="% HP Bonus" value={hpPerc} onChange={setHpPerc} />
+              <Num label={ct.characterLevel} value={hpLevel} onChange={setHpLevel} min={1} />
+              <Num label={ct.flatHpBonus} value={hpFlat} onChange={setHpFlat} />
+              <Num label={ct.pctHpBonus} value={hpPerc} onChange={setHpPerc} />
             </div>
-            <ResBox label="Total HP" value={fmt(totalHP)} color="text-red-300" border="border-red-400/50" />
-            <SecLabel>Effective HP (EHP)</SecLabel>
+            <ResBox label={ct.totalHp} value={fmt(totalHP)} color="text-red-300" border="border-red-400/50" />
+            <SecLabel>{ct.effectiveHp}</SecLabel>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="Total HP" value={ehpHP} onChange={setEhpHP} />
-              <Num label="% Resistance (0–90)" value={ehpRes} onChange={setEhpRes} min={0} max={90} />
-              <Num label="% Block Chance" value={ehpBlock} onChange={setEhpBlock} min={0} max={100} />
+              <Num label={ct.totalHp} value={ehpHP} onChange={setEhpHP} />
+              <Num label={ct.resRange} value={ehpRes} onChange={setEhpRes} min={0} max={90} />
+              <Num label={ct.blockChancePct} value={ehpBlock} onChange={setEhpBlock} min={0} max={100} />
             </div>
-            <Check label="Blocking Expert sublimation" checked={ehpExpert} onChange={setEhpExpert} />
-            <ResBox label="Effective HP (EHP)" value={fmt(ehpVal)} color="text-red-300" border="border-red-400/50" />
+            <Check label={ct.blockingExpert} checked={ehpExpert} onChange={setEhpExpert} />
+            <ResBox label={ct.effectiveHp} value={fmt(ehpVal)} color="text-red-300" border="border-red-400/50" />
           </div>
         )}
 
         {/* ══ EM ══ */}
-        {tab==='🗡️ EM' && (
+        {tab==='em' && (
           <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">🗡️ Effective Masteries (EM)</h2>
-            <p className="text-sm text-emerald-100/60">Converts % Damage Inflicted and Crit into a unified mastery metric for accurate build comparison.</p>
+            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">🗡️ {ct.emTitle}</h2>
+            <p className="text-sm text-emerald-100/60">{ct.emNote}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="Sum of Relevant Masteries" value={emMast} onChange={setEmMast} tip="Exclude critical mastery here — it goes in the next field." />
-              <Num label="Critical Mastery" value={emCritMast} onChange={setEmCritMast} />
-              <Num label="% Dmg Inflicted (non-crit)" value={emDI} onChange={setEmDI} />
+              <Num label={ct.sumRelevantMasteries} value={emMast} onChange={setEmMast} tip={ct.tipSumMasteries} />
+              <Num label={ct.criticalMastery} value={emCritMast} onChange={setEmCritMast} />
+              <Num label={ct.dmgInflictedNonCrit} value={emDI} onChange={setEmDI} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <Num label="% Crit Dmg Inflicted" value={emCritDI} onChange={setEmCritDI} tip="e.g. from the Courage sublimation." />
-              <Num label="% Crit Hit Chance" value={emCH} onChange={setEmCH} min={0} max={100} />
-              <Num label="% Stasis Dmg Bonus" value={emStasis} onChange={setEmStasis} min={100} tip="For player characters always leave at 100%." />
+              <Num label={ct.critDmgInflicted} value={emCritDI} onChange={setEmCritDI} tip={ct.tipCritDmgInflicted} />
+              <Num label={ct.critHitChancePct} value={emCH} onChange={setEmCH} min={0} max={100} />
+              <Num label={ct.stasisDmgBonus} value={emStasis} onChange={setEmStasis} min={100} tip={ct.tipStasis} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-2">
-              <ResBox label="EM (Normal)" value={fmtD(emNorm)} />
-              <ResBox label="EMcrit" value={fmtD(emCrit2)} color="text-yellow-300" border="border-yellow-400/50" />
-              <ResBox label="EM Average ★" value={fmtD(emAvg)} color="text-green-300" border="border-green-400/50" />
+              <ResBox label={ct.emNormal} value={fmtD(emNorm)} />
+              <ResBox label={ct.emCrit} value={fmtD(emCrit2)} color="text-yellow-300" border="border-yellow-400/50" />
+              <ResBox label={ct.emAverage} value={fmtD(emAvg)} color="text-green-300" border="border-green-400/50" />
             </div>
           </div>
         )}

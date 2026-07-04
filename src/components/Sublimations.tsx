@@ -8,9 +8,10 @@ import './Sublimations.css';
 
 interface SublimationsProps {
   translations: Record<string, string>;
+  language?: string;
 }
 
-export function Sublimations({ translations: t }: SublimationsProps) {
+export function Sublimations({ translations: t, language = 'en' }: SublimationsProps) {
   const [runes, setRunes] = useState<Sublimation[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -24,46 +25,50 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
 ]);
 
   useEffect(() => {
-    async function fetchData() {
+    let cancelled = false;
+
+    async function tryLoad(url: string): Promise<Sublimation[] | null> {
       try {
-        const sublimationsPath = `/data/sublimations.en.json`;
-        const response = await fetch(sublimationsPath);
-        if (response.ok) {
-          const data = await response.json();
-          if (Array.isArray(data) && data.length > 0) {
-            setRunes(data);
-            setRuneLevels(initializeRuneLevels(data));
-            setDataSource('json');
-            setLoading(false);
-            return;
-          }
-        }
-        throw new Error("JSON file not found or empty");
-      } catch (err) {
-        console.warn(`Could not load sublimations.en.json, trying fallback...`, err);
-        try {
-          const fallbackResponse = await fetch('sublimations.json');
-          if (fallbackResponse.ok) {
-            const data = await fallbackResponse.json();
-            if (Array.isArray(data) && data.length > 0) {
-              setRunes(data);
-              setRuneLevels(initializeRuneLevels(data));
-              setDataSource('json');
-              setLoading(false);
-              return;
-            }
-          }
-        } catch {
-          console.warn("Could not load any sublimations file, using fallback data");
-        }
-        setRunes(FALLBACK_SUBLIMATIONS);
-        setRuneLevels(initializeRuneLevels(FALLBACK_SUBLIMATIONS));
-        setDataSource('fallback');
-        setLoading(false);
+        const response = await fetch(url);
+        if (!response.ok) return null;
+        const data = await response.json();
+        return Array.isArray(data) && data.length > 0 ? data : null;
+      } catch {
+        return null;
       }
     }
+
+    async function fetchData() {
+      setLoading(true);
+      // Localized file first, then English, then the legacy root file.
+      const sources = [
+        `/data/sublimations.${language}.json`,
+        '/data/sublimations.en.json',
+        '/sublimations.json',
+      ];
+      for (const url of sources) {
+        const data = await tryLoad(url);
+        if (cancelled) return;
+        if (data) {
+          setRunes(data);
+          setRuneLevels(initializeRuneLevels(data));
+          setDataSource('json');
+          setLoading(false);
+          return;
+        }
+      }
+      if (cancelled) return;
+      setRunes(FALLBACK_SUBLIMATIONS);
+      setRuneLevels(initializeRuneLevels(FALLBACK_SUBLIMATIONS));
+      setDataSource('fallback');
+      setLoading(false);
+    }
+
     fetchData();
-  }, []);
+    return () => {
+      cancelled = true;
+    };
+  }, [language]);
 
   useEffect(() => {
     setSelectedCategory(t.allCategories);

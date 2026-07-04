@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Calculator } from '../components/Calculator';
+import { PageSeo } from '../components/PageSeo';
 import { TRANSLATIONS, type Language } from '../constants/translations';
 
 interface CalculatorPageProps {
@@ -13,6 +14,7 @@ export function CalculatorPage({ language }: CalculatorPageProps) {
 
   return (
     <div className="w-full flex flex-col items-center px-4">
+      <PageSeo title={t.title} description={t.subtitle} path="/" />
       <Calculator language={language} translations={t} />
 
       <div className="max-w-4xl w-full mx-auto mt-12">
