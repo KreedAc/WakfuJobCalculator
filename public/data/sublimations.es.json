@@ -6,7 +6,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Critical Hit",
+    "description": "[X]% Golpe crítico",
     "rarity": [
       "Rare",
       "Mythic",
@@ -41,7 +41,7 @@
       "R",
       "R"
     ],
-    "description": "[X]% Damage Inflicted on aligned targets 2 or more cells away from the state bearer",
+    "description": "[X]% Daños infligidos a los objetivos alineados a 2 casillas o más del portador del estado",
     "rarity": [
       "Rare",
       "Mythic",
@@ -76,7 +76,7 @@
       "R",
       "G"
     ],
-    "description": "-20 Force of Will. Reduces the next AP loss suffered by 1, [X] time(s). The effect is reapplied every turn",
+    "description": "-20 Voluntad. Reduce la próxima pérdida de PA sufrida en 1, [X] veces. El efecto se vuelve a aplicar cada turno",
     "rarity": [
       "Mythic"
     ],
@@ -109,7 +109,7 @@
       "R",
       "B"
     ],
-    "description": "If the state bearer does not have any armor at end of turn: [X]% of level as Armor",
+    "description": "Si el portador del estado no tiene armadura al final del turno: [X]% del nivel como Armadura",
     "rarity": [
       "Rare",
       "Mythic",
@@ -144,7 +144,7 @@
       "R",
       "R"
     ],
-    "description": "Ending a turn adjacent to an enemy applies -[X]% Armor received to it (1 turn)",
+    "description": "Terminar el turno adyacente a un enemigo le aplica -[X]% de Armadura recibida (1 turno)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -179,7 +179,7 @@
       "R",
       "G"
     ],
-    "description": "Heal: [X]% of HP lost of the caster on killing an enemy (2 activations per turn)",
+    "description": "Sanación: [X]% de los PdV perdidos del lanzador al matar a un enemigo (2 activaciones por turno)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -213,7 +213,7 @@
       "G",
       "R"
     ],
-    "description": "-10% Damage inflicted with a weapon. When inflicting damage on an enemy with a two-handed weapon: Steals [X]% of level in Lock (1 turn not stackable)",
+    "description": "-10% Daños infligidos con un arma. Al infligir daños a un enemigo con un arma a dos manos: Roba [X]% del nivel en Placaje (1 turno, no acumulable)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -248,7 +248,7 @@
       "B",
       "B"
     ],
-    "description": "When inflicting damage on an enemy with a weapon: That enemy reduces their damage on the state bearer by -[X] % (1 turn not stackable) The state bearer must have a shield equipped",
+    "description": "Al infligir daños a un enemigo con un arma: Ese enemigo reduce sus daños sobre el portador del estado en -[X]% (1 turno, no acumulable). El portador del estado debe tener un escudo equipado",
     "rarity": [
       "Rare",
       "Mythic"
@@ -282,7 +282,7 @@
       "G",
       "R"
     ],
-    "description": "When the state bearer suffers direct close-combat damage once per turn of the attacker: The state bearer inflicts light damage on the attacker ([X]% of level)",
+    "description": "Cuando el portador del estado sufre daños directos cuerpo a cuerpo, una vez por turno del atacante: El portador del estado inflige daños leves al atacante ([X]% del nivel)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -317,7 +317,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% Heals performed on an ally adjacent to another ally",
+    "description": "[X]% Sanaciones realizadas sobre un aliado adyacente a otro aliado",
     "rarity": [
       "Rare",
       "Mythic",
@@ -352,7 +352,7 @@
       "R",
       "B"
     ],
-    "description": "When the state bearer starts their turn with all their WP (or all their QB): [X]% Critical Hit (1 turn)",
+    "description": "Cuando el portador del estado empieza su turno con todos sus PW (o todo su QB): [X]% Golpe crítico (1 turno)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -386,7 +386,7 @@
       "B",
       "R"
     ],
-    "description": "-10% Heals performed. The state bearer is healed by [X] % of heals performed on their allies",
+    "description": "-10% Sanaciones realizadas. El portador del estado es sanado por el [X]% de las sanaciones realizadas sobre sus aliados",
     "rarity": [
       "Rare",
       "Mythic",
@@ -421,7 +421,7 @@
       "G",
       "B"
     ],
-    "description": "The first critical hit in the turn inflicts [X]% additional damageThe following ones inflict -[Y]% less damage",
+    "description": "El primer golpe crítico del turno inflige [X]% de daños adicionales. Los siguientes infligen -[Y]% de daños",
     "rarity": [
       "Rare",
       "Mythic"
@@ -460,7 +460,7 @@
       "G",
       "R"
     ],
-    "description": "When ending turn with less than 50% HP: Heals: [X] % of missing HP",
+    "description": "Al terminar el turno con menos del 50% de los PdV: Sanación: [X]% de los PdV que faltan",
     "rarity": [
       "Rare",
       "Mythic",
@@ -495,7 +495,7 @@
       "R",
       "B"
     ],
-    "description": "At the start of the first turn if secondary masteries are <= 0: [X] max WP and [X] Range -[Y]% Armor given and received",
+    "description": "Al principio del primer turno, si los dominios secundarios son <= 0: [X] PW máx. y [X] Alcance, -[Y]% Armadura dada y recibida",
     "rarity": [
       "Mythic"
     ],
@@ -533,7 +533,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% non-critical damage and heals inflicted -[X]% critical damage and heals inflicted",
+    "description": "[X]% daños y sanaciones no críticos infligidos, -[X]% daños y sanaciones críticos infligidos",
     "rarity": [
       "Rare",
       "Mythic",
@@ -568,7 +568,7 @@
       "B",
       "R"
     ],
-    "description": "When the state bearer starts their turn with 50% or less of their WP (or their QB): [X]% Critical Damage inflicted (1 turn) [Y]% of level as Armor",
+    "description": "Cuando el portador del estado empieza su turno con el 50% o menos de sus PW (o de su QB): [X]% Daños críticos infligidos (1 turno), [Y]% del nivel como Armadura",
     "rarity": [
       "Rare",
       "Mythic",
@@ -608,7 +608,7 @@
       "B",
       "R"
     ],
-    "description": "If no other shield dagger or two-handed weapon is equipped at start of fight: [X]% of level in Elemental Mastery [Y]% of Damage inflicted on a target with Armor",
+    "description": "Si no hay otro escudo, daga o arma a dos manos equipado al principio del combate: [X]% del nivel en Dominio elemental, [Y]% de Daños infligidos sobre un objetivo con Armadura",
     "rarity": [
       "Rare",
       "Mythic",
@@ -648,7 +648,7 @@
       "B",
       "G"
     ],
-    "description": "When the state bearer suffers direct close-combat damage once per turn of the attacker: The state bearer turns toward them.",
+    "description": "Cuando el portador del estado sufre daños directos cuerpo a cuerpo, una vez por turno del atacante: El portador del estado se gira hacia él.",
     "rarity": [
       "Mythic"
     ],
@@ -676,7 +676,7 @@
       "R",
       "G"
     ],
-    "description": "Heal [X]% of max HP when below 20% max hp (once per fight)",
+    "description": "Sana [X]% de los PdV máx. al bajar del 20% de los PdV máx. (una vez por combate)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -711,7 +711,7 @@
       "B",
       "R"
     ],
-    "description": "At start of fight: [X]% of level as Dodge",
+    "description": "Al principio del combate: [X]% del nivel como Esquiva",
     "rarity": [
       "Rare",
       "Mythic",
@@ -746,7 +746,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% DMG inflicted on targets exactly 3 cells away",
+    "description": "[X]% Daños infligidos a los objetivos exactamente a 3 casillas",
     "rarity": [
       "Rare",
       "Mythic",
@@ -781,7 +781,7 @@
       "G",
       "R"
     ],
-    "description": "At start of fight: [X]% of level as Lock",
+    "description": "Al principio del combate: [X]% del nivel como Placaje",
     "rarity": [
       "Rare",
       "Mythic",
@@ -816,7 +816,7 @@
       "R",
       "B"
     ],
-    "description": "At start of turn: Converts [X]% of current HP into Armor",
+    "description": "Al principio del turno: Convierte el [X]% de los PdV actuales en Armadura",
     "rarity": [
       "Rare",
       "Mythic",
@@ -851,7 +851,7 @@
       "G",
       "R"
     ],
-    "description": "-20% Heals received. When the bearer inflicts damage in a diagonal line: Steals [X]% of damage inflicted",
+    "description": "-20% Sanaciones recibidas. Cuando el portador inflige daños en diagonal: Roba [X]% de los daños infligidos",
     "rarity": [
       "Rare",
       "Mythic",
@@ -886,7 +886,7 @@
       "B",
       "B"
     ],
-    "description": "Recover [X] AP when you cause an enemy to lose Armor (2 activations per turn)",
+    "description": "Recupera [X] PA cuando haces que un enemigo pierda Armadura (2 activaciones por turno)",
     "rarity": [
       "Mythic"
     ],
@@ -919,7 +919,7 @@
       "B",
       "B"
     ],
-    "description": "[X]% Armor given",
+    "description": "[X]% Armadura dada",
     "rarity": [
       "Rare",
       "Mythic",
@@ -954,7 +954,7 @@
       "B",
       "G"
     ],
-    "description": "When the bearer removes all of a target's armor: [X]% damage inflicted for the rest of the turn 30% maximum",
+    "description": "Cuando el portador retira toda la armadura de un objetivo: [X]% de daños infligidos durante el resto del turno (30% máximo)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -989,7 +989,7 @@
       "G",
       "G"
     ],
-    "description": "Each time indirect dmg inflicted: -[X]% Direct dmg +[X]% Indirect DMG (Max 40%)",
+    "description": "Por cada daño indirecto infligido: -[X]% Daños directos, +[X]% Daños indirectos (máx. 40%)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1024,7 +1024,7 @@
       "B",
       "G"
     ],
-    "description": "Outside of your turn: [X] FoW. During your turn: -[Y] FoW",
+    "description": "Fuera de tu turno: [X] Voluntad. Durante tu turno: -[Y] Voluntad",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1064,7 +1064,7 @@
       "G",
       "B"
     ],
-    "description": "-20% Heals performed. For each turn without performing heals: [X]% Heals performed Stackable up to 40%",
+    "description": "-20% Sanaciones realizadas. Por cada turno sin realizar sanaciones: [X]% Sanaciones realizadas, acumulable hasta el 40%",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1099,7 +1099,7 @@
       "G",
       "R"
     ],
-    "description": "Reduces direct damage received greater than 20% of max HP by 400% of level (once per round)",
+    "description": "Reduce los daños directos recibidos superiores al 20% de los PdV máx. en un 400% del nivel (una vez por ronda)",
     "rarity": [
       "Mythic"
     ],
@@ -1127,7 +1127,7 @@
       "G",
       "B"
     ],
-    "description": "At end of turn if the state bearer has 2 or more AP: [X] Elemental Resistance (1 turn)",
+    "description": "Al final del turno, si el portador del estado tiene 2 PA o más: [X] Resistencia elemental (1 turno)",
     "rarity": [
       "Mythic"
     ],
@@ -1160,7 +1160,7 @@
       "B",
       "G"
     ],
-    "description": "At start of fight: [X]% Block (1 turn)",
+    "description": "Al principio del combate: [X]% Anticipación (1 turno)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1195,7 +1195,7 @@
       "G",
       "G"
     ],
-    "description": "When you inflict direct dmg. Once per turn: Inflict [X]% of level as Light damage on enemies aligned with the target",
+    "description": "Cuando infliges daños directos, una vez por turno: Inflige [X]% del nivel como daños de Luz a los enemigos alineados con el objetivo",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1230,7 +1230,7 @@
       "G",
       "G"
     ],
-    "description": "1 mp After dodging with loss ([X] max per turn)",
+    "description": "1 PM tras una esquiva con pérdida ([X] máx. por turno)",
     "rarity": [
       "Mythic"
     ],
@@ -1263,7 +1263,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Damage from behind -[Y]% frontal and side Damage",
+    "description": "[X]% Daños por la espalda, -[Y]% Daños frontales y laterales",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1303,7 +1303,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Armor given to an aligned ally at a distance",
+    "description": "[X]% Armadura dada a un aliado alineado a distancia",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1338,7 +1338,7 @@
       "R",
       "G"
     ],
-    "description": "Gains [X]% of level as Flaming on killing an enemy (1 activation per turn)",
+    "description": "Gana [X]% del nivel como En llamas al matar a un enemigo (1 activación por turno)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -1372,7 +1372,7 @@
       "G",
       "B"
     ],
-    "description": "-10% Damage inflicted with a weapon. When inflicting damage on an enemy with a two-handed weapon: Steals [X]% of level in Dodge (1 turn not stackable)",
+    "description": "-10% Daños infligidos con un arma. Al infligir daños a un enemigo con un arma a dos manos: Roba [X]% del nivel en Esquiva (1 turno, no acumulable)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1407,7 +1407,7 @@
       "B",
       "R"
     ],
-    "description": "Receive [X]% of max HP as Armor when below 20% max hp (once per fight)",
+    "description": "Recibe [X]% de los PdV máx. como Armadura al bajar del 20% de los PdV máx. (una vez por combate)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1442,7 +1442,7 @@
       "R",
       "R"
     ],
-    "description": "Regains [X]% of max HP as Armor by killing an enemy (2 activations per turn)",
+    "description": "Recupera [X]% de los PdV máx. como Armadura al matar a un enemigo (2 activaciones por turno)",
     "rarity": [
       "Mythic"
     ],
@@ -1475,7 +1475,7 @@
       "G",
       "R"
     ],
-    "description": "When you cause an enemy to lose armor: inflict [X]% of level as dmg on the target. (2 activations per turn)",
+    "description": "Cuando haces que un enemigo pierda armadura: inflige [X]% del nivel como daños al objetivo (2 activaciones por turno)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -1509,7 +1509,7 @@
       "G",
       "B"
     ],
-    "description": " + [X]% Water dmg when casting a fire/air/earth spell. Stacks up to 30%. consumed on next direct Water dmg.",
+    "description": "+[X]% Daños de Agua al lanzar un hechizo de Fuego/Aire/Tierra. Acumulable hasta el 30%. Se consume con el próximo daño de Agua directo.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1544,7 +1544,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Earth DMG",
+    "description": "[X]% Daños de Tierra",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1579,7 +1579,7 @@
       "R",
       "G"
     ],
-    "description": " + [X]% Fire dmg when casting a water/air/earth spell. Stacks up to 30%. consumed on next direct Fire dmg.",
+    "description": "+[X]% Daños de Fuego al lanzar un hechizo de Agua/Aire/Tierra. Acumulable hasta el 30%. Se consume con el próximo daño de Fuego directo.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1614,7 +1614,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Air DMG",
+    "description": "[X]% Daños de Aire",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1649,7 +1649,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Water DMG",
+    "description": "[X]% Daños de Agua",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1684,7 +1684,7 @@
       "B",
       "R"
     ],
-    "description": " + [X]% Earth dmg when casting a fire/air/water spell. Stacks up to 30%. consumed on next direct Earth dmg.",
+    "description": "+[X]% Daños de Tierra al lanzar un hechizo de Fuego/Aire/Agua. Acumulable hasta el 30%. Se consume con el próximo daño de Tierra directo.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1719,7 +1719,7 @@
       "G",
       "G"
     ],
-    "description": " + [X]% Air dmg when casting a fire/water/earth spell. Stacks up to 30%. consumed on next direct Air dmg.",
+    "description": "+[X]% Daños de Aire al lanzar un hechizo de Fuego/Agua/Tierra. Acumulable hasta el 30%. Se consume con el próximo daño de Aire directo.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1754,7 +1754,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% Fire DMG",
+    "description": "[X]% Daños de Fuego",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1789,7 +1789,7 @@
       "R",
       "B"
     ],
-    "description": "After suffering a loss of 2 MP: [X] Force of Will (3 turns)",
+    "description": "Tras sufrir una pérdida de 2 PM: [X] Voluntad (3 turnos)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -1823,7 +1823,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% to characteristic bonuses received. Affects all characteristic bonuses (Masteries Resistances Armor) received in combat and cast by an entity other than the state bearer.The value is always rounded down.",
+    "description": "[X]% a los bonus de características recibidos. Afecta a todos los bonus de características (Dominios, Resistencias, Armadura) recibidos en combate y lanzados por una entidad distinta del portador del estado. El valor siempre se redondea hacia abajo.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1858,7 +1858,7 @@
       "R",
       "G"
     ],
-    "description": "Recovers [X] MP on killing an enemy (2 activations per turn)",
+    "description": "Recupera [X] PM al matar a un enemigo (2 activaciones por turno)",
     "rarity": [
       "Mythic"
     ],
@@ -1891,7 +1891,7 @@
       "R",
       "R"
     ],
-    "description": "[X]% Indirect Damage",
+    "description": "[X]% Daños indirectos",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1926,7 +1926,7 @@
       "G",
       "B"
     ],
-    "description": "Receive [X] Resistances when below 20% max hp (once per fight)",
+    "description": "Recibe [X] Resistencias al bajar del 20% de los PdV máx. (una vez por combate)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1961,7 +1961,7 @@
       "R",
       "G"
     ],
-    "description": "Increases Health Steals performed by [X]%",
+    "description": "Aumenta los Robos de vida realizados en un [X]%",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1996,7 +1996,7 @@
       "G",
       "R"
     ],
-    "description": "Even turns: [X] Force of Will. Odd turns: -[X] Force of Will",
+    "description": "Turnos pares: [X] Voluntad. Turnos impares: -[X] Voluntad",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2030,7 +2030,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Damage inflicted in a diagonal line",
+    "description": "[X]% Daños infligidos en diagonal",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2065,7 +2065,7 @@
       "B",
       "B"
     ],
-    "description": "- 1 WP max. + 1 wp at end of turn if you did not spend any WP during the turn",
+    "description": "-1 PW máx. +1 PW al final del turno si no has gastado ningún PW durante el turno",
     "rarity": [
       "Mythic"
     ],
@@ -2093,7 +2093,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Critical Hit -[X]% Damage and Heals",
+    "description": "[X]% Golpe crítico, -[X]% Daños y Sanaciones",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2127,7 +2127,7 @@
       "B",
       "G"
     ],
-    "description": " On the state bearer's first turn:1 WP (non-regenerable)",
+    "description": "En el primer turno del portador del estado: 1 PW (no regenerable)",
     "rarity": [
       "Mythic"
     ],
@@ -2155,7 +2155,7 @@
       "B",
       "R"
     ],
-    "description": "[X]% Damage Inflicted on targets in close combat",
+    "description": "[X]% Daños infligidos a los objetivos cuerpo a cuerpo",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2190,7 +2190,7 @@
       "G",
       "R"
     ],
-    "description": "- [X]% indirect Damage received",
+    "description": "-[X]% Daños indirectos recibidos",
     "rarity": [
       "Mythic"
     ],
@@ -2223,7 +2223,7 @@
       "G",
       "G"
     ],
-    "description": "[X]% Critical Hits per turn (max 30)",
+    "description": "[X]% Golpe crítico por turno (máx. 30)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2258,7 +2258,7 @@
       "R",
       "R"
     ],
-    "description": "-15% Damage inflicted. At start of turn: 25% Damage inflicted if a single enemy was hit the previous turn",
+    "description": "-15% Daños infligidos. Al principio del turno: 25% Daños infligidos si un solo enemigo fue golpeado el turno anterior",
     "rarity": [
       "Mythic"
     ],
@@ -2286,7 +2286,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Heals performed on an aligned ally at a distance",
+    "description": "[X]% Sanaciones realizadas sobre un aliado alineado a distancia",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2321,7 +2321,7 @@
       "B",
       "G"
     ],
-    "description": "[X] Damage inflicted with a Weapon. When inflicting damage on an enemy with a two-handed weapon: Incurable (level: AP cost of the weapon) on the enemy and state bearer",
+    "description": "[X] Daños infligidos con un arma. Al infligir daños a un enemigo con un arma a dos manos: Incurable (nivel: coste en PA del arma) sobre el enemigo y el portador del estado",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2356,7 +2356,7 @@
       "R",
       "G"
     ],
-    "description": "Melee damage removes [X]% of level in Armor from the target -[Y]% Armor received",
+    "description": "Los daños cuerpo a cuerpo retiran [X]% del nivel en Armadura al objetivo, -[Y]% Armadura recibida",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2396,7 +2396,7 @@
       "G",
       "B"
     ],
-    "description": "[X]% Damage from behind on even turns. [X]% frontal Damage on odd turns",
+    "description": "[X]% Daños por la espalda en turnos pares. [X]% Daños frontales en turnos impares",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2431,7 +2431,7 @@
       "B",
       "R"
     ],
-    "description": "-20 Force of Will. Reduces the next MP loss suffered by 1, [X] time(s). The effect is reapplied every turn",
+    "description": "-20 Voluntad. Reduce la próxima pérdida de PM sufrida en 1, [X] veces. El efecto se vuelve a aplicar cada turno",
     "rarity": [
       "Mythic"
     ],
@@ -2464,7 +2464,7 @@
       "B",
       "B"
     ],
-    "description": "When HP are at less than 50%: [X]% of level as Lock",
+    "description": "Cuando los PdV están por debajo del 50%: [X]% del nivel como Placaje",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2499,7 +2499,7 @@
       "B",
       "B"
     ],
-    "description": "1 AP [X] Elemental Resistance",
+    "description": "1 PA, [X] Resistencia elemental",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2533,7 +2533,7 @@
       "R",
       "B"
     ],
-    "description": "- [X]% to characterstic penalties received. Affects all characterstic penalties (Masteries, Resitances, Armor, Critical Hits, etc.) received in combat and cast by an entity other than the state bearer. The value is always rounded down.",
+    "description": "-[X]% a las penalizaciones de características recibidas. Afecta a todas las penalizaciones de características (Dominios, Resistencias, Armadura, Golpes críticos, etc.) recibidas en combate y lanzadas por una entidad distinta del portador del estado. El valor siempre se redondea hacia abajo.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2568,7 +2568,7 @@
       "B",
       "G"
     ],
-    "description": "When HP are at less than 50%: [X]% of level as Dodge",
+    "description": "Cuando los PdV están por debajo del 50%: [X]% del nivel como Esquiva",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2603,7 +2603,7 @@
       "B",
       "B"
     ],
-    "description": "1 WP [X] Force of Will",
+    "description": "1 PW, [X] Voluntad",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2638,7 +2638,7 @@
       "B",
       "B"
     ],
-    "description": "-50 Elemental Resistance, -15% Damage received during a Block",
+    "description": "-50 Resistencia elemental, -15% Daños recibidos durante una Anticipación",
     "rarity": [
       "Mythic"
     ],
@@ -2666,7 +2666,7 @@
       "G",
       "R"
     ],
-    "description": "Reduces Ranged Damage suffered by 50% of level [X] times per turn",
+    "description": "Reduce los Daños a distancia sufridos en un 50% del nivel, [X] veces por turno",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2701,7 +2701,7 @@
       "G",
       "G"
     ],
-    "description": "1 Range [X] Lock [X] Dodge",
+    "description": "1 Alcance, [X] Placaje, [X] Esquiva",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2735,7 +2735,7 @@
       "B",
       "G"
     ],
-    "description": "At start of fight [X]% of level as Armor",
+    "description": "Al principio del combate, [X]% del nivel como Armadura",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2770,7 +2770,7 @@
       "G",
       "B"
     ],
-    "description": "Reduces Melee Damage suffered by 50% of level [X] times per turn",
+    "description": "Reduce los Daños cuerpo a cuerpo sufridos en un 50% del nivel, [X] veces por turno",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2805,7 +2805,7 @@
       "R",
       "R"
     ],
-    "description": "1 MP [X]% Damage inflicted",
+    "description": "1 PM, [X]% Daños infligidos",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2839,7 +2839,7 @@
       "R",
       "G"
     ],
-    "description": "[X]% Blocks per turn (max 40)",
+    "description": "[X]% Anticipación por turno (máx. 40)",
     "rarity": [
       "Mythic"
     ],
@@ -2872,7 +2872,7 @@
       "G",
       "B"
     ],
-    "description": "At the start of combat :Any Dodge by the state bearer is converted into Armor, at a rate 1 to [X].Converted Dodge is lost.",
+    "description": "Al principio del combate: Toda Esquiva del portador del estado se convierte en Armadura, a razón de 1 por [X]. La Esquiva convertida se pierde.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2907,7 +2907,7 @@
       "R",
       "R"
     ],
-    "description": "20% indirect Damage in even rounds",
+    "description": "20% Daños indirectos en las rondas pares",
     "rarity": [
       "Mythic"
     ],
@@ -2935,7 +2935,7 @@
       "G",
       "B"
     ],
-    "description": "-20% Damage inflicted. At start of turn:10% Damage inflicted per enemy hit in the previous turn.",
+    "description": "-20% Daños infligidos. Al principio del turno: 10% Daños infligidos por enemigo golpeado el turno anterior.",
     "rarity": [
       "Mythic"
     ],
@@ -2963,7 +2963,7 @@
       "G",
       "B"
     ],
-    "description": "When HP are at less than 50%: [X]% Block",
+    "description": "Cuando los PdV están por debajo del 50%: [X]% Anticipación",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2998,7 +2998,7 @@
       "B",
       "G"
     ],
-    "description": "At start of fight: [X]% Critical Hit (1 turn) of [X]% level as Critical Mastery (1 turn)",
+    "description": "Al principio del combate: [X]% Golpe crítico (1 turno) y [X]% del nivel como Dominio crítico (1 turno)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3033,7 +3033,7 @@
       "G",
       "B"
     ],
-    "description": "-15% Damage inflicted. At start of turn: 5% Damage inflicted per entity hit in the previous turn.",
+    "description": "-15% Daños infligidos. Al principio del turno: 5% Daños infligidos por entidad golpeada el turno anterior.",
     "rarity": [
       "Mythic"
     ],
@@ -3061,7 +3061,7 @@
       "B",
       "R"
     ],
-    "description": "When healing an ally, if the ally has less than 15% HP: Heal Ally: [X]% of HP max of the target enemy",
+    "description": "Al sanar a un aliado, si el aliado tiene menos del 15% de PdV: Sana al aliado: [X]% de los PdV máx. del objetivo",
     "rarity": [
       "Rare",
       "Mythic"
@@ -3095,7 +3095,7 @@
       "B",
       "R"
     ],
-    "description": "After suffering a loss of 3 AP: [X] Force of Will (3 turns)",
+    "description": "Tras sufrir una pérdida de 3 PA: [X] Voluntad (3 turnos)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3130,7 +3130,7 @@
       "R",
       "R"
     ],
-    "description": "At end of turn: Unused AP are carried over to the next turn Max [X] AP",
+    "description": "Al final del turno: Los PA no utilizados se trasladan al turno siguiente (máx. [X] PA)",
     "rarity": [
       "Mythic"
     ],
@@ -3163,7 +3163,7 @@
       "G",
       "G"
     ],
-    "description": "At start of fight: All Masteries: [X]% of level. All Resistances: [Y]",
+    "description": "Al principio del combate: Todos los Dominios: [X]% del nivel. Todas las Resistencias: [Y]",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3203,7 +3203,7 @@
       "B",
       "G"
     ],
-    "description": "If there are no allies 1 to 4 cells from the bearer: [X]% Damage Inflicted",
+    "description": "Si no hay aliados a 1-4 casillas del portador: [X]% Daños infligidos",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3238,7 +3238,7 @@
       "R",
       "B"
     ],
-    "description": "After suffering a loss of 3 MP: [X] Force of Will (3 turns)",
+    "description": "Tras sufrir una pérdida de 3 PM: [X] Voluntad (3 turnos)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3273,7 +3273,7 @@
       "B",
       "R"
     ],
-    "description": "[X]% Armor received",
+    "description": "[X]% Armadura recibida",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3308,7 +3308,7 @@
       "B",
       "R"
     ],
-    "description": "Performing a Block gives Preparation (+[X] Lvl.)",
+    "description": "Realizar una Anticipación da Preparación (+[X] niv.)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3343,7 +3343,7 @@
       "B",
       "B"
     ],
-    "description": "At start of fight: Reduces Healing Mastery to 0. 10% Heals performed",
+    "description": "Al principio del combate: Reduce el Dominio de sanación a 0. 10% Sanaciones realizadas",
     "rarity": [
       "Mythic"
     ],
@@ -3371,7 +3371,7 @@
       "G",
       "G"
     ],
-    "description": "At end of turn if a critical hit was performed: Heal: [X]% of HP lost of the caster",
+    "description": "Al final del turno, si se realizó un golpe crítico: Sanación: [X]% de los PdV perdidos del lanzador",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3406,7 +3406,7 @@
       "R",
       "G"
     ],
-    "description": "Recovers [X] AP on killing an enemy (2 activations per turn)",
+    "description": "Recupera [X] PA al matar a un enemigo (2 activaciones por turno)",
     "rarity": [
       "Mythic"
     ],
@@ -3439,7 +3439,7 @@
       "R",
       "G"
     ],
-    "description": "When HP are above 90%: [X]% of level in Elemental Mastery",
+    "description": "Cuando los PdV están por encima del 90%: [X]% del nivel en Dominio elemental",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3474,7 +3474,7 @@
       "B",
       "B"
     ],
-    "description": "At end of turn: 50% of unused MP are carried over to the next turn Max [X] MP",
+    "description": "Al final del turno: el 50% de los PM no utilizados se trasladan al turno siguiente (máx. [X] PM)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -3508,7 +3508,7 @@
       "G",
       "G"
     ],
-    "description": "When HP are at less than 50%: [X]% Critical Hit",
+    "description": "Cuando los PdV están por debajo del 50%: [X]% Golpe crítico",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3543,7 +3543,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% health points (bonus on HP modifier)",
+    "description": "[X]% puntos de vida (bonus al modificador de PdV)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3578,7 +3578,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% Damage Inflicted on targets 2 cells away (1 cell between the state bearer and the target)",
+    "description": "[X]% Daños infligidos a los objetivos a 2 casillas (1 casilla entre el portador del estado y el objetivo)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3613,7 +3613,7 @@
       "G",
       "G"
     ],
-    "description": "At start of fight: [X]% Critical Hit [X]% Block [X] Force of Will",
+    "description": "Al principio del combate: [X]% Golpe crítico, [X]% Anticipación, [X] Voluntad",
     "rarity": [
       "Mythic"
     ],
@@ -3646,7 +3646,7 @@
       "B",
       "R"
     ],
-    "description": "After suffering a loss of 2 AP: [X] Force of Will (3 turns)",
+    "description": "Tras sufrir una pérdida de 2 PA: [X] Voluntad (3 turnos)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -3680,7 +3680,7 @@
       "G",
       "R"
     ],
-    "description": "At end of turn if the state bearer has 6 or more AP:60 Elemental Resistance (2 turns)",
+    "description": "Al final del turno, si el portador del estado tiene 6 PA o más: 60 Resistencia elemental (2 turnos)",
     "rarity": [
       "Mythic"
     ],
@@ -3708,7 +3708,7 @@
       "G",
       "G"
     ],
-    "description": "If the bearer has no Armor: [X]% Armor given",
+    "description": "Si el portador no tiene Armadura: [X]% Armadura dada",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3743,7 +3743,7 @@
       "G",
       "R"
     ],
-    "description": "[X] Critical Resistance",
+    "description": "[X] Resistencia crítica",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3778,7 +3778,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Block",
+    "description": "[X]% Anticipación",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3813,7 +3813,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% DMG inflicted on targets 5 cells or further away",
+    "description": "[X]% Daños infligidos a los objetivos a 5 casillas o más",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3848,7 +3848,7 @@
       "B",
       "B"
     ],
-    "description": "-[X]% Damage received when the bearer is not in line of sight [Y]% Damage received when the bearer is in line of sight",
+    "description": "-[X]% Daños recibidos cuando el portador no está en línea de visión, [Y]% Daños recibidos cuando el portador está en línea de visión",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3888,7 +3888,7 @@
       "R",
       "G"
     ],
-    "description": "When HP are above 90%: [X]% Critical Hit",
+    "description": "Cuando los PdV están por encima del 90%: [X]% Golpe crítico",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3923,7 +3923,7 @@
       "G",
       "B"
     ],
-    "description": "[X]% Damage inflicted on a target with armor",
+    "description": "[X]% Daños infligidos sobre un objetivo con armadura",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3958,7 +3958,7 @@
       "B",
       "G"
     ],
-    "description": "Regains 1 AP by removing 1 AP or MP from an enemy ([X] max per turn)",
+    "description": "Recupera 1 PA al retirar 1 PA o PM a un enemigo ([X] máx. por turno)",
     "rarity": [
       "Mythic"
     ],
@@ -3991,7 +3991,7 @@
       "G",
       "R"
     ],
-    "description": "For each penalty or loss applied to an enemy: Blood strains +[X] lvls (Blood stains: [X]% dmg received by the caster. max 40%)",
+    "description": "Por cada penalización o pérdida aplicada a un enemigo: Manchas de sangre +[X] niv. (Manchas de sangre: [X]% daños recibidos por el lanzador, máx. 40%)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4026,7 +4026,7 @@
       "G",
       "B"
     ],
-    "description": "When HP are above 90%: [X]% Block",
+    "description": "Cuando los PdV están por encima del 90%: [X]% Anticipación",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4061,7 +4061,7 @@
       "G",
       "B"
     ],
-    "description": "Outside of your turn: -[X] FoW. During your turn: [Y] FoW",
+    "description": "Fuera de tu turno: -[X] Voluntad. Durante tu turno: [Y] Voluntad",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4101,7 +4101,7 @@
       "R",
       "B"
     ],
-    "description": "If a non-critical hit is performed with an elemental spell: [X]% Critical Hit on the following turn",
+    "description": "Si se realiza un golpe no crítico con un hechizo elemental: [X]% Golpe crítico en el turno siguiente",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4136,7 +4136,7 @@
       "G",
       "R"
     ],
-    "description": "As long as the bearer has no Armor: [X]% Damage inflicted",
+    "description": "Mientras el portador no tenga Armadura: [X]% Daños infligidos",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4171,7 +4171,7 @@
       "B",
       "G"
     ],
-    "description": "Each time a non-critical spell is case: [X]% Critical Hit. Bonus is lost on next critical spell",
+    "description": "Cada vez que se lanza un hechizo no crítico: [X]% Golpe crítico. El bonus se pierde con el próximo hechizo crítico",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4206,7 +4206,7 @@
       "R",
       "R"
     ],
-    "description": "After locking an enemy: [X]% of level as Armor",
+    "description": "Tras placar a un enemigo: [X]% del nivel como Armadura",
     "rarity": [
       "Mythic"
     ],
@@ -4239,7 +4239,7 @@
       "B",
       "R"
     ],
-    "description": "At start of turn if HP are above 90%: 1 MP",
+    "description": "Al principio del turno, si los PdV están por encima del 90%: 1 PM",
     "rarity": [
       "Mythic"
     ],
@@ -4267,7 +4267,7 @@
       "R",
       "G"
     ],
-    "description": "When you suffer ranged direct dmg: 6% extra DMG inflicted on the attacked. 1 turn Non stackable",
+    "description": "Cuando sufres daños directos a distancia: 6% de Daños adicionales infligidos al atacante. 1 turno, no acumulable",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4302,7 +4302,7 @@
       "B",
       "R"
     ],
-    "description": "At end of turn, per enemy in close combat: [X]% DMG inflicted for the following turn.",
+    "description": "Al final del turno, por enemigo cuerpo a cuerpo: [X]% Daños infligidos para el turno siguiente.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4337,7 +4337,7 @@
       "G",
       "G"
     ],
-    "description": "[X] Rear Resistance",
+    "description": "[X] Resistencia por la espalda",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4372,7 +4372,7 @@
       "G",
       "B"
     ],
-    "description": "Each time a non-critical spell is cast: +[X]% Critical DMG (Stackable up to 40%). Bonus is lost on next critical spell",
+    "description": "Cada vez que se lanza un hechizo no crítico: +[X]% Daños críticos (acumulable hasta el 40%). El bonus se pierde con el próximo hechizo crítico",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4407,7 +4407,7 @@
       "G",
       "B"
     ],
-    "description": "At start of turn if HP are above 90%: [X] AP",
+    "description": "Al principio del turno, si los PdV están por encima del 90%: [X] PA",
     "rarity": [
       "Mythic"
     ],
@@ -4435,7 +4435,7 @@
       "R",
       "G"
     ],
-    "description": "When performing a block on a direct enemy attack: [X]% damage inflicted (1 turn) -10% Block",
+    "description": "Al realizar una anticipación de un ataque directo enemigo: [X]% Daños infligidos (1 turno), -10% Anticipación",
     "rarity": [
       "Rare",
       "Mythic"
@@ -4469,7 +4469,7 @@
       "G",
       "G"
     ],
-    "description": "[X]% critical damage inflicted if the target has > 50% HP -[X]% critical damage inflicted if the target has <= 50% HP",
+    "description": "[X]% Daños críticos infligidos si el objetivo tiene > 50% PdV, -[X]% Daños críticos infligidos si el objetivo tiene <= 50% PdV",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4504,7 +4504,7 @@
       "G",
       "R"
     ],
-    "description": "At the start of the first turn if secondary masteries are <= 0: [X]% damage inflicted",
+    "description": "Al principio del primer turno, si los dominios secundarios son <= 0: [X]% Daños infligidos",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4539,7 +4539,7 @@
       "B",
       "G"
     ],
-    "description": "At the start of the first turn if secondary masteries are <= 0: [X]% Block",
+    "description": "Al principio del primer turno, si los dominios secundarios son <= 0: [X]% Anticipación",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4574,7 +4574,7 @@
       "B",
       "R"
     ],
-    "description": "When the bearer starts their turn below 20% HP: [X]% Damage inflicted (1 turn) [Y]% of level as armor",
+    "description": "Cuando el portador empieza su turno por debajo del 20% de los PdV: [X]% Daños infligidos (1 turno), [Y]% del nivel como Armadura",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4614,7 +4614,7 @@
       "R",
       "R"
     ],
-    "description": "Ending a turn adjacent to an enemy applies -[X]% Heals performed to it (1 turn)",
+    "description": "Terminar el turno adyacente a un enemigo le aplica -[X]% Sanaciones realizadas (1 turno)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4649,7 +4649,7 @@
       "G",
       "B"
     ],
-    "description": "If there are two or more allies 1 to 4 cells from the bearer: [X]% Damage Inflicted",
+    "description": "Si hay dos o más aliados a 1-4 casillas del portador: [X]% Daños infligidos",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4684,7 +4684,7 @@
       "G",
       "G"
     ],
-    "description": "At start of fight: -[X] max WP. For each WP spent during the turn: [Y]% damage inflicted (1 turn) (max 30)",
+    "description": "Al principio del combate: -[X] PW máx. Por cada PW gastado durante el turno: [Y]% Daños infligidos (1 turno) (máx. 30)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4724,7 +4724,7 @@
       "B",
       "R"
     ],
-    "description": "At the start of the first turn if secondary masteries are <= 0: [X]% Critical Hit",
+    "description": "Al principio del primer turno, si los dominios secundarios son <= 0: [X]% Golpe crítico",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4759,7 +4759,7 @@
       "G",
       "B"
     ],
-    "description": "-1 Range +[X]% of level as Lock and Dodge",
+    "description": "-1 Alcance, +[X]% del nivel en Placaje y Esquiva",
     "rarity": [
       "Rare",
       "Mythic"
@@ -4793,7 +4793,7 @@
       "G",
       "G"
     ],
-    "description": "Each time a critical hit is performed (5 activations per turn): Preparation (+[X] Lvl.)",
+    "description": "Cada vez que se realiza un golpe crítico (5 activaciones por turno): Preparación (+[X] niv.)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4828,7 +4828,7 @@
       "R",
       "G"
     ],
-    "description": "[X]% Damage inflicted on targets without line of sight 3 or more cells away from the state bearer",
+    "description": "[X]% Daños infligidos a los objetivos sin línea de visión a 3 casillas o más del portador del estado",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4863,7 +4863,7 @@
       "R",
       "B"
     ],
-    "description": "At start of turn if no WP were used during the previous turn: [X]% Damage inflicted [X]% Heals performed",
+    "description": "Al principio del turno, si no se usaron PW el turno anterior: [X]% Daños infligidos, [X]% Sanaciones realizadas",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4898,7 +4898,7 @@
       "B",
       "B"
     ],
-    "description": "[X] max AP 75 Elemental Resistance",
+    "description": "[X] PA máx., 75 Resistencia elemental",
     "rarity": [
       "Rare",
       "Mythic"
@@ -4932,7 +4932,7 @@
       "G",
       "B"
     ],
-    "description": "-1 max MP [X]% Damage inflicted",
+    "description": "-1 PM máx., [X]% Daños infligidos",
     "rarity": [
       "Rare",
       "Mythic"
@@ -4966,7 +4966,7 @@
       "R",
       "R"
     ],
-    "description": "At the start of combat per MP above 4: [X]% Damage inflicted (maximum 24)",
+    "description": "Al principio del combate, por PM por encima de 4: [X]% Daños infligidos (máximo 24)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -5001,7 +5001,7 @@
       "R",
       "B"
     ],
-    "description": "At end of turn: Unused AP is carried over to the next turn as Critical Hit: 10% Critical Hit por AP (max [X] AP)",
+    "description": "Al final del turno: Los PA no utilizados se trasladan al turno siguiente como Golpe crítico: 10% Golpe crítico por PA (máx. [X] PA)",
     "rarity": [
       "Mythic"
     ],
@@ -5034,7 +5034,7 @@
       "R",
       "G"
     ],
-    "description": "If the bearer uses a spell to move: Preparation + [X] lvl ([X]% damage inflicted on next damage)",
+    "description": "Si el portador usa un hechizo para desplazarse: Preparación +[X] niv. ([X]% daños infligidos en el próximo daño)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -5069,7 +5069,7 @@
       "R",
       "B"
     ],
-    "description": "When inflicting single-target damage on an enemy: [X] extra damage infliced on this target on the next turn",
+    "description": "Al infligir daños monoobjetivo a un enemigo: [X] daños adicionales infligidos a ese objetivo el turno siguiente",
     "rarity": [
       "Rare",
       "Mythic",
@@ -5104,7 +5104,7 @@
       "B",
       "G"
     ],
-    "description": "When single-target healing an ally: [X] extra heals performed on this target on the next turn",
+    "description": "Al sanar a un aliado en monoobjetivo: [X] sanaciones adicionales realizadas sobre ese objetivo el turno siguiente",
     "rarity": [
       "Rare",
       "Mythic",
@@ -5139,7 +5139,7 @@
       "R",
       "B"
     ],
-    "description": "At end of turn, if an enemy is adjacent: [X]% of damage inflicted for the following turn",
+    "description": "Al final del turno, si un enemigo está adyacente: [X]% de daños infligidos para el turno siguiente",
     "rarity": [
       "Rare",
       "Mythic",
@@ -5172,7 +5172,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the highest Elemental Mastery is greater than the Healing Mastery:\n\n-15% damage inflicted\n30% heals performed",
+    "description": "Al principio del combate, si el Dominio elemental más alto es mayor que el Dominio de sanación: -15% daños infligidos, 30% sanaciones realizadas",
     "rarity": [
       "Epic"
     ],
@@ -5198,7 +5198,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the highest Elemental Mastery is greater than Rear Mastery:\n\n-20% damage inflicted\n40% damage inflicted from behind",
+    "description": "Al principio del combate, si el Dominio elemental más alto es mayor que el Dominio de espalda: -20% daños infligidos, 40% daños infligidos por la espalda",
     "rarity": [
       "Epic"
     ],
@@ -5224,7 +5224,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the bearer has exactly 0 Range:\n\n+20% damage inflicted in melee and area of effect simultaneously",
+    "description": "Al principio del combate, si el portador tiene exactamente 0 de Alcance: +20% daños infligidos cuerpo a cuerpo y en área simultáneamente",
     "rarity": [
       "Epic"
     ],
@@ -5250,7 +5250,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, Elemental Masteries are set to 0.\n\n20% damage inflicted and heals performed",
+    "description": "Al principio del combate, los Dominios elementales se ponen a 0. 20% daños infligidos y sanaciones realizadas",
     "rarity": [
       "Epic"
     ],
@@ -5276,7 +5276,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the bearer has more Block than Critical Hit:\n\nThe Block is converted into Critical Hit",
+    "description": "Al principio del combate, si el portador tiene más Anticipación que Golpe crítico: La Anticipación se convierte en Golpe crítico",
     "rarity": [
       "Epic"
     ],
@@ -5302,7 +5302,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has exactly 1 Range:\n\n15% damage inflicted and heals performed on targets that are 2, 3, or 4 cells away from the caster",
+    "description": "Al principio del combate, si el portador del estado tiene exactamente 1 de Alcance: 15% daños infligidos y sanaciones realizadas sobre los objetivos a 2, 3 o 4 casillas del lanzador",
     "rarity": [
       "Epic"
     ],
@@ -5328,7 +5328,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has at least 3 Range:\n\n30% indirect damage inflicted",
+    "description": "Al principio del combate, si el portador del estado tiene al menos 3 de Alcance: 30% daños indirectos infligidos",
     "rarity": [
       "Epic"
     ],
@@ -5354,7 +5354,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat:\n20% damage inflicted and heals performed\n -30% elemental mastery in the 3 weakest elements",
+    "description": "Al principio del combate: 20% daños infligidos y sanaciones realizadas, -30% dominio elemental en los 3 elementos más débiles",
     "rarity": [
       "Epic"
     ],
@@ -5380,7 +5380,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 3 equal Elemental Masteries:\n\n20% damage inflicted and heals performed",
+    "description": "Al principio del combate, si el portador del estado tiene 3 Dominios elementales iguales: 20% daños infligidos y sanaciones realizadas",
     "rarity": [
       "Epic"
     ],
@@ -5406,7 +5406,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 0 Healing Mastery or less:\n\n30% heals performed",
+    "description": "Al principio del combate, si el portador del estado tiene 0 Dominio de sanación o menos: 30% sanaciones realizadas",
     "rarity": [
       "Epic"
     ],
@@ -5432,7 +5432,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has an odd number of AP:\n\n250% of level as Lock and Dodge",
+    "description": "Al principio del combate, si el portador del estado tiene un número impar de PA: 250% del nivel como Placaje y Esquiva",
     "rarity": [
       "Epic"
     ],
@@ -5458,7 +5458,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 10 AP or less:\n\n15% damage inflicted\n10 Force of Will (if the character is at level 100 or greater)",
+    "description": "Al principio del combate, si el portador del estado tiene 10 PA o menos: 15% daños infligidos, 10 Voluntad (si el personaje es de nivel 100 o superior)",
     "rarity": [
       "Epic"
     ],
@@ -5484,7 +5484,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if Secondary Masteries are less than or equal to 0:\n\n+20% damage inflicted and heals performed",
+    "description": "Al principio del combate, si los Dominios secundarios son menores o iguales a 0: +20% daños infligidos y sanaciones realizadas",
     "rarity": [
       "Epic"
     ],
@@ -5510,7 +5510,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 3 range or less:\n\n20 Force of Will",
+    "description": "Al principio del combate, si el portador del estado tiene 3 de Alcance o menos: 20 Voluntad",
     "rarity": [
       "Epic"
     ],
@@ -5536,7 +5536,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 40% Block or greater:\n\n10% Critical Hit\n10% damage inflicted on critical hit",
+    "description": "Al principio del combate, si el portador del estado tiene 40% de Anticipación o más: 10% Golpe crítico, 10% daños infligidos en golpe crítico",
     "rarity": [
       "Epic"
     ],
@@ -5562,7 +5562,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 50% Critical Hits or more: \n20 Block\n10 Force of Will",
+    "description": "Al principio del combate, si el portador del estado tiene 50% de Golpes críticos o más: 20 Anticipación, 10 Voluntad",
     "rarity": [
       "Epic"
     ],
@@ -5588,7 +5588,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 50% Critical Hits or less: \n20% damage inflicted on critical hit",
+    "description": "Al principio del combate, si el portador del estado tiene 50% de Golpes críticos o menos: 20% daños infligidos en golpe crítico",
     "rarity": [
       "Epic"
     ],
@@ -5614,7 +5614,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has less that 100% of their level as Dodge:\n\n15% damage inflicted as Berserk\n100% of level as Lock",
+    "description": "Al principio del combate, si el portador del estado tiene menos del 100% de su nivel como Esquiva: 15% daños infligidos como Berserker, 100% del nivel como Placaje",
     "rarity": [
       "Epic"
     ],
@@ -5640,7 +5640,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 4 Range or greater:\n\n15% damage inflicter as Berserk and Ranged simultaneously\n1 Range",
+    "description": "Al principio del combate, si el portador del estado tiene 4 de Alcance o más: 15% daños infligidos como Berserker y a Distancia simultáneamente, 1 Alcance",
     "rarity": [
       "Epic"
     ],
@@ -5666,7 +5666,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 50% Block or greater:\n\nBonus to HP modifier +30%\n-50% Armor Received",
+    "description": "Al principio del combate, si el portador del estado tiene 50% de Anticipación o más: Bonus al modificador de PdV +30%, -50% Armadura recibida",
     "rarity": [
       "Epic"
     ],
@@ -5692,7 +5692,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 50% Block or more: \n-30% HP\n+30% in Armor given",
+    "description": "Al principio del combate, si el portador del estado tiene 50% de Anticipación o más: -30% PdV, +30% Armadura dada",
     "rarity": [
       "Epic"
     ],
@@ -5718,7 +5718,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, for the state bearer:\n\n-30% HP (penalty to the HP modifier)\n30% Heals and Armor from fighters received",
+    "description": "Al principio del combate, para el portador del estado: -30% PdV (penalización al modificador de PdV), 30% Sanaciones y Armadura de los combatientes recibidas",
     "rarity": [
       "Epic"
     ],
@@ -5744,7 +5744,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 10% Critical Hit or less:\n\n20% damage inflicted\n50 Critical Resistance",
+    "description": "Al principio del combate, si el portador del estado tiene 10% de Golpe crítico o menos: 20% daños infligidos, 50 Resistencia crítica",
     "rarity": [
       "Epic"
     ],
@@ -5770,7 +5770,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 10% Critical Hit or less:\n\n40% indirect damage",
+    "description": "Al principio del combate, si el portador del estado tiene 10% de Golpe crítico o menos: 40% daños indirectos",
     "rarity": [
       "Epic"
     ],
@@ -5796,7 +5796,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 1 Range or less:\n\n20% heals performed\n15% Armor Given and Received",
+    "description": "Al principio del combate, si el portador del estado tiene 1 de Alcance o menos: 20% sanaciones realizadas, 15% Armadura dada y recibida",
     "rarity": [
       "Epic"
     ],
@@ -5822,7 +5822,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has at least 40% Critical Hit converts 100% of Critical Mastery to Elemental Mastery",
+    "description": "Al principio del combate, si el portador del estado tiene al menos 40% de Golpe crítico: convierte el 100% del Dominio crítico en Dominio elemental",
     "rarity": [
       "Epic"
     ],
@@ -5848,7 +5848,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 8 WP or greater:\n\n10 Force of Will\n15% Block",
+    "description": "Al principio del combate, si el portador del estado tiene 8 PW o más: 10 Voluntad, 15% Anticipación",
     "rarity": [
       "Epic"
     ],
@@ -5874,7 +5874,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has a Dagger equipped:\n\n25% damage inflicted on targets hit from the front\n15% from the side\n-30% from behind",
+    "description": "Al principio del combate, si el portador del estado tiene una Daga equipada: 25% daños infligidos sobre los objetivos golpeados de frente, 15% de lado, -30% por la espalda",
     "rarity": [
       "Epic"
     ],
@@ -5900,7 +5900,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the bearer has a Shield equipped:\n\n1 max MP\nPositive Range is set at 0",
+    "description": "Al principio del combate, si el portador tiene un Escudo equipado: 1 PM máx., el Alcance positivo se pone a 0",
     "rarity": [
       "Epic"
     ],
@@ -5926,7 +5926,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "50 Elemental Resistance \n-200 Rear Resistance for the bearer at the start of combat.",
+    "description": "50 Resistencia elemental, -200 Resistencia por la espalda para el portador al principio del combate.",
     "rarity": [
       "Epic"
     ],
@@ -5952,7 +5952,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has a Two-Handed Weapon equipped ( maximum 12 AP before the sublimation effect):\n\n-2 max MP\n2 max AP",
+    "description": "Al principio del combate, si el portador del estado tiene un Arma a dos manos equipada (máximo 12 PA antes del efecto de la sublimación): -2 PM máx., 2 PA máx.",
     "rarity": [
       "Epic"
     ],
@@ -5978,7 +5978,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer has only used one element to cause damage during their turn:\nthey gain +20% Damage Inflicted and Heals performed in their other elements",
+    "description": "Si el portador solo ha usado un elemento para causar daños durante su turno: gana +20% Daños infligidos y Sanaciones realizadas en sus otros elementos",
     "rarity": [
       "Relic"
     ],
@@ -6004,7 +6004,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer inflicts damage in an element: \nthey gain +15% Damage Inflicted and Heals performedy in the other elements for the next spell. \nOnly the first line of damage caused by the spell is taken into account.",
+    "description": "Si el portador inflige daños en un elemento: gana +15% Daños infligidos y Sanaciones realizadas en los otros elementos para el próximo hechizo. Solo se tiene en cuenta la primera línea de daños del hechizo.",
     "rarity": [
       "Relic"
     ],
@@ -6030,7 +6030,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn, with 6 WP or greater: \nAncestral Energy Bonus (Max. level: 3):\n4% Damage inflicted\r\n15 Elemental Resistance\n\nThe state is lost if the character starts their turn with less than 6 WP",
+    "description": "Al principio del turno, con 6 PW o más: Bonus de Energía ancestral (niv. máx.: 3): 4% Daños infligidos, 15 Resistencia elemental. El estado se pierde si el personaje empieza su turno con menos de 6 PW",
     "rarity": [
       "Relic"
     ],
@@ -6056,7 +6056,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Steals 25% of melee damage inflicted\n-100 Elemental Resistance",
+    "description": "Roba el 25% de los daños cuerpo a cuerpo infligidos, -100 Resistencia elemental",
     "rarity": [
       "Relic"
     ],
@@ -6082,7 +6082,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-50 Elemental Resistance If the state bearer takes damage from an enemy: \n100 Resistance in the damage element (1 turn)",
+    "description": "-50 Resistencia elemental. Si el portador del estado recibe daños de un enemigo: 100 Resistencia en el elemento del daño (1 turno)",
     "rarity": [
       "Relic"
     ],
@@ -6108,7 +6108,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the spell costs 4 AP or more:\r\n15% critical damage.\r\nIf the spell costs 1 WP or more:\r\n15% critical damage",
+    "description": "Si el hechizo cuesta 4 PA o más: 15% daños críticos. Si el hechizo cuesta 1 PW o más: 15% daños críticos",
     "rarity": [
       "Relic"
     ],
@@ -6134,7 +6134,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "10% damage inflicted when the bearer meets certain conditions (these change each turn). \nTurn 1: The bearer is in melee or the spell is single-target \nTurn 2: The bearer is at a distance or the spell is single-target \nTurn 3: The bearer is at a distance or the spell is area-of-effect \nTurn 4: The bearer is in melee or the spell is area-of-effect",
+    "description": "10% daños infligidos cuando el portador cumple ciertas condiciones (cambian cada turno). Turno 1: El portador está cuerpo a cuerpo o el hechizo es monoobjetivo. Turno 2: El portador está a distancia o el hechizo es monoobjetivo. Turno 3: El portador está a distancia o el hechizo es de área. Turno 4: El portador está cuerpo a cuerpo o el hechizo es de área",
     "rarity": [
       "Relic"
     ],
@@ -6160,7 +6160,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "25% to area-of-effect spell damage on the spell's direct target\n-25% to area-of-effect spell damage on other targets",
+    "description": "25% a los daños de los hechizos de área sobre el objetivo directo del hechizo, -25% a los daños de los hechizos de área sobre los demás objetivos",
     "rarity": [
       "Relic"
     ],
@@ -6186,7 +6186,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer inflicted melee damage on an enemy during their turn: \n25% Ranged Damage Inflicted for the following turn",
+    "description": "Si el portador infligió daños cuerpo a cuerpo a un enemigo durante su turno: 25% Daños a distancia infligidos el turno siguiente",
     "rarity": [
       "Relic"
     ],
@@ -6212,7 +6212,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer inflicted melee damage on an enemy during their turn: \n10% Ranged Damage Inflicted for the following turn\r\nOnce per turn, stackable up to 5 times",
+    "description": "Si el portador infligió daños cuerpo a cuerpo a un enemigo durante su turno: 10% Daños a distancia infligidos el turno siguiente. Una vez por turno, acumulable hasta 5 veces",
     "rarity": [
       "Relic"
     ],
@@ -6238,7 +6238,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At end of turn, per adjacent enemy: \n5% of max HP as Armor",
+    "description": "Al final del turno, por enemigo adyacente: 5% de los PdV máx. como Armadura",
     "rarity": [
       "Relic"
     ],
@@ -6264,7 +6264,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "15% damage inflicted by area-of-effect spells on targets in line with the state bearer",
+    "description": "15% daños infligidos por los hechizos de área sobre los objetivos alineados con el portador del estado",
     "rarity": [
       "Relic"
     ],
@@ -6290,7 +6290,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "When the bearer heals an ally, 25% of healing is converted into Armor and 25% is lost",
+    "description": "Cuando el portador sana a un aliado, el 25% de la sanación se convierte en Armadura y el 25% se pierde",
     "rarity": [
       "Relic"
     ],
@@ -6316,7 +6316,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer moves themself using a spell: \n1 AP (max 2 per turn)",
+    "description": "Si el portador se desplaza usando un hechizo: 1 PA (máx. 2 por turno)",
     "rarity": [
       "Relic"
     ],
@@ -6342,7 +6342,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-10% Damage inflicted \nEvery 10 spells cast, the state bearer gains 100% Damage inflicted for the next spell \nSpells cast must cost at least 1 AP \nOnce the state is at level 10, the next spell gets the damage bonus",
+    "description": "-10% Daños infligidos. Cada 10 hechizos lanzados, el portador del estado gana 100% Daños infligidos para el próximo hechizo. Los hechizos lanzados deben costar al menos 1 PA. Una vez que el estado está a nivel 10, el próximo hechizo recibe el bonus de daños",
     "rarity": [
       "Relic"
     ],
@@ -6368,7 +6368,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-10% Damage inflicted \nEvery 5 spells cast, the state bearer gains 50% Damage inflicted for the next spell \nSpells cast must cost at least 1 AP \nOnce the state is at level 5, the next spell gets the damage bonus",
+    "description": "-10% Daños infligidos. Cada 5 hechizos lanzados, el portador del estado gana 50% Daños infligidos para el próximo hechizo. Los hechizos lanzados deben costar al menos 1 PA. Una vez que el estado está a nivel 5, el próximo hechizo recibe el bonus de daños",
     "rarity": [
       "Relic"
     ],
@@ -6394,7 +6394,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At end of turn, if the bearer is facing an adjacent enemy: \n10% of max HP as Armor",
+    "description": "Al final del turno, si el portador está de cara a un enemigo adyacente: 10% de los PdV máx. como Armadura",
     "rarity": [
       "Relic"
     ],
@@ -6420,7 +6420,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "30% damage inflicted on targets 7 or more cells away \notherwise -15%",
+    "description": "30% daños infligidos a los objetivos a 7 casillas o más, si no -15%",
     "rarity": [
       "Relic"
     ],
@@ -6446,7 +6446,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Flaming (+15 Lvls.) (stackable) for the state bearer, for each damage spell received in melee. \n100% of level as Flaming at start of turn if no enemies are adjacent.",
+    "description": "En llamas (+15 niv.) (acumulable) para el portador del estado, por cada hechizo de daño recibido cuerpo a cuerpo. 100% del nivel como En llamas al principio del turno si no hay enemigos adyacentes.",
     "rarity": [
       "Relic"
     ],
@@ -6472,7 +6472,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-30% damage received during their own turn.",
+    "description": "-30% daños recibidos durante su propio turno.",
     "rarity": [
       "Relic"
     ],
@@ -6498,7 +6498,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer moves themself using a spell: \n1 MP (max 2 per turn)",
+    "description": "Si el portador se desplaza usando un hechizo: 1 PM (máx. 2 por turno)",
     "rarity": [
       "Relic"
     ],
@@ -6524,7 +6524,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "In an uneven round: \nThe bearer inflicts 25% more damage, and suffers 15% of the damage they inflict",
+    "description": "En ronda impar: El portador inflige un 25% más de daños y sufre el 15% de los daños que inflige",
     "rarity": [
       "Relic"
     ],
@@ -6550,7 +6550,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer is moved outside of their turn:\napplies Stabilized at the end of their next turn",
+    "description": "Si el portador es desplazado fuera de su turno: aplica Estabilizado al final de su próximo turno",
     "rarity": [
       "Relic"
     ],
@@ -6576,7 +6576,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the spell costs 1 WP or more:\r\n5% damage per current WP on the bearer (max. 6)",
+    "description": "Si el hechizo cuesta 1 PW o más: 5% de daños por PW actual del portador (máx. 6)",
     "rarity": [
       "Relic"
     ],
@@ -6602,7 +6602,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Damage caused by the bearer's weapon is reduced by 20% and applies a poison (Light Weapon) for three turns (second hand excluded) based on the number of AP used by the weapon.",
+    "description": "Los daños causados por el arma del portador se reducen un 20% y aplican un veneno (Arma ligera) durante tres turnos (segunda mano excluida) basado en el número de PA usados por el arma.",
     "rarity": [
       "Relic"
     ],
@@ -6628,7 +6628,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "When suffering damage from the front and in melee, once per round: \n10% of missing HP as Armor 40% Armor given (1 turn)",
+    "description": "Al sufrir daños de frente y cuerpo a cuerpo, una vez por ronda: 10% de los PdV que faltan como Armadura, 40% Armadura dada (1 turno)",
     "rarity": [
       "Relic"
     ],
@@ -6654,7 +6654,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Odd turns, at start of turn: \n25% Damage inflicted -25% Heals performed and Armor given \n\nEven turns, at start of turn: \n25% Heals performed and Armor given -25% Damage inflicted",
+    "description": "Turnos impares, al principio del turno: 25% Daños infligidos, -25% Sanaciones realizadas y Armadura dada. Turnos pares, al principio del turno: 25% Sanaciones realizadas y Armadura dada, -25% Daños infligidos",
     "rarity": [
       "Relic"
     ],
@@ -6680,7 +6680,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "After inflicting damage on an enemy: \n-30% damage inflicted and 30% heals performed and Armor given for the following turn.\n\nAfter healing or giving armor to an ally: \n30% damage inflicted and -30% heals performed and armor given for the following turn.",
+    "description": "Tras infligir daños a un enemigo: -30% daños infligidos y 30% sanaciones realizadas y Armadura dada para el turno siguiente. Tras sanar o dar armadura a un aliado: 30% daños infligidos y -30% sanaciones realizadas y armadura dada para el turno siguiente.",
     "rarity": [
       "Relic"
     ],
@@ -6706,7 +6706,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "After taking damage: \n50 Elemental Resistance in this element (1 turn), not stackable\r\nA new element replaces the previous one",
+    "description": "Tras recibir daños: 50 Resistencia elemental en ese elemento (1 turno), no acumulable. Un nuevo elemento sustituye al anterior",
     "rarity": [
       "Relic"
     ],
@@ -6732,7 +6732,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "50 Elemental Resistance if the bearer has no Armor\notherwise -100 Elemental Resistance",
+    "description": "50 Resistencia elemental si el portador no tiene Armadura, si no -100 Resistencia elemental",
     "rarity": [
       "Relic"
     ],
@@ -6758,7 +6758,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "For each movement, per MP used: \n+3% Block (max. 18) (1 turn) \n\nIf the state bearer performs a Block when it's not their turn: \nThe bonus is transformed into Critical Hits on the next turn",
+    "description": "Por cada movimiento, por PM usado: +3% Anticipación (máx. 18) (1 turno). Si el portador del estado realiza una Anticipación fuera de su turno: El bonus se transforma en Golpes críticos el turno siguiente",
     "rarity": [
       "Relic"
     ],
@@ -6784,7 +6784,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-50 Elemental Resistance \nOnce per turn, when falling below 50% HP: \n1 MP\r\n15% Damage inflicted\r\n50 Elemental Resistance",
+    "description": "-50 Resistencia elemental. Una vez por turno, al bajar del 50% de los PdV: 1 PM, 15% Daños infligidos, 50 Resistencia elemental",
     "rarity": [
       "Relic"
     ],
@@ -6810,7 +6810,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "100% of level in Barrier against long-range damage (permanent)",
+    "description": "100% del nivel en Barrera contra los daños a distancia (permanente)",
     "rarity": [
       "Relic"
     ],
@@ -6836,7 +6836,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn: \n3 Range 15% ranged damage 15% Heals performed \nThe bonus is lost the first time the character moves (MP) or at end of turn",
+    "description": "Al principio del turno: 3 Alcance, 15% daños a distancia, 15% Sanaciones realizadas. El bonus se pierde la primera vez que el personaje se mueve (PM) o al final del turno",
     "rarity": [
       "Relic"
     ],
@@ -6862,7 +6862,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "30% of Armor given to allies who do not have Armor\n-50% Armor to allies who already have Armor",
+    "description": "30% de Armadura dada a los aliados que no tienen Armadura, -50% Armadura a los aliados que ya tienen Armadura",
     "rarity": [
       "Relic"
     ],
@@ -6888,7 +6888,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "40% Armor given on the first Armor placed on this turn\n-50% Armor given on all others",
+    "description": "40% Armadura dada sobre la primera Armadura colocada este turno, -50% Armadura dada sobre todas las demás",
     "rarity": [
       "Relic"
     ],
@@ -6914,7 +6914,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "The first spell that inflicts damage this turn removes 30% Armor from the target",
+    "description": "El primer hechizo que inflige daños este turno retira el 30% de la Armadura del objetivo",
     "rarity": [
       "Relic"
     ],
@@ -6940,7 +6940,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn, if the bearer has no Armor: \n20% Damage inflicted (1 turn) \nOtherwise: -10% Damage inflicted (1 turn)",
+    "description": "Al principio del turno, si el portador no tiene Armadura: 20% Daños infligidos (1 turno). Si no: -10% Daños infligidos (1 turno)",
     "rarity": [
       "Relic"
     ],
@@ -6966,7 +6966,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "The state bearer increases their damage inflicted by 2% per turn (permanent) (max 20)",
+    "description": "El portador del estado aumenta sus daños infligidos un 2% por turno (permanente) (máx. 20)",
     "rarity": [
       "Relic"
     ],
@@ -6992,7 +6992,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Every 3 spells cast\nCritical Hit is set to 100",
+    "description": "Cada 3 hechizos lanzados, el Golpe crítico se pone a 100",
     "rarity": [
       "Relic"
     ],
@@ -7018,7 +7018,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "30% Block if the bearer did not receive healing in the previous turn.",
+    "description": "30% Anticipación si el portador no recibió sanación el turno anterior.",
     "rarity": [
       "Relic"
     ],
@@ -7044,7 +7044,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Each turn steals 50% of damage inflicted by the first spell that inflicts damage\n-50% Armor received",
+    "description": "Cada turno roba el 50% de los daños infligidos por el primer hechizo que inflige daños, -50% Armadura recibida",
     "rarity": [
       "Relic"
     ],
@@ -7070,7 +7070,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Even Turn: \nAfter using a WP-based spell, the state bearer regains 2 AP (max of 1/turn). \n\nOdd Turn: \nAfter using a WP-based spell, the state bearer loses 2 AP (max 1/turn).",
+    "description": "Turno par: Tras usar un hechizo de PW, el portador del estado recupera 2 PA (máx. 1/turno). Turno impar: Tras usar un hechizo de PW, el portador del estado pierde 2 PA (máx. 1/turno).",
     "rarity": [
       "Relic"
     ],
@@ -7096,7 +7096,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "The state bearer increases their heals performed by 2% per turn (Permanent, max 20%)",
+    "description": "El portador del estado aumenta sus sanaciones realizadas un 2% por turno (permanente, máx. 20%)",
     "rarity": [
       "Relic"
     ],
@@ -7122,7 +7122,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn if there are at least 2 enemies in melee: +1MP +1AP",
+    "description": "Al principio del turno, si hay al menos 2 enemigos cuerpo a cuerpo: +1 PM, +1 PA",
     "rarity": [
       "Relic"
     ],
@@ -7148,7 +7148,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn if there are at least 2 allies in melee: +1MP +1AP",
+    "description": "Al principio del turno, si hay al menos 2 aliados cuerpo a cuerpo: +1 PM, +1 PA",
     "rarity": [
       "Relic"
     ],
@@ -7174,7 +7174,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "When performing a Block: -30% extra damage recieved -100% block",
+    "description": "Al realizar una Anticipación: -30% daños adicionales recibidos, -100% Anticipación",
     "rarity": [
       "Relic"
     ],
@@ -7200,7 +7200,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if Critical Mastery is less than or equal to 0: 30% critical hit",
+    "description": "Al principio del combate, si el Dominio crítico es menor o igual a 0: 30% Golpe crítico",
     "rarity": [
       "Epic"
     ],

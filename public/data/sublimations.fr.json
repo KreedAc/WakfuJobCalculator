@@ -6,7 +6,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Critical Hit",
+    "description": "[X]% Coup Critique",
     "rarity": [
       "Rare",
       "Mythic",
@@ -41,7 +41,7 @@
       "R",
       "R"
     ],
-    "description": "[X]% Damage Inflicted on aligned targets 2 or more cells away from the state bearer",
+    "description": "[X]% Dégâts infligés aux cibles alignées à 2 cases ou plus du porteur de l'état",
     "rarity": [
       "Rare",
       "Mythic",
@@ -76,7 +76,7 @@
       "R",
       "G"
     ],
-    "description": "-20 Force of Will. Reduces the next AP loss suffered by 1, [X] time(s). The effect is reapplied every turn",
+    "description": "-20 Volonté. Réduit la prochaine perte de PA subie de 1, [X] fois. L'effet est réappliqué à chaque tour",
     "rarity": [
       "Mythic"
     ],
@@ -109,7 +109,7 @@
       "R",
       "B"
     ],
-    "description": "If the state bearer does not have any armor at end of turn: [X]% of level as Armor",
+    "description": "Si le porteur de l'état n'a pas d'armure en fin de tour : [X]% du niveau en Armure",
     "rarity": [
       "Rare",
       "Mythic",
@@ -144,7 +144,7 @@
       "R",
       "R"
     ],
-    "description": "Ending a turn adjacent to an enemy applies -[X]% Armor received to it (1 turn)",
+    "description": "Terminer son tour adjacent à un ennemi lui applique -[X]% d'Armure reçue (1 tour)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -179,7 +179,7 @@
       "R",
       "G"
     ],
-    "description": "Heal: [X]% of HP lost of the caster on killing an enemy (2 activations per turn)",
+    "description": "Soin : [X]% des PV perdus du lanceur en tuant un ennemi (2 activations par tour)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -213,7 +213,7 @@
       "G",
       "R"
     ],
-    "description": "-10% Damage inflicted with a weapon. When inflicting damage on an enemy with a two-handed weapon: Steals [X]% of level in Lock (1 turn not stackable)",
+    "description": "-10% Dégâts infligés avec une arme. En infligeant des dégâts à un ennemi avec une arme à deux mains : Vole [X]% du niveau en Tacle (1 tour, non cumulable)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -248,7 +248,7 @@
       "B",
       "B"
     ],
-    "description": "When inflicting damage on an enemy with a weapon: That enemy reduces their damage on the state bearer by -[X] % (1 turn not stackable) The state bearer must have a shield equipped",
+    "description": "En infligeant des dégâts à un ennemi avec une arme : Cet ennemi réduit ses dégâts sur le porteur de l'état de -[X]% (1 tour, non cumulable). Le porteur de l'état doit avoir un bouclier équipé",
     "rarity": [
       "Rare",
       "Mythic"
@@ -282,7 +282,7 @@
       "G",
       "R"
     ],
-    "description": "When the state bearer suffers direct close-combat damage once per turn of the attacker: The state bearer inflicts light damage on the attacker ([X]% of level)",
+    "description": "Quand le porteur de l'état subit des dégâts directs en mêlée, une fois par tour de l'attaquant : Le porteur de l'état inflige des dégâts légers à l'attaquant ([X]% du niveau)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -317,7 +317,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% Heals performed on an ally adjacent to another ally",
+    "description": "[X]% Soins réalisés sur un allié adjacent à un autre allié",
     "rarity": [
       "Rare",
       "Mythic",
@@ -352,7 +352,7 @@
       "R",
       "B"
     ],
-    "description": "When the state bearer starts their turn with all their WP (or all their QB): [X]% Critical Hit (1 turn)",
+    "description": "Quand le porteur de l'état commence son tour avec tous ses PW (ou tout son QB) : [X]% Coup Critique (1 tour)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -386,7 +386,7 @@
       "B",
       "R"
     ],
-    "description": "-10% Heals performed. The state bearer is healed by [X] % of heals performed on their allies",
+    "description": "-10% Soins réalisés. Le porteur de l'état est soigné de [X]% des soins réalisés sur ses alliés",
     "rarity": [
       "Rare",
       "Mythic",
@@ -421,7 +421,7 @@
       "G",
       "B"
     ],
-    "description": "The first critical hit in the turn inflicts [X]% additional damageThe following ones inflict -[Y]% less damage",
+    "description": "Le premier coup critique du tour inflige [X]% de dégâts supplémentaires. Les suivants infligent -[Y]% de dégâts",
     "rarity": [
       "Rare",
       "Mythic"
@@ -460,7 +460,7 @@
       "G",
       "R"
     ],
-    "description": "When ending turn with less than 50% HP: Heals: [X] % of missing HP",
+    "description": "En terminant le tour avec moins de 50% des PV : Soins : [X]% des PV manquants",
     "rarity": [
       "Rare",
       "Mythic",
@@ -495,7 +495,7 @@
       "R",
       "B"
     ],
-    "description": "At the start of the first turn if secondary masteries are <= 0: [X] max WP and [X] Range -[Y]% Armor given and received",
+    "description": "Au début du premier tour, si les maîtrises secondaires sont <= 0 : [X] PW max et [X] Portée, -[Y]% Armure donnée et reçue",
     "rarity": [
       "Mythic"
     ],
@@ -533,7 +533,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% non-critical damage and heals inflicted -[X]% critical damage and heals inflicted",
+    "description": "[X]% dégâts et soins non critiques infligés, -[X]% dégâts et soins critiques infligés",
     "rarity": [
       "Rare",
       "Mythic",
@@ -568,7 +568,7 @@
       "B",
       "R"
     ],
-    "description": "When the state bearer starts their turn with 50% or less of their WP (or their QB): [X]% Critical Damage inflicted (1 turn) [Y]% of level as Armor",
+    "description": "Quand le porteur de l'état commence son tour avec 50% ou moins de ses PW (ou de son QB) : [X]% Dégâts critiques infligés (1 tour), [Y]% du niveau en Armure",
     "rarity": [
       "Rare",
       "Mythic",
@@ -608,7 +608,7 @@
       "B",
       "R"
     ],
-    "description": "If no other shield dagger or two-handed weapon is equipped at start of fight: [X]% of level in Elemental Mastery [Y]% of Damage inflicted on a target with Armor",
+    "description": "Si aucun bouclier, dague ou arme à deux mains n'est équipé en début de combat : [X]% du niveau en Maîtrise élémentaire, [Y]% de Dégâts infligés sur une cible avec de l'Armure",
     "rarity": [
       "Rare",
       "Mythic",
@@ -648,7 +648,7 @@
       "B",
       "G"
     ],
-    "description": "When the state bearer suffers direct close-combat damage once per turn of the attacker: The state bearer turns toward them.",
+    "description": "Quand le porteur de l'état subit des dégâts directs en mêlée, une fois par tour de l'attaquant : Le porteur de l'état se tourne vers lui.",
     "rarity": [
       "Mythic"
     ],
@@ -676,7 +676,7 @@
       "R",
       "G"
     ],
-    "description": "Heal [X]% of max HP when below 20% max hp (once per fight)",
+    "description": "Soigne [X]% des PV max en passant sous 20% des PV max (une fois par combat)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -711,7 +711,7 @@
       "B",
       "R"
     ],
-    "description": "At start of fight: [X]% of level as Dodge",
+    "description": "En début de combat : [X]% du niveau en Esquive",
     "rarity": [
       "Rare",
       "Mythic",
@@ -746,7 +746,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% DMG inflicted on targets exactly 3 cells away",
+    "description": "[X]% Dégâts infligés aux cibles à exactement 3 cases",
     "rarity": [
       "Rare",
       "Mythic",
@@ -781,7 +781,7 @@
       "G",
       "R"
     ],
-    "description": "At start of fight: [X]% of level as Lock",
+    "description": "En début de combat : [X]% du niveau en Tacle",
     "rarity": [
       "Rare",
       "Mythic",
@@ -816,7 +816,7 @@
       "R",
       "B"
     ],
-    "description": "At start of turn: Converts [X]% of current HP into Armor",
+    "description": "En début de tour : Convertit [X]% des PV actuels en Armure",
     "rarity": [
       "Rare",
       "Mythic",
@@ -851,7 +851,7 @@
       "G",
       "R"
     ],
-    "description": "-20% Heals received. When the bearer inflicts damage in a diagonal line: Steals [X]% of damage inflicted",
+    "description": "-20% Soins reçus. Quand le porteur inflige des dégâts en diagonale : Vole [X]% des dégâts infligés",
     "rarity": [
       "Rare",
       "Mythic",
@@ -886,7 +886,7 @@
       "B",
       "B"
     ],
-    "description": "Recover [X] AP when you cause an enemy to lose Armor (2 activations per turn)",
+    "description": "Récupère [X] PA quand vous faites perdre de l'Armure à un ennemi (2 activations par tour)",
     "rarity": [
       "Mythic"
     ],
@@ -919,7 +919,7 @@
       "B",
       "B"
     ],
-    "description": "[X]% Armor given",
+    "description": "[X]% Armure donnée",
     "rarity": [
       "Rare",
       "Mythic",
@@ -954,7 +954,7 @@
       "B",
       "G"
     ],
-    "description": "When the bearer removes all of a target's armor: [X]% damage inflicted for the rest of the turn 30% maximum",
+    "description": "Quand le porteur retire toute l'armure d'une cible : [X]% de dégâts infligés pour le reste du tour (30% maximum)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -989,7 +989,7 @@
       "G",
       "G"
     ],
-    "description": "Each time indirect dmg inflicted: -[X]% Direct dmg +[X]% Indirect DMG (Max 40%)",
+    "description": "À chaque dégât indirect infligé : -[X]% Dégâts directs, +[X]% Dégâts indirects (max 40%)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1024,7 +1024,7 @@
       "B",
       "G"
     ],
-    "description": "Outside of your turn: [X] FoW. During your turn: -[Y] FoW",
+    "description": "Hors de votre tour : [X] Volonté. Pendant votre tour : -[Y] Volonté",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1064,7 +1064,7 @@
       "G",
       "B"
     ],
-    "description": "-20% Heals performed. For each turn without performing heals: [X]% Heals performed Stackable up to 40%",
+    "description": "-20% Soins réalisés. Pour chaque tour sans réaliser de soins : [X]% Soins réalisés, cumulable jusqu'à 40%",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1099,7 +1099,7 @@
       "G",
       "R"
     ],
-    "description": "Reduces direct damage received greater than 20% of max HP by 400% of level (once per round)",
+    "description": "Réduit les dégâts directs reçus supérieurs à 20% des PV max de 400% du niveau (une fois par tour de jeu)",
     "rarity": [
       "Mythic"
     ],
@@ -1127,7 +1127,7 @@
       "G",
       "B"
     ],
-    "description": "At end of turn if the state bearer has 2 or more AP: [X] Elemental Resistance (1 turn)",
+    "description": "En fin de tour, si le porteur de l'état a 2 PA ou plus : [X] Résistance élémentaire (1 tour)",
     "rarity": [
       "Mythic"
     ],
@@ -1160,7 +1160,7 @@
       "B",
       "G"
     ],
-    "description": "At start of fight: [X]% Block (1 turn)",
+    "description": "En début de combat : [X]% Parade (1 tour)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1195,7 +1195,7 @@
       "G",
       "G"
     ],
-    "description": "When you inflict direct dmg. Once per turn: Inflict [X]% of level as Light damage on enemies aligned with the target",
+    "description": "Quand vous infligez des dégâts directs, une fois par tour : Inflige [X]% du niveau en dégâts Lumière aux ennemis alignés avec la cible",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1230,7 +1230,7 @@
       "G",
       "G"
     ],
-    "description": "1 mp After dodging with loss ([X] max per turn)",
+    "description": "1 PM après une esquive avec perte ([X] max par tour)",
     "rarity": [
       "Mythic"
     ],
@@ -1263,7 +1263,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Damage from behind -[Y]% frontal and side Damage",
+    "description": "[X]% Dégâts de dos, -[Y]% Dégâts de face et de côté",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1303,7 +1303,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Armor given to an aligned ally at a distance",
+    "description": "[X]% Armure donnée à un allié aligné à distance",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1338,7 +1338,7 @@
       "R",
       "G"
     ],
-    "description": "Gains [X]% of level as Flaming on killing an enemy (1 activation per turn)",
+    "description": "Gagne [X]% du niveau en Enflammé en tuant un ennemi (1 activation par tour)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -1372,7 +1372,7 @@
       "G",
       "B"
     ],
-    "description": "-10% Damage inflicted with a weapon. When inflicting damage on an enemy with a two-handed weapon: Steals [X]% of level in Dodge (1 turn not stackable)",
+    "description": "-10% Dégâts infligés avec une arme. En infligeant des dégâts à un ennemi avec une arme à deux mains : Vole [X]% du niveau en Esquive (1 tour, non cumulable)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1407,7 +1407,7 @@
       "B",
       "R"
     ],
-    "description": "Receive [X]% of max HP as Armor when below 20% max hp (once per fight)",
+    "description": "Reçoit [X]% des PV max en Armure en passant sous 20% des PV max (une fois par combat)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1442,7 +1442,7 @@
       "R",
       "R"
     ],
-    "description": "Regains [X]% of max HP as Armor by killing an enemy (2 activations per turn)",
+    "description": "Regagne [X]% des PV max en Armure en tuant un ennemi (2 activations par tour)",
     "rarity": [
       "Mythic"
     ],
@@ -1475,7 +1475,7 @@
       "G",
       "R"
     ],
-    "description": "When you cause an enemy to lose armor: inflict [X]% of level as dmg on the target. (2 activations per turn)",
+    "description": "Quand vous faites perdre de l'armure à un ennemi : inflige [X]% du niveau en dégâts à la cible (2 activations par tour)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -1509,7 +1509,7 @@
       "G",
       "B"
     ],
-    "description": " + [X]% Water dmg when casting a fire/air/earth spell. Stacks up to 30%. consumed on next direct Water dmg.",
+    "description": "+[X]% Dégâts Eau en lançant un sort Feu/Air/Terre. Cumulable jusqu'à 30%. Consommé au prochain dégât Eau direct.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1544,7 +1544,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Earth DMG",
+    "description": "[X]% Dégâts Terre",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1579,7 +1579,7 @@
       "R",
       "G"
     ],
-    "description": " + [X]% Fire dmg when casting a water/air/earth spell. Stacks up to 30%. consumed on next direct Fire dmg.",
+    "description": "+[X]% Dégâts Feu en lançant un sort Eau/Air/Terre. Cumulable jusqu'à 30%. Consommé au prochain dégât Feu direct.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1614,7 +1614,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Air DMG",
+    "description": "[X]% Dégâts Air",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1649,7 +1649,7 @@
       "B",
       "G"
     ],
-    "description": "[X]% Water DMG",
+    "description": "[X]% Dégâts Eau",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1684,7 +1684,7 @@
       "B",
       "R"
     ],
-    "description": " + [X]% Earth dmg when casting a fire/air/water spell. Stacks up to 30%. consumed on next direct Earth dmg.",
+    "description": "+[X]% Dégâts Terre en lançant un sort Feu/Air/Eau. Cumulable jusqu'à 30%. Consommé au prochain dégât Terre direct.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1719,7 +1719,7 @@
       "G",
       "G"
     ],
-    "description": " + [X]% Air dmg when casting a fire/water/earth spell. Stacks up to 30%. consumed on next direct Air dmg.",
+    "description": "+[X]% Dégâts Air en lançant un sort Feu/Eau/Terre. Cumulable jusqu'à 30%. Consommé au prochain dégât Air direct.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1754,7 +1754,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% Fire DMG",
+    "description": "[X]% Dégâts Feu",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1789,7 +1789,7 @@
       "R",
       "B"
     ],
-    "description": "After suffering a loss of 2 MP: [X] Force of Will (3 turns)",
+    "description": "Après avoir subi une perte de 2 PM : [X] Volonté (3 tours)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -1823,7 +1823,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% to characteristic bonuses received. Affects all characteristic bonuses (Masteries Resistances Armor) received in combat and cast by an entity other than the state bearer.The value is always rounded down.",
+    "description": "[X]% aux bonus de caractéristiques reçus. Affecte tous les bonus de caractéristiques (Maîtrises, Résistances, Armure) reçus en combat et lancés par une entité autre que le porteur de l'état. La valeur est toujours arrondie à l'inférieur.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1858,7 +1858,7 @@
       "R",
       "G"
     ],
-    "description": "Recovers [X] MP on killing an enemy (2 activations per turn)",
+    "description": "Récupère [X] PM en tuant un ennemi (2 activations par tour)",
     "rarity": [
       "Mythic"
     ],
@@ -1891,7 +1891,7 @@
       "R",
       "R"
     ],
-    "description": "[X]% Indirect Damage",
+    "description": "[X]% Dégâts indirects",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1926,7 +1926,7 @@
       "G",
       "B"
     ],
-    "description": "Receive [X] Resistances when below 20% max hp (once per fight)",
+    "description": "Reçoit [X] Résistances en passant sous 20% des PV max (une fois par combat)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1961,7 +1961,7 @@
       "R",
       "G"
     ],
-    "description": "Increases Health Steals performed by [X]%",
+    "description": "Augmente les Vols de vie réalisés de [X]%",
     "rarity": [
       "Rare",
       "Mythic",
@@ -1996,7 +1996,7 @@
       "G",
       "R"
     ],
-    "description": "Even turns: [X] Force of Will. Odd turns: -[X] Force of Will",
+    "description": "Tours pairs : [X] Volonté. Tours impairs : -[X] Volonté",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2030,7 +2030,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Damage inflicted in a diagonal line",
+    "description": "[X]% Dégâts infligés en diagonale",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2065,7 +2065,7 @@
       "B",
       "B"
     ],
-    "description": "- 1 WP max. + 1 wp at end of turn if you did not spend any WP during the turn",
+    "description": "-1 PW max. +1 PW en fin de tour si vous n'avez dépensé aucun PW pendant le tour",
     "rarity": [
       "Mythic"
     ],
@@ -2093,7 +2093,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Critical Hit -[X]% Damage and Heals",
+    "description": "[X]% Coup Critique, -[X]% Dégâts et Soins",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2127,7 +2127,7 @@
       "B",
       "G"
     ],
-    "description": " On the state bearer's first turn:1 WP (non-regenerable)",
+    "description": "Au premier tour du porteur de l'état : 1 PW (non régénérable)",
     "rarity": [
       "Mythic"
     ],
@@ -2155,7 +2155,7 @@
       "B",
       "R"
     ],
-    "description": "[X]% Damage Inflicted on targets in close combat",
+    "description": "[X]% Dégâts infligés aux cibles en mêlée",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2190,7 +2190,7 @@
       "G",
       "R"
     ],
-    "description": "- [X]% indirect Damage received",
+    "description": "-[X]% Dégâts indirects reçus",
     "rarity": [
       "Mythic"
     ],
@@ -2223,7 +2223,7 @@
       "G",
       "G"
     ],
-    "description": "[X]% Critical Hits per turn (max 30)",
+    "description": "[X]% Coup Critique par tour (max 30)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2258,7 +2258,7 @@
       "R",
       "R"
     ],
-    "description": "-15% Damage inflicted. At start of turn: 25% Damage inflicted if a single enemy was hit the previous turn",
+    "description": "-15% Dégâts infligés. En début de tour : 25% Dégâts infligés si un seul ennemi a été touché au tour précédent",
     "rarity": [
       "Mythic"
     ],
@@ -2286,7 +2286,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Heals performed on an aligned ally at a distance",
+    "description": "[X]% Soins réalisés sur un allié aligné à distance",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2321,7 +2321,7 @@
       "B",
       "G"
     ],
-    "description": "[X] Damage inflicted with a Weapon. When inflicting damage on an enemy with a two-handed weapon: Incurable (level: AP cost of the weapon) on the enemy and state bearer",
+    "description": "[X] Dégâts infligés avec une arme. En infligeant des dégâts à un ennemi avec une arme à deux mains : Incurable (niveau : coût en PA de l'arme) sur l'ennemi et le porteur de l'état",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2356,7 +2356,7 @@
       "R",
       "G"
     ],
-    "description": "Melee damage removes [X]% of level in Armor from the target -[Y]% Armor received",
+    "description": "Les dégâts de mêlée retirent [X]% du niveau en Armure à la cible, -[Y]% Armure reçue",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2396,7 +2396,7 @@
       "G",
       "B"
     ],
-    "description": "[X]% Damage from behind on even turns. [X]% frontal Damage on odd turns",
+    "description": "[X]% Dégâts de dos les tours pairs. [X]% Dégâts de face les tours impairs",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2431,7 +2431,7 @@
       "B",
       "R"
     ],
-    "description": "-20 Force of Will. Reduces the next MP loss suffered by 1, [X] time(s). The effect is reapplied every turn",
+    "description": "-20 Volonté. Réduit la prochaine perte de PM subie de 1, [X] fois. L'effet est réappliqué à chaque tour",
     "rarity": [
       "Mythic"
     ],
@@ -2464,7 +2464,7 @@
       "B",
       "B"
     ],
-    "description": "When HP are at less than 50%: [X]% of level as Lock",
+    "description": "Quand les PV sont à moins de 50% : [X]% du niveau en Tacle",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2499,7 +2499,7 @@
       "B",
       "B"
     ],
-    "description": "1 AP [X] Elemental Resistance",
+    "description": "1 PA, [X] Résistance élémentaire",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2533,7 +2533,7 @@
       "R",
       "B"
     ],
-    "description": "- [X]% to characterstic penalties received. Affects all characterstic penalties (Masteries, Resitances, Armor, Critical Hits, etc.) received in combat and cast by an entity other than the state bearer. The value is always rounded down.",
+    "description": "-[X]% aux pénalités de caractéristiques reçues. Affecte toutes les pénalités de caractéristiques (Maîtrises, Résistances, Armure, Coups Critiques, etc.) reçues en combat et lancées par une entité autre que le porteur de l'état. La valeur est toujours arrondie à l'inférieur.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2568,7 +2568,7 @@
       "B",
       "G"
     ],
-    "description": "When HP are at less than 50%: [X]% of level as Dodge",
+    "description": "Quand les PV sont à moins de 50% : [X]% du niveau en Esquive",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2603,7 +2603,7 @@
       "B",
       "B"
     ],
-    "description": "1 WP [X] Force of Will",
+    "description": "1 PW, [X] Volonté",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2638,7 +2638,7 @@
       "B",
       "B"
     ],
-    "description": "-50 Elemental Resistance, -15% Damage received during a Block",
+    "description": "-50 Résistance élémentaire, -15% Dégâts reçus pendant une Parade",
     "rarity": [
       "Mythic"
     ],
@@ -2666,7 +2666,7 @@
       "G",
       "R"
     ],
-    "description": "Reduces Ranged Damage suffered by 50% of level [X] times per turn",
+    "description": "Réduit les Dégâts à distance subis de 50% du niveau, [X] fois par tour",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2701,7 +2701,7 @@
       "G",
       "G"
     ],
-    "description": "1 Range [X] Lock [X] Dodge",
+    "description": "1 Portée, [X] Tacle, [X] Esquive",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2735,7 +2735,7 @@
       "B",
       "G"
     ],
-    "description": "At start of fight [X]% of level as Armor",
+    "description": "En début de combat, [X]% du niveau en Armure",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2770,7 +2770,7 @@
       "G",
       "B"
     ],
-    "description": "Reduces Melee Damage suffered by 50% of level [X] times per turn",
+    "description": "Réduit les Dégâts de mêlée subis de 50% du niveau, [X] fois par tour",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2805,7 +2805,7 @@
       "R",
       "R"
     ],
-    "description": "1 MP [X]% Damage inflicted",
+    "description": "1 PM, [X]% Dégâts infligés",
     "rarity": [
       "Rare",
       "Mythic"
@@ -2839,7 +2839,7 @@
       "R",
       "G"
     ],
-    "description": "[X]% Blocks per turn (max 40)",
+    "description": "[X]% Parade par tour (max 40)",
     "rarity": [
       "Mythic"
     ],
@@ -2872,7 +2872,7 @@
       "G",
       "B"
     ],
-    "description": "At the start of combat :Any Dodge by the state bearer is converted into Armor, at a rate 1 to [X].Converted Dodge is lost.",
+    "description": "En début de combat : Toute Esquive du porteur de l'état est convertie en Armure, au taux de 1 pour [X]. L'Esquive convertie est perdue.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2907,7 +2907,7 @@
       "R",
       "R"
     ],
-    "description": "20% indirect Damage in even rounds",
+    "description": "20% Dégâts indirects les tours pairs",
     "rarity": [
       "Mythic"
     ],
@@ -2935,7 +2935,7 @@
       "G",
       "B"
     ],
-    "description": "-20% Damage inflicted. At start of turn:10% Damage inflicted per enemy hit in the previous turn.",
+    "description": "-20% Dégâts infligés. En début de tour : 10% Dégâts infligés par ennemi touché au tour précédent.",
     "rarity": [
       "Mythic"
     ],
@@ -2963,7 +2963,7 @@
       "G",
       "B"
     ],
-    "description": "When HP are at less than 50%: [X]% Block",
+    "description": "Quand les PV sont à moins de 50% : [X]% Parade",
     "rarity": [
       "Rare",
       "Mythic",
@@ -2998,7 +2998,7 @@
       "B",
       "G"
     ],
-    "description": "At start of fight: [X]% Critical Hit (1 turn) of [X]% level as Critical Mastery (1 turn)",
+    "description": "En début de combat : [X]% Coup Critique (1 tour) et [X]% du niveau en Maîtrise Critique (1 tour)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3033,7 +3033,7 @@
       "G",
       "B"
     ],
-    "description": "-15% Damage inflicted. At start of turn: 5% Damage inflicted per entity hit in the previous turn.",
+    "description": "-15% Dégâts infligés. En début de tour : 5% Dégâts infligés par entité touchée au tour précédent.",
     "rarity": [
       "Mythic"
     ],
@@ -3061,7 +3061,7 @@
       "B",
       "R"
     ],
-    "description": "When healing an ally, if the ally has less than 15% HP: Heal Ally: [X]% of HP max of the target enemy",
+    "description": "En soignant un allié, si l'allié a moins de 15% de PV : Soigne l'allié : [X]% des PV max de la cible",
     "rarity": [
       "Rare",
       "Mythic"
@@ -3095,7 +3095,7 @@
       "B",
       "R"
     ],
-    "description": "After suffering a loss of 3 AP: [X] Force of Will (3 turns)",
+    "description": "Après avoir subi une perte de 3 PA : [X] Volonté (3 tours)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3130,7 +3130,7 @@
       "R",
       "R"
     ],
-    "description": "At end of turn: Unused AP are carried over to the next turn Max [X] AP",
+    "description": "En fin de tour : Les PA non utilisés sont reportés au tour suivant (max [X] PA)",
     "rarity": [
       "Mythic"
     ],
@@ -3163,7 +3163,7 @@
       "G",
       "G"
     ],
-    "description": "At start of fight: All Masteries: [X]% of level. All Resistances: [Y]",
+    "description": "En début de combat : Toutes les Maîtrises : [X]% du niveau. Toutes les Résistances : [Y]",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3203,7 +3203,7 @@
       "B",
       "G"
     ],
-    "description": "If there are no allies 1 to 4 cells from the bearer: [X]% Damage Inflicted",
+    "description": "S'il n'y a aucun allié à 1-4 cases du porteur : [X]% Dégâts infligés",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3238,7 +3238,7 @@
       "R",
       "B"
     ],
-    "description": "After suffering a loss of 3 MP: [X] Force of Will (3 turns)",
+    "description": "Après avoir subi une perte de 3 PM : [X] Volonté (3 tours)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3273,7 +3273,7 @@
       "B",
       "R"
     ],
-    "description": "[X]% Armor received",
+    "description": "[X]% Armure reçue",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3308,7 +3308,7 @@
       "B",
       "R"
     ],
-    "description": "Performing a Block gives Preparation (+[X] Lvl.)",
+    "description": "Réaliser une Parade donne Préparation (+[X] niv.)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3343,7 +3343,7 @@
       "B",
       "B"
     ],
-    "description": "At start of fight: Reduces Healing Mastery to 0. 10% Heals performed",
+    "description": "En début de combat : Réduit la Maîtrise Soin à 0. 10% Soins réalisés",
     "rarity": [
       "Mythic"
     ],
@@ -3371,7 +3371,7 @@
       "G",
       "G"
     ],
-    "description": "At end of turn if a critical hit was performed: Heal: [X]% of HP lost of the caster",
+    "description": "En fin de tour, si un coup critique a été réalisé : Soin : [X]% des PV perdus du lanceur",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3406,7 +3406,7 @@
       "R",
       "G"
     ],
-    "description": "Recovers [X] AP on killing an enemy (2 activations per turn)",
+    "description": "Récupère [X] PA en tuant un ennemi (2 activations par tour)",
     "rarity": [
       "Mythic"
     ],
@@ -3439,7 +3439,7 @@
       "R",
       "G"
     ],
-    "description": "When HP are above 90%: [X]% of level in Elemental Mastery",
+    "description": "Quand les PV sont au-dessus de 90% : [X]% du niveau en Maîtrise élémentaire",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3474,7 +3474,7 @@
       "B",
       "B"
     ],
-    "description": "At end of turn: 50% of unused MP are carried over to the next turn Max [X] MP",
+    "description": "En fin de tour : 50% des PM non utilisés sont reportés au tour suivant (max [X] PM)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -3508,7 +3508,7 @@
       "G",
       "G"
     ],
-    "description": "When HP are at less than 50%: [X]% Critical Hit",
+    "description": "Quand les PV sont à moins de 50% : [X]% Coup Critique",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3543,7 +3543,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% health points (bonus on HP modifier)",
+    "description": "[X]% points de vie (bonus au modificateur de PV)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3578,7 +3578,7 @@
       "R",
       "B"
     ],
-    "description": "[X]% Damage Inflicted on targets 2 cells away (1 cell between the state bearer and the target)",
+    "description": "[X]% Dégâts infligés aux cibles à 2 cases (1 case entre le porteur de l'état et la cible)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3613,7 +3613,7 @@
       "G",
       "G"
     ],
-    "description": "At start of fight: [X]% Critical Hit [X]% Block [X] Force of Will",
+    "description": "En début de combat : [X]% Coup Critique, [X]% Parade, [X] Volonté",
     "rarity": [
       "Mythic"
     ],
@@ -3646,7 +3646,7 @@
       "B",
       "R"
     ],
-    "description": "After suffering a loss of 2 AP: [X] Force of Will (3 turns)",
+    "description": "Après avoir subi une perte de 2 PA : [X] Volonté (3 tours)",
     "rarity": [
       "Rare",
       "Mythic"
@@ -3680,7 +3680,7 @@
       "G",
       "R"
     ],
-    "description": "At end of turn if the state bearer has 6 or more AP:60 Elemental Resistance (2 turns)",
+    "description": "En fin de tour, si le porteur de l'état a 6 PA ou plus : 60 Résistance élémentaire (2 tours)",
     "rarity": [
       "Mythic"
     ],
@@ -3708,7 +3708,7 @@
       "G",
       "G"
     ],
-    "description": "If the bearer has no Armor: [X]% Armor given",
+    "description": "Si le porteur n'a pas d'Armure : [X]% Armure donnée",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3743,7 +3743,7 @@
       "G",
       "R"
     ],
-    "description": "[X] Critical Resistance",
+    "description": "[X] Résistance Critique",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3778,7 +3778,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% Block",
+    "description": "[X]% Parade",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3813,7 +3813,7 @@
       "G",
       "R"
     ],
-    "description": "[X]% DMG inflicted on targets 5 cells or further away",
+    "description": "[X]% Dégâts infligés aux cibles à 5 cases ou plus",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3848,7 +3848,7 @@
       "B",
       "B"
     ],
-    "description": "-[X]% Damage received when the bearer is not in line of sight [Y]% Damage received when the bearer is in line of sight",
+    "description": "-[X]% Dégâts reçus quand le porteur n'est pas en ligne de vue, [Y]% Dégâts reçus quand le porteur est en ligne de vue",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3888,7 +3888,7 @@
       "R",
       "G"
     ],
-    "description": "When HP are above 90%: [X]% Critical Hit",
+    "description": "Quand les PV sont au-dessus de 90% : [X]% Coup Critique",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3923,7 +3923,7 @@
       "G",
       "B"
     ],
-    "description": "[X]% Damage inflicted on a target with armor",
+    "description": "[X]% Dégâts infligés sur une cible avec de l'armure",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3958,7 +3958,7 @@
       "B",
       "G"
     ],
-    "description": "Regains 1 AP by removing 1 AP or MP from an enemy ([X] max per turn)",
+    "description": "Regagne 1 PA en retirant 1 PA ou PM à un ennemi ([X] max par tour)",
     "rarity": [
       "Mythic"
     ],
@@ -3991,7 +3991,7 @@
       "G",
       "R"
     ],
-    "description": "For each penalty or loss applied to an enemy: Blood strains +[X] lvls (Blood stains: [X]% dmg received by the caster. max 40%)",
+    "description": "Pour chaque pénalité ou perte appliquée à un ennemi : Taches de sang +[X] niv. (Taches de sang : [X]% dégâts reçus par le lanceur, max 40%)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4026,7 +4026,7 @@
       "G",
       "B"
     ],
-    "description": "When HP are above 90%: [X]% Block",
+    "description": "Quand les PV sont au-dessus de 90% : [X]% Parade",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4061,7 +4061,7 @@
       "G",
       "B"
     ],
-    "description": "Outside of your turn: -[X] FoW. During your turn: [Y] FoW",
+    "description": "Hors de votre tour : -[X] Volonté. Pendant votre tour : [Y] Volonté",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4101,7 +4101,7 @@
       "R",
       "B"
     ],
-    "description": "If a non-critical hit is performed with an elemental spell: [X]% Critical Hit on the following turn",
+    "description": "Si un coup non critique est réalisé avec un sort élémentaire : [X]% Coup Critique au tour suivant",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4136,7 +4136,7 @@
       "G",
       "R"
     ],
-    "description": "As long as the bearer has no Armor: [X]% Damage inflicted",
+    "description": "Tant que le porteur n'a pas d'Armure : [X]% Dégâts infligés",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4171,7 +4171,7 @@
       "B",
       "G"
     ],
-    "description": "Each time a non-critical spell is case: [X]% Critical Hit. Bonus is lost on next critical spell",
+    "description": "À chaque sort non critique lancé : [X]% Coup Critique. Le bonus est perdu au prochain sort critique",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4206,7 +4206,7 @@
       "R",
       "R"
     ],
-    "description": "After locking an enemy: [X]% of level as Armor",
+    "description": "Après avoir taclé un ennemi : [X]% du niveau en Armure",
     "rarity": [
       "Mythic"
     ],
@@ -4239,7 +4239,7 @@
       "B",
       "R"
     ],
-    "description": "At start of turn if HP are above 90%: 1 MP",
+    "description": "En début de tour, si les PV sont au-dessus de 90% : 1 PM",
     "rarity": [
       "Mythic"
     ],
@@ -4267,7 +4267,7 @@
       "R",
       "G"
     ],
-    "description": "When you suffer ranged direct dmg: 6% extra DMG inflicted on the attacked. 1 turn Non stackable",
+    "description": "Quand vous subissez des dégâts directs à distance : 6% de Dégâts supplémentaires infligés à l'attaquant. 1 tour, non cumulable",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4302,7 +4302,7 @@
       "B",
       "R"
     ],
-    "description": "At end of turn, per enemy in close combat: [X]% DMG inflicted for the following turn.",
+    "description": "En fin de tour, par ennemi en mêlée : [X]% Dégâts infligés pour le tour suivant.",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4337,7 +4337,7 @@
       "G",
       "G"
     ],
-    "description": "[X] Rear Resistance",
+    "description": "[X] Résistance Dos",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4372,7 +4372,7 @@
       "G",
       "B"
     ],
-    "description": "Each time a non-critical spell is cast: +[X]% Critical DMG (Stackable up to 40%). Bonus is lost on next critical spell",
+    "description": "À chaque sort non critique lancé : +[X]% Dégâts Critiques (cumulable jusqu'à 40%). Le bonus est perdu au prochain sort critique",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4407,7 +4407,7 @@
       "G",
       "B"
     ],
-    "description": "At start of turn if HP are above 90%: [X] AP",
+    "description": "En début de tour, si les PV sont au-dessus de 90% : [X] PA",
     "rarity": [
       "Mythic"
     ],
@@ -4435,7 +4435,7 @@
       "R",
       "G"
     ],
-    "description": "When performing a block on a direct enemy attack: [X]% damage inflicted (1 turn) -10% Block",
+    "description": "En réalisant une parade sur une attaque directe ennemie : [X]% Dégâts infligés (1 tour), -10% Parade",
     "rarity": [
       "Rare",
       "Mythic"
@@ -4469,7 +4469,7 @@
       "G",
       "G"
     ],
-    "description": "[X]% critical damage inflicted if the target has > 50% HP -[X]% critical damage inflicted if the target has <= 50% HP",
+    "description": "[X]% Dégâts critiques infligés si la cible a > 50% PV, -[X]% Dégâts critiques infligés si la cible a <= 50% PV",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4504,7 +4504,7 @@
       "G",
       "R"
     ],
-    "description": "At the start of the first turn if secondary masteries are <= 0: [X]% damage inflicted",
+    "description": "Au début du premier tour, si les maîtrises secondaires sont <= 0 : [X]% Dégâts infligés",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4539,7 +4539,7 @@
       "B",
       "G"
     ],
-    "description": "At the start of the first turn if secondary masteries are <= 0: [X]% Block",
+    "description": "Au début du premier tour, si les maîtrises secondaires sont <= 0 : [X]% Parade",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4574,7 +4574,7 @@
       "B",
       "R"
     ],
-    "description": "When the bearer starts their turn below 20% HP: [X]% Damage inflicted (1 turn) [Y]% of level as armor",
+    "description": "Quand le porteur commence son tour sous 20% des PV : [X]% Dégâts infligés (1 tour), [Y]% du niveau en Armure",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4614,7 +4614,7 @@
       "R",
       "R"
     ],
-    "description": "Ending a turn adjacent to an enemy applies -[X]% Heals performed to it (1 turn)",
+    "description": "Terminer son tour adjacent à un ennemi lui applique -[X]% Soins réalisés (1 tour)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4649,7 +4649,7 @@
       "G",
       "B"
     ],
-    "description": "If there are two or more allies 1 to 4 cells from the bearer: [X]% Damage Inflicted",
+    "description": "S'il y a deux alliés ou plus à 1-4 cases du porteur : [X]% Dégâts infligés",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4684,7 +4684,7 @@
       "G",
       "G"
     ],
-    "description": "At start of fight: -[X] max WP. For each WP spent during the turn: [Y]% damage inflicted (1 turn) (max 30)",
+    "description": "En début de combat : -[X] PW max. Pour chaque PW dépensé pendant le tour : [Y]% Dégâts infligés (1 tour) (max 30)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4724,7 +4724,7 @@
       "B",
       "R"
     ],
-    "description": "At the start of the first turn if secondary masteries are <= 0: [X]% Critical Hit",
+    "description": "Au début du premier tour, si les maîtrises secondaires sont <= 0 : [X]% Coup Critique",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4759,7 +4759,7 @@
       "G",
       "B"
     ],
-    "description": "-1 Range +[X]% of level as Lock and Dodge",
+    "description": "-1 Portée, +[X]% du niveau en Tacle et Esquive",
     "rarity": [
       "Rare",
       "Mythic"
@@ -4793,7 +4793,7 @@
       "G",
       "G"
     ],
-    "description": "Each time a critical hit is performed (5 activations per turn): Preparation (+[X] Lvl.)",
+    "description": "À chaque coup critique réalisé (5 activations par tour) : Préparation (+[X] niv.)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4828,7 +4828,7 @@
       "R",
       "G"
     ],
-    "description": "[X]% Damage inflicted on targets without line of sight 3 or more cells away from the state bearer",
+    "description": "[X]% Dégâts infligés aux cibles hors ligne de vue à 3 cases ou plus du porteur de l'état",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4863,7 +4863,7 @@
       "R",
       "B"
     ],
-    "description": "At start of turn if no WP were used during the previous turn: [X]% Damage inflicted [X]% Heals performed",
+    "description": "En début de tour, si aucun PW n'a été utilisé au tour précédent : [X]% Dégâts infligés, [X]% Soins réalisés",
     "rarity": [
       "Rare",
       "Mythic",
@@ -4898,7 +4898,7 @@
       "B",
       "B"
     ],
-    "description": "[X] max AP 75 Elemental Resistance",
+    "description": "[X] PA max, 75 Résistance élémentaire",
     "rarity": [
       "Rare",
       "Mythic"
@@ -4932,7 +4932,7 @@
       "G",
       "B"
     ],
-    "description": "-1 max MP [X]% Damage inflicted",
+    "description": "-1 PM max, [X]% Dégâts infligés",
     "rarity": [
       "Rare",
       "Mythic"
@@ -4966,7 +4966,7 @@
       "R",
       "R"
     ],
-    "description": "At the start of combat per MP above 4: [X]% Damage inflicted (maximum 24)",
+    "description": "En début de combat, par PM au-dessus de 4 : [X]% Dégâts infligés (maximum 24)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -5001,7 +5001,7 @@
       "R",
       "B"
     ],
-    "description": "At end of turn: Unused AP is carried over to the next turn as Critical Hit: 10% Critical Hit por AP (max [X] AP)",
+    "description": "En fin de tour : Les PA non utilisés sont reportés au tour suivant en Coup Critique : 10% Coup Critique par PA (max [X] PA)",
     "rarity": [
       "Mythic"
     ],
@@ -5034,7 +5034,7 @@
       "R",
       "G"
     ],
-    "description": "If the bearer uses a spell to move: Preparation + [X] lvl ([X]% damage inflicted on next damage)",
+    "description": "Si le porteur utilise un sort pour se déplacer : Préparation +[X] niv. ([X]% dégâts infligés au prochain dégât)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -5069,7 +5069,7 @@
       "R",
       "B"
     ],
-    "description": "When inflicting single-target damage on an enemy: [X] extra damage infliced on this target on the next turn",
+    "description": "En infligeant des dégâts monocibles à un ennemi : [X] dégâts supplémentaires infligés à cette cible au tour suivant",
     "rarity": [
       "Rare",
       "Mythic",
@@ -5104,7 +5104,7 @@
       "B",
       "G"
     ],
-    "description": "When single-target healing an ally: [X] extra heals performed on this target on the next turn",
+    "description": "En soignant un allié en monocible : [X] soins supplémentaires réalisés sur cette cible au tour suivant",
     "rarity": [
       "Rare",
       "Mythic",
@@ -5139,7 +5139,7 @@
       "R",
       "B"
     ],
-    "description": "At end of turn, if an enemy is adjacent: [X]% of damage inflicted for the following turn",
+    "description": "En fin de tour, si un ennemi est adjacent : [X]% de dégâts infligés pour le tour suivant",
     "rarity": [
       "Rare",
       "Mythic",
@@ -5172,7 +5172,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the highest Elemental Mastery is greater than the Healing Mastery:\n\n-15% damage inflicted\n30% heals performed",
+    "description": "En début de combat, si la plus haute Maîtrise élémentaire est supérieure à la Maîtrise Soin : -15% dégâts infligés, 30% soins réalisés",
     "rarity": [
       "Epic"
     ],
@@ -5198,7 +5198,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the highest Elemental Mastery is greater than Rear Mastery:\n\n-20% damage inflicted\n40% damage inflicted from behind",
+    "description": "En début de combat, si la plus haute Maîtrise élémentaire est supérieure à la Maîtrise Dos : -20% dégâts infligés, 40% dégâts infligés de dos",
     "rarity": [
       "Epic"
     ],
@@ -5224,7 +5224,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the bearer has exactly 0 Range:\n\n+20% damage inflicted in melee and area of effect simultaneously",
+    "description": "En début de combat, si le porteur a exactement 0 Portée : +20% dégâts infligés en mêlée et en zone simultanément",
     "rarity": [
       "Epic"
     ],
@@ -5250,7 +5250,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, Elemental Masteries are set to 0.\n\n20% damage inflicted and heals performed",
+    "description": "En début de combat, les Maîtrises élémentaires sont mises à 0. 20% dégâts infligés et soins réalisés",
     "rarity": [
       "Epic"
     ],
@@ -5276,7 +5276,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the bearer has more Block than Critical Hit:\n\nThe Block is converted into Critical Hit",
+    "description": "En début de combat, si le porteur a plus de Parade que de Coup Critique : La Parade est convertie en Coup Critique",
     "rarity": [
       "Epic"
     ],
@@ -5302,7 +5302,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has exactly 1 Range:\n\n15% damage inflicted and heals performed on targets that are 2, 3, or 4 cells away from the caster",
+    "description": "En début de combat, si le porteur de l'état a exactement 1 Portée : 15% dégâts infligés et soins réalisés sur les cibles à 2, 3 ou 4 cases du lanceur",
     "rarity": [
       "Epic"
     ],
@@ -5328,7 +5328,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has at least 3 Range:\n\n30% indirect damage inflicted",
+    "description": "En début de combat, si le porteur de l'état a au moins 3 Portée : 30% dégâts indirects infligés",
     "rarity": [
       "Epic"
     ],
@@ -5354,7 +5354,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat:\n20% damage inflicted and heals performed\n -30% elemental mastery in the 3 weakest elements",
+    "description": "En début de combat : 20% dégâts infligés et soins réalisés, -30% maîtrise élémentaire dans les 3 éléments les plus faibles",
     "rarity": [
       "Epic"
     ],
@@ -5380,7 +5380,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 3 equal Elemental Masteries:\n\n20% damage inflicted and heals performed",
+    "description": "En début de combat, si le porteur de l'état a 3 Maîtrises élémentaires égales : 20% dégâts infligés et soins réalisés",
     "rarity": [
       "Epic"
     ],
@@ -5406,7 +5406,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 0 Healing Mastery or less:\n\n30% heals performed",
+    "description": "En début de combat, si le porteur de l'état a 0 Maîtrise Soin ou moins : 30% soins réalisés",
     "rarity": [
       "Epic"
     ],
@@ -5432,7 +5432,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has an odd number of AP:\n\n250% of level as Lock and Dodge",
+    "description": "En début de combat, si le porteur de l'état a un nombre impair de PA : 250% du niveau en Tacle et Esquive",
     "rarity": [
       "Epic"
     ],
@@ -5458,7 +5458,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 10 AP or less:\n\n15% damage inflicted\n10 Force of Will (if the character is at level 100 or greater)",
+    "description": "En début de combat, si le porteur de l'état a 10 PA ou moins : 15% dégâts infligés, 10 Volonté (si le personnage est au niveau 100 ou plus)",
     "rarity": [
       "Epic"
     ],
@@ -5484,7 +5484,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if Secondary Masteries are less than or equal to 0:\n\n+20% damage inflicted and heals performed",
+    "description": "En début de combat, si les Maîtrises secondaires sont inférieures ou égales à 0 : +20% dégâts infligés et soins réalisés",
     "rarity": [
       "Epic"
     ],
@@ -5510,7 +5510,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 3 range or less:\n\n20 Force of Will",
+    "description": "En début de combat, si le porteur de l'état a 3 Portée ou moins : 20 Volonté",
     "rarity": [
       "Epic"
     ],
@@ -5536,7 +5536,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 40% Block or greater:\n\n10% Critical Hit\n10% damage inflicted on critical hit",
+    "description": "En début de combat, si le porteur de l'état a 40% Parade ou plus : 10% Coup Critique, 10% dégâts infligés en coup critique",
     "rarity": [
       "Epic"
     ],
@@ -5562,7 +5562,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 50% Critical Hits or more: \n20 Block\n10 Force of Will",
+    "description": "En début de combat, si le porteur de l'état a 50% Coups Critiques ou plus : 20 Parade, 10 Volonté",
     "rarity": [
       "Epic"
     ],
@@ -5588,7 +5588,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 50% Critical Hits or less: \n20% damage inflicted on critical hit",
+    "description": "En début de combat, si le porteur de l'état a 50% Coups Critiques ou moins : 20% dégâts infligés en coup critique",
     "rarity": [
       "Epic"
     ],
@@ -5614,7 +5614,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has less that 100% of their level as Dodge:\n\n15% damage inflicted as Berserk\n100% of level as Lock",
+    "description": "En début de combat, si le porteur de l'état a moins de 100% de son niveau en Esquive : 15% dégâts infligés en Berserk, 100% du niveau en Tacle",
     "rarity": [
       "Epic"
     ],
@@ -5640,7 +5640,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 4 Range or greater:\n\n15% damage inflicter as Berserk and Ranged simultaneously\n1 Range",
+    "description": "En début de combat, si le porteur de l'état a 4 Portée ou plus : 15% dégâts infligés en Berserk et à Distance simultanément, 1 Portée",
     "rarity": [
       "Epic"
     ],
@@ -5666,7 +5666,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 50% Block or greater:\n\nBonus to HP modifier +30%\n-50% Armor Received",
+    "description": "En début de combat, si le porteur de l'état a 50% Parade ou plus : Bonus au modificateur de PV +30%, -50% Armure reçue",
     "rarity": [
       "Epic"
     ],
@@ -5692,7 +5692,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 50% Block or more: \n-30% HP\n+30% in Armor given",
+    "description": "En début de combat, si le porteur de l'état a 50% Parade ou plus : -30% PV, +30% Armure donnée",
     "rarity": [
       "Epic"
     ],
@@ -5718,7 +5718,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, for the state bearer:\n\n-30% HP (penalty to the HP modifier)\n30% Heals and Armor from fighters received",
+    "description": "En début de combat, pour le porteur de l'état : -30% PV (pénalité au modificateur de PV), 30% Soins et Armure des combattants reçus",
     "rarity": [
       "Epic"
     ],
@@ -5744,7 +5744,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 10% Critical Hit or less:\n\n20% damage inflicted\n50 Critical Resistance",
+    "description": "En début de combat, si le porteur de l'état a 10% Coup Critique ou moins : 20% dégâts infligés, 50 Résistance Critique",
     "rarity": [
       "Epic"
     ],
@@ -5770,7 +5770,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 10% Critical Hit or less:\n\n40% indirect damage",
+    "description": "En début de combat, si le porteur de l'état a 10% Coup Critique ou moins : 40% dégâts indirects",
     "rarity": [
       "Epic"
     ],
@@ -5796,7 +5796,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 1 Range or less:\n\n20% heals performed\n15% Armor Given and Received",
+    "description": "En début de combat, si le porteur de l'état a 1 Portée ou moins : 20% soins réalisés, 15% Armure donnée et reçue",
     "rarity": [
       "Epic"
     ],
@@ -5822,7 +5822,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has at least 40% Critical Hit converts 100% of Critical Mastery to Elemental Mastery",
+    "description": "En début de combat, si le porteur de l'état a au moins 40% Coup Critique : convertit 100% de la Maîtrise Critique en Maîtrise élémentaire",
     "rarity": [
       "Epic"
     ],
@@ -5848,7 +5848,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has 8 WP or greater:\n\n10 Force of Will\n15% Block",
+    "description": "En début de combat, si le porteur de l'état a 8 PW ou plus : 10 Volonté, 15% Parade",
     "rarity": [
       "Epic"
     ],
@@ -5874,7 +5874,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has a Dagger equipped:\n\n25% damage inflicted on targets hit from the front\n15% from the side\n-30% from behind",
+    "description": "En début de combat, si le porteur de l'état a une Dague équipée : 25% dégâts infligés sur les cibles touchées de face, 15% de côté, -30% de dos",
     "rarity": [
       "Epic"
     ],
@@ -5900,7 +5900,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the bearer has a Shield equipped:\n\n1 max MP\nPositive Range is set at 0",
+    "description": "En début de combat, si le porteur a un Bouclier équipé : 1 PM max, la Portée positive est mise à 0",
     "rarity": [
       "Epic"
     ],
@@ -5926,7 +5926,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "50 Elemental Resistance \n-200 Rear Resistance for the bearer at the start of combat.",
+    "description": "50 Résistance élémentaire, -200 Résistance Dos pour le porteur en début de combat.",
     "rarity": [
       "Epic"
     ],
@@ -5952,7 +5952,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if the state bearer has a Two-Handed Weapon equipped ( maximum 12 AP before the sublimation effect):\n\n-2 max MP\n2 max AP",
+    "description": "En début de combat, si le porteur de l'état a une Arme à deux mains équipée (maximum 12 PA avant l'effet de la sublimation) : -2 PM max, 2 PA max",
     "rarity": [
       "Epic"
     ],
@@ -5978,7 +5978,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer has only used one element to cause damage during their turn:\nthey gain +20% Damage Inflicted and Heals performed in their other elements",
+    "description": "Si le porteur n'a utilisé qu'un seul élément pour infliger des dégâts pendant son tour : il gagne +20% Dégâts infligés et Soins réalisés dans ses autres éléments",
     "rarity": [
       "Relic"
     ],
@@ -6004,7 +6004,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer inflicts damage in an element: \nthey gain +15% Damage Inflicted and Heals performedy in the other elements for the next spell. \nOnly the first line of damage caused by the spell is taken into account.",
+    "description": "Si le porteur inflige des dégâts dans un élément : il gagne +15% Dégâts infligés et Soins réalisés dans les autres éléments pour le prochain sort. Seule la première ligne de dégâts du sort est prise en compte.",
     "rarity": [
       "Relic"
     ],
@@ -6030,7 +6030,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn, with 6 WP or greater: \nAncestral Energy Bonus (Max. level: 3):\n4% Damage inflicted\r\n15 Elemental Resistance\n\nThe state is lost if the character starts their turn with less than 6 WP",
+    "description": "En début de tour, avec 6 PW ou plus : Bonus Énergie ancestrale (niv. max : 3) : 4% Dégâts infligés, 15 Résistance élémentaire. L'état est perdu si le personnage commence son tour avec moins de 6 PW",
     "rarity": [
       "Relic"
     ],
@@ -6056,7 +6056,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Steals 25% of melee damage inflicted\n-100 Elemental Resistance",
+    "description": "Vole 25% des dégâts de mêlée infligés, -100 Résistance élémentaire",
     "rarity": [
       "Relic"
     ],
@@ -6082,7 +6082,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-50 Elemental Resistance If the state bearer takes damage from an enemy: \n100 Resistance in the damage element (1 turn)",
+    "description": "-50 Résistance élémentaire. Si le porteur de l'état subit des dégâts d'un ennemi : 100 Résistance dans l'élément des dégâts (1 tour)",
     "rarity": [
       "Relic"
     ],
@@ -6108,7 +6108,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the spell costs 4 AP or more:\r\n15% critical damage.\r\nIf the spell costs 1 WP or more:\r\n15% critical damage",
+    "description": "Si le sort coûte 4 PA ou plus : 15% dégâts critiques. Si le sort coûte 1 PW ou plus : 15% dégâts critiques",
     "rarity": [
       "Relic"
     ],
@@ -6134,7 +6134,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "10% damage inflicted when the bearer meets certain conditions (these change each turn). \nTurn 1: The bearer is in melee or the spell is single-target \nTurn 2: The bearer is at a distance or the spell is single-target \nTurn 3: The bearer is at a distance or the spell is area-of-effect \nTurn 4: The bearer is in melee or the spell is area-of-effect",
+    "description": "10% dégâts infligés quand le porteur remplit certaines conditions (elles changent chaque tour). Tour 1 : Le porteur est en mêlée ou le sort est monocible. Tour 2 : Le porteur est à distance ou le sort est monocible. Tour 3 : Le porteur est à distance ou le sort est en zone. Tour 4 : Le porteur est en mêlée ou le sort est en zone",
     "rarity": [
       "Relic"
     ],
@@ -6160,7 +6160,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "25% to area-of-effect spell damage on the spell's direct target\n-25% to area-of-effect spell damage on other targets",
+    "description": "25% aux dégâts des sorts de zone sur la cible directe du sort, -25% aux dégâts des sorts de zone sur les autres cibles",
     "rarity": [
       "Relic"
     ],
@@ -6186,7 +6186,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer inflicted melee damage on an enemy during their turn: \n25% Ranged Damage Inflicted for the following turn",
+    "description": "Si le porteur a infligé des dégâts de mêlée à un ennemi pendant son tour : 25% Dégâts à distance infligés au tour suivant",
     "rarity": [
       "Relic"
     ],
@@ -6212,7 +6212,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer inflicted melee damage on an enemy during their turn: \n10% Ranged Damage Inflicted for the following turn\r\nOnce per turn, stackable up to 5 times",
+    "description": "Si le porteur a infligé des dégâts de mêlée à un ennemi pendant son tour : 10% Dégâts à distance infligés au tour suivant. Une fois par tour, cumulable jusqu'à 5 fois",
     "rarity": [
       "Relic"
     ],
@@ -6238,7 +6238,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At end of turn, per adjacent enemy: \n5% of max HP as Armor",
+    "description": "En fin de tour, par ennemi adjacent : 5% des PV max en Armure",
     "rarity": [
       "Relic"
     ],
@@ -6264,7 +6264,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "15% damage inflicted by area-of-effect spells on targets in line with the state bearer",
+    "description": "15% dégâts infligés par les sorts de zone sur les cibles alignées avec le porteur de l'état",
     "rarity": [
       "Relic"
     ],
@@ -6290,7 +6290,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "When the bearer heals an ally, 25% of healing is converted into Armor and 25% is lost",
+    "description": "Quand le porteur soigne un allié, 25% des soins sont convertis en Armure et 25% sont perdus",
     "rarity": [
       "Relic"
     ],
@@ -6316,7 +6316,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer moves themself using a spell: \n1 AP (max 2 per turn)",
+    "description": "Si le porteur se déplace avec un sort : 1 PA (max 2 par tour)",
     "rarity": [
       "Relic"
     ],
@@ -6342,7 +6342,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-10% Damage inflicted \nEvery 10 spells cast, the state bearer gains 100% Damage inflicted for the next spell \nSpells cast must cost at least 1 AP \nOnce the state is at level 10, the next spell gets the damage bonus",
+    "description": "-10% Dégâts infligés. Tous les 10 sorts lancés, le porteur de l'état gagne 100% Dégâts infligés pour le prochain sort. Les sorts lancés doivent coûter au moins 1 PA. Une fois l'état au niveau 10, le prochain sort reçoit le bonus de dégâts",
     "rarity": [
       "Relic"
     ],
@@ -6368,7 +6368,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-10% Damage inflicted \nEvery 5 spells cast, the state bearer gains 50% Damage inflicted for the next spell \nSpells cast must cost at least 1 AP \nOnce the state is at level 5, the next spell gets the damage bonus",
+    "description": "-10% Dégâts infligés. Tous les 5 sorts lancés, le porteur de l'état gagne 50% Dégâts infligés pour le prochain sort. Les sorts lancés doivent coûter au moins 1 PA. Une fois l'état au niveau 5, le prochain sort reçoit le bonus de dégâts",
     "rarity": [
       "Relic"
     ],
@@ -6394,7 +6394,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At end of turn, if the bearer is facing an adjacent enemy: \n10% of max HP as Armor",
+    "description": "En fin de tour, si le porteur fait face à un ennemi adjacent : 10% des PV max en Armure",
     "rarity": [
       "Relic"
     ],
@@ -6420,7 +6420,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "30% damage inflicted on targets 7 or more cells away \notherwise -15%",
+    "description": "30% dégâts infligés aux cibles à 7 cases ou plus, sinon -15%",
     "rarity": [
       "Relic"
     ],
@@ -6446,7 +6446,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Flaming (+15 Lvls.) (stackable) for the state bearer, for each damage spell received in melee. \n100% of level as Flaming at start of turn if no enemies are adjacent.",
+    "description": "Enflammé (+15 niv.) (cumulable) pour le porteur de l'état, pour chaque sort de dégâts reçu en mêlée. 100% du niveau en Enflammé en début de tour si aucun ennemi n'est adjacent.",
     "rarity": [
       "Relic"
     ],
@@ -6472,7 +6472,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-30% damage received during their own turn.",
+    "description": "-30% dégâts reçus pendant son propre tour.",
     "rarity": [
       "Relic"
     ],
@@ -6498,7 +6498,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer moves themself using a spell: \n1 MP (max 2 per turn)",
+    "description": "Si le porteur se déplace avec un sort : 1 PM (max 2 par tour)",
     "rarity": [
       "Relic"
     ],
@@ -6524,7 +6524,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "In an uneven round: \nThe bearer inflicts 25% more damage, and suffers 15% of the damage they inflict",
+    "description": "Les tours impairs : Le porteur inflige 25% de dégâts en plus et subit 15% des dégâts qu'il inflige",
     "rarity": [
       "Relic"
     ],
@@ -6550,7 +6550,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the bearer is moved outside of their turn:\napplies Stabilized at the end of their next turn",
+    "description": "Si le porteur est déplacé hors de son tour : applique Stabilisé à la fin de son prochain tour",
     "rarity": [
       "Relic"
     ],
@@ -6576,7 +6576,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "If the spell costs 1 WP or more:\r\n5% damage per current WP on the bearer (max. 6)",
+    "description": "Si le sort coûte 1 PW ou plus : 5% de dégâts par PW actuel du porteur (max 6)",
     "rarity": [
       "Relic"
     ],
@@ -6602,7 +6602,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Damage caused by the bearer's weapon is reduced by 20% and applies a poison (Light Weapon) for three turns (second hand excluded) based on the number of AP used by the weapon.",
+    "description": "Les dégâts de l'arme du porteur sont réduits de 20% et appliquent un poison (Arme légère) pendant trois tours (seconde main exclue) basé sur le nombre de PA utilisés par l'arme.",
     "rarity": [
       "Relic"
     ],
@@ -6628,7 +6628,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "When suffering damage from the front and in melee, once per round: \n10% of missing HP as Armor 40% Armor given (1 turn)",
+    "description": "En subissant des dégâts de face et en mêlée, une fois par tour de jeu : 10% des PV manquants en Armure, 40% Armure donnée (1 tour)",
     "rarity": [
       "Relic"
     ],
@@ -6654,7 +6654,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Odd turns, at start of turn: \n25% Damage inflicted -25% Heals performed and Armor given \n\nEven turns, at start of turn: \n25% Heals performed and Armor given -25% Damage inflicted",
+    "description": "Tours impairs, en début de tour : 25% Dégâts infligés, -25% Soins réalisés et Armure donnée. Tours pairs, en début de tour : 25% Soins réalisés et Armure donnée, -25% Dégâts infligés",
     "rarity": [
       "Relic"
     ],
@@ -6680,7 +6680,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "After inflicting damage on an enemy: \n-30% damage inflicted and 30% heals performed and Armor given for the following turn.\n\nAfter healing or giving armor to an ally: \n30% damage inflicted and -30% heals performed and armor given for the following turn.",
+    "description": "Après avoir infligé des dégâts à un ennemi : -30% dégâts infligés et 30% soins réalisés et Armure donnée pour le tour suivant. Après avoir soigné ou donné de l'armure à un allié : 30% dégâts infligés et -30% soins réalisés et armure donnée pour le tour suivant.",
     "rarity": [
       "Relic"
     ],
@@ -6706,7 +6706,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "After taking damage: \n50 Elemental Resistance in this element (1 turn), not stackable\r\nA new element replaces the previous one",
+    "description": "Après avoir subi des dégâts : 50 Résistance élémentaire dans cet élément (1 tour), non cumulable. Un nouvel élément remplace le précédent",
     "rarity": [
       "Relic"
     ],
@@ -6732,7 +6732,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "50 Elemental Resistance if the bearer has no Armor\notherwise -100 Elemental Resistance",
+    "description": "50 Résistance élémentaire si le porteur n'a pas d'Armure, sinon -100 Résistance élémentaire",
     "rarity": [
       "Relic"
     ],
@@ -6758,7 +6758,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "For each movement, per MP used: \n+3% Block (max. 18) (1 turn) \n\nIf the state bearer performs a Block when it's not their turn: \nThe bonus is transformed into Critical Hits on the next turn",
+    "description": "Pour chaque déplacement, par PM utilisé : +3% Parade (max 18) (1 tour). Si le porteur de l'état réalise une Parade hors de son tour : Le bonus est transformé en Coups Critiques au tour suivant",
     "rarity": [
       "Relic"
     ],
@@ -6784,7 +6784,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "-50 Elemental Resistance \nOnce per turn, when falling below 50% HP: \n1 MP\r\n15% Damage inflicted\r\n50 Elemental Resistance",
+    "description": "-50 Résistance élémentaire. Une fois par tour, en passant sous 50% des PV : 1 PM, 15% Dégâts infligés, 50 Résistance élémentaire",
     "rarity": [
       "Relic"
     ],
@@ -6810,7 +6810,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "100% of level in Barrier against long-range damage (permanent)",
+    "description": "100% du niveau en Barrière contre les dégâts à distance (permanent)",
     "rarity": [
       "Relic"
     ],
@@ -6836,7 +6836,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn: \n3 Range 15% ranged damage 15% Heals performed \nThe bonus is lost the first time the character moves (MP) or at end of turn",
+    "description": "En début de tour : 3 Portée, 15% dégâts à distance, 15% Soins réalisés. Le bonus est perdu au premier déplacement du personnage (PM) ou en fin de tour",
     "rarity": [
       "Relic"
     ],
@@ -6862,7 +6862,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "30% of Armor given to allies who do not have Armor\n-50% Armor to allies who already have Armor",
+    "description": "30% d'Armure donnée aux alliés qui n'ont pas d'Armure, -50% d'Armure aux alliés qui en ont déjà",
     "rarity": [
       "Relic"
     ],
@@ -6888,7 +6888,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "40% Armor given on the first Armor placed on this turn\n-50% Armor given on all others",
+    "description": "40% Armure donnée sur la première Armure posée ce tour, -50% Armure donnée sur toutes les autres",
     "rarity": [
       "Relic"
     ],
@@ -6914,7 +6914,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "The first spell that inflicts damage this turn removes 30% Armor from the target",
+    "description": "Le premier sort qui inflige des dégâts ce tour retire 30% d'Armure à la cible",
     "rarity": [
       "Relic"
     ],
@@ -6940,7 +6940,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn, if the bearer has no Armor: \n20% Damage inflicted (1 turn) \nOtherwise: -10% Damage inflicted (1 turn)",
+    "description": "En début de tour, si le porteur n'a pas d'Armure : 20% Dégâts infligés (1 tour). Sinon : -10% Dégâts infligés (1 tour)",
     "rarity": [
       "Relic"
     ],
@@ -6966,7 +6966,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "The state bearer increases their damage inflicted by 2% per turn (permanent) (max 20)",
+    "description": "Le porteur de l'état augmente ses dégâts infligés de 2% par tour (permanent) (max 20)",
     "rarity": [
       "Relic"
     ],
@@ -6992,7 +6992,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Every 3 spells cast\nCritical Hit is set to 100",
+    "description": "Tous les 3 sorts lancés, le Coup Critique est mis à 100",
     "rarity": [
       "Relic"
     ],
@@ -7018,7 +7018,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "30% Block if the bearer did not receive healing in the previous turn.",
+    "description": "30% Parade si le porteur n'a pas reçu de soins au tour précédent.",
     "rarity": [
       "Relic"
     ],
@@ -7044,7 +7044,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Each turn steals 50% of damage inflicted by the first spell that inflicts damage\n-50% Armor received",
+    "description": "Chaque tour, vole 50% des dégâts infligés par le premier sort qui inflige des dégâts, -50% Armure reçue",
     "rarity": [
       "Relic"
     ],
@@ -7070,7 +7070,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Even Turn: \nAfter using a WP-based spell, the state bearer regains 2 AP (max of 1/turn). \n\nOdd Turn: \nAfter using a WP-based spell, the state bearer loses 2 AP (max 1/turn).",
+    "description": "Tour pair : Après avoir utilisé un sort à PW, le porteur de l'état regagne 2 PA (max 1/tour). Tour impair : Après avoir utilisé un sort à PW, le porteur de l'état perd 2 PA (max 1/tour).",
     "rarity": [
       "Relic"
     ],
@@ -7096,7 +7096,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "The state bearer increases their heals performed by 2% per turn (Permanent, max 20%)",
+    "description": "Le porteur de l'état augmente ses soins réalisés de 2% par tour (permanent, max 20%)",
     "rarity": [
       "Relic"
     ],
@@ -7122,7 +7122,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn if there are at least 2 enemies in melee: +1MP +1AP",
+    "description": "En début de tour, s'il y a au moins 2 ennemis en mêlée : +1 PM, +1 PA",
     "rarity": [
       "Relic"
     ],
@@ -7148,7 +7148,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "At start of turn if there are at least 2 allies in melee: +1MP +1AP",
+    "description": "En début de tour, s'il y a au moins 2 alliés en mêlée : +1 PM, +1 PA",
     "rarity": [
       "Relic"
     ],
@@ -7174,7 +7174,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "When performing a Block: -30% extra damage recieved -100% block",
+    "description": "En réalisant une Parade : -30% dégâts supplémentaires reçus, -100% Parade",
     "rarity": [
       "Relic"
     ],
@@ -7200,7 +7200,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "At the start of combat, if Critical Mastery is less than or equal to 0: 30% critical hit",
+    "description": "En début de combat, si la Maîtrise Critique est inférieure ou égale à 0 : 30% Coup Critique",
     "rarity": [
       "Epic"
     ],
