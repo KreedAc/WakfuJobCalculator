@@ -259,11 +259,17 @@ async function main() {
     partialPlaceholders: [],
   };
 
+  // Curated names that differ from the official EN spelling.
+  const NAME_ALIASES = new Map([
+    ["Embellishement", "Embellishment"],
+  ]);
+
   // Pick, for each curated sublimation, the official variant whose EN effect
   // text (from its state) is closest to the curated description at base values.
   const chosenByName = new Map();
   for (const sub of curated) {
-    const candidates = byEnName.get(normName(stripTier(sub.name))) ?? [];
+    const lookupName = NAME_ALIASES.get(sub.name) ?? sub.name;
+    const candidates = byEnName.get(normName(stripTier(lookupName))) ?? [];
     if (candidates.length === 0) {
       report.unmatched.push(sub.name);
       continue;
