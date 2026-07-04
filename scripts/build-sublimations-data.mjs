@@ -48,6 +48,12 @@ function normName(s) {
     .trim();
 }
 
+// Non-epic sublimation scrolls exist as tier variants "Name I/II/III"
+// (Rare/Mythic/Legendary). Strip the trailing roman numeral to get the base name.
+function stripTier(s) {
+  return String(s).replace(/\s+(?:I{1,3})\s*$/u, "").trim();
+}
+
 // Normalize a description for comparison.
 function normDesc(s) {
   return stripHtml(String(s)).replace(/\s+/g, " ").trim().toLowerCase();
@@ -76,6 +82,20 @@ function itemTitle(o, lang) {
 
 function itemDescription(o, lang) {
   return pickText(o?.description, lang) ?? pickText(o?.definition?.description, lang) ?? null;
+}
+
+// Sublimation items carry their real effect in a state machine reference:
+// equipEffects[].effect.definition with actionId 304 and params[0] = stateId.
+function itemStateIds(o) {
+  const effects = o?.definition?.equipEffects ?? [];
+  const ids = [];
+  for (const e of effects) {
+    const def = e?.effect?.definition;
+    if (def?.actionId === 304 && Array.isArray(def.params) && def.params.length > 0) {
+      ids.push(def.params[0]);
+    }
+  }
+  return ids;
 }
 
 // Render the curated EN description at the sublimation's base values,
@@ -191,12 +211,38 @@ async function main() {
     }
   }
 
-  // Index official items by normalized EN title (multiple rarity variants per name).
+  // Load states.json: the real effect text of a sublimation lives on the state
+  // its equip effect applies (actionId 304, params[0] = stateId).
+  console.log("Downloading states.json ...");
+  let statesById = new Map();
+  try {
+    const statesRaw = await fetchJson(`${base}/states.json`);
+    console.log(`  states: ${statesRaw.length} entries`);
+    for (const s of statesRaw) {
+      const id = s?.definition?.id ?? s?.id;
+      if (id !== undefined && id !== null) statesById.set(id, s);
+    }
+  } catch (e) {
+    console.log(`  states.json unavailable (${e.message.split("\n")[0]}) — falling back to curated descriptions`);
+  }
+
+  function stateDescription(stateIds, lang) {
+    for (const sid of stateIds) {
+      const st = statesById.get(sid);
+      if (!st) continue;
+      const d = pickText(st.description, lang) ?? pickText(st?.definition?.description, lang);
+      if (d && d.trim()) return d;
+    }
+    return null;
+  }
+
+  // Index official sublimation items by tier-stripped normalized EN title:
+  // non-epic scrolls exist as "Name I/II/III" (Rare/Mythic/Legendary variants).
   const byEnName = new Map();
   for (const it of itemsRaw) {
     const en = itemTitle(it, "en");
     if (!en) continue;
-    const key = normName(en);
+    const key = normName(stripTier(en));
     if (!key) continue;
     const arr = byEnName.get(key) ?? [];
     arr.push(it);
@@ -208,15 +254,16 @@ async function main() {
     generatedAt: new Date().toISOString(),
     curatedCount: curated.length,
     matched: 0,
+    withOfficialDescription: 0,
     unmatched: [],
     partialPlaceholders: [],
   };
 
-  // Pick, for each curated sublimation, the official variant whose EN description
-  // is closest to the curated description rendered at base values.
+  // Pick, for each curated sublimation, the official variant whose EN effect
+  // text (from its state) is closest to the curated description at base values.
   const chosenByName = new Map();
   for (const sub of curated) {
-    const candidates = byEnName.get(normName(sub.name)) ?? [];
+    const candidates = byEnName.get(normName(stripTier(sub.name))) ?? [];
     if (candidates.length === 0) {
       report.unmatched.push(sub.name);
       continue;
@@ -225,7 +272,7 @@ async function main() {
     let best = candidates[0];
     let bestScore = -1;
     for (const c of candidates) {
-      const d = itemDescription(c, "en");
+      const d = stateDescription(itemStateIds(c), "en");
       const s = d ? similarity(target, normDesc(d)) : 0;
       if (s > bestScore) {
         bestScore = s;
@@ -234,21 +281,28 @@ async function main() {
     }
     chosenByName.set(sub.name, { item: best, score: bestScore });
     report.matched++;
+    if (stateDescription(itemStateIds(best), "en")) report.withOfficialDescription++;
   }
 
   console.log(`Matched ${report.matched}/${curated.length} curated sublimations to official items`);
+  console.log(`With official effect text: ${report.withOfficialDescription}/${report.matched}`);
   if (report.unmatched.length) {
     console.log("Unmatched:", report.unmatched.join(", "));
   }
 
   if (DEBUG) {
-    const samples = [...chosenByName.entries()].slice(0, 3).map(([name, { item, score }]) => ({
+    console.log("=== DEBUG SAMPLES (name, score, stateIds, EN state desc) ===");
+    const samples = [...chosenByName.entries()].slice(0, 6).map(([name, { item, score }]) => ({
       name,
       score,
-      raw: item,
+      enTitle: itemTitle(item, "en"),
+      frTitle: itemTitle(item, "fr"),
+      stateIds: itemStateIds(item),
+      enStateDesc: stateDescription(itemStateIds(item), "en"),
+      frStateDesc: stateDescription(itemStateIds(item), "fr"),
+      rawState: statesById.get(itemStateIds(item)[0]) ?? null,
     }));
-    console.log("=== DEBUG SAMPLES ===");
-    console.log(JSON.stringify(samples, null, 2).slice(0, 8000));
+    console.log(JSON.stringify(samples, null, 2).slice(0, 12000));
   }
 
   for (const lang of TARGET_LANGUAGES) {
@@ -262,9 +316,11 @@ async function main() {
 
       if (chosen) {
         const locName = itemTitle(chosen.item, lang);
-        if (locName) entry.name = locName;
+        if (locName) entry.name = stripTier(locName);
 
-        const locDesc = itemDescription(chosen.item, lang);
+        // Only replace the curated description when the official state carries
+        // real localized effect text — item descriptions are generic scroll blurbs.
+        const locDesc = stateDescription(itemStateIds(chosen.item), lang);
         if (locDesc) {
           const cleaned = stripHtml(locDesc).replace(/\s+/g, " ").trim();
           const { desc, injected, expected } = injectPlaceholders(cleaned, sub);
