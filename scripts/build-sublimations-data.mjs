@@ -142,6 +142,17 @@ function injectPlaceholders(localizedDesc, curated) {
   return { desc, injected, expected };
 }
 
+// Hand-maintained effect translations (keyed by curated EN name), used because
+// the public CDN has no localized effect text — see scripts/sublimation-descriptions.*.json
+async function loadDescriptionOverrides(lang) {
+  try {
+    const raw = await fsp.readFile(path.resolve("scripts", `sublimation-descriptions.${lang}.json`), "utf8");
+    return JSON.parse(raw);
+  } catch {
+    return {};
+  }
+}
+
 async function main() {
   const curatedRaw = await fsp.readFile(CURATED_PATH, "utf8");
   const curated = JSON.parse(curatedRaw);
@@ -312,9 +323,11 @@ async function main() {
   }
 
   for (const lang of TARGET_LANGUAGES) {
+    const overrides = await loadDescriptionOverrides(lang);
     const out = [];
     let placeholderOk = 0;
     let placeholderPartial = 0;
+    let overridden = 0;
 
     for (const sub of curated) {
       const entry = { ...sub };
@@ -323,9 +336,14 @@ async function main() {
       if (chosen) {
         const locName = itemTitle(chosen.item, lang);
         if (locName) entry.name = stripTier(locName);
+      }
 
-        // Only replace the curated description when the official state carries
-        // real localized effect text — item descriptions are generic scroll blurbs.
+      // Description priority: hand-maintained translation > official state text
+      // > curated EN. Item descriptions are generic scroll blurbs, never used.
+      if (overrides[sub.name]) {
+        entry.description = overrides[sub.name];
+        overridden++;
+      } else if (chosen) {
         const locDesc = stateDescription(itemStateIds(chosen.item), lang);
         if (locDesc) {
           const cleaned = stripHtml(locDesc).replace(/\s+/g, " ").trim();
@@ -343,6 +361,7 @@ async function main() {
       entry.key = sub.name;
       out.push(entry);
     }
+    console.log(`  ${lang}: ${overridden}/${curated.length} descriptions from hand-maintained translations`);
 
     const outPath = path.join(OUT_DIR, `sublimations.${lang}.json`);
     await fsp.writeFile(outPath, JSON.stringify(out, null, 2));
