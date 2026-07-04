@@ -5194,7 +5194,7 @@
     "key": "Abnegation"
   },
   {
-    "name": "Runa Épica de Anatomia",
+    "name": "Anatomia",
     "colors": [
       "Epic"
     ],
@@ -5220,7 +5220,7 @@
     "key": "Anatomy"
   },
   {
-    "name": "Runa Épica de Brutalidade",
+    "name": "Brutalidade",
     "colors": [
       "Epic"
     ],
@@ -5324,7 +5324,7 @@
     "key": "Controlling Space"
   },
   {
-    "name": "Controle do Espaço",
+    "name": "Controle do Espaço II",
     "colors": [
       "Epic"
     ],
@@ -5428,7 +5428,7 @@
     "key": "Engagement"
   },
   {
-    "name": "Runa Épica de Força Hercúlea",
+    "name": "Força Hercúlea",
     "colors": [
       "Epic"
     ],
@@ -5480,7 +5480,7 @@
     "key": "Inflexibility"
   },
   {
-    "name": "Inflexibilidade",
+    "name": "Inflexibilidade II",
     "colors": [
       "Epic"
     ],
@@ -5558,7 +5558,7 @@
     "key": "Measure"
   },
   {
-    "name": "Medida",
+    "name": "Medida II",
     "colors": [
       "Epic"
     ],
@@ -5584,7 +5584,7 @@
     "key": "Measure II"
   },
   {
-    "name": "Medida",
+    "name": "Medida III",
     "colors": [
       "Epic"
     ],
@@ -5636,7 +5636,7 @@
     "key": "Outrage"
   },
   {
-    "name": "Fúria",
+    "name": "Fúria II",
     "colors": [
       "Epic"
     ],
@@ -5688,7 +5688,7 @@
     "key": "Pillar"
   },
   {
-    "name": "Pilar",
+    "name": "Pilar II",
     "colors": [
       "Epic"
     ],
@@ -5714,7 +5714,7 @@
     "key": "Pillar II"
   },
   {
-    "name": "Runa Épica de Saúde de Ferro",
+    "name": "Saúde de Ferro",
     "colors": [
       "Epic"
     ],
@@ -5766,7 +5766,7 @@
     "key": "Steadfast"
   },
   {
-    "name": "Constância",
+    "name": "Constância II",
     "colors": [
       "Epic"
     ],
@@ -5922,7 +5922,7 @@
     "key": "Wield type: Shield"
   },
   {
-    "name": "Runa Épica de Arte do Posicionamento",
+    "name": "Arte do Posicionamento",
     "colors": [
       "Epic"
     ],
@@ -6000,7 +6000,7 @@
     "key": "Alternation"
   },
   {
-    "name": "Alternância",
+    "name": "Alternância II",
     "colors": [
       "Relic"
     ],
@@ -6208,7 +6208,7 @@
     "key": "Calibration"
   },
   {
-    "name": "Calibragem",
+    "name": "Calibragem II",
     "colors": [
       "Relic"
     ],
@@ -6338,7 +6338,7 @@
     "key": "Ebullience"
   },
   {
-    "name": "Runa Relíquia de Excesso",
+    "name": "Excesso",
     "colors": [
       "Relic"
     ],
@@ -6364,7 +6364,7 @@
     "key": "Excess"
   },
   {
-    "name": "Runa Relíquia de Excesso",
+    "name": "Excesso II",
     "colors": [
       "Relic"
     ],
@@ -6442,7 +6442,7 @@
     "key": "Farsighted"
   },
   {
-    "name": "Runa Relíquia de Aura de Chamas",
+    "name": "Aura de Chamas",
     "colors": [
       "Relic"
     ],
@@ -6468,7 +6468,7 @@
     "key": "Flame Aura"
   },
   {
-    "name": "Runa Relíquia de Guarda Baixada",
+    "name": "Guarda Baixada",
     "colors": [
       "Relic"
     ],
@@ -6520,7 +6520,7 @@
     "key": "Gusto"
   },
   {
-    "name": "Runa Relíquia de Sangue do Talho",
+    "name": "Sangue do Talho",
     "colors": [
       "Relic"
     ],
@@ -6676,7 +6676,7 @@
     "key": "Lunatic"
   },
   {
-    "name": "Lunático",
+    "name": "Lunático II",
     "colors": [
       "Relic"
     ],
@@ -6884,7 +6884,7 @@
     "key": "Single Shared Armor"
   },
   {
-    "name": "Couraça Singular",
+    "name": "Couraça Singular II",
     "colors": [
       "Relic"
     ],
