@@ -1,11 +1,30 @@
 // scripts/build-sublimations-data.mjs
+//
+// Generates localized sublimation files (fr/es/pt) from the official Ankama CDN,
+// using the hand-curated public/data/sublimations.en.json as the source of truth
+// for game mechanics (per-level values, slot colors, rarity, obtainment, category).
+//
+// Matching strategy: curated entries are matched to official items by normalized
+// English name. Localized names/descriptions come from the official data; the
+// [X]/[Y] level placeholders are re-injected into localized descriptions by
+// replacing the curated base values, so the level slider keeps working.
+//
+// The English file is never overwritten — it IS the curated source.
+//
+// Usage:
+//   node scripts/build-sublimations-data.mjs           # generate fr/es/pt files
+//   node scripts/build-sublimations-data.mjs --debug   # also dump sample raw items
+
 import { promises as fsp } from "node:fs";
 import path from "node:path";
 
 const OUT_DIR = path.resolve("public/data");
-const SUPPORTED_LANGUAGES = ["en", "fr", "es", "pt"];
+const CURATED_PATH = path.join(OUT_DIR, "sublimations.en.json");
+const REPORT_PATH = path.resolve("scripts", "sublimations.i18n.report.json");
+const TARGET_LANGUAGES = ["fr", "es", "pt"];
+const DEBUG = process.argv.includes("--debug");
 
-function pickText(v, lang = null) {
+function pickText(v, lang) {
   if (!v) return null;
   if (typeof v === "string") return v;
   if (typeof v === "object") {
@@ -15,6 +34,25 @@ function pickText(v, lang = null) {
   return null;
 }
 
+function stripHtml(s) {
+  return String(s).replace(/<[^>]*>/g, "");
+}
+
+// Normalize for name matching: lowercase, no accents, collapse whitespace/punctuation.
+function normName(s) {
+  return String(s)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+// Normalize a description for comparison.
+function normDesc(s) {
+  return stripHtml(String(s)).replace(/\s+/g, " ").trim().toLowerCase();
+}
+
 async function fetchJson(url) {
   const res = await fetch(url);
   const text = await res.text();
@@ -22,193 +60,186 @@ async function fetchJson(url) {
   return JSON.parse(text);
 }
 
-function processEffect(effectDesc, lang = null) {
-  if (!effectDesc) return null;
-
-  const text = pickText(effectDesc, lang);
-  if (!text) return null;
-
-  // Remove HTML tags and clean up
-  return text.replace(/<[^>]*>/g, '').trim();
+function itemId(o) {
+  return o?.definition?.item?.id ?? o?.definition?.id ?? o?.id ?? null;
 }
 
-function mapRarityId(rarityId) {
-  const rarityMap = {
-    1: 'Rare',
-    2: 'Mythic',
-    3: 'Legendary'
-  };
-  return rarityMap[rarityId] || 'Rare';
+function itemTitle(o, lang) {
+  return (
+    pickText(o?.title, lang) ??
+    pickText(o?.name, lang) ??
+    pickText(o?.definition?.title, lang) ??
+    pickText(o?.definition?.name, lang) ??
+    null
+  );
 }
 
-function extractSubColor(subColor) {
-  // subColor è un array di numeri (0-3) che rappresentano i colori
-  // 0 = Red, 1 = Green, 2 = Blue, 3 = Yellow/Jolly
-  const colorMap = {
-    0: 'R',
-    1: 'G',
-    2: 'B',
-    3: 'J'
-  };
-
-  if (!Array.isArray(subColor)) return [];
-  return subColor.map(c => colorMap[c] || 'G').slice(0, 3);
+function itemDescription(o, lang) {
+  return pickText(o?.description, lang) ?? pickText(o?.definition?.description, lang) ?? null;
 }
 
-function findIconPath(sublimation, monsterFamiliesMap, itemsMap) {
-  // Try to find icon from drop location
-  if (sublimation.definition?.dropLocations && sublimation.definition.dropLocations.length > 0) {
-    const dropLoc = sublimation.definition.dropLocations[0];
-
-    // Check if it's from a monster family
-    if (dropLoc.monsterFamilyId) {
-      const family = monsterFamiliesMap.get(dropLoc.monsterFamilyId);
-      if (family?.iconName) {
-        return `/data/icons/${family.iconName}.png`;
-      }
-    }
-
-    // Check if it's from an item/resource
-    if (dropLoc.itemId) {
-      const item = itemsMap.get(dropLoc.itemId);
-      if (item?.iconName) {
-        return `/data/icons/${item.iconName}.png`;
-      }
+// Render the curated EN description at the sublimation's base values,
+// e.g. "[X]% Critical Hit" + {X: base 3} -> "3% Critical Hit".
+function renderCuratedAtBase(curated) {
+  let desc = curated.description || "";
+  for (const v of curated.values || []) {
+    if (v?.placeholder && v.base !== null && v.base !== undefined) {
+      desc = desc.split(`[${v.placeholder}]`).join(String(v.base));
     }
   }
+  return desc;
+}
 
-  // Default icons based on rarity
-  const rarityId = sublimation.definition?.rarity || sublimation.rarity || 1;
-  if (rarityId === 3) return '/data/icons/legendary_icon.png';
-  if (rarityId === 2) return '/data/icons/mythic_icon.png';
-  return '/data/icons/rare_icon.png';
+// Similarity: crude but effective for picking the right rarity variant —
+// token overlap ratio between two normalized descriptions.
+function similarity(a, b) {
+  if (!a || !b) return 0;
+  const ta = new Set(a.split(" "));
+  const tb = new Set(b.split(" "));
+  let common = 0;
+  for (const t of ta) if (tb.has(t)) common++;
+  return common / Math.max(ta.size, tb.size);
+}
+
+// Re-inject [X]-style placeholders into a localized description by replacing
+// the first standalone occurrence of each base value. Returns the new text and
+// how many placeholders were successfully injected.
+function injectPlaceholders(localizedDesc, curated) {
+  let desc = localizedDesc;
+  let injected = 0;
+  let expected = 0;
+  for (const v of curated.values || []) {
+    if (!v?.placeholder || v.base === null || v.base === undefined) continue;
+    expected++;
+    const token = String(v.base);
+    // standalone number (not part of a longer number)
+    const re = new RegExp(`(?<![0-9])${token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![0-9])`);
+    if (re.test(desc)) {
+      desc = desc.replace(re, `[${v.placeholder}]`);
+      injected++;
+    }
+  }
+  return { desc, injected, expected };
 }
 
 async function main() {
-  await fsp.mkdir(OUT_DIR, { recursive: true });
+  const curatedRaw = await fsp.readFile(CURATED_PATH, "utf8");
+  const curated = JSON.parse(curatedRaw);
+  console.log(`Curated sublimations (EN source of truth): ${curated.length}`);
 
   console.log("Fetching Wakfu version...");
   const cfg = await fetchJson("https://wakfu.cdn.ankama.com/gamedata/config.json");
   const version = cfg.version;
   if (!version) throw new Error("No version in config.json");
-
-  const base = `https://wakfu.cdn.ankama.com/gamedata/${version}`;
   console.log("Wakfu version:", version);
 
-  // Download equipmentItemTypes to map sublimation IDs
-  console.log("Downloading equipmentItemTypes.json ...");
-  const equipmentTypes = await fetchJson(`${base}/equipmentItemTypes.json`);
-
-  // Find sublimation slots type
-  const sublimationSlots = equipmentTypes.find(et =>
-    et.definition?.equipmentPositions?.includes(1024) || // sublimation slot
-    et.id === 582 // known sublimation type ID
-  );
-
-  console.log("Downloading items.json for sublimations...");
+  const base = `https://wakfu.cdn.ankama.com/gamedata/${version}`;
+  console.log("Downloading items.json (large file)...");
   const itemsRaw = await fetchJson(`${base}/items.json`);
+  console.log(`Official items: ${itemsRaw.length}`);
 
-  // Filter sublimation items (usually have sublimation in their equipment category or specific item type)
-  const sublimationItems = itemsRaw.filter(item => {
-    const def = item.definition || item;
-    const itemTypeId = def.item?.type?.id || def.itemTypeId || def.typeId;
-    // Sublimations usually have itemTypeId 582 or similar
-    return itemTypeId === 582 || itemTypeId === 611 || itemTypeId === 646;
-  });
-
-  console.log(`Found ${sublimationItems.length} sublimation items`);
-
-  // Download states.json for sublimation effects
-  console.log("Downloading states.json ...");
-  const statesRaw = await fetchJson(`${base}/states.json`);
-  const statesMap = new Map(statesRaw.map(s => [s.definition?.id || s.id, s]));
-
-  // Download actions.json for effect descriptions
-  console.log("Downloading actions.json ...");
-  const actionsRaw = await fetchJson(`${base}/actions.json`);
-  const actionsMap = new Map(actionsRaw.map(a => [a.definition?.id || a.id, a]));
-
-  console.log("\n========== Processing sublimations for each language ==========");
-
-  for (const lang of SUPPORTED_LANGUAGES) {
-    console.log(`\nProcessing language: ${lang.toUpperCase()}`);
-
-    const sublimations = [];
-
-    for (const item of sublimationItems) {
-      const def = item.definition || item;
-      const id = def.id || item.id;
-      const title = pickText(def.title, lang) || pickText(item.title, lang);
-      const description = pickText(def.description, lang) || pickText(item.description, lang);
-
-      if (!title) continue;
-
-      // Extract sublimation properties
-      const useEffects = def.useEffects || item.useEffects || [];
-      const equipEffects = def.equipEffects || item.equipEffects || [];
-
-      // Get sublimation-specific properties
-      const sublimationParams = def.sublimationParameters || item.sublimationParameters || {};
-      const subColor = extractSubColor(sublimationParams.slotColorPattern || [1, 2, 1]); // default GBG
-
-      // Extract rarity
-      const rarityId = def.item?.baseParameters?.rarity || def.baseParameters?.rarity || 1;
-      const rarities = rarityId === 3 ? ['Rare', 'Mythic', 'Legendary'] :
-                      rarityId === 2 ? ['Rare', 'Mythic'] :
-                      ['Rare'];
-
-      // Extract level info
-      const minLevel = sublimationParams.minLevel || def.level?.min || 1;
-      const maxLevel = sublimationParams.maxLevel || def.level?.max || 6;
-
-      // Parse description to find effect values
-      let processedDesc = description || '';
-      const values = [];
-
-      // Find placeholders like [X], [Y], [Z] in description
-      const placeholders = processedDesc.match(/\[([A-Z])\]/g) || [];
-      for (const ph of placeholders) {
-        values.push({
-          base: 0, // Will need to be calculated from effects
-          increment: 0,
-          placeholder: ph.replace(/[\[\]]/g, '')
-        });
-      }
-
-      // Determine category based on effects or description
-      let category = 'General';
-      const descLower = (description || '').toLowerCase();
-      if (descLower.includes('damage') || descLower.includes('critical')) category = 'Offensive';
-      else if (descLower.includes('resist') || descLower.includes('armor') || descLower.includes('hp')) category = 'Defensive';
-      else if (descLower.includes('ap') || descLower.includes('mp') || descLower.includes('wp')) category = 'Stats Increase';
-      else if (descLower.includes('control') || descLower.includes('summon')) category = 'Summoning';
-
-      sublimations.push({
-        id,
-        name: title,
-        colors: subColor.length > 0 ? subColor : ['G', 'B', 'G'],
-        description: processedDesc,
-        rarity: rarities,
-        effect: '', // Will be extracted from level-up effects
-        maxLevel,
-        minLevel,
-        step: 1,
-        obtenation: {
-          name: 'Unknown', // Would need monster/dungeon data
-          localIcon: '/data/icons/rare_icon.png'
-        },
-        category,
-        values: values.length > 0 ? values : [{ base: 0, increment: 0, placeholder: 'X' }]
-      });
-    }
-
-    // Write sublimations file
-    const outPath = path.join(OUT_DIR, `sublimations.${lang}.json`);
-    await fsp.writeFile(outPath, JSON.stringify(sublimations, null, 2));
-    console.log(`Written ${sublimations.length} sublimations to sublimations.${lang}.json`);
+  // Index official items by normalized EN title (multiple rarity variants per name).
+  const byEnName = new Map();
+  for (const it of itemsRaw) {
+    const en = itemTitle(it, "en");
+    if (!en) continue;
+    const key = normName(en);
+    if (!key) continue;
+    const arr = byEnName.get(key) ?? [];
+    arr.push(it);
+    byEnName.set(key, arr);
   }
 
-  console.log("\n✅ DONE - All sublimation languages generated!");
+  const report = {
+    version,
+    generatedAt: new Date().toISOString(),
+    curatedCount: curated.length,
+    matched: 0,
+    unmatched: [],
+    partialPlaceholders: [],
+  };
+
+  // Pick, for each curated sublimation, the official variant whose EN description
+  // is closest to the curated description rendered at base values.
+  const chosenByName = new Map();
+  for (const sub of curated) {
+    const candidates = byEnName.get(normName(sub.name)) ?? [];
+    if (candidates.length === 0) {
+      report.unmatched.push(sub.name);
+      continue;
+    }
+    const target = normDesc(renderCuratedAtBase(sub));
+    let best = candidates[0];
+    let bestScore = -1;
+    for (const c of candidates) {
+      const d = itemDescription(c, "en");
+      const s = d ? similarity(target, normDesc(d)) : 0;
+      if (s > bestScore) {
+        bestScore = s;
+        best = c;
+      }
+    }
+    chosenByName.set(sub.name, { item: best, score: bestScore });
+    report.matched++;
+  }
+
+  console.log(`Matched ${report.matched}/${curated.length} curated sublimations to official items`);
+  if (report.unmatched.length) {
+    console.log("Unmatched:", report.unmatched.join(", "));
+  }
+
+  if (DEBUG) {
+    const samples = [...chosenByName.entries()].slice(0, 3).map(([name, { item, score }]) => ({
+      name,
+      score,
+      raw: item,
+    }));
+    console.log("=== DEBUG SAMPLES ===");
+    console.log(JSON.stringify(samples, null, 2).slice(0, 8000));
+  }
+
+  for (const lang of TARGET_LANGUAGES) {
+    const out = [];
+    let placeholderOk = 0;
+    let placeholderPartial = 0;
+
+    for (const sub of curated) {
+      const entry = { ...sub };
+      const chosen = chosenByName.get(sub.name);
+
+      if (chosen) {
+        const locName = itemTitle(chosen.item, lang);
+        if (locName) entry.name = locName;
+
+        const locDesc = itemDescription(chosen.item, lang);
+        if (locDesc) {
+          const cleaned = stripHtml(locDesc).replace(/\s+/g, " ").trim();
+          const { desc, injected, expected } = injectPlaceholders(cleaned, sub);
+          entry.description = desc;
+          if (expected > 0 && injected < expected) {
+            placeholderPartial++;
+            report.partialPlaceholders.push({ name: sub.name, lang, injected, expected });
+          } else {
+            placeholderOk++;
+          }
+        }
+      }
+      // NOTE: rune level lookups key off the EN name in the app, so keep a stable key.
+      entry.key = sub.name;
+      out.push(entry);
+    }
+
+    const outPath = path.join(OUT_DIR, `sublimations.${lang}.json`);
+    await fsp.writeFile(outPath, JSON.stringify(out, null, 2));
+    console.log(
+      `sublimations.${lang}.json: ${out.length} entries ` +
+      `(placeholders ok: ${placeholderOk}, partial: ${placeholderPartial})`
+    );
+  }
+
+  await fsp.writeFile(REPORT_PATH, JSON.stringify(report, null, 2));
+  console.log(`Report written to ${REPORT_PATH}`);
+  console.log("✅ DONE");
 }
 
 main().catch((e) => {

@@ -310,7 +310,7 @@ async function main() {
   await translateBlock('achievements', achievementTerms, i18n.achievements);
 
   const outI18n = path.join(DATA_DIR, 'treasures.i18n.json');
-  const outReport = path.join(DATA_DIR, 'treasures.i18n.report.json');
+  const outReport = path.join('scripts', 'treasures.i18n.report.json');
 
   await fs.writeFile(outI18n, JSON.stringify(i18n, null, 2), 'utf-8');
   await fs.writeFile(outReport, JSON.stringify({ _meta: i18n._meta, blocks: reportBlocks }, null, 2), 'utf-8');
@@ -337,7 +337,7 @@ async function main() {
     (achBlock?.missing?.length || 0) + (achBlock?.ambiguous?.length || 0)
     > 0
   ) {
-    console.log('\nTip: Open public/data/treasures.i18n.report.json to see missing/ambiguous terms.');
+    console.log('\nTip: Open scripts/treasures.i18n.report.json to see missing/ambiguous terms.');
     console.log('If a term is ambiguous, pick the right ID and put it in data/treasures/overrides.json');
   }
 }

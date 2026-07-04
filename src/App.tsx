@@ -1,27 +1,41 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { CalculatorPage } from './pages/CalculatorPage';
-import { SublimationsPage } from './pages/SublimationsPage';
-import { ItemsCraftGuidePage } from './pages/ItemsCraftGuidePage';
-import { AboutPage } from './pages/AboutPage';
-import { ChangelogPage } from './pages/ChangelogPage';
-import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
-import { TermsOfServicePage } from './pages/TermsOfServicePage';
-import { ContactPage } from './pages/ContactPage';
-import { GuidesPage } from './pages/GuidesPage';
-import TreasuresPage from './pages/TreasuresPage';
-import { BeginnersGuideProfessions } from './pages/guides/BeginnersGuideProfessions';
-import { CompleteSublimationsGuide } from './pages/guides/CompleteSublimationsGuide';
-import { CookiePolicyPage } from './pages/CookiePolicyPage';
-import { DisclaimerPage } from './pages/DisclaimerPage';
-import { CombatCalcPage } from './pages/CombatCalcPage'; // ← NUOVO
 import { Navbar } from './components/Navbar';
+
+// Every page except the landing one is lazy-loaded to keep the initial bundle small.
+const SublimationsPage = lazy(() => import('./pages/SublimationsPage').then(m => ({ default: m.SublimationsPage })));
+const ItemsCraftGuidePage = lazy(() => import('./pages/ItemsCraftGuidePage').then(m => ({ default: m.ItemsCraftGuidePage })));
+const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
+const ChangelogPage = lazy(() => import('./pages/ChangelogPage').then(m => ({ default: m.ChangelogPage })));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage').then(m => ({ default: m.PrivacyPolicyPage })));
+const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage').then(m => ({ default: m.TermsOfServicePage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
+const GuidesPage = lazy(() => import('./pages/GuidesPage').then(m => ({ default: m.GuidesPage })));
+const TreasuresPage = lazy(() => import('./pages/TreasuresPage'));
+const BeginnersGuideProfessions = lazy(() => import('./pages/guides/BeginnersGuideProfessions').then(m => ({ default: m.BeginnersGuideProfessions })));
+const CompleteSublimationsGuide = lazy(() => import('./pages/guides/CompleteSublimationsGuide').then(m => ({ default: m.CompleteSublimationsGuide })));
+const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage').then(m => ({ default: m.CookiePolicyPage })));
+const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage').then(m => ({ default: m.DisclaimerPage })));
+const CombatCalcPage = lazy(() => import('./pages/CombatCalcPage').then(m => ({ default: m.CombatCalcPage })));
 import { LanguageSelector } from './components/LanguageSelector';
 import { useClickOutside } from './hooks/useClickOutside';
 import { TRANSLATIONS, type Language } from './constants/translations';
 
+const LANG_STORAGE_KEY = 'wakfu-lang';
+
+function getInitialLanguage(): Language {
+  try {
+    const saved = localStorage.getItem(LANG_STORAGE_KEY);
+    if (saved && saved in TRANSLATIONS) return saved as Language;
+  } catch {
+    // localStorage unavailable (private mode) — fall back to default
+  }
+  return 'en';
+}
+
 function AppContent() {
-  const [lang, setLang] = useState<Language>('en');
+  const [lang, setLang] = useState<Language>(getInitialLanguage);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -34,6 +48,11 @@ function AppContent() {
   const handleLanguageChange = (newLang: Language) => {
     setLang(newLang);
     setMenuOpen(false);
+    try {
+      localStorage.setItem(LANG_STORAGE_KEY, newLang);
+    } catch {
+      // localStorage unavailable — language just won't persist
+    }
   };
 
   return (
@@ -70,6 +89,13 @@ function AppContent() {
       </div>
 
       <div className="w-full flex flex-col items-center z-10 pt-20">
+        <Suspense
+          fallback={
+            <div className="flex items-center justify-center py-24 text-emerald-300/70">
+              <div className="w-8 h-8 border-2 border-emerald-400/30 border-t-emerald-400 rounded-full animate-spin" />
+            </div>
+          }
+        >
         <Routes>
           <Route path="/" element={<CalculatorPage language={lang} />} />
           <Route path="/sublimations" element={<SublimationsPage language={lang} />} />
@@ -87,6 +113,7 @@ function AppContent() {
           <Route path="/disclaimer" element={<DisclaimerPage language={lang} />} />
           <Route path="/contact" element={<ContactPage language={lang} />} />
         </Routes>
+        </Suspense>
 
         <footer className="mt-16 text-emerald-200/40 text-xs text-center pb-8 font-medium space-y-4">
           <div className="glass rounded-xl p-4 max-w-2xl mx-auto mb-6">

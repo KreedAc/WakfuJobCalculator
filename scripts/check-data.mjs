@@ -1,6 +1,6 @@
 import fs from "node:fs";
 
-const items = JSON.parse(fs.readFileSync("public/data/items.compact.json","utf8"));
+const items = JSON.parse(fs.readFileSync("public/data/items.compact.en.json","utf8"));
 const recipes = JSON.parse(fs.readFileSync("public/data/recipes.compact.json","utf8"));
 
 const itemSet = new Set(items.map(i => i.id));
