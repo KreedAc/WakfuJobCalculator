@@ -18,7 +18,7 @@ function Btn({
 }: {
   to: string;
   active: boolean;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   label: string;
 }) {
   return (

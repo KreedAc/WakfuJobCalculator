@@ -1,7 +1,6 @@
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { Clock, Plus, Wrench, Bug, Sparkles } from 'lucide-react';
-import { TRANSLATIONS, type Language } from '../constants/translations';
-import { ViewCounter } from '../components/ViewCounter';
+import { type Language } from '../constants/translations';
 
 interface ChangelogPageProps {
   language: Language;
@@ -21,8 +20,6 @@ interface ChangelogEntry {
 }
 
 export function ChangelogPage({ language }: ChangelogPageProps) {
-  const t = TRANSLATIONS[language];
-
   const pageContent = {
     en: {
       title: 'Changelog',
@@ -228,10 +225,6 @@ export function ChangelogPage({ language }: ChangelogPageProps) {
                language === 'es' ? 'Más actualizaciones próximamente!' :
                'Mais atualizações em breve!'}
             </p>
-          </div>
-
-          <div className="mt-8">
-            <ViewCounter />
           </div>
         </div>
       </div>

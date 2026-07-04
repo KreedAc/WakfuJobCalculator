@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { CalculatorPage } from './pages/CalculatorPage';
 import { SublimationsPage } from './pages/SublimationsPage';
@@ -19,20 +19,6 @@ import { Navbar } from './components/Navbar';
 import { LanguageSelector } from './components/LanguageSelector';
 import { useClickOutside } from './hooks/useClickOutside';
 import { TRANSLATIONS, type Language } from './constants/translations';
-import { createClient, type SupabaseClient } from '@supabase/supabase-js';
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
-let supabase: SupabaseClient | null = null;
-try {
-  if (supabaseUrl && supabaseAnonKey) {
-    supabase = createClient(supabaseUrl, supabaseAnonKey);
-  }
-} catch {
-  supabase = null;
-}
-
-const BG_URL = '424478.jpg';
 
 function AppContent() {
   const [lang, setLang] = useState<Language>('en');
@@ -45,31 +31,6 @@ function AppContent() {
     { id: 'lang', onClose: () => setMenuOpen(false) }
   ]);
 
-  useEffect(() => {
-    const trackVisit = async () => {
-      if (!supabase) return;
-      const sessionKey = 'visit_tracked';
-      const hasTracked = sessionStorage.getItem(sessionKey);
-
-      if (hasTracked) {
-        return;
-      }
-
-      try {
-        await supabase.from('visitors').insert({
-          user_agent: navigator.userAgent,
-          page: location.pathname
-        });
-
-        sessionStorage.setItem(sessionKey, 'true');
-        console.log('Page visit tracked');
-      } catch (error) {
-        console.log('Tracking skipped');
-      }
-    };
-    trackVisit();
-  }, [location.pathname]);
-
   const handleLanguageChange = (newLang: Language) => {
     setLang(newLang);
     setMenuOpen(false);
@@ -78,18 +39,7 @@ function AppContent() {
   return (
     <div className="relative min-h-screen text-white flex flex-col items-center p-6 overflow-hidden font-sans">
    <div className="absolute inset-0 -z-10 bg-slate-900">
-  <div
-    className="absolute inset-0 opacity-70 transition-opacity duration-700"
-    style={{
-      backgroundImage: `url(${BG_URL})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      filter: "blur(1.5px) saturate(1.1) brightness(1.5)",
-    }}
-  />
-  {/* overlay più chiaro */}
   <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-slate-900/15 to-slate-950/20" />
-  {/* "veil" chiaro per aumentare contrasto testo */}
   <div className="absolute inset-0 bg-white/[0.12]" />
 </div>
 
