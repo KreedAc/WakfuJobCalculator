@@ -35,7 +35,7 @@
     "key": "Influence"
   },
   {
-    "name": "Length",
+    "name": "Longueur",
     "colors": [
       "B",
       "R",
@@ -70,7 +70,7 @@
     "key": "Length"
   },
   {
-    "name": "Condemnation",
+    "name": "Réprobation",
     "colors": [
       "G",
       "R",
@@ -103,7 +103,7 @@
     "key": "Condemnation"
   },
   {
-    "name": "Arcana",
+    "name": "Arcanes",
     "colors": [
       "B",
       "R",
@@ -138,7 +138,7 @@
     "key": "Arcana"
   },
   {
-    "name": "Strong Hand",
+    "name": "Main forte",
     "colors": [
       "G",
       "R",
@@ -173,7 +173,7 @@
     "key": "Strong Hand"
   },
   {
-    "name": "Vital Return",
+    "name": "Retour vital",
     "colors": [
       "G",
       "R",
@@ -207,7 +207,7 @@
     "key": "Vital Return"
   },
   {
-    "name": "lock Steal",
+    "name": "Vol de Tacle",
     "colors": [
       "G",
       "G",
@@ -242,7 +242,7 @@
     "key": "lock Steal"
   },
   {
-    "name": "Solid Weapon",
+    "name": "Arme solide",
     "colors": [
       "B",
       "B",
@@ -276,7 +276,7 @@
     "key": "Solid Weapon"
   },
   {
-    "name": "Counterattack",
+    "name": "Contre-attaque",
     "colors": [
       "R",
       "G",
@@ -346,7 +346,7 @@
     "key": "Nature"
   },
   {
-    "name": "Wakfu Influence",
+    "name": "Influence du Wakfu",
     "colors": [
       "R",
       "R",
@@ -380,7 +380,7 @@
     "key": "Wakfu Influence"
   },
   {
-    "name": "Reinvigoration",
+    "name": "Revigoration",
     "colors": [
       "G",
       "B",
@@ -415,7 +415,7 @@
     "key": "Reinvigoration"
   },
   {
-    "name": "Technical Critical",
+    "name": "Critique technique",
     "colors": [
       "R",
       "G",
@@ -454,7 +454,7 @@
     "key": "Technical Critical"
   },
   {
-    "name": "Precaution",
+    "name": "Précaution",
     "colors": [
       "R",
       "G",
@@ -562,7 +562,7 @@
     "key": "Courage"
   },
   {
-    "name": "Berserk Wakfu",
+    "name": "Wakfu Berserk",
     "colors": [
       "B",
       "B",
@@ -602,7 +602,7 @@
     "key": "Berserk Wakfu"
   },
   {
-    "name": "Light Weapons Expert",
+    "name": "Expert des armes légères",
     "colors": [
       "R",
       "B",
@@ -642,7 +642,7 @@
     "key": "Light Weapons Expert"
   },
   {
-    "name": "About-Turn",
+    "name": "Volte-face",
     "colors": [
       "B",
       "B",
@@ -670,7 +670,7 @@
     "key": "About-Turn"
   },
   {
-    "name": "Last Heal",
+    "name": "Dernier soin",
     "colors": [
       "G",
       "R",
@@ -740,7 +740,7 @@
     "key": "Evasion"
   },
   {
-    "name": "Intermediate Vision",
+    "name": "Vision intermédiaire",
     "colors": [
       "B",
       "R",
@@ -810,7 +810,7 @@
     "key": "Interception"
   },
   {
-    "name": "Blood Carapace",
+    "name": "Carapace sanguine",
     "colors": [
       "B",
       "R",
@@ -845,7 +845,7 @@
     "key": "Blood Carapace"
   },
   {
-    "name": "Vampiric Madness",
+    "name": "Folie Vampirique",
     "colors": [
       "R",
       "G",
@@ -880,7 +880,7 @@
     "key": "Vampiric Madness"
   },
   {
-    "name": "Ap Rupture",
+    "name": "Rupture PA",
     "colors": [
       "B",
       "B",
@@ -913,7 +913,7 @@
     "key": "Ap Rupture"
   },
   {
-    "name": "Rocky Envelope",
+    "name": "Enveloppe rocheuse",
     "colors": [
       "R",
       "B",
@@ -948,7 +948,7 @@
     "key": "Rocky Envelope"
   },
   {
-    "name": "Recklessness",
+    "name": "Témérité",
     "colors": [
       "B",
       "B",
@@ -983,7 +983,7 @@
     "key": "Recklessness"
   },
   {
-    "name": "Added Value",
+    "name": "Valeur ajoutée",
     "colors": [
       "B",
       "G",
@@ -1018,7 +1018,7 @@
     "key": "Added Value"
   },
   {
-    "name": "Indirect Force of Will",
+    "name": "Volonté indirecte",
     "colors": [
       "G",
       "B",
@@ -1093,7 +1093,7 @@
     "key": "Accumulation"
   },
   {
-    "name": "Solidity",
+    "name": "Solidité",
     "colors": [
       "R",
       "G",
@@ -1121,7 +1121,7 @@
     "key": "Solidity"
   },
   {
-    "name": "Tenacity",
+    "name": "Ténacité",
     "colors": [
       "G",
       "G",
@@ -1154,7 +1154,7 @@
     "key": "Tenacity"
   },
   {
-    "name": "Escape",
+    "name": "Dérobade",
     "colors": [
       "B",
       "B",
@@ -1224,7 +1224,7 @@
     "key": "Propagation"
   },
   {
-    "name": "Flee",
+    "name": "Fuite",
     "colors": [
       "B",
       "G",
@@ -1297,7 +1297,7 @@
     "key": "Destruction"
   },
   {
-    "name": "Armor Length",
+    "name": "Longueur d'armure",
     "colors": [
       "R",
       "B",
@@ -1332,7 +1332,7 @@
     "key": "Armor Length"
   },
   {
-    "name": "Flaming Return",
+    "name": "Retour enflammé",
     "colors": [
       "R",
       "R",
@@ -1366,7 +1366,7 @@
     "key": "Flaming Return"
   },
   {
-    "name": "Dodge Steal",
+    "name": "Vol d'Esquive",
     "colors": [
       "G",
       "G",
@@ -1401,7 +1401,7 @@
     "key": "Dodge Steal"
   },
   {
-    "name": "Last Armor",
+    "name": "Dernière armure",
     "colors": [
       "R",
       "B",
@@ -1436,7 +1436,7 @@
     "key": "Last Armor"
   },
   {
-    "name": "Armor Return",
+    "name": "Retour d'Armure",
     "colors": [
       "B",
       "R",
@@ -1469,7 +1469,7 @@
     "key": "Armor Return"
   },
   {
-    "name": "Violent Rupture",
+    "name": "Rupture violente",
     "colors": [
       "G",
       "G",
@@ -1503,7 +1503,7 @@
     "key": "Violent Rupture"
   },
   {
-    "name": "Secondary Freezing",
+    "name": "Gel secondaire",
     "colors": [
       "G",
       "G",
@@ -1538,7 +1538,7 @@
     "key": "Secondary Freezing"
   },
   {
-    "name": "Earthbound ",
+    "name": "Tellurisme",
     "colors": [
       "G",
       "G",
@@ -1573,7 +1573,7 @@
     "key": "Earthbound "
   },
   {
-    "name": "Secondary Burn",
+    "name": "Brûlure secondaire",
     "colors": [
       "R",
       "R",
@@ -1643,7 +1643,7 @@
     "key": "Ventilation"
   },
   {
-    "name": "Freezing",
+    "name": "Gel",
     "colors": [
       "B",
       "B",
@@ -1678,7 +1678,7 @@
     "key": "Freezing"
   },
   {
-    "name": "Secondary Earthbound",
+    "name": "Tellurisme secondaire",
     "colors": [
       "B",
       "B",
@@ -1713,7 +1713,7 @@
     "key": "Secondary Earthbound"
   },
   {
-    "name": "Secondary Ventilation",
+    "name": "Ventilation secondaire",
     "colors": [
       "R",
       "G",
@@ -1748,7 +1748,7 @@
     "key": "Secondary Ventilation"
   },
   {
-    "name": "Burn ",
+    "name": "Brûlure",
     "colors": [
       "R",
       "R",
@@ -1783,7 +1783,7 @@
     "key": "Burn "
   },
   {
-    "name": "Poise",
+    "name": "Aisance",
     "colors": [
       "B",
       "R",
@@ -1817,7 +1817,7 @@
     "key": "Poise"
   },
   {
-    "name": "Prosperity",
+    "name": "Prospérité",
     "colors": [
       "G",
       "R",
@@ -1852,7 +1852,7 @@
     "key": "Prosperity"
   },
   {
-    "name": "MP Return",
+    "name": "Retour PM",
     "colors": [
       "B",
       "R",
@@ -1885,7 +1885,7 @@
     "key": "MP Return"
   },
   {
-    "name": "Ruin",
+    "name": "Ruine",
     "colors": [
       "R",
       "R",
@@ -1920,7 +1920,7 @@
     "key": "Ruin"
   },
   {
-    "name": "Last Resistance",
+    "name": "Dernières résistances",
     "colors": [
       "B",
       "G",
@@ -1955,7 +1955,7 @@
     "key": "Last Resistance"
   },
   {
-    "name": "Vitality Well",
+    "name": "Puits de Vitalité",
     "colors": [
       "G",
       "R",
@@ -1990,7 +1990,7 @@
     "key": "Vitality Well"
   },
   {
-    "name": "Cyclothymia",
+    "name": "Cyclothymie",
     "colors": [
       "B",
       "G",
@@ -2024,7 +2024,7 @@
     "key": "Cyclothymia"
   },
   {
-    "name": "Madness",
+    "name": "Folie",
     "colors": [
       "R",
       "G",
@@ -2059,7 +2059,7 @@
     "key": "Madness"
   },
   {
-    "name": "Wakfu Conservation",
+    "name": "Sauvegarde du Wakfu",
     "colors": [
       "R",
       "B",
@@ -2087,7 +2087,7 @@
     "key": "Wakfu Conservation"
   },
   {
-    "name": "Theory of Matter",
+    "name": "Théorie de la matière",
     "colors": [
       "B",
       "G",
@@ -2121,7 +2121,7 @@
     "key": "Theory of Matter"
   },
   {
-    "name": "Dimensionality",
+    "name": "Dimensionnalité",
     "colors": [
       "R",
       "B",
@@ -2149,7 +2149,7 @@
     "key": "Dimensionality"
   },
   {
-    "name": "Ambush",
+    "name": "Embuscade",
     "colors": [
       "B",
       "B",
@@ -2184,7 +2184,7 @@
     "key": "Ambush"
   },
   {
-    "name": "Determination",
+    "name": "Détermination",
     "colors": [
       "G",
       "G",
@@ -2217,7 +2217,7 @@
     "key": "Determination"
   },
   {
-    "name": "Slow Influence",
+    "name": "Influence lente",
     "colors": [
       "R",
       "G",
@@ -2252,7 +2252,7 @@
     "key": "Slow Influence"
   },
   {
-    "name": "Focalization",
+    "name": "Focalisation",
     "colors": [
       "G",
       "R",
@@ -2280,7 +2280,7 @@
     "key": "Focalization"
   },
   {
-    "name": "Altruism",
+    "name": "Altruisme",
     "colors": [
       "B",
       "G",
@@ -2315,7 +2315,7 @@
     "key": "Altruism"
   },
   {
-    "name": "Poisoned Weapon",
+    "name": "Arme empoisonnée",
     "colors": [
       "B",
       "B",
@@ -2350,7 +2350,7 @@
     "key": "Poisoned Weapon"
   },
   {
-    "name": "Mania",
+    "name": "Manie",
     "colors": [
       "B",
       "R",
@@ -2390,7 +2390,7 @@
     "key": "Mania"
   },
   {
-    "name": "Social Relations",
+    "name": "Relations sociales",
     "colors": [
       "B",
       "G",
@@ -2425,7 +2425,7 @@
     "key": "Social Relations"
   },
   {
-    "name": "Clamor",
+    "name": "Clameur",
     "colors": [
       "G",
       "B",
@@ -2458,7 +2458,7 @@
     "key": "Clamor"
   },
   {
-    "name": "Berserk Lock",
+    "name": "Tacle Berserk",
     "colors": [
       "B",
       "B",
@@ -2493,7 +2493,7 @@
     "key": "Berserk Lock"
   },
   {
-    "name": "Vivacity",
+    "name": "Vivacité",
     "colors": [
       "R",
       "B",
@@ -2562,7 +2562,7 @@
     "key": "Endurance"
   },
   {
-    "name": "Berserk Dodge",
+    "name": "Esquive Berserk",
     "colors": [
       "B",
       "B",
@@ -2597,7 +2597,7 @@
     "key": "Berserk Dodge"
   },
   {
-    "name": "Devastation",
+    "name": "Dévastation",
     "colors": [
       "B",
       "B",
@@ -2632,7 +2632,7 @@
     "key": "Devastation"
   },
   {
-    "name": "Blocking Expert",
+    "name": "Expert des Parades",
     "colors": [
       "G",
       "B",
@@ -2660,7 +2660,7 @@
     "key": "Blocking Expert"
   },
   {
-    "name": "Distance Barrier",
+    "name": "Barrière Distance",
     "colors": [
       "G",
       "G",
@@ -2695,7 +2695,7 @@
     "key": "Distance Barrier"
   },
   {
-    "name": "Visibility",
+    "name": "Visibilité",
     "colors": [
       "B",
       "G",
@@ -2729,7 +2729,7 @@
     "key": "Visibility"
   },
   {
-    "name": "Wall",
+    "name": "Muraille",
     "colors": [
       "R",
       "B",
@@ -2764,7 +2764,7 @@
     "key": "Wall"
   },
   {
-    "name": "Melee Barrier",
+    "name": "Barrière Mêlée",
     "colors": [
       "G",
       "G",
@@ -2799,7 +2799,7 @@
     "key": "Melee Barrier"
   },
   {
-    "name": "Swiftness",
+    "name": "Vélocité",
     "colors": [
       "G",
       "R",
@@ -2866,7 +2866,7 @@
     "key": "Slow Evasion"
   },
   {
-    "name": "Topology",
+    "name": "Topologie",
     "colors": [
       "B",
       "G",
@@ -2901,7 +2901,7 @@
     "key": "Topology"
   },
   {
-    "name": "Cyclical Ruin",
+    "name": "Ruine cyclique",
     "colors": [
       "R",
       "R",
@@ -2929,7 +2929,7 @@
     "key": "Cyclical Ruin"
   },
   {
-    "name": "Frenzy",
+    "name": "Frénésie",
     "colors": [
       "R",
       "G",
@@ -2957,7 +2957,7 @@
     "key": "Frenzy"
   },
   {
-    "name": "Berserk Block",
+    "name": "Parade Berserk",
     "colors": [
       "B",
       "G",
@@ -2992,7 +2992,7 @@
     "key": "Berserk Block"
   },
   {
-    "name": "Stupefaction",
+    "name": "Stupéfaction",
     "colors": [
       "G",
       "B",
@@ -3027,7 +3027,7 @@
     "key": "Stupefaction"
   },
   {
-    "name": "Fury",
+    "name": "Fureur",
     "colors": [
       "R",
       "G",
@@ -3055,7 +3055,7 @@
     "key": "Fury"
   },
   {
-    "name": "Integrity",
+    "name": "Intégrité",
     "colors": [
       "B",
       "B",
@@ -3089,7 +3089,7 @@
     "key": "Integrity"
   },
   {
-    "name": "Resolute",
+    "name": "Fermeté",
     "colors": [
       "R",
       "B",
@@ -3124,7 +3124,7 @@
     "key": "Resolute"
   },
   {
-    "name": "Save",
+    "name": "Sauvegarde",
     "colors": [
       "B",
       "R",
@@ -3157,7 +3157,7 @@
     "key": "Save"
   },
   {
-    "name": "Devastate",
+    "name": "Ravage",
     "colors": [
       "G",
       "G",
@@ -3197,7 +3197,7 @@
     "key": "Devastate"
   },
   {
-    "name": "Lone Wolf",
+    "name": "Loup solitaire",
     "colors": [
       "R",
       "B",
@@ -3232,7 +3232,7 @@
     "key": "Lone Wolf"
   },
   {
-    "name": "Lightness",
+    "name": "Légèreté",
     "colors": [
       "B",
       "R",
@@ -3267,7 +3267,7 @@
     "key": "Lightness"
   },
   {
-    "name": "Moon Scales",
+    "name": "Ecailles de lune",
     "colors": [
       "G",
       "B",
@@ -3302,7 +3302,7 @@
     "key": "Moon Scales"
   },
   {
-    "name": "Spines",
+    "name": "Epines",
     "colors": [
       "B",
       "B",
@@ -3337,7 +3337,7 @@
     "key": "Spines"
   },
   {
-    "name": "Secret of Life",
+    "name": "Secret de la vie",
     "colors": [
       "G",
       "B",
@@ -3365,7 +3365,7 @@
     "key": "Secret of Life"
   },
   {
-    "name": "Critical Hit Expert",
+    "name": "Expert des Coups critiques",
     "colors": [
       "B",
       "G",
@@ -3400,7 +3400,7 @@
     "key": "Critical Hit Expert"
   },
   {
-    "name": "AP Return",
+    "name": "Retour PA",
     "colors": [
       "B",
       "R",
@@ -3468,7 +3468,7 @@
     "key": "Carnage"
   },
   {
-    "name": "Tolerance",
+    "name": "Tolérance",
     "colors": [
       "R",
       "B",
@@ -3502,7 +3502,7 @@
     "key": "Tolerance"
   },
   {
-    "name": "Berserk Critical",
+    "name": "Critique Berserk",
     "colors": [
       "R",
       "G",
@@ -3537,13 +3537,13 @@
     "key": "Berserk Critical"
   },
   {
-    "name": "Cicatrisation test (cumul 5)",
+    "name": "Cicatrisation",
     "colors": [
       "R",
       "R",
       "B"
     ],
-    "description": "Ce parchemin peut être appliqué à une combinaison de châsses spécifique pour ajouter un effet unique sur l'objet. Cet effet peut être cumulé jusqu'à un niveau de [X].",
+    "description": "[X]% health points (bonus on HP modifier)",
     "rarity": [
       "Rare",
       "Mythic",
@@ -3572,7 +3572,7 @@
     "key": "Healing"
   },
   {
-    "name": "Distant Ambush",
+    "name": "Embuscade écartée",
     "colors": [
       "R",
       "R",
@@ -3607,7 +3607,7 @@
     "key": "Distant Ambush"
   },
   {
-    "name": "Secondary Devastation",
+    "name": "Ravage secondaire",
     "colors": [
       "G",
       "G",
@@ -3640,7 +3640,7 @@
     "key": "Secondary Devastation"
   },
   {
-    "name": "Obstinacy",
+    "name": "Opiniâtreté",
     "colors": [
       "R",
       "B",
@@ -3674,7 +3674,7 @@
     "key": "Obstinacy"
   },
   {
-    "name": "Persistence",
+    "name": "Persistance",
     "colors": [
       "R",
       "G",
@@ -3702,7 +3702,7 @@
     "key": "Persistence"
   },
   {
-    "name": "Allocentrism",
+    "name": "Allocentrisme",
     "colors": [
       "G",
       "G",
@@ -3737,7 +3737,7 @@
     "key": "Allocentrism"
   },
   {
-    "name": "Critical Shield",
+    "name": "Bouclier critique",
     "colors": [
       "B",
       "G",
@@ -3772,7 +3772,7 @@
     "key": "Critical Shield"
   },
   {
-    "name": "Constant Evasion",
+    "name": "Dérobade continue",
     "colors": [
       "G",
       "G",
@@ -3807,7 +3807,7 @@
     "key": "Constant Evasion"
   },
   {
-    "name": "Scrupulosity",
+    "name": "Acribie",
     "colors": [
       "R",
       "G",
@@ -3842,7 +3842,7 @@
     "key": "Scrupulosity"
   },
   {
-    "name": "Art of Concealment",
+    "name": "Art du cachement",
     "colors": [
       "B",
       "B",
@@ -3882,7 +3882,7 @@
     "key": "Art of Concealment"
   },
   {
-    "name": "Vital Influence",
+    "name": "Influence vitale",
     "colors": [
       "G",
       "R",
@@ -3917,7 +3917,7 @@
     "key": "Vital Influence"
   },
   {
-    "name": "Bashell",
+    "name": "Tabass'Carapace",
     "colors": [
       "R",
       "G",
@@ -3985,7 +3985,7 @@
     "key": "Profit"
   },
   {
-    "name": "Blood Stains",
+    "name": "Sanguinolence",
     "colors": [
       "R",
       "G",
@@ -4055,7 +4055,7 @@
     "key": "Conservation"
   },
   {
-    "name": "Direct Force of Will",
+    "name": "Volonté directe",
     "colors": [
       "B",
       "G",
@@ -4095,7 +4095,7 @@
     "key": "Direct Force of Will"
   },
   {
-    "name": "Paradoxical Influence",
+    "name": "Influence paradoxale",
     "colors": [
       "G",
       "R",
@@ -4130,7 +4130,7 @@
     "key": "Paradoxical Influence"
   },
   {
-    "name": "Light Strength",
+    "name": "Force légère",
     "colors": [
       "G",
       "G",
@@ -4165,7 +4165,7 @@
     "key": "Light Strength"
   },
   {
-    "name": "Critical Scale",
+    "name": "Balance critique",
     "colors": [
       "G",
       "B",
@@ -4233,7 +4233,7 @@
     "key": "Interposition"
   },
   {
-    "name": "Vital Agility",
+    "name": "Agilité vitale",
     "colors": [
       "G",
       "B",
@@ -4261,7 +4261,7 @@
     "key": "Vital Agility"
   },
   {
-    "name": "Reprisal",
+    "name": "Représailles",
     "colors": [
       "R",
       "R",
@@ -4296,7 +4296,7 @@
     "key": "Reprisal"
   },
   {
-    "name": "Embellishement",
+    "name": "Apprêt",
     "colors": [
       "R",
       "B",
@@ -4331,7 +4331,7 @@
     "key": "Embellishement"
   },
   {
-    "name": "Rear Shield",
+    "name": "Bouclier dorsal",
     "colors": [
       "R",
       "G",
@@ -4366,7 +4366,7 @@
     "key": "Rear Shield"
   },
   {
-    "name": "Critical Consolation",
+    "name": "Consolation critique",
     "colors": [
       "B",
       "G",
@@ -4401,7 +4401,7 @@
     "key": "Critical Consolation"
   },
   {
-    "name": "Vital Strength",
+    "name": "Force vitale",
     "colors": [
       "R",
       "G",
@@ -4429,7 +4429,7 @@
     "key": "Vital Strength"
   },
   {
-    "name": "Offensive Block",
+    "name": "Parade offensive",
     "colors": [
       "R",
       "R",
@@ -4463,7 +4463,7 @@
     "key": "Offensive Block"
   },
   {
-    "name": "Tactical Critical",
+    "name": "Critique tactique",
     "colors": [
       "R",
       "G",
@@ -4498,7 +4498,7 @@
     "key": "Tactical Critical"
   },
   {
-    "name": "Neutrality",
+    "name": "Neutralité",
     "colors": [
       "B",
       "G",
@@ -4533,7 +4533,7 @@
     "key": "Neutrality"
   },
   {
-    "name": "Pretension",
+    "name": "Prétention",
     "colors": [
       "G",
       "B",
@@ -4568,7 +4568,7 @@
     "key": "Pretension"
   },
   {
-    "name": "Last Breath",
+    "name": "Dernier souffle",
     "colors": [
       "G",
       "B",
@@ -4608,7 +4608,7 @@
     "key": "Last Breath"
   },
   {
-    "name": "Firm Foot",
+    "name": "Pied ferme",
     "colors": [
       "B",
       "R",
@@ -4643,7 +4643,7 @@
     "key": "Firm Foot"
   },
   {
-    "name": "Sensitivity",
+    "name": "Être sensible",
     "colors": [
       "R",
       "G",
@@ -4678,7 +4678,7 @@
     "key": "Sensitivity"
   },
   {
-    "name": "Raw Power",
+    "name": "Puissance brute",
     "colors": [
       "G",
       "G",
@@ -4753,7 +4753,7 @@
     "key": "Ambition"
   },
   {
-    "name": "Brawling",
+    "name": "Combat rapproché",
     "colors": [
       "R",
       "G",
@@ -4787,7 +4787,7 @@
     "key": "Brawling"
   },
   {
-    "name": "Critical Preparation",
+    "name": "Préparation critique",
     "colors": [
       "R",
       "G",
@@ -4822,7 +4822,7 @@
     "key": "Critical Preparation"
   },
   {
-    "name": "Locking",
+    "name": "Verrouillage",
     "colors": [
       "G",
       "R",
@@ -4857,7 +4857,7 @@
     "key": "Locking"
   },
   {
-    "name": "Delay",
+    "name": "Temporisation",
     "colors": [
       "G",
       "R",
@@ -4926,7 +4926,7 @@
     "key": "Carapace"
   },
   {
-    "name": "Heavy Armor",
+    "name": "Armure lourde",
     "colors": [
       "R",
       "G",
@@ -4960,7 +4960,7 @@
     "key": "Heavy Armor"
   },
   {
-    "name": "Featherweight",
+    "name": "Poids Plume",
     "colors": [
       "R",
       "R",
@@ -4995,7 +4995,7 @@
     "key": "Featherweight"
   },
   {
-    "name": "Critical Save",
+    "name": "Sauvegarde critique",
     "colors": [
       "B",
       "R",
@@ -5028,7 +5028,7 @@
     "key": "Critical Save"
   },
   {
-    "name": "Surge",
+    "name": "Élan",
     "colors": [
       "G",
       "R",
@@ -5063,7 +5063,7 @@
     "key": "Surge"
   },
   {
-    "name": "Judgment",
+    "name": "Jugement",
     "colors": [
       "R",
       "R",
@@ -5098,7 +5098,7 @@
     "key": "Judgment"
   },
   {
-    "name": "Diagnosis",
+    "name": "Diagnostic",
     "colors": [
       "G",
       "B",
@@ -5133,7 +5133,7 @@
     "key": "Diagnosis"
   },
   {
-    "name": "Secondary Embellishment",
+    "name": "Apprêt secondaire",
     "colors": [
       "B",
       "R",
@@ -5172,7 +5172,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the highest Elemental Mastery is greater than the Healing Mastery:\n\n-15% damage inflicted\n30% heals performed",
     "rarity": [
       "Epic"
     ],
@@ -5198,7 +5198,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the highest Elemental Mastery is greater than Rear Mastery:\n\n-20% damage inflicted\n40% damage inflicted from behind",
     "rarity": [
       "Epic"
     ],
@@ -5224,7 +5224,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the bearer has exactly 0 Range:\n\n+20% damage inflicted in melee and area of effect simultaneously",
     "rarity": [
       "Epic"
     ],
@@ -5250,7 +5250,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, Elemental Masteries are set to 0.\n\n20% damage inflicted and heals performed",
     "rarity": [
       "Epic"
     ],
@@ -5276,7 +5276,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the bearer has more Block than Critical Hit:\n\nThe Block is converted into Critical Hit",
     "rarity": [
       "Epic"
     ],
@@ -5302,7 +5302,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has exactly 1 Range:\n\n15% damage inflicted and heals performed on targets that are 2, 3, or 4 cells away from the caster",
     "rarity": [
       "Epic"
     ],
@@ -5324,11 +5324,11 @@
     "key": "Controlling Space"
   },
   {
-    "name": "Contrôle de l'espace II",
+    "name": "Contrôle de l'espace",
     "colors": [
       "Epic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has at least 3 Range:\n\n30% indirect damage inflicted",
     "rarity": [
       "Epic"
     ],
@@ -5354,7 +5354,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat:\n20% damage inflicted and heals performed\n -30% elemental mastery in the 3 weakest elements",
     "rarity": [
       "Epic"
     ],
@@ -5380,7 +5380,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 3 equal Elemental Masteries:\n\n20% damage inflicted and heals performed",
     "rarity": [
       "Epic"
     ],
@@ -5406,7 +5406,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 0 Healing Mastery or less:\n\n30% heals performed",
     "rarity": [
       "Epic"
     ],
@@ -5432,7 +5432,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has an odd number of AP:\n\n250% of level as Lock and Dodge",
     "rarity": [
       "Epic"
     ],
@@ -5458,7 +5458,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 10 AP or less:\n\n15% damage inflicted\n10 Force of Will (if the character is at level 100 or greater)",
     "rarity": [
       "Epic"
     ],
@@ -5480,11 +5480,11 @@
     "key": "Inflexibility"
   },
   {
-    "name": "Inflexibilité II",
+    "name": "Inflexibilité",
     "colors": [
       "Epic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if Secondary Masteries are less than or equal to 0:\n\n+20% damage inflicted and heals performed",
     "rarity": [
       "Epic"
     ],
@@ -5510,7 +5510,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 3 range or less:\n\n20 Force of Will",
     "rarity": [
       "Epic"
     ],
@@ -5536,7 +5536,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 40% Block or greater:\n\n10% Critical Hit\n10% damage inflicted on critical hit",
     "rarity": [
       "Epic"
     ],
@@ -5558,11 +5558,11 @@
     "key": "Measure"
   },
   {
-    "name": "Mesure II",
+    "name": "Mesure",
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 50% Critical Hits or more: \n20 Block\n10 Force of Will",
     "rarity": [
       "Epic"
     ],
@@ -5584,11 +5584,11 @@
     "key": "Measure II"
   },
   {
-    "name": "Mesure III",
+    "name": "Mesure",
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 50% Critical Hits or less: \n20% damage inflicted on critical hit",
     "rarity": [
       "Epic"
     ],
@@ -5614,7 +5614,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has less that 100% of their level as Dodge:\n\n15% damage inflicted as Berserk\n100% of level as Lock",
     "rarity": [
       "Epic"
     ],
@@ -5636,11 +5636,11 @@
     "key": "Outrage"
   },
   {
-    "name": "Furie II",
+    "name": "Furie",
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 4 Range or greater:\n\n15% damage inflicter as Berserk and Ranged simultaneously\n1 Range",
     "rarity": [
       "Epic"
     ],
@@ -5666,7 +5666,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 50% Block or greater:\n\nBonus to HP modifier +30%\n-50% Armor Received",
     "rarity": [
       "Epic"
     ],
@@ -5688,11 +5688,11 @@
     "key": "Pillar"
   },
   {
-    "name": "Pilier II",
+    "name": "Pilier",
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 50% Block or more: \n-30% HP\n+30% in Armor given",
     "rarity": [
       "Epic"
     ],
@@ -5718,7 +5718,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, for the state bearer:\n\n-30% HP (penalty to the HP modifier)\n30% Heals and Armor from fighters received",
     "rarity": [
       "Epic"
     ],
@@ -5744,7 +5744,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 10% Critical Hit or less:\n\n20% damage inflicted\n50 Critical Resistance",
     "rarity": [
       "Epic"
     ],
@@ -5766,11 +5766,11 @@
     "key": "Steadfast"
   },
   {
-    "name": "Constance II",
+    "name": "Constance",
     "colors": [
       "Epic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 10% Critical Hit or less:\n\n40% indirect damage",
     "rarity": [
       "Epic"
     ],
@@ -5796,7 +5796,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 1 Range or less:\n\n20% heals performed\n15% Armor Given and Received",
     "rarity": [
       "Epic"
     ],
@@ -5822,7 +5822,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has at least 40% Critical Hit converts 100% of Critical Mastery to Elemental Mastery",
     "rarity": [
       "Epic"
     ],
@@ -5848,7 +5848,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has 8 WP or greater:\n\n10 Force of Will\n15% Block",
     "rarity": [
       "Epic"
     ],
@@ -5874,7 +5874,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has a Dagger equipped:\n\n25% damage inflicted on targets hit from the front\n15% from the side\n-30% from behind",
     "rarity": [
       "Epic"
     ],
@@ -5900,7 +5900,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the bearer has a Shield equipped:\n\n1 max MP\nPositive Range is set at 0",
     "rarity": [
       "Epic"
     ],
@@ -5926,7 +5926,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "50 Elemental Resistance \n-200 Rear Resistance for the bearer at the start of combat.",
     "rarity": [
       "Epic"
     ],
@@ -5952,7 +5952,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if the state bearer has a Two-Handed Weapon equipped ( maximum 12 AP before the sublimation effect):\n\n-2 max MP\n2 max AP",
     "rarity": [
       "Epic"
     ],
@@ -5978,7 +5978,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "If the bearer has only used one element to cause damage during their turn:\nthey gain +20% Damage Inflicted and Heals performed in their other elements",
     "rarity": [
       "Relic"
     ],
@@ -6000,11 +6000,11 @@
     "key": "Alternation"
   },
   {
-    "name": "Alternance II",
+    "name": "Alternance",
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "If the bearer inflicts damage in an element: \nthey gain +15% Damage Inflicted and Heals performedy in the other elements for the next spell. \nOnly the first line of damage caused by the spell is taken into account.",
     "rarity": [
       "Relic"
     ],
@@ -6030,7 +6030,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "At start of turn, with 6 WP or greater: \nAncestral Energy Bonus (Max. level: 3):\n4% Damage inflicted\r\n15 Elemental Resistance\n\nThe state is lost if the character starts their turn with less than 6 WP",
     "rarity": [
       "Relic"
     ],
@@ -6056,7 +6056,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "Steals 25% of melee damage inflicted\n-100 Elemental Resistance",
     "rarity": [
       "Relic"
     ],
@@ -6082,7 +6082,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "-50 Elemental Resistance If the state bearer takes damage from an enemy: \n100 Resistance in the damage element (1 turn)",
     "rarity": [
       "Relic"
     ],
@@ -6108,7 +6108,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "If the spell costs 4 AP or more:\r\n15% critical damage.\r\nIf the spell costs 1 WP or more:\r\n15% critical damage",
     "rarity": [
       "Relic"
     ],
@@ -6134,7 +6134,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "10% damage inflicted when the bearer meets certain conditions (these change each turn). \nTurn 1: The bearer is in melee or the spell is single-target \nTurn 2: The bearer is at a distance or the spell is single-target \nTurn 3: The bearer is at a distance or the spell is area-of-effect \nTurn 4: The bearer is in melee or the spell is area-of-effect",
     "rarity": [
       "Relic"
     ],
@@ -6160,7 +6160,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "25% to area-of-effect spell damage on the spell's direct target\n-25% to area-of-effect spell damage on other targets",
     "rarity": [
       "Relic"
     ],
@@ -6186,7 +6186,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "If the bearer inflicted melee damage on an enemy during their turn: \n25% Ranged Damage Inflicted for the following turn",
     "rarity": [
       "Relic"
     ],
@@ -6208,11 +6208,11 @@
     "key": "Calibration"
   },
   {
-    "name": "Calibrage II",
+    "name": "Calibrage",
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "If the bearer inflicted melee damage on an enemy during their turn: \n10% Ranged Damage Inflicted for the following turn\r\nOnce per turn, stackable up to 5 times",
     "rarity": [
       "Relic"
     ],
@@ -6238,7 +6238,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "At end of turn, per adjacent enemy: \n5% of max HP as Armor",
     "rarity": [
       "Relic"
     ],
@@ -6264,7 +6264,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "15% damage inflicted by area-of-effect spells on targets in line with the state bearer",
     "rarity": [
       "Relic"
     ],
@@ -6290,7 +6290,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "When the bearer heals an ally, 25% of healing is converted into Armor and 25% is lost",
     "rarity": [
       "Relic"
     ],
@@ -6316,7 +6316,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "If the bearer moves themself using a spell: \n1 AP (max 2 per turn)",
     "rarity": [
       "Relic"
     ],
@@ -6342,7 +6342,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "-10% Damage inflicted \nEvery 10 spells cast, the state bearer gains 100% Damage inflicted for the next spell \nSpells cast must cost at least 1 AP \nOnce the state is at level 10, the next spell gets the damage bonus",
     "rarity": [
       "Relic"
     ],
@@ -6364,11 +6364,11 @@
     "key": "Excess"
   },
   {
-    "name": "Excès II",
+    "name": "Excès",
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "-10% Damage inflicted \nEvery 5 spells cast, the state bearer gains 50% Damage inflicted for the next spell \nSpells cast must cost at least 1 AP \nOnce the state is at level 5, the next spell gets the damage bonus",
     "rarity": [
       "Relic"
     ],
@@ -6394,7 +6394,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "At end of turn, if the bearer is facing an adjacent enemy: \n10% of max HP as Armor",
     "rarity": [
       "Relic"
     ],
@@ -6420,7 +6420,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "30% damage inflicted on targets 7 or more cells away \notherwise -15%",
     "rarity": [
       "Relic"
     ],
@@ -6446,7 +6446,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "Flaming (+15 Lvls.) (stackable) for the state bearer, for each damage spell received in melee. \n100% of level as Flaming at start of turn if no enemies are adjacent.",
     "rarity": [
       "Relic"
     ],
@@ -6472,7 +6472,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "-30% damage received during their own turn.",
     "rarity": [
       "Relic"
     ],
@@ -6498,7 +6498,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "If the bearer moves themself using a spell: \n1 MP (max 2 per turn)",
     "rarity": [
       "Relic"
     ],
@@ -6524,7 +6524,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "In an uneven round: \nThe bearer inflicts 25% more damage, and suffers 15% of the damage they inflict",
     "rarity": [
       "Relic"
     ],
@@ -6550,7 +6550,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "If the bearer is moved outside of their turn:\napplies Stabilized at the end of their next turn",
     "rarity": [
       "Relic"
     ],
@@ -6576,7 +6576,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "If the spell costs 1 WP or more:\r\n5% damage per current WP on the bearer (max. 6)",
     "rarity": [
       "Relic"
     ],
@@ -6602,7 +6602,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "Damage caused by the bearer's weapon is reduced by 20% and applies a poison (Light Weapon) for three turns (second hand excluded) based on the number of AP used by the weapon.",
     "rarity": [
       "Relic"
     ],
@@ -6628,7 +6628,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "When suffering damage from the front and in melee, once per round: \n10% of missing HP as Armor 40% Armor given (1 turn)",
     "rarity": [
       "Relic"
     ],
@@ -6654,7 +6654,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "Odd turns, at start of turn: \n25% Damage inflicted -25% Heals performed and Armor given \n\nEven turns, at start of turn: \n25% Heals performed and Armor given -25% Damage inflicted",
     "rarity": [
       "Relic"
     ],
@@ -6676,11 +6676,11 @@
     "key": "Lunatic"
   },
   {
-    "name": "Lunatique II",
+    "name": "Lunatique",
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "After inflicting damage on an enemy: \n-30% damage inflicted and 30% heals performed and Armor given for the following turn.\n\nAfter healing or giving armor to an ally: \n30% damage inflicted and -30% heals performed and armor given for the following turn.",
     "rarity": [
       "Relic"
     ],
@@ -6706,7 +6706,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "After taking damage: \n50 Elemental Resistance in this element (1 turn), not stackable\r\nA new element replaces the previous one",
     "rarity": [
       "Relic"
     ],
@@ -6732,7 +6732,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "50 Elemental Resistance if the bearer has no Armor\notherwise -100 Elemental Resistance",
     "rarity": [
       "Relic"
     ],
@@ -6758,7 +6758,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "For each movement, per MP used: \n+3% Block (max. 18) (1 turn) \n\nIf the state bearer performs a Block when it's not their turn: \nThe bonus is transformed into Critical Hits on the next turn",
     "rarity": [
       "Relic"
     ],
@@ -6784,7 +6784,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "-50 Elemental Resistance \nOnce per turn, when falling below 50% HP: \n1 MP\r\n15% Damage inflicted\r\n50 Elemental Resistance",
     "rarity": [
       "Relic"
     ],
@@ -6810,7 +6810,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "100% of level in Barrier against long-range damage (permanent)",
     "rarity": [
       "Relic"
     ],
@@ -6836,7 +6836,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "At start of turn: \n3 Range 15% ranged damage 15% Heals performed \nThe bonus is lost the first time the character moves (MP) or at end of turn",
     "rarity": [
       "Relic"
     ],
@@ -6862,7 +6862,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "30% of Armor given to allies who do not have Armor\n-50% Armor to allies who already have Armor",
     "rarity": [
       "Relic"
     ],
@@ -6884,11 +6884,11 @@
     "key": "Single Shared Armor"
   },
   {
-    "name": "Cuirasse singulière II",
+    "name": "Cuirasse singulière",
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "40% Armor given on the first Armor placed on this turn\n-50% Armor given on all others",
     "rarity": [
       "Relic"
     ],
@@ -6914,7 +6914,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "The first spell that inflicts damage this turn removes 30% Armor from the target",
     "rarity": [
       "Relic"
     ],
@@ -6940,7 +6940,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "At start of turn, if the bearer has no Armor: \n20% Damage inflicted (1 turn) \nOtherwise: -10% Damage inflicted (1 turn)",
     "rarity": [
       "Relic"
     ],
@@ -6966,7 +6966,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "The state bearer increases their damage inflicted by 2% per turn (permanent) (max 20)",
     "rarity": [
       "Relic"
     ],
@@ -6992,7 +6992,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "Every 3 spells cast\nCritical Hit is set to 100",
     "rarity": [
       "Relic"
     ],
@@ -7018,7 +7018,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "30% Block if the bearer did not receive healing in the previous turn.",
     "rarity": [
       "Relic"
     ],
@@ -7044,7 +7044,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "Each turn steals 50% of damage inflicted by the first spell that inflicts damage\n-50% Armor received",
     "rarity": [
       "Relic"
     ],
@@ -7070,7 +7070,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "Even Turn: \nAfter using a WP-based spell, the state bearer regains 2 AP (max of 1/turn). \n\nOdd Turn: \nAfter using a WP-based spell, the state bearer loses 2 AP (max 1/turn).",
     "rarity": [
       "Relic"
     ],
@@ -7096,7 +7096,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "The state bearer increases their heals performed by 2% per turn (Permanent, max 20%)",
     "rarity": [
       "Relic"
     ],
@@ -7122,7 +7122,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "At start of turn if there are at least 2 enemies in melee: +1MP +1AP",
     "rarity": [
       "Relic"
     ],
@@ -7148,7 +7148,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "At start of turn if there are at least 2 allies in melee: +1MP +1AP",
     "rarity": [
       "Relic"
     ],
@@ -7174,7 +7174,7 @@
     "colors": [
       "Relic"
     ],
-    "description": "Cette sublimation s'enchâsse dans un objet relique pour augmenter les caractéristiques de son porteur.",
+    "description": "When performing a Block: -30% extra damage recieved -100% block",
     "rarity": [
       "Relic"
     ],
@@ -7200,7 +7200,7 @@
     "colors": [
       "Epic"
     ],
-    "description": "Cette rune s'enchâsse dans un objet épique pour augmenter les caractéristiques de son porteur.",
+    "description": "At the start of combat, if Critical Mastery is less than or equal to 0: 30% critical hit",
     "rarity": [
       "Epic"
     ],
