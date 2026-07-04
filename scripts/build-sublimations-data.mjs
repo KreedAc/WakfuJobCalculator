@@ -133,10 +133,63 @@ async function main() {
   if (!version) throw new Error("No version in config.json");
   console.log("Wakfu version:", version);
 
+  if (DEBUG) {
+    console.log("=== DEBUG config.json ===");
+    console.log(JSON.stringify(cfg, null, 2).slice(0, 4000));
+  }
+
   const base = `https://wakfu.cdn.ankama.com/gamedata/${version}`;
-  console.log("Downloading items.json (large file)...");
-  const itemsRaw = await fetchJson(`${base}/items.json`);
-  console.log(`Official items: ${itemsRaw.length}`);
+
+  // Sublimation scrolls may live in different gamedata files depending on
+  // the CDN version — pull every source that can contain named items.
+  const ITEM_SOURCES = ["items", "jobsItems", "resources"];
+  const itemsRaw = [];
+  for (const src of ITEM_SOURCES) {
+    try {
+      console.log(`Downloading ${src}.json ...`);
+      const arr = await fetchJson(`${base}/${src}.json`);
+      console.log(`  ${src}: ${arr.length} entries`);
+      itemsRaw.push(...arr);
+    } catch (e) {
+      console.log(`  ${src}: unavailable (${e.message.split("\n")[0]})`);
+    }
+  }
+  console.log(`Official items (all sources): ${itemsRaw.length}`);
+
+  if (DEBUG) {
+    console.log("=== DEBUG first item structure ===");
+    console.log(JSON.stringify(itemsRaw[0], null, 2).slice(0, 3000));
+
+    console.log("=== DEBUG item type distribution (top 25) ===");
+    const typeCount = new Map();
+    for (const it of itemsRaw) {
+      const tid =
+        it?.definition?.item?.baseParameters?.itemTypeId ??
+        it?.definition?.itemTypeId ??
+        it?.itemTypeId ?? "unknown";
+      typeCount.set(tid, (typeCount.get(tid) ?? 0) + 1);
+    }
+    const sorted = [...typeCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 25);
+    console.log(sorted.map(([t, c]) => `type ${t}: ${c}`).join("\n"));
+
+    console.log("=== DEBUG search for known sublimation names ===");
+    for (const probe of ["Ruin", "Influence", "Courage", "Carnage", "Frenzy"]) {
+      const hits = itemsRaw
+        .filter((it) => {
+          const en = itemTitle(it, "en");
+          return en && en.toLowerCase().includes(probe.toLowerCase());
+        })
+        .slice(0, 5)
+        .map((it) => ({
+          id: itemId(it),
+          en: itemTitle(it, "en"),
+          typeId:
+            it?.definition?.item?.baseParameters?.itemTypeId ??
+            it?.definition?.itemTypeId ?? it?.itemTypeId ?? null,
+        }));
+      console.log(`"${probe}":`, JSON.stringify(hits));
+    }
+  }
 
   // Index official items by normalized EN title (multiple rarity variants per name).
   const byEnName = new Map();
