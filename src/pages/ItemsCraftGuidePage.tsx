@@ -93,8 +93,7 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
     if (!q) return [];
     return craftableItems
       .filter((it) => it._norm.includes(q))
-      .slice(0, 30)
-      .map(({ _norm, ...it }) => it);
+      .slice(0, 30);
   }, [craftableItems, query]);
 
   const activeItem: CompactItem | null = useMemo(() => {

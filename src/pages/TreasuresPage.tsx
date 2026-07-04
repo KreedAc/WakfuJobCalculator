@@ -14,7 +14,7 @@ type Treasure = {
 const STORAGE_KEY = 'wakfu-treasures-completed';
 
 type TreasuresI18n = {
-  _meta?: any;
+  _meta?: unknown;
   locations?: Record<string, Record<Lang, string>>;
   artifacts?: Record<string, Record<Lang, string>>;
   achievements?: Record<string, Record<Lang, string>>;
@@ -85,7 +85,7 @@ const UI = {
     howItWorksTitle: 'Como funciona a ferramenta de tesouros',
     howItWorks: 'O banco de dados de Tesouros rastreia todas as conquistas de caça ao tesouro no Wakfu, fornecendo um local centralizado para planejar e monitorar seu progresso de caça ao tesouro. Cada entrada de tesouro inclui o nome da conquista, a zona específica onde está localizada, coordenadas exatas para ajudá-lo a navegar até o local do tesouro, os artefatos necessários para desbloquear o tesouro e as recompensas que você receberá. A função de pesquisa permite que você encontre rapidamente tesouros por nome de conquista, local, nomes de artefatos ou recompensas. O sistema de caixas de seleção permite que você marque tesouros como concluídos, com seu progresso salvo localmente em seu navegador para que você possa rastrear quais tesouros você já encontrou em várias sessões. Isso é particularmente útil para completistas que desejam coletar todas as conquistas de tesouros no jogo. O sistema de coordenadas usa coordenadas de mapa padrão do Wakfu, facilitando a navegação usando mapas no jogo. Todos os dados de tesouros, incluindo locais e requisitos de artefatos, são compilados dos arquivos do jogo Wakfu e recursos da comunidade, garantindo precisão e completude para suas aventuras de caça ao tesouro.',
   },
-} satisfies Record<Lang, any>;
+} satisfies Record<Lang, unknown>;
 
 function formatCoords(c: { x: number; y: number }) {
   return `${c.x}, ${c.y}`;

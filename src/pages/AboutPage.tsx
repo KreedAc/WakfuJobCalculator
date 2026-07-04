@@ -1,14 +1,12 @@
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { Info, Heart, Code, Users } from 'lucide-react';
-import { TRANSLATIONS, type Language } from '../constants/translations';
+import { type Language } from '../constants/translations';
 
 interface AboutPageProps {
   language: Language;
 }
 
 export function AboutPage({ language }: AboutPageProps) {
-  const t = TRANSLATIONS[language];
-
   const aboutContent = {
     en: {
       title: 'About Wakfu Job Calculator',
