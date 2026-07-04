@@ -335,7 +335,19 @@ async function main() {
 
       if (chosen) {
         const locName = itemTitle(chosen.item, lang);
-        if (locName) entry.name = stripTier(locName);
+        if (locName) {
+          let name = stripTier(locName);
+          // PT epic/relic titles carry a "Runa Épica/Relíquia de" prefix — drop it
+          // so names read like the other languages.
+          name = name.replace(/^Runa\s+(?:Épica|Relíquia)\s+d[eao]s?\s+/iu, "");
+          // Some sublimations legitimately end in a roman numeral (Excess II,
+          // Measure III…): that suffix is part of the name, not a tier — restore it.
+          const curatedSuffix = sub.name.match(/\s(I{1,3})\s*$/)?.[1];
+          if (curatedSuffix && !new RegExp(`\\s${curatedSuffix}$`).test(name)) {
+            name = `${name} ${curatedSuffix}`;
+          }
+          entry.name = name;
+        }
       }
 
       // Description priority: hand-maintained translation > official state text
