@@ -258,6 +258,7 @@ const filteredRunes = useMemo(() => {
     key={idx}
     label={`${t.slot} ${idx + 1}`}
     value={slotFilters[idx]}
+    optionLabels={{ Any: t.slotEmpty, G: t.slotGreen, B: t.slotBlue, R: t.slotRed, J: t.slotWhite }}
     onChange={(newValue) => {
       const newFilters = [...slotFilters] as [Slot, Slot, Slot, Slot];
       newFilters[idx] = newValue as Slot;
@@ -302,7 +303,7 @@ const filteredRunes = useMemo(() => {
                       }
                       return (
                         <div key={idx} className={`special-badge ${color.toLowerCase()}`}>
-                          {color}
+                          {CATEGORY_LABELS[language]?.[color] ?? color}
                         </div>
                       );
                     })}
