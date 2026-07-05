@@ -17,7 +17,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Runic Mimic",
+      "name": "Mimique runique",
       "localIcon": "/data/icons/runic.png"
     },
     "category": "Offensive",
@@ -52,7 +52,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Runic Mimic",
+      "name": "Mimique runique",
       "localIcon": "/data/icons/runic.png"
     },
     "category": "Offensive",
@@ -85,7 +85,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Runic Mimic",
+      "name": "Mimique runique",
       "localIcon": "/data/icons/runic.png"
     },
     "category": "Defensive",
@@ -120,7 +120,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Tainela Rift",
+      "name": "Faille Tainela",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Defensive",
@@ -155,7 +155,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Tainela Rift",
+      "name": "Faille Tainela",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Utility",
@@ -189,7 +189,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Tainela Rift",
+      "name": "Faille Tainela",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Defensive",
@@ -224,7 +224,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Tainela Rift",
+      "name": "Faille Tainela",
       "localIcon": "icons/rift.png"
     },
     "category": "Utility",
@@ -258,7 +258,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Sufokia Rift",
+      "name": "Faille Sufokia",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Defensive",
@@ -293,7 +293,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Sufokia Rift",
+      "name": "Faille Sufokia",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Offensive",
@@ -328,7 +328,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Sufokia Rift",
+      "name": "Faille Sufokia",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Defensive",
@@ -362,7 +362,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Sufokia Rift",
+      "name": "Faille Sufokia",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Offensive",
@@ -397,7 +397,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Amakna Rift",
+      "name": "Faille Amakna",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Defensive",
@@ -431,7 +431,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Amakna Rift",
+      "name": "Faille Amakna",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Offensive",
@@ -471,7 +471,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Amakna Rift",
+      "name": "Faille Amakna",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Defensive",
@@ -504,7 +504,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Amakna Rift",
+      "name": "Faille Amakna",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Utility",
@@ -544,7 +544,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Frigost Rift",
+      "name": "Faille Frigost",
       "localIcon": "/data/icons/rift_ulti.png"
     },
     "category": "Offensive",
@@ -579,7 +579,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Frigost Rift",
+      "name": "Faille Frigost",
       "localIcon": "/data/icons/rift_ulti.png"
     },
     "category": "Offensive",
@@ -619,7 +619,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Frigost Rift",
+      "name": "Faille Frigost",
       "localIcon": "/data/icons/rift_ulti.png"
     },
     "category": "Offensive",
@@ -657,7 +657,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Frigost Rift",
+      "name": "Faille Frigost",
       "localIcon": "/data/icons/rift_ulti.png"
     },
     "category": "Defensive",
@@ -687,7 +687,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Blackspore Dungeon",
+      "name": "Donjon Blackspore",
       "localIcon": "/data/icons/sugnuf.png"
     },
     "category": "Defensive",
@@ -722,7 +722,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Blackspore Dungeon",
+      "name": "Donjon Blackspore",
       "localIcon": "/data/icons/sugnuf.png"
     },
     "category": "Defensive",
@@ -757,7 +757,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Blackspore Dungeon",
+      "name": "Donjon Blackspore",
       "localIcon": "/data/icons/sugnuf.png"
     },
     "category": "Offensive",
@@ -792,7 +792,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Dirty Trouffe Estate Dungeon",
+      "name": "Donjon Dirty Trouffe Estate",
       "localIcon": "/data/icons/rascal.png"
     },
     "category": "Utility",
@@ -827,7 +827,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Dirty Trouffe Estate Dungeon",
+      "name": "Donjon Dirty Trouffe Estate",
       "localIcon": "/data/icons/rascal.png"
     },
     "category": "Defensive",
@@ -862,7 +862,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Dirty Trouffe Estate Dungeon",
+      "name": "Donjon Dirty Trouffe Estate",
       "localIcon": "/data/icons/rascal.png"
     },
     "category": "Offensive",
@@ -895,7 +895,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Treechnid Dungeon",
+      "name": "Donjon Treechnid",
       "localIcon": "/data/icons/soft_oak.png"
     },
     "category": "Stats Increase",
@@ -930,7 +930,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Treechnid Dungeon",
+      "name": "Donjon Treechnid",
       "localIcon": "/data/icons/soft_oak.png"
     },
     "category": "Stats Increase",
@@ -965,7 +965,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Treechnid Dungeon",
+      "name": "Donjon Treechnid",
       "localIcon": "/data/icons/soft_oak.png"
     },
     "category": "Offensive",
@@ -1000,7 +1000,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Great Zomkin's Compost Dungeon",
+      "name": "Donjon Great Zomkin's Compost",
       "localIcon": "/data/icons/culinary.png"
     },
     "category": "Offensive",
@@ -1035,7 +1035,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Great Zomkin's Compost Dungeon",
+      "name": "Donjon Great Zomkin's Compost",
       "localIcon": "/data/icons/culinary.png"
     },
     "category": "Defensive",
@@ -1075,7 +1075,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Great Zomkin's Compost Dungeon",
+      "name": "Donjon Great Zomkin's Compost",
       "localIcon": "/data/icons/culinary.png"
     },
     "category": "Support",
@@ -1108,7 +1108,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Lenald Palace Dungeon",
+      "name": "Donjon Lenald Palace",
       "localIcon": "/data/icons/lenald.png"
     },
     "category": "Defensive",
@@ -1136,7 +1136,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Lenald Palace Dungeon",
+      "name": "Donjon Lenald Palace",
       "localIcon": "/data/icons/lenald.png"
     },
     "category": "Defensive",
@@ -1171,7 +1171,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Kween's Gawden Dungeon",
+      "name": "Donjon Kween's Gawden",
       "localIcon": "/data/icons/viziew.png"
     },
     "category": "Stats Increase",
@@ -1206,7 +1206,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Kween's Gawden Dungeon",
+      "name": "Donjon Kween's Gawden",
       "localIcon": "/data/icons/viziew.png"
     },
     "category": "Offensive",
@@ -1239,7 +1239,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Kween's Gawden Dungeon",
+      "name": "Donjon Kween's Gawden",
       "localIcon": "/data/icons/viziew.png"
     },
     "category": "Stats Increase",
@@ -1274,7 +1274,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Bonta Rift",
+      "name": "Faille Bonta",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Offensive",
@@ -1314,7 +1314,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Bonta Rift",
+      "name": "Faille Bonta",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Support",
@@ -1348,7 +1348,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Bonta Rift",
+      "name": "Faille Bonta",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Offensive",
@@ -1383,7 +1383,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Bonta Rift",
+      "name": "Faille Bonta",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Support",
@@ -1418,7 +1418,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Srambad Dungeon",
+      "name": "Donjon Srambad",
       "localIcon": "/data/icons/srambad.png"
     },
     "category": "Defensive",
@@ -1451,7 +1451,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Srambad Dungeon",
+      "name": "Donjon Srambad",
       "localIcon": "/data/icons/srambad.png"
     },
     "category": "Defensive",
@@ -1485,7 +1485,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Srambad Dungeon",
+      "name": "Donjon Srambad",
       "localIcon": "/data/icons/srambad.png"
     },
     "category": "Offensive",
@@ -1520,7 +1520,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Enurado Dungeon",
+      "name": "Donjon Enurado",
       "localIcon": "/data/icons/enurado.png"
     },
     "category": "Offensive",
@@ -1555,7 +1555,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Enurado Dungeon",
+      "name": "Donjon Enurado",
       "localIcon": "/data/icons/enurado.png"
     },
     "category": "Offensive",
@@ -1590,7 +1590,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Enurado Dungeon",
+      "name": "Donjon Enurado",
       "localIcon": "/data/icons/enurado.png"
     },
     "category": "Offensive",
@@ -1625,7 +1625,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Enurado Dungeon",
+      "name": "Donjon Enurado",
       "localIcon": "/data/icons/enurado.png"
     },
     "category": "Offensive",
@@ -1660,7 +1660,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Blopera Dungeon",
+      "name": "Donjon Blopera",
       "localIcon": "/data/icons/blopera.png"
     },
     "category": "Offensive",
@@ -1695,7 +1695,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Blopera Dungeon",
+      "name": "Donjon Blopera",
       "localIcon": "/data/icons/blopera.png"
     },
     "category": "Offensive",
@@ -1730,7 +1730,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Blopera Dungeon",
+      "name": "Donjon Blopera",
       "localIcon": "/data/icons/blopera.png"
     },
     "category": "Offensive",
@@ -1765,7 +1765,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Blopera Dungeon",
+      "name": "Donjon Blopera",
       "localIcon": "/data/icons/blopera.png"
     },
     "category": "Offensive",
@@ -1799,7 +1799,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Wellspring of Evil Dungeon",
+      "name": "Donjon Wellspring of Evil",
       "localIcon": "/data/icons/bulbrute.png"
     },
     "category": "Support",
@@ -1834,7 +1834,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Wellspring of Evil Dungeon",
+      "name": "Donjon Wellspring of Evil",
       "localIcon": "/data/icons/bulbrute.png"
     },
     "category": "Support",
@@ -1867,7 +1867,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Wellspring of Evil Dungeon",
+      "name": "Donjon Wellspring of Evil",
       "localIcon": "/data/icons/bulbrute.png"
     },
     "category": "Stats Increase",
@@ -1902,7 +1902,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Sandyoptera Mother-Hive Dungeon",
+      "name": "Donjon Sandyoptera Mother-Hive",
       "localIcon": "/data/icons/sandy.png"
     },
     "category": "Offensive",
@@ -1937,7 +1937,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Sandyoptera Mother-Hive Dungeon",
+      "name": "Donjon Sandyoptera Mother-Hive",
       "localIcon": "/data/icons/sandy.png"
     },
     "category": "Defensive",
@@ -1972,7 +1972,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Sandyoptera Mother-Hive Dungeon",
+      "name": "Donjon Sandyoptera Mother-Hive",
       "localIcon": "/data/icons/sandy.png"
     },
     "category": "Defensive",
@@ -2006,7 +2006,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Womewo's Labowatowy Dungeon",
+      "name": "Donjon Womewo's Labowatowy",
       "localIcon": "/data/icons/womewo.png"
     },
     "category": "Support",
@@ -2041,7 +2041,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Womewo's Labowatowy Dungeon",
+      "name": "Donjon Womewo's Labowatowy",
       "localIcon": "/data/icons/womewo.png"
     },
     "category": "Offensive",
@@ -2074,7 +2074,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Womewo's Labowatowy Dungeon",
+      "name": "Donjon Womewo's Labowatowy",
       "localIcon": "/data/icons/womewo.png"
     },
     "category": "Stats Increase",
@@ -2103,7 +2103,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Mecha Factory Dungeon",
+      "name": "Donjon Mecha Factory",
       "localIcon": "/data/icons/vertox.png"
     },
     "category": "Stats Increase",
@@ -2136,7 +2136,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Mecha Factory Dungeon",
+      "name": "Donjon Mecha Factory",
       "localIcon": "/data/icons/vertox.png"
     },
     "category": "Stats Increase",
@@ -2166,7 +2166,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Mecha Factory Dungeon",
+      "name": "Donjon Mecha Factory",
       "localIcon": "/data/icons/vertox.png"
     },
     "category": "Offensive",
@@ -2199,7 +2199,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Ow El Dungeon",
+      "name": "Donjon Ow El",
       "localIcon": "/data/icons/robowl.png"
     },
     "category": "Offensive",
@@ -2234,7 +2234,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ow El Dungeon",
+      "name": "Donjon Ow El",
       "localIcon": "/data/icons/robowl.png"
     },
     "category": "Stats Increase",
@@ -2267,7 +2267,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Ow El Dungeon",
+      "name": "Donjon Ow El",
       "localIcon": "/data/icons/robowl.png"
     },
     "category": "Offensive",
@@ -2297,7 +2297,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Moon Rift",
+      "name": "Faille Moon",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Support",
@@ -2332,7 +2332,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Moon Rift",
+      "name": "Faille Moon",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Offensive",
@@ -2367,7 +2367,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Moon Rift",
+      "name": "Faille Moon",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Offensive",
@@ -2407,7 +2407,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Moon Rift",
+      "name": "Faille Moon",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Offensive",
@@ -2440,7 +2440,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Crocodyl Dungeon",
+      "name": "Donjon Crocodyl",
       "localIcon": "/data/icons/nyl.png"
     },
     "category": "Defensive",
@@ -2475,7 +2475,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Crocodyl Dungeon",
+      "name": "Donjon Crocodyl",
       "localIcon": "/data/icons/nyl.png"
     },
     "category": "Defensive",
@@ -2509,7 +2509,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Crocodyl Dungeon",
+      "name": "Donjon Crocodyl",
       "localIcon": "/data/icons/nyl.png"
     },
     "category": "Stats Increase",
@@ -2544,7 +2544,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Kannivore Dungeon",
+      "name": "Donjon Kannivore",
       "localIcon": "/data/icons/grozepin.png"
     },
     "category": "Defensive",
@@ -2579,7 +2579,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Kannivore Dungeon",
+      "name": "Donjon Kannivore",
       "localIcon": "/data/icons/grozepin.png"
     },
     "category": "Defensive",
@@ -2614,7 +2614,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Kannivore Dungeon",
+      "name": "Donjon Kannivore",
       "localIcon": "/data/icons/grozepin.png"
     },
     "category": "Stats Increase",
@@ -2647,7 +2647,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Kanniball Dungeon",
+      "name": "Donjon Kanniball",
       "localIcon": "/data/icons/kanniball.png"
     },
     "category": "Defensive",
@@ -2677,7 +2677,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Kanniball Dungeon",
+      "name": "Donjon Kanniball",
       "localIcon": "/data/icons/kanniball.png"
     },
     "category": "Defensive",
@@ -2711,7 +2711,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Kanniball Dungeon",
+      "name": "Donjon Kanniball",
       "localIcon": "/data/icons/kanniball.png"
     },
     "category": "Stats Increase",
@@ -2746,7 +2746,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Tropickle Dungeon",
+      "name": "Donjon Tropickle",
       "localIcon": "/data/icons/koko.png"
     },
     "category": "Defensive",
@@ -2781,7 +2781,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Tropickle Dungeon",
+      "name": "Donjon Tropickle",
       "localIcon": "/data/icons/koko.png"
     },
     "category": "Defensive",
@@ -2815,7 +2815,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Tropickle Dungeon",
+      "name": "Donjon Tropickle",
       "localIcon": "/data/icons/koko.png"
     },
     "category": "Stats Increase",
@@ -2848,7 +2848,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "1 Steles - Forbidden City Dungeon",
+      "name": "1 Stèles - Donjon Forbidden City",
       "localIcon": "/data/icons/pandora.png"
     },
     "category": "Stats Increase",
@@ -2883,7 +2883,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "2 Steles - Forbidden City Dungeon",
+      "name": "2 Stèles - Donjon Forbidden City",
       "localIcon": "/data/icons/pandora.png"
     },
     "category": "Defensive",
@@ -2916,7 +2916,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "3 Steles - Forbidden City Dungeon",
+      "name": "3 Stèles - Donjon Forbidden City",
       "localIcon": "/data/icons/pandora.png"
     },
     "category": "Offensive",
@@ -2944,7 +2944,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "1 Agua Stele - Any lvl 200 Zinith Dungeon",
+      "name": "1 Stèle Agua - N'importe quel donjon Zinit niv. 200",
       "localIcon": "/data/icons/agua.png"
     },
     "category": "Offensive",
@@ -2974,7 +2974,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Badgerox's Lair Dungeon",
+      "name": "Donjon Badgerox's Lair",
       "localIcon": "/data/icons/badger.png"
     },
     "category": "Defensive",
@@ -3009,7 +3009,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Badgerox's Lair Dungeon",
+      "name": "Donjon Badgerox's Lair",
       "localIcon": "/data/icons/badger.png"
     },
     "category": "Defensive",
@@ -3042,7 +3042,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Badgerox's Lair Dungeon",
+      "name": "Donjon Badgerox's Lair",
       "localIcon": "/data/icons/badger.png"
     },
     "category": "Offensive",
@@ -3071,7 +3071,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "2 Steles Aguabrial - Badgerox's Lair Dungeon",
+      "name": "2 Stèles Aguabrial - Donjon Badgerox's Lair",
       "localIcon": "/data/icons/badger.png"
     },
     "category": "Support",
@@ -3106,7 +3106,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Or'Hodruin  Dungeon",
+      "name": "Donjon Or'Hodruin ",
       "localIcon": "/data/icons/sorhon.png"
     },
     "category": "Defensive",
@@ -3139,7 +3139,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Or'Hodruin  Dungeon",
+      "name": "Donjon Or'Hodruin ",
       "localIcon": "/data/icons/sorhon.png"
     },
     "category": "Stats Increase",
@@ -3174,7 +3174,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Or'Hodruin  Dungeon",
+      "name": "Donjon Or'Hodruin ",
       "localIcon": "/data/icons/sorhon.png"
     },
     "category": "Stats Increase",
@@ -3214,7 +3214,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "2 Steles Aguabrial - Or'Hodruin  Dungeon",
+      "name": "2 Stèles Aguabrial - Donjon Or'Hodruin ",
       "localIcon": "/data/icons/agua.png"
     },
     "category": "Offensive",
@@ -3249,7 +3249,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Dreggons' Sanctuary Dungeon",
+      "name": "Donjon Dreggons' Sanctuary",
       "localIcon": "/data/icons/egg.png"
     },
     "category": "Defensive",
@@ -3284,7 +3284,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Dreggons' Sanctuary Dungeon",
+      "name": "Donjon Dreggons' Sanctuary",
       "localIcon": "/data/icons/egg.png"
     },
     "category": "Stats Increase",
@@ -3319,7 +3319,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Dreggons' Sanctuary Dungeon",
+      "name": "Donjon Dreggons' Sanctuary",
       "localIcon": "/data/icons/egg.png"
     },
     "category": "Offensive",
@@ -3352,7 +3352,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "2 Steles Aguabrial - Dreggons' Sanctuary Dungeon",
+      "name": "2 Stèles Aguabrial - Donjon Dreggons' Sanctuary",
       "localIcon": "/data/icons/agua.png"
     },
     "category": "Support",
@@ -3382,7 +3382,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Iced-Over Crest Dungeon",
+      "name": "Donjon Iced-Over Crest",
       "localIcon": "/data/icons/ashdragon.png"
     },
     "category": "Defensive",
@@ -3415,7 +3415,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Iced-Over Crest Dungeon",
+      "name": "Donjon Iced-Over Crest",
       "localIcon": "/data/icons/ashdragon.png"
     },
     "category": "Stats Increase",
@@ -3450,7 +3450,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Iced-Over Crest Dungeon",
+      "name": "Donjon Iced-Over Crest",
       "localIcon": "/data/icons/ashdragon.png"
     },
     "category": "Stats Increase",
@@ -3484,7 +3484,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "2 Steles Aguabrial - Iced-Over Crest Dungeon",
+      "name": "2 Stèles Aguabrial - Donjon Iced-Over Crest",
       "localIcon": "/data/icons/agua.png"
     },
     "category": "Stats Increase",
@@ -3519,7 +3519,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Pandala Tomb Dungeon",
+      "name": "Donjon Pandala Tomb",
       "localIcon": "/data/icons/tanuki.png"
     },
     "category": "Stats Increase",
@@ -3554,7 +3554,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Pandala Tomb Dungeon",
+      "name": "Donjon Pandala Tomb",
       "localIcon": "/data/icons/tanuki.png"
     },
     "category": "Stats Increase",
@@ -3589,7 +3589,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Pandala Tomb Dungeon",
+      "name": "Donjon Pandala Tomb",
       "localIcon": "/data/icons/tanuki.png"
     },
     "category": "Offensive",
@@ -3622,7 +3622,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Blightopard Canyon Dungeon",
+      "name": "Donjon Blightopard Canyon",
       "localIcon": "/data/icons/blighto.png"
     },
     "category": "Stats Increase",
@@ -3656,7 +3656,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Blightopard Canyon Dungeon",
+      "name": "Donjon Blightopard Canyon",
       "localIcon": "/data/icons/blighto.png"
     },
     "category": "Stats Increase",
@@ -3689,7 +3689,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Blightopard Canyon Dungeon",
+      "name": "Donjon Blightopard Canyon",
       "localIcon": "/data/icons/blighto.png"
     },
     "category": "Stats Increase",
@@ -3719,7 +3719,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Tundrazor Dungeon",
+      "name": "Donjon Tundrazor",
       "localIcon": "/data/icons/buffalo.png"
     },
     "category": "Stats Increase",
@@ -3754,7 +3754,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Tundrazor Dungeon",
+      "name": "Donjon Tundrazor",
       "localIcon": "/data/icons/buffalo.png"
     },
     "category": "Stats Increase",
@@ -3789,7 +3789,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Tundrazor Dungeon",
+      "name": "Donjon Tundrazor",
       "localIcon": "/data/icons/buffalo.png"
     },
     "category": "Stats Increase",
@@ -3824,7 +3824,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Crabstacean Dungeon",
+      "name": "Donjon Crabstacean",
       "localIcon": "/data/icons/crabs.png"
     },
     "category": "Offensive",
@@ -3859,7 +3859,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Crabstacean Dungeon",
+      "name": "Donjon Crabstacean",
       "localIcon": "/data/icons/crabs.png"
     },
     "category": "Defensive",
@@ -3899,7 +3899,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Crabstacean Dungeon",
+      "name": "Donjon Crabstacean",
       "localIcon": "/data/icons/crabs.png"
     },
     "category": "Stats Increase",
@@ -3934,7 +3934,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Sunsloth Dungeon",
+      "name": "Donjon Sunsloth",
       "localIcon": "/data/icons/sunsloth.png"
     },
     "category": "Offensive",
@@ -3967,7 +3967,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Sunsloth Dungeon",
+      "name": "Donjon Sunsloth",
       "localIcon": "/data/icons/sunsloth.png"
     },
     "category": "Stats Increase",
@@ -4002,7 +4002,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Sunsloth Dungeon",
+      "name": "Donjon Sunsloth",
       "localIcon": "/data/icons/sunsloth.png"
     },
     "category": "Offensive",
@@ -4037,7 +4037,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Vandalophrenic Dungeon",
+      "name": "Donjon Vandalophrenic",
       "localIcon": "/data/icons/hogin.png"
     },
     "category": "Stats Increase",
@@ -4072,7 +4072,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Vandalophrenic Dungeon",
+      "name": "Donjon Vandalophrenic",
       "localIcon": "/data/icons/hogin.png"
     },
     "category": "Defensive",
@@ -4112,7 +4112,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Vandalophrenic Dungeon",
+      "name": "Donjon Vandalophrenic",
       "localIcon": "/data/icons/hogin.png"
     },
     "category": "Stats Increase",
@@ -4147,7 +4147,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Plantiguard Dungeon",
+      "name": "Donjon Plantiguard",
       "localIcon": "/data/icons/bear.png"
     },
     "category": "Offensive",
@@ -4182,7 +4182,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Plantiguard Dungeon",
+      "name": "Donjon Plantiguard",
       "localIcon": "/data/icons/bear.png"
     },
     "category": "Stats Increase",
@@ -4215,7 +4215,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Plantiguard Dungeon",
+      "name": "Donjon Plantiguard",
       "localIcon": "/data/icons/bear.png"
     },
     "category": "Stats Increase",
@@ -4248,7 +4248,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Pingwin Dungeon",
+      "name": "Donjon Pingwin",
       "localIcon": "/data/icons/sumorse.png"
     },
     "category": "Stats Increase",
@@ -4278,7 +4278,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Pingwin Dungeon",
+      "name": "Donjon Pingwin",
       "localIcon": "/data/icons/sumorse.png"
     },
     "category": "Offensive",
@@ -4313,7 +4313,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Pingwin Dungeon",
+      "name": "Donjon Pingwin",
       "localIcon": "/data/icons/sumorse.png"
     },
     "category": "Offensive",
@@ -4348,7 +4348,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Scramshell Dungeon",
+      "name": "Donjon Scramshell",
       "localIcon": "/data/icons/tortu.png"
     },
     "category": "Defensive",
@@ -4383,7 +4383,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Scramshell Dungeon",
+      "name": "Donjon Scramshell",
       "localIcon": "/data/icons/tortu.png"
     },
     "category": "Stats Increase",
@@ -4416,7 +4416,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Scramshell Dungeon",
+      "name": "Donjon Scramshell",
       "localIcon": "/data/icons/tortu.png"
     },
     "category": "Stats Increase",
@@ -4445,7 +4445,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Osamosa Rift",
+      "name": "Faille Osamosa",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Offensive",
@@ -4480,7 +4480,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Osamosa Rift",
+      "name": "Faille Osamosa",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Stats Increase",
@@ -4515,7 +4515,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Osamosa Rift",
+      "name": "Faille Osamosa",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Offensive",
@@ -4550,7 +4550,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Osamosa Rift",
+      "name": "Faille Osamosa",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Defensive",
@@ -4585,7 +4585,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Mount Zinit Ultimate Rift",
+      "name": "Faille ultime Mount Zinit",
       "localIcon": "/data/icons/rift_ulti.png"
     },
     "category": "Defensive",
@@ -4625,7 +4625,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Mount Zinit Ultimate Rift",
+      "name": "Faille ultime Mount Zinit",
       "localIcon": "/data/icons/rift_ulti.png"
     },
     "category": "Support",
@@ -4660,7 +4660,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Mount Zinit Ultimate Rift",
+      "name": "Faille ultime Mount Zinit",
       "localIcon": "/data/icons/rift_ulti.png"
     },
     "category": "Offensive",
@@ -4695,7 +4695,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Mount Zinit Ultimate Rift",
+      "name": "Faille ultime Mount Zinit",
       "localIcon": "/data/icons/rift_ulti.png"
     },
     "category": "Offensive",
@@ -4735,7 +4735,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Shustuft Crust Rift",
+      "name": "Faille Shustuft Crust",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Stats Increase",
@@ -4769,7 +4769,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Shustuft Crust Rift",
+      "name": "Faille Shustuft Crust",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Stats Increase",
@@ -4804,7 +4804,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Shustuft Crust Rift",
+      "name": "Faille Shustuft Crust",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Offensive",
@@ -4839,7 +4839,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Shustuft Crust Rift",
+      "name": "Faille Shustuft Crust",
       "localIcon": "/data/icons/rift.png"
     },
     "category": "Offensive",
@@ -4874,7 +4874,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Shustuft Crust Ultimate Rift",
+      "name": "Faille ultime Shustuft Crust",
       "localIcon": "/data/icons/rift_ulti.png"
     },
     "category": "Offensive",
@@ -4908,7 +4908,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Shustuft Crust Ultimate Rift",
+      "name": "Faille ultime Shustuft Crust",
       "localIcon": "/data/icons/rift_ulti.png"
     },
     "category": "Defensive",
@@ -4942,7 +4942,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Shustuft Crust Ultimate Rift",
+      "name": "Faille ultime Shustuft Crust",
       "localIcon": "/data/icons/rift_ulti.png"
     },
     "category": "Offensive",
@@ -4977,7 +4977,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Shustuft Crust Ultimate Rift",
+      "name": "Faille ultime Shustuft Crust",
       "localIcon": "/data/icons/rift_ulti.png"
     },
     "category": "Offensive",
@@ -5010,7 +5010,7 @@
     "minLevel": 2,
     "step": 2,
     "obtenation": {
-      "name": "Heart of Nox's Clock",
+      "name": "Cœur de l'Horloge de Nox",
       "localIcon": "/data/icons/nox.png"
     },
     "category": "Stat gains",
@@ -5045,7 +5045,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Heart of Nox's Clock",
+      "name": "Cœur de l'Horloge de Nox",
       "localIcon": "/data/icons/nox.png"
     },
     "category": "Offensive",
@@ -5080,7 +5080,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Heart of Nox's Clock",
+      "name": "Cœur de l'Horloge de Nox",
       "localIcon": "/data/icons/nox.png"
     },
     "category": "Offensive",
@@ -5115,7 +5115,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Heart of Nox's Clock",
+      "name": "Cœur de l'Horloge de Nox",
       "localIcon": "/data/icons/nox.png"
     },
     "category": "Defensive",
@@ -5181,7 +5181,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Support",
@@ -5207,7 +5207,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Offensive",
@@ -5233,7 +5233,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Offensive",
@@ -5259,7 +5259,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Offensive",
@@ -5285,7 +5285,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Stats Increase",
@@ -5311,7 +5311,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Vandalphrenic Meat",
+      "name": "Viande de Vandalphrenic",
       "localIcon": "/data/icons/craft.png"
     },
     "category": "Offensive",
@@ -5337,7 +5337,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Offensive",
@@ -5363,7 +5363,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Offensive",
@@ -5389,7 +5389,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Offensive",
@@ -5415,7 +5415,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Support",
@@ -5441,7 +5441,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Support",
@@ -5467,7 +5467,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Offensive",
@@ -5493,7 +5493,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Offensive",
@@ -5519,7 +5519,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Stats Increase",
@@ -5545,7 +5545,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Offensive",
@@ -5571,7 +5571,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Stats Increase",
@@ -5597,7 +5597,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Offensive",
@@ -5623,7 +5623,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Sunsloth Meat",
+      "name": "Viande de Sunsloth",
       "localIcon": "/data/icons/craft.png"
     },
     "category": "Offensive",
@@ -5649,7 +5649,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Crabstacean Meat",
+      "name": "Viande de Crabstacean",
       "localIcon": "/data/icons/craft.png"
     },
     "category": "Offensive",
@@ -5675,7 +5675,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Tundrazor Meat",
+      "name": "Viande de Tundrazor",
       "localIcon": "/data/icons/craft.png"
     },
     "category": "Defensive",
@@ -5701,7 +5701,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Support",
@@ -5727,7 +5727,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Defensive",
@@ -5753,7 +5753,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Offensive",
@@ -5779,7 +5779,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Offensive",
@@ -5805,7 +5805,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Support",
@@ -5831,7 +5831,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Stats Increase",
@@ -5857,7 +5857,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Defensive",
@@ -5883,7 +5883,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Offensive",
@@ -5909,7 +5909,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Stats Increase",
@@ -5935,7 +5935,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Defensive",
@@ -5961,7 +5961,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Stats Increase",
@@ -5987,7 +5987,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Offensive",
@@ -6013,7 +6013,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Offensive",
@@ -6039,7 +6039,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Plantiguard Meat",
+      "name": "Viande de Plantiguard",
       "localIcon": "/data/icons/craft.png"
     },
     "category": "Offensive",
@@ -6065,7 +6065,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Offensive",
@@ -6091,7 +6091,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Defensive",
@@ -6117,7 +6117,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Offensive",
@@ -6143,7 +6143,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Offensive",
@@ -6169,7 +6169,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Offensive",
@@ -6195,7 +6195,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Offensive",
@@ -6221,7 +6221,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Offensive",
@@ -6247,7 +6247,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Defensive",
@@ -6273,7 +6273,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Support",
@@ -6299,7 +6299,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Support",
@@ -6325,7 +6325,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Stats Increase",
@@ -6351,7 +6351,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Offensive",
@@ -6377,7 +6377,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Offensive",
@@ -6403,7 +6403,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Defensive",
@@ -6429,7 +6429,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Offensive",
@@ -6455,7 +6455,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Offensive",
@@ -6481,7 +6481,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Defensive",
@@ -6507,7 +6507,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Stats Increase",
@@ -6533,7 +6533,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Offensive",
@@ -6559,7 +6559,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Defensive",
@@ -6585,7 +6585,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Offensive",
@@ -6611,7 +6611,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Support",
@@ -6637,7 +6637,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Scramshell Meat",
+      "name": "Viande de Scramshell",
       "localIcon": "/data/icons/craft.png"
     },
     "category": "Defensive",
@@ -6663,7 +6663,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Offensive",
@@ -6689,7 +6689,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Offensive",
@@ -6715,7 +6715,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Defensive",
@@ -6741,7 +6741,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Defensive",
@@ -6767,7 +6767,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Thirster Scalp",
+      "name": "Scalp d'Assoiffé",
       "localIcon": "/data/icons/craft.png"
     },
     "category": "Defensive",
@@ -6793,7 +6793,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Pingwin Meat",
+      "name": "Viande de Pingwin",
       "localIcon": "/data/icons/craft.png"
     },
     "category": "Offensive",
@@ -6819,7 +6819,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Defensive",
@@ -6845,7 +6845,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Offensive",
@@ -6871,7 +6871,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Defensive",
@@ -6897,7 +6897,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Support",
@@ -6923,7 +6923,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Support",
@@ -6949,7 +6949,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Offensive",
@@ -6975,7 +6975,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Offensive",
@@ -7001,7 +7001,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Stats Increase",
@@ -7027,7 +7027,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Defensive",
@@ -7053,7 +7053,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Support",
@@ -7079,7 +7079,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Stats Increase",
@@ -7105,7 +7105,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Speed Stone",
+      "name": "Pierre de rapidité",
       "localIcon": "/data/icons/2_rooms.png"
     },
     "category": "Defensive",
@@ -7131,7 +7131,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Balance Stone",
+      "name": "Pierre d'équilibre",
       "localIcon": "/data/icons/3_rooms.png"
     },
     "category": "Stat gains",
@@ -7157,7 +7157,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Adventure Stone",
+      "name": "Pierre d'aventure",
       "localIcon": "/data/icons/4_rooms.png"
     },
     "category": "Stat gains",
@@ -7183,7 +7183,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Companionship Stone",
+      "name": "Pierre de compagnonnage",
       "localIcon": "/data/icons/3_characters.png"
     },
     "category": "Defensive",
@@ -7209,7 +7209,7 @@
     "minLevel": 1,
     "step": 1,
     "obtenation": {
-      "name": "Ultimate Stone",
+      "name": "Pierre ultime",
       "localIcon": "/data/icons/ub.png"
     },
     "category": "Stat gains",
