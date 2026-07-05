@@ -6,6 +6,7 @@ interface SlotSelectorProps {
   value: string;
   onChange: (value: string) => void;
   label: string;
+  optionLabels?: Partial<Record<'Any' | 'G' | 'B' | 'R' | 'J', string>>;
 }
 
 const SLOT_OPTIONS = [
@@ -16,9 +17,13 @@ const SLOT_OPTIONS = [
   { value: 'J', label: 'White', icon: '/data/icons/yellow_slot.png' }
 ];
 
-export function SlotSelector({ value, onChange, label }: SlotSelectorProps) {
+export function SlotSelector({ value, onChange, label, optionLabels }: SlotSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const selectedOption = SLOT_OPTIONS.find(opt => opt.value === value);
+  const options = SLOT_OPTIONS.map(opt => ({
+    ...opt,
+    label: optionLabels?.[opt.value as 'Any' | 'G' | 'B' | 'R' | 'J'] ?? opt.label,
+  }));
+  const selectedOption = options.find(opt => opt.value === value);
 
   return (
     <div className="slot-filter-group">
@@ -50,7 +55,7 @@ export function SlotSelector({ value, onChange, label }: SlotSelectorProps) {
              className="fixed inset-0 z-[9998]" onClick={() => setIsOpen(false)}
             />
             <div className="glass-strong absolute z-[9999] mt-1 w-full rounded-lg shadow-xl overflow-hidden">
-              {SLOT_OPTIONS.map(option => (
+              {options.map(option => (
                 <button
                   key={option.value}
                   type="button"

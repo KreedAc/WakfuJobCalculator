@@ -142,6 +142,72 @@ function injectPlaceholders(localizedDesc, curated) {
   return { desc, injected, expected };
 }
 
+// Obtainment sources are a mix of proper nouns (kept as-is) and generic words
+// (Dungeon, Rift, Stone, Meat, Steles) that get localized.
+const OBTENATION_EXACT = {
+  fr: {
+    "Adventure Stone": "Pierre d'aventure",
+    "Balance Stone": "Pierre d'équilibre",
+    "Companionship Stone": "Pierre de compagnonnage",
+    "Speed Stone": "Pierre de rapidité",
+    "Ultimate Stone": "Pierre ultime",
+    "Runic Mimic": "Mimique runique",
+    "Heart of Nox's Clock": "Cœur de l'Horloge de Nox",
+    "Thirster Scalp": "Scalp d'Assoiffé",
+    "1 Agua Stele - Any lvl 200 Zinith Dungeon": "1 Stèle Agua - N'importe quel donjon Zinit niv. 200",
+  },
+  es: {
+    "Adventure Stone": "Piedra de aventura",
+    "Balance Stone": "Piedra de equilibrio",
+    "Companionship Stone": "Piedra de compañerismo",
+    "Speed Stone": "Piedra de rapidez",
+    "Ultimate Stone": "Piedra definitiva",
+    "Runic Mimic": "Mímico rúnico",
+    "Heart of Nox's Clock": "Corazón del Reloj de Nox",
+    "Thirster Scalp": "Cabellera de Sediento",
+    "1 Agua Stele - Any lvl 200 Zinith Dungeon": "1 Estela Agua - Cualquier mazmorra de Zinit nvl. 200",
+  },
+  pt: {
+    "Adventure Stone": "Pedra de aventura",
+    "Balance Stone": "Pedra de equilíbrio",
+    "Companionship Stone": "Pedra de companheirismo",
+    "Speed Stone": "Pedra de rapidez",
+    "Ultimate Stone": "Pedra suprema",
+    "Runic Mimic": "Mímico rúnico",
+    "Heart of Nox's Clock": "Coração do Relógio de Nox",
+    "Thirster Scalp": "Escalpo de Sedento",
+    "1 Agua Stele - Any lvl 200 Zinith Dungeon": "1 Estela Agua - Qualquer masmorra de Zinit nív. 200",
+  },
+};
+
+const OBTENATION_WORDS = {
+  fr: { dungeon: "Donjon", rift: "Faille", ultimateRift: "Faille ultime", meat: "Viande de", steles: "Stèles", stele: "Stèle" },
+  es: { dungeon: "Mazmorra", rift: "Fisura", ultimateRift: "Fisura definitiva", meat: "Carne de", steles: "Estelas", stele: "Estela" },
+  pt: { dungeon: "Masmorra", rift: "Fenda", ultimateRift: "Fenda suprema", meat: "Carne de", steles: "Estelas", stele: "Estela" },
+};
+
+function translateObtenation(name, lang) {
+  const exact = OBTENATION_EXACT[lang];
+  const w = OBTENATION_WORDS[lang];
+  if (!exact || !w) return name;
+  if (exact[name]) return exact[name];
+
+  // Composite entries like "2 Steles Aguabrial - Dreggons' Sanctuary Dungeon"
+  // are translated segment by segment; proper nouns are preserved.
+  return name
+    .split(" - ")
+    .map((seg) => {
+      const s = seg.trim();
+      let m;
+      if ((m = s.match(/^(.*) Ultimate Rift$/))) return `${w.ultimateRift} ${m[1]}`;
+      if ((m = s.match(/^(.*) Rift$/))) return `${w.rift} ${m[1]}`;
+      if ((m = s.match(/^(.*) Dungeon$/))) return `${w.dungeon} ${m[1]}`;
+      if ((m = s.match(/^(.*) Meat$/))) return `${w.meat} ${m[1]}`;
+      return s.replace(/\bSteles\b/g, w.steles).replace(/\bStele\b/g, w.stele);
+    })
+    .join(" - ");
+}
+
 // Hand-maintained effect translations (keyed by curated EN name), used because
 // the public CDN has no localized effect text — see scripts/sublimation-descriptions.*.json
 async function loadDescriptionOverrides(lang) {
@@ -369,6 +435,10 @@ async function main() {
           }
         }
       }
+      if (entry.obtenation?.name) {
+        entry.obtenation = { ...entry.obtenation, name: translateObtenation(entry.obtenation.name, lang) };
+      }
+
       // NOTE: rune level lookups key off the EN name in the app, so keep a stable key.
       entry.key = sub.name;
       out.push(entry);
