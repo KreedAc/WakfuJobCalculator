@@ -103,6 +103,34 @@
     inset 0 1px 2px 0 rgba(255, 255, 255, 0.2);
 }
 
+.category-tab.epic-tab {
+  color: #f472b6;
+  border-color: rgba(244, 114, 182, 0.3);
+}
+
+.category-tab.epic-tab.active {
+  background: linear-gradient(135deg, #db2777 0%, #9d174d 100%);
+  color: #fff;
+  border-color: rgba(244, 114, 182, 0.5);
+  box-shadow:
+    0 4px 12px rgba(219, 39, 119, 0.4),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.2);
+}
+
+.category-tab.relic-tab {
+  color: #c084fc;
+  border-color: rgba(192, 132, 252, 0.3);
+}
+
+.category-tab.relic-tab.active {
+  background: linear-gradient(135deg, #9333ea 0%, #6b21a8 100%);
+  color: #fff;
+  border-color: rgba(192, 132, 252, 0.5);
+  box-shadow:
+    0 4px 12px rgba(147, 51, 234, 0.4),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.2);
+}
+
 .runes-grid {
   position: relative;
   z-index: 1;

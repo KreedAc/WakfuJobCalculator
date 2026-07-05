@@ -11,11 +11,56 @@ interface SublimationsProps {
   language?: string;
 }
 
+// Canonical category values live in the data in English; labels are translated
+// at display time. 'Stat gains' is a data-side duplicate of 'Stats Increase'.
+const CATEGORY_NORMALIZE: Record<string, string> = { 'Stat gains': 'Stats Increase' };
+const normalizeCategory = (c: string) => CATEGORY_NORMALIZE[c] ?? c;
+
+const CATEGORY_LABELS: Record<string, Record<string, string>> = {
+  en: {
+    Offensive: 'Offensive',
+    Defensive: 'Defensive',
+    Support: 'Support',
+    'Stats Increase': 'Stats Increase',
+    Utility: 'Utility',
+    Epic: 'Epic',
+    Relic: 'Relic',
+  },
+  fr: {
+    Offensive: 'Offensive',
+    Defensive: 'Défensive',
+    Support: 'Soutien',
+    'Stats Increase': 'Caractéristiques',
+    Utility: 'Utilitaire',
+    Epic: 'Épique',
+    Relic: 'Relique',
+  },
+  es: {
+    Offensive: 'Ofensiva',
+    Defensive: 'Defensiva',
+    Support: 'Apoyo',
+    'Stats Increase': 'Características',
+    Utility: 'Utilidad',
+    Epic: 'Épica',
+    Relic: 'Reliquia',
+  },
+  pt: {
+    Offensive: 'Ofensiva',
+    Defensive: 'Defensiva',
+    Support: 'Suporte',
+    'Stats Increase': 'Características',
+    Utility: 'Utilidade',
+    Epic: 'Épica',
+    Relic: 'Relíquia',
+  },
+};
+
 export function Sublimations({ translations: t, language = 'en' }: SublimationsProps) {
   const [runes, setRunes] = useState<Sublimation[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All Categories');
+  // Canonical filter value: 'All', a data category, or the special 'Epic'/'Relic'.
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [runeLevels, setRuneLevels] = useState<Record<string, number>>({});
   const [dataSource, setDataSource] = useState<'loading' | 'json' | 'fallback' | 'error'>('loading');
   type Slot = 'Any' | 'R' | 'G' | 'B' | 'J';
@@ -70,15 +115,14 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
     };
   }, [language]);
 
-  useEffect(() => {
-    setSelectedCategory(t.allCategories);
-  }, [t.allCategories]);
-
   const categories = useMemo(() => {
     if (!runes.length) return [];
-    const cats = new Set(runes.map(r => r.category).filter(Boolean));
-    return [t.allCategories, ...Array.from(cats).sort()];
-  }, [runes, t.allCategories]);
+    const cats = new Set(runes.map(r => normalizeCategory(r.category)).filter(Boolean));
+    return ['All', ...Array.from(cats).sort(), 'Epic', 'Relic'];
+  }, [runes]);
+
+  const categoryLabel = (cat: string) =>
+    cat === 'All' ? t.allCategories : (CATEGORY_LABELS[language]?.[cat] ?? cat);
 
   const handleLevelChange = (runeName: string, newLevel: number) => {
   setRuneLevels(prev => ({
@@ -129,13 +173,20 @@ const filteredRunes = useMemo(() => {
       const descMatch = rune.description && rune.description.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesSearch = nameMatch || descMatch;
-      const matchesCategory = selectedCategory === t.allCategories || rune.category === selectedCategory;
+      const matchesCategory =
+        selectedCategory === 'All' ? true :
+        selectedCategory === 'Epic' ? rune.colors.includes('Epic') :
+        selectedCategory === 'Relic' ? rune.colors.includes('Relic') :
+        normalizeCategory(rune.category) === selectedCategory;
 
-      const matchesSlots = matchesEquipmentSlots(slotFilters, rune);
+      // Epic/Relic runes have no slot pattern — slot filters don't apply to them.
+      const matchesSlots = (selectedCategory === 'Epic' || selectedCategory === 'Relic')
+        ? true
+        : matchesEquipmentSlots(slotFilters, rune);
 
       return matchesSearch && matchesCategory && matchesSlots;
     });
-  }, [runes, searchTerm, selectedCategory, slotFilters, t.allCategories]);
+  }, [runes, searchTerm, selectedCategory, slotFilters]);
 
   if (loading) {
     return (
@@ -191,10 +242,10 @@ const filteredRunes = useMemo(() => {
         {categories.map(cat => (
           <div
             key={cat}
-            className={`category-tab ${selectedCategory === cat ? 'active' : ''}`}
+            className={`category-tab ${selectedCategory === cat ? 'active' : ''} ${cat === 'Epic' ? 'epic-tab' : ''} ${cat === 'Relic' ? 'relic-tab' : ''}`}
             onClick={() => setSelectedCategory(cat)}
           >
-            {cat}
+            {categoryLabel(cat)}
           </div>
         ))}
       </div>
@@ -323,7 +374,7 @@ const filteredRunes = useMemo(() => {
           <button
            onClick={() => {
   setSearchTerm('');
-  setSelectedCategory(t.allCategories);
+  setSelectedCategory('All');
   setSlotFilters(['Any', 'Any', 'Any', 'Any']);
 }}
             className="mt-4 text-emerald-400 hover:underline text-sm"
