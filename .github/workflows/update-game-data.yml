@@ -36,6 +36,10 @@ jobs:
         if: ${{ !inputs.probe_equipment }}
         run: node --max-old-space-size=4096 scripts/build-sublimations-data.mjs ${{ inputs.debug && '--debug' || '' }}
 
+      - name: Build equipment data from Ankama CDN
+        if: ${{ !inputs.probe_equipment }}
+        run: node --max-old-space-size=4096 scripts/build-equipment-data.mjs
+
       - name: Show report summary
         if: ${{ !inputs.probe_equipment }}
         run: |
@@ -48,7 +52,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/sublimations.*.json
+          git add public/data/sublimations.*.json public/data/equipment.compact.*.json
           if git diff --cached --quiet; then
             echo "No data changes."
           else
