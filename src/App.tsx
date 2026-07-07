@@ -18,6 +18,7 @@ const CompleteSublimationsGuide = lazy(() => import('./pages/guides/CompleteSubl
 const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage').then(m => ({ default: m.CookiePolicyPage })));
 const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage').then(m => ({ default: m.DisclaimerPage })));
 const CombatCalcPage = lazy(() => import('./pages/CombatCalcPage').then(m => ({ default: m.CombatCalcPage })));
+const BuilderPage = lazy(() => import('./pages/BuilderPage').then(m => ({ default: m.BuilderPage })));
 import { LanguageSelector } from './components/LanguageSelector';
 import { useClickOutside } from './hooks/useClickOutside';
 import { TRANSLATIONS, type Language } from './constants/translations';
@@ -76,7 +77,8 @@ function AppContent() {
           navSubliLabel={t.navSubli}
           navItemsCraftLabel={t.navItemsCraft}
           navTreasuresLabel={t.navTreasures}
-          navCombatCalcLabel={t.navCombatCalc} // ← NUOVO
+          navCombatCalcLabel={t.navCombatCalc}
+          navBuilderLabel={t.navBuilder}
         />
 
         <LanguageSelector
@@ -101,7 +103,8 @@ function AppContent() {
           <Route path="/sublimations" element={<SublimationsPage language={lang} />} />
           <Route path="/items-craft-guide" element={<ItemsCraftGuidePage language={lang} />} />
           <Route path="/treasures" element={<TreasuresPage language={lang} />} />
-          <Route path="/combat-calc" element={<CombatCalcPage language={lang} />} /> {/* ← NUOVO */}
+          <Route path="/combat-calc" element={<CombatCalcPage language={lang} />} />
+          <Route path="/builder" element={<BuilderPage language={lang} />} />
           <Route path="/guides" element={<GuidesPage language={lang} />} />
           <Route path="/guides/beginners-guide-professions" element={<BeginnersGuideProfessions language={lang} />} />
           <Route path="/guides/complete-sublimations-guide" element={<CompleteSublimationsGuide language={lang} />} />
