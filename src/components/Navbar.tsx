@@ -1,4 +1,4 @@
-import { Hammer, Scroll, Wrench, Map, Swords } from 'lucide-react';
+import { Hammer, Scroll, Wrench, Map, Swords, Shirt } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface NavbarProps {
@@ -7,7 +7,8 @@ interface NavbarProps {
   navSubliLabel: string;
   navItemsCraftLabel: string;
   navTreasuresLabel: string;
-  navCombatCalcLabel: string; // ← NUOVO
+  navCombatCalcLabel: string;
+  navBuilderLabel: string;
 }
 
 function Btn({
@@ -42,7 +43,8 @@ export function Navbar({
   navSubliLabel,
   navItemsCraftLabel,
   navTreasuresLabel,
-  navCombatCalcLabel, // ← NUOVO
+  navCombatCalcLabel,
+  navBuilderLabel,
 }: NavbarProps) {
   return (
     <nav className="glass flex items-center gap-2 rounded-2xl px-4 py-2">
@@ -70,7 +72,13 @@ export function Navbar({
         active={currentPath === '/combat-calc'}
         icon={Swords}
         label={navCombatCalcLabel}
-      /> {/* ← NUOVO */}
+      />
+      <Btn
+        to="/builder"
+        active={currentPath === '/builder'}
+        icon={Shirt}
+        label={navBuilderLabel}
+      />
     </nav>
   );
 }
