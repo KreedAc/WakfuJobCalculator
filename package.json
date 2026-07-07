@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "fetch:equipment": "node scripts/build-equipment-data.mjs",
     "fetch:treasures": "node scripts/build-treasures-data.mjs",
     "fetch:i18n:client": "node scripts/extract-wakfu-i18n.mjs",
     "treasures:i18n": "node scripts/build-treasure-i18n-from-client.mjs"
