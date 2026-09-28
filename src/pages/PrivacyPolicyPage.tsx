@@ -311,14 +311,14 @@ export function PrivacyPolicyPage({ language }: PrivacyPolicyPageProps) {
       <div className="w-full max-w-5xl mx-auto px-4">
         <div className="backdrop-blur-xl bg-gray-900/80 border border-white/10 shadow-2xl rounded-3xl p-8 md:p-12">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-14 h-14 rounded-2xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
-              <Shield className="w-7 h-7 text-blue-300" />
+            <div className="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
+              <Shield className="w-7 h-7 text-emerald-300" />
             </div>
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-blue-300">
+              <h1 className="page-title">
                 {pageContent.title}
               </h1>
-              <p className="text-blue-100/60 text-sm mt-1">
+              <p className="text-emerald-100/60 text-sm mt-1">
                 {pageContent.lastUpdated}
               </p>
             </div>
@@ -330,10 +330,10 @@ export function PrivacyPolicyPage({ language }: PrivacyPolicyPageProps) {
                 key={idx}
                 className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
               >
-                <h2 className="text-2xl font-bold text-blue-200 mb-4">
+                <h2 className="text-2xl font-bold text-emerald-200 mb-4">
                   {section.title}
                 </h2>
-                <p className="text-blue-100/80 leading-relaxed">
+                <p className="text-emerald-100/80 leading-relaxed">
                   {section.content}
                 </p>
 
@@ -342,9 +342,9 @@ export function PrivacyPolicyPage({ language }: PrivacyPolicyPageProps) {
                     {section.list.map((item, itemIdx) => (
                       <li
                         key={itemIdx}
-                        className="flex items-start gap-2 text-blue-100/80"
+                        className="flex items-start gap-2 text-emerald-100/80"
                       >
-                        <span className="text-blue-400 mt-1.5">•</span>
+                        <span className="text-emerald-400 mt-1.5">•</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -352,7 +352,7 @@ export function PrivacyPolicyPage({ language }: PrivacyPolicyPageProps) {
                 )}
 
                 {section.additional && (
-                  <p className="text-blue-100/70 leading-relaxed mt-4 text-sm">
+                  <p className="text-emerald-100/70 leading-relaxed mt-4 text-sm">
                     {section.additional}
                   </p>
                 )}

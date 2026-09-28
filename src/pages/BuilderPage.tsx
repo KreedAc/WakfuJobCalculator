@@ -206,7 +206,7 @@ export function BuilderPage({ language }: BuilderPageProps) {
     return (
       <div className="w-full max-w-6xl mx-auto px-4">
         <PageSeo title={t.pageTitle} description={t.pageSubtitle} path="/builder" />
-        <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+        <h1 className="page-title mb-2">
           {t.pageTitle}
         </h1>
         <p className="text-emerald-100/80 mb-6 text-center max-w-2xl mx-auto text-base drop-shadow-md">{t.pageSubtitle}</p>
@@ -221,7 +221,7 @@ export function BuilderPage({ language }: BuilderPageProps) {
   return (
     <div className="w-full max-w-6xl mx-auto px-4 pb-28 lg:pb-8 animate-in fade-in duration-500">
       <PageSeo title={t.pageTitle} description={t.pageSubtitle} path="/builder" />
-      <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+      <h1 className="page-title mb-2">
         {t.pageTitle}
       </h1>
       <p className="text-emerald-100/80 mb-6 text-center max-w-2xl mx-auto text-base drop-shadow-md">{t.pageSubtitle}</p>

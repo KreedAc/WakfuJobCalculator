@@ -66,7 +66,7 @@ export function Calculator({ language, translations: t }: CalculatorProps) {
 
   return (
     <div className="max-w-4xl w-full flex flex-col items-center animate-in fade-in duration-500">
-      <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+      <h1 className="page-title mb-4">
         {t.title}
       </h1>
       <p className="text-emerald-100/90 mb-10 text-center max-w-2xl text-lg leading-relaxed drop-shadow-md">

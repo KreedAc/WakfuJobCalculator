@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Search, ChevronDown, ChevronUp } from 'lucide-react';
+import { Search } from 'lucide-react';
+import { HowItWorks } from '../components/HowItWorks';
 import { PageSeo } from '../components/PageSeo';
 
 type Lang = 'en' | 'fr' | 'es' | 'pt';
@@ -98,7 +99,6 @@ export default function TreasuresPage({ language }: { language: Lang }) {
   const [treasures, setTreasures] = useState<Treasure[]>([]);
   const [i18n, setI18n] = useState<TreasuresI18n | null>(null);
   const [query, setQuery] = useState('');
-  const [isExpanded, setIsExpanded] = useState(false);
   const [completedTreasures, setCompletedTreasures] = useState<Set<string>>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -199,7 +199,7 @@ export default function TreasuresPage({ language }: { language: Lang }) {
   return (
     <div className="w-full max-w-6xl mx-auto px-4 flex flex-col items-center animate-in fade-in duration-500">
       <PageSeo title={t.title} description={t.subtitle} path="/treasures" />
-      <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+      <h1 className="page-title mb-4">
         {t.title}
       </h1>
       <p className="text-emerald-100/90 mb-6 text-center max-w-2xl text-lg leading-relaxed drop-shadow-md">
@@ -308,32 +308,7 @@ export default function TreasuresPage({ language }: { language: Lang }) {
         </div>
       </div>
 
-      {/* How it works section */}
-      <div className="mt-10 w-full">
-        <div className="backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl overflow-hidden" style={{ background: 'rgba(15, 23, 42, 0.7)' }}>
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="w-full flex items-center justify-between p-3 md:p-4 hover:bg-white/5 transition-colors duration-200"
-          >
-            <h2 className="text-sm md:text-base font-bold text-emerald-300">
-              {UI[language].howItWorksTitle || 'How It Works'}
-            </h2>
-            {isExpanded ? (
-              <ChevronUp className="h-4 w-4 text-emerald-300 flex-shrink-0" />
-            ) : (
-              <ChevronDown className="h-4 w-4 text-emerald-300 flex-shrink-0" />
-            )}
-          </button>
-
-          {isExpanded && (
-            <div className="px-3 md:px-4 pb-3 md:pb-4 pt-0 animate-in fade-in slide-in-from-top-2 duration-300">
-              <p className="text-emerald-100/90 leading-relaxed text-[10px]">
-                {UI[language].howItWorks || ''}
-              </p>
-            </div>
-          )}
-        </div>
-      </div>
+      <HowItWorks title={t.howItWorksTitle} text={t.howItWorks} className="mt-10 w-full" />
     </div>
   );
 }

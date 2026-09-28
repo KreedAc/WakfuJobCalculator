@@ -186,10 +186,10 @@ export function ContactPage({ language }: ContactPageProps) {
 
       <div className="w-full max-w-5xl mx-auto px-4">
         <div className="backdrop-blur-xl bg-gray-900/80 border border-white/10 shadow-2xl rounded-3xl p-8 md:p-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-orange-300 mb-4 text-center">
+          <h1 className="page-title mb-4">
             {pageContent.title}
           </h1>
-          <p className="text-orange-100/70 text-center text-lg mb-12">
+          <p className="text-emerald-100/70 text-center text-lg mb-12">
             {pageContent.description}
           </p>
 
@@ -202,20 +202,20 @@ export function ContactPage({ language }: ContactPageProps) {
                   className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-orange-300" />
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-emerald-300" />
                     </div>
-                    <h2 className="text-2xl font-bold text-orange-200">
+                    <h2 className="text-2xl font-bold text-emerald-200">
                       {section.title}
                     </h2>
                   </div>
 
-                  <p className="text-orange-100/80 leading-relaxed">
+                  <p className="text-emerald-100/80 leading-relaxed">
                     {section.content}
                   </p>
 
                   {section.action && (
-                    <p className="text-orange-300 font-medium mt-3">
+                    <p className="text-emerald-300 font-medium mt-3">
                       {section.action}
                     </p>
                   )}
@@ -225,9 +225,9 @@ export function ContactPage({ language }: ContactPageProps) {
                       {section.list.map((item, itemIdx) => (
                         <li
                           key={itemIdx}
-                          className="flex items-start gap-2 text-orange-100/80"
+                          className="flex items-start gap-2 text-emerald-100/80"
                         >
-                          <span className="text-orange-400 mt-1.5">•</span>
+                          <span className="text-emerald-400 mt-1.5">•</span>
                           <span>{item}</span>
                         </li>
                       ))}
@@ -235,7 +235,7 @@ export function ContactPage({ language }: ContactPageProps) {
                   )}
 
                   {section.additional && (
-                    <p className="text-orange-100/70 leading-relaxed mt-4 text-sm">
+                    <p className="text-emerald-100/70 leading-relaxed mt-4 text-sm">
                       {section.additional}
                     </p>
                   )}
@@ -245,13 +245,13 @@ export function ContactPage({ language }: ContactPageProps) {
           </div>
 
           <div className="mt-12 space-y-4">
-            <div className="p-6 bg-orange-500/10 border border-orange-500/20 rounded-2xl">
-              <p className="text-center text-orange-200/90 text-sm leading-relaxed">
-                <strong className="text-orange-300">Important:</strong> {pageContent.note}
+            <div className="p-6 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
+              <p className="text-center text-emerald-200/90 text-sm leading-relaxed">
+                <strong className="text-emerald-300">Important:</strong> {pageContent.note}
               </p>
             </div>
 
-            <div className="text-center text-orange-200/70 text-sm">
+            <div className="text-center text-emerald-200/70 text-sm">
               {pageContent.credits}
             </div>
           </div>

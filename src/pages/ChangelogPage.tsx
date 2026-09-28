@@ -164,7 +164,7 @@ export function ChangelogPage({ language }: ChangelogPageProps) {
 
       <div className="w-full max-w-4xl mx-auto px-4">
         <div className="backdrop-blur-xl bg-gray-900/80 border border-white/10 shadow-2xl rounded-3xl p-8 md:p-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-emerald-300 mb-4 text-center">
+          <h1 className="page-title mb-4">
             {content.title}
           </h1>
           <p className="text-emerald-100/70 text-center text-lg mb-12">

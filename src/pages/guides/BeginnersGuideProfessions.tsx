@@ -327,7 +327,7 @@ export function BeginnersGuideProfessions({ language }: BeginnersGuideProfession
             <span>{pageContent.backToGuides}</span>
           </Link>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-emerald-300 mb-2">
+          <h1 className="page-title mb-2">
             {pageContent.title}
           </h1>
           <p className="text-emerald-100/60 text-sm mb-8">{pageContent.lastUpdated}</p>

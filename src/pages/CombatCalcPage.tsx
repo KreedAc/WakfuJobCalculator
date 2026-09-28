@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import type { Language } from '../constants/translations';
 import { PageSeo } from '../components/PageSeo';
 import {
@@ -13,27 +13,48 @@ import {
   type CombatTabId,
 } from '../constants/combatCalcTranslations';
 
-// ─── Types ───────────────────────────────────────────────────────────────────
-
 // ─── Small reusable UI ───────────────────────────────────────────────────────
+
+/** "?" hint: opens on hover (mouse) and on tap (touch), closes on blur. */
+function Tip({ text }: { text: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <span className="relative inline-flex">
+      <button
+        type="button"
+        aria-label={text}
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+        onBlur={() => setOpen(false)}
+        // touch taps also fire synthetic hover events: only mice open on hover
+        onPointerEnter={(e) => { if (e.pointerType === 'mouse') setOpen(true); }}
+        onPointerLeave={(e) => { if (e.pointerType === 'mouse') setOpen(false); }}
+        className="w-5 h-5 -my-1 rounded-full bg-emerald-900/60 border border-emerald-500/30 text-emerald-400/80 text-[10px] font-bold flex items-center justify-center cursor-help"
+      >
+        ?
+      </button>
+      {open && (
+        <span role="tooltip" className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 w-52 max-w-[70vw] bg-slate-900/95 border border-emerald-500/25 rounded-lg p-2 text-[11px] text-emerald-200/85 leading-snug z-50 pointer-events-none normal-case tracking-normal font-normal shadow-xl whitespace-normal">
+          {text}
+        </span>
+      )}
+    </span>
+  );
+}
+
 function Num({ label, value, onChange, min, max, placeholder, tip }: {
   label: string; value: number; onChange: (v: number) => void;
   min?: number; max?: number; placeholder?: string; tip?: string;
 }) {
+  const id = useId();
   return (
     <div className="flex flex-col gap-1">
-      <label className="text-xs font-medium text-emerald-400 uppercase tracking-wide flex items-center gap-1">
-        {label}
-        {tip && (
-          <span className="group relative cursor-help inline-flex">
-            <span className="w-3.5 h-3.5 rounded-full bg-emerald-900/60 border border-emerald-500/30 text-emerald-400/70 text-[10px] font-bold flex items-center justify-center">?</span>
-            <span className="hidden group-hover:block absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-52 bg-slate-900/95 border border-emerald-500/25 rounded-lg p-2 text-[11px] text-emerald-200/80 leading-snug z-50 pointer-events-none normal-case tracking-normal font-normal shadow-xl whitespace-normal">
-              {tip}
-            </span>
-          </span>
-        )}
-      </label>
+      <div className="flex items-center gap-1.5">
+        <label htmlFor={id} className="text-xs font-medium text-emerald-400 uppercase tracking-wide">{label}</label>
+        {tip && <Tip text={tip} />}
+      </div>
       <input
+        id={id}
         type="number"
         value={value || ''}
         min={min}
@@ -192,7 +213,7 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
   return (
     <div className="max-w-4xl w-full flex flex-col items-center animate-in fade-in duration-500">
       <PageSeo title={ct.pageTitle} description={ct.pageSubtitle} path="/combat-calc" />
-      <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+      <h1 className="page-title mb-3">
         {ct.pageTitle}
       </h1>
       <p className="text-emerald-100/80 mb-8 text-center max-w-2xl text-base leading-relaxed drop-shadow-md">
