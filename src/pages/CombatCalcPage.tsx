@@ -2,6 +2,10 @@ import { useState } from 'react';
 import type { Language } from '../constants/translations';
 import { PageSeo } from '../components/PageSeo';
 import {
+  damage, heal, armor, effectiveMasteries, effectiveHp, flatToPercent, percentToFlat,
+  forceOfWill, lockLoss, totalHp, type Position,
+} from '../lib/combatFormulas';
+import {
   COMBAT_CALC_T,
   COMBAT_TAB_ICONS,
   COMBAT_TAB_IDS,
@@ -10,7 +14,6 @@ import {
 } from '../constants/combatCalcTranslations';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
-type Position = 'facing' | 'side' | 'rear';
 
 // ─── Small reusable UI ───────────────────────────────────────────────────────
 function Num({ label, value, onChange, min, max, placeholder, tip }: {
@@ -124,10 +127,9 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
   const [dDI,setDDI]=useState(0); const [dRes,setDRes]=useState(0); const [dFixed,setDFixed]=useState(0);
   const [dBlock,setDBlock]=useState(1); const [dBarrier,setDBarrier]=useState(0);
   const [dPos,setDPos]=useState<Position>('facing'); const [dIsCrit,setDIsCrit]=useState(false); const [dIsBerserk,setDIsBerserk]=useState(false);
-  const posMult = dPos==='rear'?1.25:dPos==='side'?1.10:1.00;
   const mastNorm = dElem+dRange+(dIsBerserk?dBerserk:0)+(dPos==='rear'?dRear:0);
   const mastCrit = mastNorm+dCrit;
-  const calcDmg=(b:number,m:number)=>Math.max(0,Math.round(((b*(1+m/100)*posMult*(1+dDI/100)*(1-Math.min(dRes,90)/100))+dFixed-dBarrier)*dBlock));
+  const calcDmg=(b:number,m:number)=>damage({base:b,masteries:m,position:dPos,damageInflicted:dDI,resistance:dRes,fixed:dFixed,barrier:dBarrier,block:dBlock});
   const normalDmg=calcDmg(dBase,mastNorm); const critDmg=calcDmg(dBase*1.25,mastCrit);
 
   // ── Heal ──
@@ -136,14 +138,14 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
   const [hHP,setHHP]=useState(0); const [hHR,setHHR]=useState(0); const [hHealRes,setHHealRes]=useState(0); const [hIncur,setHIncur]=useState(0);
   const [hIsCrit,setHIsCrit]=useState(false); const [hIsBerserk,setHIsBerserk]=useState(false);
   const hMastNorm=hElem+hRange+hHeal+(hIsBerserk?hBerserk:0); const hMastCrit=hMastNorm+hCrit;
-  const calcHeal=(b:number,m:number)=>Math.max(0,Math.round(b*(1+m/100)*(1+(hHP+hHR)/100)*(1-hHealRes/100)*(1-hIncur/100)));
+  const calcHeal=(b:number,m:number)=>heal({base:b,masteries:m,healsPerformed:hHP,healsReceived:hHR,healResistance:hHealRes,incurable:hIncur});
   const normalHeal=calcHeal(hBase,hMastNorm); const critHeal=calcHeal(hBase*1.25,hMastCrit);
 
   // ── Armor ──
   const [arBase,setArBase]=useState(100); const [arGiven,setArGiven]=useState(0); const [arReceived,setArReceived]=useState(0);
   const [arCrumbly,setArCrumbly]=useState(0); const [arMaxHP,setArMaxHP]=useState(0);
   const [arIsCrit,setArIsCrit]=useState(false); const [arOnAlly,setArOnAlly]=useState(false);
-  const armorVal=arBase*(arIsCrit?1.25:1)*(1+((arOnAlly?arGiven:0)+arReceived)/100);
+  const armorVal=armor({base:arBase,crit:arIsCrit,onAlly:arOnAlly,armorGiven:arGiven,armorReceived:arReceived});
   const armorCrumb=armorVal*(1-arCrumbly/100); const armorCap=arMaxHP>0?arMaxHP*0.5:null;
 
   // ── Build compare ──
@@ -151,57 +153,40 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
   const [baDI,setBaDI]=useState(0); const [baCH,setBaCH]=useState(20); const [baCritDI,setBaCritDI]=useState(0);
   const [bbElem,setBbElem]=useState(2500); const [bbRange,setBbRange]=useState(0); const [bbCrit,setBbCrit]=useState(300);
   const [bbDI,setBbDI]=useState(20); const [bbCH,setBbCH]=useState(40); const [bbCritDI,setBbCritDI]=useState(0);
-  const emCalc=(mast:number,critM:number,di:number,cdi:number,ch:number)=>{
-    const em=((mast+100)*(di+100)/10000)-100;
-    const emcrit=(((mast+critM+100)*(di+cdi+100)/10000)*1.25)-100;
-    return{em,emcrit,avg:em+(emcrit-em)*(ch/100)};
-  };
-  const emA=emCalc(baElem+baRange,baCrit,baDI,baCritDI,baCH);
-  const emB=emCalc(bbElem+bbRange,bbCrit,bbDI,bbCritDI,bbCH);
+  const emA=effectiveMasteries(baElem+baRange,baCrit,baDI,baCritDI,baCH);
+  const emB=effectiveMasteries(bbElem+bbRange,bbCrit,bbDI,bbCritDI,bbCH);
 
   // ── Tankiness ──
   const [taHP,setTaHP]=useState(30000); const [taRes,setTaRes]=useState(60); const [taBlock,setTaBlock]=useState(30); const [taExpert,setTaExpert]=useState(false);
   const [tbHP,setTbHP]=useState(40000); const [tbRes,setTbRes]=useState(50); const [tbBlock,setTbBlock]=useState(10); const [tbExpert,setTbExpert]=useState(false);
-  const ehpCalc=(hp:number,res:number,block:number,expert:boolean)=>{
-    const bc=expert?0.68:0.8; const d=(100-Math.min(res,90))*(100-(1-bc)*Math.min(block,100));
-    return d<=0?Infinity:(hp*10000)/d;
-  };
-  const ehpA=ehpCalc(taHP,taRes,taBlock,taExpert); const ehpB=ehpCalc(tbHP,tbRes,tbBlock,tbExpert);
+  const ehpA=effectiveHp(taHP,taRes,taBlock,taExpert); const ehpB=effectiveHp(tbHP,tbRes,tbBlock,tbExpert);
 
   // ── Resistance ──
   const [rFlat,setRFlat]=useState(200); const [rPerc,setRPerc]=useState(50);
-  const flatToPerc=(f:number)=>Math.min(Math.floor((1-Math.pow(0.8,f/100))*1000)/10,90);
-  const percToFlat=(p:number)=>{if(p<=0)return 0;if(p>=90)return Math.ceil(100*Math.log(0.1)/Math.log(0.8));return Math.ceil(100*Math.log(1-p/100)/Math.log(0.8));};
   const resTable=[10,20,30,40,50,55,60,65,70,75,80,85,90];
 
   // ── FoW ──
   const [fowBase,setFowBase]=useState(2); const [fowCaster,setFowCaster]=useState(100); const [fowTarget,setFowTarget]=useState(0);
-  const ff=Math.max(0,Math.min(2,(1+fowCaster/100)-(fowTarget/100)));
-  const fowEff=fowBase*0.5*ff; const fowFloor=Math.floor(fowEff); const fowChance=((fowEff-fowFloor)*100).toFixed(1);
+  const fow=forceOfWill(fowBase,fowCaster,fowTarget);
+  const ff=fow.factor; const fowEff=fow.effective; const fowFloor=fow.guaranteed; const fowChance=fow.extraChance.toFixed(1);
 
   // ── Lock ──
   const [lkLA,setLkLA]=useState(200); const [lkLB,setLkLB]=useState(0); const [lkLC,setLkLC]=useState(0); const [lkLD,setLkLD]=useState(0);
   const [lkDodge,setLkDodge]=useState(100); const [lkOrient,setLkOrient]=useState(0);
-  const locks=[lkLA,lkLB,lkLC,lkLD].sort((a,b)=>b-a);
-  const L=locks[0]+locks[1]/2+locks[2]/3+locks[3]/4;
-  const Lc=Math.max(0,L),Dc=Math.max(0,lkDodge);
-  const X=Lc+Dc===0?0:(7/3)*(Lc-Dc)/(Lc+Dc);
-  const Y=Math.floor((X+1)*4-lkOrient);
-  const mpLoss=Math.max(0,Math.min(4,Math.ceil(Y/2))); const apLoss=Math.max(0,Math.min(4,Math.floor(Y/2)));
+  const lock=lockLoss([lkLA,lkLB,lkLC,lkLD],lkDodge,lkOrient);
+  const L=lock.combined; const X=lock.x; const mpLoss=lock.mpLoss; const apLoss=lock.apLoss;
 
   // ── HP ──
   const [hpLevel,setHpLevel]=useState(230); const [hpFlat,setHpFlat]=useState(10000); const [hpPerc,setHpPerc]=useState(20);
   const [ehpHP,setEhpHP]=useState(30000); const [ehpRes,setEhpRes]=useState(60); const [ehpBlock,setEhpBlock]=useState(20); const [ehpExpert,setEhpExpert]=useState(false);
-  const totalHP=(50+hpLevel*10+hpFlat)*(1+hpPerc/100);
-  const ehpVal=ehpCalc(ehpHP,ehpRes,ehpBlock,ehpExpert);
+  const totalHP=totalHp(hpLevel,hpFlat,hpPerc);
+  const ehpVal=effectiveHp(ehpHP,ehpRes,ehpBlock,ehpExpert);
 
   // ── EM ──
   const [emMast,setEmMast]=useState(3000); const [emCritMast,setEmCritMast]=useState(200); const [emDI,setEmDI]=useState(0);
   const [emCritDI,setEmCritDI]=useState(0); const [emCH,setEmCH]=useState(25); const [emStasis,setEmStasis]=useState(100);
-  const s=emStasis/100;
-  const emNorm=((emMast+100)*(emDI+100)*s/10000)-100;
-  const emCrit2=(((emMast+emCritMast+100)*(emDI+emCritDI+100)*s/10000)*1.25)-100;
-  const emAvg=emNorm+(emCrit2-emNorm)*(emCH/100);
+  const emRes=effectiveMasteries(emMast,emCritMast,emDI,emCritDI,emCH,emStasis);
+  const emNorm=emRes.em; const emCrit2=emRes.emcrit; const emAvg=emRes.avg;
 
   // ─── Render ─────────────────────────────────────────────────────────────────
   return (
@@ -416,19 +401,19 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
             <div className="flex items-end gap-3 flex-wrap">
               <div className="flex-1 min-w-[140px]"><Num label={ct.flatResistance} value={rFlat} onChange={setRFlat} /></div>
               <span className="text-xl text-emerald-400/55 pb-2">→</span>
-              <ResBox label={ct.resistancePct} value={fmtD(flatToPerc(rFlat),1)+'%'} />
+              <ResBox label={ct.resistancePct} value={fmtD(flatToPercent(rFlat),1)+'%'} />
             </div>
             <SecLabel>{ct.pctToFlat}</SecLabel>
             <div className="flex items-end gap-3 flex-wrap">
               <div className="flex-1 min-w-[140px]"><Num label={ct.resRange} value={rPerc} onChange={setRPerc} min={0} max={90} /></div>
               <span className="text-xl text-emerald-400/55 pb-2">→</span>
-              <ResBox label={ct.flatResistance} value={fmt(percToFlat(rPerc))} />
+              <ResBox label={ct.flatResistance} value={fmt(percentToFlat(rPerc))} />
             </div>
             <SecLabel>{ct.referenceTable}</SecLabel>
             <div className="glass-soft rounded-2xl overflow-hidden">
               <table className="w-full text-sm">
                 <thead><tr className="border-b border-emerald-500/15"><th className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{ct.resistancePct}</th><th className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{ct.flatNeeded}</th></tr></thead>
-                <tbody>{resTable.map(p=><tr key={p} className="border-b border-emerald-500/07 last:border-0"><td className="px-4 py-2 text-emerald-100/80">{p}%</td><td className="px-4 py-2 text-emerald-100/80">{fmt(percToFlat(p))}</td></tr>)}</tbody>
+                <tbody>{resTable.map(p=><tr key={p} className="border-b border-emerald-500/07 last:border-0"><td className="px-4 py-2 text-emerald-100/80">{p}%</td><td className="px-4 py-2 text-emerald-100/80">{fmt(percentToFlat(p))}</td></tr>)}</tbody>
               </table>
             </div>
           </div>
