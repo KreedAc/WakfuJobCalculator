@@ -16,11 +16,11 @@ export function BeginnersGuideProfessions({ language }: BeginnersGuideProfession
     <>
       <PageSeo title={pageContent.title} description={pageContent.description} path="/guides/beginners-guide-professions" />
 
-      <div className="w-full max-w-5xl mx-auto px-4">
-        <div className="backdrop-blur-xl bg-gray-900/80 border border-white/10 shadow-2xl rounded-3xl p-8 md:p-12">
+      <div className="max-w-3xl">
+        <div>
           <Link
             to="/guides"
-            className="inline-flex items-center gap-2 text-emerald-300 hover:text-emerald-200 mb-6 transition-colors"
+            className="inline-flex items-center gap-2 text-primary hover:text-fg mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{pageContent.backToGuides}</span>
@@ -29,32 +29,32 @@ export function BeginnersGuideProfessions({ language }: BeginnersGuideProfession
           <h1 className="page-title mb-2">
             {pageContent.title}
           </h1>
-          <p className="text-emerald-100/60 text-sm mb-8">{pageContent.lastUpdated}</p>
+          <p className="text-subtle text-sm mb-8">{pageContent.lastUpdated}</p>
 
-          <div className="space-y-10">
+          <div className="space-y-4">
             {pageContent.sections.map((section, idx) => {
               const IconComponent = section.icon;
               return (
-                <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                <div key={idx} className="card p-5 md:p-6">
                   {IconComponent && (
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-                        <IconComponent className="w-5 h-5 text-emerald-300" />
+                      <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                        <IconComponent className="w-5 h-5 text-primary" />
                       </div>
-                      <h2 className="text-2xl font-bold text-emerald-200">
+                      <h2 className="section-title text-xl">
                         {section.title}
                       </h2>
                     </div>
                   )}
                   {!IconComponent && (
-                    <h2 className="text-2xl font-bold text-emerald-200 mb-4">
+                    <h2 className="section-title text-xl mb-4">
                       {section.title}
                     </h2>
                   )}
 
                   <div className="space-y-4">
                     {section.content.map((paragraph, pIdx) => (
-                      <p key={pIdx} className="text-emerald-100/80 leading-relaxed">
+                      <p key={pIdx} className="text-muted leading-relaxed">
                         {paragraph}
                       </p>
                     ))}
@@ -64,10 +64,10 @@ export function BeginnersGuideProfessions({ language }: BeginnersGuideProfession
             })}
           </div>
 
-          <div className="mt-10 p-6 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
-            <p className="text-center text-emerald-200/90">
+          <div className="mt-10 p-6 bg-primary/5 border border-primary/20 rounded-2xl">
+            <p className="text-muted">
               Ready to start planning your profession journey? Use our{' '}
-              <Link to="/" className="text-emerald-300 font-bold hover:underline">
+              <Link to="/" className="text-primary font-bold hover:underline">
                 XP Calculator
               </Link>{' '}
               to find the most efficient leveling path!

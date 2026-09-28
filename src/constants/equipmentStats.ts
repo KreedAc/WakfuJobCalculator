@@ -125,11 +125,11 @@ export const WEAPON_TYPE_LABELS: Record<number, Record<Language, string>> = {
 
 /** Rarity id → display info (same scale used by the Items Craft Guide). */
 export const RARITY_INFO: Record<number, { labels: Record<Language, string>; className: string }> = {
-  1: { labels: { en: 'Unusual',   fr: 'Inhabituel', es: 'Inusual',    pt: 'Incomum' },    className: 'text-zinc-300' },
-  2: { labels: { en: 'Rare',      fr: 'Rare',       es: 'Raro',       pt: 'Raro' },       className: 'text-emerald-300' },
-  3: { labels: { en: 'Mythical',  fr: 'Mythique',   es: 'Mítico',     pt: 'Mítico' },     className: 'text-orange-300' },
-  4: { labels: { en: 'Legendary', fr: 'Légendaire', es: 'Legendario', pt: 'Lendário' },   className: 'text-yellow-300' },
-  5: { labels: { en: 'Relic',     fr: 'Relique',    es: 'Reliquia',   pt: 'Relíquia' },   className: 'text-violet-300' },
-  6: { labels: { en: 'Souvenir',  fr: 'Souvenir',   es: 'Recuerdo',   pt: 'Suvenir' },    className: 'text-sky-300' },
-  7: { labels: { en: 'Epic',      fr: 'Épique',     es: 'Épico',      pt: 'Épico' },      className: 'text-pink-300' },
+  1: { labels: { en: 'Unusual',   fr: 'Inhabituel', es: 'Inusual',    pt: 'Incomum' },    className: 'text-muted' },
+  2: { labels: { en: 'Rare',      fr: 'Rare',       es: 'Raro',       pt: 'Raro' },       className: 'text-rarity-rare' },
+  3: { labels: { en: 'Mythical',  fr: 'Mythique',   es: 'Mítico',     pt: 'Mítico' },     className: 'text-rarity-mythic' },
+  4: { labels: { en: 'Legendary', fr: 'Légendaire', es: 'Legendario', pt: 'Lendário' },   className: 'text-rarity-legendary' },
+  5: { labels: { en: 'Relic',     fr: 'Relique',    es: 'Reliquia',   pt: 'Relíquia' },   className: 'text-rarity-relic' },
+  6: { labels: { en: 'Souvenir',  fr: 'Souvenir',   es: 'Recuerdo',   pt: 'Suvenir' },    className: 'text-rarity-souvenir' },
+  7: { labels: { en: 'Epic',      fr: 'Épique',     es: 'Épico',      pt: 'Épico' },      className: 'text-rarity-epic' },
 };

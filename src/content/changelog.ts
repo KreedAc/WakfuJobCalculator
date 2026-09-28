@@ -59,6 +59,32 @@ export const changelogContent = {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '3.0.0',
+    date: '2026-09-28',
+    changes: [
+      { type: 'feature', text: {
+        en: 'Brand new design: side menu on computers, bottom tab bar on phones, and a light theme',
+        fr: 'Tout nouveau design : menu latéral sur ordinateur, barre d\'onglets en bas sur téléphone et thème clair',
+        es: 'Diseño totalmente nuevo: menú lateral en el ordenador, barra de pestañas abajo en el móvil y tema claro',
+        pt: 'Design totalmente novo: menu lateral no computador, barra de abas embaixo no celular e tema claro' } },
+      { type: 'feature', text: {
+        en: 'Search everything with Ctrl+K: tools, professions, sublimations and craftable items',
+        fr: 'Recherchez tout avec Ctrl+K : outils, métiers, sublimations et objets craftables',
+        es: 'Busca todo con Ctrl+K: herramientas, oficios, sublimaciones y objetos fabricables',
+        pt: 'Busque tudo com Ctrl+K: ferramentas, profissões, sublimações e itens fabricáveis' } },
+      { type: 'improvement', text: {
+        en: 'XP Calculator: results update as you type, professions as icons, shareable link',
+        fr: 'Calculateur XP : résultats en direct, métiers en icônes, lien partageable',
+        es: 'Calculadora XP: resultados en directo, oficios con iconos, enlace para compartir',
+        pt: 'Calculadora XP: resultados ao vivo, profissões com ícones, link para compartilhar' } },
+      { type: 'improvement', text: {
+        en: 'New Home page with all tools and the latest changes; Treasures show your progress',
+        fr: 'Nouvelle page d\'accueil avec tous les outils et les nouveautés ; les Trésors affichent votre progression',
+        es: 'Nueva página de inicio con todas las herramientas y novedades; los Tesoros muestran tu progreso',
+        pt: 'Nova página inicial com todas as ferramentas e novidades; os Tesouros mostram seu progresso' } },
+    ]
+  },
+  {
     version: '2.5.0',
     date: '2026-09-28',
     changes: [

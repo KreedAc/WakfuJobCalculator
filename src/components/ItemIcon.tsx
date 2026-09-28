@@ -8,7 +8,7 @@ export function ItemIcon({ item, size = 40 }: { item: EquipmentItem; size?: numb
   if (!item.gfx || failed) {
     return (
       <span
-        className="flex items-center justify-center rounded bg-slate-800 text-emerald-500/60 text-[10px] font-bold shrink-0"
+        className="flex items-center justify-center rounded bg-surface2 text-primary text-[10px] font-bold shrink-0"
         style={{ width: size, height: size }}
         title={item.name}
       >
@@ -24,7 +24,7 @@ export function ItemIcon({ item, size = 40 }: { item: EquipmentItem; size?: numb
       width={size}
       height={size}
       loading="lazy"
-      className="rounded object-contain bg-slate-800/60 shrink-0"
+      className="rounded object-contain bg-surface2 shrink-0"
       onError={() => setFailed(true)}
     />
   );

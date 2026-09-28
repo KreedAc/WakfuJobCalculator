@@ -11,10 +11,10 @@ export function CalculatorPage({ language }: CalculatorPageProps) {
   const t = TRANSLATIONS[language];
 
   return (
-    <div className="w-full flex flex-col items-center px-4">
-      <PageSeo title={t.title} description={t.subtitle} path="/" />
-      <Calculator language={language} translations={t} />
-      <HowItWorks title={t.calcHowItWorksTitle} text={t.calcHowItWorks} className="max-w-4xl w-full mx-auto mt-12" />
+    <div>
+      <PageSeo title={t.title} description={t.subtitle} path="/xp-calculator" />
+      <Calculator language={language} title={t.title} subtitle={t.subtitle} />
+      <HowItWorks title={t.calcHowItWorksTitle} text={t.calcHowItWorks} className="mt-8" />
     </div>
   );
 }

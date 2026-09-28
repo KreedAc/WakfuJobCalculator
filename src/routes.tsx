@@ -2,7 +2,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { lazy, type ReactNode } from 'react';
 import type { Language } from './constants/translations';
-import { CalculatorPage } from './pages/CalculatorPage';
+import { HomePage } from './pages/HomePage';
 import { BuilderWipGate } from './components/WorkInProgress';
 import { BUILDER_WIP } from './lib/featureFlags';
 import { BUILDER_T } from './constants/builderTranslations';
@@ -11,7 +11,8 @@ import { BUILD_GALLERY_T } from './content/buildGallery';
 // Single source of truth for the site's pages: the app router, the build-time
 // prerenderer and the sitemap are all generated from this list.
 
-// Every page except the landing one is lazy-loaded to keep the initial bundle small.
+// Every page except Home is lazy-loaded to keep the initial bundle small.
+const CalculatorPage = lazy(() => import('./pages/CalculatorPage').then(m => ({ default: m.CalculatorPage })));
 const SublimationsPage = lazy(() => import('./pages/SublimationsPage').then(m => ({ default: m.SublimationsPage })));
 const ItemsCraftGuidePage = lazy(() => import('./pages/ItemsCraftGuidePage').then(m => ({ default: m.ItemsCraftGuidePage })));
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
@@ -40,7 +41,8 @@ export interface RouteDef {
 }
 
 export const ROUTES: RouteDef[] = [
-  { path: '/', render: (l) => <CalculatorPage language={l} />, changefreq: 'weekly', priority: 1.0 },
+  { path: '/', render: (l) => <HomePage language={l} />, changefreq: 'weekly', priority: 1.0 },
+  { path: '/xp-calculator', render: (l) => <CalculatorPage language={l} />, changefreq: 'monthly', priority: 0.9 },
   {
     path: '/builder',
     render: (l) => <BuilderWipGate language={l} title={BUILDER_T[l].pageTitle} path="/builder"><BuilderPage language={l} /></BuilderWipGate>,

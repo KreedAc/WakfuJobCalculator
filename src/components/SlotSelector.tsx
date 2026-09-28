@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { ChevronDown, Check } from 'lucide-react';
 import { LocalImage } from './LocalImage';
-import { ChevronDown } from 'lucide-react';
 
 interface SlotSelectorProps {
   value: string;
@@ -12,77 +12,69 @@ interface SlotSelectorProps {
 const SLOT_OPTIONS = [
   { value: 'Any', label: 'Empty', icon: null },
   { value: 'G', label: 'Green', icon: '/data/icons/green_slot.png' },
-  { value: 'B', label: 'Blue', icon:'/data/icons/blue_slot.png' },
+  { value: 'B', label: 'Blue', icon: '/data/icons/blue_slot.png' },
   { value: 'R', label: 'Red', icon: '/data/icons/red_slot.png' },
-  { value: 'J', label: 'White', icon: '/data/icons/yellow_slot.png' }
+  { value: 'J', label: 'White', icon: '/data/icons/yellow_slot.png' },
 ];
 
+/** Socket color picker with the game's socket icons. */
 export function SlotSelector({ value, onChange, label, optionLabels }: SlotSelectorProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const options = SLOT_OPTIONS.map(opt => ({
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const options = SLOT_OPTIONS.map((opt) => ({
     ...opt,
     label: optionLabels?.[opt.value as 'Any' | 'G' | 'B' | 'R' | 'J'] ?? opt.label,
   }));
-  const selectedOption = options.find(opt => opt.value === value);
+  const selected = options.find((opt) => opt.value === value);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: PointerEvent) => { if (!ref.current?.contains(e.target as Node)) setOpen(false); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    document.addEventListener('pointerdown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('pointerdown', onDown); document.removeEventListener('keydown', onKey); };
+  }, [open]);
+
+  const icon = (opt: (typeof options)[number]) =>
+    opt.icon ? <LocalImage src={opt.icon} alt="" className="w-5 h-5 object-contain" />
+      : <span className="w-5 h-5 grid place-items-center rounded-full border border-dashed border-line-strong text-subtle text-[10px]">∅</span>;
 
   return (
-    <div className="slot-filter-group">
-      <label className="slot-filter-label">{label}</label>
-      <div className={`relative ${isOpen ? 'z-[9999]' : ''}`}>
-        <button
-          type="button"
-          onClick={() => setIsOpen(!isOpen)}
-          className="slot-filter-select flex items-center gap-2 justify-between w-full"
-        >
-          <div className="flex items-center gap-2">
-            {selectedOption?.icon ? (
-              <LocalImage
-                src={selectedOption.icon}
-                alt={selectedOption.label}
-                className="w-5 h-5 object-contain"
-              />
-            ) : (
-              <span className="w-5 h-5 flex items-center justify-center text-slate-500 text-xs">∅</span>
-            )}
-            <span>{selectedOption?.label}</span>
-          </div>
-          <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-        </button>
-
-        {isOpen && (
-          <>
-            <div
-             className="fixed inset-0 z-[9998]" onClick={() => setIsOpen(false)}
-            />
-            <div className="glass-strong absolute z-[9999] mt-1 w-full rounded-lg shadow-xl overflow-hidden">
-              {options.map(option => (
-                <button
-                  key={option.value}
-                  type="button"
-                  onClick={() => {
-                    onChange(option.value);
-                    setIsOpen(false);
-                  }}
-                  className={`w-full px-3 py-2 flex items-center gap-2 hover:bg-slate-700 transition-colors text-left ${
-                    value === option.value ? 'bg-slate-700/50 text-emerald-400' : 'text-slate-200'
-                  }`}
-                >
-                  {option.icon ? (
-                    <LocalImage
-                      src={option.icon}
-                      alt={option.label}
-                      className="w-5 h-5 object-contain"
-                    />
-                  ) : (
-                    <span className="w-5 h-5 flex items-center justify-center text-slate-500 text-xs font-bold">∅</span>
-                  )}
-                  <span className="text-sm">{option.label}</span>
-                </button>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
+    <div ref={ref} className="relative lg:w-40">
+      <span className="block text-xs font-medium text-subtle mb-1">{label}</span>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={`${label}: ${selected?.label}`}
+        className="input h-10 flex items-center gap-2 text-sm text-left"
+      >
+        {selected && icon(selected)}
+        <span className="truncate">{selected?.label}</span>
+        <ChevronDown className={`w-4 h-4 ml-auto text-subtle transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && (
+        <ul role="listbox" aria-label={label} className="absolute z-30 mt-1.5 w-full min-w-[150px] card shadow-pop p-1.5">
+          {options.map((opt) => (
+            <li key={opt.value}>
+              <button
+                type="button"
+                role="option"
+                aria-selected={value === opt.value}
+                onClick={() => { onChange(opt.value); setOpen(false); }}
+                className={`w-full flex items-center gap-2 px-2.5 py-2 rounded-lg text-sm transition-colors
+                  ${value === opt.value ? 'bg-primary/10 text-fg' : 'text-muted hover:bg-surface2 hover:text-fg'}`}
+              >
+                {icon(opt)}
+                {opt.label}
+                {value === opt.value && <Check className="w-4 h-4 ml-auto text-primary" />}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

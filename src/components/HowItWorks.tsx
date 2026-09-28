@@ -1,4 +1,4 @@
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Info } from 'lucide-react';
 
 interface HowItWorksProps {
   title: string;
@@ -12,12 +12,13 @@ interface HowItWorksProps {
  */
 export function HowItWorks({ title, text, className = '' }: HowItWorksProps) {
   return (
-    <details className={`group glass rounded-2xl overflow-hidden ${className}`}>
-      <summary className="flex items-center justify-between gap-3 p-4 cursor-pointer list-none select-none hover:bg-emerald-500/5 transition-colors [&::-webkit-details-marker]:hidden">
-        <h2 className="text-sm md:text-base font-bold text-emerald-300">{title}</h2>
-        <ChevronDown className="h-4 w-4 text-emerald-300 shrink-0 transition-transform duration-200 group-open:rotate-180" />
+    <details className={`group card overflow-hidden ${className}`}>
+      <summary className="flex items-center gap-3 px-5 py-4 cursor-pointer list-none select-none hover:bg-surface2 transition-colors [&::-webkit-details-marker]:hidden">
+        <Info className="w-[18px] h-[18px] text-primary shrink-0" />
+        <h2 className="text-[15px] font-semibold text-fg font-sans tracking-normal">{title}</h2>
+        <ChevronDown className="ml-auto w-4 h-4 text-subtle shrink-0 transition-transform duration-200 group-open:rotate-180" />
       </summary>
-      <p className="px-4 pb-4 text-sm text-emerald-100/85 leading-relaxed">{text}</p>
+      <p className="px-5 pb-5 text-[14px] text-muted leading-relaxed">{text}</p>
     </details>
   );
 }

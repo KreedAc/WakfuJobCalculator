@@ -1,4 +1,8 @@
 import { useId, useState } from 'react';
+import {
+  Swords, HeartPulse, ShieldPlus, Scale, Shield, Percent, Zap, Link2, Droplet, Sword, type LucideIcon,
+} from 'lucide-react';
+import { PageHeader } from '../components/ui/PageHeader';
 import type { Language } from '../constants/translations';
 import { PageSeo } from '../components/PageSeo';
 import {
@@ -7,13 +11,17 @@ import {
 } from '../lib/combatFormulas';
 import {
   COMBAT_CALC_T,
-  COMBAT_TAB_ICONS,
   COMBAT_TAB_IDS,
   type CombatCalcT,
   type CombatTabId,
 } from '../constants/combatCalcTranslations';
 
 // ─── Small reusable UI ───────────────────────────────────────────────────────
+
+const TAB_ICONS: Record<CombatTabId, LucideIcon> = {
+  damage: Swords, heal: HeartPulse, armor: ShieldPlus, build: Scale, tank: Shield,
+  resistance: Percent, fow: Zap, lock: Link2, hp: Droplet, em: Sword,
+};
 
 /** "?" hint: opens on hover (mouse) and on tap (touch), closes on blur. */
 function Tip({ text }: { text: string }) {
@@ -29,12 +37,12 @@ function Tip({ text }: { text: string }) {
         // touch taps also fire synthetic hover events: only mice open on hover
         onPointerEnter={(e) => { if (e.pointerType === 'mouse') setOpen(true); }}
         onPointerLeave={(e) => { if (e.pointerType === 'mouse') setOpen(false); }}
-        className="w-5 h-5 -my-1 rounded-full bg-emerald-900/60 border border-emerald-500/30 text-emerald-400/80 text-[10px] font-bold flex items-center justify-center cursor-help"
+        className="w-[18px] h-[18px] rounded-full bg-primary/15 text-primary text-[10px] font-bold grid place-items-center cursor-help"
       >
         ?
       </button>
       {open && (
-        <span role="tooltip" className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 w-52 max-w-[70vw] bg-slate-900/95 border border-emerald-500/25 rounded-lg p-2 text-[11px] text-emerald-200/85 leading-snug z-50 pointer-events-none normal-case tracking-normal font-normal shadow-xl whitespace-normal">
+        <span role="tooltip" className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 max-w-[70vw] card shadow-pop p-2.5 text-xs text-muted leading-snug z-50 pointer-events-none font-normal whitespace-normal">
           {text}
         </span>
       )}
@@ -48,20 +56,21 @@ function Num({ label, value, onChange, min, max, placeholder, tip }: {
 }) {
   const id = useId();
   return (
-    <div className="flex flex-col gap-1">
-      <div className="flex items-center gap-1.5">
-        <label htmlFor={id} className="text-xs font-medium text-emerald-400 uppercase tracking-wide">{label}</label>
+    <div className="flex flex-col">
+      <div className="flex items-center gap-1.5 mb-1.5 min-h-[18px]">
+        <label htmlFor={id} className="text-[13px] font-semibold text-muted">{label}</label>
         {tip && <Tip text={tip} />}
       </div>
       <input
         id={id}
         type="number"
+        inputMode="decimal"
         value={value || ''}
         min={min}
         max={max}
         placeholder={placeholder ?? '0'}
         onChange={e => onChange(parseFloat(e.target.value) || 0)}
-        className="glass-soft px-3 py-2 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 w-full"
+        className="input font-mono h-10"
       />
     </div>
   );
@@ -71,15 +80,12 @@ function Sel({ label, value, onChange, options }: {
   label: string; value: number; onChange: (v: number) => void;
   options: { label: string; value: number }[];
 }) {
+  const id = useId();
   return (
-    <div className="flex flex-col gap-1">
-      <label className="text-xs font-medium text-emerald-400 uppercase tracking-wide">{label}</label>
-      <select
-        value={value}
-        onChange={e => onChange(parseFloat(e.target.value))}
-        className="glass-soft px-3 py-2 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 w-full appearance-none bg-transparent"
-      >
-        {options.map(o => <option key={o.value} value={o.value} className="bg-slate-900">{o.label}</option>)}
+    <div className="flex flex-col">
+      <label htmlFor={id} className="text-[13px] font-semibold text-muted mb-1.5 min-h-[18px]">{label}</label>
+      <select id={id} value={value} onChange={e => onChange(parseFloat(e.target.value))} className="input h-10 text-sm">
+        {options.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
       </select>
     </div>
   );
@@ -87,42 +93,41 @@ function Sel({ label, value, onChange, options }: {
 
 function Check({ label, checked, onChange }: { label: string; checked: boolean; onChange: (v: boolean) => void }) {
   return (
-    <label className="flex items-center gap-2 text-sm text-emerald-200/75 cursor-pointer select-none">
-      <input type="checkbox" checked={checked} onChange={e => onChange(e.target.checked)} className="accent-emerald-400 w-4 h-4" />
+    <label className="flex items-center gap-2 text-sm text-muted cursor-pointer select-none">
+      <input type="checkbox" checked={checked} onChange={e => onChange(e.target.checked)} className="w-4 h-4 accent-[rgb(var(--primary))]" />
       {label}
     </label>
   );
 }
 
-function ResBox({ label, value, color = 'text-emerald-300', border = 'border-emerald-500/50' }: {
-  label: string; value: string; color?: string; border?: string;
-}) {
+/** Result tile; the first result of a calculator is the highlighted one. */
+function ResBox({ label, value, main }: { label: string; value: string; main?: boolean }) {
   return (
-    <div className={`glass-soft rounded-2xl p-4 border-l-[3px] ${border}`}>
-      <div className="text-[11px] font-medium text-emerald-400/60 uppercase tracking-widest mb-1">{label}</div>
-      <div className={`text-2xl font-bold ${color}`}>{value}</div>
+    <div className={`rounded-xl border p-3.5 ${main ? 'border-accent/40 bg-accent/10' : 'border-line bg-bg2'}`}>
+      <div className="text-xs font-medium text-subtle mb-1">{label}</div>
+      <div className={`font-display text-2xl font-bold tracking-tight ${main ? 'text-accent' : 'text-fg'}`}>{value}</div>
     </div>
   );
 }
 
 function SecLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-2 my-4">
-      <span className="text-[11px] font-semibold text-emerald-500/55 uppercase tracking-widest whitespace-nowrap">{children}</span>
-      <div className="flex-1 h-px bg-emerald-500/15" />
+    <div className="flex items-center gap-3 pt-3">
+      <span className="caps-label whitespace-nowrap">{children}</span>
+      <div className="flex-1 h-px bg-line" />
     </div>
   );
 }
 
 function RadioPos({ pos, setPos, t }: { pos: Position; setPos: (p: Position) => void; t: CombatCalcT }) {
   return (
-    <div className="flex gap-2 flex-wrap">
-      {([['facing','🧍',t.posFacing],['side','↔️',t.posSide],['rear','🔄',t.posRear]] as const).map(([v,icon,label]) => (
-        <button key={v} onClick={() => setPos(v)}
-          className={`flex items-center gap-2 flex-1 min-w-[100px] px-3 py-2.5 rounded-xl border text-sm font-semibold transition-all duration-200
-            ${pos === v ? 'glass-soft border-emerald-500/55 text-emerald-300 shadow-sm shadow-emerald-500/15' : 'border-emerald-500/16 text-emerald-200/65 hover:border-emerald-500/30 hover:text-emerald-200'}`}
+    <div className="grid grid-cols-3 gap-2" role="radiogroup">
+      {([['facing', t.posFacing], ['side', t.posSide], ['rear', t.posRear]] as const).map(([v, label]) => (
+        <button key={v} type="button" role="radio" aria-checked={pos === v} onClick={() => setPos(v)}
+          className={`h-10 rounded-xl border text-sm font-semibold transition-colors
+            ${pos === v ? 'border-primary bg-primary/10 text-fg' : 'border-line bg-bg2 text-muted hover:text-fg'}`}
         >
-          <span>{icon}</span><span>{label}</span>
+          {label}
         </button>
       ))}
     </div>
@@ -132,7 +137,7 @@ function RadioPos({ pos, setPos, t }: { pos: Position; setPos: (p: Position) => 
 function fmt(n: number) { return isFinite(n) ? Math.round(n).toLocaleString() : '—'; }
 function fmtD(n: number, d = 1) { return isFinite(n) ? n.toFixed(d) : '—'; }
 function winCls(a: number, b: number) {
-  return { a: a > b ? 'text-emerald-400 font-bold' : 'text-emerald-200/40', b: b > a ? 'text-emerald-400 font-bold' : 'text-emerald-200/40' };
+  return { a: a > b ? 'text-success font-bold' : 'text-subtle', b: b > a ? 'text-success font-bold' : 'text-subtle' };
 }
 
 // ─── Main page component ─────────────────────────────────────────────────────
@@ -211,32 +216,33 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
 
   // ─── Render ─────────────────────────────────────────────────────────────────
   return (
-    <div className="max-w-4xl w-full flex flex-col items-center animate-in fade-in duration-500">
+    <div>
       <PageSeo title={ct.pageTitle} description={ct.pageSubtitle} path="/combat-calc" />
-      <h1 className="page-title mb-1">
-        {ct.pageTitle}
-      </h1>
-      <p className="text-emerald-300/70 text-sm italic mb-3 text-center">{ct.credit}</p>
-      <p className="text-emerald-100/80 mb-8 text-center max-w-2xl text-base leading-relaxed drop-shadow-md">
-        {ct.pageSubtitle}
-      </p>
+      <PageHeader
+        title={ct.pageTitle}
+        subtitle={<>{ct.pageSubtitle}<span className="block mt-1 text-xs italic text-subtle">{ct.credit}</span></>}
+      />
 
       {/* Tabs */}
-      <div className="glass rounded-2xl p-3 mb-5 flex flex-wrap gap-1.5 w-full">
-        {COMBAT_TAB_IDS.map(id => (
-          <button key={id} onClick={() => setTab(id)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 whitespace-nowrap
-              ${tab===id ? 'glass-soft border border-emerald-500/55 text-emerald-300 shadow-sm shadow-emerald-500/10' : 'text-emerald-200/60 hover:text-emerald-200 border border-transparent hover:border-emerald-500/20'}`}
-          >{COMBAT_TAB_ICONS[id]} {ct.tabs[id]}</button>
-        ))}
+      <div className="flex gap-2 overflow-x-auto scrollbar-none -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap mb-5" role="tablist">
+        {COMBAT_TAB_IDS.map(id => {
+          const Icon = TAB_ICONS[id];
+          return (
+            <button key={id} type="button" role="tab" aria-selected={tab === id} onClick={() => setTab(id)}
+              className={`chip shrink-0 h-9 ${tab === id ? 'chip-active' : ''}`}
+            >
+              <Icon className={`w-4 h-4 ${tab === id ? 'text-primary' : ''}`} /> {ct.tabs[id]}
+            </button>
+          );
+        })}
       </div>
 
-      <div className="w-full">
+      <div>
 
         {/* ══ DAMAGE ══ */}
         {tab==='damage' && (
-          <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">⚔️ {ct.damageTitle}</h2>
+          <div className="card p-5 md:p-6 space-y-4">
+            <h2 className="section-title pb-3 border-b border-line">{ct.damageTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <Num label={ct.spellBaseValue} value={dBase} onChange={setDBase} min={0} tip={ct.tipSpellBase} />
               <Num label={ct.elementalMastery} value={dElem} onChange={setDElem} />
@@ -263,19 +269,19 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
               <Check label={ct.criticalHit} checked={dIsCrit} onChange={setDIsCrit} />
               <Check label={ct.casterBelowHalfHp} checked={dIsBerserk} onChange={setDIsBerserk} />
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-2">
-              <ResBox label={ct.finalDamage} value={fmt(dIsCrit?critDmg:normalDmg)} />
-              <ResBox label={ct.normalHit} value={fmt(normalDmg)} color="text-blue-300" border="border-blue-400/50" />
-              <ResBox label={ct.criticalHit} value={fmt(critDmg)} color="text-yellow-300" border="border-yellow-400/50" />
-              <ResBox label={ct.sumOfMasteries} value={fmt(dIsCrit?mastCrit:mastNorm)} color="text-emerald-100/80" border="border-emerald-500/30" />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 pt-2 lg:sticky lg:bottom-0 lg:z-10 lg:bg-surface lg:-mx-6 lg:px-6 lg:pb-5 lg:pt-4 lg:border-t lg:border-line lg:rounded-b-2xl">
+              <ResBox main label={ct.finalDamage} value={fmt(dIsCrit?critDmg:normalDmg)} />
+              <ResBox label={ct.normalHit} value={fmt(normalDmg)} />
+              <ResBox label={ct.criticalHit} value={fmt(critDmg)} />
+              <ResBox label={ct.sumOfMasteries} value={fmt(dIsCrit?mastCrit:mastNorm)} />
             </div>
           </div>
         )}
 
         {/* ══ HEAL ══ */}
         {tab==='heal' && (
-          <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">❤️ {ct.healTitle}</h2>
+          <div className="card p-5 md:p-6 space-y-4">
+            <h2 className="section-title pb-3 border-b border-line">{ct.healTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <Num label={ct.spellBaseValue} value={hBase} onChange={setHBase} min={0} />
               <Num label={ct.elementalMastery} value={hElem} onChange={setHElem} />
@@ -299,19 +305,19 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
               <Check label={ct.criticalHit} checked={hIsCrit} onChange={setHIsCrit} />
               <Check label={ct.casterBelowHalfHp} checked={hIsBerserk} onChange={setHIsBerserk} />
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-2">
-              <ResBox label={ct.finalHeal} value={fmt(hIsCrit?critHeal:normalHeal)} color="text-red-300" border="border-red-400/50" />
-              <ResBox label={ct.normalHeal} value={fmt(normalHeal)} color="text-red-300" border="border-red-400/50" />
-              <ResBox label={ct.criticalHeal} value={fmt(critHeal)} color="text-yellow-300" border="border-yellow-400/50" />
-              <ResBox label={ct.sumOfMasteries} value={fmt(hIsCrit?hMastCrit:hMastNorm)} color="text-emerald-100/80" border="border-emerald-500/30" />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 pt-2 lg:sticky lg:bottom-0 lg:z-10 lg:bg-surface lg:-mx-6 lg:px-6 lg:pb-5 lg:pt-4 lg:border-t lg:border-line lg:rounded-b-2xl">
+              <ResBox main label={ct.finalHeal} value={fmt(hIsCrit?critHeal:normalHeal)} />
+              <ResBox label={ct.normalHeal} value={fmt(normalHeal)} />
+              <ResBox label={ct.criticalHeal} value={fmt(critHeal)} />
+              <ResBox label={ct.sumOfMasteries} value={fmt(hIsCrit?hMastCrit:hMastNorm)} />
             </div>
           </div>
         )}
 
         {/* ══ ARMOR ══ */}
         {tab==='armor' && (
-          <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">💚 {ct.armorTitle}</h2>
+          <div className="card p-5 md:p-6 space-y-4">
+            <h2 className="section-title pb-3 border-b border-line">{ct.armorTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <Num label={ct.spellBaseValue} value={arBase} onChange={setArBase} min={0} />
               <Num label={ct.armorGiven} value={arGiven} onChange={setArGiven} tip={ct.tipArmorGiven} />
@@ -325,22 +331,22 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
               <Check label={ct.critX125} checked={arIsCrit} onChange={setArIsCrit} />
               <Check label={ct.castingOnAlly} checked={arOnAlly} onChange={setArOnAlly} />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-2">
-              <ResBox label={ct.armorGenerated} value={fmt(armorVal)} color="text-green-300" border="border-green-400/50" />
-              <ResBox label={ct.afterCrumbly} value={fmt(armorCrumb)} color="text-green-300" border="border-green-400/50" />
-              <ResBox label={ct.hpCap} value={armorCap!==null?fmt(armorCap):'N/A'} color="text-emerald-100/80" border="border-emerald-500/30" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 pt-2 lg:sticky lg:bottom-0 lg:z-10 lg:bg-surface lg:-mx-6 lg:px-6 lg:pb-5 lg:pt-4 lg:border-t lg:border-line lg:rounded-b-2xl">
+              <ResBox main label={ct.armorGenerated} value={fmt(armorVal)} />
+              <ResBox label={ct.afterCrumbly} value={fmt(armorCrumb)} />
+              <ResBox label={ct.hpCap} value={armorCap!==null?fmt(armorCap):'N/A'} />
             </div>
           </div>
         )}
 
         {/* ══ BUILD ══ */}
         {tab==='build' && (
-          <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">⚖️ {ct.buildTitle}</h2>
-            <p className="text-sm text-emerald-100/60">{ct.buildNote}</p>
+          <div className="card p-5 md:p-6 space-y-4">
+            <h2 className="section-title pb-3 border-b border-line">{ct.buildTitle}</h2>
+            <p className="text-sm text-muted">{ct.buildNote}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <SecLabel><span className="text-blue-400/70">{ct.buildA}</span></SecLabel>
+                <SecLabel><span className="text-primary">{ct.buildA}</span></SecLabel>
                 <div className="grid grid-cols-2 gap-2">
                   <Num label={ct.elementalMastery} value={baElem} onChange={setBaElem} />
                   <Num label={ct.meleeDistShort} value={baRange} onChange={setBaRange} />
@@ -351,7 +357,7 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
                 </div>
               </div>
               <div>
-                <SecLabel><span className="text-emerald-400/70">{ct.buildB}</span></SecLabel>
+                <SecLabel><span className="text-accent">{ct.buildB}</span></SecLabel>
                 <div className="grid grid-cols-2 gap-2">
                   <Num label={ct.elementalMastery} value={bbElem} onChange={setBbElem} />
                   <Num label={ct.meleeDistShort} value={bbRange} onChange={setBbRange} />
@@ -362,13 +368,13 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
                 </div>
               </div>
             </div>
-            <div className="glass-soft rounded-2xl overflow-hidden mt-2">
+            <div className="rounded-xl border border-line overflow-hidden mt-2">
               <table className="w-full text-sm">
-                <thead><tr className="border-b border-emerald-500/15">{[ct.metric,ct.buildA,ct.buildB].map(h=><th key={h} className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{h}</th>)}</tr></thead>
+                <thead><tr className="border-b border-line bg-bg2">{[ct.metric,ct.buildA,ct.buildB].map(h=><th key={h} className="text-left px-4 py-2.5 caps-label">{h}</th>)}</tr></thead>
                 <tbody>
                   {[[ct.emNormal,fmtD(emA.em),fmtD(emB.em)],[ct.emCrit,fmtD(emA.emcrit),fmtD(emB.emcrit)],[ct.emAverage,fmtD(emA.avg),fmtD(emB.avg)]].map(([l,a,b])=>{
                     const w=winCls(parseFloat(a),parseFloat(b));
-                    return <tr key={l} className="border-b border-emerald-500/07 last:border-0"><td className="px-4 py-2 text-emerald-100/80">{l}</td><td className={`px-4 py-2 ${w.a}`}>{a}</td><td className={`px-4 py-2 ${w.b}`}>{b}</td></tr>;
+                    return <tr key={l} className="border-b border-line last:border-0"><td className="px-4 py-2 text-muted">{l}</td><td className={`px-4 py-2 ${w.a}`}>{a}</td><td className={`px-4 py-2 ${w.b}`}>{b}</td></tr>;
                   })}
                 </tbody>
               </table>
@@ -378,12 +384,12 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
 
         {/* ══ TANK ══ */}
         {tab==='tank' && (
-          <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">🛡️ {ct.tankTitle}</h2>
-            <p className="text-sm text-emerald-100/60">{ct.tankNote}</p>
+          <div className="card p-5 md:p-6 space-y-4">
+            <h2 className="section-title pb-3 border-b border-line">{ct.tankTitle}</h2>
+            <p className="text-sm text-muted">{ct.tankNote}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <SecLabel><span className="text-blue-400/70">{ct.buildA}</span></SecLabel>
+                <SecLabel><span className="text-primary">{ct.buildA}</span></SecLabel>
                 <div className="grid grid-cols-2 gap-2">
                   <Num label={ct.totalHp} value={taHP} onChange={setTaHP} />
                   <Num label={ct.resistancePct} value={taRes} onChange={setTaRes} min={0} max={90} tip={ct.tipUseResTab} />
@@ -392,7 +398,7 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
                 <div className="mt-2"><Check label={ct.blockingExpert} checked={taExpert} onChange={setTaExpert} /></div>
               </div>
               <div>
-                <SecLabel><span className="text-emerald-400/70">{ct.buildB}</span></SecLabel>
+                <SecLabel><span className="text-accent">{ct.buildB}</span></SecLabel>
                 <div className="grid grid-cols-2 gap-2">
                   <Num label={ct.totalHp} value={tbHP} onChange={setTbHP} />
                   <Num label={ct.resistancePct} value={tbRes} onChange={setTbRes} min={0} max={90} />
@@ -401,14 +407,14 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
                 <div className="mt-2"><Check label={ct.blockingExpert} checked={tbExpert} onChange={setTbExpert} /></div>
               </div>
             </div>
-            <div className="glass-soft rounded-2xl overflow-hidden mt-2">
+            <div className="rounded-xl border border-line overflow-hidden mt-2">
               <table className="w-full text-sm">
-                <thead><tr className="border-b border-emerald-500/15">{[ct.metric,ct.buildA,ct.buildB].map(h=><th key={h} className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{h}</th>)}</tr></thead>
+                <thead><tr className="border-b border-line bg-bg2">{[ct.metric,ct.buildA,ct.buildB].map(h=><th key={h} className="text-left px-4 py-2.5 caps-label">{h}</th>)}</tr></thead>
                 <tbody>
                   {[[ct.totalHp,fmt(taHP),fmt(tbHP)],[ct.resistancePct,`${taRes}%`,`${tbRes}%`],[ct.blockPct,`${taBlock}%`,`${tbBlock}%`],[ct.blockingExpert,taExpert?ct.yes:ct.no,tbExpert?ct.yes:ct.no]].map(([l,a,b])=>(
-                    <tr key={l} className="border-b border-emerald-500/07"><td className="px-4 py-2 text-emerald-100/80">{l}</td><td className="px-4 py-2 text-emerald-100/80">{a}</td><td className={'px-4 py-2 text-emerald-100/80'}>{b}</td></tr>
+                    <tr key={l} className="border-b border-line"><td className="px-4 py-2 text-muted">{l}</td><td className="px-4 py-2 text-muted">{a}</td><td className={'px-4 py-2 text-muted'}>{b}</td></tr>
                   ))}
-                  <tr>{(()=>{const w=winCls(ehpA,ehpB);return(<><td className="px-4 py-2 text-emerald-100/80">{ct.ehpStar}</td><td className={`px-4 py-2 ${w.a}`}>{fmt(ehpA)}</td><td className={`px-4 py-2 ${w.b}`}>{fmt(ehpB)}</td></>);})()}</tr>
+                  <tr>{(()=>{const w=winCls(ehpA,ehpB);return(<><td className="px-4 py-2 text-muted">{ct.ehpStar}</td><td className={`px-4 py-2 ${w.a}`}>{fmt(ehpA)}</td><td className={`px-4 py-2 ${w.b}`}>{fmt(ehpB)}</td></>);})()}</tr>
                 </tbody>
               </table>
             </div>
@@ -417,25 +423,25 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
 
         {/* ══ RESISTANCE ══ */}
         {tab==='resistance' && (
-          <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">📏 {ct.resTitle}</h2>
+          <div className="card p-5 md:p-6 space-y-4">
+            <h2 className="section-title pb-3 border-b border-line">{ct.resTitle}</h2>
             <SecLabel>{ct.flatToPct}</SecLabel>
             <div className="flex items-end gap-3 flex-wrap">
               <div className="flex-1 min-w-[140px]"><Num label={ct.flatResistance} value={rFlat} onChange={setRFlat} /></div>
-              <span className="text-xl text-emerald-400/55 pb-2">→</span>
-              <ResBox label={ct.resistancePct} value={fmtD(flatToPercent(rFlat),1)+'%'} />
+              <span className="text-xl text-subtle pb-3">→</span>
+              <ResBox main label={ct.resistancePct} value={fmtD(flatToPercent(rFlat),1)+'%'} />
             </div>
             <SecLabel>{ct.pctToFlat}</SecLabel>
             <div className="flex items-end gap-3 flex-wrap">
               <div className="flex-1 min-w-[140px]"><Num label={ct.resRange} value={rPerc} onChange={setRPerc} min={0} max={90} /></div>
-              <span className="text-xl text-emerald-400/55 pb-2">→</span>
-              <ResBox label={ct.flatResistance} value={fmt(percentToFlat(rPerc))} />
+              <span className="text-xl text-subtle pb-3">→</span>
+              <ResBox main label={ct.flatResistance} value={fmt(percentToFlat(rPerc))} />
             </div>
             <SecLabel>{ct.referenceTable}</SecLabel>
-            <div className="glass-soft rounded-2xl overflow-hidden">
+            <div className="rounded-xl border border-line overflow-hidden">
               <table className="w-full text-sm">
-                <thead><tr className="border-b border-emerald-500/15"><th className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{ct.resistancePct}</th><th className="text-left px-4 py-2 text-[11px] uppercase tracking-widest text-emerald-400/65 font-semibold">{ct.flatNeeded}</th></tr></thead>
-                <tbody>{resTable.map(p=><tr key={p} className="border-b border-emerald-500/07 last:border-0"><td className="px-4 py-2 text-emerald-100/80">{p}%</td><td className="px-4 py-2 text-emerald-100/80">{fmt(percentToFlat(p))}</td></tr>)}</tbody>
+                <thead><tr className="border-b border-line bg-bg2"><th className="text-left px-4 py-2.5 caps-label">{ct.resistancePct}</th><th className="text-left px-4 py-2.5 caps-label">{ct.flatNeeded}</th></tr></thead>
+                <tbody>{resTable.map(p=><tr key={p} className="border-b border-line last:border-0"><td className="px-4 py-2 text-muted">{p}%</td><td className="px-4 py-2 text-muted">{fmt(percentToFlat(p))}</td></tr>)}</tbody>
               </table>
             </div>
           </div>
@@ -443,27 +449,27 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
 
         {/* ══ FOW ══ */}
         {tab==='fow' && (
-          <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">⚡ {ct.fowTitle}</h2>
+          <div className="card p-5 md:p-6 space-y-4">
+            <h2 className="section-title pb-3 border-b border-line">{ct.fowTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <Num label={ct.baseRemovalValue} value={fowBase} onChange={setFowBase} min={0} tip={ct.tipBaseRemoval} />
               <Num label={ct.casterFow} value={fowCaster} onChange={setFowCaster} tip={ct.tipCasterFow} />
               <Num label={ct.targetFow} value={fowTarget} onChange={setFowTarget} />
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-2">
-              <ResBox label={ct.fowFactor} value={fmtD(ff,3)} color="text-yellow-300" border="border-yellow-400/50" />
-              <ResBox label={ct.effectiveRemoval} value={fmtD(fowEff,3)} color="text-yellow-300" border="border-yellow-400/50" />
-              <ResBox label={ct.guaranteedRemove} value={String(fowFloor)} color="text-blue-300" border="border-blue-400/50" />
-              <ResBox label={ct.chanceRemovePlusOne} value={fowChance+'%'} color="text-blue-300" border="border-blue-400/50" />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 pt-2 lg:sticky lg:bottom-0 lg:z-10 lg:bg-surface lg:-mx-6 lg:px-6 lg:pb-5 lg:pt-4 lg:border-t lg:border-line lg:rounded-b-2xl">
+              <ResBox label={ct.fowFactor} value={fmtD(ff,3)} />
+              <ResBox main label={ct.effectiveRemoval} value={fmtD(fowEff,3)} />
+              <ResBox label={ct.guaranteedRemove} value={String(fowFloor)} />
+              <ResBox label={ct.chanceRemovePlusOne} value={fowChance+'%'} />
             </div>
           </div>
         )}
 
         {/* ══ LOCK ══ */}
         {tab==='lock' && (
-          <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">⛓️ {ct.lockTitle}</h2>
-            <p className="text-sm text-emerald-100/60">{ct.lockNote}</p>
+          <div className="card p-5 md:p-6 space-y-4">
+            <h2 className="section-title pb-3 border-b border-line">{ct.lockTitle}</h2>
+            <p className="text-sm text-muted">{ct.lockNote}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <Num label={ct.lockerALock} value={lkLA} onChange={setLkLA} min={0} tip={ct.tipLockerA} />
               <Num label={ct.lockerBLock} value={lkLB} onChange={setLkLB} min={0} tip={ct.tipLockerB} />
@@ -474,26 +480,26 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
               <Num label={ct.targetDodge} value={lkDodge} onChange={setLkDodge} min={0} />
               <Sel label={ct.lockerOrientation} value={lkOrient} onChange={setLkOrient} options={[{label:ct.orientFacing,value:0},{label:ct.orientSide,value:1},{label:ct.orientBack,value:2}]} />
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-2">
-              <ResBox label={ct.combinedLock} value={fmtD(L,1)} color="text-purple-300" border="border-purple-400/50" />
-              <ResBox label={ct.xValue} value={fmtD(X,3)} color="text-purple-300" border="border-purple-400/50" />
-              <ResBox label={ct.mpLoss} value={String(mpLoss)} color="text-purple-300" border="border-purple-400/50" />
-              <ResBox label={ct.apLoss} value={String(apLoss)} color="text-purple-300" border="border-purple-400/50" />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 pt-2 lg:sticky lg:bottom-0 lg:z-10 lg:bg-surface lg:-mx-6 lg:px-6 lg:pb-5 lg:pt-4 lg:border-t lg:border-line lg:rounded-b-2xl">
+              <ResBox label={ct.combinedLock} value={fmtD(L,1)} />
+              <ResBox label={ct.xValue} value={fmtD(X,3)} />
+              <ResBox main label={ct.mpLoss} value={String(mpLoss)} />
+              <ResBox label={ct.apLoss} value={String(apLoss)} />
             </div>
           </div>
         )}
 
         {/* ══ HP/EHP ══ */}
         {tab==='hp' && (
-          <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">🩸 {ct.hpTitle}</h2>
+          <div className="card p-5 md:p-6 space-y-4">
+            <h2 className="section-title pb-3 border-b border-line">{ct.hpTitle}</h2>
             <SecLabel>{ct.totalHpFromStats}</SecLabel>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <Num label={ct.characterLevel} value={hpLevel} onChange={setHpLevel} min={1} />
               <Num label={ct.flatHpBonus} value={hpFlat} onChange={setHpFlat} />
               <Num label={ct.pctHpBonus} value={hpPerc} onChange={setHpPerc} />
             </div>
-            <ResBox label={ct.totalHp} value={fmt(totalHP)} color="text-red-300" border="border-red-400/50" />
+            <ResBox main label={ct.totalHp} value={fmt(totalHP)} />
             <SecLabel>{ct.effectiveHp}</SecLabel>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <Num label={ct.totalHp} value={ehpHP} onChange={setEhpHP} />
@@ -501,15 +507,15 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
               <Num label={ct.blockChancePct} value={ehpBlock} onChange={setEhpBlock} min={0} max={100} />
             </div>
             <Check label={ct.blockingExpert} checked={ehpExpert} onChange={setEhpExpert} />
-            <ResBox label={ct.effectiveHp} value={fmt(ehpVal)} color="text-red-300" border="border-red-400/50" />
+            <ResBox main label={ct.effectiveHp} value={fmt(ehpVal)} />
           </div>
         )}
 
         {/* ══ EM ══ */}
         {tab==='em' && (
-          <div className="glass rounded-3xl p-6 space-y-3">
-            <h2 className="text-lg font-bold text-emerald-200 border-b border-emerald-500/18 pb-3">🗡️ {ct.emTitle}</h2>
-            <p className="text-sm text-emerald-100/60">{ct.emNote}</p>
+          <div className="card p-5 md:p-6 space-y-4">
+            <h2 className="section-title pb-3 border-b border-line">{ct.emTitle}</h2>
+            <p className="text-sm text-muted">{ct.emNote}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <Num label={ct.sumRelevantMasteries} value={emMast} onChange={setEmMast} tip={ct.tipSumMasteries} />
               <Num label={ct.criticalMastery} value={emCritMast} onChange={setEmCritMast} />
@@ -520,10 +526,10 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
               <Num label={ct.critHitChancePct} value={emCH} onChange={setEmCH} min={0} max={100} />
               <Num label={ct.stasisDmgBonus} value={emStasis} onChange={setEmStasis} min={100} tip={ct.tipStasis} />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 pt-2 lg:sticky lg:bottom-0 lg:z-10 lg:bg-surface lg:-mx-6 lg:px-6 lg:pb-5 lg:pt-4 lg:border-t lg:border-line lg:rounded-b-2xl">
               <ResBox label={ct.emNormal} value={fmtD(emNorm)} />
-              <ResBox label={ct.emCrit} value={fmtD(emCrit2)} color="text-yellow-300" border="border-yellow-400/50" />
-              <ResBox label={ct.emAverage} value={fmtD(emAvg)} color="text-green-300" border="border-green-400/50" />
+              <ResBox label={ct.emCrit} value={fmtD(emCrit2)} />
+              <ResBox main label={ct.emAverage} value={fmtD(emAvg)} />
             </div>
           </div>
         )}

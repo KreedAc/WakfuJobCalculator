@@ -1,190 +1,241 @@
-import { useState } from 'react';
-import { BookOpen, Hammer, Scroll } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Shield, Croissant, ChefHat, Wrench, Gem, Backpack, Scissors, Swords, Scroll, Share2, RotateCcw, ChevronUp,
+  type LucideIcon,
+} from 'lucide-react';
 import type { Language } from '../constants/translations';
-import type { ProfessionId } from '../constants/professions';
-import { PROFESSION_IDS, PROFESSION_NAMES, PROFESSION_RECIPES } from '../constants/professions';
-import { LEVEL_RANGES, type LevelRange } from '../constants/levelRanges';
+import { PROFESSION_IDS, PROFESSION_NAMES, PROFESSION_RECIPES, type ProfessionId } from '../constants/professions';
+import { LEVEL_RANGES } from '../constants/levelRanges';
 import { craftsNeeded, resourcesPerCraft } from '../lib/xpCalculator';
+import { XP_T } from '../content/xpCalculator';
+import { PageHeader } from './ui/PageHeader';
 
-interface Translations {
-  selectProfession: string;
-  selectRange: string;
-  recipe: string;
-  expPerItem: string;
-  expPlaceholder: string;
-  calculate: string;
-  resultsFor: string;
-  firstResource: string;
-  secondResource: string;
-  craftsNeeded: string;
-  xpDiff: string;
-  alert: string;
+const PROFESSION_ICONS: Record<ProfessionId, LucideIcon> = {
+  Armorer: Shield,
+  Baker: Croissant,
+  Chef: ChefHat,
+  Handyman: Wrench,
+  Jeweler: Gem,
+  'Leather Dealer': Backpack,
+  Tailor: Scissors,
+  'Weapons Master': Swords,
+};
+
+/** "140 - 150" → "140–150" for display, "140-150" in URLs */
+const rangeLabel = (r: string) => r.replace(/\s*-\s*/, '–');
+const rangeKey = (r: string) => r.replace(/\s*-\s*/, '-');
+const rangeBounds = (r: string) => r.split('-').map((n) => parseInt(n, 10));
+
+interface Props {
+  language: Language;
   title: string;
   subtitle: string;
 }
 
-interface CalculatorProps {
-  language: Language;
-  translations: Translations;
-}
+export function Calculator({ language, title, subtitle }: Props) {
+  const x = XP_T[language];
+  const [profession, setProfession] = useState<ProfessionId | ''>('');
+  const [range, setRange] = useState('');
+  const [xp, setXp] = useState('');
+  const [toast, setToast] = useState('');
+  const resultRef = useRef<HTMLDivElement>(null);
+  const hydrated = useRef(false);
 
-interface CalculationResult extends LevelRange {
-  selectedProfession: ProfessionId;
-  craftCount: number;
-  resourceCount: number;
-}
-
-export function Calculator({ language, translations: t }: CalculatorProps) {
-  const [expPerItem, setExpPerItem] = useState('');
-  const [selectedRange, setSelectedRange] = useState('');
-  const [selectedProfession, setSelectedProfession] = useState<ProfessionId | ''>('');
-  const [result, setResult] = useState<CalculationResult | null>(null);
-
-  function handleCalculate(e: React.FormEvent) {
-    e.preventDefault();
-    const expItem = parseFloat(expPerItem);
-    if (!expItem || expItem <= 0 || !selectedRange || !selectedProfession) {
-      alert(t.alert);
-      return;
+  // keep the URL shareable (declared first: skipped until the link below has been read)
+  useEffect(() => {
+    if (!hydrated.current) return;
+    const p = new URLSearchParams();
+    if (profession) p.set('profession', profession);
+    if (range) p.set('range', rangeKey(range));
+    if (Number(xp) > 0) p.set('xp', xp);
+    const search = p.toString() ? `?${p}` : '';
+    if (search !== window.location.search) {
+      window.history.replaceState(window.history.state, '', window.location.pathname + search);
     }
-    const selected = LEVEL_RANGES.find(r => r.range === selectedRange);
-    if (!selected) return;
-    const craftCount = craftsNeeded(selected.expDiff, expItem);
-    const resourceCount = craftCount * resourcesPerCraft(selectedProfession);
-    setResult({
-      ...selected,
-      selectedProfession: selectedProfession as ProfessionId,
-      craftCount,
-      resourceCount
-    });
-  }
+  }, [profession, range, xp]);
 
-  const currentRangeRecipeObj = LEVEL_RANGES.find(r => r.range === selectedRange)?.recipe;
-  const currentRangeRecipe = currentRangeRecipeObj ? currentRangeRecipeObj[language] : t.recipe;
-  const currentProfessionRecipe = selectedProfession ? PROFESSION_RECIPES[language][selectedProfession as ProfessionId] : '';
-  const recipeDisplay = `${currentRangeRecipe}${currentProfessionRecipe ? `  ${currentProfessionRecipe}` : ''}`;
+  // read a shared link (?profession=Armorer&range=140-150&xp=150) once, after hydration
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    const prof = p.get('profession');
+    if (prof && (PROFESSION_IDS as readonly string[]).includes(prof)) setProfession(prof as ProfessionId);
+    const r = LEVEL_RANGES.find((l) => rangeKey(l.range) === p.get('range'));
+    if (r) setRange(r.range);
+    const v = p.get('xp');
+    if (v && Number(v) > 0) setXp(v);
+    hydrated.current = true;
+  }, []);
+
+  const level = LEVEL_RANGES.find((r) => r.range === range);
+  const recipe = level && profession ? `${level.recipe[language]} ${PROFESSION_RECIPES[language][profession]}` : null;
+  const expPerCraft = parseFloat(xp);
+
+  const result = useMemo(() => {
+    if (!level || !profession || !(expPerCraft > 0)) return null;
+    const crafts = craftsNeeded(level.expDiff, expPerCraft);
+    const per = resourcesPerCraft(profession);
+    return { crafts, per, resources: crafts * per, expDiff: level.expDiff };
+  }, [level, profession, expPerCraft]);
+
+  const fmt = (n: number) => n.toLocaleString(language);
+  const [from, to] = level ? rangeBounds(rangeKey(level.range)) : [0, 0];
+
+  const share = async () => {
+    const url = window.location.href;
+    if (navigator.share) {
+      try { await navigator.share({ title, url }); return; } catch { /* cancelled */ }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      setToast(x.linkCopied);
+      setTimeout(() => setToast(''), 2000);
+    } catch { /* clipboard unavailable */ }
+  };
+  const reset = () => { setProfession(''); setRange(''); setXp(''); };
+
+  const step = (n: number, label: string) => (
+    <div className="flex items-center gap-2.5 mb-3 font-semibold text-[14.5px]">
+      <span className="w-6 h-6 rounded-full grid place-items-center text-xs font-bold bg-primary/10 text-primary">{n}</span>
+      {label}
+    </div>
+  );
 
   return (
-    <div className="max-w-4xl w-full flex flex-col items-center animate-in fade-in duration-500">
-      <h1 className="page-title mb-4">
-        {t.title}
-      </h1>
-      <p className="text-emerald-100/90 mb-10 text-center max-w-2xl text-lg leading-relaxed drop-shadow-md">
-        {t.subtitle}
-      </p>
+    <div>
+      <PageHeader
+        title={title}
+        subtitle={subtitle}
+        actions={<>
+          <button type="button" className="btn" onClick={share} disabled={!result}><Share2 className="w-4 h-4" /> {x.share}</button>
+          <button type="button" className="btn" onClick={reset}><RotateCcw className="w-4 h-4" /> {x.reset}</button>
+        </>}
+      />
 
-      <form onSubmit={handleCalculate} className="glass rounded-3xl max-w-2xl w-full p-6 md:p-8 space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-emerald-300 ml-1">{t.selectProfession}</label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-emerald-400">
-                <Hammer className="w-5 h-5" />
-              </div>
-              <select
-                value={selectedProfession}
-                onChange={(e) => setSelectedProfession(e.target.value as ProfessionId)}
-                className="glass-soft w-full p-4 pl-12 rounded-xl text-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 appearance-none cursor-pointer transition-all duration-300"
-                required
-              >
-                <option value="" className="bg-gray-900 text-gray-400">-- {t.selectProfession} --</option>
-                {PROFESSION_IDS.map((p) => (
-                  <option key={p} value={p} className="bg-gray-900">
+      <div className="grid gap-6 lg:grid-cols-[1fr_360px] lg:items-start">
+        <div className="card p-5 md:p-6 space-y-7">
+          <section>
+            {step(1, x.stepProfession)}
+            <div className="grid grid-cols-4 gap-2 sm:gap-2.5" role="radiogroup" aria-label={x.stepProfession}>
+              {PROFESSION_IDS.map((p) => {
+                const Icon = PROFESSION_ICONS[p];
+                const on = p === profession;
+                return (
+                  <button
+                    key={p}
+                    type="button"
+                    role="radio"
+                    aria-checked={on}
+                    onClick={() => setProfession(p)}
+                    className={`flex flex-col items-center justify-center gap-1.5 min-h-[72px] px-1 py-2.5 rounded-xl border text-[11.5px] sm:text-[12.5px] font-medium leading-tight text-center transition-colors
+                      ${on ? 'border-primary bg-primary/10 text-fg ring-2 ring-primary/20' : 'border-line bg-bg2 text-muted hover:text-fg hover:border-line-strong'}`}
+                  >
+                    <Icon className={`w-[22px] h-[22px] ${on ? 'text-primary' : ''}`} />
                     {PROFESSION_NAMES[language][p]}
-                  </option>
-                ))}
-              </select>
+                  </button>
+                );
+              })}
             </div>
-          </div>
+          </section>
 
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-emerald-300 ml-1">{t.selectRange}</label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-emerald-400">
-                <BookOpen className="w-5 h-5" />
-              </div>
-              <select
-                value={selectedRange}
-                onChange={(e) => setSelectedRange(e.target.value)}
-                className="glass-soft w-full p-4 pl-12 rounded-xl text-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 appearance-none cursor-pointer transition-all duration-300"
-                required
-              >
-                <option value="" className="bg-gray-900 text-gray-400">-- {t.selectRange} --</option>
-                {LEVEL_RANGES.map((r, i) => (
-                  <option key={i} value={r.range} className="bg-gray-900">{r.range}</option>
-                ))}
-              </select>
+          <section>
+            {step(2, x.stepRange)}
+            <div className="grid grid-cols-4 sm:grid-cols-8 gap-2" role="radiogroup" aria-label={x.stepRange}>
+              {LEVEL_RANGES.map((r) => {
+                const on = r.range === range;
+                return (
+                  <button
+                    key={r.range}
+                    type="button"
+                    role="radio"
+                    aria-checked={on}
+                    onClick={() => setRange(r.range)}
+                    className={`h-10 rounded-lg border font-mono text-[13px] font-semibold transition-colors
+                      ${on ? 'border-primary bg-primary/10 text-fg' : 'border-line bg-bg2 text-muted hover:text-fg hover:border-line-strong'}`}
+                  >
+                    {rangeLabel(r.range)}
+                  </button>
+                );
+              })}
             </div>
-          </div>
+            {recipe && (
+              <p className="mt-3 flex items-center gap-2 text-sm text-muted">
+                <Scroll className="w-4 h-4 text-primary shrink-0" />
+                {x.recipe}: <strong className="text-fg font-semibold">{recipe}</strong>
+              </p>
+            )}
+          </section>
 
-          <div className="md:col-span-2 space-y-2">
-            <label className="block text-sm font-medium text-emerald-300 ml-1">{t.recipe}</label>
-            <div className="glass-soft p-4 rounded-xl text-emerald-100 font-medium flex items-center gap-3 border-emerald-500/20">
-              <Scroll className="w-5 h-5 text-emerald-400" />
-              {recipeDisplay}
-            </div>
-          </div>
-
-          <div className="md:col-span-2 space-y-2">
-            <label className="block text-sm font-medium text-emerald-300 ml-1">{t.expPerItem}</label>
+          <section className="max-w-xs">
+            {step(3, x.stepXp)}
+            <label htmlFor="xp-per-craft" className="sr-only">{x.stepXp}</label>
             <div className="relative">
               <input
+                id="xp-per-craft"
                 type="number"
-                value={expPerItem}
-                onChange={(e) => setExpPerItem(e.target.value)}
-                placeholder={t.expPlaceholder}
-                className="glass-soft w-full p-4 rounded-xl text-emerald-50 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all duration-300"
-                required
+                inputMode="numeric"
+                min={1}
+                value={xp}
+                onChange={(e) => setXp(e.target.value)}
+                placeholder="150"
+                className="input font-mono pr-12"
               />
-              <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-emerald-400/50 text-sm font-medium">
-                XP
-              </div>
+              <span className="absolute inset-y-0 right-3.5 flex items-center text-xs font-semibold text-subtle pointer-events-none">XP</span>
             </div>
-          </div>
+            <p className="help">{x.xpHelp}</p>
+          </section>
         </div>
 
-        <button
-          type="submit"
-          className="glass-shimmer w-full py-4 rounded-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 active:from-emerald-700 active:to-teal-700 text-white shadow-lg hover:shadow-xl hover:shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5 border-emerald-500/30"
-        >
-          {t.calculate}
-        </button>
-      </form>
+        <div ref={resultRef} className="card p-5 md:p-6 lg:sticky lg:top-24 space-y-5 scroll-mt-24" aria-live="polite">
+          <div className="flex items-center justify-between">
+            <span className="caps-label">{x.crafts}</span>
+            {result && <span className="flex items-center gap-1.5 text-xs font-semibold text-success"><span className="w-1.5 h-1.5 rounded-full bg-success" />{x.live}</span>}
+          </div>
+          {result ? (
+            <>
+              <div className="font-display font-extrabold text-accent text-5xl leading-none tracking-tight">
+                {fmt(result.crafts)}<span className="text-base font-semibold text-muted tracking-normal ml-2">{x.craftsUnit}</span>
+              </div>
+              <div>
+                <div className="h-2.5 rounded-full bg-gradient-to-r from-primary to-accent" />
+                <div className="flex justify-between mt-1.5 text-xs text-muted font-medium">
+                  <span>{x.level} {from}</span><span className="font-mono">{fmt(result.expDiff)} XP</span><span>{x.level} {to}</span>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-2.5">
+                {[x.resource1, x.resource2].map((label) => (
+                  <div key={label} className="card-inset p-3">
+                    <div className="font-mono font-bold text-lg text-fg">{fmt(result.resources)}</div>
+                    <div className="text-xs text-muted font-medium">{label}</div>
+                    <div className="text-xs text-subtle">{x.perCraft(result.per)}</div>
+                  </div>
+                ))}
+              </div>
+              {recipe && <p className="text-sm text-muted flex items-center gap-2"><Scroll className="w-4 h-4 text-primary" /> {recipe}</p>}
+            </>
+          ) : (
+            <p className="text-sm text-muted leading-relaxed">{x.empty}</p>
+          )}
+        </div>
+      </div>
 
+      {/* phones: the result stays visible above the tab bar */}
       {result && (
-        <div className="glass mt-8 rounded-3xl max-w-2xl w-full overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-500 border-emerald-500/30">
-          <div className="glass-strong px-8 py-6 border-b border-emerald-500/20">
-            <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-              <Hammer className="w-6 h-6 text-emerald-400" />
-              {t.resultsFor} <span className="text-emerald-300">{PROFESSION_NAMES[language][result.selectedProfession]}</span>
-              <span className="text-sm px-3 py-1 bg-black/30 rounded-full text-emerald-200/80 ml-auto border border-white/5">
-                {result.range}
-              </span>
-            </h2>
-          </div>
-          <div className="p-8">
-            <ul className="space-y-4">
-              <li className="glass-soft flex items-center justify-between p-4 rounded-xl">
-                <span className="text-emerald-100/80">{t.firstResource}</span>
-                <span className="font-bold text-2xl text-white font-mono">{result.resourceCount.toLocaleString()}</span>
-              </li>
-              <li className="glass-soft flex items-center justify-between p-4 rounded-xl">
-                <span className="text-emerald-100/80">{t.secondResource}</span>
-                <span className="font-bold text-2xl text-white font-mono">{result.resourceCount.toLocaleString()}</span>
-              </li>
-              <div className="my-2 border-t border-white/10" />
-              <li className="flex items-center justify-between">
-                <span className="text-emerald-200 font-medium">{t.craftsNeeded}</span>
-                <span className="font-bold text-3xl text-emerald-400 font-mono drop-shadow-sm">
-                  {result.craftCount.toLocaleString()}
-                </span>
-              </li>
-              <li className="flex items-center justify-between">
-                <span className="text-emerald-200/60 text-sm">{t.xpDiff}</span>
-                <span className="font-medium text-emerald-200/60 font-mono">{result.expDiff.toLocaleString()} XP</span>
-              </li>
-            </ul>
-          </div>
+        <button
+          type="button"
+          onClick={() => resultRef.current?.scrollIntoView({ behavior: 'smooth' })}
+          className="lg:hidden fixed left-3 right-3 bottom-[76px] z-20 card shadow-pop flex items-center gap-3 px-4 py-3 text-left"
+        >
+          <span className="font-display font-extrabold text-2xl text-accent">{fmt(result.crafts)}</span>
+          <span className="text-xs text-muted leading-tight">
+            <strong className="text-fg">{x.craftsUnit}</strong> → {x.level} {to}<br />{fmt(result.resources)} × 2
+          </span>
+          <span className="ml-auto icon-btn w-9 h-9"><ChevronUp className="w-4 h-4" /></span>
+        </button>
+      )}
+
+      {toast && (
+        <div role="status" className="fixed bottom-24 lg:bottom-8 left-1/2 -translate-x-1/2 z-50 card shadow-pop px-4 py-2 text-sm font-semibold">
+          {toast}
         </div>
       )}
     </div>

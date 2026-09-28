@@ -26,13 +26,13 @@ export function ChangelogPage({ language }: ChangelogPageProps) {
   const getChangeColor = (type: ChangeType) => {
     switch (type) {
       case 'feature':
-        return 'bg-emerald-500/20 border-emerald-500/30 text-emerald-300';
+        return 'bg-primary/20 border-line text-primary';
       case 'improvement':
-        return 'bg-blue-500/20 border-blue-500/30 text-blue-300';
+        return 'bg-primary/15 border-primary/30 text-primary';
       case 'fix':
-        return 'bg-amber-500/20 border-amber-500/30 text-amber-300';
+        return 'bg-warning/15 border-warning/30 text-warning';
       case 'update':
-        return 'bg-purple-500/20 border-purple-500/30 text-purple-300';
+        return 'bg-success/15 border-success/30 text-success';
     }
   };
 
@@ -40,29 +40,29 @@ export function ChangelogPage({ language }: ChangelogPageProps) {
     <>
       <PageSeo title={content.title} description={content.description} path="/changelog" />
 
-      <div className="w-full max-w-4xl mx-auto px-4">
-        <div className="backdrop-blur-xl bg-gray-900/80 border border-white/10 shadow-2xl rounded-3xl p-8 md:p-12">
+      <div className="max-w-3xl">
+        <div>
           <h1 className="page-title mb-4">
             {content.title}
           </h1>
-          <p className="text-emerald-100/70 text-center text-lg mb-12">
+          <p className="page-subtitle mb-8">
             {content.description}
           </p>
 
-          <div className="space-y-8">
+          <div className="space-y-4">
             {changelog.map((entry) => (
               <div
                 key={entry.version}
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+                className="card p-5 md:p-6"
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex items-center gap-2">
-                    <div className="px-4 py-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/30">
-                      <span className="text-emerald-300 font-bold text-lg">
+                    <div className="px-4 py-1.5 rounded-lg bg-primary/10 border border-primary/20">
+                      <span className="text-primary font-bold text-lg">
                         v{entry.version}
                       </span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-emerald-100/60 text-sm">
+                    <div className="flex items-center gap-1.5 text-subtle text-sm">
                       <Clock className="w-4 h-4" />
                       <span>{entry.date}</span>
                     </div>
@@ -82,7 +82,7 @@ export function ChangelogPage({ language }: ChangelogPageProps) {
                         <div className={`text-xs font-semibold mb-1 ${getChangeColor(change.type).split(' ')[2]}`}>
                           {content.typeLabels[change.type]}
                         </div>
-                        <p className="text-emerald-100/80 leading-relaxed">
+                        <p className="text-muted leading-relaxed">
                           {change.text[language]}
                         </p>
                       </div>
@@ -93,8 +93,8 @@ export function ChangelogPage({ language }: ChangelogPageProps) {
             ))}
           </div>
 
-          <div className="mt-12 p-6 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl text-center">
-            <p className="text-emerald-200/80 text-sm">
+          <div className="mt-12 p-6 bg-primary/5 border border-primary/20 rounded-2xl">
+            <p className="text-muted text-sm">
               {content.comingSoon}
             </p>
           </div>
