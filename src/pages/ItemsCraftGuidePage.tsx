@@ -1,5 +1,5 @@
 // src/pages/ItemsCraftGuidePage.tsx
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { HowItWorks } from "../components/HowItWorks";
 import {
   loadWakfuData,
@@ -78,7 +78,7 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
       .finally(() => setLoading(false));
   }, [language]);
 
-  const isCraftable = (id: number) => (recipesByResultId.get(id)?.length ?? 0) > 0;
+  const isCraftable = useCallback((id: number) => (recipesByResultId.get(id)?.length ?? 0) > 0, [recipesByResultId]);
 
   // Search only craftables
   const craftableItems = useMemo(() => {
@@ -117,8 +117,14 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
     });
   };
 
-  const getExpanded = (rootId: number) => expandedByRoot.get(rootId) ?? new Set<number>();
-  const getRecipeChoice = (rootId: number) => recipeChoiceByRoot.get(rootId) ?? new Map<number, number>();
+  const getExpanded = useCallback(
+    (rootId: number) => expandedByRoot.get(rootId) ?? new Set<number>(),
+    [expandedByRoot],
+  );
+  const getRecipeChoice = useCallback(
+    (rootId: number) => recipeChoiceByRoot.get(rootId) ?? new Map<number, number>(),
+    [recipeChoiceByRoot],
+  );
 
   const addItem = (itemId: number) => {
     ensureRootState(itemId);
@@ -294,7 +300,7 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
         const nb = itemsById.get(b.itemId)?.name ?? "";
         return na.localeCompare(nb);
       });
-  }, [selected, expandedByRoot, recipeChoiceByRoot, recipesByResultId, itemsById]);
+  }, [selected, recipesByResultId, itemsById, getExpanded, getRecipeChoice, isCraftable]);
 
   const copyShoppingList = async () => {
     const lines = shoppingList.map((r) => {

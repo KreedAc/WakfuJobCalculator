@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { craftsNeeded, resourcesPerCraft } from './xpCalculator';
-import { processDescription, initializeRuneLevels } from '../utils/sublimationUtils';
+import { processDescription, initializeRuneLevels, matchesEquipmentSlots } from '../utils/sublimationUtils';
 import type { Sublimation } from '../data/fallbackSublimations';
 
 describe('XP calculator', () => {
@@ -35,5 +35,27 @@ describe('sublimation descriptions', () => {
   });
   it('initializes every rune at its minimum level', () => {
     expect(initializeRuneLevels([rune])).toEqual({ Influence: 1 });
+  });
+});
+
+describe('sublimation socket filter', () => {
+  const rgb = { name: 'x', colors: ['R', 'G', 'B'] } as unknown as Sublimation;
+  const withJoker = { name: 'y', colors: ['R', 'J', 'B'] } as unknown as Sublimation;
+  const epic = { name: 'z', colors: ['Epic'] } as unknown as Sublimation;
+
+  it('accepts everything when no socket is set', () => {
+    expect(matchesEquipmentSlots(['Any', 'Any', 'Any', 'Any'], epic)).toBe(true);
+  });
+  it('matches the pattern on sockets 1-2-3 or 2-3-4', () => {
+    expect(matchesEquipmentSlots(['R', 'G', 'B', 'Any'], rgb)).toBe(true);
+    expect(matchesEquipmentSlots(['Any', 'R', 'G', 'B'], rgb)).toBe(true);
+    expect(matchesEquipmentSlots(['R', 'B', 'G', 'Any'], rgb)).toBe(false);
+  });
+  it('treats white as a joker on either side', () => {
+    expect(matchesEquipmentSlots(['R', 'J', 'B', 'Any'], rgb)).toBe(true);
+    expect(matchesEquipmentSlots(['R', 'G', 'B', 'Any'], withJoker)).toBe(true);
+  });
+  it('never matches runes without a 3-color pattern', () => {
+    expect(matchesEquipmentSlots(['R', 'G', 'B', 'R'], epic)).toBe(false);
   });
 });
