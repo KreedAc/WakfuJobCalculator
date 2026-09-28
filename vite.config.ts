@@ -7,4 +7,9 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  ssr: {
+    // CommonJS package without named ESM exports: bundle it into the
+    // prerender build instead of importing it from node_modules.
+    noExternal: ['react-helmet-async'],
+  },
 });

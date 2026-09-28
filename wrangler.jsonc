@@ -1,9 +1,12 @@
 // Cloudflare Workers config: deploy the Vite build output as a static site.
+// Every page is prerendered to HTML (see scripts/prerender.mjs), so unknown
+// URLs get the prerendered 404 page with a real 404 status.
 {
   "name": "wakfujobcalculator",
   "compatibility_date": "2026-07-04",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
   }
 }

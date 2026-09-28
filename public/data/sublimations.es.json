@@ -225,7 +225,7 @@
     "step": 1,
     "obtenation": {
       "name": "Fisura Tainela",
-      "localIcon": "icons/rift.png"
+      "localIcon": "/data/icons/rift.png"
     },
     "category": "Utility",
     "values": [

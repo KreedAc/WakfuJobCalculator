@@ -1,42 +1,32 @@
-import { useState, lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, Link } from 'react-router-dom';
-import { CalculatorPage } from './pages/CalculatorPage';
+import { useState, useEffect, startTransition, Suspense } from 'react';
+import { Routes, Route, useLocation, Link } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
-
-// Every page except the landing one is lazy-loaded to keep the initial bundle small.
-const SublimationsPage = lazy(() => import('./pages/SublimationsPage').then(m => ({ default: m.SublimationsPage })));
-const ItemsCraftGuidePage = lazy(() => import('./pages/ItemsCraftGuidePage').then(m => ({ default: m.ItemsCraftGuidePage })));
-const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
-const ChangelogPage = lazy(() => import('./pages/ChangelogPage').then(m => ({ default: m.ChangelogPage })));
-const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage').then(m => ({ default: m.PrivacyPolicyPage })));
-const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage').then(m => ({ default: m.TermsOfServicePage })));
-const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
-const GuidesPage = lazy(() => import('./pages/GuidesPage').then(m => ({ default: m.GuidesPage })));
-const TreasuresPage = lazy(() => import('./pages/TreasuresPage'));
-const BeginnersGuideProfessions = lazy(() => import('./pages/guides/BeginnersGuideProfessions').then(m => ({ default: m.BeginnersGuideProfessions })));
-const CompleteSublimationsGuide = lazy(() => import('./pages/guides/CompleteSublimationsGuide').then(m => ({ default: m.CompleteSublimationsGuide })));
-const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage').then(m => ({ default: m.CookiePolicyPage })));
-const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage').then(m => ({ default: m.DisclaimerPage })));
-const CombatCalcPage = lazy(() => import('./pages/CombatCalcPage').then(m => ({ default: m.CombatCalcPage })));
-const BuilderPage = lazy(() => import('./pages/BuilderPage').then(m => ({ default: m.BuilderPage })));
+import { ROUTES, NotFoundPage } from './routes';
 import { LanguageSelector } from './components/LanguageSelector';
 import { useClickOutside } from './hooks/useClickOutside';
 import { TRANSLATIONS, type Language } from './constants/translations';
 
 const LANG_STORAGE_KEY = 'wakfu-lang';
 
-function getInitialLanguage(): Language {
+function getSavedLanguage(): Language | null {
   try {
     const saved = localStorage.getItem(LANG_STORAGE_KEY);
     if (saved && saved in TRANSLATIONS) return saved as Language;
   } catch {
-    // localStorage unavailable (private mode) — fall back to default
+    // localStorage unavailable (private mode or server render)
   }
-  return 'en';
+  return null;
 }
 
-function AppContent() {
-  const [lang, setLang] = useState<Language>(getInitialLanguage);
+export default function App() {
+  // Pages are prerendered in English; a saved language is applied after
+  // hydration so the server HTML and the first client render always match.
+  // As a transition, React finishes hydrating lazy routes before re-rendering.
+  const [lang, setLang] = useState<Language>('en');
+  useEffect(() => {
+    const saved = getSavedLanguage();
+    if (saved && saved !== 'en') startTransition(() => setLang(saved));
+  }, []);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -99,22 +89,10 @@ function AppContent() {
           }
         >
         <Routes>
-          <Route path="/" element={<CalculatorPage language={lang} />} />
-          <Route path="/sublimations" element={<SublimationsPage language={lang} />} />
-          <Route path="/items-craft-guide" element={<ItemsCraftGuidePage language={lang} />} />
-          <Route path="/treasures" element={<TreasuresPage language={lang} />} />
-          <Route path="/combat-calc" element={<CombatCalcPage language={lang} />} />
-          <Route path="/builder" element={<BuilderPage language={lang} />} />
-          <Route path="/guides" element={<GuidesPage language={lang} />} />
-          <Route path="/guides/beginners-guide-professions" element={<BeginnersGuideProfessions language={lang} />} />
-          <Route path="/guides/complete-sublimations-guide" element={<CompleteSublimationsGuide language={lang} />} />
-          <Route path="/about" element={<AboutPage language={lang} />} />
-          <Route path="/changelog" element={<ChangelogPage language={lang} />} />
-          <Route path="/privacy" element={<PrivacyPolicyPage language={lang} />} />
-          <Route path="/terms" element={<TermsOfServicePage language={lang} />} />
-          <Route path="/cookies" element={<CookiePolicyPage language={lang} />} />
-          <Route path="/disclaimer" element={<DisclaimerPage language={lang} />} />
-          <Route path="/contact" element={<ContactPage language={lang} />} />
+          {ROUTES.map((r) => (
+            <Route key={r.path} path={r.path} element={r.render(lang)} />
+          ))}
+          <Route path="*" element={<NotFoundPage language={lang} />} />
         </Routes>
         </Suspense>
 
@@ -164,13 +142,5 @@ function AppContent() {
         </footer>
       </div>
     </div>
-  );
-}
-
-export default function App() {
-  return (
-    <BrowserRouter>
-      <AppContent />
-    </BrowserRouter>
   );
 }

@@ -1,4 +1,4 @@
-import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { PageSeo } from '../components/PageSeo';
 import { Cookie } from 'lucide-react';
 import { type Language } from '../constants/translations';
 
@@ -377,11 +377,8 @@ export function CookiePolicyPage({ language }: CookiePolicyPageProps) {
   const pageContent = content[language];
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>{pageContent.title} - Wakfu Job Calculator</title>
-        <meta name="description" content="Learn about how Wakfu Job Calculator uses cookies and similar technologies. Understand your privacy and control options." />
-      </Helmet>
+    <>
+      <PageSeo title={pageContent.title} description={"Learn about how Wakfu Job Calculator uses cookies and similar technologies. Understand your privacy and control options."} path="/cookies" />
 
       <div className="w-full max-w-5xl mx-auto px-4">
         <div className="backdrop-blur-xl bg-gray-900/80 border border-white/10 shadow-2xl rounded-3xl p-8 md:p-12">
@@ -519,6 +516,6 @@ export function CookiePolicyPage({ language }: CookiePolicyPageProps) {
           </div>
         </div>
       </div>
-    </HelmetProvider>
+    </>
   );
 }

@@ -27,3 +27,6 @@ vite.config.ts.timestamp-*
 # script-generated report, not served
 scripts/treasures.i18n.report.json
 scripts/sublimations.i18n.report.json
+
+# prerender SSR bundle (build-time only)
+dist-server
