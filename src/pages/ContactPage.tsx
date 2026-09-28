@@ -14,38 +14,38 @@ export function ContactPage({ language }: ContactPageProps) {
     <>
       <PageSeo title={pageContent.title} description={pageContent.description} path="/contact" />
 
-      <div className="w-full max-w-5xl mx-auto px-4">
-        <div className="backdrop-blur-xl bg-gray-900/80 border border-white/10 shadow-2xl rounded-3xl p-8 md:p-12">
+      <div className="max-w-3xl">
+        <div>
           <h1 className="page-title mb-4">
             {pageContent.title}
           </h1>
-          <p className="text-emerald-100/70 text-center text-lg mb-12">
+          <p className="page-subtitle mb-8">
             {pageContent.description}
           </p>
 
-          <div className="space-y-8">
+          <div className="space-y-4">
             {pageContent.sections.map((section, idx) => {
               const IconComponent = section.icon;
               return (
                 <div
                   key={idx}
-                  className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+                  className="card p-5 md:p-6"
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-emerald-300" />
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-primary" />
                     </div>
-                    <h2 className="text-2xl font-bold text-emerald-200">
+                    <h2 className="section-title text-xl">
                       {section.title}
                     </h2>
                   </div>
 
-                  <p className="text-emerald-100/80 leading-relaxed">
+                  <p className="text-muted leading-relaxed">
                     {section.content}
                   </p>
 
                   {section.action && (
-                    <p className="text-emerald-300 font-medium mt-3">
+                    <p className="text-primary font-medium mt-3">
                       {section.action}
                     </p>
                   )}
@@ -55,9 +55,9 @@ export function ContactPage({ language }: ContactPageProps) {
                       {section.list.map((item, itemIdx) => (
                         <li
                           key={itemIdx}
-                          className="flex items-start gap-2 text-emerald-100/80"
+                          className="flex items-start gap-2 text-muted"
                         >
-                          <span className="text-emerald-400 mt-1.5">•</span>
+                          <span className="mt-[9px] w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -65,7 +65,7 @@ export function ContactPage({ language }: ContactPageProps) {
                   )}
 
                   {section.additional && (
-                    <p className="text-emerald-100/70 leading-relaxed mt-4 text-sm">
+                    <p className="text-muted leading-relaxed mt-4 text-sm">
                       {section.additional}
                     </p>
                   )}
@@ -75,13 +75,13 @@ export function ContactPage({ language }: ContactPageProps) {
           </div>
 
           <div className="mt-12 space-y-4">
-            <div className="p-6 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
-              <p className="text-center text-emerald-200/90 text-sm leading-relaxed">
-                <strong className="text-emerald-300">Important:</strong> {pageContent.note}
+            <div className="p-6 bg-primary/5 border border-primary/20 rounded-2xl">
+              <p className="text-muted text-sm leading-relaxed">
+                <strong className="text-primary">Important:</strong> {pageContent.note}
               </p>
             </div>
 
-            <div className="text-center text-emerald-200/70 text-sm">
+            <div className="text-muted text-sm">
               {pageContent.credits}
             </div>
           </div>

@@ -13,7 +13,7 @@ export function LocalImage({ src, alt, className = '', fallbackText }: LocalImag
   if (error) {
     return (
       <div
-        className={`flex items-center justify-center bg-slate-800 text-slate-500 text-[10px] font-bold ${className}`}
+        className={`flex items-center justify-center bg-surface2 text-subtle text-[10px] font-bold ${className}`}
         title={alt}
       >
         {fallbackText || '?'}

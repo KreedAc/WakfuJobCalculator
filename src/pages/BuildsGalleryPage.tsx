@@ -4,6 +4,7 @@ import { Heart, Flag, Search, ExternalLink } from 'lucide-react';
 import { PageSeo } from '../components/PageSeo';
 import { ItemIcon } from '../components/ItemIcon';
 import { BuilderTabs } from '../components/BuilderTabs';
+import { PageHeader } from '../components/ui/PageHeader';
 import { loadEquipmentData, decodeBuild, computeTotals, type EquipmentData } from '../lib/builder';
 import {
   listBuilds, getBuild, likeBuild, reportBuild, likedBuilds, rememberLike,
@@ -45,15 +46,15 @@ function BuildCard({ build, data, language, t, liked, highlighted, onLike, onRep
   const cls = CLASS_NAMES[language][build.class];
 
   return (
-    <article className={`glass rounded-2xl p-4 flex flex-col gap-3 border ${highlighted ? 'border-emerald-400/60' : 'border-transparent'}`}>
+    <article className={`card rounded-2xl p-4 flex flex-col gap-3 border ${highlighted ? 'border-line' : 'border-transparent'}`}>
       <header className="flex items-start gap-3">
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-emerald-400/80">
+          <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-primary">
             <span>{t.level} {build.level}</span>
-            {cls && <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 normal-case tracking-normal">{cls}</span>}
+            {cls && <span className="px-2 py-0.5 rounded-full bg-primary/15 border border-line normal-case tracking-normal">{cls}</span>}
           </div>
-          <h2 className="text-base font-bold text-emerald-50 break-words mt-1">{build.name}</h2>
-          <p className="text-xs text-emerald-200/60">
+          <h2 className="text-base font-bold text-fg break-words mt-1">{build.name}</h2>
+          <p className="text-xs text-subtle">
             {t.by(build.author || t.anonymous)} · {relativeDate(build.created_at, language)}
           </p>
         </div>
@@ -63,7 +64,7 @@ function BuildCard({ build, data, language, t, liked, highlighted, onLike, onRep
           aria-label={t.like}
           aria-pressed={liked}
           className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-sm font-semibold border transition-all shrink-0
-            ${liked ? 'text-pink-300 border-pink-400/40 bg-pink-500/10' : 'text-emerald-200/70 border-white/10 hover:text-pink-300 hover:border-pink-400/40'}`}
+            ${liked ? 'text-accent border-accent/40 bg-accent/10' : 'text-muted border-line hover:text-accent hover:border-accent/40'}`}
         >
           <Heart className={`w-4 h-4 ${liked ? 'fill-current' : ''}`} /> {build.likes}
         </button>
@@ -76,19 +77,19 @@ function BuildCard({ build, data, language, t, liked, highlighted, onLike, onRep
       )}
 
       {totals && (
-        <p className="font-mono text-xs text-emerald-100/80">
+        <p className="font-mono text-xs text-muted">
           {totals.hp} PV · {totals.ap} PA · {totals.mp} PM · {totals.wp} PW · {totals.critHit ?? 0}% CC
         </p>
       )}
 
       {build.description && (
-        <p className="text-sm text-emerald-100/75 whitespace-pre-line break-words line-clamp-4">{build.description}</p>
+        <p className="text-sm text-muted whitespace-pre-line break-words line-clamp-4">{build.description}</p>
       )}
 
       <footer className="mt-auto flex items-center gap-2 pt-1">
         <Link
           to={{ pathname: '/builder', hash: `b=${build.code}` }}
-          className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white"
+          className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-semibold bg-accent hover:bg-accent-strong text-on-accent"
         >
           <ExternalLink className="w-4 h-4" /> {t.open}
         </Link>
@@ -96,7 +97,7 @@ function BuildCard({ build, data, language, t, liked, highlighted, onLike, onRep
           onClick={() => onReport(build)}
           title={t.report}
           aria-label={t.report}
-          className="ml-auto p-2 text-emerald-200/35 hover:text-red-300 transition-colors"
+          className="ml-auto p-2 text-subtle hover:text-danger transition-colors"
         >
           <Flag className="w-4 h-4" />
         </button>
@@ -180,31 +181,29 @@ export function BuildsGalleryPage({ language }: { language: Language }) {
 
   const filtered = query.class >= 0 || query.min > 0 || query.q.trim() !== '';
   const bracketValue = query.min ? `${query.min}-${query.max}` : '';
-  const selectClass = 'glass-soft px-3 py-2.5 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40';
+  const selectClass = 'card-inset px-3 py-2.5 rounded-xl text-fg text-sm focus:outline-none focus:ring-2 focus:ring-primary/25';
   const cardProps = { data, language, t, onLike, onReport };
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 animate-in fade-in duration-500">
+    <div>
       <PageSeo title={t.title} description={t.subtitle} path="/builds" />
-      <h1 className="page-title mb-2">{t.title}</h1>
-      <p className="text-emerald-100/80 mb-6 text-center max-w-2xl mx-auto text-base drop-shadow-md">{t.subtitle}</p>
-      <BuilderTabs current="gallery" labels={{ builder: t.tabBuilder, gallery: t.tabGallery }} />
+      <PageHeader title={t.title} subtitle={t.subtitle} actions={<BuilderTabs current="gallery" labels={{ builder: t.tabBuilder, gallery: t.tabGallery }} />} />
 
       {featured && (
         <section className="mb-6" aria-label={t.shared}>
-          <div className="text-[11px] uppercase tracking-widest text-emerald-400/60 font-semibold mb-2">{t.shared}</div>
+          <div className="text-[11px] uppercase tracking-widest text-primary font-semibold mb-2">{t.shared}</div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <BuildCard build={featured} liked={liked.has(featured.id)} highlighted {...cardProps} />
           </div>
         </section>
       )}
 
-      <div className="glass rounded-2xl p-3 mb-5 flex flex-wrap gap-2 items-center">
+      <div className="card rounded-2xl p-3 mb-5 flex flex-wrap gap-2 items-center">
         <div className="relative flex-1 min-w-[200px]">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400 pointer-events-none" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary pointer-events-none" />
           <input
             value={search} onChange={(e) => setSearch(e.target.value)} placeholder={t.search} aria-label={t.search}
-            className="glass-soft w-full pl-9 pr-3 py-2.5 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+            className="card-inset w-full pl-9 pr-3 py-2.5 rounded-xl text-fg text-sm focus:outline-none focus:ring-2 focus:ring-primary/25"
           />
         </div>
         <select
@@ -228,13 +227,13 @@ export function BuildsGalleryPage({ language }: { language: Language }) {
           <option value="">{t.allLevels}</option>
           {LEVEL_BRACKETS.map(([min, max]) => <option key={min} value={`${min}-${max}`}>{min}–{max}</option>)}
         </select>
-        <div className="flex rounded-xl overflow-hidden border border-white/10" role="group">
+        <div className="flex rounded-xl overflow-hidden border border-line" role="group">
           {(['new', 'top'] as const).map((s) => (
             <button
               key={s}
               onClick={() => setQuery((q) => ({ ...q, sort: s }))}
               aria-pressed={query.sort === s}
-              className={`px-3 py-2.5 text-sm font-semibold transition-colors ${query.sort === s ? 'bg-emerald-500/25 text-emerald-100' : 'text-emerald-200/60 hover:text-emerald-200'}`}
+              className={`px-3 py-2.5 text-sm font-semibold transition-colors ${query.sort === s ? 'bg-primary/25 text-fg' : 'text-subtle hover:text-fg'}`}
             >
               {s === 'new' ? t.sortNew : t.sortTop}
             </button>
@@ -243,14 +242,14 @@ export function BuildsGalleryPage({ language }: { language: Language }) {
       </div>
 
       {status === 'error' && builds.length === 0 && (
-        <p className="text-center text-emerald-200/70 py-12">{t.unavailable}</p>
+        <p className="text-center text-muted py-12">{t.unavailable}</p>
       )}
       {status === 'ready' && builds.length === 0 && (
         filtered ? (
-          <p className="text-center text-emerald-200/70 py-12">{t.noMatch}</p>
+          <p className="text-center text-muted py-12">{t.noMatch}</p>
         ) : (
-          <p className="text-center text-emerald-200/70 py-12">
-            {t.empty} <Link to="/builder" className="underline text-emerald-300">{t.tabBuilder}</Link>
+          <p className="text-center text-muted py-12">
+            {t.empty} <Link to="/builder" className="underline text-primary">{t.tabBuilder}</Link>
           </p>
         )
       )}
@@ -261,19 +260,19 @@ export function BuildsGalleryPage({ language }: { language: Language }) {
 
       {status === 'loading' && (
         <div className="flex justify-center py-10">
-          <div className="w-8 h-8 border-2 border-emerald-400/30 border-t-emerald-400 rounded-full animate-spin" />
+          <div className="w-8 h-8 border-2 border-line border-t-primary rounded-full animate-spin" />
         </div>
       )}
       {status === 'ready' && hasMore && (
         <div className="flex justify-center mt-6">
-          <button onClick={() => load(page + 1)} className="px-5 py-2.5 rounded-xl glass-soft border border-emerald-500/30 text-emerald-200 font-semibold text-sm hover:border-emerald-400/60">
+          <button onClick={() => load(page + 1)} className="px-5 py-2.5 rounded-xl card-inset border border-line text-fg font-semibold text-sm hover:border-line">
             {t.loadMore}
           </button>
         </div>
       )}
 
       {toast && (
-        <div role="status" className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[110] glass-strong px-5 py-2.5 rounded-full text-sm text-emerald-200 border border-emerald-500/40">
+        <div role="status" className="fixed bottom-24 lg:bottom-8 left-1/2 -translate-x-1/2 z-[110] card shadow-pop px-5 py-2.5 rounded-full text-sm text-fg border border-line">
           {toast}
         </div>
       )}

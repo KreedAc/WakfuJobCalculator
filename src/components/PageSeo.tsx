@@ -4,7 +4,7 @@ const SITE_URL = 'https://wakfujobcalculator.com';
 
 // Social preview images generated per tool (public/og/*.jpg); other pages use the default.
 const OG_IMAGES: Record<string, string> = {
-  '/': 'xp-calculator',
+  '/xp-calculator': 'xp-calculator',
   '/builder': 'builder',
   '/builds': 'builder',
   '/sublimations': 'sublimations',

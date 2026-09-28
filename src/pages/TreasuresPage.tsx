@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Search } from 'lucide-react';
+import { Search, MapPin, Check } from 'lucide-react';
+import { PageHeader } from '../components/ui/PageHeader';
 import { HowItWorks } from '../components/HowItWorks';
 import { PageSeo } from '../components/PageSeo';
 import type { Language } from '../constants/translations';
@@ -32,6 +33,7 @@ export default function TreasuresPage({ language }: { language: Language }) {
   const [treasures, setTreasures] = useState<Treasure[]>([]);
   const [i18n, setI18n] = useState<TreasuresI18n | null>(null);
   const [query, setQuery] = useState('');
+  const [hideDone, setHideDone] = useState(false);
   const [completedTreasures, setCompletedTreasures] = useState<Set<string>>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -108,9 +110,10 @@ export default function TreasuresPage({ language }: { language: Language }) {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return treasures;
+    const visible = hideDone ? treasures.filter((tr) => !completedTreasures.has(tr.achievement)) : treasures;
+    if (!q) return visible;
 
-    return treasures.filter((tr) => {
+    return visible.filter((tr) => {
       const haystack = [
         tr.achievement,
         translate('achievements', tr.achievement),
@@ -126,121 +129,130 @@ export default function TreasuresPage({ language }: { language: Language }) {
 
       return haystack.includes(q);
     });
-  }, [treasures, query, translate]);
+  }, [treasures, query, translate, hideDone, completedTreasures]);
+
+  const done = treasures.filter((tr) => completedTreasures.has(tr.achievement)).length;
+  const pct = treasures.length ? Math.round((done / treasures.length) * 100) : 0;
+
+  const checkbox = (tr: Treasure) => {
+    const on = completedTreasures.has(tr.achievement);
+    return (
+      <button
+        type="button"
+        role="checkbox"
+        aria-checked={on}
+        aria-label={`${t.found}: ${translateAchievement(tr.achievement)}`}
+        onClick={() => toggleTreasure(tr.achievement)}
+        className={`w-6 h-6 rounded-lg border-2 grid place-items-center shrink-0 transition-colors
+          ${on ? 'bg-success border-success text-bg' : 'border-line-strong hover:border-primary'}`}
+      >
+        {on && <Check className="w-4 h-4" strokeWidth={3} />}
+      </button>
+    );
+  };
+
+  const artifacts = (tr: Treasure) =>
+    (tr.artifacts || []).length ? (
+      <div className="flex flex-wrap gap-1.5">
+        {tr.artifacts.map((a) => <span key={a} className="badge badge-primary">{translateArtifact(a)}</span>)}
+      </div>
+    ) : <span className="text-subtle">—</span>;
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 flex flex-col items-center animate-in fade-in duration-500">
+    <div>
       <PageSeo title={t.title} description={t.subtitle} path="/treasures" />
-      <h1 className="page-title mb-4">
-        {t.title}
-      </h1>
-      <p className="text-emerald-100/90 mb-6 text-center max-w-2xl text-lg leading-relaxed drop-shadow-md">
-        {t.subtitle}
-      </p>
+      <PageHeader title={t.title} subtitle={t.subtitle} />
 
-      <div className="w-full">
-        <div className="backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl p-6 md:p-8" style={{ background: 'rgba(15, 23, 42, 0.7)' }}>
-
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="relative w-full sm:max-w-md">
-              <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-emerald-400" />
-              <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder={t.searchPlaceholder}
-                className="w-full rounded-xl border border-white/10 bg-black/40 py-3 pl-12 pr-4 text-sm text-white shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-500/50"
-              />
-            </div>
-
-            <div className="text-sm text-emerald-300 font-medium">
-              {t.counts(filtered.length, treasures.length)}
-            </div>
+      <div className="card p-4 md:p-5 mb-5 space-y-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
+          <div className="relative flex-1">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-subtle pointer-events-none" />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={t.searchPlaceholder}
+              aria-label={t.searchPlaceholder}
+              className="input pl-10"
+            />
           </div>
-
-          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-black/40 shadow-lg">
-            <table className="w-full min-w-[900px] table-auto">
-              <thead className="bg-black/40 backdrop-blur-sm">
-              <tr>
-                <th className="px-4 py-4 text-center text-xs font-semibold uppercase tracking-wider text-emerald-300 w-16">
-                  ✓
-                </th>
-                <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-wider text-emerald-300">
-                  {t.columns.achievement}
-                </th>
-                <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-wider text-emerald-300">
-                  {t.columns.location}
-                </th>
-                <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-wider text-emerald-300">
-                  {t.columns.coords}
-                </th>
-                <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-wider text-emerald-300">
-                  {t.columns.artifacts}
-                </th>
-                <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-wider text-emerald-300">
-                  {t.columns.rewards}
-                </th>
-              </tr>
-              </thead>
-
-              <tbody>
-              {filtered.map((tr, idx) => (
-                <tr
-                  key={`${tr.achievement}-${idx}`}
-                  className="border-t border-white/10 hover:bg-emerald-500/5 transition-colors duration-150"
-                >
-                  <td className="px-4 py-4 text-center">
-                    <input
-                      type="checkbox"
-                      checked={completedTreasures.has(tr.achievement)}
-                      onChange={() => toggleTreasure(tr.achievement)}
-                      className="h-5 w-5 cursor-pointer rounded border-white/20 bg-black/40 text-emerald-500 focus:ring-2 focus:ring-emerald-500/50 focus:ring-offset-0"
-                    />
-                  </td>
-                  <td className="px-4 py-4 text-sm font-semibold text-emerald-50">
-                    {translateAchievement(tr.achievement)}
-                  </td>
-                  <td className="px-4 py-4 text-sm text-emerald-100/90">
-                    {translateLocation(tr.zone)}
-                  </td>
-                  <td className="px-4 py-4 text-sm text-emerald-100/80">
-                    {formatCoords(tr.coords)}
-                  </td>
-                  <td className="px-4 py-4 text-sm text-emerald-100/90">
-                    {(tr.artifacts || []).length ? (
-                      <div className="flex flex-wrap gap-2">
-                        {tr.artifacts.map((a) => (
-                          <span
-                            key={a}
-                            className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs text-emerald-100 border border-emerald-500/30 font-medium"
-                          >
-                            {translateArtifact(a)}
-                          </span>
-                        ))}
-                      </div>
-                    ) : (
-                      <span className="text-emerald-100/40">—</span>
-                    )}
-                  </td>
-                  <td className="px-4 py-4 text-sm text-emerald-100/90">
-                    {tr.rewards || <span className="text-emerald-100/40">—</span>}
-                  </td>
-                </tr>
-              ))}
-
-              {filtered.length === 0 && (
-                <tr>
-                  <td colSpan={6} className="px-4 py-16 text-center text-base text-emerald-100/70">
-                    {t.empty}
-                  </td>
-                </tr>
-              )}
-              </tbody>
-            </table>
+          <button type="button" aria-pressed={hideDone} onClick={() => setHideDone((v) => !v)} className={`chip h-11 px-4 ${hideDone ? 'chip-active' : ''}`}>
+            {t.hideDone}
+          </button>
+        </div>
+        <div>
+          <div className="flex justify-between text-sm mb-1.5">
+            <span className="font-semibold text-fg">{t.progress(done, treasures.length)}</span>
+            <span className="text-subtle">{t.counts(filtered.length, treasures.length)}</span>
+          </div>
+          <div className="h-2 rounded-full bg-surface2 overflow-hidden">
+            <div className="h-full rounded-full bg-gradient-to-r from-primary to-success transition-all" style={{ width: `${pct}%` }} />
           </div>
         </div>
       </div>
 
-      <HowItWorks title={t.howItWorksTitle} text={t.howItWorks} className="mt-10 w-full" />
+      {filtered.length === 0 ? (
+        <div className="card py-14 text-center text-muted">{t.empty}</div>
+      ) : (
+        <>
+          {/* desktop: table */}
+          <div className="hidden md:block card overflow-hidden">
+            <table className="w-full text-sm">
+              <thead className="bg-bg2 border-b border-line">
+                <tr>
+                  <th className="w-14 px-4 py-3" />
+                  <th className="text-left px-4 py-3 caps-label">{t.columns.achievement}</th>
+                  <th className="text-left px-4 py-3 caps-label">{t.columns.location}</th>
+                  <th className="text-left px-4 py-3 caps-label">{t.columns.coords}</th>
+                  <th className="text-left px-4 py-3 caps-label">{t.columns.artifacts}</th>
+                  <th className="text-left px-4 py-3 caps-label">{t.columns.rewards}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map((tr, idx) => {
+                  const on = completedTreasures.has(tr.achievement);
+                  return (
+                    <tr key={`${tr.achievement}-${idx}`} className={`border-t border-line first:border-0 hover:bg-surface2/60 transition-colors ${on ? 'opacity-60' : ''}`}>
+                      <td className="px-4 py-3">{checkbox(tr)}</td>
+                      <td className="px-4 py-3 font-semibold text-fg first-letter:uppercase">{translateAchievement(tr.achievement)}</td>
+                      <td className="px-4 py-3 text-muted first-letter:uppercase">{translateLocation(tr.zone)}</td>
+                      <td className="px-4 py-3 font-mono text-muted whitespace-nowrap">{formatCoords(tr.coords)}</td>
+                      <td className="px-4 py-3">{artifacts(tr)}</td>
+                      <td className="px-4 py-3 text-muted">{tr.rewards || <span className="text-subtle">—</span>}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
+          {/* phones: cards */}
+          <ul className="md:hidden space-y-3">
+            {filtered.map((tr, idx) => {
+              const on = completedTreasures.has(tr.achievement);
+              return (
+                <li key={`${tr.achievement}-${idx}`} className={`card p-4 ${on ? 'opacity-60' : ''}`}>
+                  <div className="flex items-start gap-3">
+                    {checkbox(tr)}
+                    <div className="min-w-0 flex-1 space-y-2">
+                      <div className="font-semibold text-fg leading-snug first-letter:uppercase">{translateAchievement(tr.achievement)}</div>
+                      <div className="flex items-center gap-1.5 text-sm text-muted">
+                        <MapPin className="w-4 h-4 text-primary shrink-0" />
+                        <span className="truncate first-letter:uppercase">{translateLocation(tr.zone)}</span>
+                        <span className="font-mono text-subtle shrink-0">· {formatCoords(tr.coords)}</span>
+                      </div>
+                      {artifacts(tr)}
+                      {tr.rewards && <div className="text-sm text-muted">{tr.rewards}</div>}
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+
+      <HowItWorks title={t.howItWorksTitle} text={t.howItWorks} className="mt-8" />
     </div>
   );
 }

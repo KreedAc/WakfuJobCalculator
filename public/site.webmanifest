@@ -2,14 +2,17 @@
   "id": "/",
   "name": "Wakfu Job Calculator",
   "short_name": "WakfuJobCalc",
-  "description": "Free Wakfu tools: XP calculator, equipment builder, sublimations, craft guide, combat calculator.",
+  "description": "Free Wakfu tools: XP calculator, sublimations, craft guide, combat calculator and treasures.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "any",
-  "theme_color": "#0b1020",
-  "background_color": "#0f172a",
-  "categories": ["games", "utilities"],
+  "theme_color": "#0a0f1e",
+  "background_color": "#0a0f1e",
+  "categories": [
+    "games",
+    "utilities"
+  ],
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -25,7 +28,35 @@
     }
   ],
   "shortcuts": [
-    { "name": "Equipment Builder", "url": "/builder", "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }] },
-    { "name": "Sublimations", "url": "/sublimations", "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }] }
+    {
+      "name": "XP Calculator",
+      "url": "/xp-calculator",
+      "icons": [
+        {
+          "src": "/android-chrome-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Sublimations",
+      "url": "/sublimations",
+      "icons": [
+        {
+          "src": "/android-chrome-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Craft Guide",
+      "url": "/items-craft-guide",
+      "icons": [
+        {
+          "src": "/android-chrome-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
   ]
 }

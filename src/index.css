@@ -2,132 +2,237 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- Liquid Glass UI --- */
-.glass {
-  background: linear-gradient(
-    135deg,
-    rgba(6, 20, 18, 0.28) 0%,
-    rgba(16, 35, 30, 0.35) 100%
-  );
-  border: 1px solid rgba(110, 231, 183, 0.22);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  box-shadow:
-    0 8px 32px 0 rgba(0, 0, 0, 0.37),
-    inset 0 1px 1px 0 rgba(110, 231, 183, 0.15),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.2);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* ─── Fonts (self-hosted, latin subset: covers EN/FR/ES/PT) ─────────────── */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/inter-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 600 800;
+  font-display: swap;
+  src: url('/fonts/sora-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
 }
 
-.glass:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(6, 20, 18, 0.35) 0%,
-    rgba(16, 35, 30, 0.42) 100%
-  );
-  border-color: rgba(110, 231, 183, 0.3);
-  box-shadow:
-    0 12px 40px 0 rgba(0, 0, 0, 0.45),
-    inset 0 1px 2px 0 rgba(110, 231, 183, 0.2),
-    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.25);
+/* ─── Design tokens ─────────────────────────────────────────────────────────
+   Colors are "r g b" triplets so Tailwind opacity modifiers work
+   (bg-primary/10). Roles, not hues:
+     bg / bg2 / surface / surface2   page, sidebar, cards, inset areas
+     line / line-strong              borders
+     fg / muted / subtle             text, from strongest to weakest
+     primary  (Wakfu energy blue)    navigation, selection, links
+     accent   (Iop ember orange)     main actions and key results only
+     rarity-* (game item rarities)    item names, tuned per theme for contrast
+   Dark is the default; [data-theme="light"] is set before first paint by
+   the inline script in index.html. */
+:root {
+  color-scheme: dark;
+  --bg: 10 15 30;
+  --bg2: 14 20 40;
+  --surface: 19 27 51;
+  --surface2: 26 35 66;
+  --line: 37 48 90;
+  --line-strong: 52 66 122;
+  --fg: 234 240 255;
+  --muted: 163 174 208;
+  --subtle: 124 136 176;
+  --primary: 56 211 242;
+  --primary-strong: 123 228 248;
+  --on-primary: 3 32 42;
+  --accent: 255 122 69;
+  --accent-strong: 255 154 110;
+  --on-accent: 42 14 2;
+  --success: 61 220 151;
+  --warning: 245 184 61;
+  --danger: 255 107 129;
+  --rarity-rare: 74 222 128;
+  --rarity-mythic: 251 146 60;
+  --rarity-legendary: 250 204 21;
+  --rarity-relic: 167 139 250;
+  --rarity-souvenir: 56 189 248;
+  --rarity-epic: 244 114 182;
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 32px -12px rgb(0 0 0 / 0.6);
+  --shadow-pop: 0 24px 64px -16px rgb(0 0 0 / 0.7);
 }
 
-.glass-soft {
-  background: linear-gradient(
-    135deg,
-    rgba(6, 20, 18, 0.18) 0%,
-    rgba(16, 35, 30, 0.25) 100%
-  );
-  border: 1px solid rgba(110, 231, 183, 0.16);
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  box-shadow:
-    0 4px 24px 0 rgba(0, 0, 0, 0.25),
-    inset 0 1px 1px 0 rgba(110, 231, 183, 0.1),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.15);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+[data-theme='light'] {
+  color-scheme: light;
+  --bg: 245 247 252;
+  --bg2: 238 242 250;
+  --surface: 255 255 255;
+  --surface2: 244 246 251;
+  --line: 225 230 242;
+  --line-strong: 201 209 230;
+  --fg: 16 23 41;
+  --muted: 77 88 119;
+  --subtle: 107 116 145;
+  --primary: 8 131 163;
+  --primary-strong: 7 110 138;
+  --on-primary: 255 255 255;
+  --accent: 200 67 15;
+  --accent-strong: 168 54 10;
+  --on-accent: 255 255 255;
+  --success: 21 128 61;
+  --warning: 180 83 9;
+  --danger: 200 30 60;
+  --rarity-rare: 21 128 61;
+  --rarity-mythic: 194 65 12;
+  --rarity-legendary: 161 98 7;
+  --rarity-relic: 109 40 217;
+  --rarity-souvenir: 3 105 161;
+  --rarity-epic: 190 24 93;
+  --shadow-card: 0 1px 2px rgb(16 23 41 / 0.06), 0 8px 24px -12px rgb(16 23 41 / 0.18);
+  --shadow-pop: 0 24px 64px -16px rgb(16 23 41 / 0.35);
 }
 
-.glass-soft:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(6, 20, 18, 0.25) 0%,
-    rgba(16, 35, 30, 0.32) 100%
-  );
-  border-color: rgba(110, 231, 183, 0.22);
-  box-shadow:
-    0 6px 32px 0 rgba(0, 0, 0, 0.3),
-    inset 0 1px 2px 0 rgba(110, 231, 183, 0.15),
-    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.2);
-}
-
-.glass-strong {
-  background: linear-gradient(
-    135deg,
-    rgba(6, 20, 18, 0.38) 0%,
-    rgba(16, 35, 30, 0.48) 100%
-  );
-  border: 1px solid rgba(110, 231, 183, 0.28);
-  backdrop-filter: blur(24px) saturate(200%);
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
-  box-shadow:
-    0 12px 40px 0 rgba(0, 0, 0, 0.45),
-    inset 0 2px 2px 0 rgba(110, 231, 183, 0.2),
-    inset 0 -2px 2px 0 rgba(0, 0, 0, 0.25);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glass-strong:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(6, 20, 18, 0.45) 0%,
-    rgba(16, 35, 30, 0.55) 100%
-  );
-  border-color: rgba(110, 231, 183, 0.35);
-  box-shadow:
-    0 16px 48px 0 rgba(0, 0, 0, 0.5),
-    inset 0 2px 3px 0 rgba(110, 231, 183, 0.25),
-    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.3);
-}
-
-/* Liquid glass shimmer effect */
-@keyframes liquid-shimmer {
-  0% {
-    background-position: -200% center;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
   }
-  100% {
-    background-position: 200% center;
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  h1, h2, h3 {
+    @apply font-display tracking-tight;
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--primary));
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: rgb(var(--primary) / 0.3);
   }
 }
 
-.glass-shimmer {
-  position: relative;
-  overflow: hidden;
-}
-
-.glass-shimmer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(110, 231, 183, 0.1) 50%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: liquid-shimmer 3s ease-in-out infinite;
-  pointer-events: none;
-}
-
-/* Shared page heading: every page title uses the same emerald gradient. */
+/* ─── Components ────────────────────────────────────────────────────────── */
 @layer components {
+  .card {
+    @apply bg-surface border border-line rounded-2xl shadow-card;
+  }
+  .card-inset {
+    @apply bg-bg2 border border-line rounded-xl;
+  }
   .page-title {
-    @apply text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text
-      bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200
-      drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)];
+    @apply font-display text-[26px] md:text-[32px] font-bold leading-tight tracking-tight text-fg;
+  }
+  .page-subtitle {
+    @apply text-muted mt-1.5 max-w-2xl;
+  }
+  .section-title {
+    @apply font-display text-lg font-bold text-fg;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[12.5px] font-semibold text-primary bg-primary/10 px-2.5 py-1 rounded-full;
+  }
+  .caps-label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.08em] text-subtle;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 h-10 px-4 rounded-xl text-sm font-semibold
+      border border-line bg-surface text-fg transition-colors
+      hover:bg-surface2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply bg-accent text-on-accent border-transparent hover:bg-accent-strong;
+  }
+  .btn-ghost {
+    @apply bg-transparent border-transparent text-muted hover:text-fg hover:bg-surface2;
+  }
+  .btn-sm {
+    @apply h-8 px-3 text-[13px] rounded-lg;
+  }
+  .icon-btn {
+    @apply inline-flex items-center justify-center w-10 h-10 rounded-xl border border-line bg-surface text-muted
+      hover:text-fg hover:bg-surface2 transition-colors;
+  }
+
+  .label {
+    @apply block text-[13px] font-semibold text-muted mb-1.5;
+  }
+  .input {
+    @apply w-full h-11 px-3.5 rounded-xl bg-bg border border-line-strong text-fg text-[15px]
+      placeholder:text-subtle transition-colors
+      focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/25
+      disabled:opacity-60;
+  }
+  select.input {
+    @apply pr-9 appearance-none bg-no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237c88b0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-position: right 0.75rem center;
+  }
+  .help {
+    @apply text-[12.5px] text-subtle mt-1.5;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 h-8 px-3 rounded-full border border-line bg-surface
+      text-[13px] font-medium text-muted transition-colors hover:text-fg hover:border-line-strong;
+  }
+  .chip-active {
+    @apply border-primary bg-primary/10 text-fg hover:border-primary;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold border border-line bg-surface2 text-subtle;
+  }
+  .badge-accent {
+    @apply border-transparent bg-accent/15 text-accent;
+  }
+  .badge-primary {
+    @apply border-transparent bg-primary/15 text-primary;
+  }
+  .kbd {
+    @apply font-mono text-[11px] px-1.5 py-0.5 rounded-md border border-line-strong text-muted whitespace-nowrap;
+  }
+  .link {
+    @apply text-primary font-semibold hover:underline underline-offset-2;
+  }
+
+  /* long-form text (guides, legal pages) */
+  .prose-app {
+    @apply text-muted leading-relaxed;
+  }
+  .prose-app h2 {
+    @apply font-display text-xl font-bold text-fg mt-8 mb-3;
+  }
+  .prose-app h3 {
+    @apply font-display text-base font-bold text-fg mt-6 mb-2;
+  }
+  .prose-app p {
+    @apply mb-3;
+  }
+  .prose-app ul {
+    @apply list-disc pl-5 space-y-1.5 mb-3;
+  }
+  .prose-app strong {
+    @apply text-fg font-semibold;
+  }
+  .prose-app a {
+    @apply text-primary font-semibold hover:underline;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .pb-safe {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
   }
 }

@@ -8,13 +8,13 @@ export function BuilderTabs({ current, labels }: { current: 'builder' | 'gallery
       to={to}
       aria-current={active ? 'page' : undefined}
       className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all
-        ${active ? 'bg-emerald-500/20 text-emerald-200 border border-emerald-500/40' : 'text-emerald-200/60 hover:text-emerald-200 border border-transparent'}`}
+        ${active ? 'bg-primary/20 text-fg border border-line' : 'text-subtle hover:text-fg border border-transparent'}`}
     >
       <Icon className="w-4 h-4" /> {label}
     </Link>
   );
   return (
-    <nav className="glass rounded-2xl p-1 flex gap-1 w-fit mx-auto mb-6" aria-label="Builder">
+    <nav className="flex gap-1 p-1 rounded-xl border border-line bg-bg2 w-fit" aria-label="Builder">
       {tab('/builder', current === 'builder', Shirt, labels.builder)}
       {tab('/builds', current === 'gallery', Users, labels.gallery)}
     </nav>

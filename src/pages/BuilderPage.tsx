@@ -5,6 +5,7 @@ import { Search, Share2, X, Trash2, Save, FolderOpen, Ban, Hammer, Upload } from
 import { PageSeo } from '../components/PageSeo';
 import { ItemIcon } from '../components/ItemIcon';
 import { BuilderTabs } from '../components/BuilderTabs';
+import { PageHeader } from '../components/ui/PageHeader';
 import { flatToPercent } from '../lib/combatFormulas';
 import { craftGuideUrl } from '../lib/craftLink';
 import { publishBuild, ApiError, savedAuthor, saveAuthor } from '../lib/buildsApi';
@@ -49,7 +50,7 @@ function DiffChips({ diff, lang }: { diff: [string, number][]; lang: Language })
       {diff.map(([key, d]) => {
         const pct = STAT_ACTIONS[KEY_TO_ACTION.get(key.split(':')[0]) ?? -1]?.percent ? '%' : '';
         return (
-          <span key={key} className={d > 0 ? 'text-emerald-300' : 'text-red-300'}>
+          <span key={key} className={d > 0 ? 'text-primary' : 'text-danger'}>
             {d > 0 ? '+' : '−'}{Math.abs(d)}{pct} {keyLabel(key, lang)}
           </span>
         );
@@ -163,12 +164,12 @@ export function BuilderPage({ language }: BuilderPageProps) {
   };
 
   const statRow = (label: string, value: number, opts?: { percent?: boolean; resHint?: boolean }) => (
-    <div key={label} className="flex items-center justify-between py-1 border-b border-white/5 last:border-0">
-      <span className="text-emerald-100/75 text-sm">{label}</span>
-      <span className="font-mono text-sm text-emerald-50">
+    <div key={label} className="flex items-center justify-between py-1 border-b border-line last:border-0">
+      <span className="text-muted text-sm">{label}</span>
+      <span className="font-mono text-sm text-fg">
         {value}{opts?.percent ? '%' : ''}
         {opts?.resHint && value !== 0 && (
-          <span className="text-emerald-400/60 ml-1.5 text-xs">{t.resPercentHint(flatToPercent(value).toFixed(1))}</span>
+          <span className="text-primary ml-1.5 text-xs">{t.resPercentHint(flatToPercent(value).toFixed(1))}</span>
         )}
       </span>
     </div>
@@ -183,12 +184,12 @@ export function BuilderPage({ language }: BuilderPageProps) {
     return (
       <div className="space-y-4">
         {totals.duplicateRings && (
-          <div className="text-amber-300 text-xs bg-amber-900/30 border border-amber-500/30 rounded-lg px-3 py-2">
+          <div className="text-warning text-xs bg-warning/10 border border-warning/30 rounded-lg px-3 py-2">
             ⚠️ {t.duplicateRings}
           </div>
         )}
         <div>
-          <div className="text-[11px] uppercase tracking-widest text-emerald-400/60 font-semibold mb-1">{t.statsGeneral}</div>
+          <div className="text-[11px] uppercase tracking-widest text-primary font-semibold mb-1">{t.statsGeneral}</div>
           {statRow('PV', tt.hp ?? 0)}
           {statRow('PA', tt.ap ?? 0)}
           {statRow('PM', tt.mp ?? 0)}
@@ -196,14 +197,14 @@ export function BuilderPage({ language }: BuilderPageProps) {
           {nz(tt.range ?? 0) && statRow(STAT_ACTIONS[160].labels[language], tt.range)}
         </div>
         <div>
-          <div className="text-[11px] uppercase tracking-widest text-emerald-400/60 font-semibold mb-1">{t.statsCombat}</div>
+          <div className="text-[11px] uppercase tracking-widest text-primary font-semibold mb-1">{t.statsCombat}</div>
           {['fireMastery', 'waterMastery', 'earthMastery', 'airMastery'].map((k, i) =>
             nz(elem(k)) ? statRow(STAT_ACTIONS[[122, 124, 123, 125][i]].labels[language], elem(k)) : null
           )}
           {totals.variable.filter((v) => v.key === 'elemMasteryN').map((v, i) => (
-            <div key={i} className="flex items-center justify-between py-1 border-b border-white/5">
-              <span className="text-emerald-100/75 text-sm">{STAT_ACTIONS[1068].labels[language].replace('{n}', String(v.count))}</span>
-              <span className="font-mono text-sm text-emerald-50">+{v.value}</span>
+            <div key={i} className="flex items-center justify-between py-1 border-b border-line">
+              <span className="text-muted text-sm">{STAT_ACTIONS[1068].labels[language].replace('{n}', String(v.count))}</span>
+              <span className="font-mono text-sm text-fg">+{v.value}</span>
             </div>
           ))}
           {nz(tt.meleeMastery ?? 0) && statRow(STAT_ACTIONS[1052].labels[language], tt.meleeMastery)}
@@ -216,20 +217,20 @@ export function BuilderPage({ language }: BuilderPageProps) {
           {nz(tt.block ?? 0) && statRow(STAT_ACTIONS[875].labels[language], tt.block, { percent: true })}
         </div>
         <div>
-          <div className="text-[11px] uppercase tracking-widest text-emerald-400/60 font-semibold mb-1">{t.statsSecondary}</div>
+          <div className="text-[11px] uppercase tracking-widest text-primary font-semibold mb-1">{t.statsSecondary}</div>
           {([['lock', 173], ['dodge', 175], ['initiative', 171], ['fow', 177], ['wisdom', 166], ['prospecting', 162]] as const).map(([k, a]) =>
             nz(tt[k] ?? 0) ? statRow(STAT_ACTIONS[a].labels[language], tt[k]) : null
           )}
         </div>
         <div>
-          <div className="text-[11px] uppercase tracking-widest text-emerald-400/60 font-semibold mb-1">{t.statsResistance}</div>
+          <div className="text-[11px] uppercase tracking-widest text-primary font-semibold mb-1">{t.statsResistance}</div>
           {['fireRes', 'waterRes', 'earthRes', 'airRes'].map((k, i) =>
             nz(res(k)) ? statRow(STAT_ACTIONS[[82, 83, 84, 85][i]].labels[language], res(k), { resHint: true }) : null
           )}
           {totals.variable.filter((v) => v.key === 'elemResN').map((v, i) => (
-            <div key={i} className="flex items-center justify-between py-1 border-b border-white/5">
-              <span className="text-emerald-100/75 text-sm">{STAT_ACTIONS[1069].labels[language].replace('{n}', String(v.count))}</span>
-              <span className="font-mono text-sm text-emerald-50">+{v.value}</span>
+            <div key={i} className="flex items-center justify-between py-1 border-b border-line">
+              <span className="text-muted text-sm">{STAT_ACTIONS[1069].labels[language].replace('{n}', String(v.count))}</span>
+              <span className="font-mono text-sm text-fg">+{v.value}</span>
             </div>
           ))}
           {nz(tt.rearRes ?? 0) && statRow(STAT_ACTIONS[71].labels[language], tt.rearRes)}
@@ -242,15 +243,11 @@ export function BuilderPage({ language }: BuilderPageProps) {
   if (!data) {
     // Also what the prerenderer captures: keep the SEO tags and page header here.
     return (
-      <div className="w-full max-w-6xl mx-auto px-4">
+      <div>
         <PageSeo title={t.pageTitle} description={t.pageSubtitle} path="/builder" />
-        <h1 className="page-title mb-2">
-          {t.pageTitle}
-        </h1>
-        <p className="text-emerald-100/80 mb-6 text-center max-w-2xl mx-auto text-base drop-shadow-md">{t.pageSubtitle}</p>
-        <BuilderTabs current="builder" labels={{ builder: g.tabBuilder, gallery: g.tabGallery }} />
-        <div className="flex flex-col items-center py-16 text-emerald-300/70">
-          <div className="w-8 h-8 border-2 border-emerald-400/30 border-t-emerald-400 rounded-full animate-spin mb-3" />
+        <PageHeader title={t.pageTitle} subtitle={t.pageSubtitle} actions={<BuilderTabs current="builder" labels={{ builder: g.tabBuilder, gallery: g.tabGallery }} />} />
+        <div className="flex flex-col items-center py-16 text-primary">
+          <div className="w-8 h-8 border-2 border-line border-t-primary rounded-full animate-spin mb-3" />
           {t.loading}
         </div>
       </div>
@@ -258,27 +255,23 @@ export function BuilderPage({ language }: BuilderPageProps) {
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 pb-28 lg:pb-8 animate-in fade-in duration-500">
+    <div className="pb-16 lg:pb-0">
       <PageSeo title={t.pageTitle} description={t.pageSubtitle} path="/builder" />
-      <h1 className="page-title mb-2">
-        {t.pageTitle}
-      </h1>
-      <p className="text-emerald-100/80 mb-6 text-center max-w-2xl mx-auto text-base drop-shadow-md">{t.pageSubtitle}</p>
-      <BuilderTabs current="builder" labels={{ builder: g.tabBuilder, gallery: g.tabGallery }} />
+      <PageHeader title={t.pageTitle} subtitle={t.pageSubtitle} actions={<BuilderTabs current="builder" labels={{ builder: g.tabBuilder, gallery: g.tabGallery }} />} />
 
       <div className="lg:grid lg:grid-cols-[1fr_340px] lg:gap-6 lg:items-start">
         {/* ── left column: level, slots, saves ── */}
         <div className="space-y-4">
-          <div className="glass rounded-2xl p-4 flex items-center gap-3 flex-wrap">
-            <label className="text-xs font-medium text-emerald-400 uppercase tracking-wide">{t.level}</label>
+          <div className="card rounded-2xl p-4 flex items-center gap-3 flex-wrap">
+            <label className="text-xs font-medium text-primary uppercase tracking-wide">{t.level}</label>
             <input
               type="number" min={1} max={MAX_LEVEL} value={build.level}
               onChange={(e) => setBuild((b) => ({ ...b, level: Math.max(1, Math.min(MAX_LEVEL, parseInt(e.target.value) || 1)) }))}
-              className="glass-soft px-3 py-2 rounded-xl text-emerald-50 text-sm w-24 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+              className="card-inset px-3 py-2 rounded-xl text-fg text-sm w-24 focus:outline-none focus:ring-2 focus:ring-primary/25"
             />
             <button
               onClick={share}
-              className="ml-auto flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-lg transition-all"
+              className="ml-auto flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm bg-accent hover:bg-accent-strong text-on-accent shadow-lg transition-all"
             >
               <Share2 className="w-4 h-4" /> {t.share}
             </button>
@@ -286,21 +279,21 @@ export function BuilderPage({ language }: BuilderPageProps) {
               onClick={openPublish}
               disabled={!hasItems}
               title={hasItems ? g.publishTitle : g.emptyBuild}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm glass-soft border border-emerald-500/30 text-emerald-300 hover:border-emerald-400/60 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm card-inset border border-line text-primary hover:border-line transition-all disabled:opacity-40 disabled:cursor-not-allowed"
             >
               <Upload className="w-4 h-4" /> {g.publish}
             </button>
             {craftRows.length > 0 && (
               <Link
                 to={craftGuideUrl(craftRows)}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm glass-soft border border-emerald-500/30 text-emerald-300 hover:border-emerald-400/60 transition-all"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm card-inset border border-line text-primary hover:border-line transition-all"
               >
                 <Hammer className="w-4 h-4" /> {t.craftList(craftRows.reduce((n, r) => n + r.qty, 0))}
               </Link>
             )}
           </div>
 
-          <div className="glass rounded-2xl p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-2">
+          <div className="card rounded-2xl p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-2">
             {SLOT_ORDER.map((slot) => {
               const itemId = build.slots[slot];
               const item = itemId ? data.byId.get(itemId) : undefined;
@@ -310,19 +303,19 @@ export function BuilderPage({ language }: BuilderPageProps) {
                   key={slot}
                   disabled={blocked}
                   onClick={() => { setActiveSlot(slot); setMaxLvl(build.level); setMinLvl(Math.max(0, build.level - 35)); }}
-                  className={`glass-soft rounded-xl p-2.5 flex items-center gap-2.5 text-left min-h-[64px] transition-all border
-                    ${blocked ? 'opacity-40 cursor-not-allowed border-transparent' : item ? 'border-emerald-500/40 hover:border-emerald-400/70' : 'border-transparent hover:border-emerald-500/30'}`}
+                  className={`card-inset rounded-xl p-2.5 flex items-center gap-2.5 text-left min-h-[64px] transition-all border
+                    ${blocked ? 'opacity-40 cursor-not-allowed border-transparent' : item ? 'border-line hover:border-line' : 'border-transparent hover:border-line'}`}
                 >
                   {blocked ? (
-                    <Ban className="w-8 h-8 text-emerald-200/30 shrink-0" />
+                    <Ban className="w-8 h-8 text-subtle shrink-0" />
                   ) : item ? (
                     <ItemIcon item={item} size={40} />
                   ) : (
-                    <span className="w-10 h-10 rounded bg-slate-800/60 border border-dashed border-emerald-500/25 shrink-0" />
+                    <span className="w-10 h-10 rounded bg-surface2 border border-dashed border-line shrink-0" />
                   )}
                   <span className="min-w-0">
-                    <span className="block text-[10px] uppercase tracking-wide text-emerald-400/70 font-semibold">{SLOT_LABELS[slot][language]}</span>
-                    <span className={`block text-xs truncate ${item ? RARITY_INFO[item.rarity]?.className ?? 'text-emerald-50' : 'text-emerald-200/40'}`}>
+                    <span className="block text-[10px] uppercase tracking-wide text-primary font-semibold">{SLOT_LABELS[slot][language]}</span>
+                    <span className={`block text-xs truncate ${item ? RARITY_INFO[item.rarity]?.className ?? 'text-fg' : 'text-subtle'}`}>
                       {blocked ? t.blockedSlot : item ? item.name : t.emptySlot}
                     </span>
                   </span>
@@ -332,57 +325,57 @@ export function BuilderPage({ language }: BuilderPageProps) {
           </div>
 
           {/* saves */}
-          <div className="glass rounded-2xl p-4">
-            <div className="text-[11px] uppercase tracking-widest text-emerald-400/60 font-semibold mb-2 flex items-center gap-2">
+          <div className="card rounded-2xl p-4">
+            <div className="text-[11px] uppercase tracking-widest text-primary font-semibold mb-2 flex items-center gap-2">
               <FolderOpen className="w-3.5 h-3.5" /> {t.myBuilds}
             </div>
             <div className="flex gap-2 mb-3">
               <input
                 value={saveName} onChange={(e) => setSaveName(e.target.value)} placeholder={t.buildName}
-                className="glass-soft px-3 py-2 rounded-xl text-emerald-50 text-sm flex-1 min-w-0 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                className="card-inset px-3 py-2 rounded-xl text-fg text-sm flex-1 min-w-0 focus:outline-none focus:ring-2 focus:ring-primary/25"
               />
               <button
                 onClick={() => { if (saveName.trim()) { setSaves(saveBuild(saveName.trim(), build)); showToast('✓'); } }}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold glass-soft border border-emerald-500/30 text-emerald-300 hover:border-emerald-400/60"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold card-inset border border-line text-primary hover:border-line"
               >
                 <Save className="w-4 h-4" /> {t.save}
               </button>
             </div>
             {saves.map((s) => (
-              <div key={s.name} className="flex items-center gap-2 py-1.5 border-b border-white/5 last:border-0">
-                <span className="text-sm text-emerald-100/85 truncate flex-1">{s.name}</span>
-                <button onClick={() => { setBuild(s.build); setSaveName(s.name); }} className="text-xs text-emerald-400 hover:text-emerald-300 font-semibold px-2 py-1">{t.load}</button>
-                <button onClick={() => setSaves(deleteBuild(s.name))} className="text-emerald-200/40 hover:text-red-400 p-1"><Trash2 className="w-3.5 h-3.5" /></button>
+              <div key={s.name} className="flex items-center gap-2 py-1.5 border-b border-line last:border-0">
+                <span className="text-sm text-muted truncate flex-1">{s.name}</span>
+                <button onClick={() => { setBuild(s.build); setSaveName(s.name); }} className="text-xs text-primary hover:text-primary font-semibold px-2 py-1">{t.load}</button>
+                <button onClick={() => setSaves(deleteBuild(s.name))} className="text-subtle hover:text-danger p-1"><Trash2 className="w-3.5 h-3.5" /></button>
               </div>
             ))}
           </div>
         </div>
 
         {/* ── desktop stats column ── */}
-        <div className="hidden lg:block glass rounded-2xl p-5 sticky top-24">
-          <div className="text-sm font-bold text-emerald-200 mb-3">{t.stats}</div>
+        <div className="hidden lg:block card rounded-2xl p-5 sticky top-24">
+          <div className="text-sm font-bold text-fg mb-3">{t.stats}</div>
           {renderStats()}
         </div>
       </div>
 
       {/* ── mobile sticky stats bar ── */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40">
+      <div className="lg:hidden fixed bottom-[76px] left-3 right-3 z-20">
         <button
           onClick={() => setStatsOpen(true)}
-          className="w-full glass-strong border-t border-emerald-500/25 px-5 py-3 flex items-center justify-between text-sm"
+          className="w-full card shadow-pop px-4 py-3 flex items-center justify-between text-sm"
         >
-          <span className="font-semibold text-emerald-300">{t.stats} ▲</span>
-          <span className="font-mono text-emerald-100/85">
+          <span className="font-semibold text-primary">{t.stats} ▲</span>
+          <span className="font-mono text-muted">
             {totals ? `${totals.totals.hp} PV · ${totals.totals.ap} PA · ${totals.totals.mp} PM` : ''}
           </span>
         </button>
       </div>
       {statsOpen && createPortal(
-        <div className="lg:hidden fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-md overflow-y-auto">
+        <div className="lg:hidden fixed inset-0 z-[100] bg-bg/95 backdrop-blur-md overflow-y-auto">
           <div className="max-w-lg mx-auto p-5 pb-16">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-lg font-bold text-emerald-200">{t.stats}</span>
-              <button onClick={() => setStatsOpen(false)} className="p-2 text-emerald-200/70 hover:text-white"><X className="w-6 h-6" /></button>
+              <span className="text-lg font-bold text-fg">{t.stats}</span>
+              <button onClick={() => setStatsOpen(false)} className="p-2 text-muted hover:text-fg"><X className="w-6 h-6" /></button>
             </div>
             {renderStats()}
           </div>
@@ -392,82 +385,82 @@ export function BuilderPage({ language }: BuilderPageProps) {
 
       {/* ── item picker (full-screen sheet on mobile, modal on desktop) ── */}
       {activeSlot && createPortal(
-        <div className="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-md flex lg:items-center lg:justify-center">
-          <div className="w-full h-full lg:h-[80vh] lg:max-w-2xl lg:rounded-3xl glass-strong flex flex-col overflow-hidden">
-            <div className="flex items-center justify-between px-4 py-3 border-b border-emerald-500/20">
-              <span className="font-bold text-emerald-200">{SLOT_LABELS[activeSlot][language]}</span>
+        <div className="fixed inset-0 z-[100] bg-bg/90 backdrop-blur-md flex lg:items-center lg:justify-center">
+          <div className="w-full h-full lg:h-[80vh] lg:max-w-2xl lg:rounded-3xl card shadow-pop flex flex-col overflow-hidden">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-line">
+              <span className="font-bold text-fg">{SLOT_LABELS[activeSlot][language]}</span>
               <div className="flex items-center gap-2">
                 {equippedInActive && (
                   <button
                     onClick={() => { setBuild((b) => unequipSlot(b, activeSlot)); setActiveSlot(null); }}
-                    className="text-xs font-semibold text-red-300/90 hover:text-red-300 px-3 py-1.5 rounded-lg border border-red-400/30"
+                    className="text-xs font-semibold text-danger hover:text-danger px-3 py-1.5 rounded-lg border border-danger/30"
                   >
                     {t.unequip}
                   </button>
                 )}
-                <button onClick={() => { setActiveSlot(null); setQuery(''); }} className="p-2 text-emerald-200/70 hover:text-white"><X className="w-5 h-5" /></button>
+                <button onClick={() => { setActiveSlot(null); setQuery(''); }} className="p-2 text-muted hover:text-fg"><X className="w-5 h-5" /></button>
               </div>
             </div>
-            <div className="px-4 py-3 flex gap-2 items-center border-b border-emerald-500/10">
+            <div className="px-4 py-3 flex gap-2 items-center border-b border-line">
               <div className="relative flex-1 min-w-0">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400 pointer-events-none" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary pointer-events-none" />
                 <input
                   autoFocus value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t.searchPlaceholder}
-                  className="glass-soft w-full pl-9 pr-3 py-2.5 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                  className="card-inset w-full pl-9 pr-3 py-2.5 rounded-xl text-fg text-sm focus:outline-none focus:ring-2 focus:ring-primary/25"
                 />
               </div>
               <input
                 type="number" value={minLvl} min={0} max={MAX_LEVEL} title={t.minLevel} aria-label={t.minLevel}
                 onChange={(e) => setMinLvl(parseInt(e.target.value) || 0)}
-                className="glass-soft w-16 px-2 py-2.5 rounded-xl text-emerald-50 text-sm text-center focus:outline-none"
+                className="card-inset w-16 px-2 py-2.5 rounded-xl text-fg text-sm text-center focus:outline-none"
               />
               <input
                 type="number" value={maxLvl} min={0} max={MAX_LEVEL} title={t.maxLevel} aria-label={t.maxLevel}
                 onChange={(e) => setMaxLvl(parseInt(e.target.value) || MAX_LEVEL)}
-                className="glass-soft w-16 px-2 py-2.5 rounded-xl text-emerald-50 text-sm text-center focus:outline-none"
+                className="card-inset w-16 px-2 py-2.5 rounded-xl text-fg text-sm text-center focus:outline-none"
               />
             </div>
-            <div className="px-4 py-2 flex items-center gap-2 border-b border-emerald-500/10 text-xs">
-              <label htmlFor="builder-sort" className="text-emerald-400/80 font-medium shrink-0">{t.sortBy}</label>
+            <div className="px-4 py-2 flex items-center gap-2 border-b border-line text-xs">
+              <label htmlFor="builder-sort" className="text-primary font-medium shrink-0">{t.sortBy}</label>
               <select
                 id="builder-sort" value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)}
-                className="glass-soft px-2 py-1.5 rounded-lg text-emerald-50 text-xs min-w-0 flex-1 sm:flex-none focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                className="card-inset px-2 py-1.5 rounded-lg text-fg text-xs min-w-0 flex-1 sm:flex-none focus:outline-none focus:ring-2 focus:ring-primary/25"
               >
                 <option value="level">{t.level}</option>
                 {SORT_KEYS.map((k) => <option key={k} value={k}>{keyLabel(k, language)}</option>)}
               </select>
               {equippedInActive && (
-                <span className="ml-auto text-emerald-400/60 truncate">± {t.vsEquipped}</span>
+                <span className="ml-auto text-primary truncate">± {t.vsEquipped}</span>
               )}
             </div>
             <div className="flex-1 overflow-y-auto px-3 py-2">
-              <div className="text-[11px] text-emerald-400/60 px-1 pb-1">{t.showingOf(Math.min(pickerItems.length, 60), pickerItems.length)}</div>
-              {pickerItems.length === 0 && <div className="text-center text-emerald-200/50 py-10">{t.noResults}</div>}
+              <div className="text-[11px] text-primary px-1 pb-1">{t.showingOf(Math.min(pickerItems.length, 60), pickerItems.length)}</div>
+              {pickerItems.length === 0 && <div className="text-center text-subtle py-10">{t.noResults}</div>}
               {pickerItems.slice(0, 60).map((it) => (
                 <button
                   key={it.id}
                   onClick={() => doEquip(it)}
-                  className={`w-full glass-soft rounded-xl p-3 mb-2 flex gap-3 text-left border transition-all hover:border-emerald-400/60
-                    ${it.id === equippedInActive?.id ? 'border-emerald-500/60' : 'border-transparent'}`}
+                  className={`w-full card-inset rounded-xl p-3 mb-2 flex gap-3 text-left border transition-all hover:border-line
+                    ${it.id === equippedInActive?.id ? 'border-line' : 'border-transparent'}`}
                 >
                   <ItemIcon item={it} size={44} />
                   <span className="min-w-0 flex-1">
                     <span className="flex items-baseline gap-2">
-                      <span className={`text-sm font-semibold truncate ${RARITY_INFO[it.rarity]?.className ?? 'text-emerald-50'}`}>{it.name}</span>
-                      <span className="text-[11px] text-emerald-400/70 shrink-0">
+                      <span className={`text-sm font-semibold truncate ${RARITY_INFO[it.rarity]?.className ?? 'text-fg'}`}>{it.name}</span>
+                      <span className="text-[11px] text-primary shrink-0">
                         {t.level} {it.lvl}{WEAPON_TYPE_LABELS[it.type] ? ` · ${WEAPON_TYPE_LABELS[it.type][language]}` : ''}
                       </span>
-                      {it.id === equippedInActive?.id && <span className="text-[10px] text-emerald-400 shrink-0">✓ {t.equipped}</span>}
+                      {it.id === equippedInActive?.id && <span className="text-[10px] text-primary shrink-0">✓ {t.equipped}</span>}
                       {it.craft && (
                         <span title={t.craftable} className="shrink-0 self-center">
-                          <Hammer className="w-3 h-3 text-emerald-400/60" aria-label={t.craftable} />
+                          <Hammer className="w-3 h-3 text-primary" aria-label={t.craftable} />
                         </span>
                       )}
                     </span>
                     {equippedInActive && it.id !== equippedInActive.id ? (
                       <DiffChips diff={statDiff(it, equippedInActive)} lang={language} />
                     ) : (
-                      <span className="block text-xs text-emerald-100/60 truncate">
+                      <span className="block text-xs text-subtle truncate">
                         {it.stats.map(([a, v, c]) => statLine(a, v, language, c)).filter(Boolean).join(' · ')}
                       </span>
                     )}
@@ -481,19 +474,19 @@ export function BuilderPage({ language }: BuilderPageProps) {
       )}
 
       {publishOpen && createPortal(
-        <div className="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-md flex items-end sm:items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="publish-title">
-          <div className="w-full sm:max-w-md glass-strong rounded-t-3xl sm:rounded-3xl p-5 max-h-full overflow-y-auto">
+        <div className="fixed inset-0 z-[100] bg-bg/90 backdrop-blur-md flex items-end sm:items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="publish-title">
+          <div className="w-full sm:max-w-md card shadow-pop rounded-t-3xl sm:rounded-3xl p-5 max-h-full overflow-y-auto">
             <div className="flex items-center justify-between mb-2">
-              <h2 id="publish-title" className="font-bold text-lg text-emerald-200">{g.publishTitle}</h2>
-              <button onClick={() => setPublishOpen(false)} aria-label={g.cancel} className="p-2 text-emerald-200/70 hover:text-white"><X className="w-5 h-5" /></button>
+              <h2 id="publish-title" className="font-bold text-lg text-fg">{g.publishTitle}</h2>
+              <button onClick={() => setPublishOpen(false)} aria-label={g.cancel} className="p-2 text-muted hover:text-fg"><X className="w-5 h-5" /></button>
             </div>
             {pubState.status === 'done' ? (
               <div className="text-center py-4 space-y-4">
-                <p className="text-emerald-200 font-semibold">✓ {g.published}</p>
+                <p className="text-fg font-semibold">✓ {g.published}</p>
                 <div className="flex flex-wrap justify-center gap-2">
                   <Link
                     to={`/builds?id=${pubState.id}`}
-                    className="px-4 py-2.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white"
+                    className="px-4 py-2.5 rounded-xl font-semibold text-sm bg-accent hover:bg-accent-strong text-on-accent"
                   >
                     {g.viewInGallery}
                   </Link>
@@ -502,7 +495,7 @@ export function BuilderPage({ language }: BuilderPageProps) {
                       navigator.clipboard?.writeText(`${window.location.origin}/builds?id=${pubState.id}`)
                         .then(() => showToast(t.linkCopied)).catch(() => {});
                     }}
-                    className="px-4 py-2.5 rounded-xl font-semibold text-sm glass-soft border border-emerald-500/30 text-emerald-300"
+                    className="px-4 py-2.5 rounded-xl font-semibold text-sm card-inset border border-line text-primary"
                   >
                     {g.copyLink}
                   </button>
@@ -510,19 +503,19 @@ export function BuilderPage({ language }: BuilderPageProps) {
               </div>
             ) : (
               <form onSubmit={submitPublish} className="space-y-3">
-                <p className="text-sm text-emerald-100/70">{g.publishIntro}</p>
+                <p className="text-sm text-muted">{g.publishIntro}</p>
                 <label className="block">
-                  <span className="text-xs font-medium text-emerald-400">{g.name}</span>
+                  <span className="text-xs font-medium text-primary">{g.name}</span>
                   <input
                     required minLength={3} maxLength={60} autoFocus value={pub.name} placeholder={g.namePlaceholder}
                     onChange={(e) => setPub({ ...pub, name: e.target.value })}
-                    className="glass-soft w-full px-3 py-2.5 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 mt-1"
+                    className="card-inset w-full px-3 py-2.5 rounded-xl text-fg text-sm focus:outline-none focus:ring-2 focus:ring-primary/25 mt-1"
                   />
                 </label>
                 <div className="grid grid-cols-2 gap-2">
                   <label className="block">
-                    <span className="text-xs font-medium text-emerald-400">{g.className}</span>
-                    <select value={pub.cls} onChange={(e) => setPub({ ...pub, cls: Number(e.target.value) })} className="glass-soft w-full px-3 py-2.5 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 mt-1">
+                    <span className="text-xs font-medium text-primary">{g.className}</span>
+                    <select value={pub.cls} onChange={(e) => setPub({ ...pub, cls: Number(e.target.value) })} className="card-inset w-full px-3 py-2.5 rounded-xl text-fg text-sm focus:outline-none focus:ring-2 focus:ring-primary/25 mt-1">
                       <option value={-1}>{g.noClass}</option>
                       {CLASS_NAMES[language].map((name, i) => ({ name, i }))
                         .sort((a, b) => a.name.localeCompare(b.name, language))
@@ -530,25 +523,25 @@ export function BuilderPage({ language }: BuilderPageProps) {
                     </select>
                   </label>
                   <label className="block">
-                    <span className="text-xs font-medium text-emerald-400">{g.author}</span>
-                    <input maxLength={30} value={pub.author} onChange={(e) => setPub({ ...pub, author: e.target.value })} className="glass-soft w-full px-3 py-2.5 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 mt-1" />
+                    <span className="text-xs font-medium text-primary">{g.author}</span>
+                    <input maxLength={30} value={pub.author} onChange={(e) => setPub({ ...pub, author: e.target.value })} className="card-inset w-full px-3 py-2.5 rounded-xl text-fg text-sm focus:outline-none focus:ring-2 focus:ring-primary/25 mt-1" />
                   </label>
                 </div>
                 <label className="block">
-                  <span className="text-xs font-medium text-emerald-400">{g.description}</span>
+                  <span className="text-xs font-medium text-primary">{g.description}</span>
                   <textarea
                     maxLength={500} rows={4} value={pub.description} placeholder={g.descriptionPlaceholder}
                     onChange={(e) => setPub({ ...pub, description: e.target.value })}
-                    className="glass-soft w-full px-3 py-2.5 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 mt-1 resize-none"
+                    className="card-inset w-full px-3 py-2.5 rounded-xl text-fg text-sm focus:outline-none focus:ring-2 focus:ring-primary/25 mt-1 resize-none"
                   />
                 </label>
-                <p className="text-[11px] text-emerald-200/50">{g.rules}</p>
-                {pubState.status === 'error' && <p role="alert" className="text-sm text-red-300">{pubState.message}</p>}
+                <p className="text-[11px] text-subtle">{g.rules}</p>
+                {pubState.status === 'error' && <p role="alert" className="text-sm text-danger">{pubState.message}</p>}
                 <div className="flex justify-end gap-2 pt-1">
-                  <button type="button" onClick={() => setPublishOpen(false)} className="px-4 py-2.5 rounded-xl text-sm font-semibold text-emerald-200/70 hover:text-emerald-100">{g.cancel}</button>
+                  <button type="button" onClick={() => setPublishOpen(false)} className="px-4 py-2.5 rounded-xl text-sm font-semibold text-muted hover:text-fg">{g.cancel}</button>
                   <button
                     type="submit" disabled={pubState.status === 'sending' || pub.name.trim().length < 3}
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white disabled:opacity-50"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm bg-accent hover:bg-accent-strong text-on-accent disabled:opacity-50"
                   >
                     <Upload className="w-4 h-4" /> {g.submit}
                   </button>
@@ -561,7 +554,7 @@ export function BuilderPage({ language }: BuilderPageProps) {
       )}
 
       {toast && createPortal(
-        <div className="fixed bottom-20 lg:bottom-8 left-1/2 -translate-x-1/2 z-[110] glass-strong px-5 py-2.5 rounded-full text-sm text-emerald-200 border border-emerald-500/40">
+        <div className="fixed bottom-40 lg:bottom-8 left-1/2 -translate-x-1/2 z-[110] card shadow-pop px-5 py-2.5 rounded-full text-sm text-fg border border-line">
           {toast}
         </div>,
         document.body

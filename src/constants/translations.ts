@@ -7,6 +7,8 @@ export const FLAGS = {
 
 export type Language = keyof typeof FLAGS;
 
+export const LANGUAGE_NAMES: Record<Language, string> = { en: 'English', fr: 'Français', es: 'Español', pt: 'Português' };
+
 export const TRANSLATIONS = {
   en: {
     title: 'Wakfu Job XP Calculator',
@@ -74,6 +76,7 @@ export const TRANSLATIONS = {
     souvenir: 'Souvenir',
     epic: 'Epic',
     sublimationsLibrary: 'Sublimations Library',
+    sublimationsSubtitle: 'Every sublimation with its effects. Filter by category or by the socket colors of your item.',
     loadingSublimations: 'Loading Sublimations...',
     items: 'items',
     usingBackupData: 'using backup data (JSON missing)',
@@ -168,6 +171,7 @@ export const TRANSLATIONS = {
     souvenir: 'Souvenir',
     epic: 'Épique',
     sublimationsLibrary: 'Bibliothèque de Sublimations',
+    sublimationsSubtitle: 'Toutes les sublimations et leurs effets. Filtrez par catégorie ou par couleur des châsses de votre objet.',
     loadingSublimations: 'Chargement des Sublimations...',
     items: 'objets',
     usingBackupData: 'utilisation des données de secours (JSON manquant)',
@@ -262,6 +266,7 @@ export const TRANSLATIONS = {
     souvenir: 'Recuerdo',
     epic: 'Épico',
     sublimationsLibrary: 'Biblioteca de Sublimaciones',
+    sublimationsSubtitle: 'Todas las sublimaciones con sus efectos. Filtra por categoría o por el color de los engarces de tu objeto.',
     loadingSublimations: 'Cargando Sublimaciones...',
     items: 'objetos',
     usingBackupData: 'usando datos de respaldo (JSON faltante)',
@@ -356,6 +361,7 @@ export const TRANSLATIONS = {
     souvenir: 'Lembrança',
     epic: 'Épico',
     sublimationsLibrary: 'Biblioteca de Sublimações',
+    sublimationsSubtitle: 'Todas as sublimações com seus efeitos. Filtre por categoria ou pela cor dos engastes do seu item.',
     loadingSublimations: 'Carregando Sublimações...',
     items: 'itens',
     usingBackupData: 'usando dados de backup (JSON ausente)',

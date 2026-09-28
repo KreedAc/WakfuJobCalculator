@@ -12,7 +12,21 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#0b1020" />
+    <meta name="theme-color" content="#0a0f1e" />
+
+    <!-- Theme before first paint: saved choice, else the system setting. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('wjc-theme');
+          if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', t);
+          if (t === 'light') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f5f7fc');
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <title>Wakfu Job Calculator | Free Wakfu Tools</title>
     <meta
@@ -40,14 +54,13 @@
         "@type": "WebApplication",
         "name": "WakfuJobCalculator",
         "url": "https://wakfujobcalculator.com/",
-        "description": "Free Wakfu tools: profession XP calculator, equipment builder, sublimations library, item craft guide, combat calculator and treasures tracker.",
+        "description": "Free Wakfu tools: profession XP calculator, sublimations library, item craft guide, combat calculator and treasures tracker.",
         "applicationCategory": "GameApplication",
         "operatingSystem": "All",
         "inLanguage": ["en", "fr", "es", "pt"],
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
         "hasPart": [
-          { "@type": "WebPage", "name": "XP Calculator", "url": "https://wakfujobcalculator.com/" },
-          { "@type": "WebPage", "name": "Equipment Builder", "url": "https://wakfujobcalculator.com/builder" },
+          { "@type": "WebPage", "name": "XP Calculator", "url": "https://wakfujobcalculator.com/xp-calculator" },
           { "@type": "WebPage", "name": "Sublimations Library", "url": "https://wakfujobcalculator.com/sublimations" },
           { "@type": "WebPage", "name": "Items Craft Guide", "url": "https://wakfujobcalculator.com/items-craft-guide" },
           { "@type": "WebPage", "name": "Combat Calculator", "url": "https://wakfujobcalculator.com/combat-calc" },

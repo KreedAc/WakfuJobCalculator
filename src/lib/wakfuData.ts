@@ -25,7 +25,20 @@ export type WakfuData = {
 
 const DATA_BASE = "/data";
 
-export async function loadWakfuData(language: string = "en"): Promise<WakfuData> {
+// One load per language per visit, shared by the Craft Guide and the search palette.
+const cache = new Map<string, Promise<WakfuData>>();
+
+export function loadWakfuData(language: string = "en"): Promise<WakfuData> {
+  let p = cache.get(language);
+  if (!p) {
+    p = fetchWakfuData(language);
+    p.catch(() => cache.delete(language));
+    cache.set(language, p);
+  }
+  return p;
+}
+
+async function fetchWakfuData(language: string): Promise<WakfuData> {
   const [items, recipes] = await Promise.all([
     fetch(`${DATA_BASE}/items.compact.${language}.json`).then((r) => r.json()) as Promise<CompactItem[]>,
     fetch(`${DATA_BASE}/recipes.compact.json`).then((r) => r.json()) as Promise<CompactRecipe[]>,

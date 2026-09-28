@@ -1,6 +1,8 @@
 // src/pages/ItemsCraftGuidePage.tsx
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Search, X, Minus, Plus, Copy, Check, ChevronRight, ChevronDown, Repeat, ShoppingCart, PackageSearch } from "lucide-react";
 import { HowItWorks } from "../components/HowItWorks";
+import { PageHeader } from "../components/ui/PageHeader";
 import {
   loadWakfuData,
   getItemIconUrl,
@@ -28,19 +30,19 @@ type RarityInfo = { label: string; className: string };
 function rarityInfo(r: number | null | undefined, t: TranslationType): RarityInfo | null {
   switch (r ?? null) {
     case 1:
-      return { label: t.unusual, className: "text-zinc-300/90" };
+      return { label: t.unusual, className: "text-muted" };
     case 2:
-      return { label: t.rare, className: "text-emerald-300" };
+      return { label: t.rare, className: "text-rarity-rare" };
     case 3:
-      return { label: t.mythical, className: "text-orange-300" };
+      return { label: t.mythical, className: "text-rarity-mythic" };
     case 4:
-      return { label: t.legendary, className: "text-yellow-300" };
+      return { label: t.legendary, className: "text-rarity-legendary" };
     case 5:
-      return { label: t.relic, className: "text-violet-300" };
+      return { label: t.relic, className: "text-rarity-relic" };
     case 6:
-      return { label: t.souvenir, className: "text-sky-300" };
+      return { label: t.souvenir, className: "text-rarity-souvenir" };
     case 7:
-      return { label: t.epic, className: "text-pink-300" };
+      return { label: t.epic, className: "text-rarity-epic" };
     default:
       return null;
   }
@@ -341,134 +343,124 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
   };
 
   const showResults = query.trim().length > 0 && !loading;
+  const [copied, setCopied] = useState(false);
+  const copyAndConfirm = async () => {
+    await copyShoppingList();
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+  const rarityLine = (it: CompactItem | undefined, extra?: string) => {
+    const r = rarityInfo(it?.rarity, t);
+    return (
+      <div className="text-xs mt-0.5 truncate">
+        <span className={r?.className ?? "text-subtle"}>{r?.label ?? "—"}</span>
+        {extra && <span className="text-subtle"> · {extra}</span>}
+      </div>
+    );
+  };
+  const fmt = (n: number) => n.toLocaleString(language);
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-4">
+    <div>
       <PageSeo title={t.itemsCraftTitle} description={t.itemsCraftHowItWorks.slice(0, 155)} path="/items-craft-guide" />
-      {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="page-title mb-4">
-          {t.itemsCraftTitle}
-        </h1>
-        <div className="text-xs text-emerald-200/70">
-          {t.craftableItems}: {craftableItems.length} • {t.recipes}: {recipesByResultId.size} •{" "}
-          {loading ? t.loading + "..." : t.ready}
-        </div>
-      </div>
+      <PageHeader
+        title={t.itemsCraftTitle}
+        subtitle={loading ? `${t.loading}…` : `${t.craftableItems}: ${fmt(craftableItems.length)} · ${t.recipes}: ${fmt(recipesByResultId.size)}`}
+      />
 
-      {/* Search centered */}
-      <div className="mt-5 flex justify-center">
-        <div className="w-full max-w-2xl">
+      <div className="card p-4 md:p-5 mb-6">
+        <div className="relative">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-subtle pointer-events-none" />
           <input
-            className="w-full rounded-xl border border-emerald-300/25 backdrop-blur-md px-4 py-3 outline-none focus:border-emerald-300/60"
-            style={{ background: 'rgba(0, 0, 0, 0.4)' }}
+            type="search"
+            className="input pl-10"
             placeholder={loading ? t.loadingData : t.searchPlaceholder}
+            aria-label={t.searchPlaceholder}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             disabled={loading}
           />
         </div>
-      </div>
 
-      {/* Selected items bar */}
-      <div className="mt-4">
-        <div className="rounded-2xl border border-emerald-300/15 backdrop-blur-md p-3" style={{ background: 'rgba(30, 41, 59, 0.6)' }}>
-          <div className="flex items-center justify-between gap-3 flex-wrap">
-            <div className="text-sm text-emerald-200/80">{t.selectedItems} ({selected.length})</div>
-
-            <button
-              onClick={clearAll}
-              disabled={selected.length === 0}
-              className="text-xs px-3 py-2 rounded-lg border border-emerald-300/20 hover:border-emerald-300/35 disabled:opacity-40"
-              style={{ background: 'rgba(0, 0, 0, 0.3)' }}
-            >
-              {t.clearAll}
-            </button>
+        {showResults && (
+          <div className="mt-3">
+            <div className="caps-label mb-2">{t.results} ({results.length})</div>
+            {results.length === 0 ? (
+              <p className="text-sm text-muted py-2">{t.noCraftableFound}</p>
+            ) : (
+              <ul className="max-h-[320px] overflow-auto -mx-1 px-1 space-y-1">
+                {results.map((it) => (
+                  <li key={it.id}>
+                    <button
+                      type="button"
+                      onClick={() => addItem(it.id)}
+                      className="w-full text-left flex items-center gap-3 rounded-xl px-2.5 py-2 hover:bg-surface2 transition-colors"
+                    >
+                      <ItemIcon itemId={it.id} itemsById={itemsById} size={36} />
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-semibold text-fg truncate">{it.name}</div>
+                        {rarityLine(it)}
+                      </div>
+                      <span className="btn btn-sm shrink-0"><Plus className="w-3.5 h-3.5" /> {t.add}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p className="help">{t.addTip}</p>
           </div>
+        )}
 
+        <div className="mt-4 pt-4 border-t border-line">
+          <div className="flex items-center justify-between gap-3 mb-2">
+            <div className="text-[13px] font-semibold text-muted">{t.selectedItems} ({selected.length})</div>
+            {selected.length > 0 && (
+              <button type="button" onClick={clearAll} className="btn btn-ghost btn-sm"><X className="w-3.5 h-3.5" /> {t.clearAll}</button>
+            )}
+          </div>
           {selected.length === 0 ? (
-            <div className="text-xs text-emerald-200/60 mt-2">
-              {t.addOneOrMore}
-            </div>
+            <p className="text-sm text-subtle">{t.addOneOrMore}</p>
           ) : (
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2">
               {selected.map((s) => {
                 const it = itemsById.get(s.itemId);
-                const name = it?.name ?? `#${s.itemId}`;
-                const rInfo = rarityInfo(it?.rarity, t);
                 const isActive = s.itemId === activeItemId;
-
                 return (
                   <div
                     key={s.itemId}
-                    className={[
-                      "flex items-center gap-2 rounded-xl border px-2 py-2",
-                      isActive ? "border-emerald-300/35" : "border-emerald-300/15",
-                    ].join(" ")}
-                    style={{ background: 'rgba(30, 41, 59, 0.7)' }}
+                    className={`flex items-center gap-2 rounded-xl border pl-1.5 pr-1 py-1 transition-colors
+                      ${isActive ? "border-primary bg-primary/10" : "border-line bg-bg2"}`}
                   >
-                    <button
-                      onClick={() => setActiveItemId(s.itemId)}
-                      className="flex items-center gap-2 text-left"
-                      title={t.showRecipe}
-                    >
+                    <button type="button" onClick={() => setActiveItemId(s.itemId)} className="flex items-center gap-2 text-left min-w-0" title={t.showRecipe}>
                       <ItemIcon itemId={s.itemId} itemsById={itemsById} size={28} />
-                      <div className="min-w-0">
-                        <div className="text-emerald-100 text-xs font-medium truncate max-w-[180px]">
-                          {name}
-                        </div>
-                        <div className={`text-[11px] ${rInfo?.className ?? "text-emerald-200/40"}`}>
-                          {rInfo?.label ?? "—"}
-                        </div>
-                      </div>
+                      <span className="text-[13px] font-semibold text-fg truncate max-w-[160px]">{it?.name ?? `#${s.itemId}`}</span>
                     </button>
-
-                    <div className="flex items-center gap-1 ml-1">
-                      <button
-                        onClick={() => setQty(s.itemId, -1)}
-                        className="w-7 h-7 rounded-lg border border-emerald-300/15 hover:border-emerald-300/30"
-                        style={{ background: 'rgba(0, 0, 0, 0.3)' }}
-                        title={t.decrease}
-                      >
-                        −
+                    <div className="flex items-center">
+                      <button type="button" onClick={() => setQty(s.itemId, -1)} className="w-7 h-7 grid place-items-center rounded-lg text-muted hover:text-fg hover:bg-surface2" aria-label={t.decrease}>
+                        <Minus className="w-3.5 h-3.5" />
                       </button>
                       <input
                         type="number"
                         min="1"
                         value={s.qty}
+                        aria-label={it?.name}
                         onChange={(e) => {
                           const val = parseInt(e.target.value, 10);
-                          if (!isNaN(val) && val > 0) {
-                            setQtyDirect(s.itemId, val);
-                          }
+                          if (!isNaN(val) && val > 0) setQtyDirect(s.itemId, val);
                         }}
                         onBlur={(e) => {
                           const val = parseInt(e.target.value, 10);
-                          if (isNaN(val) || val < 1) {
-                            setQtyDirect(s.itemId, 1);
-                          }
+                          if (isNaN(val) || val < 1) setQtyDirect(s.itemId, 1);
                         }}
-                        className="text-emerald-200 text-xs font-semibold w-12 text-center rounded border border-emerald-300/15 focus:border-emerald-300/30 outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                        style={{ background: 'rgba(0, 0, 0, 0.3)' }}
+                        className="w-10 h-7 text-center font-mono text-[13px] font-semibold bg-transparent text-fg rounded-md focus:outline-none focus:ring-2 focus:ring-primary/30 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
-                      <button
-                        onClick={() => setQty(s.itemId, +1)}
-                        className="w-7 h-7 rounded-lg border border-emerald-300/15 hover:border-emerald-300/30"
-                        style={{ background: 'rgba(0, 0, 0, 0.3)' }}
-                        title={t.increase}
-                      >
-                        +
+                      <button type="button" onClick={() => setQty(s.itemId, +1)} className="w-7 h-7 grid place-items-center rounded-lg text-muted hover:text-fg hover:bg-surface2" aria-label={t.increase}>
+                        <Plus className="w-3.5 h-3.5" />
+                      </button>
+                      <button type="button" onClick={() => removeItem(s.itemId)} className="w-7 h-7 grid place-items-center rounded-lg text-subtle hover:text-danger hover:bg-surface2" aria-label={t.remove}>
+                        <X className="w-3.5 h-3.5" />
                       </button>
                     </div>
-
-                    <button
-                      onClick={() => removeItem(s.itemId)}
-                      className="ml-1 w-7 h-7 rounded-lg border border-emerald-300/15 hover:border-emerald-300/30"
-                      style={{ background: 'rgba(0, 0, 0, 0.3)' }}
-                      title={t.remove}
-                    >
-                      ✕
-                    </button>
                   </div>
                 );
               })}
@@ -477,159 +469,82 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
         </div>
       </div>
 
-      {/* Results */}
-      {showResults && (
-        <div className="mt-4 flex justify-center">
-          <div className="w-full max-w-2xl rounded-2xl border border-emerald-300/15 backdrop-blur-md p-3" style={{ background: 'rgba(30, 41, 59, 0.6)' }}>
-            <div className="text-sm text-emerald-200/80 mb-2">{t.results} ({results.length})</div>
+      {activeItem ? (
+        <div className="grid gap-6 lg:grid-cols-[1fr_360px] lg:items-start">
+          <section className="card p-4 md:p-5">
+            <div className="flex items-center gap-3 mb-5">
+              <ItemIcon itemId={activeItem.id} itemsById={itemsById} size={48} />
+              <div className="min-w-0">
+                <h2 className="font-display text-xl font-bold text-fg truncate">{activeItem.name}</h2>
+                {rarityLine(activeItem)}
+              </div>
+            </div>
+            <h3 className="caps-label mb-3">{t.whatYouNeed}</h3>
+            <RecipeNode
+              rootId={activeItem.id}
+              root
+              itemId={activeItem.id}
+              depth={0}
+              itemsById={itemsById}
+              recipesByResultId={recipesByResultId}
+              expanded={getExpanded(activeItem.id)}
+              recipeChoice={getRecipeChoice(activeItem.id)}
+              onToggle={(id) => toggleExpanded(activeItem.id, id)}
+              onCycleRecipe={(id) => cycleRecipe(activeItem.id, id)}
+              isCraftable={isCraftable}
+              visited={new Set<number>()}
+              t={t}
+            />
+          </section>
 
-            {results.length === 0 ? (
-              <div className="text-sm text-emerald-200/70">{t.noCraftableFound}</div>
+          <aside className="card p-4 md:p-5 lg:sticky lg:top-24">
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="section-title flex items-center gap-2"><ShoppingCart className="w-[18px] h-[18px] text-accent" /> {t.shoppingList}</h2>
+              <button type="button" onClick={copyAndConfirm} disabled={shoppingList.length === 0} className="btn btn-sm">
+                {copied ? <Check className="w-3.5 h-3.5 text-success" /> : <Copy className="w-3.5 h-3.5" />} {t.copy}
+              </button>
+            </div>
+            <p className="help mt-1">{t.shoppingListHint}</p>
+
+            {shoppingList.length === 0 ? (
+              <p className="mt-4 text-sm text-muted">{t.nothingToBuy}</p>
             ) : (
-              <div className="space-y-2 max-h-[320px] overflow-auto pr-1">
-                {results.map((it) => (
-                  <button
-                    key={it.id}
-                    onClick={() => addItem(it.id)}
-                    className="w-full text-left flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10 hover:border-emerald-300/25 transition"
-                    style={{ background: 'rgba(30, 41, 59, 0.7)' }}
-                  >
-                    <ItemIcon itemId={it.id} itemsById={itemsById} size={34} />
-                    <div className="flex-1 min-w-0">
-                      <div className="text-emerald-100 text-sm font-medium truncate">{it.name}</div>
-                      <div
-                        className={`text-xs mt-0.5 ${
-                          rarityInfo(it.rarity, t)?.className ?? "text-emerald-200/40"
-                        }`}
-                      >
-                        {rarityInfo(it.rarity, t)?.label ?? "—"}
-                      </div>
-                    </div>
-                    <div className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20" style={{ background: 'rgba(0, 0, 0, 0.3)' }}>
-                      {t.add}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            )}
-
-            <div className="mt-3 text-xs text-emerald-200/60">
-              {t.addTip}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Panels */}
-      {activeItem && (
-        <div className="mt-6 grid lg:grid-cols-12 gap-4">
-          {/* LEFT */}
-          <div className="lg:col-span-8 space-y-4">
-            <div className="rounded-2xl border border-emerald-300/15 backdrop-blur-md p-4" style={{ background: 'rgba(30, 41, 59, 0.7)' }}>
-              <div className="flex items-start gap-4">
-                <ItemIcon itemId={activeItem.id} itemsById={itemsById} />
-                <div className="flex-1 min-w-0">
-                  <div className="text-xl font-semibold text-emerald-200 truncate">{activeItem.name}</div>
-                  {rarityInfo(activeItem.rarity, t) ? (
-                    <div className={`text-sm mt-0.5 ${rarityInfo(activeItem.rarity, t)!.className}`}>
-                      {rarityInfo(activeItem.rarity, t)!.label}
-                    </div>
-                  ) : (
-                    <div className="text-sm mt-0.5 text-emerald-200/40">—</div>
-                  )}
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <h2 className="text-lg font-semibold text-emerald-300 mb-3">
-                  {t.whatYouNeed}
-                </h2>
-
-                <RecipeNode
-                  rootId={activeItem.id}
-                  root
-                  itemId={activeItem.id}
-                  depth={0}
-                  itemsById={itemsById}
-                  recipesByResultId={recipesByResultId}
-                  expanded={getExpanded(activeItem.id)}
-                  recipeChoice={getRecipeChoice(activeItem.id)}
-                  onToggle={(id) => toggleExpanded(activeItem.id, id)}
-                  onCycleRecipe={(id) => cycleRecipe(activeItem.id, id)}
-                  isCraftable={isCraftable}
-                  visited={new Set<number>()}
-                  t={t}
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* RIGHT */}
-          <div className="lg:col-span-4">
-            <div className="rounded-2xl border border-emerald-300/15 backdrop-blur-md p-4 h-full" style={{ background: 'rgba(30, 41, 59, 0.7)' }}>
-              <div className="flex items-center justify-between gap-3">
-                <h2 className="text-lg font-semibold text-emerald-300">{t.shoppingList}</h2>
-                <button
-                  onClick={copyShoppingList}
-                  disabled={shoppingList.length === 0}
-                  className="text-xs px-3 py-2 rounded-lg border border-emerald-300/20 hover:border-emerald-300/35 disabled:opacity-40"
-                  style={{ background: 'rgba(0, 0, 0, 0.3)' }}
-                >
-                  {t.copy}
-                </button>
-              </div>
-
-              <div className="text-xs text-emerald-200/70 mt-1">
-                {t.shoppingListHint}
-              </div>
-
-              {shoppingList.length === 0 ? (
-                <div className="mt-4 text-emerald-200/80 text-sm">{t.nothingToBuy}</div>
-              ) : (
-                <div className="mt-4 space-y-2 max-h-[720px] overflow-auto pr-1">
-                  {shoppingList.map((row) => {
-                    const it = itemsById.get(row.itemId);
-                    const name = it?.name ?? `#${row.itemId}`;
-                    const rInfo = rarityInfo(it?.rarity, t);
-                    const isChecked = checkedItems.has(row.itemId);
-
-                    return (
-                      <div
-                        key={row.itemId}
-                        className={`flex items-center gap-3 rounded-xl border border-emerald-300/10 px-3 py-2 transition-opacity ${
-                          isChecked ? 'opacity-50' : ''
-                        }`}
-                        style={{ background: 'rgba(30, 41, 59, 0.7)' }}
-                      >
+              <ul className="mt-4 space-y-1 max-h-[65vh] overflow-auto -mx-1 px-1">
+                {shoppingList.map((row) => {
+                  const it = itemsById.get(row.itemId);
+                  const isChecked = checkedItems.has(row.itemId);
+                  return (
+                    <li key={row.itemId}>
+                      <label className={`flex items-center gap-3 rounded-xl px-2 py-2 cursor-pointer hover:bg-surface2 transition ${isChecked ? "opacity-50" : ""}`}>
                         <input
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => toggleCheckedItem(row.itemId)}
-                          className="w-5 h-5 rounded border-emerald-300/30 bg-emerald-900/20 text-emerald-500 focus:ring-2 focus:ring-emerald-500/50 cursor-pointer"
+                          className="w-[18px] h-[18px] shrink-0 accent-[rgb(var(--primary))] cursor-pointer"
                         />
                         <ItemIcon itemId={row.itemId} itemsById={itemsById} size={32} />
                         <div className="flex-1 min-w-0">
-                          <div className={`text-emerald-100 text-sm truncate ${isChecked ? 'line-through' : ''}`}>
-                            {name}
-                          </div>
-                          <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
-                            {rInfo?.label ?? "—"}
-                          </div>
+                          <div className={`text-sm font-medium text-fg truncate ${isChecked ? "line-through" : ""}`}>{it?.name ?? `#${row.itemId}`}</div>
+                          {rarityLine(it)}
                         </div>
-                        <div className={`text-emerald-200 font-semibold ${isChecked ? 'line-through' : ''}`}>
-                          x{row.qty}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          </div>
+                        <span className={`font-mono font-bold text-sm text-fg ${isChecked ? "line-through" : ""}`}>×{fmt(row.qty)}</span>
+                      </label>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </aside>
         </div>
+      ) : (
+        !loading && (
+          <div className="card flex flex-col items-center text-center py-14 px-6">
+            <PackageSearch className="w-10 h-10 text-subtle mb-3" />
+            <p className="text-muted max-w-md">{t.addOneOrMore}</p>
+          </div>
+        )
       )}
 
-      {/* How it works section */}
       <HowItWorks title={t.itemsCraftHowItWorksTitle} text={t.itemsCraftHowItWorks} className="mt-8" />
     </div>
   );
@@ -648,188 +563,72 @@ function RecipeNode(props: {
   onCycleRecipe: (id: number) => void;
   isCraftable: (id: number) => boolean;
   visited: Set<number>;
-  hideSelfRow?: boolean;
   t: TranslationType;
 }) {
-  const {
-    root,
-    itemId,
-    depth,
-    itemsById,
-    recipesByResultId,
-    expanded,
-    recipeChoice,
-    onToggle,
-    onCycleRecipe,
-    isCraftable,
-    visited,
-    hideSelfRow,
-    t,
-  } = props;
-
-  const item = itemsById.get(itemId);
-  const name = item?.name ?? `#${itemId}`;
-  const rInfo = rarityInfo(item?.rarity, t);
+  const { root, itemId, itemsById, recipesByResultId, expanded, recipeChoice, onToggle, onCycleRecipe, isCraftable, visited, t } = props;
 
   const recipes = recipesByResultId.get(itemId) ?? [];
   const craftable = recipes.length > 0;
-
   const loop = visited.has(itemId);
   const nextVisited = new Set(visited);
   nextVisited.add(itemId);
 
-  // ✅ If we're nested under an ingredient row, that row already implies "open"
-  const isOpen = root ? true : hideSelfRow ? true : expanded.has(itemId);
-
   const chosenIdx = recipeChoice.get(itemId) ?? 0;
   const recipe = craftable ? recipes[Math.min(chosenIdx, recipes.length - 1)] : null;
 
-  const getDepthBackground = (d: number) => {
-    const baseOpacity = 0.7;
-    const darkening = Math.min(d * 0.08, 0.35);
-    return `rgba(30, 41, 59, ${baseOpacity + darkening})`;
-  };
+  const recipeSwitch = craftable && recipes.length > 1 && (
+    <button type="button" onClick={() => onCycleRecipe(itemId)} className="btn btn-sm shrink-0" title={t.switchRecipe}>
+      <Repeat className="w-3.5 h-3.5" /> {t.recipeNum} {chosenIdx + 1}/{recipes.length}
+    </button>
+  );
+
+  if (!craftable || !recipe || loop) {
+    return loop ? <p className="text-xs text-warning">{t.loop}</p> : null;
+  }
 
   return (
-    <div className="space-y-2">
-      {/* non-root header row (skip if hideSelfRow) */}
-      {!root && !hideSelfRow && (
-        <div
-          className="flex items-center gap-3 rounded-xl px-3 py-2 border border-emerald-300/10"
-          style={{ marginLeft: depth * 16, background: getDepthBackground(depth) }}
-        >
-          <button
-            onClick={() => onToggle(itemId)}
-            className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 hover:border-emerald-300/35"
-            style={{ background: 'rgba(0, 0, 0, 0.3)' }}
-            title={isOpen ? t.collapse : t.expand}
-          >
-            {isOpen ? "−" : "+"}
-          </button>
-
-          <ItemIcon itemId={itemId} itemsById={itemsById} size={28} />
-
-          <div className="flex-1 min-w-0">
-            <div className="text-emerald-100 text-sm truncate">{name}</div>
-            <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
-              {rInfo?.label ?? "—"}{" "}
-              <span className="text-emerald-200/40">
-                • {craftable ? t.craftable : t.notCraftable}
-                {loop ? ` • ${t.loop}` : ""}
-              </span>
-            </div>
-          </div>
-
-          {craftable && recipes.length > 1 && (
-            <button
-              onClick={() => onCycleRecipe(itemId)}
-              className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 hover:border-emerald-300/35"
-              style={{ background: 'rgba(0, 0, 0, 0.3)' }}
-              title={t.switchRecipe}
-            >
-              {t.recipeNum} {chosenIdx + 1}/{recipes.length}
-            </button>
-          )}
-        </div>
-      )}
-
-      {/* root card */}
-      {root && (
-        <div className="rounded-xl border border-emerald-300/10 px-3 py-2" style={{ background: 'rgba(30, 41, 59, 0.7)' }}>
-          <div className="flex items-center gap-3">
-            <ItemIcon itemId={itemId} itemsById={itemsById} size={32} />
-            <div className="flex-1 min-w-0">
-              <div className="text-emerald-100 text-sm font-medium truncate">{name}</div>
-              <div className={`text-xs mt-0.5 ${rInfo?.className ?? "text-emerald-200/40"}`}>
-                {rInfo?.label ?? "—"}{" "}
-                <span className="text-emerald-200/40">
-                  • {t.root} • {craftable ? t.craftable : t.notCraftable}
-                </span>
-              </div>
-            </div>
-
-            {craftable && recipes.length > 1 && (
-              <button
-                onClick={() => onCycleRecipe(itemId)}
-                className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 hover:border-emerald-300/35"
-                style={{ background: 'rgba(0, 0, 0, 0.3)' }}
-                title={t.switchRecipe}
-              >
-                {t.recipeNum} {chosenIdx + 1}/{recipes.length}
-              </button>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* children */}
-      {isOpen && craftable && recipe && !loop && (
-        <div className="space-y-2">
-          {recipe.ingredients.map((ing, idx) => {
-            const ingItem = itemsById.get(ing.itemId);
-            const ingName = ingItem?.name ?? `#${ing.itemId}`;
-            const ingCraftable = isCraftable(ing.itemId);
-            const ingR = rarityInfo(ingItem?.rarity, t);
-
-            return (
-              <div
-                key={`${itemId}-${ing.itemId}-${idx}`}
-                className="rounded-xl border border-emerald-300/10 px-3 py-2"
-                style={{ marginLeft: (depth + 1) * 16, background: getDepthBackground(depth + 1) }}
-              >
-                <div className="flex items-center gap-3">
-                  {ingCraftable ? (
-                    <button
-                      onClick={() => onToggle(ing.itemId)}
-                      className="text-xs px-2 py-1 rounded-lg border border-emerald-300/20 hover:border-emerald-300/35"
-                      style={{ background: 'rgba(0, 0, 0, 0.3)' }}
-                      title={expanded.has(ing.itemId) ? t.collapseIngredient : t.expandIngredient}
-                    >
-                      {expanded.has(ing.itemId) ? "−" : "+"}
-                    </button>
-                  ) : (
-                    <div className="w-[34px]" />
-                  )}
-
-                  <ItemIcon itemId={ing.itemId} itemsById={itemsById} size={28} />
-
-                  <div className="flex-1 min-w-0">
-                    <div className="text-emerald-100 text-sm truncate">{ingName}</div>
-                    <div className={`text-xs mt-0.5 ${ingR?.className ?? "text-emerald-200/40"}`}>
-                      {ingR?.label ?? "—"}{" "}
-                      <span className="text-emerald-200/40">
-                        • {ingCraftable ? t.craftable : t.notCraftable}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="text-emerald-200 font-semibold">x{ing.qty}</div>
-                </div>
-
-                {ingCraftable && expanded.has(ing.itemId) && (
-                  <div className="mt-2">
-                    <RecipeNode
-                      rootId={props.rootId}
-                      itemId={ing.itemId}
-                      depth={depth + 1}
-                      itemsById={itemsById}
-                      recipesByResultId={recipesByResultId}
-                      expanded={expanded}
-                      recipeChoice={recipeChoice}
-                      onToggle={onToggle}
-                      onCycleRecipe={onCycleRecipe}
-                      isCraftable={isCraftable}
-                      visited={nextVisited}
-                      hideSelfRow
-                      t={t}
-                    />
-                  </div>
+    <div className={root ? "" : "mt-1.5 ml-4 pl-3 border-l-2 border-line"}>
+      {root && recipes.length > 1 && <div className="flex justify-end mb-2">{recipeSwitch}</div>}
+      {!root && recipes.length > 1 && <div className="flex justify-end mb-1.5">{recipeSwitch}</div>}
+      <ul className="space-y-1.5">
+        {recipe.ingredients.map((ing, idx) => {
+          const ingItem = itemsById.get(ing.itemId);
+          const ingCraftable = isCraftable(ing.itemId);
+          const open = expanded.has(ing.itemId);
+          const r = rarityInfo(ingItem?.rarity, t);
+          return (
+            <li key={`${itemId}-${ing.itemId}-${idx}`}>
+              <div className="flex items-center gap-3 rounded-xl border border-line bg-bg2 px-2.5 py-2">
+                {ingCraftable ? (
+                  <button
+                    type="button"
+                    onClick={() => onToggle(ing.itemId)}
+                    aria-expanded={open}
+                    className="w-7 h-7 grid place-items-center rounded-lg border border-line bg-surface text-muted hover:text-fg shrink-0"
+                    title={open ? t.collapseIngredient : t.expandIngredient}
+                  >
+                    {open ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+                  </button>
+                ) : (
+                  <span className="w-7 shrink-0" />
                 )}
+                <ItemIcon itemId={ing.itemId} itemsById={itemsById} size={30} />
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-medium text-fg truncate">{ingItem?.name ?? `#${ing.itemId}`}</div>
+                  <div className="text-xs mt-0.5 truncate">
+                    <span className={r?.className ?? "text-subtle"}>{r?.label ?? "—"}</span>
+                    <span className="text-subtle"> · {ingCraftable ? t.craftable : t.notCraftable}</span>
+                  </div>
+                </div>
+                <span className="font-mono font-bold text-sm text-fg shrink-0">×{ing.qty}</span>
               </div>
-            );
-          })}
-        </div>
-      )}
+              {ingCraftable && open && (
+                <RecipeNode {...props} root={false} itemId={ing.itemId} depth={props.depth + 1} visited={nextVisited} />
+              )}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
@@ -860,8 +659,8 @@ function ItemIcon({
       width={size}
       height={size}
       alt=""
-      className="rounded-xl backdrop-blur-md border border-emerald-300/15"
-      style={{ background: 'rgba(0, 0, 0, 0.2)' }}
+      className="rounded-lg bg-surface2 border border-line object-contain shrink-0"
+      style={{ width: size, height: size }}
       onError={() => {
         const it = itemsById?.get(itemId);
         const g = it?.gfxId ?? itemId;
