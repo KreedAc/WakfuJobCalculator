@@ -3,6 +3,10 @@
 import { lazy, type ReactNode } from 'react';
 import type { Language } from './constants/translations';
 import { CalculatorPage } from './pages/CalculatorPage';
+import { BuilderWipGate } from './components/WorkInProgress';
+import { BUILDER_WIP } from './lib/featureFlags';
+import { BUILDER_T } from './constants/builderTranslations';
+import { BUILD_GALLERY_T } from './content/buildGallery';
 
 // Single source of truth for the site's pages: the app router, the build-time
 // prerenderer and the sitemap are all generated from this list.
@@ -31,12 +35,22 @@ export interface RouteDef {
   render: (language: Language) => ReactNode;
   changefreq: 'daily' | 'weekly' | 'monthly' | 'yearly';
   priority: number;
+  /** false keeps the page out of sitemap.xml */
+  inSitemap?: boolean;
 }
 
 export const ROUTES: RouteDef[] = [
   { path: '/', render: (l) => <CalculatorPage language={l} />, changefreq: 'weekly', priority: 1.0 },
-  { path: '/builder', render: (l) => <BuilderPage language={l} />, changefreq: 'weekly', priority: 0.9 },
-  { path: '/builds', render: (l) => <BuildsGalleryPage language={l} />, changefreq: 'daily', priority: 0.8 },
+  {
+    path: '/builder',
+    render: (l) => <BuilderWipGate language={l} title={BUILDER_T[l].pageTitle} path="/builder"><BuilderPage language={l} /></BuilderWipGate>,
+    changefreq: 'weekly', priority: 0.9, inSitemap: !BUILDER_WIP,
+  },
+  {
+    path: '/builds',
+    render: (l) => <BuilderWipGate language={l} title={BUILD_GALLERY_T[l].title} path="/builds"><BuildsGalleryPage language={l} /></BuilderWipGate>,
+    changefreq: 'daily', priority: 0.8, inSitemap: !BUILDER_WIP,
+  },
   { path: '/sublimations', render: (l) => <SublimationsPage language={l} />, changefreq: 'weekly', priority: 0.9 },
   { path: '/items-craft-guide', render: (l) => <ItemsCraftGuidePage language={l} />, changefreq: 'weekly', priority: 0.8 },
   { path: '/combat-calc', render: (l) => <CombatCalcPage language={l} />, changefreq: 'monthly', priority: 0.8 },

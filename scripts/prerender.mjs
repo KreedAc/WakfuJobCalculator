@@ -43,7 +43,11 @@ function inject(template, { html, head }) {
   if (!template.includes('<div id="root"></div>')) {
     throw new Error("index.html template is missing <div id=\"root\"></div>");
   }
-  return template
+  // a page that sets its own robots tag (404, unreleased pages) replaces the default one
+  const base = head.includes('name="robots"')
+    ? template.replace(/<meta\s+name="robots"[\s\S]*?\/>\s*/, "")
+    : template;
+  return base
     .replace("</head>", `${head}\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root">${html}</div>`);
 }
@@ -67,7 +71,8 @@ async function main() {
   console.log("prerendered 404.html");
 
   const today = new Date().toISOString().slice(0, 10);
-  const urls = routes
+  const sitemapRoutes = routes.filter((r) => r.inSitemap);
+  const urls = sitemapRoutes
     .map(({ path: route, changefreq, priority }) =>
       `  <url>\n    <loc>${SITE_URL}${route}</loc>\n    <lastmod>${today}</lastmod>\n` +
       `    <changefreq>${changefreq}</changefreq>\n    <priority>${priority.toFixed(1)}</priority>\n  </url>`)
@@ -76,7 +81,7 @@ async function main() {
     path.join(DIST, "sitemap.xml"),
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
   );
-  console.log(`sitemap.xml: ${routes.length} URLs`);
+  console.log(`sitemap.xml: ${sitemapRoutes.length} URLs`);
 }
 
 main().catch((e) => {

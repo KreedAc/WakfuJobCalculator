@@ -213,9 +213,10 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
   return (
     <div className="max-w-4xl w-full flex flex-col items-center animate-in fade-in duration-500">
       <PageSeo title={ct.pageTitle} description={ct.pageSubtitle} path="/combat-calc" />
-      <h1 className="page-title mb-3">
+      <h1 className="page-title mb-1">
         {ct.pageTitle}
       </h1>
+      <p className="text-emerald-300/70 text-sm italic mb-3 text-center">{ct.credit}</p>
       <p className="text-emerald-100/80 mb-8 text-center max-w-2xl text-base leading-relaxed drop-shadow-md">
         {ct.pageSubtitle}
       </p>

@@ -22,15 +22,18 @@ interface PageSeoProps {
   title: string;
   description: string;
   path: string;
+  /** keep the page out of search results (e.g. unreleased features) */
+  noindex?: boolean;
 }
 
-export function PageSeo({ title, description, path }: PageSeoProps) {
+export function PageSeo({ title, description, path, noindex }: PageSeoProps) {
   const url = `${SITE_URL}${path}`;
   const image = ogImageFor(path);
   return (
     <Helmet>
       <title>{`${title} | Wakfu Job Calculator`}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex" />}
       <link rel="canonical" href={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
