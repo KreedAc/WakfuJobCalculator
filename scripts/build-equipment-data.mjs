@@ -9,6 +9,9 @@
 // elements" actions (1068/1069). The actionId → stat-name mapping lives in
 // the frontend (src/constants/equipmentStats.ts) and was derived from
 // actions.json via scripts/probe-equipment-data.mjs.
+//
+// craft: 1 marks items produced by at least one recipe (recipeResults.json),
+// so the builder can link them to the Items Craft Guide.
 
 import { promises as fsp } from "node:fs";
 import path from "node:path";
@@ -89,6 +92,16 @@ async function main() {
   const itemsRaw = await fetchJson(`https://wakfu.cdn.ankama.com/gamedata/${version}/items.json`);
   console.log(`Official items: ${itemsRaw.length}`);
 
+  console.log("Downloading recipeResults.json ...");
+  const recipeResults = await fetchJson(`https://wakfu.cdn.ankama.com/gamedata/${version}/recipeResults.json`);
+  const craftable = new Set();
+  for (const row of recipeResults) {
+    const id = row?.productedItemId ?? row?.itemId ?? row?.definition?.itemId ?? row?.resultItemId;
+    if (id) craftable.add(Number(id));
+  }
+  console.log(`Craftable item ids: ${craftable.size}`);
+  if (craftable.size === 0) console.warn("⚠️ recipeResults.json parsed to 0 items: check its field names");
+
   const unhandled = new Map();
   const wearables = [];
   for (const it of itemsRaw) {
@@ -116,6 +129,7 @@ async function main() {
         rarity: d.baseParameters?.rarity ?? 0,
         gfx: d.graphicParameters?.gfxId ?? null,
         stats,
+        ...(craftable.has(d.id) ? { craft: 1 } : {}),
       }))
       .sort((a, b) => a.lvl - b.lvl || a.id - b.id);
 
