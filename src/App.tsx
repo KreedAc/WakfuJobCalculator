@@ -1,6 +1,6 @@
 import { useState, useEffect, startTransition, Suspense } from 'react';
 import { Routes, Route, useLocation, Link } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
+import { Navbar, MobileNav } from './components/Navbar';
 import { ROUTES, NotFoundPage } from './routes';
 import { LanguageSelector } from './components/LanguageSelector';
 import { useClickOutside } from './hooks/useClickOutside';
@@ -60,16 +60,9 @@ export default function App() {
 />
 
 
-      <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-50">
-        <Navbar
-          currentPath={location.pathname}
-          navCalcLabel={t.navCalc}
-          navSubliLabel={t.navSubli}
-          navItemsCraftLabel={t.navItemsCraft}
-          navTreasuresLabel={t.navTreasures}
-          navCombatCalcLabel={t.navCombatCalc}
-          navBuilderLabel={t.navBuilder}
-        />
+      <div className="absolute top-4 left-4 right-4 flex justify-between items-center gap-3 z-50">
+        <Navbar currentPath={location.pathname} t={t} />
+        <MobileNav currentPath={location.pathname} t={t} />
 
         <LanguageSelector
           language={lang}

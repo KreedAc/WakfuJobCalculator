@@ -192,7 +192,7 @@ const filteredRunes = useMemo(() => {
     return (
       <div className="sublimation-container">
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+          <h1 className="page-title mb-4">
             {t.sublimationsLibrary}
           </h1>
         </div>
@@ -210,7 +210,7 @@ const filteredRunes = useMemo(() => {
     <div className="sublimation-container animate-in fade-in duration-500">
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+        <h1 className="page-title mb-4">
           {t.sublimationsLibrary}
         </h1>
         <div className="flex justify-center items-center gap-3">

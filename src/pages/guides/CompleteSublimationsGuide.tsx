@@ -393,16 +393,16 @@ export function CompleteSublimationsGuide({ language }: CompleteSublimationsGuid
         <div className="backdrop-blur-xl bg-gray-900/80 border border-white/10 shadow-2xl rounded-3xl p-8 md:p-12">
           <Link
             to="/guides"
-            className="inline-flex items-center gap-2 text-cyan-300 hover:text-cyan-200 mb-6 transition-colors"
+            className="inline-flex items-center gap-2 text-emerald-300 hover:text-emerald-200 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{pageContent.backToGuides}</span>
           </Link>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-cyan-300 mb-2">
+          <h1 className="page-title mb-2">
             {pageContent.title}
           </h1>
-          <p className="text-cyan-100/60 text-sm mb-8">{pageContent.lastUpdated}</p>
+          <p className="text-emerald-100/60 text-sm mb-8">{pageContent.lastUpdated}</p>
 
           <div className="space-y-10">
             {pageContent.sections.map((section, idx) => {
@@ -411,23 +411,23 @@ export function CompleteSublimationsGuide({ language }: CompleteSublimationsGuid
                 <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl p-6">
                   {IconComponent && (
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center">
-                        <IconComponent className="w-5 h-5 text-cyan-300" />
+                      <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
+                        <IconComponent className="w-5 h-5 text-emerald-300" />
                       </div>
-                      <h2 className="text-2xl font-bold text-cyan-200">
+                      <h2 className="text-2xl font-bold text-emerald-200">
                         {section.title}
                       </h2>
                     </div>
                   )}
                   {!IconComponent && (
-                    <h2 className="text-2xl font-bold text-cyan-200 mb-4">
+                    <h2 className="text-2xl font-bold text-emerald-200 mb-4">
                       {section.title}
                     </h2>
                   )}
 
                   <div className="space-y-4">
                     {section.content.map((paragraph, pIdx) => (
-                      <p key={pIdx} className="text-cyan-100/80 leading-relaxed">
+                      <p key={pIdx} className="text-emerald-100/80 leading-relaxed">
                         {paragraph}
                       </p>
                     ))}
@@ -437,10 +437,10 @@ export function CompleteSublimationsGuide({ language }: CompleteSublimationsGuid
             })}
           </div>
 
-          <div className="mt-10 p-6 bg-cyan-500/10 border border-cyan-500/20 rounded-2xl">
-            <p className="text-center text-cyan-200/90">
+          <div className="mt-10 p-6 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
+            <p className="text-center text-emerald-200/90">
               Explore our{' '}
-              <Link to="/sublimations" className="text-cyan-300 font-bold hover:underline">
+              <Link to="/sublimations" className="text-emerald-300 font-bold hover:underline">
                 Sublimations Database
               </Link>{' '}
               to find the perfect sublimations for your build!

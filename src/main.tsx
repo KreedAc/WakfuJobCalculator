@@ -19,6 +19,13 @@ const app = (
   </StrictMode>
 );
 
+// Offline support + installable app (production only: the dev server must stay uncached).
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+
 const root = document.getElementById('root')!;
 // Pages are prerendered at build time: hydrate the existing HTML when present.
 if (root.hasChildNodes()) {

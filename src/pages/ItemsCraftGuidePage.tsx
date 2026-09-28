@@ -1,6 +1,6 @@
 // src/pages/ItemsCraftGuidePage.tsx
 import { useEffect, useMemo, useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { HowItWorks } from "../components/HowItWorks";
 import {
   loadWakfuData,
   getItemIconUrl,
@@ -55,7 +55,6 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
 
   // UI
   const [query, setQuery] = useState("");
-  const [showHowItWorks, setShowHowItWorks] = useState(false);
 
   // Multi-select
   const [selected, setSelected] = useState<SelectedRow[]>([]);
@@ -318,7 +317,7 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
       <PageSeo title={t.itemsCraftTitle} description={t.itemsCraftHowItWorks.slice(0, 155)} path="/items-craft-guide" />
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+        <h1 className="page-title mb-4">
           {t.itemsCraftTitle}
         </h1>
         <div className="text-xs text-emerald-200/70">
@@ -601,30 +600,7 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
       )}
 
       {/* How it works section */}
-      <div className="mt-8">
-        <div className="backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl overflow-hidden" style={{ background: 'rgba(15, 23, 42, 0.7)' }}>
-          <button
-            onClick={() => setShowHowItWorks(!showHowItWorks)}
-            className="w-full flex items-center justify-between p-3 md:p-4 hover:bg-white/5 transition-colors duration-200"
-          >
-            <h2 className="text-sm md:text-base font-bold text-emerald-300">
-              {t.itemsCraftHowItWorksTitle}
-            </h2>
-            {showHowItWorks ? (
-              <ChevronUp className="h-4 w-4 text-emerald-300 flex-shrink-0" />
-            ) : (
-              <ChevronDown className="h-4 w-4 text-emerald-300 flex-shrink-0" />
-            )}
-          </button>
-          {showHowItWorks && (
-            <div className="px-3 md:px-4 pb-3 md:pb-4 pt-0 animate-in fade-in slide-in-from-top-2 duration-300">
-              <p className="text-emerald-100/90 leading-relaxed text-[10px]">
-                {t.itemsCraftHowItWorks}
-              </p>
-            </div>
-          )}
-        </div>
-      </div>
+      <HowItWorks title={t.itemsCraftHowItWorksTitle} text={t.itemsCraftHowItWorks} className="mt-8" />
     </div>
   );
 }

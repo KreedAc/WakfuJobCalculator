@@ -122,3 +122,12 @@
   animation: liquid-shimmer 3s ease-in-out infinite;
   pointer-events: none;
 }
+
+/* Shared page heading: every page title uses the same emerald gradient. */
+@layer components {
+  .page-title {
+    @apply text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text
+      bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200
+      drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)];
+  }
+}
