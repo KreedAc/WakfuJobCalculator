@@ -1,136 +1,14 @@
 import { PageSeo } from '../components/PageSeo';
 import { Clock, Plus, Wrench, Bug, Sparkles } from 'lucide-react';
 import { type Language } from '../constants/translations';
+import { changelog, changelogContent, type ChangeType } from '../content/changelog';
 
 interface ChangelogPageProps {
   language: Language;
 }
 
-type ChangeType = 'feature' | 'improvement' | 'fix' | 'update';
-
-interface Change {
-  type: ChangeType;
-  text: string;
-}
-
-interface ChangelogEntry {
-  version: string;
-  date: string;
-  changes: Change[];
-}
-
 export function ChangelogPage({ language }: ChangelogPageProps) {
-  const pageContent = {
-    en: {
-      title: 'Changelog',
-      description: 'Track all updates, improvements and new features',
-      typeLabels: {
-        feature: 'New Feature',
-        improvement: 'Improvement',
-        fix: 'Bug Fix',
-        update: 'Update'
-      }
-    },
-    fr: {
-      title: 'Journal des modifications',
-      description: 'Suivez toutes les mises à jour, améliorations et nouvelles fonctionnalités',
-      typeLabels: {
-        feature: 'Nouvelle fonctionnalité',
-        improvement: 'Amélioration',
-        fix: 'Correction de bug',
-        update: 'Mise à jour'
-      }
-    },
-    es: {
-      title: 'Registro de cambios',
-      description: 'Sigue todas las actualizaciones, mejoras y nuevas características',
-      typeLabels: {
-        feature: 'Nueva característica',
-        improvement: 'Mejora',
-        fix: 'Corrección de error',
-        update: 'Actualización'
-      }
-    },
-    pt: {
-      title: 'Registro de alterações',
-      description: 'Acompanhe todas as atualizações, melhorias e novos recursos',
-      typeLabels: {
-        feature: 'Novo recurso',
-        improvement: 'Melhoria',
-        fix: 'Correção de bug',
-        update: 'Atualização'
-      }
-    }
-  };
-
-  const changelog: ChangelogEntry[] = [
-    {
-      version: '2.1.0',
-      date: '2026-02-25',
-      changes: [
-        { type: 'feature', text: language === 'en' ? 'Added Treasures page with hunt locations, coordinates, artifacts and rewards' :
-          language === 'fr' ? 'Ajout de la page Trésors avec emplacements, coordonnées, artefacts et récompenses' :
-          language === 'es' ? 'Agregada página de Tesoros con ubicaciones, coordenadas, artefactos y recompensas' :
-          'Adicionada página de Tesouros com locais, coordenadas, artefatos e recompensas' },
-        { type: 'feature', text: language === 'en' ? 'Added checkboxes to track completed treasures with persistent storage' :
-          language === 'fr' ? 'Ajout de cases à cocher pour suivre les trésors complétés avec stockage persistant' :
-          language === 'es' ? 'Agregadas casillas para rastrear tesoros completados con almacenamiento persistente' :
-          'Adicionadas caixas de seleção para rastrear tesouros completados com armazenamento persistente' },
-        { type: 'improvement', text: language === 'en' ? 'Multi-language support for treasure locations, artifacts and achievements' :
-          language === 'fr' ? 'Support multilingue pour les emplacements, artefacts et succès de trésors' :
-          language === 'es' ? 'Soporte multiidioma para ubicaciones, artefactos y logros de tesoros' :
-          'Suporte multilíngue para locais, artefatos e conquistas de tesouros' }
-      ]
-    },
-    {
-      version: '2.0.0',
-      date: '2026-01-21',
-      changes: [
-        { type: 'feature', text: language === 'en' ? 'Added About and Changelog pages' :
-          language === 'fr' ? 'Ajout des pages À propos et Journal des modifications' :
-          language === 'es' ? 'Agregadas páginas Acerca de y Registro de cambios' :
-          'Adicionadas páginas Sobre e Registro de alterações' },
-        { type: 'improvement', text: language === 'en' ? 'Enhanced footer navigation' :
-          language === 'fr' ? 'Navigation du pied de page améliorée' :
-          language === 'es' ? 'Navegación del pie de página mejorada' :
-          'Navegação do rodapé aprimorada' }
-      ]
-    },
-    {
-      version: '1.5.0',
-      date: '2026-01-15',
-      changes: [
-        { type: 'feature', text: language === 'en' ? 'Added Items Craft Guide' :
-          language === 'fr' ? 'Ajout du Guide de Craft d\'Objets' :
-          language === 'es' ? 'Agregada Guía de Crafteo de Objetos' :
-          'Adicionado Guia de Crafting de Itens' },
-        { type: 'improvement', text: language === 'en' ? 'Improved sublimations filtering system' :
-          language === 'fr' ? 'Amélioration du système de filtrage des sublimations' :
-          language === 'es' ? 'Mejora del sistema de filtrado de sublimaciones' :
-          'Melhoria no sistema de filtragem de sublimações' }
-      ]
-    },
-    {
-      version: '1.0.0',
-      date: '2025-11-10',
-      changes: [
-        { type: 'feature', text: language === 'en' ? 'Initial release with XP Calculator' :
-          language === 'fr' ? 'Version initiale avec Calculateur XP' :
-          language === 'es' ? 'Lanzamiento inicial con Calculadora XP' :
-          'Lançamento inicial com Calculadora XP' },
-        { type: 'feature', text: language === 'en' ? 'Sublimations database' :
-          language === 'fr' ? 'Base de données de sublimations' :
-          language === 'es' ? 'Base de datos de sublimaciones' :
-          'Banco de dados de sublimações' },
-        { type: 'feature', text: language === 'en' ? 'Multi-language support (EN, FR, ES, PT)' :
-          language === 'fr' ? 'Support multilingue (EN, FR, ES, PT)' :
-          language === 'es' ? 'Soporte multiidioma (EN, FR, ES, PT)' :
-          'Suporte multilíngue (EN, FR, ES, PT)' }
-      ]
-    }
-  ];
-
-  const content = pageContent[language];
+  const content = changelogContent[language];
 
   const getChangeIcon = (type: ChangeType) => {
     switch (type) {
@@ -172,9 +50,9 @@ export function ChangelogPage({ language }: ChangelogPageProps) {
           </p>
 
           <div className="space-y-8">
-            {changelog.map((entry, idx) => (
+            {changelog.map((entry) => (
               <div
-                key={idx}
+                key={entry.version}
                 className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-6">
@@ -205,7 +83,7 @@ export function ChangelogPage({ language }: ChangelogPageProps) {
                           {content.typeLabels[change.type]}
                         </div>
                         <p className="text-emerald-100/80 leading-relaxed">
-                          {change.text}
+                          {change.text[language]}
                         </p>
                       </div>
                     </div>
@@ -217,10 +95,7 @@ export function ChangelogPage({ language }: ChangelogPageProps) {
 
           <div className="mt-12 p-6 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl text-center">
             <p className="text-emerald-200/80 text-sm">
-              {language === 'en' ? 'More updates coming soon!' :
-               language === 'fr' ? 'Plus de mises à jour bientôt!' :
-               language === 'es' ? 'Más actualizaciones próximamente!' :
-               'Mais atualizações em breve!'}
+              {content.comingSoon}
             </p>
           </div>
         </div>

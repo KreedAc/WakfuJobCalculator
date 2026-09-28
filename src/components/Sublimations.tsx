@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Scroll, Search, AlertCircle, X, Filter } from 'lucide-react';
 import { FALLBACK_SUBLIMATIONS, type Sublimation } from '../data/fallbackSublimations';
-import { processDescription, initializeRuneLevels } from '../utils/sublimationUtils';
+import { processDescription, initializeRuneLevels, matchesEquipmentSlots, type Slot } from '../utils/sublimationUtils';
 import { LocalImage } from './LocalImage';
 import { SlotSelector } from './SlotSelector';
 import './Sublimations.css';
@@ -63,11 +63,7 @@ export function Sublimations({ translations: t, language = 'en' }: SublimationsP
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [runeLevels, setRuneLevels] = useState<Record<string, number>>({});
   const [dataSource, setDataSource] = useState<'loading' | 'json' | 'fallback' | 'error'>('loading');
-  type Slot = 'Any' | 'R' | 'G' | 'B' | 'J';
-
-const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
-  'Any', 'Any', 'Any', 'Any'
-]);
+  const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>(['Any', 'Any', 'Any', 'Any']);
 
   useEffect(() => {
     let cancelled = false;
@@ -124,48 +120,10 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
     cat === 'All' ? t.allCategories : (CATEGORY_LABELS[language]?.[cat] ?? cat);
 
   const handleLevelChange = (runeName: string, newLevel: number) => {
-  setRuneLevels(prev => ({
-    ...prev,
-    [runeName]: newLevel
-  }));
-};
+    setRuneLevels(prev => ({ ...prev, [runeName]: newLevel }));
+  };
 
-  type RuneSlot = 'R' | 'G' | 'B' | 'J';
-
-const isRuneSlot = (c: string): c is RuneSlot =>
-  c === 'R' || c === 'G' || c === 'B' || c === 'J';
-
-// se rune.colors contiene anche "Epic"/"Relic", li scartiamo
-const getRuneSlots = (rune: Sublimation): RuneSlot[] =>
-  (rune.colors ?? []).filter(isRuneSlot).slice(0, 3);
-
-const slotMatches = (equip: Slot, rune: RuneSlot) => {
-  if (equip === 'Any') return false;   // "Any" = slot vuoto
-  if (equip === 'J') return true;      // jolly equip = R/G/B (e anche J)
-  if (rune === 'J') return true;       // jolly rune = R/G/B (e anche J)
-  return equip === rune;               // match esatto
-};
-
-const COMBOS: [number, number, number][] = [
-  [0, 1, 2],
-  [1, 2, 3],
-];
-
-const matchesEquipmentSlots = (equipSlots: [Slot, Slot, Slot, Slot], rune: Sublimation) => {
-  // se l'utente non filtra per slot, non blocchiamo nulla
-  if (equipSlots.every(s => s === 'Any')) return true;
-
-  const rs = getRuneSlots(rune);
-  if (rs.length !== 3) return false;
-
-  return COMBOS.some(([a, b, c]) =>
-    slotMatches(equipSlots[a], rs[0]) &&
-    slotMatches(equipSlots[b], rs[1]) &&
-    slotMatches(equipSlots[c], rs[2])
-  );
-};
-
-const filteredRunes = useMemo(() => {
+  const filteredRunes = useMemo(() => {
     return runes.filter(rune => {
       if (!rune.name) return false;
       const nameMatch = rune.name.toLowerCase().includes(searchTerm.toLowerCase());
