@@ -16,6 +16,7 @@ export const COMBAT_TAB_IDS: CombatTabId[] = [
 const en = {
   pageTitle: 'Combat Calculator',
   pageSubtitle: 'Calculate damage, heals, armor, resistances and more.',
+  credit: 'based on WakfuCalc (made by @ectawem)',
   tabs: {
     damage: 'Damage', heal: 'Heal', armor: 'Armor', build: 'Build', tank: 'Tank',
     resistance: 'Resistance', fow: 'FoW', lock: 'Lock', hp: 'HP/EHP', em: 'EM',
@@ -183,6 +184,7 @@ export type CombatCalcT = typeof en;
 const fr: CombatCalcT = {
   pageTitle: 'Calculateur de Combat',
   pageSubtitle: 'Calculez vos dégâts, soins, armures, résistances et plus encore.',
+  credit: 'basé sur WakfuCalc (créé par @ectawem)',
   tabs: {
     damage: 'Dégâts', heal: 'Soin', armor: 'Armure', build: 'Build', tank: 'Tank',
     resistance: 'Résistance', fow: 'Volonté', lock: 'Tacle', hp: 'PV/EHP', em: 'ME',
@@ -337,6 +339,7 @@ const fr: CombatCalcT = {
 const es: CombatCalcT = {
   pageTitle: 'Calculadora de Combate',
   pageSubtitle: 'Calcula daños, sanaciones, armadura, resistencias y más.',
+  credit: 'basado en WakfuCalc (creado por @ectawem)',
   tabs: {
     damage: 'Daño', heal: 'Sanación', armor: 'Armadura', build: 'Build', tank: 'Tanque',
     resistance: 'Resistencia', fow: 'Voluntad', lock: 'Placaje', hp: 'PdV/EHP', em: 'DE',
@@ -491,6 +494,7 @@ const es: CombatCalcT = {
 const pt: CombatCalcT = {
   pageTitle: 'Calculadora de Combate',
   pageSubtitle: 'Calcule danos, curas, armadura, resistências e muito mais.',
+  credit: 'baseado no WakfuCalc (criado por @ectawem)',
   tabs: {
     damage: 'Dano', heal: 'Cura', armor: 'Armadura', build: 'Build', tank: 'Tanque',
     resistance: 'Resistência', fow: 'Vontade', lock: 'Placagem', hp: 'PV/EHP', em: 'DE',

@@ -8,7 +8,7 @@ import { Writable } from 'node:stream';
 import App from './App';
 import { ROUTES } from './routes';
 
-export const routes = ROUTES.map(({ path, changefreq, priority }) => ({ path, changefreq, priority }));
+export const routes = ROUTES.map(({ path, changefreq, priority, inSitemap = true }) => ({ path, changefreq, priority, inSitemap }));
 
 export interface RenderResult {
   html: string;

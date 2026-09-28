@@ -3,21 +3,26 @@ import { createPortal } from 'react-dom';
 import { Hammer, Scroll, Wrench, Map, Swords, Shirt, BookOpen, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { TRANSLATIONS, Language } from '../constants/translations';
+import { BUILDER_WIP } from '../lib/featureFlags';
 
 type T = (typeof TRANSLATIONS)[Language];
 type Icon = React.ComponentType<{ className?: string }>;
 
-interface NavItem { to: string; icon: Icon; label: (t: T) => string; also?: string[] }
+interface NavItem { to: string; icon: Icon; label: (t: T) => string; also?: string[]; wip?: boolean }
 
 const NAV_ITEMS: NavItem[] = [
   { to: '/', icon: Hammer, label: (t) => t.navCalc },
-  { to: '/builder', icon: Shirt, label: (t) => t.navBuilder, also: ['/builds'] },
+  { to: '/builder', icon: Shirt, label: (t) => t.navBuilder, also: ['/builds'], wip: BUILDER_WIP },
   { to: '/sublimations', icon: Scroll, label: (t) => t.navSubli },
   { to: '/items-craft-guide', icon: Wrench, label: (t) => t.navItemsCraft },
   { to: '/combat-calc', icon: Swords, label: (t) => t.navCombatCalc },
   { to: '/treasures', icon: Map, label: (t) => t.navTreasures },
   { to: '/guides', icon: BookOpen, label: (t) => t.navGuidesLabel },
 ];
+
+const WipBadge = () => (
+  <span className="px-1.5 py-0.5 rounded-md bg-amber-500/20 border border-amber-400/40 text-amber-200 text-[9px] font-bold leading-none">WIP</span>
+);
 
 const isActive = ({ to, also = [] }: NavItem, path: string) =>
   to === '/' ? path === '/' : [to, ...also].some((p) => path === p || path.startsWith(`${p}/`));
@@ -32,7 +37,7 @@ export function Navbar({ currentPath, t }: NavbarProps) {
   return (
     <nav className="glass hidden md:flex items-center gap-1 rounded-2xl px-2 py-1.5" aria-label="Main">
       {NAV_ITEMS.map((item) => {
-        const { to, icon: Icon, label } = item;
+        const { to, icon: Icon, label, wip } = item;
         const active = isActive(item, currentPath);
         return (
           <Link
@@ -46,8 +51,12 @@ export function Navbar({ currentPath, t }: NavbarProps) {
                 : 'text-emerald-100/80 hover:text-emerald-200 hover:bg-emerald-500/10'
             }`}
           >
-            <Icon className="w-4 h-4 shrink-0" />
+            <span className="relative">
+              <Icon className="w-4 h-4 shrink-0" />
+              {wip && <span className="xl:hidden absolute -top-1 -right-1 w-2 h-2 rounded-full bg-amber-400" />}
+            </span>
             <span className="hidden xl:inline whitespace-nowrap">{label(t)}</span>
+            {wip && <span className="hidden xl:inline"><WipBadge /></span>}
           </Link>
         );
       })}
@@ -101,7 +110,7 @@ export function MobileNav({ currentPath, t }: NavbarProps) {
           </div>
           <nav className="flex-1 overflow-y-auto px-4 pb-8 space-y-2" aria-label="Main">
             {NAV_ITEMS.map((item) => {
-              const { to, icon: Icon, label } = item;
+              const { to, icon: Icon, label, wip } = item;
               const active = isActive(item, currentPath);
               return (
                 <Link
@@ -116,6 +125,7 @@ export function MobileNav({ currentPath, t }: NavbarProps) {
                 >
                   <Icon className="w-5 h-5 text-emerald-400 shrink-0" />
                   {label(t)}
+                  {wip && <WipBadge />}
                 </Link>
               );
             })}
