@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
-import { Search, Share2, X, Trash2, Save, FolderOpen, Ban, Hammer } from 'lucide-react';
+import { Search, Share2, X, Trash2, Save, FolderOpen, Ban, Hammer, Upload } from 'lucide-react';
 import { PageSeo } from '../components/PageSeo';
-import { getItemIconUrl } from '../lib/wakfuData';
+import { ItemIcon } from '../components/ItemIcon';
+import { BuilderTabs } from '../components/BuilderTabs';
 import { flatToPercent } from '../lib/combatFormulas';
 import { craftGuideUrl } from '../lib/craftLink';
+import { publishBuild, ApiError, savedAuthor, saveAuthor } from '../lib/buildsApi';
+import { BUILD_GALLERY_T, CLASS_NAMES } from '../content/buildGallery';
 import {
   loadEquipmentData, emptyBuild, equipItem, unequipSlot, isSlotBlocked,
   computeTotals, encodeBuild, decodeBuild, slotsForType, listSavedBuilds,
@@ -18,31 +21,6 @@ import {
 } from '../constants/equipmentStats';
 import { BUILDER_T } from '../constants/builderTranslations';
 import type { Language } from '../constants/translations';
-
-function ItemIcon({ item, size = 40 }: { item: EquipmentItem; size?: number }) {
-  const [failed, setFailed] = useState(false);
-  if (!item.gfx || failed) {
-    return (
-      <span
-        className="flex items-center justify-center rounded bg-slate-800 text-emerald-500/60 text-[10px] font-bold"
-        style={{ width: size, height: size }}
-      >
-        {item.name.slice(0, 2)}
-      </span>
-    );
-  }
-  return (
-    <img
-      src={getItemIconUrl(item.gfx)}
-      alt={item.name}
-      width={size}
-      height={size}
-      loading="lazy"
-      className="rounded object-contain bg-slate-800/60"
-      onError={() => setFailed(true)}
-    />
-  );
-}
 
 function statLine(actionId: number, value: number, lang: Language, count?: number) {
   const meta = STAT_ACTIONS[actionId];
@@ -84,6 +62,7 @@ interface BuilderPageProps { language: Language; }
 
 export function BuilderPage({ language }: BuilderPageProps) {
   const t = BUILDER_T[language];
+  const g = BUILD_GALLERY_T[language];
   const [data, setData] = useState<EquipmentData | null>(null);
   const [build, setBuild] = useState<Build>(() => {
     if (typeof window === 'undefined') return emptyBuild(230); // prerender
@@ -100,6 +79,9 @@ export function BuilderPage({ language }: BuilderPageProps) {
   const [saves, setSaves] = useState<SavedBuild[]>(() => listSavedBuilds());
   const [saveName, setSaveName] = useState('');
   const toastTimer = useRef<ReturnType<typeof setTimeout>>();
+  const [publishOpen, setPublishOpen] = useState(false);
+  const [pub, setPub] = useState({ name: '', author: '', cls: -1, description: '' });
+  const [pubState, setPubState] = useState<{ status: 'idle' | 'sending' | 'done' | 'error'; message?: string; id?: string }>({ status: 'idle' });
 
   useEffect(() => {
     let cancelled = false;
@@ -148,6 +130,29 @@ export function BuilderPage({ language }: BuilderPageProps) {
       await navigator.clipboard.writeText(url);
       showToast(t.linkCopied);
     } catch { /* clipboard unavailable */ }
+  };
+
+  const hasItems = Object.values(build.slots).some(Boolean);
+
+  const openPublish = () => {
+    setPub((p) => ({ ...p, author: p.author || savedAuthor(), name: p.name || saveName }));
+    setPubState({ status: 'idle' });
+    setPublishOpen(true);
+  };
+
+  const submitPublish = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (pub.name.trim().length < 3 || pubState.status === 'sending') return;
+    setPubState({ status: 'sending' });
+    saveAuthor(pub.author.trim());
+    try {
+      const { id } = await publishBuild({
+        code: encodeBuild(build), name: pub.name, author: pub.author, description: pub.description, class: pub.cls,
+      });
+      setPubState({ status: 'done', id });
+    } catch (err) {
+      setPubState({ status: 'error', message: err instanceof ApiError && err.status === 429 ? g.tooMany : g.publishError });
+    }
   };
 
   const doEquip = (item: EquipmentItem) => {
@@ -243,6 +248,7 @@ export function BuilderPage({ language }: BuilderPageProps) {
           {t.pageTitle}
         </h1>
         <p className="text-emerald-100/80 mb-6 text-center max-w-2xl mx-auto text-base drop-shadow-md">{t.pageSubtitle}</p>
+        <BuilderTabs current="builder" labels={{ builder: g.tabBuilder, gallery: g.tabGallery }} />
         <div className="flex flex-col items-center py-16 text-emerald-300/70">
           <div className="w-8 h-8 border-2 border-emerald-400/30 border-t-emerald-400 rounded-full animate-spin mb-3" />
           {t.loading}
@@ -258,6 +264,7 @@ export function BuilderPage({ language }: BuilderPageProps) {
         {t.pageTitle}
       </h1>
       <p className="text-emerald-100/80 mb-6 text-center max-w-2xl mx-auto text-base drop-shadow-md">{t.pageSubtitle}</p>
+      <BuilderTabs current="builder" labels={{ builder: g.tabBuilder, gallery: g.tabGallery }} />
 
       <div className="lg:grid lg:grid-cols-[1fr_340px] lg:gap-6 lg:items-start">
         {/* ── left column: level, slots, saves ── */}
@@ -274,6 +281,14 @@ export function BuilderPage({ language }: BuilderPageProps) {
               className="ml-auto flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-lg transition-all"
             >
               <Share2 className="w-4 h-4" /> {t.share}
+            </button>
+            <button
+              onClick={openPublish}
+              disabled={!hasItems}
+              title={hasItems ? g.publishTitle : g.emptyBuild}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm glass-soft border border-emerald-500/30 text-emerald-300 hover:border-emerald-400/60 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <Upload className="w-4 h-4" /> {g.publish}
             </button>
             {craftRows.length > 0 && (
               <Link
@@ -460,6 +475,86 @@ export function BuilderPage({ language }: BuilderPageProps) {
                 </button>
               ))}
             </div>
+          </div>
+        </div>,
+        document.body
+      )}
+
+      {publishOpen && createPortal(
+        <div className="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-md flex items-end sm:items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="publish-title">
+          <div className="w-full sm:max-w-md glass-strong rounded-t-3xl sm:rounded-3xl p-5 max-h-full overflow-y-auto">
+            <div className="flex items-center justify-between mb-2">
+              <h2 id="publish-title" className="font-bold text-lg text-emerald-200">{g.publishTitle}</h2>
+              <button onClick={() => setPublishOpen(false)} aria-label={g.cancel} className="p-2 text-emerald-200/70 hover:text-white"><X className="w-5 h-5" /></button>
+            </div>
+            {pubState.status === 'done' ? (
+              <div className="text-center py-4 space-y-4">
+                <p className="text-emerald-200 font-semibold">✓ {g.published}</p>
+                <div className="flex flex-wrap justify-center gap-2">
+                  <Link
+                    to={`/builds?id=${pubState.id}`}
+                    className="px-4 py-2.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white"
+                  >
+                    {g.viewInGallery}
+                  </Link>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard?.writeText(`${window.location.origin}/builds?id=${pubState.id}`)
+                        .then(() => showToast(t.linkCopied)).catch(() => {});
+                    }}
+                    className="px-4 py-2.5 rounded-xl font-semibold text-sm glass-soft border border-emerald-500/30 text-emerald-300"
+                  >
+                    {g.copyLink}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={submitPublish} className="space-y-3">
+                <p className="text-sm text-emerald-100/70">{g.publishIntro}</p>
+                <label className="block">
+                  <span className="text-xs font-medium text-emerald-400">{g.name}</span>
+                  <input
+                    required minLength={3} maxLength={60} autoFocus value={pub.name} placeholder={g.namePlaceholder}
+                    onChange={(e) => setPub({ ...pub, name: e.target.value })}
+                    className="glass-soft w-full px-3 py-2.5 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 mt-1"
+                  />
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  <label className="block">
+                    <span className="text-xs font-medium text-emerald-400">{g.className}</span>
+                    <select value={pub.cls} onChange={(e) => setPub({ ...pub, cls: Number(e.target.value) })} className="glass-soft w-full px-3 py-2.5 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 mt-1">
+                      <option value={-1}>{g.noClass}</option>
+                      {CLASS_NAMES[language].map((name, i) => ({ name, i }))
+                        .sort((a, b) => a.name.localeCompare(b.name, language))
+                        .map(({ name, i }) => <option key={i} value={i}>{name}</option>)}
+                    </select>
+                  </label>
+                  <label className="block">
+                    <span className="text-xs font-medium text-emerald-400">{g.author}</span>
+                    <input maxLength={30} value={pub.author} onChange={(e) => setPub({ ...pub, author: e.target.value })} className="glass-soft w-full px-3 py-2.5 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 mt-1" />
+                  </label>
+                </div>
+                <label className="block">
+                  <span className="text-xs font-medium text-emerald-400">{g.description}</span>
+                  <textarea
+                    maxLength={500} rows={4} value={pub.description} placeholder={g.descriptionPlaceholder}
+                    onChange={(e) => setPub({ ...pub, description: e.target.value })}
+                    className="glass-soft w-full px-3 py-2.5 rounded-xl text-emerald-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 mt-1 resize-none"
+                  />
+                </label>
+                <p className="text-[11px] text-emerald-200/50">{g.rules}</p>
+                {pubState.status === 'error' && <p role="alert" className="text-sm text-red-300">{pubState.message}</p>}
+                <div className="flex justify-end gap-2 pt-1">
+                  <button type="button" onClick={() => setPublishOpen(false)} className="px-4 py-2.5 rounded-xl text-sm font-semibold text-emerald-200/70 hover:text-emerald-100">{g.cancel}</button>
+                  <button
+                    type="submit" disabled={pubState.status === 'sending' || pub.name.trim().length < 3}
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white disabled:opacity-50"
+                  >
+                    <Upload className="w-4 h-4" /> {g.submit}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>,
         document.body

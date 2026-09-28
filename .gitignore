@@ -30,3 +30,4 @@ scripts/sublimations.i18n.report.json
 
 # prerender SSR bundle (build-time only)
 dist-server
+.wrangler

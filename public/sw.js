@@ -1,6 +1,6 @@
 // Service worker: makes the site installable and usable offline.
 //
-// Strategies (same-origin GET requests only):
+// Strategies (same-origin GET requests only; /api/* is never cached):
 //   pages (navigations)  network-first  → fresh after every deploy, cached copy offline
 //   /assets/*            cache-first    → file names are content-hashed, never change
 //   everything else      stale-while-revalidate → instant from cache, refreshed in background
@@ -66,6 +66,7 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return; // e.g. Ankama CDN icons: let the browser handle them
+  if (url.pathname.startsWith('/api/')) return; // live gallery data: always from the network
 
   if (request.mode === 'navigate') {
     event.respondWith(networkFirst(request));
