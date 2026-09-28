@@ -1,5 +1,5 @@
 // src/pages/ItemsCraftGuidePage.tsx
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HowItWorks } from "../components/HowItWorks";
 import {
   loadWakfuData,
@@ -9,6 +9,7 @@ import {
 } from "../lib/wakfuData";
 import { PageSeo } from "../components/PageSeo";
 import { TRANSLATIONS, type Language } from "../constants/translations";
+import { formatCraftItems, parseCraftItems } from "../lib/craftLink";
 
 function norm(s: string) {
   return s
@@ -77,6 +78,29 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
       })
       .finally(() => setLoading(false));
   }, [language]);
+
+  // Items passed in the URL (?items=id,idx2 — e.g. from the Builder) are added
+  // once the data is loaded; afterwards the URL mirrors the list so it can be shared.
+  const urlImported = useRef(false);
+  useEffect(() => {
+    if (urlImported.current || recipesByResultId.size === 0) return;
+    urlImported.current = true;
+    const rows = parseCraftItems(new URLSearchParams(window.location.search).get("items"))
+      .filter((r) => recipesByResultId.has(r.itemId));
+    if (rows.length === 0) return;
+    setSelected(rows);
+    setExpandedByRoot(new Map(rows.map((r) => [r.itemId, new Set<number>()])));
+    setRecipeChoiceByRoot(new Map(rows.map((r) => [r.itemId, new Map<number, number>()])));
+    setActiveItemId(rows[0].itemId);
+  }, [recipesByResultId]);
+
+  useEffect(() => {
+    if (!urlImported.current) return;
+    const search = selected.length ? `?items=${formatCraftItems(selected)}` : "";
+    if (search !== window.location.search) {
+      window.history.replaceState(window.history.state, "", window.location.pathname + search + window.location.hash);
+    }
+  }, [selected]);
 
   const isCraftable = useCallback((id: number) => (recipesByResultId.get(id)?.length ?? 0) > 0, [recipesByResultId]);
 

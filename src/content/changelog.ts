@@ -62,6 +62,16 @@ export const changelog: ChangelogEntry[] = [
     version: '2.4.0',
     date: '2026-09-28',
     changes: [
+      { type: 'feature', text: {
+        en: 'Builder: compare each item with the one you have equipped and sort by any stat',
+        fr: "Créateur : comparez chaque objet avec celui équipé et triez par n'importe quelle stat",
+        es: 'Creador: compara cada objeto con el equipado y ordena por cualquier estadística',
+        pt: 'Criador: compare cada item com o equipado e ordene por qualquer estatística' } },
+      { type: 'feature', text: {
+        en: 'Builder: open the crafting list of your build in the Items Craft Guide, and share crafting lists with a link',
+        fr: "Créateur : ouvrez la liste de craft de votre build dans le Guide de craft, et partagez vos listes par lien",
+        es: 'Creador: abre la lista de crafteo de tu build en la Guía de crafteo y comparte listas con un enlace',
+        pt: 'Criador: abra a lista de crafting da sua build no Guia de crafting e compartilhe listas com um link' } },
       { type: 'improvement', text: {
         en: 'New navigation on phones, with a full-screen menu',
         fr: 'Nouvelle navigation sur téléphone, avec un menu plein écran',

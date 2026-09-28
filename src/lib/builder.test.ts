@@ -2,8 +2,10 @@ import { describe, expect, it } from 'vitest';
 import {
   emptyBuild, equipItem, unequipSlot, isSlotBlocked, computeTotals,
   encodeBuild, decodeBuild, slotsForType, baseStats,
+  statDiff, sortValue, itemStatMap, craftableRows,
   type EquipmentData, type EquipmentItem,
 } from './builder';
+import { formatCraftItems, parseCraftItems } from './craftLink';
 
 const item = (id: number, type: number, stats: number[][]): EquipmentItem =>
   ({ id, name: `item${id}`, type, lvl: 200, rarity: 3, gfx: null, stats });
@@ -78,5 +80,43 @@ describe('build URL encoding', () => {
     expect(decodeBuild('not-a-build')).toBeNull();
     expect(decodeBuild(btoa(JSON.stringify([2, 200])))).toBeNull();
     expect(decodeBuild(btoa(JSON.stringify([1, 999])))).toBeNull();
+  });
+});
+
+describe('item comparison', () => {
+  it('diffs a candidate against the equipped item, in display order', () => {
+    expect(statDiff(helm, belt)).toEqual([
+      ['hp', -255], ['mp', -1], ['fireMastery', 40], ['elemMasteryN:3', -188], ['block', -5], ['lock', -40], ['elemRes', -50],
+    ]);
+  });
+  it('lists every stat as a gain when the slot is empty', () => {
+    expect(statDiff(ring, undefined)).toEqual([['hp', 100], ['fireRes', 20]]);
+  });
+  it('sorts elemental mastery with the N-elements bonus folded in', () => {
+    expect(sortValue(belt, 'elemMastery')).toBe(188);
+    expect(sortValue(helm, 'hp')).toBe(300);
+    expect(sortValue(helm, 'level')).toBe(200);
+  });
+  it('keeps "N elements" bonuses with different counts apart', () => {
+    const two = item(9, 134, [[1068, 100, 2], [1068, 50, 3]]);
+    expect(itemStatMap(two)).toEqual({ 'elemMasteryN:2': 100, 'elemMasteryN:3': 50 });
+  });
+});
+
+describe('craft guide link', () => {
+  const craftRing = { ...ring, craft: 1 as const };
+  const craftData: EquipmentData = { ...data, byId: new Map([...data.byId, [4, craftRing]]) };
+  it('lists craftable items once, with identical rings counted twice', () => {
+    let b = equipItem(emptyBuild(200), craftRing, 'RING_1');
+    b = equipItem(b, craftRing, 'RING_2');
+    b = equipItem(b, helm, 'HEAD');
+    expect(craftableRows(b, craftData)).toEqual([{ itemId: 4, qty: 2 }]);
+  });
+  it('round-trips the ?items= format and ignores junk', () => {
+    const rows = [{ itemId: 12464, qty: 1 }, { itemId: 8047, qty: 2 }];
+    expect(formatCraftItems(rows)).toBe('12464,8047x2');
+    expect(parseCraftItems('12464,8047x2')).toEqual(rows);
+    expect(parseCraftItems('abc,0,5x0,7,7')).toEqual([{ itemId: 5, qty: 1 }, { itemId: 7, qty: 2 }]);
+    expect(parseCraftItems(null)).toEqual([]);
   });
 });

@@ -30,6 +30,10 @@ const en = {
   duplicateRings: 'Identical rings do not stack in game.',
   loading: 'Loading equipment…',
   resPercentHint: (pct: string) => `≈ ${pct}%`,
+  sortBy: 'Sort by',
+  vsEquipped: 'vs equipped',
+  craftable: 'Craftable',
+  craftList: (n: number) => `Craft guide (${n})`,
 };
 
 export type BuilderT = typeof en;
@@ -64,6 +68,10 @@ const fr: BuilderT = {
   duplicateRings: 'Deux anneaux identiques ne se cumulent pas en jeu.',
   loading: "Chargement de l'équipement…",
   resPercentHint: (pct) => `≈ ${pct}%`,
+  sortBy: 'Trier par',
+  vsEquipped: "vs l'équipé",
+  craftable: 'Craftable',
+  craftList: (n) => `Guide de craft (${n})`,
 };
 
 const es: BuilderT = {
@@ -96,6 +104,10 @@ const es: BuilderT = {
   duplicateRings: 'Dos anillos idénticos no se acumulan en el juego.',
   loading: 'Cargando equipamiento…',
   resPercentHint: (pct) => `≈ ${pct}%`,
+  sortBy: 'Ordenar por',
+  vsEquipped: 'vs equipado',
+  craftable: 'Fabricable',
+  craftList: (n) => `Guía de crafteo (${n})`,
 };
 
 const pt: BuilderT = {
@@ -128,6 +140,10 @@ const pt: BuilderT = {
   duplicateRings: 'Dois anéis idênticos não se acumulam no jogo.',
   loading: 'Carregando equipamento…',
   resPercentHint: (pct) => `≈ ${pct}%`,
+  sortBy: 'Ordenar por',
+  vsEquipped: 'vs equipado',
+  craftable: 'Fabricável',
+  craftList: (n) => `Guia de crafting (${n})`,
 };
 
 export const BUILDER_T: Record<Language, BuilderT> = { en, fr, es, pt };

@@ -1,14 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Search, Share2, X, Trash2, Save, FolderOpen, Ban } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Search, Share2, X, Trash2, Save, FolderOpen, Ban, Hammer } from 'lucide-react';
 import { PageSeo } from '../components/PageSeo';
 import { getItemIconUrl } from '../lib/wakfuData';
 import { flatToPercent } from '../lib/combatFormulas';
+import { craftGuideUrl } from '../lib/craftLink';
 import {
   loadEquipmentData, emptyBuild, equipItem, unequipSlot, isSlotBlocked,
   computeTotals, encodeBuild, decodeBuild, slotsForType, listSavedBuilds,
-  saveBuild, deleteBuild, MAX_LEVEL,
-  type Build, type EquipmentData, type EquipmentItem, type SavedBuild,
+  saveBuild, deleteBuild, statDiff, sortValue, craftableRows, MAX_LEVEL, SORT_KEYS,
+  type Build, type SortKey, type EquipmentData, type EquipmentItem, type SavedBuild,
 } from '../lib/builder';
 import {
   STAT_ACTIONS, SLOT_ORDER, SLOT_LABELS, WEAPON_TYPE_LABELS, RARITY_INFO,
@@ -50,6 +52,34 @@ function statLine(actionId: number, value: number, lang: Language, count?: numbe
   return `${sign}${value}${meta.percent ? '%' : ''} ${label}`;
 }
 
+// stat key (as used by itemStatMap) → an action id carrying its label
+const KEY_TO_ACTION = new Map<string, number>();
+for (const [id, meta] of Object.entries(STAT_ACTIONS)) {
+  if (!KEY_TO_ACTION.has(meta.key)) KEY_TO_ACTION.set(meta.key, Number(id));
+}
+
+/** Label for a stat key; "elemMasteryN:3" → "Mastery of 3 elements". */
+function keyLabel(key: string, lang: Language): string {
+  const [base, n] = key.split(':');
+  const meta = STAT_ACTIONS[KEY_TO_ACTION.get(base) ?? -1];
+  return meta ? meta.labels[lang].replace('{n}', n ?? '') : base;
+}
+
+function DiffChips({ diff, lang }: { diff: [string, number][]; lang: Language }) {
+  return (
+    <span className="flex flex-wrap gap-x-2 gap-y-0.5 text-[11px] leading-snug">
+      {diff.map(([key, d]) => {
+        const pct = STAT_ACTIONS[KEY_TO_ACTION.get(key.split(':')[0]) ?? -1]?.percent ? '%' : '';
+        return (
+          <span key={key} className={d > 0 ? 'text-emerald-300' : 'text-red-300'}>
+            {d > 0 ? '+' : '−'}{Math.abs(d)}{pct} {keyLabel(key, lang)}
+          </span>
+        );
+      })}
+    </span>
+  );
+}
+
 interface BuilderPageProps { language: Language; }
 
 export function BuilderPage({ language }: BuilderPageProps) {
@@ -64,6 +94,7 @@ export function BuilderPage({ language }: BuilderPageProps) {
   const [query, setQuery] = useState('');
   const [minLvl, setMinLvl] = useState(0);
   const [maxLvl, setMaxLvl] = useState(MAX_LEVEL);
+  const [sortKey, setSortKey] = useState<SortKey>('level');
   const [statsOpen, setStatsOpen] = useState(false);
   const [toast, setToast] = useState('');
   const [saves, setSaves] = useState<SavedBuild[]>(() => listSavedBuilds());
@@ -79,7 +110,7 @@ export function BuilderPage({ language }: BuilderPageProps) {
   // keep the build shareable: mirror it into the URL hash
   useEffect(() => {
     const encoded = encodeBuild(build);
-    window.history.replaceState(null, '', `#b=${encoded}`);
+    window.history.replaceState(window.history.state, '', `#b=${encoded}`);
   }, [build]);
 
   const totals = useMemo(
@@ -95,10 +126,12 @@ export function BuilderPage({ language }: BuilderPageProps) {
       if (it.lvl < minLvl || it.lvl > maxLvl) return false;
       if (q && !it.name.toLowerCase().includes(q)) return false;
       return true;
-    }).sort((a, b) => b.lvl - a.lvl || b.rarity - a.rarity);
-  }, [data, activeSlot, query, minLvl, maxLvl]);
+    }).sort((a, b) =>
+      (sortKey === 'level' ? 0 : sortValue(b, sortKey) - sortValue(a, sortKey)) || b.lvl - a.lvl || b.rarity - a.rarity);
+  }, [data, activeSlot, query, minLvl, maxLvl, sortKey]);
 
   const equippedInActive = activeSlot && data ? data.byId.get(build.slots[activeSlot] ?? -1) : undefined;
+  const craftRows = useMemo(() => (data ? craftableRows(build, data) : []), [build, data]);
 
   const showToast = (msg: string) => {
     setToast(msg);
@@ -242,6 +275,14 @@ export function BuilderPage({ language }: BuilderPageProps) {
             >
               <Share2 className="w-4 h-4" /> {t.share}
             </button>
+            {craftRows.length > 0 && (
+              <Link
+                to={craftGuideUrl(craftRows)}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm glass-soft border border-emerald-500/30 text-emerald-300 hover:border-emerald-400/60 transition-all"
+              >
+                <Hammer className="w-4 h-4" /> {t.craftList(craftRows.reduce((n, r) => n + r.qty, 0))}
+              </Link>
+            )}
           </div>
 
           <div className="glass rounded-2xl p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-2">
@@ -371,6 +412,19 @@ export function BuilderPage({ language }: BuilderPageProps) {
                 className="glass-soft w-16 px-2 py-2.5 rounded-xl text-emerald-50 text-sm text-center focus:outline-none"
               />
             </div>
+            <div className="px-4 py-2 flex items-center gap-2 border-b border-emerald-500/10 text-xs">
+              <label htmlFor="builder-sort" className="text-emerald-400/80 font-medium shrink-0">{t.sortBy}</label>
+              <select
+                id="builder-sort" value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)}
+                className="glass-soft px-2 py-1.5 rounded-lg text-emerald-50 text-xs min-w-0 flex-1 sm:flex-none focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+              >
+                <option value="level">{t.level}</option>
+                {SORT_KEYS.map((k) => <option key={k} value={k}>{keyLabel(k, language)}</option>)}
+              </select>
+              {equippedInActive && (
+                <span className="ml-auto text-emerald-400/60 truncate">± {t.vsEquipped}</span>
+              )}
+            </div>
             <div className="flex-1 overflow-y-auto px-3 py-2">
               <div className="text-[11px] text-emerald-400/60 px-1 pb-1">{t.showingOf(Math.min(pickerItems.length, 60), pickerItems.length)}</div>
               {pickerItems.length === 0 && <div className="text-center text-emerald-200/50 py-10">{t.noResults}</div>}
@@ -389,10 +443,19 @@ export function BuilderPage({ language }: BuilderPageProps) {
                         {t.level} {it.lvl}{WEAPON_TYPE_LABELS[it.type] ? ` · ${WEAPON_TYPE_LABELS[it.type][language]}` : ''}
                       </span>
                       {it.id === equippedInActive?.id && <span className="text-[10px] text-emerald-400 shrink-0">✓ {t.equipped}</span>}
+                      {it.craft && (
+                        <span title={t.craftable} className="shrink-0 self-center">
+                          <Hammer className="w-3 h-3 text-emerald-400/60" aria-label={t.craftable} />
+                        </span>
+                      )}
                     </span>
-                    <span className="block text-xs text-emerald-100/60 truncate">
-                      {it.stats.map(([a, v, c]) => statLine(a, v, language, c)).filter(Boolean).join(' · ')}
-                    </span>
+                    {equippedInActive && it.id !== equippedInActive.id ? (
+                      <DiffChips diff={statDiff(it, equippedInActive)} lang={language} />
+                    ) : (
+                      <span className="block text-xs text-emerald-100/60 truncate">
+                        {it.stats.map(([a, v, c]) => statLine(a, v, language, c)).filter(Boolean).join(' · ')}
+                      </span>
+                    )}
                   </span>
                 </button>
               ))}

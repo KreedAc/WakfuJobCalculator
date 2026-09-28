@@ -36,6 +36,10 @@ jobs:
         if: ${{ !inputs.probe_equipment }}
         run: node --max-old-space-size=4096 scripts/build-sublimations-data.mjs ${{ inputs.debug && '--debug' || '' }}
 
+      - name: Build craft guide items and recipes from Ankama CDN
+        if: ${{ !inputs.probe_equipment }}
+        run: node --max-old-space-size=4096 scripts/build-wakfu-data.mjs
+
       - name: Build equipment data from Ankama CDN
         if: ${{ !inputs.probe_equipment }}
         run: node --max-old-space-size=4096 scripts/build-equipment-data.mjs
@@ -52,10 +56,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/sublimations.*.json public/data/equipment.compact.*.json
+          git add public/data/sublimations.*.json public/data/equipment.compact.*.json \
+            public/data/items.compact.*.json public/data/recipes.compact.json \
+            public/data/needed_item_ids.json public/data/missing_item_ids.json public/data/wakfu_version.json
           if git diff --cached --quiet; then
             echo "No data changes."
           else
-            git commit -m "Update localized sublimations data from Ankama CDN"
+            git commit -m "Update game data from Ankama CDN"
             git push
           fi

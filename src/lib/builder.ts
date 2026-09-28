@@ -20,6 +20,8 @@ export interface EquipmentItem {
   gfx: number | null;
   /** [actionId, value] or [actionId, value, elementCount] */
   stats: number[][];
+  /** 1 when at least one recipe produces the item */
+  craft?: 1;
 }
 
 export interface EquipmentData {
@@ -143,6 +145,80 @@ export function computeTotals(build: Build, data: EquipmentData): StatTotals {
     variable,
     duplicateRings: !!r1 && r1 === r2,
   };
+}
+
+// ─── Item comparison and sorting ─────────────────────────────────────────────
+
+/**
+ * One item's stats keyed by stat name. "N elements" bonuses get their own key
+ * per element count (elemMasteryN:3), since they are not interchangeable.
+ */
+export function itemStatMap(item: EquipmentItem | undefined): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const [actionId, value, count] of item?.stats ?? []) {
+    const meta = STAT_ACTIONS[actionId];
+    if (!meta) continue;
+    const key = meta.key === 'elemMasteryN' || meta.key === 'elemResN' ? `${meta.key}:${count ?? 1}` : meta.key;
+    out[key] = (out[key] ?? 0) + value;
+  }
+  return out;
+}
+
+/** Display order for stat keys, matching the stats panel. */
+export const STAT_KEY_ORDER = [
+  'hp', 'ap', 'mp', 'wp', 'range',
+  'elemMastery', 'fireMastery', 'waterMastery', 'earthMastery', 'airMastery', 'elemMasteryN',
+  'meleeMastery', 'distMastery', 'berserkMastery', 'rearMastery', 'healMastery', 'critMastery', 'critHit', 'block',
+  'lock', 'dodge', 'initiative', 'fow', 'wisdom', 'prospecting',
+  'elemRes', 'fireRes', 'waterRes', 'earthRes', 'airRes', 'elemResN', 'rearRes', 'critRes',
+];
+
+const keyRank = (key: string) => {
+  const i = STAT_KEY_ORDER.indexOf(key.split(':')[0]);
+  return i < 0 ? STAT_KEY_ORDER.length : i;
+};
+
+/** Stat changes when `candidate` replaces `equipped` (non-zero only, display order). */
+export function statDiff(candidate: EquipmentItem, equipped: EquipmentItem | undefined): [string, number][] {
+  const a = itemStatMap(candidate);
+  const b = itemStatMap(equipped);
+  const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
+  return [...keys]
+    .map((k) => [k, (a[k] ?? 0) - (b[k] ?? 0)] as [string, number])
+    .filter(([, d]) => d !== 0)
+    .sort((x, y) => keyRank(x[0]) - keyRank(y[0]) || x[0].localeCompare(y[0]));
+}
+
+/** Stats the item picker can sort by. Totals fold the "N elements" bonuses in. */
+export const SORT_KEYS = [
+  'hp', 'ap', 'mp', 'wp', 'range', 'critHit', 'elemMastery', 'critMastery', 'meleeMastery',
+  'distMastery', 'rearMastery', 'berserkMastery', 'healMastery', 'block', 'lock', 'dodge',
+  'initiative', 'fow', 'elemRes', 'wisdom', 'prospecting',
+] as const;
+export type SortKey = 'level' | (typeof SORT_KEYS)[number];
+
+/**
+ * Value used to rank an item for a stat. Elemental mastery/resistance sum the
+ * "all elements" stat with the "N elements" bonus, as both apply per element.
+ */
+export function sortValue(item: EquipmentItem, key: SortKey): number {
+  if (key === 'level') return item.lvl;
+  const m = itemStatMap(item);
+  let v = m[key] ?? 0;
+  if (key === 'elemMastery' || key === 'elemRes') {
+    for (const [k, val] of Object.entries(m)) if (k.startsWith(`${key}N:`)) v += val;
+  }
+  return v;
+}
+
+/** Craftable items of the build with quantities (two identical rings → 2). */
+export function craftableRows(build: Build, data: EquipmentData): { itemId: number; qty: number }[] {
+  const qty = new Map<number, number>();
+  for (const slot of SLOT_ORDER) {
+    const id = build.slots[slot];
+    if (id && data.byId.get(id)?.craft) qty.set(id, (qty.get(id) ?? 0) + 1);
+  }
+  return [...qty].map(([itemId, q]) => ({ itemId, qty: q }));
 }
 
 // ─── Build serialization (URL sharing) ───────────────────────────────────────
