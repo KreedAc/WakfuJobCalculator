@@ -59,6 +59,22 @@ export const changelogContent = {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '2.5.0',
+    date: '2026-09-28',
+    changes: [
+      { type: 'feature', text: {
+        en: 'Community builds: publish your build from the Builder, browse builds by class and level, like the best ones',
+        fr: 'Builds de la communauté : publiez votre build depuis le Créateur, parcourez les builds par classe et niveau, aimez les meilleurs',
+        es: 'Builds de la comunidad: publica tu build desde el Creador, explora builds por clase y nivel, dale me gusta a las mejores',
+        pt: 'Builds da comunidade: publique sua build pelo Criador, explore builds por classe e nível, curta as melhores' } },
+      { type: 'update', text: {
+        en: 'Game data updated to version 1.93',
+        fr: 'Données du jeu mises à jour vers la version 1.93',
+        es: 'Datos del juego actualizados a la versión 1.93',
+        pt: 'Dados do jogo atualizados para a versão 1.93' } },
+    ]
+  },
+  {
     version: '2.4.0',
     date: '2026-09-28',
     changes: [

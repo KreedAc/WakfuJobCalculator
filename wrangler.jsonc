@@ -1,12 +1,26 @@
-// Cloudflare Workers config: deploy the Vite build output as a static site.
-// Every page is prerendered to HTML (see scripts/prerender.mjs), so unknown
-// URLs get the prerendered 404 page with a real 404 status.
+// Cloudflare Workers config.
+// - Static site: the Vite build output. Every page is prerendered to HTML
+//   (see scripts/prerender.mjs), so unknown URLs get the prerendered 404 page
+//   with a real 404 status.
+// - worker/index.ts only runs for /api/* (public build gallery, stored in D1);
+//   every other request is served from the assets without invoking it.
 {
   "name": "wakfujobcalculator",
   "compatibility_date": "2026-07-04",
+  "main": "worker/index.ts",
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "404-page"
-  }
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "wakfu-builds1",
+      "database_id": "069183d0-b71a-40fc-afd2-c7062562f5b0"
+    }
+  ],
+  "observability": { "enabled": true }
 }

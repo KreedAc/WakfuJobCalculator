@@ -23,18 +23,20 @@ const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage').then(m =>
 const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage').then(m => ({ default: m.DisclaimerPage })));
 const CombatCalcPage = lazy(() => import('./pages/CombatCalcPage').then(m => ({ default: m.CombatCalcPage })));
 const BuilderPage = lazy(() => import('./pages/BuilderPage').then(m => ({ default: m.BuilderPage })));
+const BuildsGalleryPage = lazy(() => import('./pages/BuildsGalleryPage').then(m => ({ default: m.BuildsGalleryPage })));
 export const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
 export interface RouteDef {
   path: string;
   render: (language: Language) => ReactNode;
-  changefreq: 'weekly' | 'monthly' | 'yearly';
+  changefreq: 'daily' | 'weekly' | 'monthly' | 'yearly';
   priority: number;
 }
 
 export const ROUTES: RouteDef[] = [
   { path: '/', render: (l) => <CalculatorPage language={l} />, changefreq: 'weekly', priority: 1.0 },
   { path: '/builder', render: (l) => <BuilderPage language={l} />, changefreq: 'weekly', priority: 0.9 },
+  { path: '/builds', render: (l) => <BuildsGalleryPage language={l} />, changefreq: 'daily', priority: 0.8 },
   { path: '/sublimations', render: (l) => <SublimationsPage language={l} />, changefreq: 'weekly', priority: 0.9 },
   { path: '/items-craft-guide', render: (l) => <ItemsCraftGuidePage language={l} />, changefreq: 'weekly', priority: 0.8 },
   { path: '/combat-calc', render: (l) => <CombatCalcPage language={l} />, changefreq: 'monthly', priority: 0.8 },

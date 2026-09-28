@@ -6,6 +6,7 @@ const SITE_URL = 'https://wakfujobcalculator.com';
 const OG_IMAGES: Record<string, string> = {
   '/': 'xp-calculator',
   '/builder': 'builder',
+  '/builds': 'builder',
   '/sublimations': 'sublimations',
   '/items-craft-guide': 'items-craft-guide',
   '/combat-calc': 'combat-calc',

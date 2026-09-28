@@ -7,11 +7,11 @@ import type { TRANSLATIONS, Language } from '../constants/translations';
 type T = (typeof TRANSLATIONS)[Language];
 type Icon = React.ComponentType<{ className?: string }>;
 
-interface NavItem { to: string; icon: Icon; label: (t: T) => string }
+interface NavItem { to: string; icon: Icon; label: (t: T) => string; also?: string[] }
 
 const NAV_ITEMS: NavItem[] = [
   { to: '/', icon: Hammer, label: (t) => t.navCalc },
-  { to: '/builder', icon: Shirt, label: (t) => t.navBuilder },
+  { to: '/builder', icon: Shirt, label: (t) => t.navBuilder, also: ['/builds'] },
   { to: '/sublimations', icon: Scroll, label: (t) => t.navSubli },
   { to: '/items-craft-guide', icon: Wrench, label: (t) => t.navItemsCraft },
   { to: '/combat-calc', icon: Swords, label: (t) => t.navCombatCalc },
@@ -19,8 +19,8 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/guides', icon: BookOpen, label: (t) => t.navGuidesLabel },
 ];
 
-const isActive = (to: string, path: string) =>
-  to === '/' ? path === '/' : path === to || path.startsWith(`${to}/`);
+const isActive = ({ to, also = [] }: NavItem, path: string) =>
+  to === '/' ? path === '/' : [to, ...also].some((p) => path === p || path.startsWith(`${p}/`));
 
 interface NavbarProps {
   currentPath: string;
@@ -31,8 +31,9 @@ interface NavbarProps {
 export function Navbar({ currentPath, t }: NavbarProps) {
   return (
     <nav className="glass hidden md:flex items-center gap-1 rounded-2xl px-2 py-1.5" aria-label="Main">
-      {NAV_ITEMS.map(({ to, icon: Icon, label }) => {
-        const active = isActive(to, currentPath);
+      {NAV_ITEMS.map((item) => {
+        const { to, icon: Icon, label } = item;
+        const active = isActive(item, currentPath);
         return (
           <Link
             key={to}
@@ -99,8 +100,9 @@ export function MobileNav({ currentPath, t }: NavbarProps) {
             </button>
           </div>
           <nav className="flex-1 overflow-y-auto px-4 pb-8 space-y-2" aria-label="Main">
-            {NAV_ITEMS.map(({ to, icon: Icon, label }) => {
-              const active = isActive(to, currentPath);
+            {NAV_ITEMS.map((item) => {
+              const { to, icon: Icon, label } = item;
+              const active = isActive(item, currentPath);
               return (
                 <Link
                   key={to}
