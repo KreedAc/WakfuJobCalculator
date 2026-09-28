@@ -4,6 +4,7 @@ import type { Language } from '../constants/translations';
 import type { ProfessionId } from '../constants/professions';
 import { PROFESSION_IDS, PROFESSION_NAMES, PROFESSION_RECIPES } from '../constants/professions';
 import { LEVEL_RANGES, type LevelRange } from '../constants/levelRanges';
+import { craftsNeeded, resourcesPerCraft } from '../lib/xpCalculator';
 
 interface Translations {
   selectProfession: string;
@@ -48,8 +49,8 @@ export function Calculator({ language, translations: t }: CalculatorProps) {
     }
     const selected = LEVEL_RANGES.find(r => r.range === selectedRange);
     if (!selected) return;
-    const craftCount = Math.ceil(selected.expDiff / expItem);
-    const resourceCount = craftCount * (selectedProfession === 'Leather Dealer' ? 4 : 5);
+    const craftCount = craftsNeeded(selected.expDiff, expItem);
+    const resourceCount = craftCount * resourcesPerCraft(selectedProfession);
     setResult({
       ...selected,
       selectedProfession: selectedProfession as ProfessionId,

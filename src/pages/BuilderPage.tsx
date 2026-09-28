@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { Search, Share2, X, Trash2, Save, FolderOpen, Ban } from 'lucide-react';
 import { PageSeo } from '../components/PageSeo';
 import { getItemIconUrl } from '../lib/wakfuData';
+import { flatToPercent } from '../lib/combatFormulas';
 import {
   loadEquipmentData, emptyBuild, equipItem, unequipSlot, isSlotBlocked,
   computeTotals, encodeBuild, decodeBuild, slotsForType, listSavedBuilds,
@@ -15,9 +16,6 @@ import {
 } from '../constants/equipmentStats';
 import { BUILDER_T } from '../constants/builderTranslations';
 import type { Language } from '../constants/translations';
-
-const flatResToPercent = (f: number) =>
-  Math.min(Math.floor((1 - Math.pow(0.8, Math.max(f, 0) / 100)) * 1000) / 10, 90);
 
 function ItemIcon({ item, size = 40 }: { item: EquipmentItem; size?: number }) {
   const [failed, setFailed] = useState(false);
@@ -131,7 +129,7 @@ export function BuilderPage({ language }: BuilderPageProps) {
       <span className="font-mono text-sm text-emerald-50">
         {value}{opts?.percent ? '%' : ''}
         {opts?.resHint && value !== 0 && (
-          <span className="text-emerald-400/60 ml-1.5 text-xs">{t.resPercentHint(flatResToPercent(value).toFixed(1))}</span>
+          <span className="text-emerald-400/60 ml-1.5 text-xs">{t.resPercentHint(flatToPercent(value).toFixed(1))}</span>
         )}
       </span>
     </div>
