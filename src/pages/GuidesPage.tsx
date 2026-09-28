@@ -1,4 +1,4 @@
-import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { PageSeo } from '../components/PageSeo';
 import { Link } from 'react-router-dom';
 import { BookOpen, Sparkles } from 'lucide-react';
 import { type Language } from '../constants/translations';
@@ -106,12 +106,8 @@ export function GuidesPage({ language }: GuidesPageProps) {
   const pageContent = content[language];
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>{pageContent.title} - Wakfu Job Calculator</title>
-        <meta name="description" content={pageContent.description} />
-        <meta name="keywords" content="Wakfu guides, Wakfu professions, Wakfu sublimations, Wakfu crafting, Wakfu tips, Wakfu tutorial" />
-      </Helmet>
+    <>
+      <PageSeo title={pageContent.title} description={pageContent.description} path="/guides" />
 
       <div className="w-full max-w-6xl mx-auto px-4">
         <div className="backdrop-blur-xl bg-gray-900/80 border border-white/10 shadow-2xl rounded-3xl p-8 md:p-12">
@@ -172,6 +168,6 @@ export function GuidesPage({ language }: GuidesPageProps) {
           </div>
         </div>
       </div>
-    </HelmetProvider>
+    </>
   );
 }

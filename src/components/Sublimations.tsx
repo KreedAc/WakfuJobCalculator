@@ -85,11 +85,10 @@ const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>([
 
     async function fetchData() {
       setLoading(true);
-      // Localized file first, then English, then the legacy root file.
+      // Localized file first, then English.
       const sources = [
         `/data/sublimations.${language}.json`,
         '/data/sublimations.en.json',
-        '/sublimations.json',
       ];
       for (const url of sources) {
         const data = await tryLoad(url);
@@ -189,12 +188,20 @@ const filteredRunes = useMemo(() => {
   }, [runes, searchTerm, selectedCategory, slotFilters]);
 
   if (loading) {
+    // Also what the prerenderer captures: keep the page heading here.
     return (
-      <div className="w-full flex flex-col items-center justify-center py-20 text-emerald-400">
-        <div className="animate-spin mb-4">
-          <Scroll size={32} />
+      <div className="sublimation-container">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+            {t.sublimationsLibrary}
+          </h1>
         </div>
-        <p>{t.loadingSublimations}</p>
+        <div className="w-full flex flex-col items-center justify-center py-16 text-emerald-400">
+          <div className="animate-spin mb-4">
+            <Scroll size={32} />
+          </div>
+          <p>{t.loadingSublimations}</p>
+        </div>
       </div>
     );
   }

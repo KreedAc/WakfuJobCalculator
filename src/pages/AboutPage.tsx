@@ -1,4 +1,4 @@
-import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { PageSeo } from '../components/PageSeo';
 import { Info, Heart, Code, Users } from 'lucide-react';
 import { type Language } from '../constants/translations';
 
@@ -141,11 +141,8 @@ export function AboutPage({ language }: AboutPageProps) {
   const content = aboutContent[language];
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>{content.title}</title>
-        <meta name="description" content={content.description} />
-      </Helmet>
+    <>
+      <PageSeo title={content.title} description={content.description} path="/about" />
 
       <div className="w-full max-w-4xl mx-auto px-4">
         <div className="backdrop-blur-xl bg-gray-900/80 border border-white/10 shadow-2xl rounded-3xl p-8 md:p-12">
@@ -206,6 +203,6 @@ export function AboutPage({ language }: AboutPageProps) {
           </div>
         </div>
       </div>
-    </HelmetProvider>
+    </>
   );
 }

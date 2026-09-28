@@ -1,4 +1,4 @@
-import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { PageSeo } from '../components/PageSeo';
 import { Mail, MessageSquare, Users, Globe } from 'lucide-react';
 import { type Language } from '../constants/translations';
 
@@ -181,11 +181,8 @@ export function ContactPage({ language }: ContactPageProps) {
   const pageContent = content[language];
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>{pageContent.title} - Wakfu Job Calculator</title>
-        <meta name="description" content={pageContent.description} />
-      </Helmet>
+    <>
+      <PageSeo title={pageContent.title} description={pageContent.description} path="/contact" />
 
       <div className="w-full max-w-5xl mx-auto px-4">
         <div className="backdrop-blur-xl bg-gray-900/80 border border-white/10 shadow-2xl rounded-3xl p-8 md:p-12">
@@ -260,6 +257,6 @@ export function ContactPage({ language }: ContactPageProps) {
           </div>
         </div>
       </div>
-    </HelmetProvider>
+    </>
   );
 }

@@ -56,6 +56,7 @@ export function BuilderPage({ language }: BuilderPageProps) {
   const t = BUILDER_T[language];
   const [data, setData] = useState<EquipmentData | null>(null);
   const [build, setBuild] = useState<Build>(() => {
+    if (typeof window === 'undefined') return emptyBuild(230); // prerender
     const m = window.location.hash.match(/#?b=([A-Za-z0-9_-]+)/);
     return (m && decodeBuild(m[1])) || emptyBuild(230);
   });
@@ -201,10 +202,18 @@ export function BuilderPage({ language }: BuilderPageProps) {
   };
 
   if (!data) {
+    // Also what the prerenderer captures: keep the SEO tags and page header here.
     return (
-      <div className="flex flex-col items-center py-24 text-emerald-300/70">
-        <div className="w-8 h-8 border-2 border-emerald-400/30 border-t-emerald-400 rounded-full animate-spin mb-3" />
-        {t.loading}
+      <div className="w-full max-w-6xl mx-auto px-4">
+        <PageSeo title={t.pageTitle} description={t.pageSubtitle} path="/builder" />
+        <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-emerald-200">
+          {t.pageTitle}
+        </h1>
+        <p className="text-emerald-100/80 mb-6 text-center max-w-2xl mx-auto text-base drop-shadow-md">{t.pageSubtitle}</p>
+        <div className="flex flex-col items-center py-16 text-emerald-300/70">
+          <div className="w-8 h-8 border-2 border-emerald-400/30 border-t-emerald-400 rounded-full animate-spin mb-3" />
+          {t.loading}
+        </div>
       </div>
     );
   }
