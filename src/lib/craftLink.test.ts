@@ -10,3 +10,14 @@ describe('craft guide link format', () => {
     expect(parseCraftItems(null)).toEqual([]);
   });
 });
+
+describe('leveling recipes', () => {
+  it('has one recipe per level range and profession, and large quantities survive the link', async () => {
+    const { LEVELING_RECIPE_IDS } = await import('../constants/levelingRecipes');
+    const { LEVEL_RANGES } = await import('../constants/levelRanges');
+    const ids = Object.values(LEVELING_RECIPE_IDS).flat();
+    for (const list of Object.values(LEVELING_RECIPE_IDS)) expect(list).toHaveLength(LEVEL_RANGES.length);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(parseCraftItems('21075x1450')).toEqual([{ itemId: 21075, qty: 1450 }]);
+  });
+});

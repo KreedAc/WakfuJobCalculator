@@ -10,6 +10,7 @@ const OG_IMAGES: Record<string, string> = {
   '/combat-calc': 'combat-calc',
   '/treasures': 'treasures',
   '/guides': 'guides',
+  '/game-updates': 'game-updates',
 };
 
 function ogImageFor(path: string): string {

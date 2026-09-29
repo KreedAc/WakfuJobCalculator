@@ -24,11 +24,20 @@ jobs:
         with:
           node-version: 22
 
+      - name: Keep a copy of the current data for the patch diff
+        run: |
+          mkdir -p "$RUNNER_TEMP/prev-data"
+          cp public/data/items.compact.*.json public/data/recipes.compact.json \
+            public/data/sublimations.*.json public/data/wakfu_version.json "$RUNNER_TEMP/prev-data/"
+
       - name: Build localized sublimations from Ankama CDN
         run: node --max-old-space-size=4096 scripts/build-sublimations-data.mjs ${{ inputs.debug && '--debug' || '' }}
 
       - name: Build craft guide items and recipes from Ankama CDN
         run: node --max-old-space-size=4096 scripts/build-wakfu-data.mjs
+
+      - name: Record what changed since the previous game version
+        run: node scripts/build-patch-diff.mjs --prev "$RUNNER_TEMP/prev-data"
 
       - name: Show report summary
         run: |
@@ -43,7 +52,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/data/sublimations.*.json \
             public/data/items.compact.*.json public/data/recipes.compact.json \
-            public/data/needed_item_ids.json public/data/missing_item_ids.json public/data/wakfu_version.json
+            public/data/needed_item_ids.json public/data/missing_item_ids.json public/data/wakfu_version.json \
+            public/data/patch-diff.json
           if git diff --cached --quiet; then
             echo "No data changes."
           else

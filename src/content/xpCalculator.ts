@@ -21,6 +21,8 @@ const en = {
   reset: 'Reset',
   linkCopied: 'Link copied!',
   seeResult: 'Details',
+  shoppingList: 'Shopping list for these crafts',
+  shoppingListHelp: 'Opens the recipe in the Craft Guide with every ingredient you need to farm.',
 };
 
 export type XpCopy = typeof en;
@@ -44,6 +46,8 @@ const fr: XpCopy = {
   reset: 'Réinitialiser',
   linkCopied: 'Lien copié !',
   seeResult: 'Détails',
+  shoppingList: 'Liste de courses pour ces crafts',
+  shoppingListHelp: 'Ouvre la recette dans le Guide de craft avec tous les ingrédients à récolter.',
 };
 
 const es: XpCopy = {
@@ -65,6 +69,8 @@ const es: XpCopy = {
   reset: 'Reiniciar',
   linkCopied: '¡Enlace copiado!',
   seeResult: 'Detalles',
+  shoppingList: 'Lista de compras para estos crafteos',
+  shoppingListHelp: 'Abre la receta en la Guía de crafteo con todos los ingredientes que necesitas recolectar.',
 };
 
 const pt: XpCopy = {
@@ -86,6 +92,8 @@ const pt: XpCopy = {
   reset: 'Redefinir',
   linkCopied: 'Link copiado!',
   seeResult: 'Detalhes',
+  shoppingList: 'Lista de compras para esses crafts',
+  shoppingListHelp: 'Abre a receita no Guia de craft com todos os ingredientes que você precisa coletar.',
 };
 
 export const XP_T: Record<Language, XpCopy> = { en, fr, es, pt };

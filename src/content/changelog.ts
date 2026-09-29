@@ -59,6 +59,27 @@ export const changelogContent = {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '3.2.0',
+    date: '2026-09-29',
+    changes: [
+      { type: 'feature', text: {
+        en: 'New Game Updates page: new craftable items, resources, recipe changes and sublimations at each Wakfu update',
+        fr: 'Nouvelle page Mises à jour du jeu : nouveaux objets craftables, ressources, recettes modifiées et sublimations à chaque mise à jour de Wakfu',
+        es: 'Nueva página Actualizaciones del juego: nuevos objetos fabricables, recursos, recetas modificadas y sublimaciones en cada actualización de Wakfu',
+        pt: 'Nova página Atualizações do jogo: novos itens fabricáveis, recursos, receitas alteradas e sublimações a cada atualização do Wakfu' } },
+      { type: 'feature', text: {
+        en: 'XP Calculator: open the shopping list of the leveling recipe, with the number of crafts already set',
+        fr: 'Calculateur XP : ouvrez la liste de courses de la recette pour monter, avec le nombre de crafts déjà indiqué',
+        es: 'Calculadora XP: abre la lista de compras de la receta para subir, con el número de crafteos ya indicado',
+        pt: 'Calculadora XP: abra a lista de compras da receita para upar, com o número de crafts já definido' } },
+      { type: 'improvement', text: {
+        en: 'Craft Guide: "Share list" button to send your selection to a friend',
+        fr: 'Guide de craft : bouton « Partager la liste » pour envoyer votre sélection à un ami',
+        es: 'Guía de crafteo: botón «Compartir lista» para enviar tu selección a un amigo',
+        pt: 'Guia de craft: botão "Compartilhar lista" para enviar sua seleção a um amigo' } },
+    ]
+  },
+  {
     version: '3.1.0',
     date: '2026-09-29',
     changes: [

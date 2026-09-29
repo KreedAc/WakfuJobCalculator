@@ -1,6 +1,6 @@
 // src/pages/ItemsCraftGuidePage.tsx
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Search, X, Minus, Plus, Copy, Check, ChevronRight, ChevronDown, Repeat, ShoppingCart, PackageSearch } from "lucide-react";
+import { Search, X, Minus, Plus, Copy, Check, ChevronRight, ChevronDown, Repeat, ShoppingCart, PackageSearch, Share2 } from "lucide-react";
 import { HowItWorks } from "../components/HowItWorks";
 import { ItemImage } from "../components/ItemImage";
 import { PageHeader } from "../components/ui/PageHeader";
@@ -360,12 +360,31 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
   };
   const fmt = (n: number) => n.toLocaleString(language);
 
+  // the URL already mirrors the selection (?items=…), so sharing it shares the list
+  const [toast, setToast] = useState("");
+  const shareList = async () => {
+    const url = window.location.href;
+    if (navigator.share) {
+      try { await navigator.share({ title: t.itemsCraftTitle, url }); return; } catch { /* cancelled */ }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      setToast(t.linkCopied);
+      setTimeout(() => setToast(""), 2000);
+    } catch { /* clipboard unavailable */ }
+  };
+
   return (
     <div>
       <PageSeo title={t.itemsCraftTitle} description={t.itemsCraftHowItWorks.slice(0, 155)} path="/items-craft-guide" />
       <PageHeader
         title={t.itemsCraftTitle}
         subtitle={loading ? `${t.loading}…` : `${t.craftableItems}: ${fmt(craftableItems.length)} · ${t.recipes}: ${fmt(recipesByResultId.size)}`}
+        actions={
+          <button type="button" className="btn" onClick={shareList} disabled={selected.length === 0}>
+            <Share2 className="w-4 h-4" /> {t.shareList}
+          </button>
+        }
       />
 
       <div className="card p-4 md:p-5 mb-6">
@@ -452,7 +471,8 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
                           const val = parseInt(e.target.value, 10);
                           if (isNaN(val) || val < 1) setQtyDirect(s.itemId, 1);
                         }}
-                        className="w-10 h-7 text-center font-mono text-[13px] font-semibold bg-transparent text-fg rounded-md focus:outline-none focus:ring-2 focus:ring-primary/30 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        style={{ width: `${Math.max(2, String(s.qty).length) + 1.5}ch` }}
+                        className="h-7 text-center font-mono text-[13px] font-semibold bg-transparent text-fg rounded-md focus:outline-none focus:ring-2 focus:ring-primary/30 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
                       <button type="button" onClick={() => setQty(s.itemId, +1)} className="w-7 h-7 grid place-items-center rounded-lg text-muted hover:text-fg hover:bg-surface2" aria-label={t.increase}>
                         <Plus className="w-3.5 h-3.5" />
@@ -546,6 +566,12 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
       )}
 
       <HowItWorks title={t.itemsCraftHowItWorksTitle} text={t.itemsCraftHowItWorks} className="mt-8" />
+
+      {toast && (
+        <div role="status" className="fixed bottom-24 lg:bottom-8 left-1/2 -translate-x-1/2 z-50 card shadow-pop px-4 py-2 text-sm font-semibold">
+          {toast}
+        </div>
+      )}
     </div>
   );
 }

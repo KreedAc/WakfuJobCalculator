@@ -22,6 +22,7 @@ const BeginnersGuideProfessions = lazy(() => import('./pages/guides/BeginnersGui
 const CompleteSublimationsGuide = lazy(() => import('./pages/guides/CompleteSublimationsGuide').then(m => ({ default: m.CompleteSublimationsGuide })));
 const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage').then(m => ({ default: m.CookiePolicyPage })));
 const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage').then(m => ({ default: m.DisclaimerPage })));
+const GameUpdatesPage = lazy(() => import('./pages/GameUpdatesPage').then(m => ({ default: m.GameUpdatesPage })));
 const CombatCalcPage = lazy(() => import('./pages/CombatCalcPage').then(m => ({ default: m.CombatCalcPage })));
 export const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
@@ -42,6 +43,7 @@ export const ROUTES: RouteDef[] = [
   { path: '/combat-calc', render: (l) => <CombatCalcPage language={l} />, changefreq: 'monthly', priority: 0.8 },
   { path: '/treasures', render: (l) => <TreasuresPage language={l} />, changefreq: 'monthly', priority: 0.8 },
   { path: '/guides', render: (l) => <GuidesPage language={l} />, changefreq: 'monthly', priority: 0.8 },
+  { path: '/game-updates', render: (l) => <GameUpdatesPage language={l} />, changefreq: 'monthly', priority: 0.7 },
   { path: '/guides/beginners-guide-professions', render: (l) => <BeginnersGuideProfessions language={l} />, changefreq: 'monthly', priority: 0.7 },
   { path: '/guides/complete-sublimations-guide', render: (l) => <CompleteSublimationsGuide language={l} />, changefreq: 'monthly', priority: 0.7 },
   { path: '/about', render: (l) => <AboutPage language={l} />, changefreq: 'monthly', priority: 0.5 },
