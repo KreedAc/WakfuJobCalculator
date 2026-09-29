@@ -2751,7 +2751,7 @@
     ]
   },
   {
-    "name": "Slow Evasion",
+    "name": "Slow Escape",
     "colors": [
       "R",
       "R",
@@ -6986,6 +6986,140 @@
     },
     "category": "Stat gains",
     "values": [
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Crimson Fury",
+    "colors": [
+      "B",
+      "R",
+      "R"
+    ],
+    "description": "At start of turn, if the state bearer suffered direct damage from an enemy at range on the previous turn: [X]% Damage inflicted in melee (1 turn)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% Damage inflicted in melee",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ignemikhal",
+      "localIcon": "/data/icons/ignemikhal.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Crimson Influence",
+    "colors": [
+      "G",
+      "B",
+      "B"
+    ],
+    "description": "At start of combat, if Critical Hits are <= 20: [X]% Critical Hit",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Critical Hit",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ignemikhal",
+      "localIcon": "/data/icons/ignemikhal.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Crimson Strength",
+    "colors": [
+      "G",
+      "R",
+      "G"
+    ],
+    "description": "While the bearer has Armor: [X]% Damage inflicted",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% Damage inflicted",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ignemikhal",
+      "localIcon": "/data/icons/ignemikhal.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ]
+  },
+  {
+    "name": "Fire and Flame",
+    "colors": [
+      "B",
+      "G",
+      "R"
+    ],
+    "description": "When the state bearer suffers direct damage in melee: 1 MP ([X] activations per turn)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: +1 activation per turn",
+    "maxLevel": 6,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Ignemikhal",
+      "localIcon": "/data/icons/ignemikhal.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
       {
         "base": null,
         "increment": null

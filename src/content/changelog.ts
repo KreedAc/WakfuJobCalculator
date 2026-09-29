@@ -59,6 +59,22 @@ export const changelogContent = {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '3.2.2',
+    date: '2026-09-29',
+    changes: [
+      { type: 'update', text: {
+        en: 'New sublimations from Ignemikhal: Crimson Fury, Crimson Influence, Crimson Strength and Fire and Flame',
+        fr: "Nouvelles sublimations d'Ignemikhal : Fureur pourpre, Influence pourpre, Force pourpre et Tout feu tout flamme",
+        es: 'Nuevas sublimaciones de Ignemikhal: Furor Púrpura, Influencia Púrpura, Fuerza Púrpura y Puro Fuego',
+        pt: 'Novas sublimações de Ignemikhal: Furor Púrpura, Influência Púrpura, Força Púrpura e Pegando Fogo' } },
+      { type: 'fix', text: {
+        en: 'Slow Evasion is now called by its official name, Slow Escape',
+        fr: 'Slow Evasion porte désormais son nom officiel, Dérobade lente',
+        es: 'Slow Evasion ahora lleva su nombre oficial, Escapatoria lenta',
+        pt: 'Slow Evasion agora tem seu nome oficial, Evasão Lenta' } },
+    ]
+  },
+  {
     version: '3.2.1',
     date: '2026-09-29',
     changes: [

@@ -1,33 +1,5 @@
 [
   {
-    "id": 33405,
-    "en": "Crimson Fury",
-    "fr": "Fureur pourpre",
-    "es": "Furor Púrpura",
-    "pt": "Furor Púrpura"
-  },
-  {
-    "id": 33402,
-    "en": "Crimson Influence",
-    "fr": "Influence pourpre",
-    "es": "Influencia Púrpura",
-    "pt": "Influência Púrpura"
-  },
-  {
-    "id": 33399,
-    "en": "Crimson Strength",
-    "fr": "Force pourpre",
-    "es": "Fuerza Púrpura",
-    "pt": "Força Púrpura"
-  },
-  {
-    "id": 33409,
-    "en": "Fire and Flame",
-    "fr": "Tout feu tout flamme",
-    "es": "Puro Fuego",
-    "pt": "Pegando Fogo"
-  },
-  {
     "id": 27134,
     "en": "Good Deed",
     "fr": "Bonne action",
@@ -40,12 +12,5 @@
     "fr": "Coque",
     "es": "Cáscara",
     "pt": "Casco"
-  },
-  {
-    "id": 27141,
-    "en": "Slow Escape",
-    "fr": "Dérobade lente",
-    "es": "Escapatoria lenta",
-    "pt": "Evasão Lenta"
   }
 ]
