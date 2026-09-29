@@ -20,9 +20,9 @@ export const guidesContent = {
         icon: Sparkles,
         title: 'Complete Sublimations Guide',
         slug: 'complete-sublimations-guide',
-        description: 'Master the sublimation system! Understand rarity tiers, slot types, and how to build optimal sublimation setups for your character class.',
-        topics: ['Sublimation mechanics', 'Slot types explained', 'Best sublimations by class', 'Epic and Legendary priorities'],
-        readTime: '15 min read'
+        description: 'How sublimations work: socket color patterns, Rare/Mythic/Legendary levels that add up across items, Epic and Relic sublimations, and where to get them.',
+        topics: ['Socket colors', 'Levels and rarities', 'Epic and Relic', 'Where to get them'],
+        readTime: '5 min read'
       }
     ]
   },
@@ -43,9 +43,9 @@ export const guidesContent = {
         icon: Sparkles,
         title: 'Guide Complet des Sublimations',
         slug: 'complete-sublimations-guide',
-        description: 'Maîtrisez le système de sublimation ! Comprenez les niveaux de rareté, les types d\'emplacements et comment construire des configurations optimales pour votre classe.',
-        topics: ['Mécaniques de sublimation', 'Types d\'emplacements expliqués', 'Meilleures sublimations par classe', 'Priorités Épiques et Légendaires'],
-        readTime: '15 min de lecture'
+        description: "Comment marchent les sublimations : motifs de couleurs des châsses, niveaux Rare/Mythique/Légendaire qui s'additionnent entre objets, sublimations épiques et reliques, et où les obtenir.",
+        topics: ['Couleurs des châsses', 'Niveaux et raretés', 'Épiques et reliques', 'Où les obtenir'],
+        readTime: '5 min de lecture'
       }
     ]
   },
@@ -66,9 +66,9 @@ export const guidesContent = {
         icon: Sparkles,
         title: 'Guía Completa de Sublimaciones',
         slug: 'complete-sublimations-guide',
-        description: '¡Domina el sistema de sublimación! Entiende los niveles de rareza, tipos de ranura y cómo construir configuraciones óptimas para tu clase.',
-        topics: ['Mecánicas de sublimación', 'Tipos de ranura explicados', 'Mejores sublimaciones por clase', 'Prioridades Épicas y Legendarias'],
-        readTime: '15 min de lectura'
+        description: 'Cómo funcionan las sublimaciones: patrones de colores de los engarces, niveles Raro/Mítico/Legendario que se suman entre objetos, sublimaciones épicas y reliquias, y dónde conseguirlas.',
+        topics: ['Colores de los engarces', 'Niveles y rarezas', 'Épicas y reliquias', 'Dónde conseguirlas'],
+        readTime: '5 min de lectura'
       }
     ]
   },
@@ -89,9 +89,9 @@ export const guidesContent = {
         icon: Sparkles,
         title: 'Guia Completo de Sublimações',
         slug: 'complete-sublimations-guide',
-        description: 'Domine o sistema de sublimação! Entenda os níveis de raridade, tipos de slot e como construir configurações ótimas para sua classe.',
-        topics: ['Mecânicas de sublimação', 'Tipos de slot explicados', 'Melhores sublimações por classe', 'Prioridades Épicas e Lendárias'],
-        readTime: '15 min de leitura'
+        description: 'Como funcionam as sublimações: padrões de cores dos engastes, níveis Raro/Mítico/Lendário que se somam entre itens, sublimações épicas e relíquias, e onde conseguir.',
+        topics: ['Cores dos engastes', 'Níveis e raridades', 'Épicas e relíquias', 'Onde conseguir'],
+        readTime: '5 min de leitura'
       }
     ]
   }
