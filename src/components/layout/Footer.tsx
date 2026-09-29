@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
+import { Eye } from 'lucide-react';
+import { useVisitTotals } from '../../lib/visits';
 import { SHELL } from '../../content/shell';
 import type { Language } from '../../constants/translations';
 
 export function Footer({ language }: { language: Language }) {
   const f = SHELL[language].footer;
+  const visits = useVisitTotals();
+  const fmt = (n: number) => n.toLocaleString(language);
   const links: [string, string][] = [
     ['/about', f.about], ['/changelog', f.changelog], ['/contact', f.contact],
     ['/privacy', f.privacy], ['/terms', f.terms], ['/cookies', f.cookies], ['/disclaimer', f.legal],
@@ -16,7 +20,15 @@ export function Footer({ language }: { language: Language }) {
         ))}
       </nav>
       <p className="max-w-3xl leading-relaxed">{f.disclaimer}</p>
-      <p className="mt-2">© {new Date().getFullYear()} · {f.madeBy}</p>
+      <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+        <span>© {new Date().getFullYear()} · {f.madeBy}</span>
+        {visits && (
+          <span className="inline-flex items-center gap-1.5 text-muted">
+            <Eye className="w-3.5 h-3.5 text-primary" />
+            {f.visitors(fmt(visits.total))} · {f.today(fmt(visits.today))}
+          </span>
+        )}
+      </p>
     </footer>
   );
 }
