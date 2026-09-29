@@ -60,7 +60,7 @@ export default function App() {
       <Sidebar {...shell} />
       <div className="lg:pl-64 flex flex-col min-h-screen">
         <Topbar {...shell} />
-        <main className="flex-1 w-full max-w-[1200px] mx-auto px-4 md:px-8 pt-6 md:pt-8 pb-28 lg:pb-10">
+        <main className="flex-1 w-full max-w-[1640px] mx-auto px-4 md:px-8 pt-6 md:pt-8 pb-28 lg:pb-10">
           <Suspense
             fallback={
               <div className="flex items-center justify-center py-24">

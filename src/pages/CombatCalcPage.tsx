@@ -216,7 +216,7 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
 
   // ─── Render ─────────────────────────────────────────────────────────────────
   return (
-    <div>
+    <div className="max-w-6xl">
       <PageSeo title={ct.pageTitle} description={ct.pageSubtitle} path="/combat-calc" />
       <PageHeader
         title={ct.pageTitle}
