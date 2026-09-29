@@ -96,6 +96,18 @@
   --shadow-pop: 0 24px 64px -16px rgb(16 23 41 / 0.35);
 }
 
+/* ─── Desktop density ───────────────────────────────────────────────────────
+   On computers the whole UI is scaled down (like browser zoom) so a tool fits
+   in one screen. Windows display scaling (125–150%) makes CSS pixels
+   physically larger, so those screens get a stronger scale-down; standard
+   and Retina screens get a lighter one. Phones and tablets are untouched. */
+@media (min-width: 1024px) {
+  html { zoom: 0.9; }
+}
+@media (min-width: 1024px) and (min-resolution: 1.2dppx) and (max-resolution: 1.9dppx) {
+  html { zoom: 0.75; }
+}
+
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
