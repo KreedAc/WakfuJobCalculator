@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
-import { Grid2x2, X } from 'lucide-react';
+import { Grid2x2, X, ArrowUpRight, Globe } from 'lucide-react';
+import { RESOURCES, RESOURCES_T } from '../../content/resources';
 import { ALL_NAV, HOME, NAV_GROUPS, isActive, type NavItem } from '../../lib/navigation';
 import { SHELL } from '../../content/shell';
 import { FLAGS, LANGUAGE_NAMES, type Language } from '../../constants/translations';
@@ -87,6 +88,24 @@ export function MobileTabBar({ path, language, onLanguageChange }: Props) {
                 <div className="grid grid-cols-2 gap-2">{g.items.map(tile)}</div>
               </div>
             ))}
+            <div className="mb-5">
+              <div className="caps-label mb-2">{RESOURCES_T[language].title}</div>
+              <div className="grid grid-cols-2 gap-2">
+                {RESOURCES.map((r) => (
+                  <a
+                    key={r.url}
+                    href={r.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-xl border border-line bg-bg2 text-sm font-semibold text-muted hover:text-fg transition-colors"
+                  >
+                    <Globe className="w-5 h-5 shrink-0" />
+                    <span className="truncate">{r.name}</span>
+                    <ArrowUpRight className="w-4 h-4 ml-auto text-subtle" />
+                  </a>
+                ))}
+              </div>
+            </div>
             <div className="caps-label mb-2">{s.language}</div>
             <div className="grid grid-cols-2 gap-2 mb-5">
               {(Object.keys(LANGUAGE_NAMES) as Language[]).map((l) => (
