@@ -7,6 +7,8 @@
 //   POST /api/builds          {code, name, author, description, class}
 //   POST /api/builds/:id/like                                 one like per visitor
 //   POST /api/builds/:id/report                               hidden after 3 reports
+//   POST /api/visit    count this visitor once per day, returns the totals
+//   GET  /api/visits   totals only
 //
 // Visitors are identified only by a salted SHA-256 of their IP address, used
 // for rate limiting, like and report de-duplication; the IP itself is never stored.
@@ -49,6 +51,14 @@ const SCHEMA = [
     kind TEXT NOT NULL,
     PRIMARY KEY (build_id, ip_hash, kind)
   )`,
+  // visitor counter: one row per visitor per UTC day (hash changes daily),
+  // rows older than yesterday are deleted; totals live in counters
+  `CREATE TABLE IF NOT EXISTS visits (
+    day TEXT NOT NULL,
+    visitor TEXT NOT NULL,
+    PRIMARY KEY (day, visitor)
+  )`,
+  'CREATE TABLE IF NOT EXISTS counters (key TEXT PRIMARY KEY, value INTEGER NOT NULL DEFAULT 0)',
 ];
 
 let schemaReady: Promise<unknown> | null = null;
@@ -195,9 +205,54 @@ async function vote(request: Request, id: string, kind: 'like' | 'report', env: 
   return json({ ok: true });
 }
 
+// ─── visitor counter ─────────────────────────────────────────────────────────
+
+const BOT_UA = /bot|crawl|spider|slurp|headless|lighthouse|preview|facebookexternalhit|embedly|monitor/i;
+
+async function visitTotals(env: Env, day: string) {
+  const { results } = await env.DB
+    .prepare("SELECT key, value FROM counters WHERE key IN ('total', ?)")
+    .bind(`day:${day}`)
+    .all<{ key: string; value: number }>();
+  const get = (k: string) => results.find((r) => r.key === k)?.value ?? 0;
+  return { total: get('total'), today: get(`day:${day}`) };
+}
+
+async function countVisit(request: Request, env: Env) {
+  const day = new Date().toISOString().slice(0, 10);
+  const ua = request.headers.get('user-agent') ?? '';
+  if (!BOT_UA.test(ua)) {
+    // daily-rotating hash: the same person can't be followed from one day to the next
+    const ip = request.headers.get('cf-connecting-ip') ?? 'unknown';
+    const data = new TextEncoder().encode(`${env.IP_SALT ?? 'wakfu-job-calculator'}|${day}|${ip}|${ua}`);
+    const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', data));
+    const visitor = [...digest.slice(0, 12)].map((b) => b.toString(16).padStart(2, '0')).join('');
+    const inserted = await env.DB
+      .prepare('INSERT OR IGNORE INTO visits (day, visitor) VALUES (?, ?)')
+      .bind(day, visitor).run();
+    if ((inserted.meta.changes ?? 0) > 0) {
+      const bump = 'INSERT INTO counters (key, value) VALUES (?, 1) ON CONFLICT(key) DO UPDATE SET value = value + 1';
+      const yesterday = new Date(Date.now() - 86400_000).toISOString().slice(0, 10);
+      await env.DB.batch([
+        env.DB.prepare(bump).bind('total'),
+        env.DB.prepare(bump).bind(`day:${day}`),
+        env.DB.prepare('DELETE FROM visits WHERE day < ?').bind(yesterday),
+      ]);
+    }
+  }
+  return json(await visitTotals(env, day));
+}
+
 async function handleApi(request: Request, env: Env): Promise<Response> {
   const url = new URL(request.url);
   const parts = url.pathname.replace(/\/+$/, '').split('/').slice(2); // ['builds', id?, action?]
+
+  if (parts[0] === 'visit' || parts[0] === 'visits') {
+    await ensureSchema(env.DB);
+    if (parts[0] === 'visit' && request.method === 'POST') return countVisit(request, env);
+    if (parts[0] === 'visits' && request.method === 'GET') return json(await visitTotals(env, new Date().toISOString().slice(0, 10)));
+    throw new HttpError(405, 'method not allowed');
+  }
   if (parts[0] !== 'builds') throw new HttpError(404, 'not found');
   const id = parts[1];
   if (id !== undefined && !/^[A-Za-z0-9]{8}$/.test(id)) throw new HttpError(404, 'not found');

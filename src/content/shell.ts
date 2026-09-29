@@ -31,6 +31,8 @@ interface ShellCopy {
     cookies: string;
     legal: string;
     madeBy: string;
+    visitors: (n: string) => string;
+    today: (n: string) => string;
   };
   home: {
     title: string;
@@ -72,6 +74,8 @@ const en: ShellCopy = {
     about: 'About', changelog: 'Changelog', contact: 'Contact',
     privacy: 'Privacy', terms: 'Terms', cookies: 'Cookies', legal: 'Disclaimer',
     madeBy: 'Made by KreedAc and LadyKreedAc',
+    visitors: (n) => `${n} visitors`,
+    today: (n) => `${n} today`,
   },
   home: {
     title: 'Free Wakfu Tools',
@@ -124,6 +128,8 @@ const fr: ShellCopy = {
     about: 'À propos', changelog: 'Nouveautés', contact: 'Contact',
     privacy: 'Confidentialité', terms: 'Conditions', cookies: 'Cookies', legal: 'Avertissement',
     madeBy: 'Créé par KreedAc et LadyKreedAc',
+    visitors: (n) => `${n} visiteurs`,
+    today: (n) => `${n} aujourd'hui`,
   },
   home: {
     title: 'Outils Wakfu gratuits',
@@ -176,6 +182,8 @@ const es: ShellCopy = {
     about: 'Acerca de', changelog: 'Novedades', contact: 'Contacto',
     privacy: 'Privacidad', terms: 'Términos', cookies: 'Cookies', legal: 'Aviso legal',
     madeBy: 'Creado por KreedAc y LadyKreedAc',
+    visitors: (n) => `${n} visitantes`,
+    today: (n) => `${n} hoy`,
   },
   home: {
     title: 'Herramientas gratis para Wakfu',
@@ -228,6 +236,8 @@ const pt: ShellCopy = {
     about: 'Sobre', changelog: 'Novidades', contact: 'Contato',
     privacy: 'Privacidade', terms: 'Termos', cookies: 'Cookies', legal: 'Aviso legal',
     madeBy: 'Criado por KreedAc e LadyKreedAc',
+    visitors: (n) => `${n} visitantes`,
+    today: (n) => `${n} hoje`,
   },
   home: {
     title: 'Ferramentas grátis para Wakfu',

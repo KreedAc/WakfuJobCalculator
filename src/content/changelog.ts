@@ -59,6 +59,22 @@ export const changelogContent = {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '3.1.0',
+    date: '2026-09-29',
+    changes: [
+      { type: 'feature', text: {
+        en: 'Visitor counter on the Home page and in the footer (no cookies)',
+        fr: "Compteur de visiteurs sur l'accueil et en bas de page (sans cookies)",
+        es: 'Contador de visitantes en la página de inicio y en el pie de página (sin cookies)',
+        pt: 'Contador de visitantes na página inicial e no rodapé (sem cookies)' } },
+      { type: 'improvement', text: {
+        en: 'More compact layout on computers: each tool fits in one screen and uses the full width',
+        fr: "Mise en page plus compacte sur ordinateur : chaque outil tient sur un écran et utilise toute la largeur",
+        es: 'Diseño más compacto en el ordenador: cada herramienta cabe en una pantalla y usa todo el ancho',
+        pt: 'Layout mais compacto no computador: cada ferramenta cabe em uma tela e usa toda a largura' } },
+    ]
+  },
+  {
     version: '3.0.0',
     date: '2026-09-28',
     changes: [

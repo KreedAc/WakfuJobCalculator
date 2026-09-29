@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Sparkles, Megaphone, Clock, ArrowRight } from 'lucide-react';
+import { Search, Sparkles, Megaphone, Clock, ArrowRight, Eye } from 'lucide-react';
 import { PageSeo } from '../components/PageSeo';
 import { openSearch } from '../components/layout/searchEvents';
 import { NAV_GROUPS } from '../lib/navigation';
 import { GAME_VERSION } from '../lib/gameVersion';
 import { BUILDER_WIP } from '../lib/featureFlags';
 import { lastVisits, relativeDay } from '../lib/recent';
+import { useVisitTotals } from '../lib/visits';
 import { SHELL } from '../content/shell';
 import { changelog } from '../content/changelog';
 import type { Language } from '../constants/translations';
@@ -18,6 +19,7 @@ export function HomePage({ language }: { language: Language }) {
   const h = s.home;
   const [visits, setVisits] = useState<Record<string, number>>({});
   useEffect(() => setVisits(lastVisits()), []);
+  const totals = useVisitTotals();
 
   // latest changes, without the ones about unreleased features
   const news = changelog
@@ -32,7 +34,14 @@ export function HomePage({ language }: { language: Language }) {
       <section className="grid gap-5 lg:grid-cols-[1.45fr_1fr]">
         <div className="card relative overflow-hidden p-6 md:p-8">
           <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl" />
-          <span className="eyebrow mb-4"><Sparkles className="w-3.5 h-3.5" /> {h.eyebrow(GAME_VERSION)}</span>
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            <span className="eyebrow"><Sparkles className="w-3.5 h-3.5" /> {h.eyebrow(GAME_VERSION)}</span>
+            {totals && (
+              <span className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-full">
+                <Eye className="w-3.5 h-3.5" /> {s.footer.visitors(totals.total.toLocaleString(language))}
+              </span>
+            )}
+          </div>
           <h1 className="font-display text-[28px] md:text-[36px] font-bold leading-[1.15] tracking-tight whitespace-pre-line mb-3">
             {h.heroTitle}
           </h1>
