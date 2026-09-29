@@ -7,10 +7,6 @@ on:
         description: 'Dump sample raw items in the log'
         type: boolean
         default: false
-      probe_equipment:
-        description: 'Run the equipment data probe instead of the build'
-        type: boolean
-        default: false
   schedule:
     # First day of each month at 06:00 UTC — Wakfu patches land roughly monthly.
     - cron: '0 6 1 * *'
@@ -28,35 +24,24 @@ jobs:
         with:
           node-version: 22
 
-      - name: Probe equipment data from Ankama CDN
-        if: ${{ inputs.probe_equipment }}
-        run: node --max-old-space-size=4096 scripts/probe-equipment-data.mjs
-
       - name: Build localized sublimations from Ankama CDN
-        if: ${{ !inputs.probe_equipment }}
         run: node --max-old-space-size=4096 scripts/build-sublimations-data.mjs ${{ inputs.debug && '--debug' || '' }}
 
       - name: Build craft guide items and recipes from Ankama CDN
-        if: ${{ !inputs.probe_equipment }}
         run: node --max-old-space-size=4096 scripts/build-wakfu-data.mjs
 
-      - name: Build equipment data from Ankama CDN
-        if: ${{ !inputs.probe_equipment }}
-        run: node --max-old-space-size=4096 scripts/build-equipment-data.mjs
-
       - name: Show report summary
-        if: ${{ !inputs.probe_equipment }}
         run: |
           if [ -f scripts/sublimations.i18n.report.json ]; then
             node -e "const r=require('./scripts/sublimations.i18n.report.json');console.log('version:',r.version);console.log('matched:',r.matched+'/'+r.curatedCount);console.log('unmatched:',r.unmatched);console.log('partial placeholders:',r.partialPlaceholders.length)"
           fi
 
       - name: Commit updated data
-        if: ${{ !inputs.debug && !inputs.probe_equipment }}
+        if: ${{ !inputs.debug }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/sublimations.*.json public/data/equipment.compact.*.json \
+          git add public/data/sublimations.*.json \
             public/data/items.compact.*.json public/data/recipes.compact.json \
             public/data/needed_item_ids.json public/data/missing_item_ids.json public/data/wakfu_version.json
           if git diff --cached --quiet; then

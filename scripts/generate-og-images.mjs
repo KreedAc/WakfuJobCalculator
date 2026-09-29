@@ -28,7 +28,6 @@ function icon(name) {
 
 const IMAGES = [
   { file: "xp-calculator", icon: "hammer", accent: true, title: "Profession XP Calculator", subtitle: "How many crafts to reach your next level" },
-  { file: "builder", icon: "shirt", title: "Equipment Builder", subtitle: "Plan your gear · total stats · share by link" },
   { file: "sublimations", icon: "scroll", title: "Sublimations Library", subtitle: "Every sublimation, effect and socket pattern" },
   { file: "items-craft-guide", icon: "wrench", title: "Items Craft Guide", subtitle: "Recipe trees and shopping lists" },
   { file: "combat-calc", icon: "swords", title: "Combat Calculator", subtitle: "Damage · heals · armor · EHP · lock" },

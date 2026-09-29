@@ -2,7 +2,7 @@
 // Home page, in every supported language.
 import type { Language } from '../constants/translations';
 
-export type NavId = 'home' | 'xp' | 'craft' | 'subli' | 'combat' | 'builder' | 'treasures' | 'guides';
+export type NavId = 'home' | 'xp' | 'craft' | 'subli' | 'combat' | 'treasures' | 'guides';
 export type NavGroupId = 'crafting' | 'equipment' | 'explore';
 
 interface ShellCopy {
@@ -46,14 +46,14 @@ interface ShellCopy {
     allChanges: string;
     tools: string;
     usedAgo: (when: string) => string;
-    toolText: Record<Exclude<NavId, 'home' | 'builder'>, { desc: string; meta: string }>;
+    toolText: Record<Exclude<NavId, 'home'>, { desc: string; meta: string }>;
   };
 }
 
 const en: ShellCopy = {
   nav: {
     home: 'Home', xp: 'XP Calculator', craft: 'Craft Guide', subli: 'Sublimations',
-    combat: 'Combat Calculator', builder: 'Builder', treasures: 'Treasures', guides: 'Guides',
+    combat: 'Combat Calculator', treasures: 'Treasures', guides: 'Guides',
   },
   tabs: { home: 'Home', xp: 'XP', subli: 'Sublis', craft: 'Craft', more: 'More' },
   groups: { crafting: 'Crafting', equipment: 'Equipment & combat', explore: 'Explore' },
@@ -107,7 +107,7 @@ const en: ShellCopy = {
 const fr: ShellCopy = {
   nav: {
     home: 'Accueil', xp: 'Calculateur XP', craft: 'Guide de craft', subli: 'Sublimations',
-    combat: 'Calculateur de combat', builder: 'Créateur', treasures: 'Trésors', guides: 'Guides',
+    combat: 'Calculateur de combat', treasures: 'Trésors', guides: 'Guides',
   },
   tabs: { home: 'Accueil', xp: 'XP', subli: 'Sublis', craft: 'Craft', more: 'Plus' },
   groups: { crafting: 'Artisanat', equipment: 'Équipement & combat', explore: 'Explorer' },
@@ -161,7 +161,7 @@ const fr: ShellCopy = {
 const es: ShellCopy = {
   nav: {
     home: 'Inicio', xp: 'Calculadora XP', craft: 'Guía de crafteo', subli: 'Sublimaciones',
-    combat: 'Calculadora de combate', builder: 'Creador', treasures: 'Tesoros', guides: 'Guías',
+    combat: 'Calculadora de combate', treasures: 'Tesoros', guides: 'Guías',
   },
   tabs: { home: 'Inicio', xp: 'XP', subli: 'Sublis', craft: 'Craft', more: 'Más' },
   groups: { crafting: 'Artesanía', equipment: 'Equipo y combate', explore: 'Explorar' },
@@ -215,7 +215,7 @@ const es: ShellCopy = {
 const pt: ShellCopy = {
   nav: {
     home: 'Início', xp: 'Calculadora XP', craft: 'Guia de crafting', subli: 'Sublimações',
-    combat: 'Calculadora de combate', builder: 'Criador', treasures: 'Tesouros', guides: 'Guias',
+    combat: 'Calculadora de combate', treasures: 'Tesouros', guides: 'Guias',
   },
   tabs: { home: 'Início', xp: 'XP', subli: 'Sublis', craft: 'Craft', more: 'Mais' },
   groups: { crafting: 'Artesanato', equipment: 'Equipamento e combate', explore: 'Explorar' },

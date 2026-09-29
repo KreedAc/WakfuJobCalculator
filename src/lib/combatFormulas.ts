@@ -1,4 +1,4 @@
-// Pure combat formulas used by the Combat Calculator and the Builder.
+// Pure combat formulas used by the Combat Calculator.
 // Kept free of React so they can be unit-tested.
 
 export type Position = 'facing' | 'side' | 'rear';

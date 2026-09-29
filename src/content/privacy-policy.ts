@@ -32,10 +32,6 @@ export const privacyPolicyContent = {
         ]
       },
       {
-        title: 'Published Builds',
-        content: 'When you publish a build to the Community builds gallery, we store the build, its name, the optional author name, class and description you enter, the date, and a one-way hashed identifier derived from your IP address. The hashed identifier is used only to limit spam, count one like per visitor and handle reports; your IP address itself is never stored. Published builds are public. To have a build removed, contact us.'
-      },
-      {
         title: 'Visitor Counter',
         content: 'To show the number of visitors, each browser is counted once per day. We only store a one-way hash of the IP address and browser type that changes every day, so the same person cannot be recognised from one day to the next; these entries are deleted after two days and only the totals are kept. No cookies are used for this.'
       },
@@ -111,10 +107,6 @@ export const privacyPolicyContent = {
           'Communiquer des mises à jour et des avis importants',
           'Assurer la sécurité et l\'intégrité de notre plateforme'
         ]
-      },
-      {
-        title: 'Builds publiés',
-        content: "Lorsque vous publiez un build dans la galerie des builds de la communauté, nous enregistrons le build, son nom, le nom d'auteur, la classe et la description facultatifs que vous saisissez, la date, ainsi qu'un identifiant haché de manière irréversible dérivé de votre adresse IP. Cet identifiant sert uniquement à limiter le spam, à compter un « J'aime » par visiteur et à traiter les signalements ; votre adresse IP elle-même n'est jamais enregistrée. Les builds publiés sont publics. Pour faire supprimer un build, contactez-nous."
       },
       {
         title: 'Compteur de visiteurs',
@@ -194,10 +186,6 @@ export const privacyPolicyContent = {
         ]
       },
       {
-        title: 'Builds publicadas',
-        content: 'Cuando publicas una build en la galería de builds de la comunidad, guardamos la build, su nombre, el nombre de autor, la clase y la descripción opcionales que introduces, la fecha y un identificador con hash irreversible derivado de tu dirección IP. Este identificador solo se usa para limitar el spam, contar un «me gusta» por visitante y gestionar las denuncias; tu dirección IP nunca se guarda. Las builds publicadas son públicas. Para solicitar la eliminación de una build, contáctanos.'
-      },
-      {
         title: 'Contador de visitantes',
         content: 'Para mostrar el número de visitantes, cada navegador se cuenta una vez al día. Solo guardamos un hash irreversible de la dirección IP y del tipo de navegador que cambia cada día, por lo que no es posible reconocer a la misma persona de un día para otro. Estos registros se eliminan a los dos días y solo se conservan los totales. No se usan cookies para ello.'
       },
@@ -273,10 +261,6 @@ export const privacyPolicyContent = {
           'Comunicar atualizações e avisos importantes',
           'Garantir a segurança e integridade de nossa plataforma'
         ]
-      },
-      {
-        title: 'Builds publicadas',
-        content: 'Quando você publica uma build na galeria de builds da comunidade, armazenamos a build, seu nome, o nome de autor, a classe e a descrição opcionais que você informar, a data e um identificador com hash irreversível derivado do seu endereço IP. Esse identificador é usado apenas para limitar spam, contar uma curtida por visitante e tratar denúncias; seu endereço IP nunca é armazenado. As builds publicadas são públicas. Para solicitar a remoção de uma build, entre em contato conosco.'
       },
       {
         title: 'Contador de visitantes',

@@ -1,4 +1,4 @@
-// URL format shared by the Builder and the Items Craft Guide:
+// URL format of the Items Craft Guide selection (also used by the search palette):
 // /items-craft-guide?items=12464,8047x2  (item id, optional "x<quantity>").
 
 export interface CraftRow {
@@ -21,8 +21,4 @@ export function parseCraftItems(value: string | null): CraftRow[] {
     if (id > 0) byId.set(id, (byId.get(id) ?? 0) + qty);
   }
   return [...byId].map(([itemId, qty]) => ({ itemId, qty }));
-}
-
-export function craftGuideUrl(rows: CraftRow[]): string {
-  return `/items-craft-guide?items=${formatCraftItems(rows)}`;
 }

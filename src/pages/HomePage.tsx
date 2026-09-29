@@ -5,14 +5,13 @@ import { PageSeo } from '../components/PageSeo';
 import { openSearch } from '../components/layout/searchEvents';
 import { NAV_GROUPS } from '../lib/navigation';
 import { GAME_VERSION } from '../lib/gameVersion';
-import { BUILDER_WIP } from '../lib/featureFlags';
 import { lastVisits, relativeDay } from '../lib/recent';
 import { useVisitTotals } from '../lib/visits';
 import { SHELL } from '../content/shell';
 import { changelog } from '../content/changelog';
 import type { Language } from '../constants/translations';
 
-const TOOLS = NAV_GROUPS.flatMap((g) => g.items).filter((i) => i.id !== 'builder');
+const TOOLS = NAV_GROUPS.flatMap((g) => g.items);
 
 export function HomePage({ language }: { language: Language }) {
   const s = SHELL[language];
@@ -21,11 +20,7 @@ export function HomePage({ language }: { language: Language }) {
   useEffect(() => setVisits(lastVisits()), []);
   const totals = useVisitTotals();
 
-  // latest changes, without the ones about unreleased features
-  const news = changelog
-    .flatMap((entry) => entry.changes)
-    .filter((c) => !(BUILDER_WIP && /builder|builds/i.test(c.text.en)))
-    .slice(0, 4);
+  const news = changelog.flatMap((entry) => entry.changes).slice(0, 4);
 
   return (
     <div className="space-y-8">

@@ -3,10 +3,6 @@
 import { lazy, type ReactNode } from 'react';
 import type { Language } from './constants/translations';
 import { HomePage } from './pages/HomePage';
-import { BuilderWipGate } from './components/WorkInProgress';
-import { BUILDER_WIP } from './lib/featureFlags';
-import { BUILDER_T } from './constants/builderTranslations';
-import { BUILD_GALLERY_T } from './content/buildGallery';
 
 // Single source of truth for the site's pages: the app router, the build-time
 // prerenderer and the sitemap are all generated from this list.
@@ -27,8 +23,6 @@ const CompleteSublimationsGuide = lazy(() => import('./pages/guides/CompleteSubl
 const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage').then(m => ({ default: m.CookiePolicyPage })));
 const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage').then(m => ({ default: m.DisclaimerPage })));
 const CombatCalcPage = lazy(() => import('./pages/CombatCalcPage').then(m => ({ default: m.CombatCalcPage })));
-const BuilderPage = lazy(() => import('./pages/BuilderPage').then(m => ({ default: m.BuilderPage })));
-const BuildsGalleryPage = lazy(() => import('./pages/BuildsGalleryPage').then(m => ({ default: m.BuildsGalleryPage })));
 export const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
 export interface RouteDef {
@@ -43,16 +37,6 @@ export interface RouteDef {
 export const ROUTES: RouteDef[] = [
   { path: '/', render: (l) => <HomePage language={l} />, changefreq: 'weekly', priority: 1.0 },
   { path: '/xp-calculator', render: (l) => <CalculatorPage language={l} />, changefreq: 'monthly', priority: 0.9 },
-  {
-    path: '/builder',
-    render: (l) => <BuilderWipGate language={l} title={BUILDER_T[l].pageTitle} path="/builder"><BuilderPage language={l} /></BuilderWipGate>,
-    changefreq: 'weekly', priority: 0.9, inSitemap: !BUILDER_WIP,
-  },
-  {
-    path: '/builds',
-    render: (l) => <BuilderWipGate language={l} title={BUILD_GALLERY_T[l].title} path="/builds"><BuildsGalleryPage language={l} /></BuilderWipGate>,
-    changefreq: 'daily', priority: 0.8, inSitemap: !BUILDER_WIP,
-  },
   { path: '/sublimations', render: (l) => <SublimationsPage language={l} />, changefreq: 'weekly', priority: 0.9 },
   { path: '/items-craft-guide', render: (l) => <ItemsCraftGuidePage language={l} />, changefreq: 'weekly', priority: 0.8 },
   { path: '/combat-calc', render: (l) => <CombatCalcPage language={l} />, changefreq: 'monthly', priority: 0.8 },

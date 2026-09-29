@@ -1,9 +1,8 @@
 // Site navigation, shared by the sidebar, the mobile tab bar, the "More"
 // sheet, breadcrumbs, the Home tool grid and the search palette.
 import {
-  LayoutDashboard, Hammer, Wrench, Scroll, Swords, Shirt, Map, BookOpen, type LucideIcon,
+  LayoutDashboard, Hammer, Wrench, Scroll, Swords, Map, BookOpen, type LucideIcon,
 } from 'lucide-react';
-import { BUILDER_WIP } from './featureFlags';
 import type { NavGroupId, NavId } from '../content/shell';
 
 export interface NavItem {
@@ -31,7 +30,6 @@ export const NAV_GROUPS: { id: NavGroupId; items: NavItem[] }[] = [
     items: [
       { id: 'subli', path: '/sublimations', icon: Scroll },
       { id: 'combat', path: '/combat-calc', icon: Swords },
-      { id: 'builder', path: '/builder', icon: Shirt, also: ['/builds'], wip: BUILDER_WIP },
     ],
   },
   {
