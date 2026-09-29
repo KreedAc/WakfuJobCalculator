@@ -6,7 +6,7 @@
 //   node scripts/build-patch-diff.mjs --prev <dir>
 //
 // <dir> holds the previous copies of items.compact.*.json, recipes.compact.json,
-// sublimations.{en,fr,es,pt}.json and wakfu_version.json (the workflow copies
+// sublimations.*.json (including sublimations.pending.json) and wakfu_version.json (the workflow copies
 // them there before rebuilding). Nothing is written when the version is unchanged.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -95,6 +95,13 @@ nextSubli.en.forEach((s, i) => {
   newSublimations.push(Object.fromEntries(LANGS.map((l) => [l, nextSubli[l][i]?.name ?? s.name])));
 });
 
+// official sublimations the site doesn't describe yet (see build-sublimations-data.mjs);
+// without a previous list there is no baseline, so nothing is reported
+const prevPending = read(PREV, 'sublimations.pending.json');
+const pendingSublimations = prevPending
+  ? (read(DATA, 'sublimations.pending.json') ?? []).filter((p) => !prevPending.some((q) => q.en === p.en))
+  : [];
+
 const entry = {
   from: prevVersion.version,
   to: nextVersion.version,
@@ -103,6 +110,7 @@ const entry = {
   newItems,
   changedRecipes,
   newSublimations,
+  pendingSublimations,
   names,
 };
 
@@ -112,5 +120,5 @@ fs.writeFileSync(OUT, `${JSON.stringify({ patches })}\n`);
 console.log(
   `patch-diff: ${entry.from} → ${entry.to}: ${newCraftable.length} new craftable items, ` +
   `${newItems.length} other new items, ${changedRecipes.length} changed recipes, ` +
-  `${newSublimations.length} new sublimations`,
+  `${newSublimations.length} new sublimations, ${pendingSublimations.length} not described yet`,
 );

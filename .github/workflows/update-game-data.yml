@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   sublimations:
@@ -38,6 +39,26 @@ jobs:
 
       - name: Record what changed since the previous game version
         run: node scripts/build-patch-diff.mjs --prev "$RUNNER_TEMP/prev-data"
+
+      - name: Open an issue for sublimations to add
+        if: ${{ !inputs.debug }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # only when this run recorded a new game version
+          if git diff --quiet -- public/data/patch-diff.json; then exit 0; fi
+          body=$(node -e "
+            const d = require('./public/data/patch-diff.json').patches?.[0];
+            const v = require('./public/data/wakfu_version.json').version;
+            if (d && d.to === v && d.pendingSublimations?.length) {
+              console.log('Wakfu ' + v + ' added sublimations that the site does not describe yet:\\n');
+              for (const s of d.pendingSublimations) console.log('- **' + s.en + '** (FR ' + s.fr + ', ES ' + s.es + ', PT ' + s.pt + ') — item ' + s.id);
+              console.log('\\nAdd them to public/data/sublimations.en.json (socket colors, values per level, rarity, obtainment, category); the next data update translates them.');
+            }
+          ")
+          if [ -n "$body" ]; then
+            gh issue create --title "New sublimations to add" --body "$body"
+          fi
 
       - name: Show report summary
         run: |

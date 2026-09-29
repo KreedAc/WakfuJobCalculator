@@ -9,6 +9,8 @@ import { PROFESSION_IDS, PROFESSION_NAMES, PROFESSION_RECIPES, type ProfessionId
 import { LEVEL_RANGES } from '../constants/levelRanges';
 import { LEVELING_RECIPE_IDS } from '../constants/levelingRecipes';
 import { craftsNeeded, resourcesPerCraft } from '../lib/xpCalculator';
+import { loadWakfuData } from '../lib/wakfuData';
+import { ItemImage } from './ItemImage';
 import { XP_T } from '../content/xpCalculator';
 import { PageHeader } from './ui/PageHeader';
 
@@ -27,6 +29,8 @@ const PROFESSION_ICONS: Record<ProfessionId, LucideIcon> = {
 const rangeLabel = (r: string) => r.replace(/\s*-\s*/, '–');
 const rangeKey = (r: string) => r.replace(/\s*-\s*/, '-');
 const rangeBounds = (r: string) => r.split('-').map((n) => parseInt(n, 10));
+
+interface Ingredient { itemId: number; qty: number; name?: string; gfxId?: number | null }
 
 interface Props {
   language: Language;
@@ -69,19 +73,45 @@ export function Calculator({ language, title, subtitle }: Props) {
   }, []);
 
   const level = LEVEL_RANGES.find((r) => r.range === range);
-  const recipe = level && profession ? `${level.recipe[language]} ${PROFESSION_RECIPES[language][profession]}` : null;
+  const recipeItemId = level && profession ? LEVELING_RECIPE_IDS[profession][LEVEL_RANGES.indexOf(level)] : undefined;
+
+  // real ingredients of the leveling recipe (some items have alternative recipes)
+  const [recipes, setRecipes] = useState<Ingredient[][] | null>(null);
+  const [alt, setAlt] = useState(0);
+  const [recipeName, setRecipeName] = useState<string | null>(null);
+  useEffect(() => {
+    setRecipes(null);
+    setRecipeName(null);
+    setAlt(0);
+    if (!recipeItemId) return;
+    let cancelled = false;
+    loadWakfuData(language)
+      .then((d) => {
+        if (cancelled) return;
+        setRecipeName(d.itemsById.get(recipeItemId)?.name ?? null);
+        setRecipes((d.recipesByResultId.get(recipeItemId) ?? []).map((r) => r.ingredients.map((i) => {
+          const it = d.itemsById.get(i.itemId);
+          return { ...i, name: it?.name, gfxId: it?.gfxId };
+        })));
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [recipeItemId, language]);
+  const ingredients = recipes?.[alt] ?? null;
+  const recipe = level && profession
+    ? recipeName ?? `${level.recipe[language]} ${PROFESSION_RECIPES[language][profession]}`
+    : null;
   const expPerCraft = parseFloat(xp);
 
   const result = useMemo(() => {
     if (!level || !profession || !(expPerCraft > 0)) return null;
     const crafts = craftsNeeded(level.expDiff, expPerCraft);
     const per = resourcesPerCraft(profession);
-    const recipeId = LEVELING_RECIPE_IDS[profession][LEVEL_RANGES.indexOf(level)];
     return {
       crafts, per, resources: crafts * per, expDiff: level.expDiff,
-      craftGuide: recipeId ? `/items-craft-guide?items=${recipeId}x${crafts}` : null,
+      craftGuide: recipeItemId ? `/items-craft-guide?items=${recipeItemId}x${crafts}` : null,
     };
-  }, [level, profession, expPerCraft]);
+  }, [level, profession, expPerCraft, recipeItemId]);
 
   const fmt = (n: number) => n.toLocaleString(language);
   const [from, to] = level ? rangeBounds(rangeKey(level.range)) : [0, 0];
@@ -207,15 +237,47 @@ export function Calculator({ language, title, subtitle }: Props) {
                   <span>{x.level} {from}</span><span className="font-mono">{fmt(result.expDiff)} XP</span><span>{x.level} {to}</span>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-2.5">
-                {[x.resource1, x.resource2].map((label) => (
-                  <div key={label} className="card-inset p-3">
-                    <div className="font-mono font-bold text-lg text-fg">{fmt(result.resources)}</div>
-                    <div className="text-xs text-muted font-medium">{label}</div>
-                    <div className="text-xs text-subtle">{x.perCraft(result.per)}</div>
-                  </div>
-                ))}
-              </div>
+              {recipes && recipes.length > 1 && (
+                <div className="flex flex-wrap items-center gap-1.5" role="radiogroup" aria-label={x.alternatives}>
+                  <span className="text-xs text-muted font-medium mr-1">{x.alternatives}</span>
+                  {recipes.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      role="radio"
+                      aria-checked={i === alt}
+                      onClick={() => setAlt(i)}
+                      className={`chip ${i === alt ? 'chip-active' : ''}`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                </div>
+              )}
+              {ingredients ? (
+                <ul className="space-y-2">
+                  {ingredients.map((ing) => (
+                    <li key={ing.itemId} className="card-inset p-2.5 flex items-center gap-3">
+                      <ItemImage gfx={ing.gfxId} itemId={ing.itemId} size={36} />
+                      <div className="min-w-0 flex-1">
+                        <div className="text-sm font-semibold text-fg truncate">{ing.name ?? `#${ing.itemId}`}</div>
+                        <div className="text-xs text-subtle">{x.perCraft(ing.qty)}</div>
+                      </div>
+                      <div className="font-mono font-bold text-lg text-fg shrink-0">{fmt(result.crafts * ing.qty)}</div>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="grid grid-cols-2 gap-2.5">
+                  {[x.resource1, x.resource2].map((label) => (
+                    <div key={label} className="card-inset p-3">
+                      <div className="font-mono font-bold text-lg text-fg">{fmt(result.resources)}</div>
+                      <div className="text-xs text-muted font-medium">{label}</div>
+                      <div className="text-xs text-subtle">{x.perCraft(result.per)}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
               {recipe && <p className="text-sm text-muted flex items-center gap-2"><Scroll className="w-4 h-4 text-primary" /> {recipe}</p>}
               {result.craftGuide && (
                 <div>
@@ -241,7 +303,8 @@ export function Calculator({ language, title, subtitle }: Props) {
         >
           <span className="font-display font-extrabold text-2xl text-accent">{fmt(result.crafts)}</span>
           <span className="text-xs text-muted leading-tight">
-            <strong className="text-fg">{x.craftsUnit}</strong> → {x.level} {to}<br />{fmt(result.resources)} × 2
+            <strong className="text-fg">{x.craftsUnit}</strong> → {x.level} {to}<br />
+            {ingredients ? ingredients.map((i) => fmt(result.crafts * i.qty)).join(' + ') : `${fmt(result.resources)} × 2`}
           </span>
           <span className="ml-auto icon-btn w-9 h-9"><ChevronUp className="w-4 h-4" /></span>
         </button>

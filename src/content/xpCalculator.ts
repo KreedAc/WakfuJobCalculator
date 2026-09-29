@@ -21,6 +21,7 @@ const en = {
   reset: 'Reset',
   linkCopied: 'Link copied!',
   seeResult: 'Details',
+  alternatives: 'Recipe',
   shoppingList: 'Shopping list for these crafts',
   shoppingListHelp: 'Opens the recipe in the Craft Guide with every ingredient you need to farm.',
 };
@@ -46,6 +47,7 @@ const fr: XpCopy = {
   reset: 'Réinitialiser',
   linkCopied: 'Lien copié !',
   seeResult: 'Détails',
+  alternatives: 'Recette',
   shoppingList: 'Liste de courses pour ces crafts',
   shoppingListHelp: 'Ouvre la recette dans le Guide de craft avec tous les ingrédients à récolter.',
 };
@@ -69,6 +71,7 @@ const es: XpCopy = {
   reset: 'Reiniciar',
   linkCopied: '¡Enlace copiado!',
   seeResult: 'Detalles',
+  alternatives: 'Receta',
   shoppingList: 'Lista de compras para estos crafteos',
   shoppingListHelp: 'Abre la receta en la Guía de crafteo con todos los ingredientes que necesitas recolectar.',
 };
@@ -92,6 +95,7 @@ const pt: XpCopy = {
   reset: 'Redefinir',
   linkCopied: 'Link copiado!',
   seeResult: 'Detalhes',
+  alternatives: 'Receita',
   shoppingList: 'Lista de compras para esses crafts',
   shoppingListHelp: 'Abre a receita no Guia de craft com todos os ingredientes que você precisa coletar.',
 };

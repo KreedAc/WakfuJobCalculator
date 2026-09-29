@@ -19,6 +19,8 @@ interface Patch {
   /** [ingredient id, old qty, new qty]; 0 means added or removed */
   changedRecipes: { item: number; changes: [number, number, number][] }[];
   newSublimations: Record<Language, string>[];
+  /** official sublimations the site doesn't describe yet */
+  pendingSublimations?: ({ id: number } & Record<Language, string>)[];
   /** names of ingredients that are no longer in the data */
   names?: Record<string, Partial<Record<Language, string>>>;
 }
@@ -197,7 +199,7 @@ export function GameUpdatesPage({ language }: { language: Language }) {
                     {toggle(`${k}:r`, patch.changedRecipes.length, LIMITS.recipes)}
                   </>)}
 
-                  {section(Scroll, g.newSublimations, patch.newSublimations.length, (
+                  {section(Scroll, g.newSublimations, patch.newSublimations.length + (patch.pendingSublimations?.length ?? 0), (
                     <ul className="flex flex-wrap gap-2">
                       {patch.newSublimations.map((s) => {
                         const name = s[language] ?? s.en;
@@ -207,6 +209,12 @@ export function GameUpdatesPage({ language }: { language: Language }) {
                           </li>
                         );
                       })}
+                      {patch.pendingSublimations?.map((s) => (
+                        <li key={s.en} className="chip cursor-default" title={g.detailsSoon}>
+                          {s[language] ?? s.en}
+                          <span className="text-[11px] text-subtle">· {g.detailsSoon}</span>
+                        </li>
+                      ))}
                     </ul>
                   ))}
                 </div>
