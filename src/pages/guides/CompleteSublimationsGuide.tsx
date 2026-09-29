@@ -66,11 +66,11 @@ export function CompleteSublimationsGuide({ language }: CompleteSublimationsGuid
 
           <div className="mt-10 p-6 bg-primary/5 border border-primary/20 rounded-2xl">
             <p className="text-muted">
-              Explore our{' '}
+              {pageContent.cta.before}
               <Link to="/sublimations" className="text-primary font-bold hover:underline">
-                Sublimations Database
-              </Link>{' '}
-              to find the perfect sublimations for your build!
+                {pageContent.cta.link}
+              </Link>
+              {pageContent.cta.after}
             </p>
           </div>
         </div>

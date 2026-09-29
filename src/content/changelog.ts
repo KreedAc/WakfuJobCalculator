@@ -59,6 +59,17 @@ export const changelogContent = {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '3.3.1',
+    date: '2026-09-29',
+    changes: [
+      { type: 'fix', text: {
+        en: 'Sublimations guide rewritten: how socket colors, levels, and Epic and Relic sublimations really work',
+        fr: 'Guide des sublimations réécrit : comment marchent vraiment les couleurs des châsses, les niveaux et les sublimations épiques et reliques',
+        es: 'Guía de sublimaciones reescrita: cómo funcionan de verdad los colores de los engarces, los niveles y las sublimaciones épicas y reliquias',
+        pt: 'Guia de sublimações reescrito: como funcionam de verdade as cores dos engastes, os níveis e as sublimações épicas e relíquias' } },
+    ]
+  },
+  {
     version: '3.3.0',
     date: '2026-09-29',
     changes: [
