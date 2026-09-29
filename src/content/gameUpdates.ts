@@ -13,6 +13,7 @@ const en = {
   newItems: 'New resources and ingredients',
   changedRecipes: 'Changed recipes',
   newSublimations: 'New sublimations',
+  detailsSoon: 'details coming soon',
   noneThisUpdate: 'None in this update.',
   showAll: (n: number) => `Show all (${n})`,
   showLess: 'Show less',
@@ -21,7 +22,7 @@ const en = {
   error: 'The update data could not be loaded. Try again later.',
   empty: 'No game update recorded yet.',
   howTitle: 'How it works',
-  howText: 'Every month the site downloads the official Wakfu game data. When the game version changes, the new data is compared with the previous one: this page lists the items that can now be crafted, the new ingredients, the recipes whose ingredients changed and the new sublimations. Only items involved in crafting are tracked. The last six updates are kept.',
+  howText: 'Every month the site downloads the official Wakfu game data. When the game version changes, the new data is compared with the previous one: this page lists the items that can now be crafted, the new ingredients, the recipes whose ingredients changed and the new sublimations (a brand new sublimation is listed right away; its full details are added to the Sublimations page shortly after). Only items involved in crafting are tracked. The last six updates are kept.',
 };
 
 export type GameUpdatesCopy = typeof en;
@@ -38,6 +39,7 @@ const fr: GameUpdatesCopy = {
   newItems: 'Nouvelles ressources et ingrédients',
   changedRecipes: 'Recettes modifiées',
   newSublimations: 'Nouvelles sublimations',
+  detailsSoon: 'détails à venir',
   noneThisUpdate: 'Aucune dans cette mise à jour.',
   showAll: (n) => `Tout afficher (${n})`,
   showLess: 'Afficher moins',
@@ -46,7 +48,7 @@ const fr: GameUpdatesCopy = {
   error: 'Impossible de charger les données des mises à jour. Réessayez plus tard.',
   empty: 'Aucune mise à jour enregistrée pour le moment.',
   howTitle: 'Comment ça marche',
-  howText: "Chaque mois, le site télécharge les données officielles de Wakfu. Quand la version du jeu change, les nouvelles données sont comparées aux précédentes : cette page liste les objets désormais craftables, les nouveaux ingrédients, les recettes dont les ingrédients ont changé et les nouvelles sublimations. Seuls les objets liés à l'artisanat sont suivis. Les six dernières mises à jour sont conservées.",
+  howText: "Chaque mois, le site télécharge les données officielles de Wakfu. Quand la version du jeu change, les nouvelles données sont comparées aux précédentes : cette page liste les objets désormais craftables, les nouveaux ingrédients, les recettes dont les ingrédients ont changé et les nouvelles sublimations (une toute nouvelle sublimation est listée tout de suite ; ses détails complets arrivent peu après sur la page Sublimations). Seuls les objets liés à l'artisanat sont suivis. Les six dernières mises à jour sont conservées.",
 };
 
 const es: GameUpdatesCopy = {
@@ -61,6 +63,7 @@ const es: GameUpdatesCopy = {
   newItems: 'Nuevos recursos e ingredientes',
   changedRecipes: 'Recetas modificadas',
   newSublimations: 'Nuevas sublimaciones',
+  detailsSoon: 'detalles pronto',
   noneThisUpdate: 'Ninguna en esta actualización.',
   showAll: (n) => `Ver todo (${n})`,
   showLess: 'Ver menos',
@@ -69,7 +72,7 @@ const es: GameUpdatesCopy = {
   error: 'No se pudieron cargar los datos de las actualizaciones. Inténtalo más tarde.',
   empty: 'Aún no hay actualizaciones registradas.',
   howTitle: 'Cómo funciona',
-  howText: 'Cada mes el sitio descarga los datos oficiales de Wakfu. Cuando cambia la versión del juego, los nuevos datos se comparan con los anteriores: esta página muestra los objetos que ahora se pueden fabricar, los nuevos ingredientes, las recetas cuyos ingredientes cambiaron y las nuevas sublimaciones. Solo se siguen los objetos relacionados con el crafteo. Se conservan las últimas seis actualizaciones.',
+  howText: 'Cada mes el sitio descarga los datos oficiales de Wakfu. Cuando cambia la versión del juego, los nuevos datos se comparan con los anteriores: esta página muestra los objetos que ahora se pueden fabricar, los nuevos ingredientes, las recetas cuyos ingredientes cambiaron y las nuevas sublimaciones (una sublimación totalmente nueva aparece enseguida; sus detalles completos se añaden poco después a la página de Sublimaciones). Solo se siguen los objetos relacionados con el crafteo. Se conservan las últimas seis actualizaciones.',
 };
 
 const pt: GameUpdatesCopy = {
@@ -84,6 +87,7 @@ const pt: GameUpdatesCopy = {
   newItems: 'Novos recursos e ingredientes',
   changedRecipes: 'Receitas alteradas',
   newSublimations: 'Novas sublimações',
+  detailsSoon: 'detalhes em breve',
   noneThisUpdate: 'Nenhuma nesta atualização.',
   showAll: (n) => `Ver tudo (${n})`,
   showLess: 'Ver menos',
@@ -92,7 +96,7 @@ const pt: GameUpdatesCopy = {
   error: 'Não foi possível carregar os dados das atualizações. Tente mais tarde.',
   empty: 'Nenhuma atualização registrada ainda.',
   howTitle: 'Como funciona',
-  howText: 'Todo mês o site baixa os dados oficiais do Wakfu. Quando a versão do jogo muda, os novos dados são comparados com os anteriores: esta página lista os itens que agora podem ser fabricados, os novos ingredientes, as receitas cujos ingredientes mudaram e as novas sublimações. Apenas itens ligados ao crafting são acompanhados. As últimas seis atualizações são mantidas.',
+  howText: 'Todo mês o site baixa os dados oficiais do Wakfu. Quando a versão do jogo muda, os novos dados são comparados com os anteriores: esta página lista os itens que agora podem ser fabricados, os novos ingredientes, as receitas cujos ingredientes mudaram e as novas sublimações (uma sublimação totalmente nova aparece na hora; os detalhes completos são adicionados pouco depois à página de Sublimações). Apenas itens ligados ao crafting são acompanhados. As últimas seis atualizações são mantidas.',
 };
 
 export const GAME_UPDATES_T: Record<Language, GameUpdatesCopy> = { en, fr, es, pt };

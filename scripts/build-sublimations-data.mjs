@@ -21,6 +21,7 @@ import path from "node:path";
 const OUT_DIR = path.resolve("public/data");
 const CURATED_PATH = path.join(OUT_DIR, "sublimations.en.json");
 const REPORT_PATH = path.resolve("scripts", "sublimations.i18n.report.json");
+const PENDING_PATH = path.join(OUT_DIR, "sublimations.pending.json");
 const TARGET_LANGUAGES = ["fr", "es", "pt"];
 const DEBUG = process.argv.includes("--debug");
 
@@ -372,6 +373,39 @@ async function main() {
   if (report.unmatched.length) {
     console.log("Unmatched:", report.unmatched.join(", "));
   }
+
+  // Official sublimations the curated list doesn't have (typically new in a
+  // patch): items of the same types as the matched scrolls, with an unknown
+  // name. They need socket colors, values and obtainment added by hand, so they
+  // are only listed in public/data/sublimations.pending.json (shown on the Game
+  // Updates page, and the data workflow opens an issue for new ones).
+  const typeOf = (it) =>
+    it?.definition?.item?.baseParameters?.itemTypeId ?? it?.definition?.itemTypeId ?? it?.itemTypeId ?? null;
+  const typeCount = new Map();
+  for (const { item } of chosenByName.values()) {
+    const t = typeOf(item);
+    if (t !== null) typeCount.set(t, (typeCount.get(t) ?? 0) + 1);
+  }
+  const sublimationTypes = new Set([...typeCount].filter(([, c]) => c >= 5).map(([t]) => t));
+  const known = new Set(curated.map((sub) => normName(stripTier(NAME_ALIASES.get(sub.name) ?? sub.name))));
+  const pending = new Map();
+  for (const it of itemsRaw) {
+    if (!sublimationTypes.has(typeOf(it))) continue;
+    const en = itemTitle(it, "en");
+    const key = en && normName(stripTier(en));
+    if (!key || known.has(key) || pending.has(key)) continue;
+    const names = {};
+    for (const lang of ["en", ...TARGET_LANGUAGES]) {
+      names[lang] = stripTier(itemTitle(it, lang) ?? en).replace(/^Runa\s+(?:Épica|Relíquia)\s+d[eao]s?\s+/iu, "");
+    }
+    pending.set(key, { id: itemId(it), ...names });
+  }
+  const pendingList = [...pending.values()].sort((a, b) => a.en.localeCompare(b.en));
+  report.sublimationTypes = [...sublimationTypes];
+  report.pending = pendingList.map((p) => p.en);
+  console.log(`Official sublimations not in the curated list: ${pendingList.length}`);
+  if (pendingList.length) console.log("  " + report.pending.join(", "));
+  if (!DEBUG) await fsp.writeFile(PENDING_PATH, JSON.stringify(pendingList, null, 2) + "\n");
 
   if (DEBUG) {
     console.log("=== DEBUG SAMPLES (name, score, stateIds, EN state desc) ===");

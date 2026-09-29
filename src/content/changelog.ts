@@ -59,6 +59,22 @@ export const changelogContent = {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '3.2.1',
+    date: '2026-09-29',
+    changes: [
+      { type: 'improvement', text: {
+        en: 'XP Calculator: shows the real resources of the leveling recipe with their pictures, and the alternative recipes',
+        fr: 'Calculateur XP : affiche les vraies ressources de la recette avec leurs images, et les recettes alternatives',
+        es: 'Calculadora XP: muestra los recursos reales de la receta con sus imágenes y las recetas alternativas',
+        pt: 'Calculadora XP: mostra os recursos reais da receita com suas imagens e as receitas alternativas' } },
+      { type: 'improvement', text: {
+        en: 'Game Updates: brand new sublimations are listed as soon as the game adds them',
+        fr: 'Mises à jour du jeu : les toutes nouvelles sublimations sont listées dès que le jeu les ajoute',
+        es: 'Actualizaciones del juego: las sublimaciones totalmente nuevas aparecen en cuanto el juego las añade',
+        pt: 'Atualizações do jogo: sublimações totalmente novas aparecem assim que o jogo as adiciona' } },
+    ]
+  },
+  {
     version: '3.2.0',
     date: '2026-09-29',
     changes: [
