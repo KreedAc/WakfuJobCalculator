@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { ArrowUpRight, Globe } from 'lucide-react';
+import { RESOURCES, RESOURCES_T } from '../../content/resources';
 import { HOME, NAV_GROUPS, isActive } from '../../lib/navigation';
 import { GAME_VERSION } from '../../lib/gameVersion';
 import { SHELL } from '../../content/shell';
@@ -41,6 +43,23 @@ export function Sidebar({ path, language, onLanguageChange }: Props) {
             {g.items.map(item)}
           </div>
         ))}
+        <div className="flex flex-col gap-0.5">
+          <div className="caps-label px-2.5 pb-1.5">{RESOURCES_T[language].title}</div>
+          {RESOURCES.map((r) => (
+            <a
+              key={r.url}
+              href={r.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={r.desc[language]}
+              className="group flex items-center gap-3 px-2.5 py-2 rounded-lg text-[14.5px] font-medium text-muted hover:text-fg hover:bg-surface2 transition-colors"
+            >
+              <Globe className="w-[18px] h-[18px] shrink-0" />
+              <span className="truncate">{r.name}</span>
+              <ArrowUpRight className="w-4 h-4 ml-auto text-subtle group-hover:text-primary" />
+            </a>
+          ))}
+        </div>
       </nav>
       <div className="mt-auto flex gap-2">
         <LanguageMenu language={language} onChange={onLanguageChange} label={s.language} up className="flex-1" />
