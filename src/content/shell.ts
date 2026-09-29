@@ -2,7 +2,7 @@
 // Home page, in every supported language.
 import type { Language } from '../constants/translations';
 
-export type NavId = 'home' | 'xp' | 'craft' | 'subli' | 'combat' | 'treasures' | 'guides';
+export type NavId = 'home' | 'xp' | 'craft' | 'subli' | 'combat' | 'treasures' | 'guides' | 'updates';
 export type NavGroupId = 'crafting' | 'equipment' | 'explore';
 
 interface ShellCopy {
@@ -53,7 +53,7 @@ interface ShellCopy {
 const en: ShellCopy = {
   nav: {
     home: 'Home', xp: 'XP Calculator', craft: 'Craft Guide', subli: 'Sublimations',
-    combat: 'Combat Calculator', treasures: 'Treasures', guides: 'Guides',
+    combat: 'Combat Calculator', treasures: 'Treasures', guides: 'Guides', updates: 'Game Updates',
   },
   tabs: { home: 'Home', xp: 'XP', subli: 'Sublis', craft: 'Craft', more: 'More' },
   groups: { crafting: 'Crafting', equipment: 'Equipment & combat', explore: 'Explore' },
@@ -100,6 +100,7 @@ const en: ShellCopy = {
       combat: { desc: 'Damage, heals, armor and resistances, with the real formulas.', meta: '10 calculators' },
       treasures: { desc: 'Hunt locations, artifacts and rewards, with your progress saved.', meta: 'Tracks progress' },
       guides: { desc: 'Beginner professions guide and the complete sublimations guide.', meta: '2 guides' },
+      updates: { desc: 'New craftable items, resources, recipe changes and sublimations at each game update.', meta: 'Automatic' },
     },
   },
 };
@@ -107,7 +108,7 @@ const en: ShellCopy = {
 const fr: ShellCopy = {
   nav: {
     home: 'Accueil', xp: 'Calculateur XP', craft: 'Guide de craft', subli: 'Sublimations',
-    combat: 'Calculateur de combat', treasures: 'Trésors', guides: 'Guides',
+    combat: 'Calculateur de combat', treasures: 'Trésors', guides: 'Guides', updates: 'Mises à jour du jeu',
   },
   tabs: { home: 'Accueil', xp: 'XP', subli: 'Sublis', craft: 'Craft', more: 'Plus' },
   groups: { crafting: 'Artisanat', equipment: 'Équipement & combat', explore: 'Explorer' },
@@ -154,6 +155,7 @@ const fr: ShellCopy = {
       combat: { desc: 'Dégâts, soins, armure et résistances, avec les vraies formules.', meta: '10 calculateurs' },
       treasures: { desc: 'Emplacements, artefacts et récompenses, avec votre progression.', meta: 'Suit la progression' },
       guides: { desc: 'Guide des métiers pour débutants et guide complet des sublimations.', meta: '2 guides' },
+      updates: { desc: 'Nouveaux objets craftables, ressources, recettes modifiées et sublimations à chaque mise à jour.', meta: 'Automatique' },
     },
   },
 };
@@ -161,7 +163,7 @@ const fr: ShellCopy = {
 const es: ShellCopy = {
   nav: {
     home: 'Inicio', xp: 'Calculadora XP', craft: 'Guía de crafteo', subli: 'Sublimaciones',
-    combat: 'Calculadora de combate', treasures: 'Tesoros', guides: 'Guías',
+    combat: 'Calculadora de combate', treasures: 'Tesoros', guides: 'Guías', updates: 'Actualizaciones del juego',
   },
   tabs: { home: 'Inicio', xp: 'XP', subli: 'Sublis', craft: 'Craft', more: 'Más' },
   groups: { crafting: 'Artesanía', equipment: 'Equipo y combate', explore: 'Explorar' },
@@ -208,6 +210,7 @@ const es: ShellCopy = {
       combat: { desc: 'Daño, curas, armadura y resistencias, con las fórmulas reales.', meta: '10 calculadoras' },
       treasures: { desc: 'Ubicaciones, artefactos y recompensas, con tu progreso guardado.', meta: 'Guarda el progreso' },
       guides: { desc: 'Guía de oficios para principiantes y guía completa de sublimaciones.', meta: '2 guías' },
+      updates: { desc: 'Nuevos objetos fabricables, recursos, recetas modificadas y sublimaciones en cada actualización.', meta: 'Automático' },
     },
   },
 };
@@ -215,7 +218,7 @@ const es: ShellCopy = {
 const pt: ShellCopy = {
   nav: {
     home: 'Início', xp: 'Calculadora XP', craft: 'Guia de crafting', subli: 'Sublimações',
-    combat: 'Calculadora de combate', treasures: 'Tesouros', guides: 'Guias',
+    combat: 'Calculadora de combate', treasures: 'Tesouros', guides: 'Guias', updates: 'Atualizações do jogo',
   },
   tabs: { home: 'Início', xp: 'XP', subli: 'Sublis', craft: 'Craft', more: 'Mais' },
   groups: { crafting: 'Artesanato', equipment: 'Equipamento e combate', explore: 'Explorar' },
@@ -262,6 +265,7 @@ const pt: ShellCopy = {
       combat: { desc: 'Dano, curas, armadura e resistências, com as fórmulas reais.', meta: '10 calculadoras' },
       treasures: { desc: 'Locais, artefatos e recompensas, com seu progresso salvo.', meta: 'Salva o progresso' },
       guides: { desc: 'Guia de profissões para iniciantes e guia completo de sublimações.', meta: '2 guias' },
+      updates: { desc: 'Novos itens fabricáveis, recursos, receitas alteradas e sublimações a cada atualização.', meta: 'Automático' },
     },
   },
 };

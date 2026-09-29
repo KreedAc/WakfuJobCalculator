@@ -33,6 +33,7 @@ const IMAGES = [
   { file: "combat-calc", icon: "swords", title: "Combat Calculator", subtitle: "Damage · heals · armor · EHP · lock" },
   { file: "treasures", icon: "map", title: "Treasures", subtitle: "Treasure hunt achievements tracker" },
   { file: "guides", icon: "book-open", title: "Wakfu Guides", subtitle: "Professions, sublimations and more" },
+  { file: "game-updates", icon: "newspaper", title: "Wakfu Game Updates", subtitle: "New items, recipes and sublimations per patch" },
   { file: "default", icon: "sparkles", accent: true, title: "Every Wakfu tool,<br>in one place", subtitle: "XP calculator · sublimations · craft guide · combat" },
 ];
 

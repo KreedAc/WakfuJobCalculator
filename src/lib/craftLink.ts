@@ -17,7 +17,7 @@ export function parseCraftItems(value: string | null): CraftRow[] {
     const m = part.trim().match(/^(\d+)(?:x(\d+))?$/);
     if (!m) continue;
     const id = Number(m[1]);
-    const qty = Math.min(999, Math.max(1, Number(m[2] ?? 1)));
+    const qty = Math.min(99999, Math.max(1, Number(m[2] ?? 1)));
     if (id > 0) byId.set(id, (byId.get(id) ?? 0) + qty);
   }
   return [...byId].map(([itemId, qty]) => ({ itemId, qty }));

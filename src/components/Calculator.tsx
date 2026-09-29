@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
-  Shield, Croissant, ChefHat, Wrench, Gem, Backpack, Scissors, Swords, Scroll, Share2, RotateCcw, ChevronUp,
+  Shield, Croissant, ChefHat, Wrench, Gem, Backpack, Scissors, Swords, Scroll, Share2, RotateCcw, ChevronUp, ShoppingCart,
   type LucideIcon,
 } from 'lucide-react';
 import type { Language } from '../constants/translations';
 import { PROFESSION_IDS, PROFESSION_NAMES, PROFESSION_RECIPES, type ProfessionId } from '../constants/professions';
 import { LEVEL_RANGES } from '../constants/levelRanges';
+import { LEVELING_RECIPE_IDS } from '../constants/levelingRecipes';
 import { craftsNeeded, resourcesPerCraft } from '../lib/xpCalculator';
 import { XP_T } from '../content/xpCalculator';
 import { PageHeader } from './ui/PageHeader';
@@ -74,7 +76,11 @@ export function Calculator({ language, title, subtitle }: Props) {
     if (!level || !profession || !(expPerCraft > 0)) return null;
     const crafts = craftsNeeded(level.expDiff, expPerCraft);
     const per = resourcesPerCraft(profession);
-    return { crafts, per, resources: crafts * per, expDiff: level.expDiff };
+    const recipeId = LEVELING_RECIPE_IDS[profession][LEVEL_RANGES.indexOf(level)];
+    return {
+      crafts, per, resources: crafts * per, expDiff: level.expDiff,
+      craftGuide: recipeId ? `/items-craft-guide?items=${recipeId}x${crafts}` : null,
+    };
   }, [level, profession, expPerCraft]);
 
   const fmt = (n: number) => n.toLocaleString(language);
@@ -211,6 +217,14 @@ export function Calculator({ language, title, subtitle }: Props) {
                 ))}
               </div>
               {recipe && <p className="text-sm text-muted flex items-center gap-2"><Scroll className="w-4 h-4 text-primary" /> {recipe}</p>}
+              {result.craftGuide && (
+                <div>
+                  <Link to={result.craftGuide} className="btn btn-primary w-full">
+                    <ShoppingCart className="w-4 h-4" /> {x.shoppingList}
+                  </Link>
+                  <p className="help">{x.shoppingListHelp}</p>
+                </div>
+              )}
             </>
           ) : (
             <p className="text-sm text-muted leading-relaxed">{x.empty}</p>

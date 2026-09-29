@@ -1,0 +1,98 @@
+// Copy for the Game Updates page, in every supported language.
+import type { Language } from '../constants/translations';
+
+const en = {
+  title: 'Game Updates',
+  seoTitle: 'Wakfu Game Updates – New Items, Recipes and Sublimations',
+  description: 'What changed at each Wakfu update: new craftable items, new resources, recipe changes and new sublimations, taken automatically from the official game data.',
+  subtitle: 'What changed at each Wakfu update, taken automatically from the official game data.',
+  version: (v: string) => `Version ${v}`,
+  fromTo: (from: string, to: string, date: string) => `${from} → ${to} · ${date}`,
+  latest: 'Latest',
+  newCraftable: 'New craftable items',
+  newItems: 'New resources and ingredients',
+  changedRecipes: 'Changed recipes',
+  newSublimations: 'New sublimations',
+  noneThisUpdate: 'None in this update.',
+  showAll: (n: number) => `Show all (${n})`,
+  showLess: 'Show less',
+  openInCraftGuide: 'Open in the Craft Guide',
+  loading: 'Loading…',
+  error: 'The update data could not be loaded. Try again later.',
+  empty: 'No game update recorded yet.',
+  howTitle: 'How it works',
+  howText: 'Every month the site downloads the official Wakfu game data. When the game version changes, the new data is compared with the previous one: this page lists the items that can now be crafted, the new ingredients, the recipes whose ingredients changed and the new sublimations. Only items involved in crafting are tracked. The last six updates are kept.',
+};
+
+export type GameUpdatesCopy = typeof en;
+
+const fr: GameUpdatesCopy = {
+  title: 'Mises à jour du jeu',
+  seoTitle: 'Mises à jour de Wakfu – Nouveaux objets, recettes et sublimations',
+  description: "Ce qui a changé à chaque mise à jour de Wakfu : nouveaux objets craftables, nouvelles ressources, recettes modifiées et nouvelles sublimations, tirés automatiquement des données officielles du jeu.",
+  subtitle: "Ce qui a changé à chaque mise à jour de Wakfu, tiré automatiquement des données officielles du jeu.",
+  version: (v) => `Version ${v}`,
+  fromTo: (from, to, date) => `${from} → ${to} · ${date}`,
+  latest: 'Dernière',
+  newCraftable: 'Nouveaux objets craftables',
+  newItems: 'Nouvelles ressources et ingrédients',
+  changedRecipes: 'Recettes modifiées',
+  newSublimations: 'Nouvelles sublimations',
+  noneThisUpdate: 'Aucune dans cette mise à jour.',
+  showAll: (n) => `Tout afficher (${n})`,
+  showLess: 'Afficher moins',
+  openInCraftGuide: 'Ouvrir dans le Guide de craft',
+  loading: 'Chargement…',
+  error: 'Impossible de charger les données des mises à jour. Réessayez plus tard.',
+  empty: 'Aucune mise à jour enregistrée pour le moment.',
+  howTitle: 'Comment ça marche',
+  howText: "Chaque mois, le site télécharge les données officielles de Wakfu. Quand la version du jeu change, les nouvelles données sont comparées aux précédentes : cette page liste les objets désormais craftables, les nouveaux ingrédients, les recettes dont les ingrédients ont changé et les nouvelles sublimations. Seuls les objets liés à l'artisanat sont suivis. Les six dernières mises à jour sont conservées.",
+};
+
+const es: GameUpdatesCopy = {
+  title: 'Actualizaciones del juego',
+  seoTitle: 'Actualizaciones de Wakfu – Nuevos objetos, recetas y sublimaciones',
+  description: 'Qué cambió en cada actualización de Wakfu: nuevos objetos fabricables, nuevos recursos, recetas modificadas y nuevas sublimaciones, tomados automáticamente de los datos oficiales del juego.',
+  subtitle: 'Qué cambió en cada actualización de Wakfu, tomado automáticamente de los datos oficiales del juego.',
+  version: (v) => `Versión ${v}`,
+  fromTo: (from, to, date) => `${from} → ${to} · ${date}`,
+  latest: 'Última',
+  newCraftable: 'Nuevos objetos fabricables',
+  newItems: 'Nuevos recursos e ingredientes',
+  changedRecipes: 'Recetas modificadas',
+  newSublimations: 'Nuevas sublimaciones',
+  noneThisUpdate: 'Ninguna en esta actualización.',
+  showAll: (n) => `Ver todo (${n})`,
+  showLess: 'Ver menos',
+  openInCraftGuide: 'Abrir en la Guía de crafteo',
+  loading: 'Cargando…',
+  error: 'No se pudieron cargar los datos de las actualizaciones. Inténtalo más tarde.',
+  empty: 'Aún no hay actualizaciones registradas.',
+  howTitle: 'Cómo funciona',
+  howText: 'Cada mes el sitio descarga los datos oficiales de Wakfu. Cuando cambia la versión del juego, los nuevos datos se comparan con los anteriores: esta página muestra los objetos que ahora se pueden fabricar, los nuevos ingredientes, las recetas cuyos ingredientes cambiaron y las nuevas sublimaciones. Solo se siguen los objetos relacionados con el crafteo. Se conservan las últimas seis actualizaciones.',
+};
+
+const pt: GameUpdatesCopy = {
+  title: 'Atualizações do jogo',
+  seoTitle: 'Atualizações do Wakfu – Novos itens, receitas e sublimações',
+  description: 'O que mudou em cada atualização do Wakfu: novos itens fabricáveis, novos recursos, receitas alteradas e novas sublimações, obtidos automaticamente dos dados oficiais do jogo.',
+  subtitle: 'O que mudou em cada atualização do Wakfu, obtido automaticamente dos dados oficiais do jogo.',
+  version: (v) => `Versão ${v}`,
+  fromTo: (from, to, date) => `${from} → ${to} · ${date}`,
+  latest: 'Mais recente',
+  newCraftable: 'Novos itens fabricáveis',
+  newItems: 'Novos recursos e ingredientes',
+  changedRecipes: 'Receitas alteradas',
+  newSublimations: 'Novas sublimações',
+  noneThisUpdate: 'Nenhuma nesta atualização.',
+  showAll: (n) => `Ver tudo (${n})`,
+  showLess: 'Ver menos',
+  openInCraftGuide: 'Abrir no Guia de craft',
+  loading: 'Carregando…',
+  error: 'Não foi possível carregar os dados das atualizações. Tente mais tarde.',
+  empty: 'Nenhuma atualização registrada ainda.',
+  howTitle: 'Como funciona',
+  howText: 'Todo mês o site baixa os dados oficiais do Wakfu. Quando a versão do jogo muda, os novos dados são comparados com os anteriores: esta página lista os itens que agora podem ser fabricados, os novos ingredientes, as receitas cujos ingredientes mudaram e as novas sublimações. Apenas itens ligados ao crafting são acompanhados. As últimas seis atualizações são mantidas.',
+};
+
+export const GAME_UPDATES_T: Record<Language, GameUpdatesCopy> = { en, fr, es, pt };
