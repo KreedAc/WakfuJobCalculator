@@ -63,6 +63,11 @@ export const changelog: ChangelogEntry[] = [
     date: '2026-09-29',
     changes: [
       { type: 'fix', text: {
+        en: "Professions guide rewritten: leveling recipes, XP needed per range and what changes the XP of gathering",
+        fr: "Guide des métiers réécrit : recettes de montée, XP nécessaire par tranche et ce qui change l'XP de la récolte",
+        es: 'Guía de oficios reescrita: recetas de subida, XP necesaria por rango y qué cambia la XP de la recolección',
+        pt: 'Guia de profissões reescrito: receitas de upar, XP necessário por faixa e o que muda o XP da coleta' } },
+      { type: 'fix', text: {
         en: 'Sublimations guide rewritten: how socket colors, levels, and Epic and Relic sublimations really work',
         fr: 'Guide des sublimations réécrit : comment marchent vraiment les couleurs des châsses, les niveaux et les sublimations épiques et reliques',
         es: 'Guía de sublimaciones reescrita: cómo funcionan de verdad los colores de los engarces, los niveles y las sublimaciones épicas y reliquias',

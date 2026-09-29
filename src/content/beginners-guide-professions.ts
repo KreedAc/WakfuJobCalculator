@@ -1,306 +1,250 @@
 // Page copy for BeginnersGuideProfessions in every supported language.
 // Kept out of the component so text edits never touch layout code.
-import { BookOpen, Sprout, Hammer, Package } from 'lucide-react';
+// Numbers match the site data: constants/levelRanges.ts (XP per range) and the
+// XP Calculator (5 of each resource per craft, 4 for Leather Dealer).
+import { BookOpen, Hammer, Sprout, ShoppingCart, Lightbulb, type LucideIcon } from 'lucide-react';
 
-export const beginnersGuideContent = {
-  en: {
-    title: 'Beginner\'s Guide to Wakfu Professions',
-    description: 'Complete guide for starting your crafting journey in Wakfu. Learn about professions, harvesting, and crafting basics.',
-    backToGuides: 'Back to Guides',
-    lastUpdated: 'Last Updated: January 23, 2026',
-    sections: [
-      {
-        title: 'Understanding the Profession System',
-        icon: BookOpen,
-        content: [
-          'Wakfu features a comprehensive profession system that allows players to gather resources and craft items. Unlike many MMORPGs, Wakfu\'s economy is primarily player-driven, making professions essential for character progression.',
-          'Each character can learn multiple professions simultaneously. There are two main categories: harvesting professions and crafting professions. Harvesting professions allow you to gather raw materials from the world, while crafting professions let you transform those materials into useful items.',
-          'Professions level from 1 to 200, with each level unlocking new recipes and gathering opportunities. The XP required increases significantly at higher levels, but our calculator can help you plan your progression efficiently.'
-        ]
-      },
-      {
-        title: 'Harvesting Professions',
-        icon: Sprout,
-        content: [
-          'Harvesting professions are your gateway to gathering raw materials. These are fundamental to the Wakfu economy and essential for crafting.',
-          'There are multiple harvesting professions available, each focusing on different types of resources. Some harvest plants and herbs, others mine ores, cut trees, or gather from creatures.',
-          'To begin harvesting, find resource nodes in the world. Your harvesting level determines which resources you can gather. Lower-level resources are found in starting zones, while rare and valuable resources require high-level harvesting skills and appear in dangerous areas.',
-          'Pro tip: Resource nodes respawn over time, and their locations are consistent. Learning popular farming routes can significantly speed up your resource gathering. Always carry tools appropriate to your harvesting profession when exploring.'
-        ]
-      },
-      {
-        title: 'Crafting Professions',
-        icon: Hammer,
-        content: [
-          'Crafting professions transform raw materials into equipment, consumables, and other valuable items. Each crafting profession specializes in creating specific types of items.',
-          'To craft an item, you need the appropriate recipe, required materials, and a crafting station. Crafting stations are found in most major cities and some outposts. Higher-level recipes may require rare materials or special crafting locations.',
-          'When you craft an item, you gain profession XP based on the recipe\'s level and complexity. Crafting items close to your current level provides optimal XP gains. Our XP calculator helps you find the most efficient recipes for your current level.',
-          'Many crafted items are essential for endgame content. Relic weapons, high-level equipment, and consumables used in dungeons all come from crafting professions. As you level up, you\'ll gain access to increasingly powerful recipes.'
-        ]
-      },
-      {
-        title: 'Choosing Your First Professions',
-        icon: Package,
-        content: [
-          'For beginners, we recommend starting with one harvesting profession and one crafting profession that complement each other. This creates a self-sufficient cycle where you gather materials to craft items.',
-          'Consider your character class and playstyle when choosing professions. If you play a melee class, armor crafting might be valuable. Mages might prefer professions that create magical items. Support classes often benefit from consumable-crafting professions.',
-          'Popular beginner combinations include: Herbalist with Chef for consumable creation, Miner with Armorer for defensive equipment, or Lumberjack with Carpenter for various items. These combinations provide immediate utility and good XP progression.',
-          'Don\'t worry too much about your initial choice. You can always learn additional professions later. Focus on learning the system mechanics first, then optimize as you understand the economy better.'
-        ]
-      },
-      {
-        title: 'Leveling Strategy',
-        content: [
-          'Efficient leveling requires planning. Use our profession calculator to identify which recipes provide the best XP per material invested. Often, the most efficient path isn\'t obvious without calculations.',
-          'At lower levels, craft items you can actually use or sell. This provides value beyond just XP. As you reach mid-levels, focus purely on XP efficiency, even if it means crafting items with little market value.',
-          'Resource management becomes critical around level 100. Higher-level recipes require significant material investments. Consider the market prices when deciding which path to take. Sometimes buying materials is more time-efficient than gathering.',
-          'Join a guild with a workshop. Guild workshops often provide bonuses to crafting speed or success rates. Additionally, experienced guild members can offer advice and sometimes share resources.'
-        ]
-      },
-      {
-        title: 'Common Beginner Mistakes',
-        content: [
-          'Mistake 1: Spreading too thin. While you can learn all professions, trying to level multiple crafting professions simultaneously will slow your progress significantly. Focus on 1-2 professions initially.',
-          'Mistake 2: Ignoring the market. Check marketplace prices before crafting large quantities. Sometimes gathering and selling raw materials is more profitable than crafting.',
-          'Mistake 3: Not using the calculator. Wakfu\'s XP curves are non-linear. What seems efficient might actually waste resources. Our calculator eliminates guesswork.',
-          'Mistake 4: Neglecting harvesting professions. Even if you plan to buy materials, having a harvesting profession provides passive income while playing normally.',
-          'Mistake 5: Rushing to endgame crafts. Each level range teaches important lessons about resource management and market dynamics. Take time to understand the economy.'
-        ]
-      },
-      {
-        title: 'Next Steps',
-        content: [
-          'Now that you understand the basics, visit our XP Calculator to plan your profession leveling path. Input your current level and target level to see exactly which recipes to craft.',
-          'Explore our Items Craft Guide to browse available recipes and plan your material requirements. Understanding what you\'ll need helps you gather efficiently.',
-          'Check the Sublimations page to understand endgame character optimization. Many powerful sublimations require crafted items, making professions essential for competitive play.',
-          'Remember: Wakfu\'s profession system rewards patience and planning. Use our tools to make informed decisions, and you\'ll progress efficiently while building a profitable crafting empire.'
-        ]
-      }
-    ]
-  },
-  fr: {
-    title: 'Guide du Débutant : Les Métiers Wakfu',
-    description: 'Guide complet pour débuter votre aventure de craft dans Wakfu. Apprenez les métiers, la récolte et les bases du craft.',
-    backToGuides: 'Retour aux Guides',
-    lastUpdated: 'Dernière mise à jour : 23 janvier 2026',
-    sections: [
-      {
-        title: 'Comprendre le Système de Métiers',
-        icon: BookOpen,
-        content: [
-          'Wakfu propose un système de métiers complet qui permet aux joueurs de récolter des ressources et de créer des objets. Contrairement à beaucoup de MMORPG, l\'économie de Wakfu est principalement gérée par les joueurs, rendant les métiers essentiels pour la progression.',
-          'Chaque personnage peut apprendre plusieurs métiers simultanément. Il existe deux catégories principales : les métiers de récolte et les métiers de craft. Les métiers de récolte vous permettent de rassembler des matériaux bruts dans le monde, tandis que les métiers de craft vous permettent de transformer ces matériaux en objets utiles.',
-          'Les métiers montent du niveau 1 à 200, chaque niveau débloquant de nouvelles recettes et opportunités de récolte. L\'XP requise augmente significativement aux niveaux supérieurs, mais notre calculateur peut vous aider à planifier votre progression efficacement.'
-        ]
-      },
-      {
-        title: 'Métiers de Récolte',
-        icon: Sprout,
-        content: [
-          'Les métiers de récolte sont votre porte d\'entrée pour rassembler des matériaux bruts. Ils sont fondamentaux pour l\'économie de Wakfu et essentiels pour le craft.',
-          'Il existe plusieurs métiers de récolte disponibles, chacun se concentrant sur différents types de ressources. Certains récoltent des plantes et herbes, d\'autres minent des minerais, coupent des arbres ou récoltent sur des créatures.',
-          'Pour commencer à récolter, trouvez des nœuds de ressources dans le monde. Votre niveau de récolte détermine quelles ressources vous pouvez rassembler. Les ressources de bas niveau se trouvent dans les zones de départ, tandis que les ressources rares nécessitent des compétences de récolte élevées.',
-          'Astuce : Les nœuds de ressources réapparaissent avec le temps et leurs emplacements sont cohérents. Apprendre les routes de farm populaires peut considérablement accélérer votre collecte de ressources.'
-        ]
-      },
-      {
-        title: 'Métiers de Craft',
-        icon: Hammer,
-        content: [
-          'Les métiers de craft transforment les matériaux bruts en équipement, consommables et autres objets précieux. Chaque métier de craft se spécialise dans la création de types d\'objets spécifiques.',
-          'Pour créer un objet, vous avez besoin de la recette appropriée, des matériaux requis et d\'un poste de craft. Les postes de craft se trouvent dans la plupart des grandes villes et certains avant-postes.',
-          'Lorsque vous craftez un objet, vous gagnez de l\'XP de métier basée sur le niveau et la complexité de la recette. Créer des objets proches de votre niveau actuel fournit des gains d\'XP optimaux.',
-          'De nombreux objets craftés sont essentiels pour le contenu endgame. Les armes reliques, l\'équipement de haut niveau et les consommables utilisés dans les donjons proviennent tous des métiers de craft.'
-        ]
-      },
-      {
-        title: 'Choisir Vos Premiers Métiers',
-        icon: Package,
-        content: [
-          'Pour les débutants, nous recommandons de commencer avec un métier de récolte et un métier de craft qui se complètent. Cela crée un cycle autosuffisant où vous récoltez des matériaux pour créer des objets.',
-          'Considérez votre classe de personnage et votre style de jeu lors du choix des métiers. Si vous jouez une classe de mêlée, le craft d\'armure peut être précieux. Les mages pourraient préférer des métiers créant des objets magiques.',
-          'Combinaisons populaires pour débutants : Herboriste avec Cuisinier pour la création de consommables, Mineur avec Armurier pour l\'équipement défensif, ou Bûcheron avec Menuisier pour divers objets.',
-          'Ne vous inquiétez pas trop de votre choix initial. Vous pouvez toujours apprendre des métiers supplémentaires plus tard. Concentrez-vous d\'abord sur l\'apprentissage des mécaniques du système.'
-        ]
-      },
-      {
-        title: 'Stratégie de Montée de Niveau',
-        content: [
-          'Une montée efficace nécessite de la planification. Utilisez notre calculateur de métiers pour identifier quelles recettes fournissent la meilleure XP par matériau investi.',
-          'Aux niveaux inférieurs, craftez des objets que vous pouvez réellement utiliser ou vendre. Cela fournit de la valeur au-delà de la simple XP. Aux niveaux moyens, concentrez-vous purement sur l\'efficacité XP.',
-          'La gestion des ressources devient critique autour du niveau 100. Les recettes de haut niveau nécessitent des investissements matériels significatifs. Considérez les prix du marché lors de la décision du chemin à prendre.',
-          'Rejoignez une guilde avec un atelier. Les ateliers de guilde fournissent souvent des bonus à la vitesse de craft ou aux taux de réussite.'
-        ]
-      },
-      {
-        title: 'Erreurs Courantes des Débutants',
-        content: [
-          'Erreur 1 : Se disperser. Bien que vous puissiez apprendre tous les métiers, essayer de monter plusieurs métiers de craft simultanément ralentira significativement votre progression.',
-          'Erreur 2 : Ignorer le marché. Vérifiez les prix du marché avant de crafter de grandes quantités. Parfois, récolter et vendre des matériaux bruts est plus rentable.',
-          'Erreur 3 : Ne pas utiliser le calculateur. Les courbes d\'XP de Wakfu sont non linéaires. Ce qui semble efficace peut en fait gaspiller des ressources.',
-          'Erreur 4 : Négliger les métiers de récolte. Même si vous prévoyez d\'acheter des matériaux, avoir un métier de récolte fournit un revenu passif.',
-          'Erreur 5 : Se précipiter vers le craft endgame. Chaque plage de niveau enseigne des leçons importantes sur la gestion des ressources et la dynamique du marché.'
-        ]
-      },
-      {
-        title: 'Prochaines Étapes',
-        content: [
-          'Maintenant que vous comprenez les bases, visitez notre Calculateur XP pour planifier votre chemin de montée de métier.',
-          'Explorez notre Guide de Craft d\'Objets pour parcourir les recettes disponibles et planifier vos besoins en matériaux.',
-          'Consultez la page Sublimations pour comprendre l\'optimisation de personnage endgame. De nombreuses sublimations puissantes nécessitent des objets craftés.',
-          'Rappelez-vous : Le système de métiers de Wakfu récompense la patience et la planification. Utilisez nos outils pour prendre des décisions éclairées.'
-        ]
-      }
-    ]
-  },
-  es: {
-    title: 'Guía para Principiantes: Profesiones de Wakfu',
-    description: 'Guía completa para comenzar tu aventura de crafteo en Wakfu. Aprende sobre profesiones, recolección y conceptos básicos de crafting.',
-    backToGuides: 'Volver a Guías',
-    lastUpdated: 'Última actualización: 23 de enero de 2026',
-    sections: [
-      {
-        title: 'Entendiendo el Sistema de Profesiones',
-        icon: BookOpen,
-        content: [
-          'Wakfu cuenta con un sistema de profesiones completo que permite a los jugadores recolectar recursos y crear objetos. A diferencia de muchos MMORPG, la economía de Wakfu está principalmente impulsada por jugadores, haciendo las profesiones esenciales para la progresión.',
-          'Cada personaje puede aprender múltiples profesiones simultáneamente. Hay dos categorías principales: profesiones de recolección y profesiones de crafteo. Las profesiones de recolección te permiten reunir materiales en bruto del mundo, mientras que las profesiones de crafteo te permiten transformar esos materiales en objetos útiles.',
-          'Las profesiones suben del nivel 1 al 200, con cada nivel desbloqueando nuevas recetas y oportunidades de recolección. La XP requerida aumenta significativamente en niveles superiores, pero nuestra calculadora puede ayudarte a planificar tu progresión eficientemente.'
-        ]
-      },
-      {
-        title: 'Profesiones de Recolección',
-        icon: Sprout,
-        content: [
-          'Las profesiones de recolección son tu puerta de entrada para reunir materiales en bruto. Son fundamentales para la economía de Wakfu y esenciales para el crafteo.',
-          'Hay múltiples profesiones de recolección disponibles, cada una enfocándose en diferentes tipos de recursos. Algunas cosechan plantas y hierbas, otras minan minerales, talan árboles o recolectan de criaturas.',
-          'Para comenzar a recolectar, encuentra nodos de recursos en el mundo. Tu nivel de recolección determina qué recursos puedes reunir. Los recursos de bajo nivel se encuentran en zonas iniciales, mientras que los recursos raros requieren habilidades de recolección de alto nivel.',
-          'Consejo: Los nodos de recursos reaparecen con el tiempo y sus ubicaciones son consistentes. Aprender rutas de farmeo populares puede acelerar significativamente tu recolección de recursos.'
-        ]
-      },
-      {
-        title: 'Profesiones de Crafteo',
-        icon: Hammer,
-        content: [
-          'Las profesiones de crafteo transforman materiales en bruto en equipo, consumibles y otros objetos valiosos. Cada profesión de crafteo se especializa en crear tipos específicos de objetos.',
-          'Para craftear un objeto, necesitas la receta apropiada, materiales requeridos y una estación de crafteo. Las estaciones de crafteo se encuentran en la mayoría de las ciudades principales y algunos puestos avanzados.',
-          'Cuando crafteas un objeto, ganas XP de profesión basada en el nivel y complejidad de la receta. Craftear objetos cercanos a tu nivel actual proporciona ganancias óptimas de XP.',
-          'Muchos objetos crafteados son esenciales para el contenido endgame. Armas reliquia, equipo de alto nivel y consumibles usados en mazmorras provienen todos de profesiones de crafteo.'
-        ]
-      },
-      {
-        title: 'Eligiendo Tus Primeras Profesiones',
-        icon: Package,
-        content: [
-          'Para principiantes, recomendamos comenzar con una profesión de recolección y una profesión de crafteo que se complementen. Esto crea un ciclo autosuficiente donde recolectas materiales para crear objetos.',
-          'Considera tu clase de personaje y estilo de juego al elegir profesiones. Si juegas una clase de combate cuerpo a cuerpo, el crafteo de armadura puede ser valioso. Los magos podrían preferir profesiones que crean objetos mágicos.',
-          'Combinaciones populares para principiantes: Herborista con Cocinero para creación de consumibles, Minero con Armero para equipo defensivo, o Leñador con Carpintero para varios objetos.',
-          'No te preocupes demasiado por tu elección inicial. Siempre puedes aprender profesiones adicionales más tarde. Enfócate primero en aprender las mecánicas del sistema.'
-        ]
-      },
-      {
-        title: 'Estrategia de Nivelación',
-        content: [
-          'La nivelación eficiente requiere planificación. Usa nuestra calculadora de profesiones para identificar qué recetas proporcionan la mejor XP por material invertido.',
-          'En niveles bajos, craftea objetos que puedas usar o vender. Esto proporciona valor más allá de solo XP. En niveles medios, enfócate puramente en eficiencia de XP.',
-          'La gestión de recursos se vuelve crítica alrededor del nivel 100. Las recetas de alto nivel requieren inversiones significativas de materiales. Considera los precios del mercado al decidir qué camino tomar.',
-          'Únete a un gremio con un taller. Los talleres de gremio a menudo proporcionan bonificaciones a la velocidad de crafteo o tasas de éxito.'
-        ]
-      },
-      {
-        title: 'Errores Comunes de Principiantes',
-        content: [
-          'Error 1: Dispersarse demasiado. Aunque puedes aprender todas las profesiones, intentar subir múltiples profesiones de crafteo simultáneamente ralentizará significativamente tu progreso.',
-          'Error 2: Ignorar el mercado. Verifica los precios del mercado antes de craftear grandes cantidades. A veces recolectar y vender materiales en bruto es más rentable.',
-          'Error 3: No usar la calculadora. Las curvas de XP de Wakfu son no lineales. Lo que parece eficiente podría desperdiciar recursos.',
-          'Error 4: Descuidar profesiones de recolección. Incluso si planeas comprar materiales, tener una profesión de recolección proporciona ingresos pasivos.',
-          'Error 5: Apresurarse hacia crafteo endgame. Cada rango de nivel enseña lecciones importantes sobre gestión de recursos y dinámicas del mercado.'
-        ]
-      },
-      {
-        title: 'Próximos Pasos',
-        content: [
-          'Ahora que entiendes los conceptos básicos, visita nuestra Calculadora XP para planificar tu camino de nivelación de profesión.',
-          'Explora nuestra Guía de Crafteo de Objetos para explorar recetas disponibles y planificar tus requisitos de materiales.',
-          'Consulta la página de Sublimaciones para entender la optimización de personaje endgame. Muchas sublimaciones poderosas requieren objetos crafteados.',
-          'Recuerda: El sistema de profesiones de Wakfu recompensa la paciencia y la planificación. Usa nuestras herramientas para tomar decisiones informadas.'
-        ]
-      }
-    ]
-  },
-  pt: {
-    title: 'Guia para Iniciantes: Profissões do Wakfu',
-    description: 'Guia completo para iniciar sua jornada de crafting no Wakfu. Aprenda sobre profissões, coleta e conceitos básicos de crafting.',
-    backToGuides: 'Voltar aos Guias',
-    lastUpdated: 'Última atualização: 23 de janeiro de 2026',
-    sections: [
-      {
-        title: 'Entendendo o Sistema de Profissões',
-        icon: BookOpen,
-        content: [
-          'Wakfu apresenta um sistema de profissões abrangente que permite aos jogadores coletar recursos e criar itens. Diferente de muitos MMORPGs, a economia do Wakfu é principalmente impulsionada por jogadores, tornando as profissões essenciais para a progressão.',
-          'Cada personagem pode aprender múltiplas profissões simultaneamente. Existem duas categorias principais: profissões de coleta e profissões de crafting. Profissões de coleta permitem reunir materiais brutos do mundo, enquanto profissões de crafting permitem transformar esses materiais em itens úteis.',
-          'Profissões sobem do nível 1 a 200, com cada nível desbloqueando novas receitas e oportunidades de coleta. A XP requerida aumenta significativamente em níveis superiores, mas nossa calculadora pode ajudá-lo a planejar sua progressão eficientemente.'
-        ]
-      },
-      {
-        title: 'Profissões de Coleta',
-        icon: Sprout,
-        content: [
-          'Profissões de coleta são sua porta de entrada para reunir materiais brutos. São fundamentais para a economia do Wakfu e essenciais para o crafting.',
-          'Existem múltiplas profissões de coleta disponíveis, cada uma focando em diferentes tipos de recursos. Algumas colhem plantas e ervas, outras mineram minérios, cortam árvores ou coletam de criaturas.',
-          'Para começar a coletar, encontre nós de recursos no mundo. Seu nível de coleta determina quais recursos você pode reunir. Recursos de baixo nível são encontrados em zonas iniciais, enquanto recursos raros requerem habilidades de coleta de alto nível.',
-          'Dica: Nós de recursos reaparecem com o tempo e suas localizações são consistentes. Aprender rotas de farm populares pode acelerar significativamente sua coleta de recursos.'
-        ]
-      },
-      {
-        title: 'Profissões de Crafting',
-        icon: Hammer,
-        content: [
-          'Profissões de crafting transformam materiais brutos em equipamento, consumíveis e outros itens valiosos. Cada profissão de crafting se especializa em criar tipos específicos de itens.',
-          'Para criar um item, você precisa da receita apropriada, materiais requeridos e uma estação de crafting. Estações de crafting são encontradas na maioria das grandes cidades e alguns postos avançados.',
-          'Quando você cria um item, você ganha XP de profissão baseada no nível e complexidade da receita. Criar itens próximos ao seu nível atual fornece ganhos ótimos de XP.',
-          'Muitos itens criados são essenciais para o conteúdo endgame. Armas relíquia, equipamento de alto nível e consumíveis usados em masmorras todos vêm de profissões de crafting.'
-        ]
-      },
-      {
-        title: 'Escolhendo Suas Primeiras Profissões',
-        icon: Package,
-        content: [
-          'Para iniciantes, recomendamos começar com uma profissão de coleta e uma profissão de crafting que se complementam. Isso cria um ciclo autossuficiente onde você coleta materiais para criar itens.',
-          'Considere sua classe de personagem e estilo de jogo ao escolher profissões. Se você joga uma classe corpo a corpo, crafting de armadura pode ser valioso. Magos podem preferir profissões que criam itens mágicos.',
-          'Combinações populares para iniciantes: Herborista com Cozinheiro para criação de consumíveis, Minerador com Armeiro para equipamento defensivo, ou Lenhador com Carpinteiro para vários itens.',
-          'Não se preocupe muito com sua escolha inicial. Você sempre pode aprender profissões adicionais mais tarde. Foque primeiro em aprender as mecânicas do sistema.'
-        ]
-      },
-      {
-        title: 'Estratégia de Nivelamento',
-        content: [
-          'Nivelamento eficiente requer planejamento. Use nossa calculadora de profissões para identificar quais receitas fornecem a melhor XP por material investido.',
-          'Em níveis baixos, crie itens que você possa usar ou vender. Isso fornece valor além de apenas XP. Em níveis médios, foque puramente em eficiência de XP.',
-          'Gestão de recursos se torna crítica em torno do nível 100. Receitas de alto nível requerem investimentos significativos de materiais. Considere os preços do mercado ao decidir qual caminho tomar.',
-          'Junte-se a uma guilda com uma oficina. Oficinas de guilda frequentemente fornecem bônus para velocidade de crafting ou taxas de sucesso.'
-        ]
-      },
-      {
-        title: 'Erros Comuns de Iniciantes',
-        content: [
-          'Erro 1: Se dispersar demais. Embora você possa aprender todas as profissões, tentar subir múltiplas profissões de crafting simultaneamente vai desacelerar significativamente seu progresso.',
-          'Erro 2: Ignorar o mercado. Verifique preços do mercado antes de criar grandes quantidades. Às vezes coletar e vender materiais brutos é mais lucrativo.',
-          'Erro 3: Não usar a calculadora. As curvas de XP do Wakfu são não lineares. O que parece eficiente pode desperdiçar recursos.',
-          'Erro 4: Negligenciar profissões de coleta. Mesmo se você planeja comprar materiais, ter uma profissão de coleta fornece renda passiva.',
-          'Erro 5: Se apressar para crafting endgame. Cada faixa de nível ensina lições importantes sobre gestão de recursos e dinâmicas de mercado.'
-        ]
-      },
-      {
-        title: 'Próximos Passos',
-        content: [
-          'Agora que você entende o básico, visite nossa Calculadora XP para planejar seu caminho de nivelamento de profissão.',
-          'Explore nosso Guia de Crafting de Itens para navegar pelas receitas disponíveis e planejar seus requisitos de materiais.',
-          'Confira a página de Sublimações para entender a otimização de personagem endgame. Muitas sublimações poderosas requerem itens criados.',
-          'Lembre-se: O sistema de profissões do Wakfu recompensa paciência e planejamento. Use nossas ferramentas para tomar decisões informadas.'
-        ]
-      }
-    ]
-  }
+interface GuideSection {
+  title: string;
+  icon?: LucideIcon;
+  content: string[];
+}
+
+interface GuideContent {
+  title: string;
+  description: string;
+  backToGuides: string;
+  lastUpdated: string;
+  sections: GuideSection[];
+  cta: { before: string; link: string; after: string };
+}
+
+const en: GuideContent = {
+  title: "Beginner's Guide to Wakfu Professions",
+  description: 'How Wakfu professions work: gathering and crafting professions, how to level a crafting profession with the leveling recipes, and what changes the XP of gathering.',
+  backToGuides: 'Back to Guides',
+  lastUpdated: 'Last updated: September 29, 2026',
+  sections: [
+    {
+      title: 'Two kinds of professions',
+      icon: BookOpen,
+      content: [
+        'Wakfu has 6 gathering professions and 8 crafting professions. Gathering professions collect resources in the world: Farmer, Lumberjack, Herbalist, Miner, Trapper and Fisherman. Crafting professions turn those resources into equipment, food and other items: Armorer, Baker, Chef, Handyman, Jeweler, Leather Dealer, Tailor and Weapons Master.',
+        'The two go together: the crafting recipes, including the ones used to level up, are made from gathered resources. You can gather them yourself or buy them at the market.',
+      ],
+    },
+    {
+      title: 'Leveling a crafting profession',
+      icon: Hammer,
+      content: [
+        'Crafting professions are leveled with their leveling recipes: one per 10-level range, from Coarse (levels 2–10) up to Ancestral (150–160). Each profession has its own item: Plate for the Armorer (Coarse Plate, Precious Plate, Infernal Plate…), Fiber for the Tailor, Oil for the Baker, Spice for the Chef, Gem for the Jeweler, Leather for the Leather Dealer, Bracket for the Handyman and Handle for the Weapons Master.',
+        'Each craft uses two resources: 5 of each (4 for the Leather Dealer). The XP you get per craft is shown in the recipe tooltip in game.',
+        'The XP needed grows with every range: 7,500 XP from level 2 to 10, then 15,000 more for each range, up to 232,500 XP from level 150 to 160.',
+        'Example: an Armorer going from 140 to 150 with 150 XP per craft needs 217,500 / 150 = 1,450 crafts of Infernal Plate, that is 7,250 of each of its two resources. The XP Calculator does this for any profession and range, and opens the full shopping list in the Craft Guide in one click.',
+      ],
+    },
+    {
+      title: 'Leveling a gathering profession',
+      icon: Sprout,
+      content: [
+        'Gathering has no fixed formula, which is why there is no gathering calculator on this site. The XP of each harvest depends on several things:',
+        'The resource level: resources well below your level give less XP. The same resource can also be found in different zones.',
+        'Shiny resources: rare shiny versions of a resource give more XP.',
+        "The satisfaction of the area's clan chief: the XP also depends on how satisfied the clan chief of the zone where you farm is.",
+        'How many resources there are: a zone can run short. It is often better to farm a zone 5–10 levels lower where resources are plentiful, especially if you also want them for a crafting profession.',
+      ],
+    },
+    {
+      title: 'From resources to crafts',
+      icon: ShoppingCart,
+      content: [
+        'Before a leveling session, work out what you need. In the XP Calculator, the result shows the real resources of the leveling recipe with the total amounts; "Shopping list for these crafts" opens them in the Craft Guide.',
+        'The Craft Guide works for any craftable item: add one or more items with quantities and it builds a single shopping list. Expanding a craftable ingredient replaces it with its own ingredients, and you can tick each line as you collect it.',
+        'Use "Share list" to send the list to a friend or your guild, for example when several of you farm for the same crafts.',
+      ],
+    },
+    {
+      title: 'Tips',
+      icon: Lightbulb,
+      content: [
+        'Check the XP per craft in game before planning: it is the only number the calculator needs from you, and it decides how many crafts you do.',
+        'Farm and craft together: leveling a gathering profession on the resources your crafting profession needs saves you both time and kamas.',
+        'Compare farming and buying. For large amounts (thousands of resources at high levels), the market can be faster than farming everything yourself.',
+      ],
+    },
+  ],
+  cta: { before: 'Ready to plan your next levels? Open the ', link: 'XP Calculator', after: ' and pick your profession and range.' },
 };
+
+const fr: GuideContent = {
+  title: 'Guide des métiers de Wakfu pour débutants',
+  description: "Comment marchent les métiers de Wakfu : métiers de récolte et d'artisanat, comment monter un métier d'artisanat avec les recettes de montée, et ce qui change l'XP de la récolte.",
+  backToGuides: 'Retour aux guides',
+  lastUpdated: 'Dernière mise à jour : 29 septembre 2026',
+  sections: [
+    {
+      title: 'Deux types de métiers',
+      icon: BookOpen,
+      content: [
+        "Wakfu compte 6 métiers de récolte et 8 métiers d'artisanat. Les métiers de récolte ramassent les ressources dans le monde : Paysan, Bûcheron, Herboriste, Mineur, Trappeur et Pêcheur. Les métiers d'artisanat transforment ces ressources en équipements, nourriture et autres objets : Armurier, Boulanger, Cuisinier, Bricoleur, Bijoutier, Maroquinier, Tailleur et Maître d'armes.",
+        "Les deux vont ensemble : les recettes d'artisanat, y compris celles qui servent à monter de niveau, se font avec des ressources récoltées. Vous pouvez les récolter vous-même ou les acheter à l'hôtel des ventes.",
+      ],
+    },
+    {
+      title: "Monter un métier d'artisanat",
+      icon: Hammer,
+      content: [
+        "Les métiers d'artisanat se montent avec leurs recettes de montée : une par tranche de 10 niveaux, de Grossière (niveaux 2–10) à Ancestrale (150–160). Chaque métier a son objet : la Plaque pour l'Armurier (Plaque Grossière, Plaque Précieuse, Plaque Infernale…), la Fibre pour le Tailleur, l'Huile pour le Boulanger, l'Épice pour le Cuisinier, la Gemme pour le Bijoutier, le Cuir pour le Maroquinier, l'Équerre pour le Bricoleur et le Manche pour le Maître d'armes.",
+        "Chaque craft utilise deux ressources : 5 de chaque (4 pour le Maroquinier). L'XP gagnée par craft est indiquée dans l'infobulle de la recette en jeu.",
+        "L'XP nécessaire augmente à chaque tranche : 7 500 XP du niveau 2 au 10, puis 15 000 de plus à chaque tranche, jusqu'à 232 500 XP du niveau 150 au 160.",
+        "Exemple : un Armurier qui passe de 140 à 150 avec 150 XP par craft doit faire 217 500 / 150 = 1 450 crafts de Plaque Infernale, soit 7 250 de chacune de ses deux ressources. Le Calculateur XP fait ce calcul pour chaque métier et chaque tranche, et ouvre la liste de courses complète dans le Guide de craft en un clic.",
+      ],
+    },
+    {
+      title: 'Monter un métier de récolte',
+      icon: Sprout,
+      content: [
+        "La récolte n'a pas de formule fixe : c'est pour ça qu'il n'y a pas de calculateur de récolte sur ce site. L'XP de chaque récolte dépend de plusieurs choses :",
+        "Le niveau de la ressource : les ressources bien en dessous de votre niveau donnent moins d'XP. Une même ressource se trouve aussi dans des zones différentes.",
+        "Les ressources shiny : les versions shiny, plus rares, donnent plus d'XP.",
+        "La satisfaction du chef de clan de la zone : l'XP dépend aussi de la satisfaction du chef de clan de la zone où vous récoltez.",
+        "La quantité de ressources : une zone peut s'épuiser. Il vaut souvent mieux récolter dans une zone de 5–10 niveaux en dessous où les ressources sont nombreuses, surtout si vous en avez aussi besoin pour un métier d'artisanat.",
+      ],
+    },
+    {
+      title: 'Des ressources aux crafts',
+      icon: ShoppingCart,
+      content: [
+        "Avant une session de montée, calculez ce qu'il vous faut. Dans le Calculateur XP, le résultat affiche les vraies ressources de la recette avec les quantités totales ; « Liste de courses pour ces crafts » les ouvre dans le Guide de craft.",
+        "Le Guide de craft marche pour tout objet craftable : ajoutez un ou plusieurs objets avec leurs quantités et il crée une seule liste de courses. Développer un ingrédient craftable le remplace par ses propres ingrédients, et vous pouvez cocher chaque ligne au fur et à mesure.",
+        'Utilisez « Partager la liste » pour envoyer la liste à un ami ou à votre guilde, par exemple quand plusieurs joueurs farment pour les mêmes crafts.',
+      ],
+    },
+    {
+      title: 'Conseils',
+      icon: Lightbulb,
+      content: [
+        "Vérifiez l'XP par craft en jeu avant de planifier : c'est le seul chiffre que le calculateur vous demande, et c'est lui qui décide du nombre de crafts.",
+        "Récoltez et craftez ensemble : monter un métier de récolte sur les ressources dont votre métier d'artisanat a besoin fait gagner du temps et des kamas.",
+        "Comparez récolte et achat. Pour de grosses quantités (des milliers de ressources à haut niveau), l'hôtel des ventes peut être plus rapide que tout récolter vous-même.",
+      ],
+    },
+  ],
+  cta: { before: 'Prêt à planifier vos prochains niveaux ? Ouvrez le ', link: 'Calculateur XP', after: ' et choisissez votre métier et votre tranche.' },
+};
+
+const es: GuideContent = {
+  title: 'Guía de oficios de Wakfu para principiantes',
+  description: 'Cómo funcionan los oficios de Wakfu: oficios de recolección y de fabricación, cómo subir un oficio de fabricación con las recetas de subida y qué cambia la XP de la recolección.',
+  backToGuides: 'Volver a las guías',
+  lastUpdated: 'Última actualización: 29 de septiembre de 2026',
+  sections: [
+    {
+      title: 'Dos tipos de oficios',
+      icon: BookOpen,
+      content: [
+        'Wakfu tiene 6 oficios de recolección y 8 oficios de fabricación. Los de recolección recogen recursos por el mundo: cultivos, árboles, plantas, minerales, criaturas y peces. Los de fabricación convierten esos recursos en equipo, comida y otros objetos: Armero, Panadero, Cocinero, Ebanista, Joyero, Peletero, Sastre y Maestro de armas.',
+        'Los dos van juntos: las recetas de fabricación, incluidas las que sirven para subir de nivel, se hacen con recursos recolectados. Puedes recolectarlos tú o comprarlos en el mercado.',
+      ],
+    },
+    {
+      title: 'Subir un oficio de fabricación',
+      icon: Hammer,
+      content: [
+        'Los oficios de fabricación se suben con sus recetas de subida: una por cada rango de 10 niveles, desde tosca (niveles 2–10) hasta ancestral (150–160). Cada oficio tiene su objeto: la Placa para el Armero (Placa tosca, Placa preciosa, Placa infernal…), la Fibra para el Sastre, el Aceite para el Panadero, la Especia para el Cocinero, la Gema para el Joyero, el Cuero para el Peletero, la Escuadrita para el Ebanista y el Mango para el Maestro de armas.',
+        'Cada crafteo usa dos recursos: 5 de cada uno (4 para el Peletero). La XP por crafteo aparece en la descripción de la receta en el juego.',
+        'La XP necesaria crece en cada rango: 7.500 XP del nivel 2 al 10 y luego 15.000 más en cada rango, hasta 232.500 XP del nivel 150 al 160.',
+        'Ejemplo: un Armero que pasa de 140 a 150 con 150 XP por crafteo necesita 217.500 / 150 = 1.450 crafteos de Placa infernal, es decir 7.250 de cada uno de sus dos recursos. La Calculadora XP hace esta cuenta para cualquier oficio y rango, y abre la lista de compras completa en la Guía de crafteo con un clic.',
+      ],
+    },
+    {
+      title: 'Subir un oficio de recolección',
+      icon: Sprout,
+      content: [
+        'La recolección no tiene una fórmula fija: por eso no hay calculadora de recolección en este sitio. La XP de cada recolección depende de varias cosas:',
+        'El nivel del recurso: los recursos muy por debajo de tu nivel dan menos XP. Además, un mismo recurso se encuentra en zonas distintas.',
+        'Los recursos shiny: las versiones shiny, más raras, dan más XP.',
+        'La satisfacción del jefe del clan de la zona: la XP también depende de lo satisfecho que esté el jefe del clan de la zona donde recolectas.',
+        'La cantidad de recursos: una zona puede agotarse. A menudo conviene recolectar en una zona 5–10 niveles más baja donde haya muchos recursos, sobre todo si también los necesitas para un oficio de fabricación.',
+      ],
+    },
+    {
+      title: 'De los recursos a los crafteos',
+      icon: ShoppingCart,
+      content: [
+        'Antes de una sesión de subida, calcula lo que necesitas. En la Calculadora XP, el resultado muestra los recursos reales de la receta con las cantidades totales; «Lista de compras para estos crafteos» los abre en la Guía de crafteo.',
+        'La Guía de crafteo sirve para cualquier objeto fabricable: añade uno o varios objetos con sus cantidades y crea una sola lista de compras. Al desplegar un ingrediente fabricable se sustituye por sus propios ingredientes, y puedes marcar cada línea a medida que lo consigues.',
+        'Usa «Compartir lista» para enviar la lista a un amigo o a tu gremio, por ejemplo cuando varios farmean para los mismos crafteos.',
+      ],
+    },
+    {
+      title: 'Consejos',
+      icon: Lightbulb,
+      content: [
+        'Comprueba la XP por crafteo en el juego antes de planificar: es el único dato que la calculadora te pide, y decide cuántos crafteos haces.',
+        'Recolecta y fabrica a la vez: subir un oficio de recolección con los recursos que necesita tu oficio de fabricación ahorra tiempo y kamas.',
+        'Compara recolectar y comprar. Para cantidades grandes (miles de recursos a nivel alto), el mercado puede ser más rápido que recolectarlo todo tú.',
+      ],
+    },
+  ],
+  cta: { before: '¿Listo para planificar tus próximos niveles? Abre la ', link: 'Calculadora XP', after: ' y elige tu oficio y tu rango.' },
+};
+
+const pt: GuideContent = {
+  title: 'Guia de profissões do Wakfu para iniciantes',
+  description: 'Como funcionam as profissões do Wakfu: profissões de coleta e de fabricação, como upar uma profissão de fabricação com as receitas de upar e o que muda o XP da coleta.',
+  backToGuides: 'Voltar aos guias',
+  lastUpdated: 'Última atualização: 29 de setembro de 2026',
+  sections: [
+    {
+      title: 'Dois tipos de profissões',
+      icon: BookOpen,
+      content: [
+        'O Wakfu tem 6 profissões de coleta e 8 profissões de fabricação. As de coleta recolhem recursos pelo mundo: plantações, árvores, plantas, minérios, criaturas e peixes. As de fabricação transformam esses recursos em equipamentos, comida e outros itens: Armeiro, Padeiro, Chef, Faz-Tudo, Joalheiro, Coureiro, Alfaiate e Mestre de Armas.',
+        'As duas andam juntas: as receitas de fabricação, incluindo as que servem para upar, são feitas com recursos coletados. Você pode coletá-los ou comprá-los no mercado.',
+      ],
+    },
+    {
+      title: 'Upando uma profissão de fabricação',
+      icon: Hammer,
+      content: [
+        'As profissões de fabricação sobem com as receitas de upar: uma para cada faixa de 10 níveis, de Grosseira (níveis 2–10) até Ancestral (150–160). Cada profissão tem o seu item: a Placa para o Armeiro (Placa Grosseira, Placa preciosa, Placa Infernal…), a Fibra para o Alfaiate, o Óleo para o Padeiro, a Especiaria para o Chef, a Gema para o Joalheiro, o Couro para o Coureiro, o Esquadro para o Faz-Tudo e o Cabo para o Mestre de Armas.',
+        'Cada craft usa dois recursos: 5 de cada (4 para o Coureiro). O XP por craft aparece na descrição da receita no jogo.',
+        'O XP necessário cresce a cada faixa: 7.500 XP do nível 2 ao 10 e depois 15.000 a mais em cada faixa, até 232.500 XP do nível 150 ao 160.',
+        'Exemplo: um Armeiro que vai do 140 ao 150 com 150 XP por craft precisa de 217.500 / 150 = 1.450 crafts de Placa Infernal, ou seja 7.250 de cada um dos dois recursos. A Calculadora XP faz essa conta para qualquer profissão e faixa, e abre a lista de compras completa no Guia de craft com um clique.',
+      ],
+    },
+    {
+      title: 'Upando uma profissão de coleta',
+      icon: Sprout,
+      content: [
+        'A coleta não tem uma fórmula fixa: por isso não há calculadora de coleta neste site. O XP de cada coleta depende de várias coisas:',
+        'O nível do recurso: recursos bem abaixo do seu nível dão menos XP. E o mesmo recurso aparece em zonas diferentes.',
+        'Recursos shiny: as versões shiny, mais raras, dão mais XP.',
+        'A satisfação do chefe do clã da área: o XP também depende de quão satisfeito está o chefe do clã da zona onde você coleta.',
+        'A quantidade de recursos: uma zona pode se esgotar. Muitas vezes vale mais coletar numa zona 5–10 níveis abaixo onde há muitos recursos, principalmente se você também precisa deles para uma profissão de fabricação.',
+      ],
+    },
+    {
+      title: 'Dos recursos aos crafts',
+      icon: ShoppingCart,
+      content: [
+        'Antes de uma sessão de upar, calcule o que você precisa. Na Calculadora XP, o resultado mostra os recursos reais da receita com as quantidades totais; "Lista de compras para esses crafts" abre tudo no Guia de craft.',
+        'O Guia de craft funciona para qualquer item fabricável: adicione um ou mais itens com as quantidades e ele cria uma única lista de compras. Expandir um ingrediente fabricável o substitui pelos próprios ingredientes, e você pode marcar cada linha conforme consegue.',
+        'Use "Compartilhar lista" para mandar a lista a um amigo ou à sua guilda, por exemplo quando vários jogadores farmam para os mesmos crafts.',
+      ],
+    },
+    {
+      title: 'Dicas',
+      icon: Lightbulb,
+      content: [
+        'Confira o XP por craft no jogo antes de planejar: é o único número que a calculadora pede, e ele decide quantos crafts você faz.',
+        'Colete e fabrique juntos: upar uma profissão de coleta com os recursos que a sua profissão de fabricação precisa economiza tempo e kamas.',
+        'Compare coletar e comprar. Para grandes quantidades (milhares de recursos em nível alto), o mercado pode ser mais rápido do que coletar tudo sozinho.',
+      ],
+    },
+  ],
+  cta: { before: 'Pronto para planejar seus próximos níveis? Abra a ', link: 'Calculadora XP', after: ' e escolha sua profissão e faixa.' },
+};
+
+export const beginnersGuideContent: Record<'en' | 'fr' | 'es' | 'pt', GuideContent> = { en, fr, es, pt };
