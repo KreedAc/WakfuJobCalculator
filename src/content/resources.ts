@@ -21,17 +21,6 @@ export const RESOURCES: Resource[] = [
     },
   },
   {
-    name: 'Bestiário do Neze',
-    url: 'https://bestiariodoneze.com.br/index.html',
-    host: 'bestiariodoneze.com.br',
-    desc: {
-      en: 'Dungeon guide: how every dungeon and boss phase works (in Portuguese).',
-      fr: 'Guide des donjons : le fonctionnement de chaque donjon et phase de boss (en portugais).',
-      es: 'Guía de mazmorras: cómo funciona cada mazmorra y fase de jefe (en portugués).',
-      pt: 'Guia de masmorras: como funciona cada masmorra e cada fase de chefe.',
-    },
-  },
-  {
     name: 'WAKFU',
     url: 'https://www.wakfu.com/',
     host: 'wakfu.com',
