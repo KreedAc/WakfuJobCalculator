@@ -5,7 +5,7 @@ import { PageHeader } from '../components/ui/PageHeader';
 import { PageSeo } from '../components/PageSeo';
 import { HowItWorks } from '../components/HowItWorks';
 import { ItemImage } from '../components/ItemImage';
-import { loadWakfuData, type CompactItem } from '../lib/wakfuData';
+import { loadData, peekData } from '../lib/pageData';
 import { TRANSLATIONS, type Language } from '../constants/translations';
 import { GAME_UPDATES_T } from '../content/gameUpdates';
 
@@ -21,9 +21,11 @@ interface Patch {
   newSublimations: Record<Language, string>[];
   /** official sublimations the site doesn't describe yet */
   pendingSublimations?: ({ id: number } & Record<Language, string>)[];
-  /** names of ingredients that are no longer in the data */
-  names?: Record<string, Partial<Record<Language, string>>>;
+  /** name per language (n), picture (g) and rarity (r) of every item mentioned */
+  items?: Record<string, { n: Partial<Record<Language, string>>; g?: number; r?: number }>;
 }
+
+const DATA_FILE = 'patch-diff.json';
 
 const RARITY_CLASS: Record<number, string> = {
   2: 'text-rarity-rare', 3: 'text-rarity-mythic', 4: 'text-rarity-legendary',
@@ -36,33 +38,25 @@ const craftLink = (id: number) => `/items-craft-guide?items=${id}`;
 export function GameUpdatesPage({ language }: { language: Language }) {
   const g = GAME_UPDATES_T[language];
   const t = TRANSLATIONS[language];
-  const [patches, setPatches] = useState<Patch[] | null>(null);
-  const [itemsById, setItemsById] = useState<Map<number, CompactItem>>(new Map());
+  // already loaded when the page is prerendered or hydrated (see lib/pageData)
+  const [patches, setPatches] = useState<Patch[] | null>(() => peekData<{ patches?: Patch[] }>(DATA_FILE)?.patches ?? null);
   const [failed, setFailed] = useState(false);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
   useEffect(() => {
+    if (patches) return;
     let cancelled = false;
-    fetch('/data/patch-diff.json')
-      .then((r) => r.json())
-      .then((d: { patches?: Patch[] }) => { if (!cancelled) setPatches(d.patches ?? []); })
+    loadData<{ patches?: Patch[] }>(DATA_FILE)
+      .then((d) => { if (!cancelled) setPatches(d.patches ?? []); })
       .catch(() => { if (!cancelled) setFailed(true); });
     return () => { cancelled = true; };
-  }, []);
-
-  useEffect(() => {
-    let cancelled = false;
-    loadWakfuData(language)
-      .then((d) => { if (!cancelled) setItemsById(d.itemsById); })
-      .catch(() => {});
-    return () => { cancelled = true; };
-  }, [language]);
+  }, [patches]);
 
   const rarityLabels: Record<number, string> = {
     1: t.unusual, 2: t.rare, 3: t.mythical, 4: t.legendary, 5: t.relic, 6: t.souvenir, 7: t.epic,
   };
   const nameOf = (id: number, patch: Patch) =>
-    itemsById.get(id)?.name ?? patch.names?.[id]?.[language] ?? patch.names?.[id]?.en ?? `#${id}`;
+    patch.items?.[id]?.n[language] ?? patch.items?.[id]?.n.en ?? `#${id}`;
   const fmtDate = (d: string) =>
     new Date(`${d}T12:00:00Z`).toLocaleDateString(language, { day: 'numeric', month: 'long', year: 'numeric' });
 
@@ -97,7 +91,7 @@ export function GameUpdatesPage({ language }: { language: Language }) {
   };
 
   const itemTile = (id: number, patch: Patch) => {
-    const it = itemsById.get(id);
+    const it = patch.items?.[id];
     return (
       <li key={id}>
         <Link
@@ -105,11 +99,11 @@ export function GameUpdatesPage({ language }: { language: Language }) {
           title={g.openInCraftGuide}
           className="flex items-center gap-3 rounded-xl border border-line bg-bg2 px-2.5 py-2 hover:border-line-strong hover:bg-surface2 transition-colors"
         >
-          <ItemImage gfx={it?.gfxId} itemId={id} size={36} />
+          <ItemImage gfx={it?.g} itemId={id} size={36} />
           <span className="min-w-0">
             <span className="block text-sm font-semibold text-fg truncate">{nameOf(id, patch)}</span>
-            {it?.rarity ? (
-              <span className={`block text-xs truncate ${RARITY_CLASS[it.rarity] ?? 'text-subtle'}`}>{rarityLabels[it.rarity]}</span>
+            {it?.r ? (
+              <span className={`block text-xs truncate ${RARITY_CLASS[it.r] ?? 'text-subtle'}`}>{rarityLabels[it.r]}</span>
             ) : null}
           </span>
         </Link>
@@ -118,20 +112,20 @@ export function GameUpdatesPage({ language }: { language: Language }) {
   };
 
   const resourceChip = (id: number, patch: Patch) => {
-    const it = itemsById.get(id);
+    const it = patch.items?.[id];
     return (
       <li key={id} className="flex items-center gap-2 rounded-xl border border-line bg-bg2 pl-1.5 pr-3 py-1.5">
-        <ItemImage gfx={it?.gfxId} itemId={id} size={28} />
+        <ItemImage gfx={it?.g} itemId={id} size={28} />
         <span className="text-[13px] font-medium text-fg">{nameOf(id, patch)}</span>
       </li>
     );
   };
 
   const recipeRow = (r: Patch['changedRecipes'][number], patch: Patch) => {
-    const it = itemsById.get(r.item);
+    const it = patch.items?.[r.item];
     return (
       <li key={r.item} className="card-inset p-3 flex gap-3">
-        <ItemImage gfx={it?.gfxId} itemId={r.item} size={36} />
+        <ItemImage gfx={it?.g} itemId={r.item} size={36} />
         <div className="min-w-0 flex-1">
           <Link to={craftLink(r.item)} className="block text-sm font-semibold text-fg hover:text-primary truncate" title={g.openInCraftGuide}>
             {nameOf(r.item, patch)}

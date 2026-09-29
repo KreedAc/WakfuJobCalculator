@@ -1,6 +1,7 @@
 import { Calculator } from '../components/Calculator';
 import { HowItWorks } from '../components/HowItWorks';
 import { PageSeo } from '../components/PageSeo';
+import { SEO } from '../content/seo';
 import { TRANSLATIONS, type Language } from '../constants/translations';
 
 interface CalculatorPageProps {
@@ -12,7 +13,7 @@ export function CalculatorPage({ language }: CalculatorPageProps) {
 
   return (
     <div>
-      <PageSeo title={t.title} description={t.subtitle} path="/xp-calculator" />
+      <PageSeo {...SEO[language].xp} path="/xp-calculator" />
       <Calculator language={language} title={t.title} subtitle={t.subtitle} />
       <HowItWorks title={t.calcHowItWorksTitle} text={t.calcHowItWorks} className="mt-8" />
     </div>

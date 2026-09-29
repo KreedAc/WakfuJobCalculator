@@ -10,6 +10,7 @@ import {
   type CompactRecipe,
 } from "../lib/wakfuData";
 import { PageSeo } from "../components/PageSeo";
+import { SEO } from '../content/seo';
 import { TRANSLATIONS, type Language } from "../constants/translations";
 import { formatCraftItems, parseCraftItems } from "../lib/craftLink";
 
@@ -376,7 +377,7 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
 
   return (
     <div>
-      <PageSeo title={t.itemsCraftTitle} description={t.itemsCraftHowItWorks.slice(0, 155)} path="/items-craft-guide" />
+      <PageSeo {...SEO[language].craft} path="/items-craft-guide" />
       <PageHeader
         title={t.itemsCraftTitle}
         subtitle={loading ? `${t.loading}…` : `${t.craftableItems}: ${fmt(craftableItems.length)} · ${t.recipes}: ${fmt(recipesByResultId.size)}`}

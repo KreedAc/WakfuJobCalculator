@@ -76,13 +76,23 @@ for (const r of nextRecipes) {
 }
 changedRecipes.sort((a, b) => a.item - b.item);
 
-// ingredients that no longer exist in the new data keep their previous names
-const nextIds = new Set(nextItems.map((i) => i.id));
-const goneIds = new Set(changedRecipes.flatMap((c) => c.changes.map(([id]) => id)).filter((id) => !nextIds.has(id)));
-const names = {};
-for (const l of LANGS) {
-  for (const it of read(PREV, `items.compact.${l}.json`) ?? []) {
-    if (goneIds.has(it.id)) (names[it.id] ??= {})[l] = it.name;
+// Name (per language), picture and rarity of every item the entry mentions, so
+// the Game Updates page needs no other data. Ingredients removed from the game
+// keep the details they had in the previous data.
+const items = {};
+const mentioned = new Set([
+  ...newCraftable, ...newItems,
+  ...changedRecipes.flatMap((c) => [c.item, ...c.changes.map(([id]) => id)]),
+]);
+for (const [dir, langs] of [[PREV, LANGS], [DATA, LANGS]]) {
+  for (const l of langs) {
+    for (const it of read(dir, `items.compact.${l}.json`) ?? []) {
+      if (!mentioned.has(it.id)) continue;
+      const info = (items[it.id] ??= { n: {} });
+      info.n[l] = it.name;
+      if (it.gfxId != null) info.g = it.gfxId;
+      if (it.rarity != null) info.r = it.rarity;
+    }
   }
 }
 
@@ -111,7 +121,7 @@ const entry = {
   changedRecipes,
   newSublimations,
   pendingSublimations,
-  names,
+  items,
 };
 
 const history = (read(DATA, 'patch-diff.json')?.patches ?? []).filter((p) => p.to !== entry.to);

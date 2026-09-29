@@ -3,8 +3,10 @@ import { Search, MapPin, Check } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
 import { HowItWorks } from '../components/HowItWorks';
 import { PageSeo } from '../components/PageSeo';
+import { SEO } from '../content/seo';
 import type { Language } from '../constants/translations';
 import { treasuresContent } from '../content/treasures';
+import { loadData, peekData } from '../lib/pageData';
 
 type Treasure = {
   achievement: string;
@@ -15,6 +17,8 @@ type Treasure = {
 };
 
 const STORAGE_KEY = 'wakfu-treasures-completed';
+const DATA_FILE = 'treasures.json';
+const I18N_FILE = 'treasures.i18n.json';
 
 type TreasuresI18n = {
   _meta?: unknown;
@@ -30,52 +34,31 @@ function formatCoords(c: { x: number; y: number }) {
 export default function TreasuresPage({ language }: { language: Language }) {
   const t = treasuresContent[language];
 
-  const [treasures, setTreasures] = useState<Treasure[]>([]);
-  const [i18n, setI18n] = useState<TreasuresI18n | null>(null);
+  // Data already loaded when the page is prerendered or hydrated (see lib/pageData),
+  // so the static HTML lists every treasure.
+  const [treasures, setTreasures] = useState<Treasure[]>(() => peekData<Treasure[]>(DATA_FILE) ?? []);
+  const [i18n, setI18n] = useState<TreasuresI18n | null>(() => peekData<TreasuresI18n>(I18N_FILE) ?? null);
   const [query, setQuery] = useState('');
   const [hideDone, setHideDone] = useState(false);
-  const [completedTreasures, setCompletedTreasures] = useState<Set<string>>(() => {
+  // saved progress is read after hydration: the prerendered HTML has none
+  const [completedTreasures, setCompletedTreasures] = useState<Set<string>>(new Set());
+  useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      return saved ? new Set(JSON.parse(saved)) : new Set();
+      if (saved) setCompletedTreasures(new Set(JSON.parse(saved)));
     } catch {
-      return new Set();
+      // storage unavailable
     }
-  });
+  }, []);
 
   useEffect(() => {
+    if (peekData(DATA_FILE) && peekData(I18N_FILE)) return;
     let cancelled = false;
-
-    async function load() {
-      const [treasuresRes, i18nRes] = await Promise.allSettled([
-        fetch('/data/treasures.json'),
-        fetch('/data/treasures.i18n.json'),
-      ]);
-
-      if (!cancelled) {
-        if (treasuresRes.status === 'fulfilled' && treasuresRes.value.ok) {
-          const data = await treasuresRes.value.json();
-          setTreasures(Array.isArray(data) ? data : []);
-        } else {
-          setTreasures([]);
-        }
-
-        if (i18nRes.status === 'fulfilled' && i18nRes.value.ok) {
-          const data = await i18nRes.value.json();
-          setI18n(data || null);
-        } else {
-          setI18n(null);
-        }
-      }
-    }
-
-    load().catch(() => {
-      if (!cancelled) {
-        setTreasures([]);
-        setI18n(null);
-      }
+    Promise.allSettled([loadData<Treasure[]>(DATA_FILE), loadData<TreasuresI18n>(I18N_FILE)]).then(([data, tr]) => {
+      if (cancelled) return;
+      setTreasures(data.status === 'fulfilled' && Array.isArray(data.value) ? data.value : []);
+      setI18n(tr.status === 'fulfilled' ? tr.value || null : null);
     });
-
     return () => {
       cancelled = true;
     };
@@ -160,7 +143,7 @@ export default function TreasuresPage({ language }: { language: Language }) {
 
   return (
     <div>
-      <PageSeo title={t.title} description={t.subtitle} path="/treasures" />
+      <PageSeo {...SEO[language].treasures} path="/treasures" />
       <PageHeader title={t.title} subtitle={t.subtitle} />
 
       <div className="card p-4 md:p-5 mb-5 space-y-4">
