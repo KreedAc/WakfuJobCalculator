@@ -2,10 +2,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Search, X, Minus, Plus, Copy, Check, ChevronRight, ChevronDown, Repeat, ShoppingCart, PackageSearch } from "lucide-react";
 import { HowItWorks } from "../components/HowItWorks";
+import { ItemImage } from "../components/ItemImage";
 import { PageHeader } from "../components/ui/PageHeader";
 import {
   loadWakfuData,
-  getItemIconUrl,
   type CompactItem,
   type CompactRecipe,
 } from "../lib/wakfuData";
@@ -633,40 +633,6 @@ function RecipeNode(props: {
   );
 }
 
-function ItemIcon({
-  itemId,
-  size = 44,
-  itemsById,
-}: {
-  itemId: number;
-  size?: number;
-  itemsById?: Map<number, CompactItem>;
-}) {
-  const item = itemsById?.get(itemId);
-  const gfx = item?.gfxId ?? itemId;
-
-  const [src, setSrc] = useState(getItemIconUrl(gfx, "ankama"));
-
-  useEffect(() => {
-    const it = itemsById?.get(itemId);
-    const g = it?.gfxId ?? itemId;
-    setSrc(getItemIconUrl(g, "ankama"));
-  }, [itemId, itemsById]);
-
-  return (
-    <img
-      src={src}
-      width={size}
-      height={size}
-      alt=""
-      className="rounded-lg bg-surface2 border border-line object-contain shrink-0"
-      style={{ width: size, height: size }}
-      onError={() => {
-        const it = itemsById?.get(itemId);
-        const g = it?.gfxId ?? itemId;
-        if (src.includes("static.ankama.com")) setSrc(getItemIconUrl(g, "wakassets"));
-      }}
-      loading="lazy"
-    />
-  );
+function ItemIcon({ itemId, size = 44, itemsById }: { itemId: number; size?: number; itemsById?: Map<number, CompactItem> }) {
+  return <ItemImage gfx={itemsById?.get(itemId)?.gfxId} itemId={itemId} size={size} />;
 }

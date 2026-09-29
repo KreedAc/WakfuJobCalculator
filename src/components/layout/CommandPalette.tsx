@@ -3,7 +3,8 @@ import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { Search, Hammer, Scroll, Package, CornerDownLeft, type LucideIcon } from 'lucide-react';
 import { ALL_NAV } from '../../lib/navigation';
-import { loadWakfuData, getItemIconUrl } from '../../lib/wakfuData';
+import { loadWakfuData } from '../../lib/wakfuData';
+import { ItemImage } from '../ItemImage';
 import { PROFESSION_IDS, PROFESSION_NAMES } from '../../constants/professions';
 import { SHELL } from '../../content/shell';
 import type { Language } from '../../constants/translations';
@@ -17,6 +18,7 @@ interface Result {
   to: string;
   icon: LucideIcon;
   gfx?: number | null;
+  itemId?: number;
 }
 
 const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
@@ -120,7 +122,7 @@ export function CommandPalette({ language }: { language: Language }) {
       out.push(...rank(items, q, (x) => x.n, GROUP_LIMIT.items)
         .map((x) => ({
           key: `i-${x.id}`, group: 'items' as const, label: x.name, hint: s.nav.craft,
-          to: `/items-craft-guide?items=${x.id}`, icon: Package, gfx: x.gfxId,
+          to: `/items-craft-guide?items=${x.id}`, icon: Package, gfx: x.gfxId, itemId: x.id,
         })));
     }
     return out;
@@ -180,8 +182,8 @@ export function CommandPalette({ language }: { language: Language }) {
                   onClick={() => go(r)}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-colors ${i === active ? 'bg-primary/10' : ''}`}
                 >
-                  {r.gfx ? (
-                    <img src={getItemIconUrl(r.gfx)} alt="" width={28} height={28} loading="lazy" className="w-7 h-7 rounded-md bg-surface2 object-contain shrink-0" />
+                  {r.itemId ? (
+                    <ItemImage gfx={r.gfx} itemId={r.itemId} size={28} />
                   ) : (
                     <span className={`w-7 h-7 rounded-md grid place-items-center shrink-0 ${i === active ? 'bg-primary/15 text-primary' : 'bg-surface2 text-muted'}`}>
                       <Icon className="w-4 h-4" />
