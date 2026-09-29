@@ -1,4 +1,5 @@
 import { PageSeo } from '../components/PageSeo';
+import { RecommendedResources } from '../components/RecommendedResources';
 import { Link } from 'react-router-dom';
 import { type Language } from '../constants/translations';
 import { guidesContent } from '../content/guides';
@@ -74,6 +75,7 @@ export function GuidesPage({ language }: GuidesPageProps) {
           </div>
         </div>
       </div>
+      <RecommendedResources language={language} className="mt-10" />
     </>
   );
 }

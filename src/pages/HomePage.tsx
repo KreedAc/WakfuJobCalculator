@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Sparkles, Megaphone, Clock, ArrowRight, Eye } from 'lucide-react';
 import { PageSeo } from '../components/PageSeo';
+import { RecommendedResources } from '../components/RecommendedResources';
 import { openSearch } from '../components/layout/searchEvents';
 import { NAV_GROUPS } from '../lib/navigation';
 import { GAME_VERSION } from '../lib/gameVersion';
@@ -104,6 +105,8 @@ export function HomePage({ language }: { language: Language }) {
           })}
         </div>
       </section>
+
+      <RecommendedResources language={language} />
     </div>
   );
 }
