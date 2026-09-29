@@ -2833,7 +2833,7 @@
     "key": "Swiftness"
   },
   {
-    "name": "Slow Evasion",
+    "name": "Evasão Lenta",
     "colors": [
       "R",
       "R",
@@ -2863,7 +2863,7 @@
         "increment": null
       }
     ],
-    "key": "Slow Evasion"
+    "key": "Slow Escape"
   },
   {
     "name": "Topologia",
@@ -7220,5 +7220,143 @@
       }
     ],
     "key": "Critical Secret"
+  },
+  {
+    "name": "Furor Púrpura",
+    "colors": [
+      "B",
+      "R",
+      "R"
+    ],
+    "description": "No início do turno, se o portador do estado sofreu danos diretos de um inimigo à distância no turno anterior: [X]% Danos infligidos corpo a corpo (1 turno)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% Damage inflicted in melee",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ignemikhal",
+      "localIcon": "/data/icons/ignemikhal.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ],
+    "key": "Crimson Fury"
+  },
+  {
+    "name": "Influência Púrpura",
+    "colors": [
+      "G",
+      "B",
+      "B"
+    ],
+    "description": "No início do combate, se os Golpes críticos forem <= 20: [X]% Golpe crítico",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Critical Hit",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ignemikhal",
+      "localIcon": "/data/icons/ignemikhal.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ],
+    "key": "Crimson Influence"
+  },
+  {
+    "name": "Força Púrpura",
+    "colors": [
+      "G",
+      "R",
+      "G"
+    ],
+    "description": "Enquanto o portador tiver Armadura: [X]% Danos infligidos",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% Damage inflicted",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ignemikhal",
+      "localIcon": "/data/icons/ignemikhal.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ],
+    "key": "Crimson Strength"
+  },
+  {
+    "name": "Pegando Fogo",
+    "colors": [
+      "B",
+      "G",
+      "R"
+    ],
+    "description": "Quando o portador do estado sofre danos diretos corpo a corpo: 1 PM ([X] ativações por turno)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: +1 activation per turn",
+    "maxLevel": 6,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Ignemikhal",
+      "localIcon": "/data/icons/ignemikhal.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ],
+    "key": "Fire and Flame"
   }
 ]

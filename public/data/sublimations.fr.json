@@ -2833,7 +2833,7 @@
     "key": "Swiftness"
   },
   {
-    "name": "Slow Evasion",
+    "name": "Dérobade lente",
     "colors": [
       "R",
       "R",
@@ -2863,7 +2863,7 @@
         "increment": null
       }
     ],
-    "key": "Slow Evasion"
+    "key": "Slow Escape"
   },
   {
     "name": "Topologie",
@@ -7220,5 +7220,143 @@
       }
     ],
     "key": "Critical Secret"
+  },
+  {
+    "name": "Fureur pourpre",
+    "colors": [
+      "B",
+      "R",
+      "R"
+    ],
+    "description": "En début de tour, si le porteur de l'état a subi des dégâts directs d'un ennemi à distance au tour précédent : [X]% Dégâts infligés en mêlée (1 tour)",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +4% Damage inflicted in melee",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ignemikhal",
+      "localIcon": "/data/icons/ignemikhal.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 4,
+        "increment": 4,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ],
+    "key": "Crimson Fury"
+  },
+  {
+    "name": "Influence pourpre",
+    "colors": [
+      "G",
+      "B",
+      "B"
+    ],
+    "description": "Au début du combat, si les Coups Critiques sont <= 20 : [X]% Coup Critique",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +5% Critical Hit",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ignemikhal",
+      "localIcon": "/data/icons/ignemikhal.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 5,
+        "increment": 5,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ],
+    "key": "Crimson Influence"
+  },
+  {
+    "name": "Force pourpre",
+    "colors": [
+      "G",
+      "R",
+      "G"
+    ],
+    "description": "Tant que le porteur a de l'Armure : [X]% Dégâts infligés",
+    "rarity": [
+      "Rare",
+      "Mythic",
+      "Legendary"
+    ],
+    "effect": "Per additional level: +2% Damage inflicted",
+    "maxLevel": 6,
+    "minLevel": 1,
+    "step": 1,
+    "obtenation": {
+      "name": "Ignemikhal",
+      "localIcon": "/data/icons/ignemikhal.png"
+    },
+    "category": "Offensive",
+    "values": [
+      {
+        "base": 2,
+        "increment": 2,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ],
+    "key": "Crimson Strength"
+  },
+  {
+    "name": "Tout feu tout flamme",
+    "colors": [
+      "B",
+      "G",
+      "R"
+    ],
+    "description": "Quand le porteur de l'état subit des dégâts directs en mêlée : 1 PM ([X] activations par tour)",
+    "rarity": [
+      "Mythic"
+    ],
+    "effect": "Per additional 2 levels: +1 activation per turn",
+    "maxLevel": 6,
+    "minLevel": 2,
+    "step": 2,
+    "obtenation": {
+      "name": "Ignemikhal",
+      "localIcon": "/data/icons/ignemikhal.png"
+    },
+    "category": "Stats Increase",
+    "values": [
+      {
+        "base": 1,
+        "increment": 1,
+        "placeholder": "X"
+      },
+      {
+        "base": null,
+        "increment": null
+      }
+    ],
+    "key": "Fire and Flame"
   }
 ]

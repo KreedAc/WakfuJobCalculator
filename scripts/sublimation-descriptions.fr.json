@@ -81,7 +81,7 @@
   "Wall": "En début de combat, [X]% du niveau en Armure",
   "Melee Barrier": "Réduit les Dégâts de mêlée subis de 50% du niveau, [X] fois par tour",
   "Swiftness": "1 PM, [X]% Dégâts infligés",
-  "Slow Evasion": "[X]% Parade par tour (max 40)",
+  "Slow Escape": "[X]% Parade par tour (max 40)",
   "Topology": "En début de combat : Toute Esquive du porteur de l'état est convertie en Armure, au taux de 1 pour [X]. L'Esquive convertie est perdue.",
   "Cyclical Ruin": "20% Dégâts indirects les tours pairs",
   "Frenzy": "-20% Dégâts infligés. En début de tour : 10% Dégâts infligés par ennemi touché au tour précédent.",
@@ -227,5 +227,9 @@
   "Punishment": "En début de tour, s'il y a au moins 2 ennemis en mêlée : +1 PM, +1 PA",
   "Absolution": "En début de tour, s'il y a au moins 2 alliés en mêlée : +1 PM, +1 PA",
   "Single Block": "En réalisant une Parade : -30% dégâts supplémentaires reçus, -100% Parade",
-  "Critical Secret": "En début de combat, si la Maîtrise Critique est inférieure ou égale à 0 : 30% Coup Critique"
+  "Critical Secret": "En début de combat, si la Maîtrise Critique est inférieure ou égale à 0 : 30% Coup Critique",
+  "Crimson Fury": "En début de tour, si le porteur de l'état a subi des dégâts directs d'un ennemi à distance au tour précédent : [X]% Dégâts infligés en mêlée (1 tour)",
+  "Crimson Influence": "Au début du combat, si les Coups Critiques sont <= 20 : [X]% Coup Critique",
+  "Crimson Strength": "Tant que le porteur a de l'Armure : [X]% Dégâts infligés",
+  "Fire and Flame": "Quand le porteur de l'état subit des dégâts directs en mêlée : 1 PM ([X] activations par tour)"
 }

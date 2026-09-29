@@ -81,7 +81,7 @@
   "Wall": "Al principio del combate, [X]% del nivel como Armadura",
   "Melee Barrier": "Reduce los Daños cuerpo a cuerpo sufridos en un 50% del nivel, [X] veces por turno",
   "Swiftness": "1 PM, [X]% Daños infligidos",
-  "Slow Evasion": "[X]% Anticipación por turno (máx. 40)",
+  "Slow Escape": "[X]% Anticipación por turno (máx. 40)",
   "Topology": "Al principio del combate: Toda Esquiva del portador del estado se convierte en Armadura, a razón de 1 por [X]. La Esquiva convertida se pierde.",
   "Cyclical Ruin": "20% Daños indirectos en las rondas pares",
   "Frenzy": "-20% Daños infligidos. Al principio del turno: 10% Daños infligidos por enemigo golpeado el turno anterior.",
@@ -227,5 +227,9 @@
   "Punishment": "Al principio del turno, si hay al menos 2 enemigos cuerpo a cuerpo: +1 PM, +1 PA",
   "Absolution": "Al principio del turno, si hay al menos 2 aliados cuerpo a cuerpo: +1 PM, +1 PA",
   "Single Block": "Al realizar una Anticipación: -30% daños adicionales recibidos, -100% Anticipación",
-  "Critical Secret": "Al principio del combate, si el Dominio crítico es menor o igual a 0: 30% Golpe crítico"
+  "Critical Secret": "Al principio del combate, si el Dominio crítico es menor o igual a 0: 30% Golpe crítico",
+  "Crimson Fury": "Al principio del turno, si el portador del estado sufrió daños directos de un enemigo a distancia en el turno anterior: [X]% Daños infligidos cuerpo a cuerpo (1 turno)",
+  "Crimson Influence": "Al principio del combate, si los Golpes críticos son <= 20: [X]% Golpe crítico",
+  "Crimson Strength": "Mientras el portador tenga Armadura: [X]% Daños infligidos",
+  "Fire and Flame": "Cuando el portador del estado sufre daños directos cuerpo a cuerpo: 1 PM ([X] activaciones por turno)"
 }
