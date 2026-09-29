@@ -59,6 +59,22 @@ export const changelogContent = {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '3.3.0',
+    date: '2026-09-29',
+    changes: [
+      { type: 'feature', text: {
+        en: 'Every page now has its own address in each language (/fr, /es, /pt), so you can share a page in your language',
+        fr: 'Chaque page a maintenant sa propre adresse dans chaque langue (/fr, /es, /pt) : partagez une page dans votre langue',
+        es: 'Cada página tiene ahora su propia dirección en cada idioma (/fr, /es, /pt): comparte una página en tu idioma',
+        pt: 'Cada página agora tem seu próprio endereço em cada idioma (/fr, /es, /pt): compartilhe uma página no seu idioma' } },
+      { type: 'improvement', text: {
+        en: 'Sublimations, Treasures and Game Updates show their content instantly',
+        fr: 'Les sublimations, les trésors et les mises à jour du jeu s\'affichent instantanément',
+        es: 'Las sublimaciones, los tesoros y las actualizaciones del juego se muestran al instante',
+        pt: 'Sublimações, tesouros e atualizações do jogo aparecem instantaneamente' } },
+    ]
+  },
+  {
     version: '3.2.2',
     date: '2026-09-29',
     changes: [

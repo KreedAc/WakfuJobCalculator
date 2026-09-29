@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Sparkles, Megaphone, Clock, ArrowRight, Eye } from 'lucide-react';
 import { PageSeo } from '../components/PageSeo';
+import { SEO } from '../content/seo';
 import { RecommendedResources } from '../components/RecommendedResources';
 import { openSearch } from '../components/layout/searchEvents';
 import { NAV_GROUPS } from '../lib/navigation';
@@ -25,7 +26,7 @@ export function HomePage({ language }: { language: Language }) {
 
   return (
     <div className="space-y-8">
-      <PageSeo title={h.title} description={h.description} path="/" />
+      <PageSeo {...SEO[language].home} path="/" />
 
       <section className="grid gap-5 lg:grid-cols-[1.45fr_1fr]">
         <div className="card relative overflow-hidden p-6 md:p-8">

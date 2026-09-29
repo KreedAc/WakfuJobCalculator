@@ -5,6 +5,7 @@ import {
 import { PageHeader } from '../components/ui/PageHeader';
 import type { Language } from '../constants/translations';
 import { PageSeo } from '../components/PageSeo';
+import { SEO } from '../content/seo';
 import {
   damage, heal, armor, effectiveMasteries, effectiveHp, flatToPercent, percentToFlat,
   forceOfWill, lockLoss, totalHp, type Position,
@@ -217,7 +218,7 @@ export function CombatCalcPage({ language }: CombatCalcPageProps) {
   // ─── Render ─────────────────────────────────────────────────────────────────
   return (
     <div className="max-w-6xl">
-      <PageSeo title={ct.pageTitle} description={ct.pageSubtitle} path="/combat-calc" />
+      <PageSeo {...SEO[language].combat} path="/combat-calc" />
       <PageHeader
         title={ct.pageTitle}
         subtitle={<>{ct.pageSubtitle}<span className="block mt-1 text-xs italic text-subtle">{ct.credit}</span></>}

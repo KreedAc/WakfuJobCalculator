@@ -1,4 +1,5 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
+import { loadData, peekData } from '../lib/pageData';
 import { Search, AlertCircle, X, SearchX } from 'lucide-react';
 import { FALLBACK_SUBLIMATIONS, type Sublimation } from '../data/fallbackSublimations';
 import { processDescription, initializeRuneLevels, matchesEquipmentSlots, type Slot } from '../utils/sublimationUtils';
@@ -64,45 +65,41 @@ const SOCKET_ICONS: Record<'R' | 'G' | 'B', string> = { R: 'red_slot.png', G: 'g
 const RARITY_ICONS: Record<string, string> = { Rare: 'rare_icon.png', Mythic: 'mythic_icon.png', Legendary: 'legendary_icon.png' };
 
 export function Sublimations({ translations: t, language = 'en' }: SublimationsProps) {
-  const [runes, setRunes] = useState<Sublimation[]>([]);
-  const [loading, setLoading] = useState(true);
+  // The data is already loaded when the page is prerendered or hydrated (see
+  // lib/pageData), so the static HTML lists every sublimation.
+  const file = `sublimations.${language}.json`;
+  const [initial] = useState(() => peekData<Sublimation[]>(file));
+  const [runes, setRunes] = useState<Sublimation[]>(initial ?? []);
+  const [loading, setLoading] = useState(!initial);
   const [searchTerm, setSearchTerm] = useState('');
   // Canonical filter value: 'All', a data category, or the special 'Epic'/'Relic'.
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [runeLevels, setRuneLevels] = useState<Record<string, number>>({});
-  const [dataSource, setDataSource] = useState<'loading' | 'json' | 'fallback' | 'error'>('loading');
+  const [runeLevels, setRuneLevels] = useState<Record<string, number>>(() => (initial ? initializeRuneLevels(initial) : {}));
+  const [dataSource, setDataSource] = useState<'loading' | 'json' | 'fallback' | 'error'>(initial ? 'json' : 'loading');
   const [slotFilters, setSlotFilters] = useState<[Slot, Slot, Slot, Slot]>(['Any', 'Any', 'Any', 'Any']);
+  const loadedFile = useRef(initial ? file : null);
 
   useEffect(() => {
+    if (loadedFile.current === file) return;
     let cancelled = false;
-
-    async function tryLoad(url: string): Promise<Sublimation[] | null> {
-      try {
-        const response = await fetch(url);
-        if (!response.ok) return null;
-        const data = await response.json();
-        return Array.isArray(data) && data.length > 0 ? data : null;
-      } catch {
-        return null;
-      }
-    }
 
     async function fetchData() {
       setLoading(true);
       // Localized file first, then English.
-      const sources = [
-        `/data/sublimations.${language}.json`,
-        '/data/sublimations.en.json',
-      ];
-      for (const url of sources) {
-        const data = await tryLoad(url);
-        if (cancelled) return;
-        if (data) {
-          setRunes(data);
-          setRuneLevels(initializeRuneLevels(data));
-          setDataSource('json');
-          setLoading(false);
-          return;
+      for (const source of [file, 'sublimations.en.json']) {
+        try {
+          const data = await loadData<Sublimation[]>(source);
+          if (cancelled) return;
+          if (Array.isArray(data) && data.length > 0) {
+            loadedFile.current = file;
+            setRunes(data);
+            setRuneLevels(initializeRuneLevels(data));
+            setDataSource('json');
+            setLoading(false);
+            return;
+          }
+        } catch {
+          // try the next source
         }
       }
       if (cancelled) return;
@@ -116,7 +113,7 @@ export function Sublimations({ translations: t, language = 'en' }: SublimationsP
     return () => {
       cancelled = true;
     };
-  }, [language]);
+  }, [file]);
 
   // links from the search palette and Home: ?q=Influence, ?category=epic
   useEffect(() => {

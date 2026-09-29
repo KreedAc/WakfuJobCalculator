@@ -7,7 +7,7 @@
 //                        (game data JSON, icons, images)
 //
 // Bump VERSION to drop every cache on the next visit.
-const VERSION = 'wjc-v2';
+const VERSION = 'wjc-v3';
 const PAGES = `${VERSION}-pages`;
 const ASSETS = `${VERSION}-assets`;
 const RUNTIME = `${VERSION}-runtime`;

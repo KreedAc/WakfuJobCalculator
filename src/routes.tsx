@@ -33,17 +33,19 @@ export interface RouteDef {
   priority: number;
   /** false keeps the page out of sitemap.xml */
   inSitemap?: boolean;
+  /** files in /data the page shows on first render (see lib/pageData): prerendered into the HTML */
+  data?: (language: Language) => string[];
 }
 
 export const ROUTES: RouteDef[] = [
   { path: '/', render: (l) => <HomePage language={l} />, changefreq: 'weekly', priority: 1.0 },
   { path: '/xp-calculator', render: (l) => <CalculatorPage language={l} />, changefreq: 'monthly', priority: 0.9 },
-  { path: '/sublimations', render: (l) => <SublimationsPage language={l} />, changefreq: 'weekly', priority: 0.9 },
+  { path: '/sublimations', render: (l) => <SublimationsPage language={l} />, changefreq: 'weekly', priority: 0.9, data: (l) => [`sublimations.${l}.json`] },
   { path: '/items-craft-guide', render: (l) => <ItemsCraftGuidePage language={l} />, changefreq: 'weekly', priority: 0.8 },
   { path: '/combat-calc', render: (l) => <CombatCalcPage language={l} />, changefreq: 'monthly', priority: 0.8 },
-  { path: '/treasures', render: (l) => <TreasuresPage language={l} />, changefreq: 'monthly', priority: 0.8 },
+  { path: '/treasures', render: (l) => <TreasuresPage language={l} />, changefreq: 'monthly', priority: 0.8, data: () => ['treasures.json', 'treasures.i18n.json'] },
   { path: '/guides', render: (l) => <GuidesPage language={l} />, changefreq: 'monthly', priority: 0.8 },
-  { path: '/game-updates', render: (l) => <GameUpdatesPage language={l} />, changefreq: 'monthly', priority: 0.7 },
+  { path: '/game-updates', render: (l) => <GameUpdatesPage language={l} />, changefreq: 'monthly', priority: 0.7, data: () => ['patch-diff.json'] },
   { path: '/guides/beginners-guide-professions', render: (l) => <BeginnersGuideProfessions language={l} />, changefreq: 'monthly', priority: 0.7 },
   { path: '/guides/complete-sublimations-guide', render: (l) => <CompleteSublimationsGuide language={l} />, changefreq: 'monthly', priority: 0.7 },
   { path: '/about', render: (l) => <AboutPage language={l} />, changefreq: 'monthly', priority: 0.5 },

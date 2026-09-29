@@ -14,6 +14,22 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#0a0f1e" />
 
+    <!-- Language: a page without a language prefix is the English version. A
+         visitor who chose another language (or, on a first visit, whose browser
+         is in French, Spanish or Portuguese) goes straight to that version. -->
+    <script>
+      (function () {
+        try {
+          var p = location.pathname;
+          if (/^\/(fr|es|pt)(\/|$)/.test(p)) return;
+          var l = localStorage.getItem('wakfu-lang');
+          if (!l) l = (navigator.language || '').slice(0, 2).toLowerCase();
+          if (l === 'fr' || l === 'es' || l === 'pt') {
+            location.replace('/' + l + (p === '/' ? '' : p) + location.search + location.hash);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <!-- Theme before first paint: saved choice, else the system setting. -->
     <script>
       (function () {
