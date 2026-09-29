@@ -12,9 +12,9 @@ export const guidesContent = {
         icon: BookOpen,
         title: 'Beginner\'s Guide to Wakfu Professions',
         slug: 'beginners-guide-professions',
-        description: 'Everything you need to know about choosing and starting your first professions in Wakfu. Learn about harvesting, crafting, and the profession system.',
-        topics: ['Profession basics', 'Which professions to choose', 'Starting tips', 'Common mistakes to avoid'],
-        readTime: '10 min read'
+        description: 'How Wakfu professions work: gathering and crafting professions, leveling a crafting profession with the leveling recipes, and what changes the XP of gathering.',
+        topics: ['Gathering and crafting', 'Leveling recipes', 'Gathering XP', 'From resources to crafts'],
+        readTime: '5 min read'
       },
       {
         icon: Sparkles,
@@ -35,9 +35,9 @@ export const guidesContent = {
         icon: BookOpen,
         title: 'Guide du Débutant : Les Métiers Wakfu',
         slug: 'beginners-guide-professions',
-        description: 'Tout ce que vous devez savoir sur le choix et le démarrage de vos premiers métiers dans Wakfu. Apprenez la récolte, le craft et le système de métiers.',
-        topics: ['Bases des métiers', 'Quels métiers choisir', 'Conseils de départ', 'Erreurs courantes à éviter'],
-        readTime: '10 min de lecture'
+        description: "Comment marchent les métiers de Wakfu : récolte et artisanat, monter un métier d'artisanat avec les recettes de montée, et ce qui change l'XP de la récolte.",
+        topics: ['Récolte et artisanat', 'Recettes de montée', "XP de récolte", 'Des ressources aux crafts'],
+        readTime: '5 min de lecture'
       },
       {
         icon: Sparkles,
@@ -58,9 +58,9 @@ export const guidesContent = {
         icon: BookOpen,
         title: 'Guía para Principiantes: Profesiones de Wakfu',
         slug: 'beginners-guide-professions',
-        description: 'Todo lo que necesitas saber sobre elegir e iniciar tus primeras profesiones en Wakfu. Aprende sobre recolección, crafteo y el sistema de profesiones.',
-        topics: ['Conceptos básicos de profesiones', 'Qué profesiones elegir', 'Consejos iniciales', 'Errores comunes a evitar'],
-        readTime: '10 min de lectura'
+        description: 'Cómo funcionan los oficios de Wakfu: recolección y fabricación, subir un oficio de fabricación con las recetas de subida y qué cambia la XP de la recolección.',
+        topics: ['Recolección y fabricación', 'Recetas de subida', 'XP de recolección', 'De los recursos a los crafteos'],
+        readTime: '5 min de lectura'
       },
       {
         icon: Sparkles,
@@ -81,9 +81,9 @@ export const guidesContent = {
         icon: BookOpen,
         title: 'Guia para Iniciantes: Profissões do Wakfu',
         slug: 'beginners-guide-professions',
-        description: 'Tudo que você precisa saber sobre escolher e iniciar suas primeiras profissões no Wakfu. Aprenda sobre coleta, crafting e o sistema de profissões.',
-        topics: ['Básico de profissões', 'Quais profissões escolher', 'Dicas iniciais', 'Erros comuns a evitar'],
-        readTime: '10 min de leitura'
+        description: 'Como funcionam as profissões do Wakfu: coleta e fabricação, upar uma profissão de fabricação com as receitas de upar e o que muda o XP da coleta.',
+        topics: ['Coleta e fabricação', 'Receitas de upar', 'XP de coleta', 'Dos recursos aos crafts'],
+        readTime: '5 min de leitura'
       },
       {
         icon: Sparkles,

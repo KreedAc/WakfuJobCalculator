@@ -66,11 +66,11 @@ export function BeginnersGuideProfessions({ language }: BeginnersGuideProfession
 
           <div className="mt-10 p-6 bg-primary/5 border border-primary/20 rounded-2xl">
             <p className="text-muted">
-              Ready to start planning your profession journey? Use our{' '}
-              <Link to="/" className="text-primary font-bold hover:underline">
-                XP Calculator
-              </Link>{' '}
-              to find the most efficient leveling path!
+              {pageContent.cta.before}
+              <Link to="/xp-calculator" className="text-primary font-bold hover:underline">
+                {pageContent.cta.link}
+              </Link>
+              {pageContent.cta.after}
             </p>
           </div>
         </div>
