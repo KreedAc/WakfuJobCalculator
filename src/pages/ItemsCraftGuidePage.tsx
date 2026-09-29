@@ -81,7 +81,7 @@ export function ItemsCraftGuidePage({ language }: { language: Language }) {
       .finally(() => setLoading(false));
   }, [language]);
 
-  // Items passed in the URL (?items=id,idx2 — e.g. from the Builder) are added
+  // Items passed in the URL (?items=id,idx2 — e.g. from the search palette) are added
   // once the data is loaded; afterwards the URL mirrors the list so it can be shared.
   const urlImported = useRef(false);
   useEffect(() => {

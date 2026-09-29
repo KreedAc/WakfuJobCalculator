@@ -104,11 +104,6 @@ export const changelog: ChangelogEntry[] = [
     version: '2.5.0',
     date: '2026-09-28',
     changes: [
-      { type: 'feature', text: {
-        en: 'Community builds: publish your build from the Builder, browse builds by class and level, like the best ones',
-        fr: 'Builds de la communauté : publiez votre build depuis le Créateur, parcourez les builds par classe et niveau, aimez les meilleurs',
-        es: 'Builds de la comunidad: publica tu build desde el Creador, explora builds por clase y nivel, dale me gusta a las mejores',
-        pt: 'Builds da comunidade: publique sua build pelo Criador, explore builds por classe e nível, curta as melhores' } },
       { type: 'update', text: {
         en: 'Game data updated to version 1.93',
         fr: 'Données du jeu mises à jour vers la version 1.93',
@@ -120,16 +115,6 @@ export const changelog: ChangelogEntry[] = [
     version: '2.4.0',
     date: '2026-09-28',
     changes: [
-      { type: 'feature', text: {
-        en: 'Builder: compare each item with the one you have equipped and sort by any stat',
-        fr: "Créateur : comparez chaque objet avec celui équipé et triez par n'importe quelle stat",
-        es: 'Creador: compara cada objeto con el equipado y ordena por cualquier estadística',
-        pt: 'Criador: compare cada item com o equipado e ordene por qualquer estatística' } },
-      { type: 'feature', text: {
-        en: 'Builder: open the crafting list of your build in the Items Craft Guide, and share crafting lists with a link',
-        fr: "Créateur : ouvrez la liste de craft de votre build dans le Guide de craft, et partagez vos listes par lien",
-        es: 'Creador: abre la lista de crafteo de tu build en la Guía de crafteo y comparte listas con un enlace',
-        pt: 'Criador: abra a lista de crafting da sua build no Guia de crafting e compartilhe listas com um link' } },
       { type: 'improvement', text: {
         en: 'New navigation on phones, with a full-screen menu',
         fr: 'Nouvelle navigation sur téléphone, avec un menu plein écran',
@@ -155,22 +140,6 @@ export const changelog: ChangelogEntry[] = [
         fr: 'Calculateur de combat : les résistances exactes étaient arrondies à l\'inférieur (100 fixe affichait 19,9 % au lieu de 20 %)',
         es: 'Calculadora de combate: las resistencias exactas se redondeaban hacia abajo (100 fija mostraba 19,9 % en lugar de 20 %)',
         pt: 'Calculadora de combate: resistências exatas eram arredondadas para baixo (100 fixa mostrava 19,9% em vez de 20%)' } },
-    ]
-  },
-  {
-    version: '2.3.0',
-    date: '2026-07-07',
-    changes: [
-      { type: 'feature', text: {
-        en: 'Equipment Builder: over 7,900 official items, total stats, share your build with a link',
-        fr: "Créateur d'équipement : plus de 7 900 objets officiels, stats totales, partage du build par lien",
-        es: 'Creador de equipamiento: más de 7.900 objetos oficiales, estadísticas totales, comparte tu build con un enlace',
-        pt: 'Criador de equipamento: mais de 7.900 itens oficiais, estatísticas totais, compartilhe sua build com um link' } },
-      { type: 'feature', text: {
-        en: 'Save your builds on your device',
-        fr: 'Sauvegardez vos builds sur votre appareil',
-        es: 'Guarda tus builds en tu dispositivo',
-        pt: 'Salve suas builds no seu dispositivo' } },
     ]
   },
   {

@@ -6,7 +6,7 @@
 // sitemap from the same route list, so they can never drift apart.
 //
 // Output layout matches Cloudflare static assets "auto-trailing-slash"
-// handling: /builder → dist/builder.html, / → dist/index.html.
+// handling: /treasures → dist/treasures.html, / → dist/index.html.
 
 import { promises as fsp } from "node:fs";
 import path from "node:path";
